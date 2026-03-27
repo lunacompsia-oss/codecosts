@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>How Much Does AI Coding Actually Cost? Interactive 2026 Calculator</title>
+  <meta name="description" content="Calculate the real cost of AI coding tools for your situation. Input your team size, usage level, and needs — get personalized annual cost estimates for Copilot, Cursor, Claude Code, Windsurf, and more.">
+  <link rel="canonical" href="https://codecosts.pages.dev/blog/ai-coding-cost-calculator.html">
+  <meta property="og:title" content="How Much Does AI Coding Actually Cost? 2026 Calculator">
+  <meta property="og:description" content="Interactive calculator: input your team size, usage, and needs. Get real annual cost estimates across every AI coding tool.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://codecosts.pages.dev/blog/ai-coding-cost-calculator.html">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="How Much Does AI Coding Actually Cost? 2026 Calculator">
+  <meta name="twitter:description" content="Interactive calculator for AI coding tool costs. Compare real prices for your specific situation.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💰</text></svg>">
+  <link rel="stylesheet" href="../style.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "How Much Does AI Coding Actually Cost? Interactive 2026 Calculator",
+    "datePublished": "2026-03-27",
+    "dateModified": "2026-03-27",
+    "author": { "@type": "Organization", "name": "CodeCosts" },
+    "publisher": { "@type": "Organization", "name": "CodeCosts" },
+    "description": "Interactive calculator to estimate the real annual cost of AI coding tools based on team size, usage intensity, and feature needs."
+  }
+  </script>
+  <style>
+    .calc-section { margin: 24px 0; }
+    .calc-section h3 { margin-bottom: 12px; }
+    .input-group {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin-bottom: 20px;
+    }
+    .input-field {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      flex: 1;
+      min-width: 200px;
+    }
+    .input-field label {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text-dim);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .input-field select,
+    .input-field input {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      color: var(--text);
+      font-size: 1rem;
+      padding: 10px 14px;
+      font-family: var(--font);
+    }
+    .input-field select:focus,
+    .input-field input:focus {
+      outline: none;
+      border-color: var(--accent);
+    }
+    .feature-toggles {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 20px;
+    }
+    .feature-toggle {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 10px 16px;
+      cursor: pointer;
+      transition: border-color 0.2s, background 0.2s;
+      user-select: none;
+    }
+    .feature-toggle:hover { border-color: var(--accent-dim); }
+    .feature-toggle.active {
+      border-color: var(--accent);
+      background: rgba(108, 99, 255, 0.1);
+    }
+    .feature-toggle input { display: none; }
+    .feature-toggle .toggle-label {
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+    .feature-toggle .toggle-desc {
+      font-size: 0.75rem;
+      color: var(--text-dim);
+    }
+    #results-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 16px;
+      margin-top: 20px;
+    }
+    .result-card {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 20px;
+      transition: border-color 0.2s;
+    }
+    .result-card:hover { border-color: var(--accent-dim); }
+    .result-card .tool-name {
+      font-weight: 700;
+      font-size: 1rem;
+      margin-bottom: 2px;
+    }
+    .result-card .tool-tier {
+      font-size: 0.8rem;
+      color: var(--text-dim);
+      margin-bottom: 12px;
+    }
+    .result-card .annual-cost {
+      font-size: 1.6rem;
+      font-weight: 800;
+      font-family: var(--mono);
+      color: var(--green);
+    }
+    .result-card .monthly-cost {
+      font-size: 0.85rem;
+      color: var(--text-dim);
+      margin-top: 2px;
+    }
+    .result-card .fit-badge {
+      display: inline-block;
+      margin-top: 10px;
+      padding: 3px 10px;
+      border-radius: 4px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .fit-badge.perfect {
+      background: rgba(52, 211, 153, 0.15);
+      color: var(--green);
+    }
+    .fit-badge.good {
+      background: rgba(108, 99, 255, 0.15);
+      color: var(--accent);
+    }
+    .fit-badge.partial {
+      background: rgba(251, 191, 36, 0.15);
+      color: var(--yellow);
+    }
+    .fit-badge.missing {
+      background: rgba(248, 113, 113, 0.15);
+      color: var(--red);
+    }
+    .result-card .fit-notes {
+      font-size: 0.8rem;
+      color: var(--text-dim);
+      margin-top: 8px;
+      line-height: 1.5;
+    }
+    .result-card.best-match {
+      border-color: var(--green);
+      background: rgba(52, 211, 153, 0.03);
+    }
+    .result-card.best-match::before {
+      content: 'BEST MATCH';
+      display: block;
+      font-size: 0.7rem;
+      font-weight: 700;
+      color: var(--green);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 8px;
+    }
+    #summary-box {
+      background: var(--bg);
+      border: 1px solid var(--accent-dim);
+      border-radius: 8px;
+      padding: 20px;
+      margin-top: 24px;
+    }
+    #summary-box h3 {
+      font-size: 1rem;
+      margin-bottom: 8px;
+      color: var(--accent);
+    }
+    #summary-box p {
+      font-size: 0.9rem;
+      color: var(--text-dim);
+      line-height: 1.7;
+      margin-bottom: 0;
+    }
+    .cost-range {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin: 16px 0;
+      padding: 16px;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+    }
+    .cost-range .range-label {
+      font-size: 0.8rem;
+      color: var(--text-dim);
+      text-transform: uppercase;
+      font-weight: 600;
+      min-width: 80px;
+    }
+    .cost-range .range-value {
+      font-size: 1.3rem;
+      font-weight: 800;
+      font-family: var(--mono);
+    }
+    .cost-range .range-value.low { color: var(--green); }
+    .cost-range .range-value.high { color: var(--yellow); }
+    .scenario-table {
+      width: 100%;
+      margin: 20px 0;
+    }
+    .scenario-table th {
+      text-align: left;
+      font-size: 0.8rem;
+    }
+    .scenario-table td {
+      font-size: 0.9rem;
+    }
+    .scenario-table .price-cell {
+      font-family: var(--mono);
+      font-weight: 600;
+    }
+    @media (max-width: 768px) {
+      #results-grid { grid-template-columns: 1fr; }
+      .input-group { flex-direction: column; }
+      .feature-toggles { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <a href="/" style="text-decoration:none;color:inherit"><h1><span class="logo">$_</span> CodeCosts</h1></a>
+      <p class="tagline">AI Coding Tool News & Analysis</p>
+      <nav>
+        <a href="/">Tools</a>
+        <a href="/blog/" class="active">Blog</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <article class="card">
+      <h2>How Much Does AI Coding Actually Cost? Interactive 2026 Calculator</h2>
+      <div class="article-meta">
+        <span>March 27, 2026</span>
+        <span>12 min read</span>
+      </div>
+
+      <div class="article-content">
+        <p>The sticker price of an AI coding tool tells you almost nothing. A $20/month plan might cost you $240/year — or $720/year once you factor in team seats, higher tiers for the features you actually need, and annual billing discounts you're missing.</p>
+
+        <p>We built this calculator to answer the question every developer and engineering manager asks: <strong>what will AI coding actually cost me this year?</strong></p>
+
+        <div class="callout tip">
+          <div class="callout-title">How to use this calculator</div>
+          <p>Set your team size, usage intensity, and the features you need. The calculator shows <strong>annual cost per tool</strong>, ranked by fit. Only tools that match your requirements are shown as "perfect" or "good" fits.</p>
+        </div>
+
+        <!-- Interactive Calculator -->
+        <div class="calc-section">
+          <h3>1. Your Team</h3>
+          <div class="input-group">
+            <div class="input-field">
+              <label for="calc-team">Team Size</label>
+              <input type="number" id="calc-team" value="1" min="1" max="500">
+            </div>
+            <div class="input-field">
+              <label for="calc-billing">Billing Cycle</label>
+              <select id="calc-billing">
+                <option value="monthly">Monthly</option>
+                <option value="yearly">Yearly (save 15-20%)</option>
+              </select>
+            </div>
+          </div>
+
+          <h3>2. Usage Intensity</h3>
+          <div class="input-group">
+            <div class="input-field">
+              <label for="calc-usage">How much will you use AI?</label>
+              <select id="calc-usage">
+                <option value="light">Light — occasional completions and chat</option>
+                <option value="moderate" selected>Moderate — daily completions, regular chat</option>
+                <option value="heavy">Heavy — constant use, agent mode, multi-file edits</option>
+                <option value="unlimited">Power user — need unlimited/maximum usage</option>
+              </select>
+            </div>
+          </div>
+
+          <h3>3. Features You Need</h3>
+          <div class="feature-toggles" id="feature-toggles">
+            <label class="feature-toggle active">
+              <input type="checkbox" value="completions" checked>
+              <div>
+                <div class="toggle-label">Code Completions</div>
+                <div class="toggle-desc">Inline suggestions as you type</div>
+              </div>
+            </label>
+            <label class="feature-toggle active">
+              <input type="checkbox" value="chat" checked>
+              <div>
+                <div class="toggle-label">AI Chat</div>
+                <div class="toggle-desc">Ask questions about code</div>
+              </div>
+            </label>
+            <label class="feature-toggle">
+              <input type="checkbox" value="agent">
+              <div>
+                <div class="toggle-label">Agent Mode</div>
+                <div class="toggle-desc">Autonomous multi-file editing</div>
+              </div>
+            </label>
+            <label class="feature-toggle">
+              <input type="checkbox" value="admin">
+              <div>
+                <div class="toggle-label">Admin / SSO</div>
+                <div class="toggle-desc">Team management, SAML</div>
+              </div>
+            </label>
+            <label class="feature-toggle">
+              <input type="checkbox" value="privacy">
+              <div>
+                <div class="toggle-label">Privacy / No Training</div>
+                <div class="toggle-desc">Code not used for training</div>
+              </div>
+            </label>
+          </div>
+
+          <h3>Your Estimated Annual Cost</h3>
+          <div id="cost-ranges"></div>
+          <div id="results-grid"></div>
+          <div id="summary-box"></div>
+        </div>
+
+        <!-- Static content below calculator -->
+        <h2>The Real Cost of AI Coding: What the Calculator Reveals</h2>
+
+        <p>After running hundreds of scenarios through this calculator, patterns emerge. Here's what most developers don't realize about AI coding costs.</p>
+
+        <h3>Solo Developer: $0 to $2,400/year</h3>
+
+        <p>The range is enormous because it depends entirely on how much you use AI. A solo developer doing occasional completions pays nothing — Copilot Free, Gemini Code Assist Free, and Windsurf Free all work. But a solo developer who wants unlimited agent-mode usage with premium models is looking at $200/month ($2,400/year) for Cursor Ultra or Claude Max 20x.</p>
+
+        <div class="callout warning">
+          <div class="callout-title">The free tier trap</div>
+          <p>Free tiers are generous for completions but restrictive for chat and agent use. Copilot Free gives you 2,000 completions but only 50 premium requests/month. If you rely on AI chat daily, you'll hit that limit in the first week.</p>
+        </div>
+
+        <h3>Small Team (5 devs): $0 to $24,000/year</h3>
+
+        <p>This is where pricing gets real. Five seats on Cursor Pro costs $1,200/year. Five seats on Cursor Ultra costs $12,000/year. The same team on Claude Code Team pays $9,000/year. And five seats on Amazon Q Pro? Just $1,140/year.</p>
+
+        <p>The cheapest option that includes admin controls and SSO is typically <strong>Amazon Q Developer Pro at $19/user/month</strong>, followed by <strong>Copilot Business at $19/user/month</strong>.</p>
+
+        <h3>Enterprise (50+ devs): The SSO Tax</h3>
+
+        <p>Enterprise buyers face the "SSO tax" — nearly every tool charges 2-3x more for the plan that includes SAML SSO and admin controls. Cursor Business ($40/user) is double Cursor Pro ($20/user) with identical AI features. The extra $20/seat/month buys you centralized billing and SSO.</p>
+
+        <p>At 50 developers, the annual cost difference between cheapest and most expensive options is <strong>over $100,000</strong>.</p>
+
+        <h2>Cost Per Feature: What You're Actually Paying For</h2>
+
+        <div class="table-wrap">
+          <table class="scenario-table">
+            <thead>
+              <tr>
+                <th>Scenario</th>
+                <th>Cheapest Option</th>
+                <th>Annual Cost (1 dev)</th>
+                <th>Best Premium</th>
+                <th>Annual Cost (1 dev)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Completions only</td>
+                <td>Gemini Free</td>
+                <td class="price-cell">$0</td>
+                <td>Cursor Pro</td>
+                <td class="price-cell">$240</td>
+              </tr>
+              <tr>
+                <td>Completions + chat</td>
+                <td>Copilot Free</td>
+                <td class="price-cell">$0</td>
+                <td>Copilot Pro</td>
+                <td class="price-cell">$120</td>
+              </tr>
+              <tr>
+                <td>Full agent mode</td>
+                <td>Copilot Pro</td>
+                <td class="price-cell">$120</td>
+                <td>Claude Code Pro</td>
+                <td class="price-cell">$240</td>
+              </tr>
+              <tr>
+                <td>Heavy agent use</td>
+                <td>Cursor Pro+</td>
+                <td class="price-cell">$720</td>
+                <td>Claude Max 5x</td>
+                <td class="price-cell">$1,200</td>
+              </tr>
+              <tr>
+                <td>Team (5 devs, admin)</td>
+                <td>Amazon Q Pro</td>
+                <td class="price-cell">$1,140</td>
+                <td>Cursor Business</td>
+                <td class="price-cell">$2,400</td>
+              </tr>
+              <tr>
+                <td>Privacy-first</td>
+                <td>Tabnine Dev</td>
+                <td class="price-cell">$108</td>
+                <td>Tabnine Enterprise</td>
+                <td class="price-cell">$468</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h2>Hidden Costs Most Teams Miss</h2>
+
+        <ol>
+          <li><strong>Overage charges.</strong> Cursor charges $0.04 per fast request over your limit. A heavy user on the Pro plan can easily blow through 500 requests and rack up $20-40/month in overages.</li>
+          <li><strong>Model multipliers.</strong> Copilot's premium request system uses multipliers — Claude Sonnet costs 1x, but GPT-4.1 costs 1.25x and Claude Opus costs 50x. Your 300 "requests" can vanish in 6 Opus queries.</li>
+          <li><strong>Seat waste.</strong> Team plans charge per seat even when some developers barely use AI. At $40/seat on Cursor Business, 10 seats with 3 inactive users costs $1,440/year in wasted spend.</li>
+          <li><strong>Billing cycle penalty.</strong> Monthly billing costs 15-20% more than annual. A team of 10 on Cursor Pro pays $2,400/year monthly vs $1,920/year annually — a $480 difference.</li>
+          <li><strong>Editor lock-in.</strong> Switching from Cursor (VS Code fork) to a JetBrains IDE means losing your AI tool or paying for a separate one. Factor in the cost of flexibility.</li>
+        </ol>
+
+        <h2>Our Recommendations by Budget</h2>
+
+        <h3>$0/year — Maximize Free Tiers</h3>
+        <p>Use <strong>Gemini Code Assist Free</strong> for completions (180K/month) and <strong>Copilot Free</strong> for occasional chat. You get two tools for zero cost, covering 80% of daily needs.</p>
+
+        <h3>$120-240/year — Best Value</h3>
+        <p><strong>Copilot Pro ($10/month)</strong> is the best value for most developers: unlimited completions, 300 premium requests, agent mode, and it works in every IDE. If you want more powerful multi-file editing, <strong>Cursor Pro ($20/month)</strong> is worth the premium.</p>
+
+        <h3>$720-1,200/year — Power Users</h3>
+        <p><strong>Cursor Pro+ ($60/month)</strong> for heavy IDE-based agent use, or <strong>Claude Max 5x ($100/month)</strong> for terminal-native agentic coding. Both give you 5-10x the usage of base plans.</p>
+
+        <h3>$2,400+/year — Unlimited</h3>
+        <p><strong>Cursor Ultra ($200/month)</strong> or <strong>Claude Max 20x ($200/month)</strong> for developers who use AI for everything. Only worth it if you're consistently hitting limits on lower tiers.</p>
+
+        <div class="article-cta">
+          <p><strong>Want the full side-by-side comparison?</strong></p>
+          <a href="/">Compare All AI Coding Tools &rarr;</a>
+        </div>
+
+        <p style="margin-top:24px;font-size:0.85rem;color:var(--text-dim);">Related: <a href="/blog/cheapest-ai-coding-tool-2026.html" style="color:var(--accent)">Cheapest AI Coding Tool 2026</a> | <a href="/blog/hidden-costs-ai-coding-tools.html" style="color:var(--accent)">Hidden Costs of AI Coding Tools</a> | <a href="/ai-coding-tools-for-teams.html" style="color:var(--accent)">AI Coding Tools for Teams</a> | <a href="/ai-coding-tools-pricing-comparison.html" style="color:var(--accent)">Master Pricing Comparison</a></p>
+      </div>
+    </article>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>CodeCosts is a free tool by <a href="https://github.com/lunacompsia-oss" target="_blank" rel="noopener">Lunacompsia</a>. Data sourced from official pricing pages. Not affiliated with any listed tool.</p>
+    </div>
+  </footer>
+
+  <script>
+  // Tool data for calculator
+  const calcTools = [
+    {
+      name: "GitHub Copilot", tiers: [
+        { name: "Free", monthly: 0, yearly: 0, completions: true, chat: true, agent: true, admin: false, privacy: false, usage: "light", notes: "2K completions + 50 premium req/mo" },
+        { name: "Pro", monthly: 10, yearly: 100, completions: true, chat: true, agent: true, admin: false, privacy: false, usage: "moderate", notes: "Unlimited completions + 300 premium req/mo" },
+        { name: "Pro+", monthly: 39, yearly: 390, completions: true, chat: true, agent: true, admin: false, privacy: false, usage: "heavy", notes: "1,500 premium req + all models" },
+        { name: "Business", monthly: 19, yearly: 228, completions: true, chat: true, agent: true, admin: true, privacy: true, usage: "moderate", notes: "300 premium req/user + IP indemnity" },
+        { name: "Enterprise", monthly: 39, yearly: 468, completions: true, chat: true, agent: true, admin: true, privacy: true, usage: "heavy", notes: "1K premium req/user + knowledge bases" }
+      ]
+    },
+    {
+      name: "Cursor", tiers: [
+        { name: "Hobby", monthly: 0, yearly: 0, completions: true, chat: true, agent: false, admin: false, privacy: false, usage: "light", notes: "2K completions + 50 slow requests" },
+        { name: "Pro", monthly: 20, yearly: 192, completions: true, chat: true, agent: true, admin: false, privacy: false, usage: "moderate", notes: "Unlimited completions + 500 fast req" },
+        { name: "Pro+", monthly: 60, yearly: 576, completions: true, chat: true, agent: true, admin: false, privacy: false, usage: "heavy", notes: "10x Pro usage + background agents" },
+        { name: "Ultra", monthly: 200, yearly: 1920, completions: true, chat: true, agent: true, admin: false, privacy: false, usage: "unlimited", notes: "Unlimited fast requests" },
+        { name: "Business", monthly: 40, yearly: 384, completions: true, chat: true, agent: true, admin: true, privacy: true, usage: "moderate", notes: "Admin + SSO + centralized billing" }
+      ]
+    },
+    {
+      name: "Claude Code", tiers: [
+        { name: "Pro", monthly: 20, yearly: 240, completions: false, chat: true, agent: true, admin: false, privacy: false, usage: "moderate", notes: "Limited daily usage" },
+        { name: "Max 5x", monthly: 100, yearly: 1200, completions: false, chat: true, agent: true, admin: false, privacy: false, usage: "heavy", notes: "5x Pro usage" },
+        { name: "Max 20x", monthly: 200, yearly: 2400, completions: false, chat: true, agent: true, admin: false, privacy: false, usage: "unlimited", notes: "20x Pro usage" },
+        { name: "Team", monthly: 150, yearly: 1800, completions: false, chat: true, agent: true, admin: true, privacy: true, usage: "heavy", notes: "Per seat, admin + SSO" }
+      ]
+    },
+    {
+      name: "Windsurf", tiers: [
+        { name: "Free", monthly: 0, yearly: 0, completions: true, chat: true, agent: false, admin: false, privacy: false, usage: "light", notes: "Light quota, zero-cost models" },
+        { name: "Pro", monthly: 20, yearly: 192, completions: true, chat: true, agent: true, admin: false, privacy: false, usage: "moderate", notes: "Standard daily/weekly quota" },
+        { name: "Max", monthly: 200, yearly: 1920, completions: true, chat: true, agent: true, admin: false, privacy: false, usage: "unlimited", notes: "Heavy quota + all premium models" },
+        { name: "Teams", monthly: 40, yearly: 480, completions: true, chat: true, agent: true, admin: true, privacy: true, usage: "moderate", notes: "Admin + SSO + RBAC" },
+        { name: "Enterprise", monthly: 60, yearly: 720, completions: true, chat: true, agent: true, admin: true, privacy: true, usage: "heavy", notes: "2x Teams quota + SCIM" }
+      ]
+    },
+    {
+      name: "Amazon Q Developer", tiers: [
+        { name: "Free", monthly: 0, yearly: 0, completions: true, chat: true, agent: true, admin: false, privacy: false, usage: "light", notes: "Code suggestions + security scans" },
+        { name: "Pro", monthly: 19, yearly: 228, completions: true, chat: true, agent: true, admin: true, privacy: true, usage: "moderate", notes: "Higher limits + admin features" }
+      ]
+    },
+    {
+      name: "Tabnine", tiers: [
+        { name: "Dev", monthly: 9, yearly: 108, completions: true, chat: true, agent: false, admin: false, privacy: true, usage: "moderate", notes: "No code training guarantee" },
+        { name: "Enterprise", monthly: 39, yearly: 468, completions: true, chat: true, agent: false, admin: true, privacy: true, usage: "moderate", notes: "Private models + SSO + on-prem" }
+      ]
+    },
+    {
+      name: "JetBrains AI", tiers: [
+        { name: "Free", monthly: 0, yearly: 0, completions: true, chat: true, agent: false, admin: false, privacy: false, usage: "light", notes: "Limited AI credits" },
+        { name: "AI Pro", monthly: 10, yearly: 100, completions: true, chat: true, agent: true, admin: false, privacy: false, usage: "moderate", notes: "Full AI features" },
+        { name: "AI Ultimate", monthly: 30, yearly: 300, completions: true, chat: true, agent: true, admin: false, privacy: false, usage: "heavy", notes: "Premium models + higher limits" }
+      ]
+    },
+    {
+      name: "Gemini Code Assist", tiers: [
+        { name: "Free", monthly: 0, yearly: 0, completions: true, chat: true, agent: false, admin: false, privacy: false, usage: "moderate", notes: "180K completions/mo + chat" },
+        { name: "Standard", monthly: 19, yearly: 228, completions: true, chat: true, agent: true, admin: true, privacy: false, usage: "moderate", notes: "Admin controls + Gemini 2.0" },
+        { name: "Enterprise", monthly: 75, yearly: 900, completions: true, chat: true, agent: true, admin: true, privacy: true, usage: "heavy", notes: "Custom models + Vertex" }
+      ]
+    }
+  ];
+
+  const usageLevels = { light: 0, moderate: 1, heavy: 2, unlimited: 3 };
+
+  function calculate() {
+    const teamSize = Math.max(1, parseInt(document.getElementById('calc-team').value) || 1);
+    const billingCycle = document.getElementById('calc-billing').value;
+    const usage = document.getElementById('calc-usage').value;
+    const isYearly = billingCycle === 'yearly';
+
+    const features = {};
+    document.querySelectorAll('#feature-toggles input[type="checkbox"]').forEach(cb => {
+      features[cb.value] = cb.checked;
+    });
+
+    const results = [];
+
+    calcTools.forEach(tool => {
+      tool.tiers.forEach(tier => {
+        // Filter: only show tiers that meet usage level
+        if (usageLevels[tier.usage] < usageLevels[usage] && usage !== 'light') return;
+
+        // Calculate cost
+        const monthlyCost = isYearly ? (tier.yearly / 12) : tier.monthly;
+        const annualCost = isYearly ? tier.yearly * teamSize : tier.monthly * 12 * teamSize;
+        const perSeatMonthly = monthlyCost;
+
+        // Calculate fit
+        let fit = 'perfect';
+        const missing = [];
+
+        if (features.completions && !tier.completions) { fit = 'partial'; missing.push('No inline completions'); }
+        if (features.chat && !tier.chat) { fit = 'missing'; missing.push('No chat'); }
+        if (features.agent && !tier.agent) { fit = 'partial'; missing.push('No agent mode'); }
+        if (features.admin && !tier.admin) { fit = 'missing'; missing.push('No admin/SSO'); }
+        if (features.privacy && !tier.privacy) {
+          if (fit === 'perfect') fit = 'partial';
+          missing.push('Code may be used for training');
+        }
+
+        // Usage fit
+        if (usageLevels[tier.usage] < usageLevels[usage]) {
+          if (fit === 'perfect') fit = 'good';
+          missing.push('Usage limits may be tight');
+        }
+
+        results.push({
+          tool: tool.name,
+          tier: tier.name,
+          annualCost,
+          monthlyCost: monthlyCost * teamSize,
+          perSeat: perSeatMonthly,
+          fit,
+          missing,
+          notes: tier.notes,
+          teamSize
+        });
+      });
+    });
+
+    // Sort: perfect fits first, then by cost
+    const fitOrder = { perfect: 0, good: 1, partial: 2, missing: 3 };
+    results.sort((a, b) => {
+      if (fitOrder[a.fit] !== fitOrder[b.fit]) return fitOrder[a.fit] - fitOrder[b.fit];
+      return a.annualCost - b.annualCost;
+    });
+
+    // Mark best match (first perfect/good that costs > 0, or first free if all free)
+    const bestPaid = results.find(r => (r.fit === 'perfect' || r.fit === 'good') && r.annualCost > 0);
+    const bestFree = results.find(r => (r.fit === 'perfect' || r.fit === 'good') && r.annualCost === 0);
+
+    // Render cost ranges
+    const qualifying = results.filter(r => r.fit === 'perfect' || r.fit === 'good');
+    const costs = qualifying.map(r => r.annualCost);
+    const minCost = costs.length ? Math.min(...costs) : 0;
+    const maxCost = costs.length ? Math.max(...costs) : 0;
+
+    document.getElementById('cost-ranges').innerHTML = `
+      <div style="display:flex;gap:16px;flex-wrap:wrap;">
+        <div class="cost-range" style="flex:1;min-width:200px">
+          <span class="range-label">Lowest</span>
+          <span class="range-value low">${minCost === 0 ? 'Free' : '$' + minCost.toLocaleString()}<span style="font-size:0.7em;font-weight:400">/yr</span></span>
+        </div>
+        <div class="cost-range" style="flex:1;min-width:200px">
+          <span class="range-label">Highest</span>
+          <span class="range-value high">$${maxCost.toLocaleString()}<span style="font-size:0.7em;font-weight:400">/yr</span></span>
+        </div>
+        ${teamSize > 1 ? `<div class="cost-range" style="flex:1;min-width:200px"><span class="range-label">Per Seat</span><span class="range-value" style="color:var(--text)">$${(minCost/teamSize).toFixed(0)}-$${(maxCost/teamSize).toFixed(0)}<span style="font-size:0.7em;font-weight:400">/yr</span></span></div>` : ''}
+      </div>
+    `;
+
+    // Render results grid
+    const grid = document.getElementById('results-grid');
+    grid.innerHTML = results.map(r => {
+      const isBestPaid = bestPaid && r.tool === bestPaid.tool && r.tier === bestPaid.tier;
+      const isBestFree = bestFree && r.tool === bestFree.tool && r.tier === bestFree.tier && !isBestPaid;
+      return `<div class="result-card${isBestPaid || isBestFree ? ' best-match' : ''}">
+        <div class="tool-name">${r.tool}</div>
+        <div class="tool-tier">${r.tier} — ${r.notes}</div>
+        <div class="annual-cost">${r.annualCost === 0 ? 'Free' : '$' + r.annualCost.toLocaleString()}<span style="font-size:0.6em;font-weight:400;color:var(--text-dim)">/yr</span></div>
+        <div class="monthly-cost">${r.annualCost === 0 ? '' : '$' + r.monthlyCost.toFixed(0) + '/mo'}${r.teamSize > 1 && r.annualCost > 0 ? ' ($' + r.perSeat.toFixed(0) + '/seat)' : ''}</div>
+        <span class="fit-badge ${r.fit}">${r.fit === 'perfect' ? 'Perfect fit' : r.fit === 'good' ? 'Good fit' : r.fit === 'partial' ? 'Partial fit' : 'Missing features'}</span>
+        ${r.missing.length > 0 ? '<div class="fit-notes">' + r.missing.join(' · ') + '</div>' : ''}
+      </div>`;
+    }).join('');
+
+    // Render summary
+    const summary = document.getElementById('summary-box');
+    if (bestFree && bestPaid) {
+      summary.innerHTML = `<h3>Recommendation</h3><p><strong>Free option:</strong> ${bestFree.tool} ${bestFree.tier} — ${bestFree.notes}. <strong>Best paid option:</strong> ${bestPaid.tool} ${bestPaid.tier} at $${bestPaid.annualCost.toLocaleString()}/yr${teamSize > 1 ? ' for ' + teamSize + ' seats' : ''}. ${usage === 'heavy' || usage === 'unlimited' ? 'At your usage level, a paid plan is strongly recommended — free tier limits will slow you down.' : 'Start free, upgrade when you hit limits.'}</p>`;
+    } else if (bestPaid) {
+      summary.innerHTML = `<h3>Recommendation</h3><p><strong>Best match:</strong> ${bestPaid.tool} ${bestPaid.tier} at $${bestPaid.annualCost.toLocaleString()}/yr${teamSize > 1 ? ' for ' + teamSize + ' seats' : ''}. No free tier fully meets your requirements — ${bestPaid.notes.toLowerCase()}.</p>`;
+    } else if (bestFree) {
+      summary.innerHTML = `<h3>Recommendation</h3><p><strong>Best match:</strong> ${bestFree.tool} ${bestFree.tier} — ${bestFree.notes}. This free tier covers your needs.</p>`;
+    }
+  }
+
+  // Event listeners
+  document.getElementById('calc-team').addEventListener('input', calculate);
+  document.getElementById('calc-billing').addEventListener('change', calculate);
+  document.getElementById('calc-usage').addEventListener('change', calculate);
+
+  document.querySelectorAll('#feature-toggles .feature-toggle').forEach(toggle => {
+    toggle.addEventListener('click', function(e) {
+      if (e.target.tagName === 'INPUT') return; // let checkbox handle itself
+      const cb = this.querySelector('input');
+      cb.checked = !cb.checked;
+      this.classList.toggle('active', cb.checked);
+      calculate();
+    });
+    toggle.querySelector('input').addEventListener('change', function() {
+      this.closest('.feature-toggle').classList.toggle('active', this.checked);
+      calculate();
+    });
+  });
+
+  // Initial calculation
+  calculate();
+  </script>
+</body>
+</html>

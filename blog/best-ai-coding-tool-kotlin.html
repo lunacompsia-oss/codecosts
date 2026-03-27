@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Best AI Coding Tool for Kotlin &amp; Android Developers (2026) — Ranked by Real Features</title>
+  <meta name="description" content="We compared every AI coding assistant for Kotlin-specific features: Jetpack Compose, coroutines, KMP, Gradle, Room, and Android Studio integration. Here's which tool Android developers should pick.">
+  <link rel="canonical" href="https://codecosts.pages.dev/blog/best-ai-coding-tool-kotlin.html">
+  <meta property="og:title" content="Best AI Coding Tool for Kotlin & Android Developers (2026)">
+  <meta property="og:description" content="Ranked comparison of AI coding tools for Kotlin: Jetpack Compose, coroutines, KMP, Gradle, Room, and Android Studio integration.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://codecosts.pages.dev/blog/best-ai-coding-tool-kotlin.html">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Best AI Coding Tool for Kotlin & Android Developers (2026)">
+  <meta name="twitter:description" content="Which AI coding assistant is best for Kotlin? We compared Jetpack Compose, coroutines, KMP, Gradle, Room, and Android Studio capabilities.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💰</text></svg>">
+  <link rel="stylesheet" href="../style.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Best AI Coding Tool for Kotlin & Android Developers (2026)",
+    "datePublished": "2026-03-27",
+    "dateModified": "2026-03-27",
+    "author": { "@type": "Organization", "name": "CodeCosts" },
+    "publisher": { "@type": "Organization", "name": "CodeCosts" },
+    "description": "Ranked comparison of AI coding assistants for Kotlin and Android developers, covering Jetpack Compose, coroutines, KMP, Gradle, Room, and Android Studio integration."
+  }
+  </script>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <a href="/" style="text-decoration:none;color:inherit"><h1><span class="logo">$_</span> CodeCosts</h1></a>
+      <p class="tagline">AI Coding Tool News & Analysis</p>
+      <nav>
+        <a href="/">Tools</a>
+        <a href="/blog/" class="active">Blog</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <article class="card">
+      <h2>Best AI Coding Tool for Kotlin &amp; Android Developers (2026)</h2>
+      <div class="article-meta">
+        <span>March 27, 2026</span>
+        <span>14 min read</span>
+      </div>
+
+      <div class="article-content">
+        <p>Kotlin is the default language for Android development, powers Kotlin Multiplatform (KMP) for cross-platform apps, and is growing fast on the server side with Ktor and Spring Boot. With over 5 million active Kotlin developers and Android&rsquo;s 72% global mobile market share, choosing the right AI coding tool matters.</p>
+
+        <p>But Kotlin developers face a unique situation: <strong>JetBrains built both Kotlin and the IDE you use</strong>. Android Studio is a JetBrains IDE (IntelliJ fork), and JetBrains AI has deeper Kotlin integration than any competitor. Does that home-field advantage translate into the best AI coding experience?</p>
+
+        <p>We tested every major AI coding assistant on <strong>Kotlin-specific tasks</strong> &mdash; Jetpack Compose UI, coroutines and Flow, Kotlin Multiplatform, Gradle configuration, Room/SQLDelight databases, and the critical question of Android Studio compatibility &mdash; to find which one actually helps Kotlin developers the most.</p>
+
+        <div class="callout tip">
+          <div class="callout-title">TL;DR</div>
+          <p><strong>Best overall:</strong> GitHub Copilot Pro ($10/mo) &mdash; best balance of price, Android Studio support, and Kotlin quality. <strong>Best AI features:</strong> Cursor Pro ($20/mo) &mdash; superior multi-file Compose refactoring, but requires leaving Android Studio. <strong>Best free:</strong> Gemini Code Assist Free &mdash; Google-built, strong Kotlin/Android understanding, free in Android Studio. <strong>Best for complex projects:</strong> Claude Code ($20/mo) &mdash; terminal agent for large refactors, KMP migrations, and Gradle surgery. <strong>JetBrains native:</strong> JetBrains AI Pro ($10/mo) &mdash; deepest IDE integration, knows Kotlin idioms best, but weaker on complex generation.</p>
+        </div>
+
+        <h2>Why Kotlin Is Different</h2>
+
+        <p>Kotlin developers face constraints that make AI tool selection different from most languages:</p>
+
+        <ul>
+          <li><strong>Android Studio dominance</strong> &mdash; unlike Swift&rsquo;s hard Xcode lock-in, Android Studio isn&rsquo;t technically required. You <em>can</em> build Android apps in VS Code or Cursor. But you lose the layout editor, device emulator integration, APK signing, Logcat, the profiler, and Gradle sync &mdash; so practically, most Android developers stay in Android Studio. This means your AI tool needs a JetBrains plugin.</li>
+          <li><strong>JetBrains built Kotlin</strong> &mdash; JetBrains AI has a structural advantage: it understands Kotlin idioms, null safety patterns, scope functions (<code>let</code>, <code>run</code>, <code>apply</code>, <code>also</code>, <code>with</code>), and the difference between <code>data class</code> and <code>value class</code> at a level other tools sometimes miss. It also has the deepest IDE integration (inspections, intentions, refactoring hooks).</li>
+          <li><strong>Jetpack Compose is young</strong> &mdash; Compose replaced XML layouts but is still evolving fast. AI tools trained on older Android code suggest <code>View</code>-based patterns, XML layouts, <code>findViewByld</code>, and <code>AsyncTask</code> instead of modern Compose + coroutines. The best AI tools recognize Compose-first development.</li>
+          <li><strong>Kotlin Multiplatform (KMP) is growing</strong> &mdash; KMP lets you share business logic across Android, iOS, desktop, and web. But <code>expect</code>/<code>actual</code> declarations, platform-specific source sets (<code>commonMain</code>, <code>androidMain</code>, <code>iosMain</code>), and KMP-specific Gradle configuration are still poorly handled by most AI tools.</li>
+          <li><strong>Gradle is a nightmare</strong> &mdash; Android projects live and die by Gradle. Version catalogs (<code>libs.versions.toml</code>), Kotlin DSL vs. Groovy, AGP version compatibility, dependency conflicts &mdash; AI tools that can help debug Gradle issues save hours. Tools that generate incorrect Gradle syntax waste them.</li>
+          <li><strong>Coroutines require understanding</strong> &mdash; Kotlin&rsquo;s structured concurrency with <code>CoroutineScope</code>, <code>Flow</code>, <code>StateFlow</code>, <code>SharedFlow</code>, and <code>viewModelScope</code> is subtle. AI tools that default to <code>GlobalScope.launch</code> or forget <code>withContext(Dispatchers.IO)</code> create concurrency bugs that are hard to catch.</li>
+        </ul>
+
+        <h2>The Android Studio Factor</h2>
+
+        <p>Like Swift developers and Xcode, Kotlin/Android developers are practically tied to a specific IDE. Here&rsquo;s which AI tools work in Android Studio:</p>
+
+        <table style="width:100%;border-collapse:collapse;margin:1.5rem 0;max-width:700px">
+          <thead>
+            <tr style="border-bottom:2px solid var(--border);text-align:left">
+              <th style="padding:10px 16px">Tool</th>
+              <th style="padding:10px 16px">Works in Android Studio?</th>
+              <th style="padding:10px 16px">How</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="border-bottom:1px solid var(--border)">
+              <td style="padding:10px 16px"><strong>JetBrains AI</strong></td>
+              <td style="padding:10px 16px;color:var(--green)">Yes (native)</td>
+              <td style="padding:10px 16px">Built into the IDE. Deepest integration: inspections, refactoring, inline completions.</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border)">
+              <td style="padding:10px 16px"><strong>GitHub Copilot</strong></td>
+              <td style="padding:10px 16px;color:var(--green)">Yes</td>
+              <td style="padding:10px 16px">Official JetBrains plugin. Inline completions, chat, agent mode.</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border)">
+              <td style="padding:10px 16px"><strong>Gemini Code Assist</strong></td>
+              <td style="padding:10px 16px;color:var(--green)">Yes</td>
+              <td style="padding:10px 16px">JetBrains plugin + Android Studio integration. Google-built Kotlin understanding.</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border)">
+              <td style="padding:10px 16px"><strong>Amazon Q Developer</strong></td>
+              <td style="padding:10px 16px;color:var(--green)">Yes</td>
+              <td style="padding:10px 16px">JetBrains plugin. Code completions, chat, security scanning.</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border)">
+              <td style="padding:10px 16px"><strong>Tabnine</strong></td>
+              <td style="padding:10px 16px;color:var(--green)">Yes</td>
+              <td style="padding:10px 16px">JetBrains plugin. Privacy-focused completions and chat.</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border)">
+              <td style="padding:10px 16px"><strong>Claude Code</strong></td>
+              <td style="padding:10px 16px;color:var(--green)">Alongside</td>
+              <td style="padding:10px 16px">Terminal-based agent. Runs <code>./gradlew</code>, edits files. Works alongside any IDE.</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border)">
+              <td style="padding:10px 16px"><strong>Cursor</strong></td>
+              <td style="padding:10px 16px;color:var(--yellow)">Separate IDE</td>
+              <td style="padding:10px 16px">VS Code fork. Can edit Kotlin, but no emulator/Gradle sync/layout editor.</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border)">
+              <td style="padding:10px 16px"><strong>Windsurf</strong></td>
+              <td style="padding:10px 16px;color:var(--yellow)">Separate IDE</td>
+              <td style="padding:10px 16px">VS Code fork with JetBrains plugin. Can work in Android Studio or standalone.</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <p><strong>The key difference from Swift:</strong> Android Studio is a JetBrains IDE, so <em>every</em> tool with a JetBrains plugin works in Android Studio. This is a much better situation than Swift/Xcode, where only Copilot had IDE support. Kotlin developers have 6+ options inside their IDE.</p>
+
+        <h2>Kotlin-Specific Feature Comparison</h2>
+
+        <p>We tested each tool on tasks that matter specifically to Kotlin developers:</p>
+
+        <table style="width:100%;border-collapse:collapse;margin:1.5rem 0">
+          <thead>
+            <tr style="border-bottom:2px solid var(--border);text-align:left">
+              <th style="padding:10px 12px;font-size:0.8rem">Kotlin Feature</th>
+              <th style="padding:10px 12px;font-size:0.8rem">Copilot</th>
+              <th style="padding:10px 12px;font-size:0.8rem">Cursor</th>
+              <th style="padding:10px 12px;font-size:0.8rem">Claude Code</th>
+              <th style="padding:10px 12px;font-size:0.8rem">JetBrains AI</th>
+              <th style="padding:10px 12px;font-size:0.8rem">Gemini</th>
+              <th style="padding:10px 12px;font-size:0.8rem">Windsurf</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="border-bottom:1px solid var(--border)">
+              <td style="padding:10px 12px;font-size:0.85rem"><strong>Jetpack Compose</strong></td>
+              <td style="padding:10px 12px;color:var(--green)">Good</td>
+              <td style="padding:10px 12px;color:var(--green)">Excellent</td>
+              <td style="padding:10px 12px;color:var(--green)">Good</td>
+              <td style="padding:10px 12px;color:var(--green)">Good</td>
+              <td style="padding:10px 12px;color:var(--green)">Good</td>
+              <td style="padding:10px 12px;color:var(--green)">Good</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border)">
+              <td style="padding:10px 12px;font-size:0.85rem"><strong>Coroutines &amp; Flow</strong></td>
+              <td style="padding:10px 12px;color:var(--green)">Good</td>
+              <td style="padding:10px 12px;color:var(--green)">Good</td>
+              <td style="padding:10px 12px;color:var(--green)">Excellent</td>
+              <td style="padding:10px 12px;color:var(--green)">Excellent</td>
+              <td style="padding:10px 12px;color:var(--yellow)">OK</td>
+              <td style="padding:10px 12px;color:var(--green)">Good</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border)">
+              <td style="padding:10px 12px;font-size:0.85rem"><strong>KMP (Multiplatform)</strong></td>
+              <td style="padding:10px 12px;color:var(--yellow)">OK</td>
+              <td style="padding:10px 12px;color:var(--green)">Good</td>
+              <td style="padding:10px 12px;color:var(--green)">Excellent</td>
+              <td style="padding:10px 12px;color:var(--green)">Good</td>
+              <td style="padding:10px 12px;color:var(--yellow)">OK</td>
+              <td style="padding:10px 12px;color:var(--yellow)">OK</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border)">
+              <td style="padding:10px 12px;font-size:0.85rem"><strong>Gradle (Kotlin DSL)</strong></td>
+              <td style="padding:10px 12px;color:var(--green)">Good</td>
+              <td style="padding:10px 12px;color:var(--green)">Good</td>
+              <td style="padding:10px 12px;color:var(--green)">Excellent</td>
+              <td style="padding:10px 12px;color:var(--green)">Excellent</td>
+              <td style="padding:10px 12px;color:var(--green)">Good</td>
+              <td style="padding:10px 12px;color:var(--yellow)">OK</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border)">
+              <td style="padding:10px 12px;font-size:0.85rem"><strong>Room / SQLDelight</strong></td>
+              <td style="padding:10px 12px;color:var(--green)">Good</td>
+              <td style="padding:10px 12px;color:var(--green)">Good</td>
+              <td style="padding:10px 12px;color:var(--green)">Good</td>
+              <td style="padding:10px 12px;color:var(--green)">Good</td>
+              <td style="padding:10px 12px;color:var(--green)">Good</td>
+              <td style="padding:10px 12px;color:var(--green)">Good</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border)">
+              <td style="padding:10px 12px;font-size:0.85rem"><strong>Null safety patterns</strong></td>
+              <td style="padding:10px 12px;color:var(--green)">Good</td>
+              <td style="padding:10px 12px;color:var(--green)">Good</td>
+              <td style="padding:10px 12px;color:var(--green)">Good</td>
+              <td style="padding:10px 12px;color:var(--green)">Excellent</td>
+              <td style="padding:10px 12px;color:var(--green)">Good</td>
+              <td style="padding:10px 12px;color:var(--green)">Good</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border)">
+              <td style="padding:10px 12px;font-size:0.85rem"><strong>Scope functions</strong></td>
+              <td style="padding:10px 12px;color:var(--green)">Good</td>
+              <td style="padding:10px 12px;color:var(--green)">Good</td>
+              <td style="padding:10px 12px;color:var(--green)">Excellent</td>
+              <td style="padding:10px 12px;color:var(--green)">Excellent</td>
+              <td style="padding:10px 12px;color:var(--yellow)">OK</td>
+              <td style="padding:10px 12px;color:var(--green)">Good</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border)">
+              <td style="padding:10px 12px;font-size:0.85rem"><strong>Testing (JUnit5/MockK)</strong></td>
+              <td style="padding:10px 12px;color:var(--green)">Good</td>
+              <td style="padding:10px 12px;color:var(--green)">Good</td>
+              <td style="padding:10px 12px;color:var(--green)">Excellent</td>
+              <td style="padding:10px 12px;color:var(--green)">Good</td>
+              <td style="padding:10px 12px;color:var(--yellow)">OK</td>
+              <td style="padding:10px 12px;color:var(--green)">Good</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border)">
+              <td style="padding:10px 12px;font-size:0.85rem"><strong>Android Studio integration</strong></td>
+              <td style="padding:10px 12px;color:var(--green)">Excellent</td>
+              <td style="padding:10px 12px;color:var(--red)">No</td>
+              <td style="padding:10px 12px;color:var(--yellow)">Terminal</td>
+              <td style="padding:10px 12px;color:var(--green)">Excellent</td>
+              <td style="padding:10px 12px;color:var(--green)">Excellent</td>
+              <td style="padding:10px 12px;color:var(--yellow)">Plugin</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h2>The Compose Problem</h2>
+
+        <p>Jetpack Compose adoption has reached a tipping point &mdash; Google reports over 50% of top 1,000 Play Store apps use Compose. But AI tools still stumble on Compose in predictable ways:</p>
+
+        <ul>
+          <li><strong>Suggesting XML layouts</strong> &mdash; older training data means tools sometimes generate <code>activity_main.xml</code> and <code>setContentView()</code> instead of <code>setContent { }</code> with Compose</li>
+          <li><strong>Wrong state management</strong> &mdash; suggesting <code>mutableStateOf</code> in the wrong scope, missing <code>remember</code>, or using <code>LiveData</code> instead of <code>StateFlow</code> in ViewModels</li>
+          <li><strong>Outdated Material</strong> &mdash; generating Material 2 (<code>androidx.compose.material</code>) instead of Material 3 (<code>androidx.compose.material3</code>)</li>
+          <li><strong>Missing Compose Navigation</strong> &mdash; suggesting fragment-based navigation instead of <code>NavHost</code> and <code>composable()</code> routes</li>
+          <li><strong>Ignoring Compose best practices</strong> &mdash; not using <code>derivedStateOf</code>, missing <code>key()</code> in <code>LazyColumn</code>, wrong use of side effects (<code>LaunchedEffect</code>, <code>DisposableEffect</code>)</li>
+        </ul>
+
+        <p><strong>Cursor</strong> handles Compose best among the tools we tested &mdash; its multi-file editing (Composer) can refactor an entire screen&rsquo;s composables in one pass. <strong>JetBrains AI</strong> also does well because it has deep knowledge of Kotlin idioms. <strong>Claude Code</strong> excels at large-scale Compose migrations (XML to Compose) where you need an agent to process dozens of files.</p>
+
+        <h2>Tool-by-Tool Breakdown</h2>
+
+        <h3>GitHub Copilot &mdash; Best Overall ($10/mo)</h3>
+
+        <p>Copilot is the strongest all-around choice for Kotlin developers because it combines <strong>solid Kotlin completions, full Android Studio support, and the lowest paid price</strong>.</p>
+
+        <ul>
+          <li><strong>Android Studio:</strong> Official JetBrains plugin with inline completions, chat panel, and agent mode</li>
+          <li><strong>Kotlin quality:</strong> Good Compose completions, understands coroutine patterns, handles null safety well</li>
+          <li><strong>Multi-model:</strong> GPT-4.1, Claude Sonnet, Gemini &mdash; you can switch models when one struggles</li>
+          <li><strong>Agent mode:</strong> Can run Gradle tasks, edit multiple files, and iterate on build errors</li>
+          <li><strong>Weakness:</strong> KMP support is mediocre &mdash; struggles with <code>expect</code>/<code>actual</code> and platform source sets</li>
+          <li><strong>Price:</strong> $10/mo (Pro), $39/mo (Pro+), $19/seat (Business)</li>
+        </ul>
+
+        <h3>Cursor &mdash; Best AI Features ($20/mo)</h3>
+
+        <p>Cursor has the most powerful AI editing capabilities, but the tradeoff is clear: <strong>you have to leave Android Studio</strong>.</p>
+
+        <ul>
+          <li><strong>Composer:</strong> Multi-file Compose refactoring is genuinely excellent &mdash; rewrite a screen, its ViewModel, repository, and tests in one pass</li>
+          <li><strong>Codebase context:</strong> Full project indexing means it understands your DI setup (Hilt/Koin), navigation graph, and module structure</li>
+          <li><strong>Model choice:</strong> Switch between Claude Opus (complex refactors), GPT-4.1 (fast completions), and Gemini per request</li>
+          <li><strong>Weakness:</strong> No Android Studio features &mdash; no emulator, no layout preview, no Logcat, no APK signing. You&rsquo;d need to switch between Cursor and Android Studio constantly</li>
+          <li><strong>Best for:</strong> Server-side Kotlin (Ktor, Spring Boot) where you don&rsquo;t need Android-specific IDE features, or KMP shared code editing</li>
+          <li><strong>Price:</strong> $20/mo (Pro), $60/mo (Pro+), $200/mo (Ultra), $40/seat (Business)</li>
+        </ul>
+
+        <h3>Gemini Code Assist &mdash; Best Free</h3>
+
+        <p>Google built Kotlin support for Android, and it shows in Gemini&rsquo;s AI. <strong>The free tier in Android Studio is the best zero-cost option for Kotlin developers.</strong></p>
+
+        <ul>
+          <li><strong>Android-native understanding:</strong> Gemini knows Jetpack libraries, Compose patterns, and Android lifecycle better than most tools because Google maintains both</li>
+          <li><strong>Android Studio integration:</strong> Plugin works well, with inline completions and chat</li>
+          <li><strong>Free tier:</strong> Generous &mdash; code completions and chat at no cost for individual developers</li>
+          <li><strong>Weakness:</strong> Weaker on coroutine edge cases, and the paid Standard tier ($19/mo) is expensive for what you get compared to Copilot Pro ($10/mo)</li>
+          <li><strong>Best for:</strong> Android developers who want free AI assistance, especially for Compose and Jetpack libraries</li>
+          <li><strong>Price:</strong> Free (individual), $19/user (Standard), $75/user (Enterprise)</li>
+        </ul>
+
+        <h3>Claude Code &mdash; Best for Complex Projects ($20&ndash;$100/mo)</h3>
+
+        <p>Claude Code is a terminal-based agent that shines on tasks too complex for inline completions: <strong>large refactors, KMP setup, Gradle debugging, and comprehensive test generation</strong>.</p>
+
+        <ul>
+          <li><strong>KMP champion:</strong> Best tool for setting up and maintaining Kotlin Multiplatform projects &mdash; understands <code>expect</code>/<code>actual</code>, source sets, and platform-specific Gradle configuration</li>
+          <li><strong>Gradle surgeon:</strong> Can debug version conflicts, migrate from Groovy to Kotlin DSL, set up version catalogs, and fix AGP compatibility issues by actually running <code>./gradlew</code></li>
+          <li><strong>Full codebase refactors:</strong> XML-to-Compose migrations, architecture changes (MVP to MVVM), dependency injection migrations (Dagger to Hilt)</li>
+          <li><strong>Test generation:</strong> Generates comprehensive JUnit 5 + MockK tests with proper coroutine test dispatchers (<code>runTest</code>, <code>StandardTestDispatcher</code>)</li>
+          <li><strong>Weakness:</strong> Terminal-based &mdash; no inline completions in your editor. Works alongside Android Studio, not inside it. Now has a JetBrains plugin for integration</li>
+          <li><strong>Best for:</strong> Senior developers who need agent-level power for complex tasks</li>
+          <li><strong>Price:</strong> $20/mo (Pro), $100/mo (Max 5x), $200/mo (Max 20x), API pay-per-use</li>
+        </ul>
+
+        <h3>JetBrains AI &mdash; Deepest IDE Integration ($10/mo)</h3>
+
+        <p>JetBrains AI has an unfair advantage: <strong>it was built by the people who built Kotlin and IntelliJ</strong>. The integration goes deeper than any plugin.</p>
+
+        <ul>
+          <li><strong>Kotlin-native:</strong> Best understanding of scope functions, null safety patterns, sealed classes/interfaces, and Kotlin idioms among all tools</li>
+          <li><strong>IDE integration:</strong> Hooks into IntelliJ&rsquo;s inspection system, code intentions, and refactoring engine &mdash; not just autocomplete on top, but woven into the IDE</li>
+          <li><strong>Gradle awareness:</strong> Understands your build configuration because it reads Gradle model data the IDE already has</li>
+          <li><strong>Weakness:</strong> The AI models themselves are less powerful than what Copilot or Cursor offer for complex generation tasks. Better at understanding your code than generating new code from scratch</li>
+          <li><strong>Best for:</strong> Developers who want AI that feels native to IntelliJ/Android Studio and prioritize Kotlin idiom correctness</li>
+          <li><strong>Price:</strong> Free (limited credits), $10/mo (AI Pro), $30/mo (AI Ultimate)</li>
+        </ul>
+
+        <h3>Windsurf &mdash; Versatile with JetBrains Support ($20/mo)</h3>
+
+        <ul>
+          <li><strong>Flexible:</strong> Works as a standalone VS Code fork <em>and</em> has JetBrains plugin support &mdash; giving you a choice</li>
+          <li><strong>Cascade agent:</strong> Multi-file editing with decent Kotlin understanding</li>
+          <li><strong>Weakness:</strong> Jack-of-all-trades. Not the best at Kotlin specifically, but competent</li>
+          <li><strong>Price:</strong> Free, $20/mo (Pro), $200/mo (Max), $40/seat (Teams)</li>
+        </ul>
+
+        <h3>Amazon Q Developer &mdash; Best for AWS + Android ($0&ndash;$19/mo)</h3>
+
+        <ul>
+          <li><strong>AWS integration:</strong> If your Android app talks to AWS backend services (Amplify, AppSync, Lambda), Q understands the full stack</li>
+          <li><strong>Free tier:</strong> Code completions and security scanning at no cost</li>
+          <li><strong>Weakness:</strong> Kotlin-specific quality is average. Not built for mobile development</li>
+          <li><strong>Best for:</strong> Teams using AWS for their Android app backend</li>
+          <li><strong>Price:</strong> Free, $19/user (Pro)</li>
+        </ul>
+
+        <h2>Cost Comparison by Workflow</h2>
+
+        <table style="width:100%;border-collapse:collapse;margin:1.5rem 0">
+          <thead>
+            <tr style="border-bottom:2px solid var(--border);text-align:left">
+              <th style="padding:10px 12px;font-size:0.85rem">Workflow</th>
+              <th style="padding:10px 12px;font-size:0.85rem">Best Tool</th>
+              <th style="padding:10px 12px;font-size:0.85rem">Monthly Cost</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="border-bottom:1px solid var(--border)">
+              <td style="padding:10px 12px">Compose UI development</td>
+              <td style="padding:10px 12px">Copilot Pro (in AS) or Cursor (standalone)</td>
+              <td style="padding:10px 12px;font-family:var(--mono)">$10&ndash;$20</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border)">
+              <td style="padding:10px 12px">KMP cross-platform</td>
+              <td style="padding:10px 12px">Claude Code</td>
+              <td style="padding:10px 12px;font-family:var(--mono)">$20&ndash;$100</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border)">
+              <td style="padding:10px 12px">Gradle debugging</td>
+              <td style="padding:10px 12px">Claude Code or JetBrains AI</td>
+              <td style="padding:10px 12px;font-family:var(--mono)">$10&ndash;$100</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border)">
+              <td style="padding:10px 12px">Server-side Kotlin (Ktor/Spring)</td>
+              <td style="padding:10px 12px">Cursor Pro</td>
+              <td style="padding:10px 12px;font-family:var(--mono)">$20</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border)">
+              <td style="padding:10px 12px">Student / learning Kotlin</td>
+              <td style="padding:10px 12px">Gemini Free (in AS)</td>
+              <td style="padding:10px 12px;font-family:var(--mono)">$0</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border)">
+              <td style="padding:10px 12px">Enterprise Android team</td>
+              <td style="padding:10px 12px">Copilot Business + Claude Code</td>
+              <td style="padding:10px 12px;font-family:var(--mono)">$19&ndash;$119/seat</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border)">
+              <td style="padding:10px 12px">XML-to-Compose migration</td>
+              <td style="padding:10px 12px">Claude Code</td>
+              <td style="padding:10px 12px;font-family:var(--mono)">$100</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border)">
+              <td style="padding:10px 12px">Indie Android developer</td>
+              <td style="padding:10px 12px">Copilot Pro</td>
+              <td style="padding:10px 12px;font-family:var(--mono)">$10</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border)">
+              <td style="padding:10px 12px">Kotlin + AWS backend</td>
+              <td style="padding:10px 12px">Amazon Q Free + Copilot Pro</td>
+              <td style="padding:10px 12px;font-family:var(--mono)">$10</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h2>The Verdict</h2>
+
+        <div class="callout tip">
+          <div class="callout-title">Best Overall: GitHub Copilot Pro ($10/mo)</div>
+          <p>Copilot Pro at $10/mo is the best all-around choice for Kotlin developers. It works in Android Studio, handles Compose well, supports multiple AI models, and costs half of Cursor or Windsurf. For most Android developers, this is the right pick.</p>
+        </div>
+
+        <div class="callout tip">
+          <div class="callout-title">Best Free: Gemini Code Assist Free</div>
+          <p>Google built Kotlin for Android. Gemini&rsquo;s free tier reflects that &mdash; strong Compose and Jetpack understanding, good Android Studio integration, and genuinely useful at $0. Unlike Swift where Copilot Free wins by default (Xcode lock-in), Kotlin developers have a real choice &mdash; and Gemini&rsquo;s Android-specific knowledge gives it the edge.</p>
+        </div>
+
+        <div class="callout tip">
+          <div class="callout-title">Best for Complex Projects: Claude Code ($20&ndash;$100/mo)</div>
+          <p>When you need to migrate an app from XML to Compose, set up KMP from scratch, debug a nightmarish Gradle configuration, or generate comprehensive test suites with proper coroutine dispatchers &mdash; Claude Code&rsquo;s agentic approach handles complexity that inline completions can&rsquo;t.</p>
+        </div>
+
+        <div class="callout tip">
+          <div class="callout-title">Best Stack: Copilot Pro + JetBrains AI Free</div>
+          <p>Use Copilot Pro ($10/mo) for completions and agent mode. Use JetBrains AI&rsquo;s free tier for its deep IDE integration and Kotlin-idiomatic suggestions. Add Claude Code ($20/mo) when you hit complex refactors. Total: $10&ndash;$30/mo for the best Kotlin AI experience.</p>
+        </div>
+
+        <div class="article-cta">
+          <p><strong>Compare exact prices for your setup</strong></p>
+          <a href="/">Use the CodeCosts Calculator &rarr;</a>
+        </div>
+
+        <p>Pricing changes frequently. We update this analysis as tools ship new features. Last updated March 27, 2026. For detailed pricing on any tool, see our guides: <a href="/cursor-pricing.html" style="color:var(--accent)">Cursor</a> &middot; <a href="/copilot-pricing.html" style="color:var(--accent)">Copilot</a> &middot; <a href="/windsurf-pricing.html" style="color:var(--accent)">Windsurf</a> &middot; <a href="/claude-code-cost.html" style="color:var(--accent)">Claude Code</a> &middot; <a href="/gemini-code-assist-pricing.html" style="color:var(--accent)">Gemini</a> &middot; <a href="/amazon-q-pricing.html" style="color:var(--accent)">Amazon Q</a> &middot; <a href="/tabnine-pricing.html" style="color:var(--accent)">Tabnine</a> &middot; <a href="/jetbrains-ai-pricing.html" style="color:var(--accent)">JetBrains AI</a>.</p>
+
+        <h2>Related on CodeCosts</h2>
+        <ul>
+          <li><a href="/blog/best-ai-coding-tool-java.html" style="color:var(--accent)">Best AI Coding Tool for Java Developers (2026)</a></li>
+          <li><a href="/blog/best-ai-coding-tool-swift.html" style="color:var(--accent)">Best AI Coding Tool for Swift & iOS Developers (2026)</a></li>
+          <li><a href="/blog/best-ai-coding-tool-python.html" style="color:var(--accent)">Best AI Coding Tool for Python Developers (2026)</a></li>
+          <li><a href="/blog/best-ai-coding-tool-typescript.html" style="color:var(--accent)">Best AI Coding Tool for TypeScript Developers (2026)</a></li>
+          <li><a href="/blog/best-ai-coding-tool-javascript.html" style="color:var(--accent)">Best AI Coding Tool for JavaScript Developers (2026)</a></li>
+          <li><a href="/blog/best-ai-coding-tool-go.html" style="color:var(--accent)">Best AI Coding Tool for Go Developers (2026)</a></li>
+          <li><a href="/blog/best-ai-coding-tool-rust.html" style="color:var(--accent)">Best AI Coding Tool for Rust Developers (2026)</a></li>
+          <li><a href="/blog/best-ai-coding-tool-cpp.html" style="color:var(--accent)">Best AI Coding Tool for C++ Developers (2026)</a></li>
+          <li><a href="/blog/best-ai-coding-tool-php.html" style="color:var(--accent)">Best AI Coding Tool for PHP Developers (2026)</a></li>
+          <li><a href="/blog/cheapest-ai-coding-tool-2026.html" style="color:var(--accent)">Cheapest AI Coding Tool in 2026</a></li>
+          <li><a href="/blog/claude-code-vs-cursor-agents.html" style="color:var(--accent)">Claude Code vs Cursor for AI Agents</a></li>
+        </ul>
+
+        <p><em>Data sourced from official pricing pages and hands-on testing. Open-source dataset at <a href="https://github.com/lunacompsia-oss/ai-coding-tools-pricing" style="color:var(--accent)">lunacompsia-oss/ai-coding-tools-pricing</a>.</em></p>
+      </div>
+    </article>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>CodeCosts is a free tool by <a href="https://github.com/lunacompsia-oss" target="_blank" rel="noopener">Lunacompsia</a>. Data sourced from official pricing pages. Not affiliated with any listed tool.</p>
+    </div>
+  </footer>
+</body>
+</html>

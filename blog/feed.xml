@@ -9,6 +9,94 @@
     <atom:link href="https://codecosts.pages.dev/blog/feed.xml" rel="self" type="application/rss+xml"/>
 
     <item>
+      <title>Best AI Coding Tool for Kotlin &amp; Android Developers (2026)</title>
+      <link>https://codecosts.pages.dev/blog/best-ai-coding-tool-kotlin.html</link>
+      <description>Ranked comparison of AI coding tools for Kotlin: Jetpack Compose, coroutines and Flow, Kotlin Multiplatform (KMP), Gradle configuration, Room/SQLDelight, and Android Studio compatibility. JetBrains built both Kotlin and the IDE — does that home-field advantage translate? Tool-by-tool breakdown with cost analysis by workflow.</description>
+      <pubDate>Fri, 27 Mar 2026 23:59:30 GMT</pubDate>
+      <guid>https://codecosts.pages.dev/blog/best-ai-coding-tool-kotlin.html</guid>
+    </item>
+
+    <item>
+      <title>Best AI Coding Tool for Swift &amp; iOS Developers (2026)</title>
+      <link>https://codecosts.pages.dev/blog/best-ai-coding-tool-swift.html</link>
+      <description>Ranked comparison of AI coding tools for Swift: SwiftUI, UIKit, Xcode integration, async/await, CoreData/SwiftData, XCTest, and App Store workflows. The Xcode lock-in problem makes Swift unique — only Copilot works inside Xcode. Tool-by-tool breakdown with cost analysis by workflow.</description>
+      <pubDate>Fri, 27 Mar 2026 23:59:00 GMT</pubDate>
+      <guid>https://codecosts.pages.dev/blog/best-ai-coding-tool-swift.html</guid>
+    </item>
+
+    <item>
+      <title>Best AI Coding Tool for PHP Developers (2026)</title>
+      <link>https://codecosts.pages.dev/blog/best-ai-coding-tool-php.html</link>
+      <description>Ranked comparison of AI coding tools for PHP: WordPress plugin development, Laravel/Symfony support, legacy code migration (PHP 5→8), Composer, PHPUnit, and PhpStorm compatibility. Tool-by-tool breakdown with cost analysis by workflow.</description>
+      <pubDate>Fri, 27 Mar 2026 23:55:00 GMT</pubDate>
+      <guid>https://codecosts.pages.dev/blog/best-ai-coding-tool-php.html</guid>
+    </item>
+
+    <item>
+      <title>Best AI Coding Tool for TypeScript Developers (2026)</title>
+      <link>https://codecosts.pages.dev/blog/best-ai-coding-tool-typescript.html</link>
+      <description>Ranked comparison of AI coding tools for TypeScript: generics, conditional types, mapped types, type guards, Zod schema inference, tRPC, strict mode compliance, and declaration files. Tool-by-tool breakdown with cost analysis by workflow.</description>
+      <pubDate>Fri, 27 Mar 2026 23:50:00 GMT</pubDate>
+      <guid>https://codecosts.pages.dev/blog/best-ai-coding-tool-typescript.html</guid>
+    </item>
+
+    <item>
+      <title>Best AI Coding Tool for C++ Developers (2026)</title>
+      <link>https://codecosts.pages.dev/blog/best-ai-coding-tool-cpp.html</link>
+      <description>Ranked comparison of AI coding tools for C++: template metaprogramming, RAII and smart pointers, move semantics, CMake integration, Unreal Engine support, and undefined behavior detection. Tool-by-tool breakdown with cost analysis by workflow.</description>
+      <pubDate>Thu, 27 Mar 2026 23:45:00 GMT</pubDate>
+      <guid>https://codecosts.pages.dev/blog/best-ai-coding-tool-cpp.html</guid>
+    </item>
+
+    <item>
+      <title>Best AI Coding Tool for Rust Developers (2026)</title>
+      <link>https://codecosts.pages.dev/blog/best-ai-coding-tool-rust.html</link>
+      <description>Ranked comparison of AI coding tools for Rust: ownership and borrowing, lifetime annotations, unsafe code, async/tokio patterns, WASM support, and cargo integration. Tool-by-tool breakdown with cost analysis by workflow.</description>
+      <pubDate>Thu, 27 Mar 2026 23:30:00 GMT</pubDate>
+      <guid>https://codecosts.pages.dev/blog/best-ai-coding-tool-rust.html</guid>
+    </item>
+
+    <item>
+      <title>Best AI Coding Tool for Go Developers (2026)</title>
+      <link>https://codecosts.pages.dev/blog/best-ai-coding-tool-go.html</link>
+      <description>Ranked comparison of AI coding tools for Go: goroutine handling, interface generation, error wrapping, Kubernetes/cloud-native code, table-driven tests, and protobuf/gRPC. Tool-by-tool breakdown with cost analysis by workflow.</description>
+      <pubDate>Thu, 27 Mar 2026 23:00:00 GMT</pubDate>
+      <guid>https://codecosts.pages.dev/blog/best-ai-coding-tool-go.html</guid>
+    </item>
+
+    <item>
+      <title>Best AI Coding Tool for Java Developers (2026)</title>
+      <link>https://codecosts.pages.dev/blog/best-ai-coding-tool-java.html</link>
+      <description>Ranked comparison of AI coding tools for Java: Spring Boot, Maven/Gradle, IntelliJ IDEA support, JUnit, enterprise readiness, and Java version upgrade automation. Tool-by-tool breakdown with cost analysis by workflow.</description>
+      <pubDate>Thu, 27 Mar 2026 22:00:00 GMT</pubDate>
+      <guid>https://codecosts.pages.dev/blog/best-ai-coding-tool-java.html</guid>
+    </item>
+
+    <item>
+      <title>How Much Does AI Coding Actually Cost? Interactive 2026 Calculator</title>
+      <link>https://codecosts.pages.dev/blog/ai-coding-cost-calculator.html</link>
+      <description>Interactive calculator to estimate real AI coding costs. Input team size, usage level, and feature needs — get personalized annual estimates for Copilot, Cursor, Claude Code, Windsurf, and every major tool.</description>
+      <pubDate>Thu, 27 Mar 2026 21:00:00 GMT</pubDate>
+      <guid>https://codecosts.pages.dev/blog/ai-coding-cost-calculator.html</guid>
+    </item>
+
+    <item>
+      <title>Best AI Coding Tool for JavaScript/TypeScript Developers (2026)</title>
+      <link>https://codecosts.pages.dev/blog/best-ai-coding-tool-javascript.html</link>
+      <description>Ranked comparison of AI coding tools for JavaScript and TypeScript: advanced types, React/Next.js support, monorepo awareness, JSX completions, and build tools. Tool-by-tool breakdown with cost analysis by workflow.</description>
+      <pubDate>Thu, 27 Mar 2026 20:00:00 GMT</pubDate>
+      <guid>https://codecosts.pages.dev/blog/best-ai-coding-tool-javascript.html</guid>
+    </item>
+
+    <item>
+      <title>Best AI Coding Tool for Python Developers (2026)</title>
+      <link>https://codecosts.pages.dev/blog/best-ai-coding-tool-python.html</link>
+      <description>Ranked comparison of AI coding tools for Python: type inference, Django/FastAPI support, Jupyter, pytest, and data science libraries. Tool-by-tool breakdown with cost analysis by workflow.</description>
+      <pubDate>Thu, 27 Mar 2026 19:00:00 GMT</pubDate>
+      <guid>https://codecosts.pages.dev/blog/best-ai-coding-tool-python.html</guid>
+    </item>
+
+    <item>
       <title>Cursor Pro vs Business: Is the Upgrade Worth It for Your Team?</title>
       <link>https://codecosts.pages.dev/blog/cursor-pro-vs-business.html</link>
       <description>Cursor Pro costs $20/mo. Business costs $40/seat. The AI is identical — we compare admin tools, SSO, compliance, team costs, and tell you when Business is worth the 2x premium.</description>

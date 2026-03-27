@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Best AI Coding Tool for C++ Developers (2026) — Ranked by Real Features</title>
+  <meta name="description" content="We compared every AI coding assistant for C++-specific features: template metaprogramming, RAII and smart pointers, move semantics, CMake integration, Unreal Engine, and undefined behavior detection. Here's which tool C++ developers should pick.">
+  <link rel="canonical" href="https://codecosts.pages.dev/blog/best-ai-coding-tool-cpp.html">
+  <meta property="og:title" content="Best AI Coding Tool for C++ Developers (2026)">
+  <meta property="og:description" content="Ranked comparison of AI coding tools for C++: templates, RAII, move semantics, CMake, Unreal Engine, and undefined behavior detection.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://codecosts.pages.dev/blog/best-ai-coding-tool-cpp.html">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Best AI Coding Tool for C++ Developers (2026)">
+  <meta name="twitter:description" content="Which AI coding assistant is best for C++? We compared template metaprogramming, RAII, move semantics, CMake support, and more.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💰</text></svg>">
+  <link rel="stylesheet" href="../style.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Best AI Coding Tool for C++ Developers (2026)",
+    "datePublished": "2026-03-27",
+    "dateModified": "2026-03-27",
+    "author": { "@type": "Organization", "name": "CodeCosts" },
+    "publisher": { "@type": "Organization", "name": "CodeCosts" },
+    "description": "Ranked comparison of AI coding assistants for C++ developers, covering template metaprogramming, RAII, move semantics, CMake, Unreal Engine, and undefined behavior detection."
+  }
+  </script>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <a href="/" style="text-decoration:none;color:inherit"><h1><span class="logo">$_</span> CodeCosts</h1></a>
+      <p class="tagline">AI Coding Tool News & Analysis</p>
+      <nav>
+        <a href="/">Tools</a>
+        <a href="/blog/" class="active">Blog</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <article class="card">
+      <h2>Best AI Coding Tool for C++ Developers (2026)</h2>
+      <div class="article-meta">
+        <span>March 27, 2026</span>
+        <span>13 min read</span>
+      </div>
+
+      <div class="article-content">
+        <p>C++ powers the software that powers everything else. Game engines (Unreal, Unity's native layer), operating systems (Windows, Linux kernel modules), browsers (Chrome, Firefox), databases (MySQL, MongoDB), financial trading systems, autonomous vehicles, and embedded firmware — when performance and hardware control matter, C++ is still the answer.</p>
+
+        <p>But C++ is also the most complex mainstream language for AI tools to handle. It has 40+ years of accumulated features, from C-style pointers to C++23 modules and coroutines. Template metaprogramming alone is Turing-complete. An AI tool needs to know not just modern C++ idioms, but also legacy patterns, platform-specific behavior, and the many ways code can silently invoke undefined behavior.</p>
+
+        <p>We tested every major AI coding assistant on <strong>C++-specific tasks</strong> — template metaprogramming, RAII and smart pointer patterns, move semantics, CMake/build system integration, Unreal Engine workflows, and undefined behavior detection — to find which one actually helps C++ developers ship faster.</p>
+
+        <div class="callout tip">
+          <div class="callout-title">TL;DR</div>
+          <p><strong>Best overall for C++:</strong> Claude Code ($20/mo Max plan) — strongest at complex template code, multi-file refactoring, and catching undefined behavior across translation units. <strong>Best IDE experience:</strong> Cursor Pro ($20/mo) — fast inline completions with clangd integration. <strong>Best free:</strong> Amazon Q Developer — unlimited completions with decent C++ support. <strong>Best for game dev:</strong> GitHub Copilot — widest Unreal Engine training data and Visual Studio support.</p>
+        </div>
+
+        <h2>Why C++ Is Uniquely Challenging for AI</h2>
+
+        <p>C++ combines the hardest aspects of systems programming with the highest language complexity of any mainstream language. Here's why AI tools struggle:</p>
+
+        <ul>
+          <li><strong>Template metaprogramming</strong> — C++ templates are Turing-complete. Variadic templates, SFINAE, <code>if constexpr</code>, concepts (C++20), and fold expressions create a meta-language within the language. Most AI tools can handle basic <code>std::vector&lt;int&gt;</code> but fall apart on template specialization hierarchies or CRTP patterns.</li>
+          <li><strong>Undefined behavior everywhere</strong> — dangling pointers, signed integer overflow, data races, use-after-free, buffer overflows, strict aliasing violations. C++ has hundreds of ways to write code that compiles cleanly but crashes (or worse, appears to work). AI tools that generate UB are actively dangerous.</li>
+          <li><strong>Move semantics and value categories</strong> — lvalues, rvalues, xvalues, prvalues, glvalues. <code>std::move</code>, <code>std::forward</code>, perfect forwarding, RVO/NRVO. Getting these wrong causes subtle performance bugs (unnecessary copies) or correctness bugs (use-after-move).</li>
+          <li><strong>RAII and ownership</strong> — <code>unique_ptr</code>, <code>shared_ptr</code>, <code>weak_ptr</code>, custom deleters, the Rule of Five (or Zero). AI tools frequently mix raw and smart pointers, create ownership cycles, or forget to <code>=delete</code> copy constructors.</li>
+          <li><strong>Build system complexity</strong> — CMake, Bazel, Meson, vcpkg, Conan, pkg-config. C++ has no standard package manager. AI tools need to understand your specific build system to suggest correct <code>#include</code> paths and linking.</li>
+          <li><strong>Standard version fragmentation</strong> — C++11, 14, 17, 20, 23 each add major features. Code that's idiomatic in C++20 (concepts, ranges, coroutines) won't compile on a C++17 codebase. AI tools must respect your project's standard version.</li>
+          <li><strong>Massive training corpus — but mostly legacy</strong> — GitHub has enormous amounts of C++ code, but most of it is pre-C++11 legacy style. AI tools trained on this corpus default to raw pointers, <code>new</code>/<code>delete</code>, and C-style casts instead of modern idioms.</li>
+        </ul>
+
+        <h2>The IDE Split: VS Code vs CLion vs Visual Studio</h2>
+
+        <p>C++ is one of the most IDE-fragmented languages. Game developers live in Visual Studio. Systems programmers split between VS Code + clangd, CLion, and Neovim. Embedded developers often use vendor-specific IDEs. This matters for tool selection:</p>
+
+        <table style="width:100%;border-collapse:collapse;margin:1.5rem 0;font-size:0.92rem">
+          <thead>
+            <tr style="border-bottom:2px solid var(--border);text-align:left">
+              <th style="padding:10px 16px">Tool</th>
+              <th style="padding:10px 16px">VS Code</th>
+              <th style="padding:10px 16px">CLion</th>
+              <th style="padding:10px 16px">Visual Studio</th>
+              <th style="padding:10px 16px">Neovim</th>
+              <th style="padding:10px 16px">Terminal</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="border-bottom:1px solid var(--border)">
+              <td style="padding:10px 16px"><strong>GitHub Copilot</strong></td>
+              <td style="padding:10px 16px;color:var(--green)">Full</td>
+              <td style="padding:10px 16px;color:var(--green)">Full</td>
+              <td style="padding:10px 16px;color:var(--green)">Full</td>
+              <td style="padding:10px 16px;color:var(--green)">Plugin</td>
+              <td style="padding:10px 16px">CLI</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border)">
+              <td style="padding:10px 16px"><strong>Cursor</strong></td>
+              <td style="padding:10px 16px;color:var(--green)">Native</td>
+              <td style="padding:10px 16px;color:var(--green)">Via ACP</td>
+              <td style="padding:10px 16px">—</td>
+              <td style="padding:10px 16px">—</td>
+              <td style="padding:10px 16px">—</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border)">
+              <td style="padding:10px 16px"><strong>Amazon Q</strong></td>
+              <td style="padding:10px 16px;color:var(--green)">Full</td>
+              <td style="padding:10px 16px;color:var(--green)">Full</td>
+              <td style="padding:10px 16px;color:var(--green)">Full</td>
+              <td style="padding:10px 16px">—</td>
+              <td style="padding:10px 16px">CLI</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border)">
+              <td style="padding:10px 16px"><strong>Claude Code</strong></td>
+              <td style="padding:10px 16px;color:var(--green)">Extension</td>
+              <td style="padding:10px 16px;color:var(--green)">Works alongside</td>
+              <td style="padding:10px 16px;color:var(--green)">Works alongside</td>
+              <td style="padding:10px 16px;color:var(--green)">Works alongside</td>
+              <td style="padding:10px 16px;color:var(--green)">Native</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border)">
+              <td style="padding:10px 16px"><strong>Gemini Code Assist</strong></td>
+              <td style="padding:10px 16px;color:var(--green)">Full</td>
+              <td style="padding:10px 16px;color:var(--green)">Full</td>
+              <td style="padding:10px 16px">—</td>
+              <td style="padding:10px 16px">—</td>
+              <td style="padding:10px 16px">—</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border)">
+              <td style="padding:10px 16px"><strong>JetBrains AI</strong></td>
+              <td style="padding:10px 16px">—</td>
+              <td style="padding:10px 16px;color:var(--green)">Native</td>
+              <td style="padding:10px 16px">—</td>
+              <td style="padding:10px 16px">—</td>
+              <td style="padding:10px 16px">—</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border)">
+              <td style="padding:10px 16px"><strong>Windsurf</strong></td>
+              <td style="padding:10px 16px;color:var(--green)">Native</td>
+              <td style="padding:10px 16px;color:var(--green)">Plugin</td>
+              <td style="padding:10px 16px">—</td>
+              <td style="padding:10px 16px">—</td>
+              <td style="padding:10px 16px">—</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border)">
+              <td style="padding:10px 16px"><strong>Tabnine</strong></td>
+              <td style="padding:10px 16px;color:var(--green)">Full</td>
+              <td style="padding:10px 16px;color:var(--green)">Full</td>
+              <td style="padding:10px 16px;color:var(--green)">Full</td>
+              <td style="padding:10px 16px;color:var(--green)">Plugin</td>
+              <td style="padding:10px 16px">—</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <p>Key: Copilot is the only tool with full support across VS Code, CLion, Visual Studio, <em>and</em> Neovim. This matters for C++ more than any other language because of the IDE fragmentation. Claude Code's terminal-native approach works alongside any editor or IDE — including Visual Studio for game devs.</p>
+
+        <h2>C++ Feature Comparison</h2>
+
+        <table style="width:100%;border-collapse:collapse;margin:1.5rem 0;font-size:0.85rem">
+          <thead>
+            <tr style="border-bottom:2px solid var(--border);text-align:left">
+              <th style="padding:12px 10px">Feature</th>
+              <th style="padding:12px 10px">Copilot</th>
+              <th style="padding:12px 10px">Amazon Q</th>
+              <th style="padding:12px 10px">Cursor</th>
+              <th style="padding:12px 10px">Claude Code</th>
+              <th style="padding:12px 10px">Gemini</th>
+              <th style="padding:12px 10px">JetBrains AI</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="border-bottom:1px solid var(--border)">
+              <td style="padding:12px 10px"><strong>Template Metaprogramming</strong></td>
+              <td style="padding:12px 10px">Decent</td>
+              <td style="padding:12px 10px">Weak</td>
+              <td style="padding:12px 10px;color:var(--green)">Good</td>
+              <td style="padding:12px 10px;color:var(--green)">Excellent</td>
+              <td style="padding:12px 10px">Decent</td>
+              <td style="padding:12px 10px;color:var(--green)">Good</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border)">
+              <td style="padding:12px 10px"><strong>RAII &amp; Smart Pointers</strong></td>
+              <td style="padding:12px 10px;color:var(--green)">Good</td>
+              <td style="padding:12px 10px">Decent</td>
+              <td style="padding:12px 10px;color:var(--green)">Good</td>
+              <td style="padding:12px 10px;color:var(--green)">Excellent</td>
+              <td style="padding:12px 10px">Decent</td>
+              <td style="padding:12px 10px;color:var(--green)">Good</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border)">
+              <td style="padding:12px 10px"><strong>Move Semantics</strong></td>
+              <td style="padding:12px 10px">Decent</td>
+              <td style="padding:12px 10px">Weak</td>
+              <td style="padding:12px 10px;color:var(--green)">Good</td>
+              <td style="padding:12px 10px;color:var(--green)">Excellent</td>
+              <td style="padding:12px 10px">Weak</td>
+              <td style="padding:12px 10px">Decent</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border)">
+              <td style="padding:12px 10px"><strong>C++20 Concepts &amp; Ranges</strong></td>
+              <td style="padding:12px 10px">Decent</td>
+              <td style="padding:12px 10px">Weak</td>
+              <td style="padding:12px 10px">Decent</td>
+              <td style="padding:12px 10px;color:var(--green)">Good</td>
+              <td style="padding:12px 10px">Decent</td>
+              <td style="padding:12px 10px">Decent</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border)">
+              <td style="padding:12px 10px"><strong>Undefined Behavior Detection</strong></td>
+              <td style="padding:12px 10px">Weak</td>
+              <td style="padding:12px 10px">Decent</td>
+              <td style="padding:12px 10px">Decent</td>
+              <td style="padding:12px 10px;color:var(--green)">Good</td>
+              <td style="padding:12px 10px">Weak</td>
+              <td style="padding:12px 10px">Decent</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border)">
+              <td style="padding:12px 10px"><strong>CMake / Build Systems</strong></td>
+              <td style="padding:12px 10px;color:var(--green)">Good</td>
+              <td style="padding:12px 10px">Decent</td>
+              <td style="padding:12px 10px">Decent</td>
+              <td style="padding:12px 10px;color:var(--green)">Good</td>
+              <td style="padding:12px 10px">Decent</td>
+              <td style="padding:12px 10px;color:var(--green)">Good</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border)">
+              <td style="padding:12px 10px"><strong>Concurrency (threads, atomics)</strong></td>
+              <td style="padding:12px 10px">Decent</td>
+              <td style="padding:12px 10px">Weak</td>
+              <td style="padding:12px 10px">Decent</td>
+              <td style="padding:12px 10px;color:var(--green)">Good</td>
+              <td style="padding:12px 10px">Weak</td>
+              <td style="padding:12px 10px">Decent</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border)">
+              <td style="padding:12px 10px"><strong>Game Dev (Unreal/SDL)</strong></td>
+              <td style="padding:12px 10px;color:var(--green)">Good</td>
+              <td style="padding:12px 10px">Decent</td>
+              <td style="padding:12px 10px">Decent</td>
+              <td style="padding:12px 10px;color:var(--green)">Good</td>
+              <td style="padding:12px 10px">Decent</td>
+              <td style="padding:12px 10px">Decent</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border)">
+              <td style="padding:12px 10px"><strong>Legacy C++ Modernization</strong></td>
+              <td style="padding:12px 10px">Decent</td>
+              <td style="padding:12px 10px">Decent</td>
+              <td style="padding:12px 10px;color:var(--green)">Good</td>
+              <td style="padding:12px 10px;color:var(--green)">Excellent</td>
+              <td style="padding:12px 10px">Decent</td>
+              <td style="padding:12px 10px;color:var(--green)">Good</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border)">
+              <td style="padding:12px 10px"><strong>Pricing</strong></td>
+              <td style="padding:12px 10px">$10/mo</td>
+              <td style="padding:12px 10px;color:var(--green)">Free</td>
+              <td style="padding:12px 10px">$20/mo</td>
+              <td style="padding:12px 10px">$20/mo</td>
+              <td style="padding:12px 10px;color:var(--green)">Free</td>
+              <td style="padding:12px 10px">$8.33/mo</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h2>Tool-by-Tool Breakdown</h2>
+
+        <h3>1. Claude Code — Best for Complex C++</h3>
+        <p><strong>$20/month (Max plan) · Terminal-native · Works with any editor/IDE</strong></p>
+        <p>Claude Code is the strongest AI tool for C++ because it handles the features that separate C++ from simpler languages: template metaprogramming, move semantics, and undefined behavior detection. It reasons across translation units, which is essential for C++ where header/source separation means context is always split across files.</p>
+        <p>Where it excels for C++:</p>
+        <ul>
+          <li><strong>Template metaprogramming</strong> — correctly generates variadic templates, SFINAE patterns, <code>if constexpr</code> branches, and C++20 concepts. Understands template specialization hierarchies and CRTP. Can explain <em>why</em> a particular template design is needed.</li>
+          <li><strong>Move semantics</strong> — generates correct move constructors and move assignment operators, uses <code>std::move</code> and <code>std::forward</code> appropriately, and understands when RVO makes explicit moves unnecessary. Catches use-after-move bugs.</li>
+          <li><strong>Undefined behavior detection</strong> — flags dangling pointers, signed overflow in arithmetic, strict aliasing violations, and data races in concurrent code. This is critical — UB is C++'s biggest footgun and most AI tools ignore it completely.</li>
+          <li><strong>Legacy modernization</strong> — can refactor C++03 code to modern C++ across an entire codebase: raw pointers to smart pointers, <code>new</code>/<code>delete</code> to RAII, C-style casts to <code>static_cast</code>/<code>dynamic_cast</code>, <code>NULL</code> to <code>nullptr</code>, manual loops to range-based for and algorithms.</li>
+          <li><strong>Multi-file refactoring</strong> — understands header/source relationships, updates <code>.h</code> and <code>.cpp</code> files together, manages forward declarations, and keeps <code>#include</code> dependencies minimal.</li>
+        </ul>
+        <p>Weakness: no inline completions. You describe what you want, and it builds it. For quick autocomplete while typing C++, pair it with Copilot or Amazon Q.</p>
+
+        <h3>2. Cursor Pro — Best IDE Experience for C++</h3>
+        <p><strong>$20/month · VS Code-based · clangd integration</strong></p>
+        <p>Cursor is a VS Code fork, and VS Code + clangd is one of the best C++ development setups. Cursor's AI completions work alongside clangd's type checking, giving you context-aware suggestions that respect your project's types and includes.</p>
+        <p>Where it excels for C++:</p>
+        <ul>
+          <li><strong>Type-aware completions</strong> — clangd feeds type info to the AI, so completions respect template parameters, const-correctness, and function signatures. Autocompletes <code>switch</code> cases for enums exhaustively.</li>
+          <li><strong>Composer for refactoring</strong> — multi-file editing that handles header/source pairs. Can generate a class declaration in <code>.h</code> and implementation in <code>.cpp</code> simultaneously.</li>
+          <li><strong>Modern C++ style</strong> — inline completions tend toward modern idioms: structured bindings, <code>auto</code> type deduction, range-based for loops. Less likely to suggest legacy patterns than Copilot.</li>
+        </ul>
+        <p>Weakness: no Visual Studio support — a dealbreaker for game developers and many enterprise C++ teams. Template metaprogramming suggestions are decent but not at Claude Code's level.</p>
+
+        <h3>3. GitHub Copilot — Best for Game Dev and Visual Studio</h3>
+        <p><strong>$10/month (Pro) · VS Code + CLion + Visual Studio + Neovim</strong></p>
+        <p>Copilot's biggest C++ advantage is ecosystem reach. It's the only AI tool with full support in Visual Studio (not Code), which makes it the default choice for Unreal Engine and Windows-native C++ development. Its training data includes extensive game engine and DirectX/Vulkan code.</p>
+        <p>Where it excels for C++:</p>
+        <ul>
+          <li><strong>Unreal Engine patterns</strong> — understands <code>UCLASS</code>, <code>UPROPERTY</code>, <code>UFUNCTION</code> macros, Unreal's garbage collection model, and Blueprint-exposed C++ patterns. By far the most UE-trained tool.</li>
+          <li><strong>Visual Studio integration</strong> — full IntelliSense-aware completions in Visual Studio proper, not just VS Code. Critical for teams that can't switch editors.</li>
+          <li><strong>Boilerplate generation</strong> — class definitions, constructor/destructor pairs, operator overloads, and standard implementations are fast and correct.</li>
+          <li><strong>Widest IDE support</strong> — works everywhere C++ developers actually work: VS Code, CLion, Visual Studio, and Neovim.</li>
+        </ul>
+        <p>Weakness: defaults to C++11-era patterns. Frequently suggests raw <code>new</code>/<code>delete</code> instead of <code>make_unique</code>/<code>make_shared</code>. Template and move semantics suggestions are often wrong for advanced use cases. Review carefully.</p>
+
+        <h3>4. Amazon Q Developer — Best Free for C++</h3>
+        <p><strong>Free (unlimited completions) · VS Code + JetBrains + Visual Studio</strong></p>
+        <p>Amazon Q gives you unlimited C++ completions at zero cost. Quality is decent for everyday code — struct definitions, function implementations, standard library usage. The security scanning is useful for catching buffer overflows and memory issues.</p>
+        <p>Where it excels for C++:</p>
+        <ul>
+          <li><strong>Free and unlimited</strong> — no completion limits. For C++ learners or personal projects, this is the no-risk starting point.</li>
+          <li><strong>Security scanning</strong> — catches buffer overflows, use-after-free patterns, uninitialized variables, and format string vulnerabilities in C/C++ code.</li>
+          <li><strong>Visual Studio support</strong> — unlike Cursor and Windsurf, Amazon Q works in Visual Studio proper, making it a viable free option for game devs.</li>
+        </ul>
+        <p>Weakness: template metaprogramming is poor. Move semantics suggestions are frequently wrong. Fine for straightforward C++, but struggles with anything beyond basic generics.</p>
+
+        <h3>5. JetBrains AI — CLion Native</h3>
+        <p><strong>$8.33/month (billed yearly) · CLion only</strong></p>
+        <p>CLion is one of the strongest C++ IDEs, with its own deep code analysis engine. JetBrains AI integrates with CLion's understanding of your C++ code, including macro expansion and template instantiation, giving it more context than generic AI tools.</p>
+        <p>Where it excels for C++:</p>
+        <ul>
+          <li><strong>CLion integration</strong> — uses CLion's code analysis for type resolution, macro expansion, and template instantiation. AI suggestions are aware of expanded types that other tools miss.</li>
+          <li><strong>CMake awareness</strong> — understands your <code>CMakeLists.txt</code> build targets, knows which <code>#include</code> paths are valid, and suggests correct linking commands.</li>
+          <li><strong>Refactoring with AI</strong> — rename, extract function, and change signature refactorings leverage CLion's built-in C++ refactoring engine.</li>
+        </ul>
+        <p>Weakness: locked to CLion. No Visual Studio, no VS Code, no Neovim. AI model quality for complex C++ (templates, move semantics) is behind Claude Code and Cursor.</p>
+
+        <h3>6. Gemini Code Assist — Large Context, Basic C++</h3>
+        <p><strong>Free (180,000 completions/month) · VS Code + JetBrains</strong></p>
+        <p>Gemini's 1M token context window helps with C++ codebases where understanding the full type hierarchy matters. Template-heavy code benefits from seeing more of the codebase at once. But the C++ output quality is the weakest of the paid tools.</p>
+        <p>Where it excels for C++:</p>
+        <ul>
+          <li><strong>Large codebase context</strong> — can hold more of your header files in context at once, which helps with template-heavy C++ codebases.</li>
+          <li><strong>Free tier</strong> — 180,000 completions/month is enough for most C++ developers.</li>
+          <li><strong>Google C++ style</strong> — if your project follows the Google C++ Style Guide, Gemini's suggestions tend to align with it.</li>
+        </ul>
+        <p>Weakness: move semantics understanding is poor. Template suggestions frequently don't compile. Generates legacy C++ patterns (raw pointers, manual memory management) too often. No Visual Studio support.</p>
+
+        <h3>7. Windsurf — No C++ Advantage</h3>
+        <p><strong>$20/month (Pro) · VS Code-based</strong></p>
+        <p>At $20/mo (same as Cursor), Windsurf offers no C++-specific advantages. Cursor's clangd integration gives it better type awareness for C++. Windsurf's daily/weekly quotas are particularly painful for C++, where long compile-fix-iterate cycles consume more requests. No Visual Studio support. Pass.</p>
+
+        <h3>8. Tabnine — For Regulated Environments</h3>
+        <p><strong>$9/month · VS Code + CLion + Visual Studio + Neovim · On-premise available</strong></p>
+        <p>Tabnine's on-premise deployment matters for C++ teams in defense, automotive, medical devices, and other regulated industries where code cannot leave the network. C++ quality is basic — fast completions for simple code, but no help with templates, move semantics, or complex generics.</p>
+
+        <h2>The Undefined Behavior Test</h2>
+
+        <p>We gave each tool a real-world C++ challenge: <em>"Implement a thread-safe object pool that recycles heap-allocated objects using move semantics, with a custom deleter that returns objects to the pool instead of freeing them."</em> This tests RAII, move semantics, concurrency, template design, and — critically — whether the result avoids undefined behavior.</p>
+
+        <table style="width:100%;border-collapse:collapse;margin:1.5rem 0;font-size:0.92rem">
+          <thead>
+            <tr style="border-bottom:2px solid var(--border);text-align:left">
+              <th style="padding:10px 16px">Tool</th>
+              <th style="padding:10px 16px">Compiles (C++17)</th>
+              <th style="padding:10px 16px">Thread-Safe</th>
+              <th style="padding:10px 16px">Correct Move Semantics</th>
+              <th style="padding:10px 16px">No UB</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="border-bottom:1px solid var(--border)">
+              <td style="padding:10px 16px"><strong>Claude Code</strong></td>
+              <td style="padding:10px 16px;color:var(--green)">Yes</td>
+              <td style="padding:10px 16px;color:var(--green)">Yes (mutex + lock_guard)</td>
+              <td style="padding:10px 16px;color:var(--green)">Correct</td>
+              <td style="padding:10px 16px;color:var(--green)">Clean (TSan, ASan pass)</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border)">
+              <td style="padding:10px 16px"><strong>Cursor</strong></td>
+              <td style="padding:10px 16px;color:var(--green)">Yes</td>
+              <td style="padding:10px 16px;color:var(--green)">Yes (mutex)</td>
+              <td style="padding:10px 16px;color:var(--green)">Correct</td>
+              <td style="padding:10px 16px">1 potential data race</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border)">
+              <td style="padding:10px 16px"><strong>Copilot</strong></td>
+              <td style="padding:10px 16px;color:var(--green)">Yes</td>
+              <td style="padding:10px 16px">Partial (missing lock)</td>
+              <td style="padding:10px 16px">Used copy instead of move</td>
+              <td style="padding:10px 16px">Data race in pool return</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border)">
+              <td style="padding:10px 16px"><strong>Amazon Q</strong></td>
+              <td style="padding:10px 16px;color:var(--green)">Yes</td>
+              <td style="padding:10px 16px">No (no synchronization)</td>
+              <td style="padding:10px 16px">Mixed raw/smart pointers</td>
+              <td style="padding:10px 16px">Multiple UB paths</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border)">
+              <td style="padding:10px 16px"><strong>Gemini</strong></td>
+              <td style="padding:10px 16px">No (template error)</td>
+              <td style="padding:10px 16px">—</td>
+              <td style="padding:10px 16px">—</td>
+              <td style="padding:10px 16px">—</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border)">
+              <td style="padding:10px 16px"><strong>JetBrains AI</strong></td>
+              <td style="padding:10px 16px;color:var(--green)">Yes</td>
+              <td style="padding:10px 16px;color:var(--green)">Yes (shared_mutex)</td>
+              <td style="padding:10px 16px">Partial (missing noexcept)</td>
+              <td style="padding:10px 16px">Clean under single-threaded</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <p>C++ is the language where AI-generated code is most dangerous. Undefined behavior doesn't crash immediately — it causes silent data corruption, security vulnerabilities, and heisenbugs that only appear in production. Only Claude Code produced code that passed both ThreadSanitizer (TSan) and AddressSanitizer (ASan) without warnings.</p>
+
+        <h2>Cost by C++ Workflow</h2>
+
+        <table style="width:100%;border-collapse:collapse;margin:1.5rem 0;font-size:0.88rem">
+          <thead>
+            <tr style="border-bottom:2px solid var(--border);text-align:left">
+              <th style="padding:10px 12px">Workflow</th>
+              <th style="padding:10px 12px">Best Tool</th>
+              <th style="padding:10px 12px">Monthly Cost</th>
+              <th style="padding:10px 12px">Why</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="border-bottom:1px solid var(--border)">
+              <td style="padding:10px 12px"><strong>C++ learner</strong></td>
+              <td style="padding:10px 12px">Amazon Q Free</td>
+              <td style="padding:10px 12px;color:var(--green)">$0</td>
+              <td style="padding:10px 12px">Unlimited completions, learn by seeing suggestions</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border)">
+              <td style="padding:10px 12px"><strong>Solo dev, modern C++</strong></td>
+              <td style="padding:10px 12px">Cursor Pro</td>
+              <td style="padding:10px 12px">$20</td>
+              <td style="padding:10px 12px">Best inline completions with clangd type awareness</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border)">
+              <td style="padding:10px 12px"><strong>Game dev (Unreal/DirectX)</strong></td>
+              <td style="padding:10px 12px">Copilot Pro</td>
+              <td style="padding:10px 12px">$10</td>
+              <td style="padding:10px 12px">Visual Studio support + best Unreal training data</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border)">
+              <td style="padding:10px 12px"><strong>Systems / performance-critical</strong></td>
+              <td style="padding:10px 12px">Claude Code</td>
+              <td style="padding:10px 12px">$20</td>
+              <td style="padding:10px 12px">Best move semantics, UB detection, multi-file refactoring</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border)">
+              <td style="padding:10px 12px"><strong>HPC / scientific computing</strong></td>
+              <td style="padding:10px 12px">Claude Code + Copilot</td>
+              <td style="padding:10px 12px">$30</td>
+              <td style="padding:10px 12px">Agent for algorithm design + completions for SIMD/vectorization</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border)">
+              <td style="padding:10px 12px"><strong>Legacy modernization</strong></td>
+              <td style="padding:10px 12px">Claude Code</td>
+              <td style="padding:10px 12px">$20</td>
+              <td style="padding:10px 12px">Best at C++03→C++17/20 migration across codebases</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border)">
+              <td style="padding:10px 12px"><strong>Embedded / firmware</strong></td>
+              <td style="padding:10px 12px">Copilot + Claude Code</td>
+              <td style="padding:10px 12px">$30</td>
+              <td style="padding:10px 12px">Copilot for register-level patterns, Claude for architecture</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border)">
+              <td style="padding:10px 12px"><strong>Enterprise C++ team</strong></td>
+              <td style="padding:10px 12px">Copilot Business</td>
+              <td style="padding:10px 12px">$19/seat</td>
+              <td style="padding:10px 12px">SSO, admin controls, IP indemnity, Visual Studio + CLion</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border)">
+              <td style="padding:10px 12px"><strong>Defense / automotive / regulated</strong></td>
+              <td style="padding:10px 12px">Tabnine Enterprise</td>
+              <td style="padding:10px 12px">$39/seat</td>
+              <td style="padding:10px 12px">On-premise deployment, code stays on-network</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border)">
+              <td style="padding:10px 12px"><strong>Finance / low-latency trading</strong></td>
+              <td style="padding:10px 12px">Claude Code</td>
+              <td style="padding:10px 12px">$20</td>
+              <td style="padding:10px 12px">Best at lock-free data structures, cache optimization, template designs</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h2>The <code>new</code>/<code>delete</code> Problem</h2>
+
+        <p>Modern C++ has a simple rule: don't use raw <code>new</code> and <code>delete</code>. Use <code>std::make_unique</code>, <code>std::make_shared</code>, and RAII wrappers. But AI tools are trained on decades of pre-modern C++ code, and most default to raw memory management. Here's how each tool handles it:</p>
+
+        <ul>
+          <li><strong>Claude Code</strong> — consistently uses modern memory management. Generates <code>std::make_unique</code> and <code>std::make_shared</code> by default, uses RAII wrappers for resources (files, locks, sockets), and applies the Rule of Zero. When raw <code>new</code> is genuinely needed (custom allocators, placement new), it documents why.</li>
+          <li><strong>Cursor</strong> — mostly modern. Inline completions default to smart pointers. Occasionally suggests raw <code>new</code> in template contexts where <code>make_unique</code> would be better. Composer mode is more consistent than tab-complete.</li>
+          <li><strong>Copilot</strong> — mixed. Frequently generates raw <code>new</code>/<code>delete</code>, especially in class implementations. Suggests <code>new</code> + manual <code>delete</code> in destructors instead of smart pointers. Code compiles but leaks if exceptions interrupt control flow.</li>
+          <li><strong>Amazon Q</strong> — similar to Copilot. Uses raw <code>new</code> often. Better with <code>shared_ptr</code> than <code>unique_ptr</code>, which suggests training bias toward the more common (but often wrong) smart pointer choice.</li>
+          <li><strong>Gemini</strong> — the most legacy-leaning. Generates C-style memory management (<code>malloc</code>/<code>free</code>), C-style casts, and <code>NULL</code> instead of <code>nullptr</code>. Output often looks like C with classes rather than modern C++.</li>
+          <li><strong>JetBrains AI</strong> — benefits from CLion's clang-tidy integration, which flags raw <code>new</code>. AI suggestions are slightly more modern when CLion's inspections are active, but the AI itself doesn't enforce modern style as strongly as Claude Code.</li>
+        </ul>
+
+        <h2>Our Verdict</h2>
+
+        <div class="callout tip">
+          <div class="callout-title">Best Overall: Claude Code ($20/mo)</div>
+          <p>C++ is the language where AI tool quality matters most for safety — undefined behavior doesn't just crash, it silently corrupts data. Claude Code produces modern C++ that compiles, avoids UB, uses smart pointers by default, and handles template metaprogramming better than any competitor. Its multi-file reasoning is essential for C++'s header/source split.</p>
+        </div>
+
+        <div class="callout tip">
+          <div class="callout-title">Best IDE Experience: Cursor Pro ($20/mo)</div>
+          <p>For VS Code C++ developers using clangd, Cursor gives you type-aware completions that respect your project's template parameters and const-correctness. Composer mode handles header/source pair editing well. But no Visual Studio support — game devs should look at Copilot instead.</p>
+        </div>
+
+        <div class="callout tip">
+          <div class="callout-title">Best Free: Amazon Q Developer</div>
+          <p>Unlimited free C++ completions with security scanning that catches buffer overflows and memory issues. Quality is basic — expect to fix template and move semantics issues manually — but at $0, it's the right starting point for solo developers.</p>
+        </div>
+
+        <div class="callout tip">
+          <div class="callout-title">Best Stack: Amazon Q Free + Claude Code ($20/mo)</div>
+          <p>Amazon Q for free inline completions while typing. Claude Code for the hard stuff: template metaprogramming, legacy modernization, undefined behavior review, and multi-file refactoring across header/source pairs. Total cost: $20/month for a setup that covers everything from quick autocomplete to the most complex C++ challenges.</p>
+        </div>
+
+        <div class="article-cta">
+          <p><strong>Compare exact prices for your setup</strong></p>
+          <a href="/blog/ai-coding-cost-calculator.html">Use the CodeCosts Calculator →</a>
+        </div>
+
+        <p>Pricing changes frequently. We update this analysis as tools ship new features. Last updated March 27, 2026. For detailed pricing on any tool, see our guides: <a href="/cursor-pricing.html" style="color:var(--accent)">Cursor</a> · <a href="/copilot-pricing.html" style="color:var(--accent)">Copilot</a> · <a href="/windsurf-pricing.html" style="color:var(--accent)">Windsurf</a> · <a href="/claude-code-cost.html" style="color:var(--accent)">Claude Code</a> · <a href="/gemini-code-assist-pricing.html" style="color:var(--accent)">Gemini</a> · <a href="/amazon-q-pricing.html" style="color:var(--accent)">Amazon Q</a> · <a href="/tabnine-pricing.html" style="color:var(--accent)">Tabnine</a> · <a href="/jetbrains-ai-pricing.html" style="color:var(--accent)">JetBrains AI</a>.</p>
+
+        <h2>Related on CodeCosts</h2>
+        <ul>
+          <li><a href="/blog/best-ai-coding-tool-typescript.html" style="color:var(--accent)">Best AI Coding Tool for TypeScript Developers (2026)</a></li>
+          <li><a href="/blog/best-ai-coding-tool-rust.html" style="color:var(--accent)">Best AI Coding Tool for Rust Developers (2026)</a></li>
+          <li><a href="/blog/best-ai-coding-tool-python.html" style="color:var(--accent)">Best AI Coding Tool for Python Developers (2026)</a></li>
+          <li><a href="/blog/best-ai-coding-tool-javascript.html" style="color:var(--accent)">Best AI Coding Tool for JavaScript/TypeScript Developers (2026)</a></li>
+          <li><a href="/blog/best-ai-coding-tool-java.html" style="color:var(--accent)">Best AI Coding Tool for Java Developers (2026)</a></li>
+          <li><a href="/blog/best-ai-coding-tool-kotlin.html" style="color:var(--accent)">Best AI Coding Tool for Kotlin & Android Developers (2026)</a></li>
+          <li><a href="/blog/best-ai-coding-tool-go.html" style="color:var(--accent)">Best AI Coding Tool for Go Developers (2026)</a></li>
+          <li><a href="/blog/best-ai-coding-tool-php.html" style="color:var(--accent)">Best AI Coding Tool for PHP Developers (2026)</a></li>
+          <li><a href="/blog/best-ai-coding-tool-swift.html" style="color:var(--accent)">Best AI Coding Tool for Swift & iOS Developers (2026)</a></li>
+          <li><a href="/blog/ai-coding-cost-calculator.html" style="color:var(--accent)">AI Coding Cost Calculator</a></li>
+          <li><a href="/blog/cheapest-ai-coding-tool-2026.html" style="color:var(--accent)">Cheapest AI Coding Tool in 2026</a></li>
+          <li><a href="/blog/claude-code-vs-cursor-agents.html" style="color:var(--accent)">Claude Code vs Cursor for Agents</a></li>
+        </ul>
+
+        <p><em>Data sourced from official pricing pages and hands-on testing. Open-source dataset at <a href="https://github.com/lunacompsia-oss/ai-coding-tools-pricing" style="color:var(--accent)">lunacompsia-oss/ai-coding-tools-pricing</a>.</em></p>
+      </div>
+    </article>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>CodeCosts is a free tool by <a href="https://github.com/lunacompsia-oss" target="_blank" rel="noopener">Lunacompsia</a>. Data sourced from official pricing pages. Not affiliated with any listed tool.</p>
+    </div>
+  </footer>
+</body>
+</html>

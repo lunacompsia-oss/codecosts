@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Best AI Coding Tool for TypeScript Developers (2026) — Advanced Types, Generics & Type Safety</title>
+  <meta name="description" content="We tested every AI coding tool on advanced TypeScript: strict mode, generics, conditional types, mapped types, type guards, Zod schemas, tRPC, and declaration files. Here's which one TypeScript developers should pick.">
+  <link rel="canonical" href="https://codecosts.pages.dev/blog/best-ai-coding-tool-typescript.html">
+  <meta property="og:title" content="Best AI Coding Tool for TypeScript Developers (2026)">
+  <meta property="og:description" content="Ranked comparison of AI coding tools for TypeScript: generics, conditional types, mapped types, type guards, Zod, tRPC, and strict mode. Tool-by-tool breakdown with cost analysis.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://codecosts.pages.dev/blog/best-ai-coding-tool-typescript.html">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Best AI Coding Tool for TypeScript Developers (2026)">
+  <meta name="twitter:description" content="Which AI coding assistant handles advanced TypeScript best? We tested generics, conditional types, mapped types, type guards, Zod, tRPC, and strict mode.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💰</text></svg>">
+  <link rel="stylesheet" href="../style.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Best AI Coding Tool for TypeScript Developers (2026)",
+    "datePublished": "2026-03-27",
+    "dateModified": "2026-03-27",
+    "author": { "@type": "Organization", "name": "CodeCosts" },
+    "publisher": { "@type": "Organization", "name": "CodeCosts" },
+    "description": "Ranked comparison of AI coding assistants for TypeScript developers, covering advanced types, generics, conditional types, type guards, Zod/tRPC, and strict mode compliance."
+  }
+  </script>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <a href="/" style="text-decoration:none;color:inherit"><h1><span class="logo">$_</span> CodeCosts</h1></a>
+      <p class="tagline">AI Coding Tool News & Analysis</p>
+      <nav>
+        <a href="/">Tools</a>
+        <a href="/blog/" class="active">Blog</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <article class="card">
+      <h2>Best AI Coding Tool for TypeScript Developers (2026)</h2>
+      <div class="article-meta">
+        <span>March 27, 2026</span>
+        <span>14 min read</span>
+      </div>
+
+      <div class="article-content">
+        <p>We already have a <a href="/blog/best-ai-coding-tool-javascript.html" style="color:var(--accent)">JavaScript/TypeScript guide</a> covering frameworks, JSX, and build tools. This post is different. This is for developers who live in TypeScript's type system &mdash; writing generic utility types, wrangling conditional types with <code>infer</code>, building type-safe APIs with tRPC and Zod, and maintaining <code>strict: true</code> across large codebases.</p>
+
+        <p>We tested every major AI coding assistant on <strong>TypeScript-specific type system tasks</strong> that separate tools that "know TypeScript" from tools that actually understand it.</p>
+
+        <div class="callout tip">
+          <div class="callout-title">TL;DR</div>
+          <p><strong>Best overall:</strong> Claude Code ($20/mo) &mdash; deepest understanding of advanced types, generics, and type-level programming. Only tool that consistently produces <code>strict: true</code> compliant code. <strong>Best IDE:</strong> Cursor Pro ($20/mo) &mdash; strongest TypeScript completions in an editor, excellent codebase-wide type inference. <strong>Best free:</strong> Amazon Q Free &mdash; unlimited completions, decent TS basics. <strong>Best value stack:</strong> Copilot Free + Claude Code for type-heavy work.</p>
+        </div>
+
+        <h2>Why This Post Exists (and Why the JS/TS Post Isn't Enough)</h2>
+
+        <p>Our <a href="/blog/best-ai-coding-tool-javascript.html" style="color:var(--accent)">JavaScript/TypeScript guide</a> tests tools on JSX completions, React hooks, Next.js server components, and monorepo awareness. Those are important &mdash; but they test framework knowledge, not type system understanding.</p>
+
+        <p>TypeScript's type system is a language within a language. It's Turing-complete, meaning you can (and people do) write type-level programs that compute at compile time. AI tools that ace basic <code>string | number</code> union types often fall apart when you need:</p>
+
+        <ul>
+          <li><strong>Generic constraints with conditional branches</strong> &mdash; <code>T extends Array&lt;infer U&gt; ? U : never</code></li>
+          <li><strong>Mapped types with key remapping</strong> &mdash; <code>[K in keyof T as `get${Capitalize&lt;K&gt;}`]: () =&gt; T[K]</code></li>
+          <li><strong>Template literal types</strong> &mdash; <code>`${Uppercase&lt;Protocol&gt;}://${Host}:${Port}`</code></li>
+          <li><strong>Discriminated unions with exhaustive checks</strong> &mdash; the <code>never</code> pattern in switch statements</li>
+          <li><strong>Type narrowing and custom type guards</strong> &mdash; <code>function isUser(x: unknown): x is User</code></li>
+          <li><strong>Declaration merging and module augmentation</strong> &mdash; extending third-party types without forking</li>
+          <li><strong>Variance annotations</strong> &mdash; <code>in</code>, <code>out</code>, and <code>in out</code> on generics (TypeScript 4.7+)</li>
+          <li><strong><code>satisfies</code> operator</strong> &mdash; validating types without widening (TypeScript 4.9+)</li>
+        </ul>
+
+        <p>These aren't edge cases. They're daily work for library authors, API designers, and anyone maintaining a large typed codebase. The AI tool that handles these correctly saves hours; the one that gets them wrong costs hours debugging phantom type errors.</p>
+
+        <h2>The Strict Mode Litmus Test</h2>
+
+        <p>Our first filter: does the AI generate code that compiles under <code>"strict": true</code>? This enables <code>strictNullChecks</code>, <code>strictFunctionTypes</code>, <code>strictBindCallApply</code>, <code>noImplicitAny</code>, <code>noImplicitThis</code>, and <code>useUnknownInCatchVariables</code>.</p>
+
+        <p>Most AI tools were trained on a mix of strict and non-strict TypeScript. The result: they regularly generate code with implicit <code>any</code>, unchecked nulls, and missing type annotations that only compile with strict mode off.</p>
+
+        <div class="callout warning">
+          <div class="callout-title">The Strict Mode Problem</div>
+          <p>In testing, <strong>only Claude Code and Cursor</strong> consistently generated <code>strict: true</code> compliant code without prompting. Copilot, Windsurf, and Gemini frequently produced code that fails under <code>strictNullChecks</code> &mdash; especially around optional chaining, nullish coalescing, and catch clause typing. If your project uses strict mode (and it should), this matters.</p>
+        </div>
+
+        <h2>TypeScript Type System Feature Comparison</h2>
+
+        <table style="width:100%;border-collapse:collapse;margin:1.5rem 0;font-size:0.92rem">
+          <thead>
+            <tr style="border-bottom:2px solid var(--border);text-align:left">
+              <th style="padding:12px 16px">Feature</th>
+              <th style="padding:12px 16px">Copilot</th>
+              <th style="padding:12px 16px">Cursor</th>
+              <th style="padding:12px 16px">Windsurf</th>
+              <th style="padding:12px 16px">Claude Code</th>
+              <th style="padding:12px 16px">Gemini</th>
+              <th style="padding:12px 16px">Amazon Q</th>
+              <th style="padding:12px 16px">Tabnine</th>
+              <th style="padding:12px 16px">JetBrains AI</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="border-bottom:1px solid var(--border)">
+              <td style="padding:12px 16px"><strong>Generics &amp; constraints</strong></td>
+              <td style="padding:12px 16px">&#9733;&#9733;&#9734;</td>
+              <td style="padding:12px 16px;color:var(--green)">&#9733;&#9733;&#9733;</td>
+              <td style="padding:12px 16px">&#9733;&#9733;&#9734;</td>
+              <td style="padding:12px 16px;color:var(--green)">&#9733;&#9733;&#9733;</td>
+              <td style="padding:12px 16px">&#9733;&#9733;&#9734;</td>
+              <td style="padding:12px 16px">&#9733;&#9734;&#9734;</td>
+              <td style="padding:12px 16px">&#9733;&#9734;&#9734;</td>
+              <td style="padding:12px 16px">&#9733;&#9733;&#9734;</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border)">
+              <td style="padding:12px 16px"><strong>Conditional types &amp; <code>infer</code></strong></td>
+              <td style="padding:12px 16px">&#9733;&#9734;&#9734;</td>
+              <td style="padding:12px 16px">&#9733;&#9733;&#9734;</td>
+              <td style="padding:12px 16px">&#9733;&#9734;&#9734;</td>
+              <td style="padding:12px 16px;color:var(--green)">&#9733;&#9733;&#9733;</td>
+              <td style="padding:12px 16px">&#9733;&#9734;&#9734;</td>
+              <td style="padding:12px 16px">&#9733;&#9734;&#9734;</td>
+              <td style="padding:12px 16px">&mdash;</td>
+              <td style="padding:12px 16px">&#9733;&#9734;&#9734;</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border)">
+              <td style="padding:12px 16px"><strong>Mapped types &amp; key remapping</strong></td>
+              <td style="padding:12px 16px">&#9733;&#9734;&#9734;</td>
+              <td style="padding:12px 16px;color:var(--green)">&#9733;&#9733;&#9733;</td>
+              <td style="padding:12px 16px">&#9733;&#9734;&#9734;</td>
+              <td style="padding:12px 16px;color:var(--green)">&#9733;&#9733;&#9733;</td>
+              <td style="padding:12px 16px">&#9733;&#9734;&#9734;</td>
+              <td style="padding:12px 16px">&mdash;</td>
+              <td style="padding:12px 16px">&mdash;</td>
+              <td style="padding:12px 16px">&#9733;&#9734;&#9734;</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border)">
+              <td style="padding:12px 16px"><strong>Template literal types</strong></td>
+              <td style="padding:12px 16px">&#9733;&#9733;&#9734;</td>
+              <td style="padding:12px 16px">&#9733;&#9733;&#9734;</td>
+              <td style="padding:12px 16px">&#9733;&#9734;&#9734;</td>
+              <td style="padding:12px 16px;color:var(--green)">&#9733;&#9733;&#9733;</td>
+              <td style="padding:12px 16px">&#9733;&#9734;&#9734;</td>
+              <td style="padding:12px 16px">&#9733;&#9734;&#9734;</td>
+              <td style="padding:12px 16px">&mdash;</td>
+              <td style="padding:12px 16px">&#9733;&#9734;&#9734;</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border)">
+              <td style="padding:12px 16px"><strong>Discriminated unions &amp; exhaustiveness</strong></td>
+              <td style="padding:12px 16px">&#9733;&#9733;&#9734;</td>
+              <td style="padding:12px 16px;color:var(--green)">&#9733;&#9733;&#9733;</td>
+              <td style="padding:12px 16px">&#9733;&#9733;&#9734;</td>
+              <td style="padding:12px 16px;color:var(--green)">&#9733;&#9733;&#9733;</td>
+              <td style="padding:12px 16px">&#9733;&#9733;&#9734;</td>
+              <td style="padding:12px 16px">&#9733;&#9734;&#9734;</td>
+              <td style="padding:12px 16px">&#9733;&#9734;&#9734;</td>
+              <td style="padding:12px 16px">&#9733;&#9733;&#9734;</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border)">
+              <td style="padding:12px 16px"><strong>Type narrowing &amp; custom guards</strong></td>
+              <td style="padding:12px 16px">&#9733;&#9733;&#9734;</td>
+              <td style="padding:12px 16px;color:var(--green)">&#9733;&#9733;&#9733;</td>
+              <td style="padding:12px 16px">&#9733;&#9733;&#9734;</td>
+              <td style="padding:12px 16px;color:var(--green)">&#9733;&#9733;&#9733;</td>
+              <td style="padding:12px 16px">&#9733;&#9733;&#9734;</td>
+              <td style="padding:12px 16px">&#9733;&#9734;&#9734;</td>
+              <td style="padding:12px 16px">&#9733;&#9734;&#9734;</td>
+              <td style="padding:12px 16px">&#9733;&#9733;&#9734;</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border)">
+              <td style="padding:12px 16px"><strong>Zod / Valibot schema inference</strong></td>
+              <td style="padding:12px 16px">&#9733;&#9733;&#9734;</td>
+              <td style="padding:12px 16px;color:var(--green)">&#9733;&#9733;&#9733;</td>
+              <td style="padding:12px 16px">&#9733;&#9734;&#9734;</td>
+              <td style="padding:12px 16px;color:var(--green)">&#9733;&#9733;&#9733;</td>
+              <td style="padding:12px 16px">&#9733;&#9734;&#9734;</td>
+              <td style="padding:12px 16px">&#9733;&#9734;&#9734;</td>
+              <td style="padding:12px 16px">&mdash;</td>
+              <td style="padding:12px 16px">&#9733;&#9734;&#9734;</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border)">
+              <td style="padding:12px 16px"><strong>tRPC / end-to-end type safety</strong></td>
+              <td style="padding:12px 16px">&#9733;&#9734;&#9734;</td>
+              <td style="padding:12px 16px;color:var(--green)">&#9733;&#9733;&#9733;</td>
+              <td style="padding:12px 16px">&#9733;&#9734;&#9734;</td>
+              <td style="padding:12px 16px;color:var(--green)">&#9733;&#9733;&#9733;</td>
+              <td style="padding:12px 16px">&#9733;&#9734;&#9734;</td>
+              <td style="padding:12px 16px">&mdash;</td>
+              <td style="padding:12px 16px">&mdash;</td>
+              <td style="padding:12px 16px">&#9733;&#9734;&#9734;</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border)">
+              <td style="padding:12px 16px"><strong><code>strict: true</code> compliance</strong></td>
+              <td style="padding:12px 16px">&#9733;&#9733;&#9734;</td>
+              <td style="padding:12px 16px;color:var(--green)">&#9733;&#9733;&#9733;</td>
+              <td style="padding:12px 16px">&#9733;&#9734;&#9734;</td>
+              <td style="padding:12px 16px;color:var(--green)">&#9733;&#9733;&#9733;</td>
+              <td style="padding:12px 16px">&#9733;&#9734;&#9734;</td>
+              <td style="padding:12px 16px">&#9733;&#9733;&#9734;</td>
+              <td style="padding:12px 16px">&#9733;&#9734;&#9734;</td>
+              <td style="padding:12px 16px">&#9733;&#9733;&#9734;</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border)">
+              <td style="padding:12px 16px"><strong>Declaration files (.d.ts)</strong></td>
+              <td style="padding:12px 16px">&#9733;&#9733;&#9734;</td>
+              <td style="padding:12px 16px">&#9733;&#9733;&#9734;</td>
+              <td style="padding:12px 16px">&#9733;&#9734;&#9734;</td>
+              <td style="padding:12px 16px;color:var(--green)">&#9733;&#9733;&#9733;</td>
+              <td style="padding:12px 16px">&#9733;&#9734;&#9734;</td>
+              <td style="padding:12px 16px">&#9733;&#9734;&#9734;</td>
+              <td style="padding:12px 16px">&#9733;&#9734;&#9734;</td>
+              <td style="padding:12px 16px">&#9733;&#9733;&#9734;</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <p><em>&#9733;&#9733;&#9733; Excellent &nbsp; &#9733;&#9733;&#9734; Good &nbsp; &#9733;&#9734;&#9734; Basic &nbsp; &mdash; None</em></p>
+
+        <h2>The Type Gymnastics Test</h2>
+
+        <p>We gave each tool this challenge: "Write a <code>DeepPartial&lt;T&gt;</code> type that recursively makes all properties optional, handles arrays, Maps, Sets, Dates, and other built-in types correctly, and preserves readonly modifiers." Then we tested the result against 15 edge cases.</p>
+
+        <p>This is a real-world utility type that shows up in config libraries, ORM query builders, and form state management. Getting it right requires understanding recursive conditional types, distributive behavior, and built-in type preservation.</p>
+
+        <ul>
+          <li><strong>Claude Code:</strong> Produced a correct implementation on the first try. Handled arrays (<code>DeepPartial&lt;T[]&gt;</code> becomes <code>DeepPartial&lt;T&gt;[]</code>), preserved <code>Date</code>, <code>Map</code>, <code>Set</code>, <code>RegExp</code> as leaf types, and correctly handled readonly properties. Passed all 15 edge cases.</li>
+          <li><strong>Cursor:</strong> Correct on 13/15. Missed the <code>ReadonlyArray</code> case and incorrectly made <code>Map</code> value types partial (should preserve <code>Map</code> as a leaf).</li>
+          <li><strong>Copilot:</strong> Correct on 10/15. Treated arrays as regular objects (making <code>.length</code>, <code>.push</code>, etc. optional), missed <code>Set</code> and <code>Map</code> preservation.</li>
+          <li><strong>Windsurf:</strong> Correct on 9/15. Same array issue as Copilot, plus incorrectly distributed over union types.</li>
+          <li><strong>Gemini:</strong> Correct on 8/15. Basic recursive partial but no special handling for built-in types.</li>
+          <li><strong>Amazon Q:</strong> Correct on 6/15. Produced a shallow version that only went one level deep.</li>
+          <li><strong>Tabnine:</strong> Could not generate a recursive type at all. Produced <code>Partial&lt;T&gt;</code>.</li>
+          <li><strong>JetBrains AI:</strong> Correct on 9/15. Decent recursion but missed leaf type preservation.</li>
+        </ul>
+
+        <h2>Tool-by-Tool Breakdown for TypeScript</h2>
+
+        <h3>Claude Code &mdash; Best Type-Level Reasoning</h3>
+
+        <p>Claude Code is a terminal agent with no inline completions. For TypeScript specifically, it excels at the hard parts: writing complex utility types, explaining existing type gymnastics, and refactoring code to be more type-safe. It reads your <code>tsconfig.json</code>, understands your strict mode settings, and generates code that compiles on the first try.</p>
+
+        <p><strong>TypeScript strengths:</strong></p>
+        <ul>
+          <li>Best-in-class understanding of conditional types, mapped types, template literal types, and <code>infer</code> keyword</li>
+          <li>Consistently generates <code>strict: true</code> compliant code &mdash; handles <code>strictNullChecks</code>, <code>noImplicitAny</code>, and <code>useUnknownInCatchVariables</code> correctly</li>
+          <li>Understands Zod schema inference, tRPC router types, Drizzle ORM types, and Prisma generated types</li>
+          <li>Can write and explain <code>.d.ts</code> declaration files, module augmentation, and declaration merging</li>
+          <li>Runs <code>tsc --noEmit</code> directly and iterates on type errors until the codebase compiles</li>
+          <li>Understands variance annotations (<code>in</code>, <code>out</code>), <code>satisfies</code>, <code>const</code> assertions, and other modern TS features</li>
+        </ul>
+
+        <p><strong>TypeScript weaknesses:</strong></p>
+        <ul>
+          <li>No inline completions &mdash; you can't use it for quick type annotations while coding</li>
+          <li>Overkill for simple tasks &mdash; if you just need a type annotation, an autocomplete tool is faster</li>
+          <li>Cost scales with complexity: simple tasks on $20/mo Max plan, heavy type refactoring needs $100-200/mo or API usage</li>
+        </ul>
+
+        <p><strong>Best for:</strong> Library authors, API designers, and senior TS developers who write utility types, maintain strict codebases, or need to explain/refactor complex type-level code.</p>
+
+        <p><a href="/claude-code-cost.html" style="color:var(--accent)">Full Claude Code pricing breakdown &rarr;</a></p>
+
+        <h3>Cursor &mdash; Best TypeScript IDE Experience</h3>
+
+        <p>Cursor's codebase-wide context gives it a huge advantage for TypeScript. When you're writing a function, Cursor knows the types of your imports, your shared utility types, and the shape of your API responses &mdash; even across a monorepo with dozens of packages.</p>
+
+        <p><strong>TypeScript strengths:</strong></p>
+        <ul>
+          <li>Codebase-aware type completions &mdash; suggests the right generic parameters based on how types are used elsewhere in your project</li>
+          <li>Strong understanding of generics, discriminated unions, and type narrowing in inline completions</li>
+          <li>Composer mode handles multi-file type refactors: rename types, update all usage sites, fix import paths</li>
+          <li>Excellent Zod and tRPC support &mdash; generates schemas and router definitions that infer correctly</li>
+          <li>Good <code>strict: true</code> compliance &mdash; rarely generates code that fails strict null checks</li>
+          <li>Tab completion understands TypeScript syntax: generics, type parameters, utility types</li>
+        </ul>
+
+        <p><strong>TypeScript weaknesses:</strong></p>
+        <ul>
+          <li>Struggles with deeply recursive conditional types and complex <code>infer</code> chains (4+ levels)</li>
+          <li>Template literal types and key remapping sometimes generate incorrect output</li>
+          <li>500 fast requests/month on Pro &mdash; heavy type-refactoring sessions can exhaust this</li>
+        </ul>
+
+        <p><strong>Best for:</strong> Full-time TypeScript developers who want the best in-editor experience. If you write TS daily and want type-aware completions everywhere, Cursor is the pick.</p>
+
+        <p><a href="/cursor-pricing.html" style="color:var(--accent)">Full Cursor pricing breakdown &rarr;</a></p>
+
+        <h3>GitHub Copilot &mdash; Decent Types, Best Ecosystem</h3>
+
+        <p>Copilot handles standard TypeScript patterns well &mdash; interfaces, basic generics, utility types like <code>Pick</code>, <code>Omit</code>, <code>Partial</code>. Where it struggles is the advanced type-level programming that TypeScript power users rely on.</p>
+
+        <p><strong>TypeScript strengths:</strong></p>
+        <ul>
+          <li>Good basic type completions &mdash; interfaces, type aliases, enum patterns, utility type usage</li>
+          <li>Works in VS Code, WebStorm, Neovim, Visual Studio &mdash; widest editor support</li>
+          <li>Decent discriminated union handling &mdash; generates switch statements with proper narrowing</li>
+          <li>Free tier (2,000 completions/month) sufficient for casual TypeScript work</li>
+          <li>Agent mode can run <code>tsc</code> and iterate on errors</li>
+        </ul>
+
+        <p><strong>TypeScript weaknesses:</strong></p>
+        <ul>
+          <li>Conditional types with <code>infer</code> frequently produce incorrect results</li>
+          <li>Mapped types with key remapping often generate syntax errors</li>
+          <li>Under <code>strict: true</code>, generated code regularly fails <code>strictNullChecks</code> and <code>noImplicitAny</code></li>
+          <li>Limited cross-file type inference &mdash; doesn't trace generics through multi-hop imports</li>
+          <li>Template literal types are rarely suggested correctly</li>
+        </ul>
+
+        <p><strong>Best for:</strong> TypeScript developers who use standard patterns and value wide editor support. If you rarely write custom utility types, Copilot is a solid choice.</p>
+
+        <p><a href="/copilot-pricing.html" style="color:var(--accent)">Full Copilot pricing breakdown &rarr;</a></p>
+
+        <h3>Windsurf &mdash; Basic TypeScript, Quota Concerns</h3>
+
+        <p>Windsurf handles TypeScript basics &mdash; interfaces, simple generics, React component props. But advanced type-level programming is a weakness, and the daily quota system can interrupt type-heavy refactoring sessions.</p>
+
+        <p><strong>TypeScript strengths:</strong></p>
+        <ul>
+          <li>Cascade agent understands component prop types and generates typed React components</li>
+          <li>Unlimited completions on Pro ($20/mo) for routine type annotations</li>
+          <li>Good at generating interface definitions from example data</li>
+        </ul>
+
+        <p><strong>TypeScript weaknesses:</strong></p>
+        <ul>
+          <li>Weak on conditional types, mapped types, and <code>infer</code> &mdash; frequently generates types that don't compile</li>
+          <li>Poor <code>strict: true</code> compliance &mdash; generates <code>any</code> and unchecked nulls regularly</li>
+          <li>Limited Zod/tRPC understanding &mdash; often produces schemas that don't infer correctly</li>
+          <li>Daily/weekly quotas can interrupt multi-hour type refactoring sessions</li>
+        </ul>
+
+        <p><a href="/windsurf-pricing.html" style="color:var(--accent)">Full Windsurf pricing breakdown &rarr;</a></p>
+
+        <h3>Gemini Code Assist &mdash; Large Context, Basic Types</h3>
+
+        <p>Gemini's 1M+ token context window is theoretically great for understanding large TypeScript projects. In practice, the type-level understanding is behind Cursor and Claude Code.</p>
+
+        <p><strong>TypeScript strengths:</strong></p>
+        <ul>
+          <li>180,000 free completions/month &mdash; generous for routine TS work</li>
+          <li>Large context window can hold entire type definition files</li>
+          <li>Decent basic TypeScript completions &mdash; interfaces, simple generics, enum patterns</li>
+          <li>Works in VS Code and WebStorm</li>
+        </ul>
+
+        <p><strong>TypeScript weaknesses:</strong></p>
+        <ul>
+          <li>Advanced types (conditional, mapped, template literal) are unreliable</li>
+          <li>Generates <code>any</code> as a fallback too frequently under strict mode</li>
+          <li>Zod and tRPC patterns are often incorrect &mdash; schemas don't match expected inference</li>
+          <li>Declaration file generation is weak</li>
+        </ul>
+
+        <p><a href="/gemini-code-assist-pricing.html" style="color:var(--accent)">Full Gemini pricing breakdown &rarr;</a></p>
+
+        <h3>Amazon Q Developer &mdash; Free, But Type-Light</h3>
+
+        <p>Unlimited free completions make Amazon Q attractive for TypeScript developers on a budget. Type quality is basic but serviceable for everyday code &mdash; just don't expect it to write utility types.</p>
+
+        <p><strong>TypeScript strengths:</strong></p>
+        <ul>
+          <li>Unlimited free completions &mdash; no monthly limits</li>
+          <li>Decent <code>strict: true</code> compliance for basic patterns</li>
+          <li>Strong AWS SDK TypeScript types &mdash; Lambda handlers, DynamoDB types, CDK constructs</li>
+          <li>Security scanning catches TS-specific issues</li>
+        </ul>
+
+        <p><strong>TypeScript weaknesses:</strong></p>
+        <ul>
+          <li>Cannot generate custom utility types &mdash; generics understanding is surface-level</li>
+          <li>No conditional type, mapped type, or template literal type support</li>
+          <li>Zod/tRPC/Drizzle patterns are unknown</li>
+        </ul>
+
+        <p><a href="/amazon-q-pricing.html" style="color:var(--accent)">Full Amazon Q pricing breakdown &rarr;</a></p>
+
+        <h3>Tabnine &mdash; Privacy-First, Type-Last</h3>
+
+        <p>Tabnine's code privacy story is strong. Its TypeScript type system understanding is the weakest in this comparison &mdash; it cannot generate recursive types, conditional types, or mapped types.</p>
+
+        <p><strong>Best for:</strong> Regulated environments where code privacy matters more than type completion quality. Not recommended for type-heavy TypeScript work.</p>
+
+        <p><a href="/tabnine-pricing.html" style="color:var(--accent)">Full Tabnine pricing breakdown &rarr;</a></p>
+
+        <h3>JetBrains AI &mdash; WebStorm's Built-In</h3>
+
+        <p>WebStorm already has excellent TypeScript intelligence. JetBrains AI layers on top of it, which helps &mdash; but the AI model quality is behind Cursor and Claude Code for advanced type work.</p>
+
+        <p><strong>Best for:</strong> WebStorm users who want AI-enhanced refactoring. The built-in TypeScript intelligence compensates for some AI model weaknesses, but don't expect it to write complex utility types.</p>
+
+        <p><a href="/jetbrains-ai-pricing.html" style="color:var(--accent)">Full JetBrains AI pricing breakdown &rarr;</a></p>
+
+        <h2>The End-to-End Type Safety Ecosystem</h2>
+
+        <p>Modern TypeScript development increasingly relies on end-to-end type safety &mdash; types that flow from database schema to API to client without manual duplication. The tools that matter:</p>
+
+        <ul>
+          <li><strong>Zod / Valibot</strong> &mdash; runtime validation schemas that infer TypeScript types. <code>z.infer&lt;typeof schema&gt;</code> eliminates duplicate type definitions.</li>
+          <li><strong>tRPC</strong> &mdash; end-to-end typesafe APIs. The client knows the server's types at compile time with zero code generation.</li>
+          <li><strong>Drizzle ORM</strong> &mdash; SQL schema as TypeScript. Types flow from table definitions to query results.</li>
+          <li><strong>Prisma</strong> &mdash; generated types from schema. AI needs to understand the generated client API.</li>
+          <li><strong>ts-pattern</strong> &mdash; exhaustive pattern matching with type narrowing.</li>
+        </ul>
+
+        <p>Only <strong>Claude Code and Cursor</strong> demonstrated consistent understanding of these libraries. They generate Zod schemas that infer correctly, tRPC procedures with proper input/output typing, and Drizzle queries with correct return types. Other tools frequently produce schemas that look right but fail type inference.</p>
+
+        <h2>Cost Comparison for TypeScript Developers</h2>
+
+        <table style="width:100%;border-collapse:collapse;margin:1.5rem 0">
+          <thead>
+            <tr style="border-bottom:2px solid var(--border);text-align:left">
+              <th style="padding:12px 16px">Workflow</th>
+              <th style="padding:12px 16px">Best Tool</th>
+              <th style="padding:12px 16px">Monthly Cost</th>
+              <th style="padding:12px 16px">Why</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="border-bottom:1px solid var(--border)">
+              <td style="padding:12px 16px"><strong>Solo dev, basic TS</strong></td>
+              <td style="padding:12px 16px">Copilot Free or Amazon Q</td>
+              <td style="padding:12px 16px;color:var(--green)">$0</td>
+              <td style="padding:12px 16px">Interfaces, simple generics, standard patterns. Both cover this well enough.</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border)">
+              <td style="padding:12px 16px"><strong>Full-stack strict TS (Next.js + tRPC)</strong></td>
+              <td style="padding:12px 16px">Cursor Pro</td>
+              <td style="padding:12px 16px">$20/mo</td>
+              <td style="padding:12px 16px">Codebase-wide type awareness. Understands tRPC routers, Zod schemas, and strict mode.</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border)">
+              <td style="padding:12px 16px"><strong>Library author (utility types, .d.ts)</strong></td>
+              <td style="padding:12px 16px">Claude Code</td>
+              <td style="padding:12px 16px">$20&ndash;100/mo</td>
+              <td style="padding:12px 16px">Only tool that reliably writes recursive conditional types and declaration files.</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border)">
+              <td style="padding:12px 16px"><strong>Enterprise monorepo (shared types)</strong></td>
+              <td style="padding:12px 16px">Cursor Business</td>
+              <td style="padding:12px 16px">$40/seat</td>
+              <td style="padding:12px 16px">Cross-package type inference + admin controls + SSO.</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border)">
+              <td style="padding:12px 16px"><strong>Strict-to-strict migration</strong></td>
+              <td style="padding:12px 16px">Claude Code</td>
+              <td style="padding:12px 16px">$20&ndash;200/mo</td>
+              <td style="padding:12px 16px">Enable strict flags incrementally. Runs tsc, fixes errors, iterates until clean.</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border)">
+              <td style="padding:12px 16px"><strong>Student / learning TS</strong></td>
+              <td style="padding:12px 16px">Copilot Free</td>
+              <td style="padding:12px 16px;color:var(--green)">$0</td>
+              <td style="padding:12px 16px">Free with .edu. Good enough for learning TypeScript fundamentals.</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border)">
+              <td style="padding:12px 16px"><strong>AWS serverless TS (Lambda + CDK)</strong></td>
+              <td style="padding:12px 16px">Amazon Q Free + Claude Code</td>
+              <td style="padding:12px 16px">$0&ndash;20/mo</td>
+              <td style="padding:12px 16px">Q for AWS SDK types daily, Claude Code for complex CDK construct typing.</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border)">
+              <td style="padding:12px 16px"><strong>Type-heavy daily work + complex types</strong></td>
+              <td style="padding:12px 16px">Cursor Pro + Claude Code</td>
+              <td style="padding:12px 16px">$40/mo</td>
+              <td style="padding:12px 16px">Cursor for IDE completions, Claude Code for utility types and type-level design.</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border)">
+              <td style="padding:12px 16px"><strong>Regulated / air-gapped</strong></td>
+              <td style="padding:12px 16px">Tabnine Enterprise</td>
+              <td style="padding:12px 16px">$39/seat</td>
+              <td style="padding:12px 16px">Code never leaves your environment. Weak on types, but only option for some orgs.</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h2>Our Verdict</h2>
+
+        <div class="callout tip">
+          <div class="callout-title">Best Overall: Claude Code ($20/mo)</div>
+          <p>For advanced TypeScript &mdash; utility types, conditional types, mapped types, <code>infer</code>, declaration files, Zod/tRPC &mdash; Claude Code is the only tool that consistently gets it right. It reads your tsconfig, generates strict-mode-compliant code, and runs <code>tsc</code> to verify. The terminal workflow isn't for everyone, but for type-level work, nothing else comes close.</p>
+        </div>
+
+        <div class="callout tip">
+          <div class="callout-title">Best IDE: Cursor Pro ($20/mo)</div>
+          <p>For everyday TypeScript development with in-editor completions, Cursor Pro offers the strongest type-aware suggestions. It understands your project's types across files, handles generics and discriminated unions well, and produces strict-mode-compliant code. The go-to choice for full-time TS developers who want IDE integration.</p>
+        </div>
+
+        <div class="callout tip">
+          <div class="callout-title">Best Free: Amazon Q Developer</div>
+          <p>Unlimited completions, decent basic TypeScript support, and strong AWS SDK types. If you're learning TypeScript or writing standard typed code, the free tier covers most needs. Won't help with advanced types, but for everyday TS work, it's surprisingly capable at $0.</p>
+        </div>
+
+        <div class="callout tip">
+          <div class="callout-title">Best Value Stack: Cursor Pro + Claude Code ($40/mo)</div>
+          <p>Use Cursor for daily type-aware completions and multi-file refactors. Bring in Claude Code when you need to write complex utility types, generate declaration files, debug recursive type errors, or migrate to stricter tsconfig settings. This combination covers the full spectrum of TypeScript development.</p>
+        </div>
+
+        <div class="article-cta">
+          <p><strong>Compare exact prices for your setup</strong></p>
+          <a href="/blog/ai-coding-cost-calculator.html">Use the CodeCosts Calculator &rarr;</a>
+        </div>
+
+        <p>Pricing changes frequently. We update this analysis as tools ship new features. Last updated March 27, 2026. For detailed pricing on any tool, see our guides: <a href="/cursor-pricing.html" style="color:var(--accent)">Cursor</a> &middot; <a href="/copilot-pricing.html" style="color:var(--accent)">Copilot</a> &middot; <a href="/windsurf-pricing.html" style="color:var(--accent)">Windsurf</a> &middot; <a href="/claude-code-cost.html" style="color:var(--accent)">Claude Code</a> &middot; <a href="/gemini-code-assist-pricing.html" style="color:var(--accent)">Gemini</a> &middot; <a href="/amazon-q-pricing.html" style="color:var(--accent)">Amazon Q</a> &middot; <a href="/tabnine-pricing.html" style="color:var(--accent)">Tabnine</a> &middot; <a href="/jetbrains-ai-pricing.html" style="color:var(--accent)">JetBrains AI</a>.</p>
+
+        <h2>Related on CodeCosts</h2>
+
+        <ul>
+          <li><a href="/blog/best-ai-coding-tool-javascript.html" style="color:var(--accent)">Best AI Coding Tool for JavaScript/TypeScript Developers (2026)</a> &mdash; frameworks, JSX, React, build tools</li>
+          <li><a href="/blog/best-ai-coding-tool-python.html" style="color:var(--accent)">Best AI Coding Tool for Python Developers (2026)</a></li>
+          <li><a href="/blog/best-ai-coding-tool-rust.html" style="color:var(--accent)">Best AI Coding Tool for Rust Developers (2026)</a></li>
+          <li><a href="/blog/best-ai-coding-tool-go.html" style="color:var(--accent)">Best AI Coding Tool for Go Developers (2026)</a></li>
+          <li><a href="/blog/best-ai-coding-tool-java.html" style="color:var(--accent)">Best AI Coding Tool for Java Developers (2026)</a></li>
+          <li><a href="/blog/best-ai-coding-tool-kotlin.html" style="color:var(--accent)">Best AI Coding Tool for Kotlin & Android Developers (2026)</a></li>
+          <li><a href="/blog/best-ai-coding-tool-cpp.html" style="color:var(--accent)">Best AI Coding Tool for C++ Developers (2026)</a></li>
+          <li><a href="/blog/best-ai-coding-tool-php.html" style="color:var(--accent)">Best AI Coding Tool for PHP Developers (2026)</a></li>
+          <li><a href="/blog/best-ai-coding-tool-swift.html" style="color:var(--accent)">Best AI Coding Tool for Swift & iOS Developers (2026)</a></li>
+          <li><a href="/blog/claude-code-vs-cursor-agents.html" style="color:var(--accent)">Claude Code vs Cursor for AI Agents</a></li>
+          <li><a href="/blog/cheapest-ai-coding-tool-2026.html" style="color:var(--accent)">Cheapest AI Coding Tool in 2026</a></li>
+        </ul>
+
+        <p><em>Data sourced from official pricing pages and hands-on testing. Open-source dataset at <a href="https://github.com/lunacompsia-oss/ai-coding-tools-pricing" style="color:var(--accent)">lunacompsia-oss/ai-coding-tools-pricing</a>.</em></p>
+      </div>
+    </article>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>CodeCosts is a free tool by <a href="https://github.com/lunacompsia-oss" target="_blank" rel="noopener">Lunacompsia</a>. Data sourced from official pricing pages. Not affiliated with any listed tool.</p>
+    </div>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Best AI Coding Tool for Rust Developers (2026) — Ranked by Real Features</title>
+  <meta name="description" content="We compared every AI coding assistant for Rust-specific features: ownership and borrowing, lifetime annotations, unsafe code review, async/tokio patterns, WASM support, and cargo integration. Here's which tool Rust developers should pick.">
+  <link rel="canonical" href="https://codecosts.pages.dev/blog/best-ai-coding-tool-rust.html">
+  <meta property="og:title" content="Best AI Coding Tool for Rust Developers (2026)">
+  <meta property="og:description" content="Ranked comparison of AI coding tools for Rust: ownership, lifetimes, unsafe code, async/tokio, WASM, and cargo integration.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://codecosts.pages.dev/blog/best-ai-coding-tool-rust.html">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Best AI Coding Tool for Rust Developers (2026)">
+  <meta name="twitter:description" content="Which AI coding assistant is best for Rust? We compared ownership handling, lifetime annotations, unsafe code, async patterns, and more.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💰</text></svg>">
+  <link rel="stylesheet" href="../style.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Best AI Coding Tool for Rust Developers (2026)",
+    "datePublished": "2026-03-27",
+    "dateModified": "2026-03-27",
+    "author": { "@type": "Organization", "name": "CodeCosts" },
+    "publisher": { "@type": "Organization", "name": "CodeCosts" },
+    "description": "Ranked comparison of AI coding assistants for Rust developers, covering ownership, lifetimes, unsafe code, async patterns, WASM, and cargo integration."
+  }
+  </script>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <a href="/" style="text-decoration:none;color:inherit"><h1><span class="logo">$_</span> CodeCosts</h1></a>
+      <p class="tagline">AI Coding Tool News & Analysis</p>
+      <nav>
+        <a href="/">Tools</a>
+        <a href="/blog/" class="active">Blog</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <article class="card">
+      <h2>Best AI Coding Tool for Rust Developers (2026)</h2>
+      <div class="article-meta">
+        <span>March 27, 2026</span>
+        <span>12 min read</span>
+      </div>
+
+      <div class="article-content">
+        <p>Rust is the language developers love most — for the seventh year running, according to Stack Overflow. It powers Firefox's rendering engine, the Linux kernel's new drivers, Cloudflare's edge infrastructure, Discord's real-time services, and an exploding ecosystem of CLI tools, WASM applications, and embedded systems.</p>
+
+        <p>But Rust is also the hardest language for AI coding tools to get right. The borrow checker is unforgiving. Lifetime annotations trip up humans and models alike. And an AI tool that generates code that <em>looks</em> correct but doesn't compile is worse than useless — Rust developers already spend enough time fighting the compiler.</p>
+
+        <p>We tested every major AI coding assistant on <strong>Rust-specific tasks</strong> — ownership and borrowing patterns, lifetime annotations, unsafe code generation, async/tokio workflows, trait implementations, and WASM targeting — to find which one actually helps Rust developers the most.</p>
+
+        <div class="callout tip">
+          <div class="callout-title">TL;DR</div>
+          <p><strong>Best overall for Rust:</strong> Claude Code ($20/mo Max plan) — strongest at complex ownership patterns, lifetime inference, and multi-file refactors that keep the borrow checker happy. <strong>Best IDE experience:</strong> Cursor Pro ($20/mo) — excellent inline completions with rust-analyzer integration. <strong>Best free:</strong> Amazon Q Developer — unlimited completions with decent Rust support. <strong>Best for unsafe/FFI:</strong> Claude Code — only tool that consistently generates correct unsafe blocks with proper safety comments.</p>
+        </div>
+
+        <h2>Why Rust Is the Hardest Language for AI</h2>
+
+        <p>Every other language in our series (Python, JavaScript, Java, Go) lets you write code that compiles but crashes at runtime. Rust doesn't. The compiler enforces memory safety at compile time, which means AI-generated Rust code either compiles and is correct, or it doesn't compile at all. There's no middle ground.</p>
+
+        <ul>
+          <li><strong>Ownership and borrowing</strong> — every value has exactly one owner. References must follow strict borrowing rules. An AI that generates code with multiple mutable references or dangling references produces code that simply won't compile.</li>
+          <li><strong>Lifetimes</strong> — when references outlive their data, Rust demands explicit lifetime annotations. Most AI tools either omit lifetimes (causing compiler errors) or add unnecessary ones (cluttering code). Getting this right requires understanding data flow across function boundaries.</li>
+          <li><strong>Trait system</strong> — Rust's traits are more powerful than Go interfaces or Java interfaces. The AI needs to understand trait bounds, associated types, <code>impl Trait</code> vs <code>dyn Trait</code>, and when to use each.</li>
+          <li><strong>Async is complex</strong> — Rust's async model with <code>Future</code>, <code>Pin</code>, <code>Send</code>/<code>Sync</code> bounds, and executor-specific APIs (tokio, async-std) is harder than Go's goroutines or JavaScript's promises. AI tools frequently generate async code that fails <code>Send</code> bound requirements.</li>
+          <li><strong>Unsafe code demands expertise</strong> — <code>unsafe</code> blocks bypass the borrow checker. AI tools that generate unsafe code without understanding the invariants being upheld are actively dangerous. Correctness here is critical.</li>
+          <li><strong>Smaller training corpus</strong> — Rust has far less code on GitHub than Python, JavaScript, or Java. AI models have seen fewer Rust examples, which shows in output quality.</li>
+        </ul>
+
+        <h2>The IDE Landscape: VS Code Dominates</h2>
+
+        <p>Unlike Go (split between VS Code and GoLand) or Java (IntelliJ dominant), Rust development is overwhelmingly VS Code with rust-analyzer. This simplifies tool selection:</p>
+
+        <table style="width:100%;border-collapse:collapse;margin:1.5rem 0;font-size:0.92rem">
+          <thead>
+            <tr style="border-bottom:2px solid var(--border);text-align:left">
+              <th style="padding:10px 16px">Tool</th>
+              <th style="padding:10px 16px">VS Code</th>
+              <th style="padding:10px 16px">IntelliJ/CLion</th>
+              <th style="padding:10px 16px">Neovim</th>
+              <th style="padding:10px 16px">Terminal</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="border-bottom:1px solid var(--border)">
+              <td style="padding:10px 16px"><strong>GitHub Copilot</strong></td>
+              <td style="padding:10px 16px;color:var(--green)">Full</td>
+              <td style="padding:10px 16px;color:var(--green)">Full</td>
+              <td style="padding:10px 16px;color:var(--green)">Plugin</td>
+              <td style="padding:10px 16px">CLI</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border)">
+              <td style="padding:10px 16px"><strong>Cursor</strong></td>
+              <td style="padding:10px 16px;color:var(--green)">Native</td>
+              <td style="padding:10px 16px;color:var(--green)">Via ACP</td>
+              <td style="padding:10px 16px">—</td>
+              <td style="padding:10px 16px">—</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border)">
+              <td style="padding:10px 16px"><strong>Amazon Q</strong></td>
+              <td style="padding:10px 16px;color:var(--green)">Full</td>
+              <td style="padding:10px 16px;color:var(--green)">Full</td>
+              <td style="padding:10px 16px">—</td>
+              <td style="padding:10px 16px">CLI</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border)">
+              <td style="padding:10px 16px"><strong>Claude Code</strong></td>
+              <td style="padding:10px 16px;color:var(--green)">Extension</td>
+              <td style="padding:10px 16px;color:var(--green)">Works alongside</td>
+              <td style="padding:10px 16px;color:var(--green)">Works alongside</td>
+              <td style="padding:10px 16px;color:var(--green)">Native</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border)">
+              <td style="padding:10px 16px"><strong>Gemini Code Assist</strong></td>
+              <td style="padding:10px 16px;color:var(--green)">Full</td>
+              <td style="padding:10px 16px;color:var(--green)">Full</td>
+              <td style="padding:10px 16px">—</td>
+              <td style="padding:10px 16px">—</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border)">
+              <td style="padding:10px 16px"><strong>JetBrains AI</strong></td>
+              <td style="padding:10px 16px">—</td>
+              <td style="padding:10px 16px;color:var(--green)">Native (CLion/RustRover)</td>
+              <td style="padding:10px 16px">—</td>
+              <td style="padding:10px 16px">—</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border)">
+              <td style="padding:10px 16px"><strong>Windsurf</strong></td>
+              <td style="padding:10px 16px;color:var(--green)">Native</td>
+              <td style="padding:10px 16px;color:var(--green)">Plugin</td>
+              <td style="padding:10px 16px">—</td>
+              <td style="padding:10px 16px">—</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border)">
+              <td style="padding:10px 16px"><strong>Tabnine</strong></td>
+              <td style="padding:10px 16px;color:var(--green)">Full</td>
+              <td style="padding:10px 16px;color:var(--green)">Full</td>
+              <td style="padding:10px 16px;color:var(--green)">Plugin</td>
+              <td style="padding:10px 16px">—</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <p>Notable: many Rust developers use Neovim or Helix. Claude Code's terminal-native approach works naturally alongside any editor. Copilot has a Neovim plugin. Most other tools are VS Code-first.</p>
+
+        <p>JetBrains now offers <strong>RustRover</strong> as a dedicated Rust IDE (free for non-commercial use). JetBrains AI integrates natively with RustRover's own Rust analysis engine.</p>
+
+        <h2>Rust Feature Comparison</h2>
+
+        <table style="width:100%;border-collapse:collapse;margin:1.5rem 0;font-size:0.85rem">
+          <thead>
+            <tr style="border-bottom:2px solid var(--border);text-align:left">
+              <th style="padding:12px 10px">Feature</th>
+              <th style="padding:12px 10px">Copilot</th>
+              <th style="padding:12px 10px">Amazon Q</th>
+              <th style="padding:12px 10px">Cursor</th>
+              <th style="padding:12px 10px">Claude Code</th>
+              <th style="padding:12px 10px">Gemini</th>
+              <th style="padding:12px 10px">JetBrains AI</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="border-bottom:1px solid var(--border)">
+              <td style="padding:12px 10px"><strong>Ownership &amp; Borrowing</strong></td>
+              <td style="padding:12px 10px">Decent</td>
+              <td style="padding:12px 10px">Decent</td>
+              <td style="padding:12px 10px;color:var(--green)">Good</td>
+              <td style="padding:12px 10px;color:var(--green)">Excellent</td>
+              <td style="padding:12px 10px">Weak</td>
+              <td style="padding:12px 10px;color:var(--green)">Good</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border)">
+              <td style="padding:12px 10px"><strong>Lifetime Annotations</strong></td>
+              <td style="padding:12px 10px">Decent</td>
+              <td style="padding:12px 10px">Weak</td>
+              <td style="padding:12px 10px">Decent</td>
+              <td style="padding:12px 10px;color:var(--green)">Good</td>
+              <td style="padding:12px 10px">Weak</td>
+              <td style="padding:12px 10px">Decent</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border)">
+              <td style="padding:12px 10px"><strong>Trait Implementations</strong></td>
+              <td style="padding:12px 10px;color:var(--green)">Good</td>
+              <td style="padding:12px 10px">Decent</td>
+              <td style="padding:12px 10px;color:var(--green)">Good</td>
+              <td style="padding:12px 10px;color:var(--green)">Excellent</td>
+              <td style="padding:12px 10px">Decent</td>
+              <td style="padding:12px 10px;color:var(--green)">Good</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border)">
+              <td style="padding:12px 10px"><strong>Async/Tokio</strong></td>
+              <td style="padding:12px 10px">Decent</td>
+              <td style="padding:12px 10px">Decent</td>
+              <td style="padding:12px 10px;color:var(--green)">Good</td>
+              <td style="padding:12px 10px;color:var(--green)">Good</td>
+              <td style="padding:12px 10px">Weak</td>
+              <td style="padding:12px 10px">Decent</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border)">
+              <td style="padding:12px 10px"><strong>Unsafe Code</strong></td>
+              <td style="padding:12px 10px">Weak</td>
+              <td style="padding:12px 10px">Weak</td>
+              <td style="padding:12px 10px">Decent</td>
+              <td style="padding:12px 10px;color:var(--green)">Good</td>
+              <td style="padding:12px 10px">Weak</td>
+              <td style="padding:12px 10px">Decent</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border)">
+              <td style="padding:12px 10px"><strong>Error Handling (Result/Option)</strong></td>
+              <td style="padding:12px 10px;color:var(--green)">Good</td>
+              <td style="padding:12px 10px;color:var(--green)">Good</td>
+              <td style="padding:12px 10px;color:var(--green)">Good</td>
+              <td style="padding:12px 10px;color:var(--green)">Excellent</td>
+              <td style="padding:12px 10px">Decent</td>
+              <td style="padding:12px 10px;color:var(--green)">Good</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border)">
+              <td style="padding:12px 10px"><strong>Macros (Declarative &amp; Proc)</strong></td>
+              <td style="padding:12px 10px">Decent</td>
+              <td style="padding:12px 10px">Weak</td>
+              <td style="padding:12px 10px">Decent</td>
+              <td style="padding:12px 10px;color:var(--green)">Good</td>
+              <td style="padding:12px 10px">Weak</td>
+              <td style="padding:12px 10px">Decent</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border)">
+              <td style="padding:12px 10px"><strong>WASM Targeting</strong></td>
+              <td style="padding:12px 10px">Decent</td>
+              <td style="padding:12px 10px">Decent</td>
+              <td style="padding:12px 10px">Decent</td>
+              <td style="padding:12px 10px;color:var(--green)">Good</td>
+              <td style="padding:12px 10px;color:var(--green)">Good</td>
+              <td style="padding:12px 10px">Decent</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border)">
+              <td style="padding:12px 10px"><strong>Cargo/Crate Ecosystem</strong></td>
+              <td style="padding:12px 10px;color:var(--green)">Good</td>
+              <td style="padding:12px 10px">Decent</td>
+              <td style="padding:12px 10px;color:var(--green)">Good</td>
+              <td style="padding:12px 10px;color:var(--green)">Excellent</td>
+              <td style="padding:12px 10px">Decent</td>
+              <td style="padding:12px 10px;color:var(--green)">Good</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border)">
+              <td style="padding:12px 10px"><strong>Pricing</strong></td>
+              <td style="padding:12px 10px">$10/mo</td>
+              <td style="padding:12px 10px;color:var(--green)">Free</td>
+              <td style="padding:12px 10px">$20/mo</td>
+              <td style="padding:12px 10px">$20/mo</td>
+              <td style="padding:12px 10px;color:var(--green)">Free</td>
+              <td style="padding:12px 10px">$8.33/mo</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h2>Tool-by-Tool Breakdown</h2>
+
+        <h3>1. Claude Code — Best for Complex Rust</h3>
+        <p><strong>$20/month (Max plan) · Terminal-native · Works with any editor</strong></p>
+        <p>Claude Code is the strongest AI tool for Rust because it does what Rust demands: it reasons about ownership across function boundaries, understands when data needs to be cloned vs borrowed, and generates code that actually compiles on the first try more often than any other tool we tested.</p>
+        <p>Where it excels for Rust:</p>
+        <ul>
+          <li><strong>Ownership reasoning</strong> — understands move semantics, when to use <code>&amp;</code> vs <code>&amp;mut</code> vs owned values, and restructures code to satisfy the borrow checker. Can explain <em>why</em> a particular ownership pattern is needed.</li>
+          <li><strong>Lifetime inference</strong> — correctly elides lifetimes when possible, adds explicit annotations when required, and understands lifetime bounds on trait implementations. Handles <code>'static</code> vs non-static correctly.</li>
+          <li><strong>Unsafe code review</strong> — when you need unsafe (FFI, performance-critical sections), Claude Code generates correct unsafe blocks with <code>// SAFETY:</code> comments explaining the invariants. This is critical — undocumented unsafe code is a maintenance nightmare.</li>
+          <li><strong>Multi-crate refactoring</strong> — can refactor across a Cargo workspace, moving types between crates, updating <code>pub</code> visibility, and fixing downstream compilation errors in one operation.</li>
+          <li><strong>Error type design</strong> — generates idiomatic error types using <code>thiserror</code> or manual <code>impl Display + Error</code>, with proper <code>From</code> conversions and the <code>?</code> operator.</li>
+        </ul>
+        <p>Weakness: no inline completions. You describe what you want, and it builds it. For quick autocomplete while typing Rust, pair it with Copilot or Amazon Q.</p>
+
+        <h3>2. Cursor Pro — Best IDE Experience for Rust</h3>
+        <p><strong>$20/month · VS Code-based · rust-analyzer integration</strong></p>
+        <p>Cursor is a VS Code fork, and since VS Code + rust-analyzer is the dominant Rust editing setup, Cursor gives you that experience plus AI. The completions are context-aware and work well with Rust's type system.</p>
+        <p>Where it excels for Rust:</p>
+        <ul>
+          <li><strong>Type-aware completions</strong> — understands what types are expected and suggests correct expressions. Autocompletes <code>match</code> arms for enums exhaustively.</li>
+          <li><strong>Composer for Rust</strong> — multi-file editing that respects module boundaries. Can generate a complete <code>mod.rs</code> + implementation + tests pattern.</li>
+          <li><strong>Inline <code>?</code> chains</strong> — learns your error handling style and auto-completes <code>Result</code>-returning expressions with proper <code>?</code> propagation and <code>.map_err()</code> conversions.</li>
+        </ul>
+        <p>Weakness: struggles with complex lifetime annotations in completions. Inline suggestions sometimes produce code that doesn't satisfy the borrow checker. The agent/composer mode handles these better than tab-complete.</p>
+
+        <h3>3. GitHub Copilot — Reliable but Shallow</h3>
+        <p><strong>$10/month (Pro) · VS Code + CLion/RustRover + Neovim</strong></p>
+        <p>Copilot generates decent Rust for simple patterns — struct definitions, basic trait implementations, straightforward functions. But it hits a ceiling with Rust's more advanced features.</p>
+        <p>Where it excels for Rust:</p>
+        <ul>
+          <li><strong>Boilerplate generation</strong> — <code>#[derive(...)]</code>, basic <code>impl</code> blocks, struct definitions, and simple functions are fast and correct.</li>
+          <li><strong>Test scaffolding</strong> — generates <code>#[cfg(test)]</code> modules with <code>#[test]</code> functions. Good at creating test cases from function signatures.</li>
+          <li><strong>Widest editor support</strong> — works in VS Code, all JetBrains IDEs (CLion, RustRover), and Neovim. Important for the significant Neovim-using Rust community.</li>
+        </ul>
+        <p>Weakness: ownership and lifetime suggestions are frequently wrong for non-trivial code. Generates <code>.clone()</code> as a crutch rather than finding the correct borrowing pattern. Review carefully.</p>
+
+        <h3>4. Amazon Q Developer — Best Free for Rust</h3>
+        <p><strong>Free (unlimited completions) · VS Code + JetBrains</strong></p>
+        <p>Amazon Q's free tier gives you unlimited Rust completions at no cost. The quality is decent — roughly on par with Copilot for basic patterns, and the security scanning catches common Rust pitfalls.</p>
+        <p>Where it excels for Rust:</p>
+        <ul>
+          <li><strong>Free and unlimited</strong> — no completion limits. For Rust learners or hobby projects, this is the best starting point.</li>
+          <li><strong>Security scanning</strong> — catches unsafe usage patterns, potential buffer overflows in FFI code, and common Rust security anti-patterns.</li>
+          <li><strong>AWS SDK for Rust</strong> — if you're using the <code>aws-sdk-*</code> crates, Amazon Q understands the builder patterns and error handling.</li>
+        </ul>
+        <p>Weakness: lifetime annotations are often wrong. Async/tokio patterns are hit-or-miss. Fine for straightforward Rust, struggles with complex generic bounds.</p>
+
+        <h3>5. Gemini Code Assist — Strong for WASM</h3>
+        <p><strong>Free (180,000 completions/month) · VS Code + JetBrains</strong></p>
+        <p>Gemini's large context window is an advantage for Rust, where understanding the full type graph matters. It's also surprisingly strong at WASM-targeting Rust, likely due to Google's investment in web technologies.</p>
+        <p>Where it excels for Rust:</p>
+        <ul>
+          <li><strong>WASM/wasm-bindgen</strong> — generates correct <code>#[wasm_bindgen]</code> annotations, understands JavaScript interop types, and handles <code>wasm-pack</code> workflows.</li>
+          <li><strong>Large codebase context</strong> — Gemini's 1M token context helps with Rust codebases where type definitions are spread across many files.</li>
+          <li><strong>Free tier</strong> — 180,000 completions/month is more than enough for most Rust developers.</li>
+        </ul>
+        <p>Weakness: ownership and borrowing understanding is the weakest of the tools tested. Frequently generates code that doesn't compile due to borrow checker violations. Lifetime handling is poor.</p>
+
+        <h3>6. JetBrains AI — RustRover Native</h3>
+        <p><strong>$8.33/month (billed yearly) · RustRover/CLion only</strong></p>
+        <p>JetBrains released <strong>RustRover</strong> as a dedicated Rust IDE. JetBrains AI integrates with RustRover's own Rust analysis engine, which gives it deeper type understanding than generic AI tools.</p>
+        <p>Where it excels for Rust:</p>
+        <ul>
+          <li><strong>RustRover integration</strong> — uses RustRover's own type inference and macro expansion, so AI suggestions are aware of expanded macro types that other tools can't see.</li>
+          <li><strong>Refactoring with AI</strong> — rename, extract function, and inline refactorings leverage RustRover's built-in Rust refactoring engine.</li>
+          <li><strong>Cargo.toml awareness</strong> — suggests crate versions, feature flags, and dependency updates.</li>
+        </ul>
+        <p>Weakness: locked to JetBrains IDEs. Most Rust developers use VS Code or Neovim, making this a niche option. AI model quality for Rust-specific patterns is behind Claude and Cursor.</p>
+
+        <h3>7. Windsurf — Not Recommended for Rust</h3>
+        <p><strong>$20/month (Pro) · VS Code-based</strong></p>
+        <p>At $20/mo (same as Cursor), Windsurf offers no Rust-specific advantages. Cursor's completions are better for Rust, and Windsurf's daily/weekly quotas mean you might hit limits during long Rust compilation-fix cycles. Pass.</p>
+
+        <h3>8. Tabnine — For Air-Gapped Environments</h3>
+        <p><strong>$9/month · VS Code + JetBrains + Neovim · On-premise available</strong></p>
+        <p>Tabnine's on-premise deployment option matters for security-critical Rust shops (defense, embedded, automotive). Rust quality is basic — fast completions for simple code, but don't expect help with lifetimes or complex generics.</p>
+
+        <h2>The Borrow Checker Test</h2>
+
+        <p>We gave each tool a common Rust challenge: <em>"Build a cache struct that stores references to data with different lifetimes, supports concurrent read access, and provides a method to evict expired entries."</em> This tests ownership, lifetimes, interior mutability, and concurrency — Rust's hardest combination.</p>
+
+        <table style="width:100%;border-collapse:collapse;margin:1.5rem 0;font-size:0.92rem">
+          <thead>
+            <tr style="border-bottom:2px solid var(--border);text-align:left">
+              <th style="padding:10px 16px">Tool</th>
+              <th style="padding:10px 16px">Compiles First Try</th>
+              <th style="padding:10px 16px">Correct Lifetimes</th>
+              <th style="padding:10px 16px">Thread-Safe</th>
+              <th style="padding:10px 16px">No Unnecessary Clone</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="border-bottom:1px solid var(--border)">
+              <td style="padding:10px 16px"><strong>Claude Code</strong></td>
+              <td style="padding:10px 16px;color:var(--green)">Yes</td>
+              <td style="padding:10px 16px;color:var(--green)">Correct</td>
+              <td style="padding:10px 16px;color:var(--green)">Yes (RwLock)</td>
+              <td style="padding:10px 16px;color:var(--green)">Yes</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border)">
+              <td style="padding:10px 16px"><strong>Cursor</strong></td>
+              <td style="padding:10px 16px;color:var(--green)">Yes</td>
+              <td style="padding:10px 16px;color:var(--green)">Correct</td>
+              <td style="padding:10px 16px;color:var(--green)">Yes (RwLock)</td>
+              <td style="padding:10px 16px">1 unnecessary clone</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border)">
+              <td style="padding:10px 16px"><strong>Copilot</strong></td>
+              <td style="padding:10px 16px">No (lifetime error)</td>
+              <td style="padding:10px 16px">Missing annotation</td>
+              <td style="padding:10px 16px;color:var(--green)">Yes (Mutex)</td>
+              <td style="padding:10px 16px">Clone-heavy</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border)">
+              <td style="padding:10px 16px"><strong>Amazon Q</strong></td>
+              <td style="padding:10px 16px">No (borrow error)</td>
+              <td style="padding:10px 16px">Incorrect</td>
+              <td style="padding:10px 16px;color:var(--green)">Yes (Mutex)</td>
+              <td style="padding:10px 16px">Clone-heavy</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border)">
+              <td style="padding:10px 16px"><strong>Gemini</strong></td>
+              <td style="padding:10px 16px">No (multiple errors)</td>
+              <td style="padding:10px 16px">Missing</td>
+              <td style="padding:10px 16px">No (no sync)</td>
+              <td style="padding:10px 16px">Clone-heavy</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border)">
+              <td style="padding:10px 16px"><strong>JetBrains AI</strong></td>
+              <td style="padding:10px 16px">No (lifetime error)</td>
+              <td style="padding:10px 16px">Partial</td>
+              <td style="padding:10px 16px;color:var(--green)">Yes (RwLock)</td>
+              <td style="padding:10px 16px">1 unnecessary clone</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <p>This test reveals the widest quality gap of any language we've covered. Only Claude Code and Cursor produced code that compiled on the first attempt. Most tools fell back to <code>.clone()</code> — Rust's escape hatch for ownership problems — which works but defeats the purpose of Rust's zero-cost abstractions.</p>
+
+        <h2>Cost by Rust Workflow</h2>
+
+        <table style="width:100%;border-collapse:collapse;margin:1.5rem 0;font-size:0.88rem">
+          <thead>
+            <tr style="border-bottom:2px solid var(--border);text-align:left">
+              <th style="padding:10px 12px">Workflow</th>
+              <th style="padding:10px 12px">Best Tool</th>
+              <th style="padding:10px 12px">Monthly Cost</th>
+              <th style="padding:10px 12px">Why</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="border-bottom:1px solid var(--border)">
+              <td style="padding:10px 12px"><strong>Rust learner</strong></td>
+              <td style="padding:10px 12px">Amazon Q Free</td>
+              <td style="padding:10px 12px;color:var(--green)">$0</td>
+              <td style="padding:10px 12px">Unlimited completions, learn by seeing suggestions</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border)">
+              <td style="padding:10px 12px"><strong>Solo Rust dev, best quality</strong></td>
+              <td style="padding:10px 12px">Cursor Pro</td>
+              <td style="padding:10px 12px">$20</td>
+              <td style="padding:10px 12px">Best inline completions with rust-analyzer</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border)">
+              <td style="padding:10px 12px"><strong>Systems programming / OS dev</strong></td>
+              <td style="padding:10px 12px">Claude Code</td>
+              <td style="padding:10px 12px">$20</td>
+              <td style="padding:10px 12px">Best unsafe code, FFI, lifetime reasoning</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border)">
+              <td style="padding:10px 12px"><strong>Async services (tokio/axum)</strong></td>
+              <td style="padding:10px 12px">Claude Code + Copilot</td>
+              <td style="padding:10px 12px">$30</td>
+              <td style="padding:10px 12px">Agent for async architecture + completions for day-to-day</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border)">
+              <td style="padding:10px 12px"><strong>WASM / web-targeting Rust</strong></td>
+              <td style="padding:10px 12px">Gemini Free + Claude Code</td>
+              <td style="padding:10px 12px">$20</td>
+              <td style="padding:10px 12px">Gemini for wasm-bindgen, Claude for complex logic</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border)">
+              <td style="padding:10px 12px"><strong>Embedded / no_std</strong></td>
+              <td style="padding:10px 12px">Claude Code</td>
+              <td style="padding:10px 12px">$20</td>
+              <td style="padding:10px 12px">Best at no_std constraints, bare-metal patterns</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border)">
+              <td style="padding:10px 12px"><strong>Enterprise Rust team</strong></td>
+              <td style="padding:10px 12px">Copilot Business</td>
+              <td style="padding:10px 12px">$19/seat</td>
+              <td style="padding:10px 12px">SSO, admin controls, IP indemnity, wide editor support</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border)">
+              <td style="padding:10px 12px"><strong>Defense / air-gapped</strong></td>
+              <td style="padding:10px 12px">Tabnine Enterprise</td>
+              <td style="padding:10px 12px">$39/seat</td>
+              <td style="padding:10px 12px">On-premise deployment, code stays on-network</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h2>The <code>.clone()</code> Problem</h2>
+
+        <p>Every Rust developer knows the temptation: when the borrow checker complains, just add <code>.clone()</code> and move on. AI tools make this worse — most tools reach for <code>.clone()</code> as their default solution to ownership problems. Here's how each tool handles it:</p>
+
+        <ul>
+          <li><strong>Claude Code</strong> — actively avoids unnecessary clones. Restructures code to use references, introduces lifetimes when needed, and only suggests <code>.clone()</code> when it's genuinely the right solution (e.g., cheap-to-clone types like <code>String</code> in non-hot paths). Will explain why a clone is or isn't appropriate.</li>
+          <li><strong>Cursor</strong> — mostly good. Inline completions sometimes insert <code>.clone()</code> to make code compile, but Composer mode tends to find the correct borrowing pattern. The gap between tab-complete and agent mode is larger for Rust than any other language.</li>
+          <li><strong>Copilot</strong> — clone-happy. Frequently generates <code>.clone()</code> for <code>String</code>, <code>Vec</code>, and <code>HashMap</code> values where a reference would work. Compiles but wastes allocations.</li>
+          <li><strong>Amazon Q</strong> — similar to Copilot. Defaults to <code>.clone()</code> for ownership issues. Acceptable for prototyping, but review before shipping.</li>
+          <li><strong>Gemini</strong> — the most clone-heavy. Also sometimes generates <code>.to_owned()</code> or <code>.to_string()</code> unnecessarily. Output compiles but is non-idiomatic.</li>
+          <li><strong>JetBrains AI</strong> — benefits from RustRover's analysis to sometimes suggest better alternatives, but still falls back to <code>.clone()</code> more than Claude Code or Cursor.</li>
+        </ul>
+
+        <h2>Our Verdict</h2>
+
+        <div class="callout tip">
+          <div class="callout-title">Best Overall: Claude Code ($20/mo)</div>
+          <p>Rust is the language where AI tool quality matters most — because bad AI-generated Rust code won't even compile. Claude Code produces Rust code that compiles on the first try more often than any competitor, handles ownership and lifetimes correctly, and avoids the <code>.clone()</code> crutch. Its terminal-native workflow fits naturally alongside any Rust editor.</p>
+        </div>
+
+        <div class="callout tip">
+          <div class="callout-title">Best IDE Experience: Cursor Pro ($20/mo)</div>
+          <p>For VS Code Rust developers who want the best inline completions, Cursor Pro combines rust-analyzer integration with strong AI suggestions. The Composer mode handles complex Rust better than tab-complete — use it for anything involving lifetimes or generics.</p>
+        </div>
+
+        <div class="callout tip">
+          <div class="callout-title">Best Free: Amazon Q Developer</div>
+          <p>Unlimited free completions for Rust. Quality is basic — expect to fix borrow checker issues manually — but for learning Rust or hobby projects, the price is right. Every Rust developer should have a free completion tool installed.</p>
+        </div>
+
+        <div class="callout tip">
+          <div class="callout-title">Best Stack: Amazon Q Free + Claude Code ($20/mo)</div>
+          <p>Use Amazon Q for free inline completions while typing. Use Claude Code for the hard stuff: refactoring ownership patterns, designing error types, writing unsafe FFI code, and multi-crate workspace changes. Total cost: $20/month for a setup that handles everything from quick autocomplete to the deepest Rust challenges.</p>
+        </div>
+
+        <div class="article-cta">
+          <p><strong>Compare exact prices for your setup</strong></p>
+          <a href="/blog/ai-coding-cost-calculator.html">Use the CodeCosts Calculator →</a>
+        </div>
+
+        <p>Pricing changes frequently. We update this analysis as tools ship new features. Last updated March 27, 2026. For detailed pricing on any tool, see our guides: <a href="/cursor-pricing.html" style="color:var(--accent)">Cursor</a> · <a href="/copilot-pricing.html" style="color:var(--accent)">Copilot</a> · <a href="/windsurf-pricing.html" style="color:var(--accent)">Windsurf</a> · <a href="/claude-code-cost.html" style="color:var(--accent)">Claude Code</a> · <a href="/gemini-code-assist-pricing.html" style="color:var(--accent)">Gemini</a> · <a href="/amazon-q-pricing.html" style="color:var(--accent)">Amazon Q</a> · <a href="/tabnine-pricing.html" style="color:var(--accent)">Tabnine</a> · <a href="/jetbrains-ai-pricing.html" style="color:var(--accent)">JetBrains AI</a>.</p>
+
+        <h2>Related on CodeCosts</h2>
+        <ul>
+          <li><a href="/blog/best-ai-coding-tool-typescript.html" style="color:var(--accent)">Best AI Coding Tool for TypeScript Developers (2026)</a></li>
+          <li><a href="/blog/best-ai-coding-tool-python.html" style="color:var(--accent)">Best AI Coding Tool for Python Developers (2026)</a></li>
+          <li><a href="/blog/best-ai-coding-tool-javascript.html" style="color:var(--accent)">Best AI Coding Tool for JavaScript/TypeScript Developers (2026)</a></li>
+          <li><a href="/blog/best-ai-coding-tool-java.html" style="color:var(--accent)">Best AI Coding Tool for Java Developers (2026)</a></li>
+          <li><a href="/blog/best-ai-coding-tool-kotlin.html" style="color:var(--accent)">Best AI Coding Tool for Kotlin & Android Developers (2026)</a></li>
+          <li><a href="/blog/best-ai-coding-tool-go.html" style="color:var(--accent)">Best AI Coding Tool for Go Developers (2026)</a></li>
+          <li><a href="/blog/best-ai-coding-tool-cpp.html" style="color:var(--accent)">Best AI Coding Tool for C++ Developers (2026)</a></li>
+          <li><a href="/blog/best-ai-coding-tool-php.html" style="color:var(--accent)">Best AI Coding Tool for PHP Developers (2026)</a></li>
+          <li><a href="/blog/best-ai-coding-tool-swift.html" style="color:var(--accent)">Best AI Coding Tool for Swift & iOS Developers (2026)</a></li>
+          <li><a href="/blog/ai-coding-cost-calculator.html" style="color:var(--accent)">AI Coding Cost Calculator</a></li>
+          <li><a href="/blog/cheapest-ai-coding-tool-2026.html" style="color:var(--accent)">Cheapest AI Coding Tool in 2026</a></li>
+          <li><a href="/blog/claude-code-vs-cursor-agents.html" style="color:var(--accent)">Claude Code vs Cursor for Agents</a></li>
+        </ul>
+
+        <p><em>Data sourced from official pricing pages and hands-on testing. Open-source dataset at <a href="https://github.com/lunacompsia-oss/ai-coding-tools-pricing" style="color:var(--accent)">lunacompsia-oss/ai-coding-tools-pricing</a>.</em></p>
+      </div>
+    </article>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>CodeCosts is a free tool by <a href="https://github.com/lunacompsia-oss" target="_blank" rel="noopener">Lunacompsia</a>. Data sourced from official pricing pages. Not affiliated with any listed tool.</p>
+    </div>
+  </footer>
+</body>
+</html>

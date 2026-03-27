@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GitHub Copilot Pro vs Pro+: Is the $39/mo Plan Worth It?</title>
+  <meta name="description" content="Copilot Pro is $10/mo. Pro+ is $39/mo. We compare every feature, calculate cost per request, and tell you exactly when the upgrade is worth it.">
+  <link rel="canonical" href="https://codecosts.pages.dev/blog/copilot-pro-vs-pro-plus.html">
+  <meta property="og:title" content="GitHub Copilot Pro vs Pro+: Is the $39/mo Plan Worth It?">
+  <meta property="og:description" content="Side-by-side comparison of Copilot Pro ($10/mo) and Pro+ ($39/mo). Feature breakdown, cost-per-request analysis, and clear recommendation.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://codecosts.pages.dev/blog/copilot-pro-vs-pro-plus.html">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="GitHub Copilot Pro vs Pro+: Is the $39/mo Plan Worth It?">
+  <meta name="twitter:description" content="Side-by-side comparison of Copilot Pro and Pro+. Feature breakdown, cost-per-request math, and clear recommendation.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💰</text></svg>">
+  <link rel="stylesheet" href="../style.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "GitHub Copilot Pro vs Pro+: Is the $39/mo Plan Worth It?",
+    "datePublished": "2026-03-27",
+    "dateModified": "2026-03-27",
+    "author": { "@type": "Organization", "name": "CodeCosts" },
+    "publisher": { "@type": "Organization", "name": "CodeCosts" },
+    "description": "Detailed comparison of GitHub Copilot Pro ($10/mo) vs Pro+ ($39/mo). Feature-by-feature breakdown, cost-per-request analysis, and clear recommendation on which plan is worth it."
+  }
+  </script>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <a href="/" style="text-decoration:none;color:inherit"><h1><span class="logo">$_</span> CodeCosts</h1></a>
+      <p class="tagline">AI Coding Tool News & Analysis</p>
+      <nav>
+        <a href="/">Tools</a>
+        <a href="/blog/" class="active">Blog</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <article class="card">
+      <h2>GitHub Copilot Pro vs Pro+: Is the $39/mo Plan Worth It?</h2>
+      <div class="article-meta">
+        <span>March 27, 2026</span>
+        <span>7 min read</span>
+      </div>
+
+      <div class="article-content">
+        <p>GitHub Copilot Pro costs $10 per month. Copilot Pro+ costs $39 per month. That is nearly 4x the price. The question every developer asks before upgrading: <strong>what exactly do you get for that extra $29?</strong></p>
+
+        <p>We dug into every difference between the two plans — features, limits, model access, and exclusive perks — so you can decide with actual numbers instead of marketing copy.</p>
+
+        <div class="callout tip">
+          <div class="callout-title">TL;DR</div>
+          <p><strong>Copilot Pro ($10/mo)</strong> is enough for most developers. You get unlimited completions, 300 premium requests, and access to GPT-4o, Claude Sonnet, and Gemini models. <strong>Pro+ ($39/mo)</strong> is worth it if you consistently burn through 300 premium requests before the month ends, want GitHub Spark access, or need the fastest model responses. The break-even point is roughly 725 premium requests per month.</p>
+        </div>
+
+        <h2>Side-by-Side: Every Feature Compared</h2>
+
+        <p>Here is the full feature comparison between Copilot Pro and Pro+. No marketing fluff — just what each plan includes.</p>
+
+        <table style="width:100%;border-collapse:collapse;margin:1.5rem 0">
+          <thead>
+            <tr style="border-bottom:2px solid var(--border);text-align:left">
+              <th style="padding:12px 16px">Feature</th>
+              <th style="padding:12px 16px">Copilot Pro ($10/mo)</th>
+              <th style="padding:12px 16px">Copilot Pro+ ($39/mo)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="border-bottom:1px solid var(--border)">
+              <td style="padding:12px 16px"><strong>Code completions</strong></td>
+              <td style="padding:12px 16px">Unlimited</td>
+              <td style="padding:12px 16px">Unlimited</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border)">
+              <td style="padding:12px 16px"><strong>Premium requests</strong></td>
+              <td style="padding:12px 16px">300/month</td>
+              <td style="padding:12px 16px;color:var(--green)">1,500/month</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border)">
+              <td style="padding:12px 16px"><strong>Chat in IDE</strong></td>
+              <td style="padding:12px 16px">Yes</td>
+              <td style="padding:12px 16px">Yes</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border)">
+              <td style="padding:12px 16px"><strong>Agent mode</strong></td>
+              <td style="padding:12px 16px">Yes (from premium pool)</td>
+              <td style="padding:12px 16px">Yes (from premium pool)</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border)">
+              <td style="padding:12px 16px"><strong>Coding agents (async)</strong></td>
+              <td style="padding:12px 16px">Yes (from premium pool)</td>
+              <td style="padding:12px 16px">Yes (from premium pool)</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border)">
+              <td style="padding:12px 16px"><strong>Multi-file editing</strong></td>
+              <td style="padding:12px 16px">Yes (Edits)</td>
+              <td style="padding:12px 16px">Yes (Edits)</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border)">
+              <td style="padding:12px 16px"><strong>Model selection</strong></td>
+              <td style="padding:12px 16px">GPT-4o, Claude Sonnet, Gemini</td>
+              <td style="padding:12px 16px">GPT-4o, Claude Sonnet, Gemini + more</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border)">
+              <td style="padding:12px 16px"><strong>Claude Opus 4.6 fast mode</strong></td>
+              <td style="padding:12px 16px;color:var(--red)">No</td>
+              <td style="padding:12px 16px;color:var(--green)">Yes (preview)</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border)">
+              <td style="padding:12px 16px"><strong>GitHub Spark</strong></td>
+              <td style="padding:12px 16px;color:var(--red)">No</td>
+              <td style="padding:12px 16px;color:var(--green)">Full access</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border)">
+              <td style="padding:12px 16px"><strong>GitHub Models rate limits</strong></td>
+              <td style="padding:12px 16px">Standard</td>
+              <td style="padding:12px 16px;color:var(--green)">Higher limits</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border)">
+              <td style="padding:12px 16px"><strong>Premium request overages</strong></td>
+              <td style="padding:12px 16px">$0.04/request</td>
+              <td style="padding:12px 16px">$0.04/request</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border)">
+              <td style="padding:12px 16px"><strong>IDE support</strong></td>
+              <td style="padding:12px 16px">VS Code, JetBrains, Vim, etc.</td>
+              <td style="padding:12px 16px">VS Code, JetBrains, Vim, etc.</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border)">
+              <td style="padding:12px 16px"><strong>Training on your code</strong></td>
+              <td style="padding:12px 16px;color:var(--red)">Yes (opt-out available)</td>
+              <td style="padding:12px 16px;color:var(--red)">Yes (opt-out available)</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <p>The shared features are identical. Both plans give you unlimited completions, chat, agent mode, multi-file edits, and the same IDE support. The differences are all about <strong>volume and exclusive access</strong>.</p>
+
+        <h2>What You Actually Get for $29 More Per Month</h2>
+
+        <p>Strip away the shared features and here is what that extra $29 buys you:</p>
+
+        <h3>1. 5x Premium Requests (1,500 vs 300)</h3>
+
+        <p>This is the headline difference. Premium requests are the currency that powers everything beyond basic completions: chat with advanced models, agent mode, coding agents, and multi-file edits all consume from this pool.</p>
+
+        <p>With Pro, you get 300 per month. That works out to roughly <strong>10 premium requests per day</strong> if you spread them evenly. With Pro+, you get 1,500 — about <strong>50 per day</strong>.</p>
+
+        <p>If you use agent mode for a single complex task, that might consume 5-15 premium requests in one session. A developer who runs 2-3 agent sessions per day can burn through 300 requests in two weeks.</p>
+
+        <h3>2. GitHub Spark Access</h3>
+
+        <p>GitHub Spark is GitHub's natural-language app builder — describe what you want, and it generates a full micro-app with a live preview. It is exclusive to Pro+ subscribers. Pro users do not get access at all.</p>
+
+        <p>If you are not interested in Spark, this has zero value to you. But if you use it regularly to prototype ideas or build internal tools, it is a meaningful perk that is unavailable at any other price point.</p>
+
+        <h3>3. Claude Opus 4.6 Fast Mode Preview</h3>
+
+        <p>Pro+ subscribers get access to Claude Opus 4.6 in fast mode — Anthropic's most capable coding model running with priority throughput. Pro users can access Claude Sonnet models, but Opus 4.6 fast is gated behind Pro+.</p>
+
+        <p>For complex refactoring, architectural discussions, and multi-step reasoning tasks, Opus 4.6 produces noticeably better results than Sonnet. Whether that matters depends on how complex your coding tasks are.</p>
+
+        <h3>4. Higher Rate Limits on GitHub Models</h3>
+
+        <p>GitHub Models lets you experiment with AI models directly in the GitHub ecosystem. Pro+ subscribers get higher rate limits, meaning you can make more API calls before hitting throttling. This matters most if you use GitHub Models for testing or prototyping with different models.</p>
+
+        <div class="callout warning">
+          <div class="callout-title">Both Plans Have the Same Overage Price</div>
+          <p>If you exceed your premium requests on either plan, overages cost $0.04 per request. Pro+ does not give you a discount on overages — it just gives you a higher included allotment. This is important for the break-even math below.</p>
+        </div>
+
+        <h2>When Copilot Pro Is Enough</h2>
+
+        <p>For the majority of developers, <strong>Copilot Pro at $10/mo is the right plan</strong>. Here is who should stay on Pro:</p>
+
+        <ul>
+          <li><strong>You mainly use autocomplete.</strong> Completions are unlimited on both plans. If 80% of your Copilot usage is tab-completing code, Pro gives you everything you need.</li>
+          <li><strong>You use chat a few times a day.</strong> 300 premium requests per month covers roughly 10 per workday. If you ask Copilot Chat 5-8 questions per day, you will stay well within limits.</li>
+          <li><strong>Agent mode is occasional, not constant.</strong> If you run agent mode once or twice a week for bigger tasks, 300 requests is plenty.</li>
+          <li><strong>You do not care about GitHub Spark.</strong> If building micro-apps with natural language is not part of your workflow, you are not missing anything.</li>
+          <li><strong>You are cost-conscious.</strong> $10/mo is the cheapest paid AI coding plan on the market. Even Tabnine Dev costs $9/mo with far fewer features.</li>
+        </ul>
+
+        <div class="callout tip">
+          <div class="callout-title">Pro Tip: Track Your Usage First</div>
+          <p>Before upgrading, check your actual premium request usage in GitHub Settings > Copilot. If you have never hit the 300-request ceiling, Pro+ will not change your experience at all. You are paying for headroom you do not use.</p>
+        </div>
+
+        <h2>When Pro+ Makes Sense</h2>
+
+        <p>Pro+ is not for everyone, but for certain developers it pays for itself. Here is who should upgrade:</p>
+
+        <ul>
+          <li><strong>You hit 300 requests before mid-month.</strong> If you regularly exhaust your premium pool and fall back to slower base models for the last two weeks, Pro+ eliminates that bottleneck.</li>
+          <li><strong>You use agent mode heavily.</strong> Developers who run agent mode multiple times per day — for refactoring, test generation, debugging — consume premium requests fast. 1,500 gives you real breathing room.</li>
+          <li><strong>You run coding agents (async) regularly.</strong> GitHub's coding agents (the ones that work asynchronously on issues and PRs) each consume premium requests. If you kick off several per day, the requests add up quickly.</li>
+          <li><strong>You want Claude Opus 4.6 for complex tasks.</strong> If your work involves intricate multi-file refactors, architectural reasoning, or challenging algorithmic problems, the step up from Sonnet to Opus 4.6 in fast mode can meaningfully improve output quality.</li>
+          <li><strong>You use GitHub Spark.</strong> It is Pro+ exclusive. If you find value in Spark for rapid prototyping, this alone can justify the upgrade.</li>
+          <li><strong>You would buy overages anyway.</strong> If you regularly exceed 300 requests and pay $0.04/request for overages, Pro+ might be cheaper. See the math below.</li>
+        </ul>
+
+        <h2>Cost Per Premium Request: The Break-Even Math</h2>
+
+        <p>Let us do the math that actually matters.</p>
+
+        <table style="width:100%;border-collapse:collapse;margin:1.5rem 0">
+          <thead>
+            <tr style="border-bottom:2px solid var(--border);text-align:left">
+              <th style="padding:12px 16px">Metric</th>
+              <th style="padding:12px 16px">Copilot Pro</th>
+              <th style="padding:12px 16px">Copilot Pro+</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="border-bottom:1px solid var(--border)">
+              <td style="padding:12px 16px"><strong>Monthly price</strong></td>
+              <td style="padding:12px 16px">$10</td>
+              <td style="padding:12px 16px">$39</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border)">
+              <td style="padding:12px 16px"><strong>Included premium requests</strong></td>
+              <td style="padding:12px 16px">300</td>
+              <td style="padding:12px 16px">1,500</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border)">
+              <td style="padding:12px 16px"><strong>Cost per included request</strong></td>
+              <td style="padding:12px 16px">$0.033</td>
+              <td style="padding:12px 16px;color:var(--green)">$0.026</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border)">
+              <td style="padding:12px 16px"><strong>Overage rate</strong></td>
+              <td style="padding:12px 16px">$0.04/request</td>
+              <td style="padding:12px 16px">$0.04/request</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <p><strong>Pro+ has a lower cost per included request:</strong> $0.026 vs $0.033. But that only matters if you actually use most of those 1,500 requests.</p>
+
+        <p>The real question is: <strong>at what usage level does Pro + overages cost more than Pro+?</strong></p>
+
+        <p>Here is the formula. With Copilot Pro, if you use <em>N</em> premium requests per month:</p>
+
+        <ul>
+          <li>If N is 300 or less: you pay $10 (no overages)</li>
+          <li>If N is over 300: you pay $10 + (N - 300) x $0.04</li>
+        </ul>
+
+        <p>Pro+ costs a flat $39 for up to 1,500 requests. The two plans cost the same when:</p>
+
+        <p><strong>$10 + (N - 300) x $0.04 = $39</strong></p>
+        <p><strong>(N - 300) x $0.04 = $29</strong></p>
+        <p><strong>N - 300 = 725</strong></p>
+        <p><strong>N = 1,025</strong></p>
+
+        <div class="callout tip">
+          <div class="callout-title">The Break-Even Point: 1,025 Requests</div>
+          <p>If you use <strong>fewer than 1,025 premium requests per month</strong>, Copilot Pro + overages is cheaper than Pro+. If you use <strong>more than 1,025 requests</strong>, Pro+ saves you money. At 1,500 requests, Pro+ saves you $29/month compared to Pro + overages ($39 vs $68).</p>
+        </div>
+
+        <p>Put differently: if you would buy at least 725 overage requests per month on the Pro plan (an extra $29 in overages), Pro+ breaks even. Anything above that is savings.</p>
+
+        <h3>Cost Comparison at Different Usage Levels</h3>
+
+        <table style="width:100%;border-collapse:collapse;margin:1.5rem 0">
+          <thead>
+            <tr style="border-bottom:2px solid var(--border);text-align:left">
+              <th style="padding:12px 16px">Monthly Requests</th>
+              <th style="padding:12px 16px">Pro Cost</th>
+              <th style="padding:12px 16px">Pro+ Cost</th>
+              <th style="padding:12px 16px">Savings with Pro+</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="border-bottom:1px solid var(--border)">
+              <td style="padding:12px 16px">300</td>
+              <td style="padding:12px 16px;color:var(--green)">$10</td>
+              <td style="padding:12px 16px">$39</td>
+              <td style="padding:12px 16px;color:var(--red)">-$29 (Pro wins)</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border)">
+              <td style="padding:12px 16px">500</td>
+              <td style="padding:12px 16px;color:var(--green)">$18</td>
+              <td style="padding:12px 16px">$39</td>
+              <td style="padding:12px 16px;color:var(--red)">-$21 (Pro wins)</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border)">
+              <td style="padding:12px 16px">750</td>
+              <td style="padding:12px 16px;color:var(--green)">$28</td>
+              <td style="padding:12px 16px">$39</td>
+              <td style="padding:12px 16px;color:var(--red)">-$11 (Pro wins)</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border)">
+              <td style="padding:12px 16px">1,025</td>
+              <td style="padding:12px 16px">$39</td>
+              <td style="padding:12px 16px">$39</td>
+              <td style="padding:12px 16px">$0 (tie)</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border)">
+              <td style="padding:12px 16px">1,250</td>
+              <td style="padding:12px 16px">$48</td>
+              <td style="padding:12px 16px;color:var(--green)">$39</td>
+              <td style="padding:12px 16px;color:var(--green)">+$9 (Pro+ wins)</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border)">
+              <td style="padding:12px 16px">1,500</td>
+              <td style="padding:12px 16px">$58</td>
+              <td style="padding:12px 16px;color:var(--green)">$39</td>
+              <td style="padding:12px 16px;color:var(--green)">+$19 (Pro+ wins)</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border)">
+              <td style="padding:12px 16px">2,000</td>
+              <td style="padding:12px 16px">$78</td>
+              <td style="padding:12px 16px;color:var(--green)">$59</td>
+              <td style="padding:12px 16px;color:var(--green)">+$19 (Pro+ wins)</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <p>Note: at 2,000 requests, Pro+ also incurs overages (500 requests over the 1,500 cap = $20 extra). But it is still $19 cheaper than Pro with overages.</p>
+
+        <h2>Verdict: Which Plan Should You Choose?</h2>
+
+        <p><strong>Start with Pro. Upgrade only when the numbers tell you to.</strong></p>
+
+        <p>Copilot Pro at $10/month is the best value in AI coding tools right now. Unlimited completions, access to strong models, agent mode, multi-file edits — all for less than a Netflix subscription. For 80% of developers, it is everything you need.</p>
+
+        <p>Upgrade to Pro+ when <strong>all three</strong> of these are true:</p>
+
+        <ol>
+          <li>You consistently hit or exceed 300 premium requests before the month ends</li>
+          <li>Being throttled to base models in the last week of the month hurts your productivity</li>
+          <li>You actually use (or plan to use) at least one Pro+ exclusive: GitHub Spark, Claude Opus 4.6 fast mode, or the higher GitHub Models limits</li>
+        </ol>
+
+        <p>If only condition 1 is true, consider buying overages on Pro instead. At $0.04/request, you would need to buy 725 extra requests before Pro+ becomes cheaper. Most developers who exceed 300 requests land in the 400-600 range — still cheaper on Pro with overages.</p>
+
+        <div class="callout warning">
+          <div class="callout-title">Do Not Upgrade "Just in Case"</div>
+          <p>Pro+ costs $468/year. Pro costs $120/year. That is $348 per year in savings if Pro covers your needs. Check your actual usage in GitHub Settings before committing to Pro+. The money you save could pay for a second tool like <a href="/cursor-pricing.html" style="color:var(--accent)">Cursor Pro</a> or a <a href="/claude-code-cost.html" style="color:var(--accent)">Claude Pro</a> subscription.</p>
+        </div>
+
+        <h3>Our Recommendation by Developer Profile</h3>
+
+        <table style="width:100%;border-collapse:collapse;margin:1.5rem 0">
+          <thead>
+            <tr style="border-bottom:2px solid var(--border);text-align:left">
+              <th style="padding:12px 16px">Developer Profile</th>
+              <th style="padding:12px 16px">Recommended Plan</th>
+              <th style="padding:12px 16px">Why</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="border-bottom:1px solid var(--border)">
+              <td style="padding:12px 16px">Casual / part-time coder</td>
+              <td style="padding:12px 16px;color:var(--green)">Pro ($10)</td>
+              <td style="padding:12px 16px">You will never touch 300 requests</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border)">
+              <td style="padding:12px 16px">Full-time dev, mostly completions</td>
+              <td style="padding:12px 16px;color:var(--green)">Pro ($10)</td>
+              <td style="padding:12px 16px">Completions are unlimited on both plans</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border)">
+              <td style="padding:12px 16px">Full-time dev, daily chat + occasional agent</td>
+              <td style="padding:12px 16px;color:var(--green)">Pro ($10)</td>
+              <td style="padding:12px 16px">300 requests covers this comfortably</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border)">
+              <td style="padding:12px 16px">Heavy agent mode user</td>
+              <td style="padding:12px 16px;color:var(--accent)">Pro+ ($39)</td>
+              <td style="padding:12px 16px">Agent sessions burn 5-15 requests each</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border)">
+              <td style="padding:12px 16px">Runs coding agents on multiple repos</td>
+              <td style="padding:12px 16px;color:var(--accent)">Pro+ ($39)</td>
+              <td style="padding:12px 16px">Async agents consume requests fast</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border)">
+              <td style="padding:12px 16px">Wants best available models always</td>
+              <td style="padding:12px 16px;color:var(--accent)">Pro+ ($39)</td>
+              <td style="padding:12px 16px">Opus 4.6 fast mode is Pro+ only</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="article-cta">
+          <p><strong>Compare Copilot with every other AI coding tool</strong></p>
+          <a href="/">Use the CodeCosts Calculator →</a>
+        </div>
+
+        <p>For the full breakdown of all Copilot plans (Free, Pro, Pro+, Business, Enterprise), see our <a href="/copilot-pricing.html" style="color:var(--accent)">complete Copilot pricing guide</a>. To see how Copilot stacks up against the competition, check our <a href="/blog/cheapest-ai-coding-tool-2026.html" style="color:var(--accent)">cheapest AI coding tool in 2026</a> analysis.</p>
+
+        <p>Pricing changes frequently. We update this analysis as GitHub adjusts plans. Last updated March 27, 2026.</p>
+
+        <p><em>Data sourced from official GitHub Copilot pricing pages. Open-source dataset available at <a href="https://github.com/lunacompsia-oss/ai-coding-tools-pricing" style="color:var(--accent)">lunacompsia-oss/ai-coding-tools-pricing</a>.</em></p>
+      </div>
+    </article>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>CodeCosts is a free tool by <a href="https://github.com/lunacompsia-oss" target="_blank" rel="noopener">Lunacompsia</a>. Data sourced from official pricing pages. Not affiliated with any listed tool.</p>
+    </div>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>CodeCosts Blog</title>
+    <link>https://codecosts.pages.dev/blog/</link>
+    <description>AI coding tool news, pricing updates, and analysis. Compare GitHub Copilot, Cursor, Windsurf, Claude Code, and more.</description>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 27 Mar 2026 00:00:00 GMT</lastBuildDate>
+    <atom:link href="https://codecosts.pages.dev/blog/feed.xml" rel="self" type="application/rss+xml"/>
+
+    <item>
+      <title>The Hidden Costs of AI Coding Tools: What the Pricing Page Won't Tell You</title>
+      <link>https://codecosts.pages.dev/blog/hidden-costs-ai-coding-tools.html</link>
+      <description>Premium request limits, overage charges, seat minimums, and the gotchas that turn a $20/month tool into a $50+ expense.</description>
+      <pubDate>Thu, 27 Mar 2026 00:00:00 GMT</pubDate>
+      <guid>https://codecosts.pages.dev/blog/hidden-costs-ai-coding-tools.html</guid>
+    </item>
+
+    <item>
+      <title>AI Coding Tools: What Changed in March 2026</title>
+      <link>https://codecosts.pages.dev/blog/ai-coding-tools-march-2026-update.html</link>
+      <description>Monthly roundup: Copilot agent mode, Cursor Ultra, Windsurf enterprise, Claude Code updates, and what it means for your wallet.</description>
+      <pubDate>Thu, 27 Mar 2026 00:00:00 GMT</pubDate>
+      <guid>https://codecosts.pages.dev/blog/ai-coding-tools-march-2026-update.html</guid>
+    </item>
+
+  </channel>
+</rss>

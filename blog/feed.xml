@@ -9,6 +9,38 @@
     <atom:link href="https://codecosts.pages.dev/blog/feed.xml" rel="self" type="application/rss+xml"/>
 
     <item>
+      <title>Cursor Pro vs Business: Is the Upgrade Worth It for Your Team?</title>
+      <link>https://codecosts.pages.dev/blog/cursor-pro-vs-business.html</link>
+      <description>Cursor Pro costs $20/mo. Business costs $40/seat. The AI is identical — we compare admin tools, SSO, compliance, team costs, and tell you when Business is worth the 2x premium.</description>
+      <pubDate>Thu, 27 Mar 2026 18:00:00 GMT</pubDate>
+      <guid>https://codecosts.pages.dev/blog/cursor-pro-vs-business.html</guid>
+    </item>
+
+    <item>
+      <title>Claude Code vs Cursor for AI Agents: Which Is Better for Autonomous Coding?</title>
+      <link>https://codecosts.pages.dev/blog/claude-code-vs-cursor-agents.html</link>
+      <description>Terminal agent vs IDE agent. Full comparison of Claude Code and Cursor agent features, pricing, parallel execution, and use cases.</description>
+      <pubDate>Thu, 27 Mar 2026 17:00:00 GMT</pubDate>
+      <guid>https://codecosts.pages.dev/blog/claude-code-vs-cursor-agents.html</guid>
+    </item>
+
+    <item>
+      <title>GitHub Copilot Pro vs Pro+: Is the $39/mo Plan Worth It?</title>
+      <link>https://codecosts.pages.dev/blog/copilot-pro-vs-pro-plus.html</link>
+      <description>Pro costs $10/mo with 300 premium requests. Pro+ costs $39/mo with 1,500. Break-even math, feature comparison, and clear recommendation.</description>
+      <pubDate>Thu, 27 Mar 2026 16:00:00 GMT</pubDate>
+      <guid>https://codecosts.pages.dev/blog/copilot-pro-vs-pro-plus.html</guid>
+    </item>
+
+    <item>
+      <title>Cheapest AI Coding Tool in 2026: Cost-Per-Feature Breakdown</title>
+      <link>https://codecosts.pages.dev/blog/cheapest-ai-coding-tool-2026.html</link>
+      <description>We compared every AI coding tool by cost per feature — completions, chat, agent mode. Here's which tool gives the most value per dollar in 2026.</description>
+      <pubDate>Thu, 27 Mar 2026 15:00:00 GMT</pubDate>
+      <guid>https://codecosts.pages.dev/blog/cheapest-ai-coding-tool-2026.html</guid>
+    </item>
+
+    <item>
       <title>Cursor Now Works in JetBrains IDEs + Self-Hosted Agents for Enterprise</title>
       <link>https://codecosts.pages.dev/blog/cursor-jetbrains-self-hosted-agents.html</link>
       <description>Cursor expanded to JetBrains via ACP, launched self-hosted cloud agents, and shipped Composer 2. Full breakdown of what changed and what it costs.</description>

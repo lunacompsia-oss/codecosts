@@ -37,62 +37,110 @@
   <main class="container">
     <section class="card">
       <h2>GitHub Copilot Pricing: Every Plan Explained</h2>
-      <p class="section-desc">GitHub Copilot now has 5 tiers — from a free plan to a $39/seat enterprise option. Here's what you get at each level.</p>
+      <p class="section-desc">GitHub Copilot now has 5 tiers — from a free plan to a $39/seat enterprise option. The key mechanic: "premium requests" that meter access to advanced AI models.</p>
 
       <div class="table-wrap">
         <table>
           <thead>
-            <tr><th>Plan</th><th>Price</th><th>Completions</th><th>Chat</th><th>Agent Mode</th><th>Models</th><th>Best For</th></tr>
+            <tr><th>Plan</th><th>Price</th><th>Completions</th><th>Premium Requests</th><th>Coding Agent</th><th>Best For</th></tr>
           </thead>
           <tbody>
             <tr>
               <td><strong>Free</strong></td>
               <td class="price-cell">$0</td>
               <td>2,000/mo</td>
-              <td>50 messages/mo</td>
-              <td><span class="cross">—</span></td>
-              <td>GPT-4o (limited)</td>
+              <td>50/mo</td>
+              <td><span class="cross">No</span></td>
               <td>Students, hobbyists</td>
             </tr>
             <tr>
               <td><strong>Pro</strong></td>
               <td class="price-cell">$10/mo</td>
               <td>Unlimited</td>
-              <td>Unlimited</td>
-              <td><span class="partial">Limited</span></td>
-              <td>GPT-4o, Claude 3.5 Sonnet</td>
+              <td>300/mo</td>
+              <td><span class="check">Yes</span></td>
               <td>Solo developers</td>
             </tr>
             <tr>
               <td><strong>Pro+</strong></td>
               <td class="price-cell">$39/mo</td>
               <td>Unlimited</td>
-              <td>Unlimited</td>
-              <td><span class="check">✓</span> Unlimited</td>
-              <td>Claude Opus, o1, GPT-4o</td>
+              <td>1,500/mo</td>
+              <td><span class="check">Yes</span></td>
               <td>Power users, agent-heavy workflows</td>
             </tr>
             <tr>
               <td><strong>Business</strong></td>
               <td class="price-cell">$19/seat/mo</td>
               <td>Unlimited</td>
-              <td>Unlimited</td>
-              <td><span class="check">✓</span></td>
-              <td>GPT-4o, Claude 3.5 Sonnet</td>
+              <td>300/user/mo</td>
+              <td><span class="check">Yes</span></td>
               <td>Teams, organizations</td>
             </tr>
             <tr>
               <td><strong>Enterprise</strong></td>
               <td class="price-cell">$39/seat/mo</td>
               <td>Unlimited</td>
-              <td>Unlimited</td>
-              <td><span class="check">✓</span></td>
-              <td>All models + fine-tuning</td>
-              <td>Large orgs, custom needs</td>
+              <td>1,000/user/mo</td>
+              <td><span class="check">Yes</span></td>
+              <td>Large orgs, knowledge bases</td>
             </tr>
           </tbody>
         </table>
       </div>
+      <p style="margin-top:12px;font-size:0.85rem;color:var(--text-dim)"><strong>Included models (free, unlimited on paid plans):</strong> GPT-4.1, GPT-4o, GPT-5 mini. Premium requests are only consumed by advanced models like Claude Sonnet, Opus, and Gemini Pro. Overage: $0.04/request on all paid tiers.</p>
+    </section>
+
+    <section class="card">
+      <h2>Premium Request Multipliers — The Hidden Cost</h2>
+      <p class="section-desc">Not all models cost the same. Each model has a multiplier that determines how many premium requests it consumes per interaction. This is the most important thing to understand about Copilot pricing.</p>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Multiplier</th><th>Models</th><th>Pro (300 req) = interactions</th><th>Pro+ (1,500 req) = interactions</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="price-cell" style="color:var(--green)">0x (free)</td>
+              <td>GPT-4.1, GPT-4o, GPT-5 mini</td>
+              <td><span class="check">Unlimited</span></td>
+              <td><span class="check">Unlimited</span></td>
+            </tr>
+            <tr>
+              <td class="price-cell" style="color:var(--green)">0.25x</td>
+              <td>Grok Code Fast 1</td>
+              <td>1,200</td>
+              <td>6,000</td>
+            </tr>
+            <tr>
+              <td class="price-cell" style="color:var(--green)">0.33x</td>
+              <td>Claude Haiku 4.5, Gemini 3 Flash, GPT-5.4 mini</td>
+              <td>~909</td>
+              <td>~4,545</td>
+            </tr>
+            <tr>
+              <td class="price-cell">1x</td>
+              <td>Claude Sonnet 4/4.5/4.6, Gemini 2.5/3/3.1 Pro, GPT-5.1/5.2/5.4</td>
+              <td>300</td>
+              <td>1,500</td>
+            </tr>
+            <tr>
+              <td class="price-cell" style="color:var(--yellow)">3x</td>
+              <td>Claude Opus 4.5, Claude Opus 4.6</td>
+              <td><span class="partial">100</span></td>
+              <td>500</td>
+            </tr>
+            <tr>
+              <td class="price-cell" style="color:var(--red)">30x</td>
+              <td>Claude Opus 4.6 (fast mode preview)</td>
+              <td><span class="cross">10</span></td>
+              <td><span class="partial">50</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p style="margin-top:12px;font-size:0.85rem;color:var(--text-dim)"><strong>Tip:</strong> Let Copilot auto-select the model to get a 10% discount (0.9x multiplier). The "Auto" mode routes to the cheapest effective model.</p>
     </section>
 
     <section class="card">
@@ -103,14 +151,14 @@
           <div class="vendor">$0/mo — No credit card required</div>
           <ul class="tier-list">
             <li><span class="tier-name">Code completions</span><span class="tier-price">2,000/mo</span></li>
-            <li><span class="tier-name">Chat messages</span><span class="tier-price">50/mo</span></li>
-            <li><span class="tier-name">Agent mode</span><span class="tier-price">No</span></li>
+            <li><span class="tier-name">Premium requests</span><span class="tier-price">50/mo</span></li>
+            <li><span class="tier-name">Coding agent</span><span class="tier-price">No</span></li>
           </ul>
           <ul class="features">
-            <li>Available in VS Code and JetBrains</li>
-            <li>Basic code suggestions and inline completions</li>
+            <li>Available in VS Code, JetBrains, and GitHub.com</li>
+            <li>Included models: GPT-4.1, GPT-4o, GPT-5 mini, Claude Haiku 4.5</li>
             <li>Good enough to evaluate if Copilot fits your workflow</li>
-            <li>No access to premium models or agent features</li>
+            <li>Also free for verified students, teachers, and OSS maintainers</li>
           </ul>
         </div>
         <div class="detail-card">
@@ -118,59 +166,59 @@
           <div class="vendor">$10/mo ($100/yr) — Best value for solo developers</div>
           <ul class="tier-list">
             <li><span class="tier-name">Code completions</span><span class="tier-price">Unlimited</span></li>
-            <li><span class="tier-name">Chat messages</span><span class="tier-price">Unlimited</span></li>
-            <li><span class="tier-name">Agent mode</span><span class="tier-price">Limited</span></li>
+            <li><span class="tier-name">Premium requests</span><span class="tier-price">300/mo</span></li>
+            <li><span class="tier-name">Coding agent</span><span class="tier-price">Yes</span></li>
           </ul>
           <ul class="features">
-            <li>Unlimited completions and chat — the rate limits are gone</li>
-            <li>Multiple model access (GPT-4o, Claude 3.5 Sonnet)</li>
+            <li>Unlimited completions + unlimited chat with included models</li>
+            <li>300 premium requests = 300 Sonnet or 100 Opus interactions</li>
             <li>Works across VS Code, JetBrains, Neovim, Xcode, Visual Studio</li>
-            <li>At $10/mo, cheapest paid AI coding tool on the market</li>
+            <li>Overage: $0.04/request. At $10/mo, cheapest paid AI coding tool</li>
           </ul>
         </div>
         <div class="detail-card">
           <h3>Pro+ Plan</h3>
-          <div class="vendor">$39/mo — For developers who use agent mode heavily</div>
+          <div class="vendor">$39/mo ($390/yr) — 5x the premium requests of Pro</div>
           <ul class="tier-list">
             <li><span class="tier-name">Code completions</span><span class="tier-price">Unlimited</span></li>
-            <li><span class="tier-name">Chat messages</span><span class="tier-price">Unlimited</span></li>
-            <li><span class="tier-name">Agent mode</span><span class="tier-price">Unlimited</span></li>
+            <li><span class="tier-name">Premium requests</span><span class="tier-price">1,500/mo</span></li>
+            <li><span class="tier-name">GitHub Spark</span><span class="tier-price">Yes</span></li>
           </ul>
           <ul class="features">
-            <li>Access to premium models: Claude Opus, o1-preview</li>
-            <li>Unlimited Copilot agent mode (Copilot Workspace)</li>
-            <li>Best for developers doing complex, multi-file tasks</li>
-            <li>Introduced 2025 to compete with Cursor's agent features</li>
+            <li>All models including Claude Opus 4.6 fast mode (preview)</li>
+            <li>1,500 requests = 500 Opus interactions or 50 Opus-fast</li>
+            <li>GitHub Spark access (AI app builder)</li>
+            <li>Worth it if you use 1,000+ premium requests/mo on Pro</li>
           </ul>
         </div>
         <div class="detail-card">
           <h3>Business Plan</h3>
           <div class="vendor">$19/seat/mo — Team management and policies</div>
           <ul class="tier-list">
-            <li><span class="tier-name">Per-seat price</span><span class="tier-price">$19/mo</span></li>
-            <li><span class="tier-name">Min seats</span><span class="tier-price">None</span></li>
-            <li><span class="tier-name">Annual billing</span><span class="tier-price">$228/yr</span></li>
+            <li><span class="tier-name">Premium requests</span><span class="tier-price">300/user/mo</span></li>
+            <li><span class="tier-name">IP indemnity</span><span class="tier-price">Yes</span></li>
+            <li><span class="tier-name">Admin controls</span><span class="tier-price">Yes</span></li>
           </ul>
           <ul class="features">
-            <li>Organization-wide license management</li>
-            <li>IP indemnity and code training opt-out</li>
-            <li>Policy management (block certain suggestions)</li>
-            <li>Usage metrics and audit logging</li>
+            <li>Organization-wide license and seat management</li>
+            <li>IP indemnity + code training opt-out</li>
+            <li>Policy controls (admins can disable overage spending)</li>
+            <li>Usage analytics dashboard</li>
           </ul>
         </div>
         <div class="detail-card">
           <h3>Enterprise Plan</h3>
-          <div class="vendor">$39/seat/mo — Knowledge bases and fine-tuning</div>
+          <div class="vendor">$39/seat/mo — Requires GH Enterprise Cloud ($21/seat extra)</div>
           <ul class="tier-list">
-            <li><span class="tier-name">Per-seat price</span><span class="tier-price">$39/mo</span></li>
-            <li><span class="tier-name">Annual billing</span><span class="tier-price">$468/yr</span></li>
-            <li><span class="tier-name">SSO/SAML</span><span class="tier-price">Included</span></li>
+            <li><span class="tier-name">Premium requests</span><span class="tier-price">1,000/user/mo</span></li>
+            <li><span class="tier-name">Knowledge bases</span><span class="tier-price">Yes</span></li>
+            <li><span class="tier-name">All models</span><span class="tier-price">Yes</span></li>
           </ul>
           <ul class="features">
-            <li>Everything in Business plus fine-tuning on your codebase</li>
-            <li>Knowledge bases for internal documentation</li>
-            <li>SAML SSO and advanced security controls</li>
-            <li>Dedicated support and SLA</li>
+            <li>Everything in Business + knowledge bases (indexes your repos)</li>
+            <li>Custom model fine-tuning on your codebase</li>
+            <li>GitHub Spark access, SAML SSO, SCIM</li>
+            <li>True all-in cost: $60/user/mo (Copilot + GH Enterprise Cloud)</li>
           </ul>
         </div>
       </div>

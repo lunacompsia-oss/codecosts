@@ -6,18 +6,18 @@ const tools = [
     vendor: "GitHub / Microsoft",
     url: "https://github.com/features/copilot",
     tiers: [
-      { name: "Free", monthly: 0, yearly: 0, limits: "2,000 completions + 50 chat messages/mo" },
-      { name: "Pro", monthly: 10, yearly: 100, limits: "Unlimited completions + chat" },
-      { name: "Pro+", monthly: 39, yearly: 468, limits: "Opus/o1 access + unlimited agent mode" },
-      { name: "Business", monthly: 19, yearly: 228, limits: "Admin controls + policy management" },
-      { name: "Enterprise", monthly: 39, yearly: 468, limits: "Fine-tuning + knowledge bases" }
+      { name: "Free", monthly: 0, yearly: 0, limits: "2,000 completions + 50 premium requests/mo" },
+      { name: "Pro", monthly: 10, yearly: 100, limits: "Unlimited completions + 300 premium requests/mo" },
+      { name: "Pro+", monthly: 39, yearly: 390, limits: "1,500 premium requests + all models + GitHub Spark" },
+      { name: "Business", monthly: 19, yearly: 228, limits: "300 premium req/user + admin + IP indemnity" },
+      { name: "Enterprise", monthly: 39, yearly: 468, limits: "1,000 premium req/user + knowledge bases + fine-tuning" }
     ],
-    models: "GPT-4o, Claude 3.5 Sonnet, Gemini",
+    models: "GPT-4.1, GPT-4o, GPT-5 mini, Claude Sonnet 4.6, Gemini 3 Pro",
     autocomplete: true,
     chat: true,
     agent: true,
     ides: "VS Code, JetBrains, Neovim, Xcode, Visual Studio",
-    highlights: ["Broadest IDE support", "GitHub-native integration", "Copilot Workspace for agents"]
+    highlights: ["Broadest IDE support", "GitHub-native integration", "Premium request model with multipliers"]
   },
   {
     name: "Cursor",

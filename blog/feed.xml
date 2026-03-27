@@ -9,6 +9,22 @@
     <atom:link href="https://codecosts.pages.dev/blog/feed.xml" rel="self" type="application/rss+xml"/>
 
     <item>
+      <title>GitHub Copilot Will Train on Your Code by Default — How to Opt Out</title>
+      <link>https://codecosts.pages.dev/blog/github-copilot-data-training-opt-out.html</link>
+      <description>Starting April 24, GitHub will use Free, Pro, and Pro+ user data to train AI models. Here's how to opt out before the deadline.</description>
+      <pubDate>Thu, 27 Mar 2026 12:00:00 GMT</pubDate>
+      <guid>https://codecosts.pages.dev/blog/github-copilot-data-training-opt-out.html</guid>
+    </item>
+
+    <item>
+      <title>Windsurf Kills Credits, Moves to Quotas — Developer Backlash Explained</title>
+      <link>https://codecosts.pages.dev/blog/windsurf-kills-credits-quota-pricing.html</link>
+      <description>Windsurf replaced its credit system with daily/weekly quotas and raised Pro from $15 to $20/mo. Full breakdown and comparison.</description>
+      <pubDate>Thu, 27 Mar 2026 11:00:00 GMT</pubDate>
+      <guid>https://codecosts.pages.dev/blog/windsurf-kills-credits-quota-pricing.html</guid>
+    </item>
+
+    <item>
       <title>The Hidden Costs of AI Coding Tools: What the Pricing Page Won't Tell You</title>
       <link>https://codecosts.pages.dev/blog/hidden-costs-ai-coding-tools.html</link>
       <description>Premium request limits, overage charges, seat minimums, and the gotchas that turn a $20/month tool into a $50+ expense.</description>

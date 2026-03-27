@@ -30,7 +30,7 @@ const tools = [
       { name: "Ultra", monthly: 200, yearly: 1920, limits: "Unlimited fast requests" },
       { name: "Business", monthly: 40, yearly: 384, limits: "Admin + centralized billing + SAML SSO" }
     ],
-    models: "GPT-4o, Claude 3.5/Opus, Gemini, custom",
+    models: "GPT-4o, GPT-4.1, Claude Sonnet 4.6, Gemini, custom",
     autocomplete: true,
     chat: true,
     agent: true,
@@ -60,17 +60,18 @@ const tools = [
     vendor: "Codeium",
     url: "https://windsurf.com/pricing",
     tiers: [
-      { name: "Free", monthly: 0, yearly: 0, limits: "Basic autocomplete + limited chat" },
-      { name: "Pro", monthly: 20, yearly: 192, limits: "Unlimited flows + advanced models" },
-      { name: "Max", monthly: 200, yearly: 1920, limits: "Unlimited premium requests" },
-      { name: "Enterprise", monthly: 40, yearly: 480, limits: "Admin + SSO + audit" }
+      { name: "Free", monthly: 0, yearly: 0, limits: "Light quota, zero-cost models only" },
+      { name: "Pro", monthly: 20, yearly: 192, limits: "Standard daily/weekly quota + all premium models" },
+      { name: "Max", monthly: 200, yearly: 1920, limits: "Heavy quota + all premium models" },
+      { name: "Teams", monthly: 40, yearly: 480, limits: "Admin + SSO + RBAC + per-user quota" },
+      { name: "Enterprise", monthly: 60, yearly: 720, limits: "2x Teams quota + SCIM + custom options" }
     ],
-    models: "GPT-4o, Claude, proprietary models",
+    models: "GPT-4o, GPT-5, Claude Sonnet 4.6, Gemini 3.1, SWE-1.5",
     autocomplete: true,
     chat: true,
     agent: true,
-    ides: "Windsurf (VS Code fork)",
-    highlights: ["Cascade multi-file agent", "Fast autocomplete", "Competitive free tier"]
+    ides: "Windsurf editor, JetBrains, Vim, Xcode, VS Code",
+    highlights: ["Cascade multi-file agent", "40+ IDE support (JetBrains, Vim, Xcode)", "HIPAA + FedRAMP compliance"]
   },
   {
     name: "Amazon Q Developer",

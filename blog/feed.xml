@@ -9,6 +9,30 @@
     <atom:link href="https://codecosts.pages.dev/blog/feed.xml" rel="self" type="application/rss+xml"/>
 
     <item>
+      <title>Best AI Coding Tool for Dart &amp; Flutter Developers (2026)</title>
+      <link>https://codecosts.pages.dev/blog/best-ai-coding-tool-dart.html</link>
+      <description>Flutter is the only major framework where the maker also controls the AI model and IDE. We compared Gemini, Antigravity, Claude Code, Cursor, and Copilot for widget trees, state management, the MCP server, and the three-way IDE decision.</description>
+      <pubDate>Thu, 27 Mar 2026 23:59:55 GMT</pubDate>
+      <guid>https://codecosts.pages.dev/blog/best-ai-coding-tool-dart.html</guid>
+    </item>
+
+    <item>
+      <title>Best AI Coding Tool for Ruby &amp; Rails Developers (2026)</title>
+      <link>https://codecosts.pages.dev/blog/best-ai-coding-tool-ruby.html</link>
+      <description>Ranked comparison of AI coding tools for Ruby and Rails: ActiveRecord, RSpec/Minitest, RubyMine vs VS Code, Shopify-scale patterns, metaprogramming, dynamic typing challenges, and gem ecosystem support. Tool-by-tool breakdown with cost analysis by workflow.</description>
+      <pubDate>Fri, 27 Mar 2026 23:59:50 GMT</pubDate>
+      <guid>https://codecosts.pages.dev/blog/best-ai-coding-tool-ruby.html</guid>
+    </item>
+
+    <item>
+      <title>Best AI Coding Tool for C# &amp; .NET Developers (2026)</title>
+      <link>https://codecosts.pages.dev/blog/best-ai-coding-tool-csharp.html</link>
+      <description>Ranked comparison of AI coding tools for C# and .NET: LINQ, async/await, Entity Framework Core, ASP.NET Core, Blazor, MAUI, and Visual Studio integration. Microsoft built C#, Visual Studio, and Copilot — does that triple lock-in mean Copilot wins by default? Tool-by-tool breakdown with cost analysis by workflow.</description>
+      <pubDate>Fri, 27 Mar 2026 23:59:45 GMT</pubDate>
+      <guid>https://codecosts.pages.dev/blog/best-ai-coding-tool-csharp.html</guid>
+    </item>
+
+    <item>
       <title>Best AI Coding Tool for Kotlin &amp; Android Developers (2026)</title>
       <link>https://codecosts.pages.dev/blog/best-ai-coding-tool-kotlin.html</link>
       <description>Ranked comparison of AI coding tools for Kotlin: Jetpack Compose, coroutines and Flow, Kotlin Multiplatform (KMP), Gradle configuration, Room/SQLDelight, and Android Studio compatibility. JetBrains built both Kotlin and the IDE — does that home-field advantage translate? Tool-by-tool breakdown with cost analysis by workflow.</description>

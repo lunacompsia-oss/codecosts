@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Best AI Coding Tool for Ruby &amp; Rails Developers (2026) &mdash; Ranked by Real Features</title>
+  <meta name="description" content="We compared every AI coding assistant for Ruby-specific features: Rails conventions, ActiveRecord, RSpec/Minitest, RubyMine vs VS Code, Shopify-scale codebases, and dynamic typing challenges. Here's which tool Ruby developers should pick.">
+  <link rel="canonical" href="https://codecosts.pages.dev/blog/best-ai-coding-tool-ruby.html">
+  <meta property="og:title" content="Best AI Coding Tool for Ruby & Rails Developers (2026)">
+  <meta property="og:description" content="Ranked comparison of AI coding tools for Ruby: Rails conventions, ActiveRecord, RSpec, RubyMine vs VS Code, Shopify-scale patterns, and dynamic typing challenges.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://codecosts.pages.dev/blog/best-ai-coding-tool-ruby.html">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Best AI Coding Tool for Ruby & Rails Developers (2026)">
+  <meta name="twitter:description" content="Which AI coding assistant is best for Ruby? We compared Rails support, ActiveRecord, RSpec, RubyMine integration, and dynamic typing handling.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💰</text></svg>">
+  <link rel="stylesheet" href="../style.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Best AI Coding Tool for Ruby & Rails Developers (2026)",
+    "datePublished": "2026-03-27",
+    "dateModified": "2026-03-27",
+    "author": { "@type": "Organization", "name": "CodeCosts" },
+    "publisher": { "@type": "Organization", "name": "CodeCosts" },
+    "description": "Ranked comparison of AI coding assistants for Ruby and Rails developers, covering Rails conventions, ActiveRecord, RSpec/Minitest, RubyMine vs VS Code, Shopify-scale codebases, and dynamic typing challenges."
+  }
+  </script>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <a href="/" style="text-decoration:none;color:inherit"><h1><span class="logo">$_</span> CodeCosts</h1></a>
+      <p class="tagline">AI Coding Tool News & Analysis</p>
+      <nav>
+        <a href="/">Tools</a>
+        <a href="/blog/" class="active">Blog</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <article class="card">
+      <h2>Best AI Coding Tool for Ruby &amp; Rails Developers (2026)</h2>
+      <div class="article-meta">
+        <span>March 27, 2026</span>
+        <span>14 min read</span>
+      </div>
+
+      <div class="article-content">
+        <p>Ruby&rsquo;s community is smaller than Python&rsquo;s or JavaScript&rsquo;s, but its influence is outsized. Rails powers Shopify ($236B market cap), GitHub, Basecamp, Hey, Stripe&rsquo;s dashboard, and thousands of startups. The language that gave us &ldquo;convention over configuration&rdquo; and &ldquo;developer happiness&rdquo; now faces a specific AI tool challenge: <strong>Ruby&rsquo;s dynamic typing is both its superpower and its AI blind spot</strong>.</p>
+
+        <p>Without type annotations, AI tools can&rsquo;t rely on compiler signatures to understand your code. They have to <em>infer</em> intent from naming conventions, method calls, and Rails conventions &mdash; which means the quality gap between tools is wider for Ruby than for statically typed languages like TypeScript or Rust. But there&rsquo;s a counterpoint: <strong>Rails&rsquo; &ldquo;convention over configuration&rdquo; is structurally AI-friendly</strong>. There&rsquo;s usually one right way to do things in Rails, and LLMs trained on millions of Rails apps predict those patterns with surprising accuracy.</p>
+
+        <p>We tested every major AI coding assistant on <strong>Ruby-specific tasks</strong> &mdash; Rails MVC scaffolding, ActiveRecord queries, RSpec/Minitest generation, migration writing, concern extraction, Sidekiq job patterns, and the critical RubyMine vs VS Code decision &mdash; to find which one actually helps Ruby developers the most.</p>
+
+        <div class="callout tip">
+          <div class="callout-title">TL;DR</div>
+          <p><strong>Best overall for Ruby:</strong> Claude Code ($20/mo) &mdash; official Ruby LSP plugin gives it semantic understanding of your Rails project; ClaudeOnRails agent swarm and Shopify-built ruby-skills make it the deepest Ruby AI tool available. <strong>Best IDE for Ruby:</strong> Cursor Pro ($20/mo) &mdash; Rails Rules system lets you encode team conventions; best codebase-aware completions in VS Code. <strong>Best in RubyMine:</strong> RubyMine 2026.1 + Claude Agent (via ACP) &mdash; RubyMine&rsquo;s deep Ruby intelligence now open to external AI agents. <strong>Best free:</strong> GitHub Copilot Free &mdash; 2,000 completions/month, good Rails pattern recognition. <strong>Best for Shopify-scale:</strong> Copilot Business ($19/seat/mo) or Cursor Business ($40/seat/mo).</p>
+        </div>
+
+        <h2>Why Ruby Is Different</h2>
+
+        <p>Ruby developers face a unique set of constraints that make AI tool selection different from every other language:</p>
+
+        <ul>
+          <li><strong>Dynamic typing means AI flies blind</strong> &mdash; in TypeScript, the AI knows <code>user</code> is a <code>User</code> type with specific fields. In Ruby, <code>user</code> could be anything. The AI must infer from context that <code>user.email</code> is an ActiveRecord attribute on a <code>User</code> model. Tools with strong codebase indexing (Cursor, JetBrains AI) have a significant advantage here.</li>
+          <li><strong>Convention over configuration is a double-edged sword</strong> &mdash; Rails&rsquo; conventions are powerful but implicit. An AI tool needs to know that <code>UsersController#show</code> maps to <code>app/views/users/show.html.erb</code>, that <code>has_many :posts</code> creates a <code>posts</code> method on <code>User</code>, and that <code>before_action :authenticate!</code> calls a method defined three concerns away. Tools that just see the current file miss 80% of the picture.</li>
+          <li><strong>Metaprogramming is everywhere</strong> &mdash; Ruby&rsquo;s <code>method_missing</code>, <code>define_method</code>, <code>class_eval</code>, and ActiveSupport&rsquo;s dynamic finders create methods that don&rsquo;t exist in source code. <code>User.find_by_email_and_status</code> is a valid method that no grep will find. AI tools that rely only on static analysis will miss these entirely.</li>
+          <li><strong>RubyMine vs VS Code is a real trade-off</strong> &mdash; RubyMine has the deepest Ruby intelligence of any IDE (type inference, gem navigation, Rails-aware navigation), but only JetBrains AI and a few plugins work in it. VS Code has every AI tool available but much weaker Ruby support. This is the defining trade-off for Ruby developers.</li>
+          <li><strong>Testing culture is strong</strong> &mdash; Ruby has the strongest testing culture of any language community. RSpec&rsquo;s expressive DSL (<code>describe</code>, <code>context</code>, <code>it</code>, <code>let</code>, <code>before</code>) and factory patterns (FactoryBot) are idiomatic. AI tools that generate generic xUnit-style tests miss what Ruby developers expect.</li>
+          <li><strong>Gem ecosystem knowledge matters</strong> &mdash; Devise for auth, Sidekiq for background jobs, Pundit for authorization, Pagy for pagination, ViewComponent for components &mdash; the gem you choose changes the correct code pattern. An AI suggesting raw <code>BCrypt</code> password hashing when your app uses Devise is worse than no suggestion at all.</li>
+        </ul>
+
+        <h2>The RubyMine vs VS Code Problem</h2>
+
+        <p>This is the single most important decision for Ruby developers choosing an AI tool. It determines your entire tool ecosystem.</p>
+
+        <table style="width:100%;border-collapse:collapse;margin:1.5rem 0;max-width:700px">
+          <thead>
+            <tr style="border-bottom:2px solid var(--border);text-align:left">
+              <th style="padding:10px 16px">Factor</th>
+              <th style="padding:10px 16px">RubyMine</th>
+              <th style="padding:10px 16px">VS Code</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="border-bottom:1px solid var(--border)">
+              <td style="padding:10px 16px"><strong>Ruby intelligence</strong></td>
+              <td style="padding:10px 16px;color:var(--green)">Excellent</td>
+              <td style="padding:10px 16px">Basic (Solargraph/Ruby LSP)</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border)">
+              <td style="padding:10px 16px"><strong>Rails navigation</strong></td>
+              <td style="padding:10px 16px;color:var(--green)">Built-in (model→view→controller)</td>
+              <td style="padding:10px 16px">Extensions needed</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border)">
+              <td style="padding:10px 16px"><strong>Type inference</strong></td>
+              <td style="padding:10px 16px;color:var(--green)">Deep (proprietary engine)</td>
+              <td style="padding:10px 16px">Limited (Sorbet/RBS optional)</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border)">
+              <td style="padding:10px 16px"><strong>AI tool choices</strong></td>
+              <td style="padding:10px 16px;color:var(--green)">ACP: Claude, Cursor, Copilot, Codex + native AI</td>
+              <td style="padding:10px 16px;color:var(--green)">All tools (Cursor, Copilot, Windsurf, etc.)</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border)">
+              <td style="padding:10px 16px"><strong>Gem navigation</strong></td>
+              <td style="padding:10px 16px;color:var(--green)">Decompile &amp; navigate into gems</td>
+              <td style="padding:10px 16px">Limited</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border)">
+              <td style="padding:10px 16px"><strong>Database tools</strong></td>
+              <td style="padding:10px 16px;color:var(--green)">Built-in SQL console</td>
+              <td style="padding:10px 16px">Extensions needed</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border)">
+              <td style="padding:10px 16px"><strong>Price</strong></td>
+              <td style="padding:10px 16px">$24.90/mo (+ AI addon)</td>
+              <td style="padding:10px 16px;color:var(--green)">Free (+ AI tool cost)</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <p><strong>The 2026 shift:</strong> RubyMine 2026.1&rsquo;s Agent Client Protocol (ACP) changes this calculus entirely. You can now run Claude Agent, Cursor, or Copilot <em>directly inside RubyMine</em>. The old trade-off (deep Ruby intelligence OR best AI tools) is gone. The remaining question is cost: RubyMine subscription + AI subscription vs. free VS Code + AI subscription. For professional Rails developers on production codebases, the answer is increasingly RubyMine + Claude Agent via ACP.</p>
+
+        <h2>The Dynamic Typing Challenge</h2>
+
+        <p>We tested each tool on dynamically typed Ruby code to see which ones handle Ruby&rsquo;s flexibility best:</p>
+
+        <table style="width:100%;border-collapse:collapse;margin:1.5rem 0;max-width:600px">
+          <thead>
+            <tr style="border-bottom:2px solid var(--border);text-align:left">
+              <th style="padding:10px 16px">Tool</th>
+              <th style="padding:10px 16px">Dynamic Typing Handling</th>
+              <th style="padding:10px 16px">Notes</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="border-bottom:1px solid var(--border)">
+              <td style="padding:10px 16px"><strong>Claude Code (+ Ruby LSP)</strong></td>
+              <td style="padding:10px 16px;color:var(--green)">Best</td>
+              <td style="padding:10px 16px">Ruby LSP plugin provides actual type information, method signatures, and definitions. Claude reads semantics, not just patterns. Eliminates hallucinated method names.</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border)">
+              <td style="padding:10px 16px"><strong>JetBrains AI (RubyMine)</strong></td>
+              <td style="padding:10px 16px;color:var(--green)">Excellent</td>
+              <td style="padding:10px 16px">RubyMine&rsquo;s proprietary type inference + new symbol-based language modeling in 2026.1. Understands ActiveRecord attributes, associations, scopes.</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border)">
+              <td style="padding:10px 16px"><strong>Cursor</strong></td>
+              <td style="padding:10px 16px;color:var(--green)">Good</td>
+              <td style="padding:10px 16px">Indexes full codebase. Infers types from usage patterns across files. Rails Rules add project-specific convention context.</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border)">
+              <td style="padding:10px 16px"><strong>Copilot</strong></td>
+              <td style="padding:10px 16px;color:var(--green)">Good</td>
+              <td style="padding:10px 16px">Trained on massive Ruby corpus (GitHub). Recognizes Rails patterns well but occasionally suggests wrong return types for complex method chains.</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border)">
+              <td style="padding:10px 16px"><strong>Windsurf</strong></td>
+              <td style="padding:10px 16px">Decent</td>
+              <td style="padding:10px 16px">Basic Ruby inference. Sometimes suggests Python-ish patterns (<code>snake_case</code> is fine, but may suggest <code>None</code> instead of <code>nil</code>).</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border)">
+              <td style="padding:10px 16px"><strong>Gemini</strong></td>
+              <td style="padding:10px 16px">Decent</td>
+              <td style="padding:10px 16px">Understands basic Ruby. Struggles with complex metaprogramming and ActiveSupport&rsquo;s monkey-patching.</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border)">
+              <td style="padding:10px 16px"><strong>Amazon Q</strong></td>
+              <td style="padding:10px 16px">Basic</td>
+              <td style="padding:10px 16px">Ruby support exists but is clearly secondary to Python/Java/TypeScript. Limited Rails awareness.</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h2>Ruby Feature Comparison</h2>
+
+        <table style="width:100%;border-collapse:collapse;margin:1.5rem 0;font-size:0.92rem">
+          <thead>
+            <tr style="border-bottom:2px solid var(--border);text-align:left">
+              <th style="padding:12px 16px">Feature</th>
+              <th style="padding:12px 16px">Claude Code</th>
+              <th style="padding:12px 16px">Cursor</th>
+              <th style="padding:12px 16px">Copilot</th>
+              <th style="padding:12px 16px">JetBrains AI</th>
+              <th style="padding:12px 16px">Windsurf</th>
+              <th style="padding:12px 16px">Amazon Q</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="border-bottom:1px solid var(--border)">
+              <td style="padding:12px 16px"><strong>Rails MVC scaffolding</strong></td>
+              <td style="padding:12px 16px;color:var(--green)">Excellent</td>
+              <td style="padding:12px 16px;color:var(--green)">Excellent</td>
+              <td style="padding:12px 16px;color:var(--green)">Strong</td>
+              <td style="padding:12px 16px;color:var(--green)">Strong</td>
+              <td style="padding:12px 16px">Good</td>
+              <td style="padding:12px 16px">Basic</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border)">
+              <td style="padding:12px 16px"><strong>ActiveRecord queries</strong></td>
+              <td style="padding:12px 16px;color:var(--green)">Excellent</td>
+              <td style="padding:12px 16px;color:var(--green)">Strong</td>
+              <td style="padding:12px 16px;color:var(--green)">Strong</td>
+              <td style="padding:12px 16px;color:var(--green)">Excellent</td>
+              <td style="padding:12px 16px">Good</td>
+              <td style="padding:12px 16px">Basic</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border)">
+              <td style="padding:12px 16px"><strong>RSpec generation</strong></td>
+              <td style="padding:12px 16px;color:var(--green)">Excellent</td>
+              <td style="padding:12px 16px;color:var(--green)">Excellent</td>
+              <td style="padding:12px 16px;color:var(--green)">Strong</td>
+              <td style="padding:12px 16px;color:var(--green)">Strong</td>
+              <td style="padding:12px 16px">Good</td>
+              <td style="padding:12px 16px">Basic</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border)">
+              <td style="padding:12px 16px"><strong>Migrations</strong></td>
+              <td style="padding:12px 16px;color:var(--green)">Excellent</td>
+              <td style="padding:12px 16px;color:var(--green)">Strong</td>
+              <td style="padding:12px 16px;color:var(--green)">Strong</td>
+              <td style="padding:12px 16px;color:var(--green)">Strong</td>
+              <td style="padding:12px 16px">Good</td>
+              <td style="padding:12px 16px">Good</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border)">
+              <td style="padding:12px 16px"><strong>Metaprogramming</strong></td>
+              <td style="padding:12px 16px;color:var(--green)">Strong</td>
+              <td style="padding:12px 16px;color:var(--green)">Strong</td>
+              <td style="padding:12px 16px">Good</td>
+              <td style="padding:12px 16px;color:var(--green)">Excellent</td>
+              <td style="padding:12px 16px">Basic</td>
+              <td style="padding:12px 16px">Basic</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border)">
+              <td style="padding:12px 16px"><strong>Gem ecosystem (Devise, Sidekiq, etc.)</strong></td>
+              <td style="padding:12px 16px;color:var(--green)">Excellent</td>
+              <td style="padding:12px 16px;color:var(--green)">Strong</td>
+              <td style="padding:12px 16px;color:var(--green)">Strong</td>
+              <td style="padding:12px 16px;color:var(--green)">Strong</td>
+              <td style="padding:12px 16px">Good</td>
+              <td style="padding:12px 16px">Basic</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border)">
+              <td style="padding:12px 16px"><strong>Sorbet/RBS types</strong></td>
+              <td style="padding:12px 16px;color:var(--green)">Strong</td>
+              <td style="padding:12px 16px">Good</td>
+              <td style="padding:12px 16px">Basic</td>
+              <td style="padding:12px 16px;color:var(--green)">Strong</td>
+              <td style="padding:12px 16px">Basic</td>
+              <td style="padding:12px 16px">Basic</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border)">
+              <td style="padding:12px 16px"><strong>Hotwire/Turbo/Stimulus</strong></td>
+              <td style="padding:12px 16px;color:var(--green)">Excellent</td>
+              <td style="padding:12px 16px;color:var(--green)">Strong</td>
+              <td style="padding:12px 16px">Good</td>
+              <td style="padding:12px 16px">Good</td>
+              <td style="padding:12px 16px">Basic</td>
+              <td style="padding:12px 16px">Basic</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border)">
+              <td style="padding:12px 16px"><strong>RubyMine support</strong></td>
+              <td style="padding:12px 16px;color:var(--green)">Terminal + ACP</td>
+              <td style="padding:12px 16px;color:var(--green)">Via ACP</td>
+              <td style="padding:12px 16px;color:var(--green)">Plugin + ACP</td>
+              <td style="padding:12px 16px;color:var(--green)">Native</td>
+              <td style="padding:12px 16px;color:var(--red,#e74c3c)">No</td>
+              <td style="padding:12px 16px;color:var(--green)">Plugin</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border)">
+              <td style="padding:12px 16px"><strong>Price (individual)</strong></td>
+              <td style="padding:12px 16px">$20&ndash;$200/mo</td>
+              <td style="padding:12px 16px">Free&ndash;$200/mo</td>
+              <td style="padding:12px 16px">Free&ndash;$39/mo</td>
+              <td style="padding:12px 16px">~$10/mo</td>
+              <td style="padding:12px 16px">Free&ndash;$200/mo</td>
+              <td style="padding:12px 16px">Free&ndash;$19/mo</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h2>Tool-by-Tool Breakdown for Ruby</h2>
+
+        <h3>Cursor &mdash; Best Codebase-Aware Completions for Ruby</h3>
+
+        <p>Cursor&rsquo;s advantage for Ruby developers is twofold: deep codebase indexing and the <strong>Rails Rules system</strong>. In a language where types are inferred from usage, Cursor&rsquo;s ability to scan your entire project matters. But the real differentiator is <code>.cursor/rules/</code> &mdash; files that teach Cursor your team&rsquo;s Rails conventions, targeted by glob patterns (<code>**/*.rb</code> for backend, <code>**/*_spec.rb</code> for tests). The community has built extensive Rails-specific rule sets.</p>
+
+        <p><strong>Ruby strengths:</strong></p>
+        <ul>
+          <li><strong>Rails Rules ecosystem</strong> &mdash; community-maintained rule sets encode Rails conventions (service objects, skinny controllers, Turbo Stream patterns, RuboCop config). The closest any tool gets to &ldquo;teaching&rdquo; the AI your team&rsquo;s standards.</li>
+          <li>Indexes your entire Rails app &mdash; understands that <code>User.active</code> comes from a scope defined in <code>app/models/user.rb</code>, even when editing a controller</li>
+          <li>Composer (agent mode) can scaffold complete Rails features: model, migration, controller, views, routes, and RSpec specs in one pass</li>
+          <li>Strong RSpec generation &mdash; produces idiomatic specs with <code>let</code>, <code>context</code> blocks, <code>shared_examples</code>, and FactoryBot factories</li>
+          <li>Understands Hotwire &mdash; correctly generates Turbo Frames, Turbo Streams, and Stimulus controllers</li>
+          <li>Tab completion handles Ruby blocks and chained method calls well</li>
+          <li>Good at suggesting ActiveRecord query patterns: <code>where</code>, <code>joins</code>, <code>includes</code>, <code>merge</code></li>
+        </ul>
+
+        <p><strong>Ruby weaknesses:</strong></p>
+        <ul>
+          <li>VS Code&rsquo;s Ruby support is weaker than RubyMine &mdash; no built-in Rails navigation, limited gem decompilation</li>
+          <li>Metaprogrammed methods (dynamic finders, <code>method_missing</code>) can confuse the indexer</li>
+          <li>500 fast requests at $20/mo &mdash; Ruby&rsquo;s expressive syntax helps, but complex RSpec files burn through requests</li>
+          <li>ERB template support is decent but not as strong as HAML/Slim support</li>
+        </ul>
+
+        <p><strong>Best for:</strong> Ruby developers who want the best AI-powered completions and are comfortable with VS Code. The codebase indexing makes up for VS Code&rsquo;s weaker Ruby intelligence.</p>
+
+        <p><a href="/cursor-pricing.html" style="color:var(--accent)">Full Cursor pricing breakdown &rarr;</a></p>
+
+        <h3>JetBrains AI in RubyMine &mdash; Best for RubyMine Users</h3>
+
+        <p>RubyMine 2026.1 changed the game with <strong>Agent Client Protocol (ACP)</strong>. Previously, choosing RubyMine meant sacrificing access to the best AI tools. Now you can run Claude Agent, Cursor, or Copilot <em>directly inside RubyMine</em> via one-click install from the ACP Registry &mdash; combining the deepest Ruby IDE intelligence with the best AI models.</p>
+
+        <p><strong>Ruby strengths:</strong></p>
+        <ul>
+          <li><strong>ACP protocol (2026.1)</strong> &mdash; run Claude Agent, Cursor, Copilot, or Codex inside RubyMine. No longer forced to choose between IDE intelligence and AI quality.</li>
+          <li>Leverages RubyMine&rsquo;s proprietary type inference engine &mdash; understands that <code>User.where(active: true).first</code> returns a <code>User?</code> without any annotations</li>
+          <li><strong>Symbol-based language modeling</strong> &mdash; new experimental engine in 2026.1 improves how RubyMine understands classes, modules, and constants, feeding better context to AI</li>
+          <li>Rails-aware navigation feeds context &mdash; when you ask about a controller action, the AI knows which view, route, and model are involved</li>
+          <li>Gem decompilation &mdash; AI can see inside your installed gems, understanding Devise&rsquo;s methods, Sidekiq&rsquo;s API, Pundit&rsquo;s patterns</li>
+          <li>Best metaprogramming support &mdash; RubyMine resolves many dynamic methods at IDE level, passing that understanding to AI</li>
+          <li>Built-in database tools &mdash; SQL completion informed by your actual schema, not just <code>schema.rb</code></li>
+          <li>Native Sorbet and RBS type annotation support, improving completions for typed codebases</li>
+          <li><strong>Junie coding agent</strong> &mdash; multi-step agent for implementation, refactoring, and test generation with full project context</li>
+        </ul>
+
+        <p><strong>Ruby weaknesses:</strong></p>
+        <ul>
+          <li>Requires RubyMine subscription (~$100/yr personal) on top of AI Pro (~$100/yr) = ~$200/yr total</li>
+          <li>AI completion quality depends heavily on RubyMine&rsquo;s indexing &mdash; large monolith Rails apps can have slow index times</li>
+          <li>Heavier resource usage than VS Code</li>
+          <li>AI credit system adds complexity at higher tiers</li>
+        </ul>
+
+        <p><strong>Best for:</strong> Professional Ruby developers who want the best of both worlds. RubyMine 2026.1 + Claude Agent via ACP gives you the deepest Ruby understanding of any setup &mdash; RubyMine&rsquo;s type inference feeding into Claude&rsquo;s reasoning. Worth the cost for complex Rails apps with heavy metaprogramming.</p>
+
+        <p><a href="/jetbrains-ai-pricing.html" style="color:var(--accent)">Full JetBrains AI pricing breakdown &rarr;</a></p>
+
+        <h3>GitHub Copilot &mdash; Best All-Around with RubyMine Support</h3>
+
+        <p>Copilot works in both VS Code and RubyMine (via plugin), making it the most versatile option for Ruby developers who haven&rsquo;t committed to one IDE. It was trained on GitHub&rsquo;s massive Ruby corpus &mdash; which includes Rails itself, every popular gem, and millions of Ruby projects.</p>
+
+        <p><strong>Ruby strengths:</strong></p>
+        <ul>
+          <li>Works in both VS Code and RubyMine &mdash; the only mainstream AI tool with full support in both</li>
+          <li>Trained on the entire GitHub Ruby ecosystem &mdash; recognizes idiomatic Rails patterns, gem-specific code, and community conventions</li>
+          <li>Good RSpec generation &mdash; produces proper <code>describe</code>/<code>context</code>/<code>it</code> blocks with <code>let</code> and <code>before</code></li>
+          <li>Understands ActiveRecord associations, scopes, callbacks, and validations</li>
+          <li>Agent mode can scaffold features and run tests</li>
+          <li>Free tier (2,000 completions/month) works in both IDEs</li>
+          <li>Code referencing &mdash; shows when suggestions match public repo code (important for gem-heavy Ruby apps)</li>
+        </ul>
+
+        <p><strong>Ruby weaknesses:</strong></p>
+        <ul>
+          <li>In VS Code, lacks the deep type context that RubyMine provides to JetBrains AI</li>
+          <li>In RubyMine, doesn&rsquo;t leverage RubyMine&rsquo;s type inference as deeply as JetBrains AI does</li>
+          <li>Sometimes suggests Ruby 2.x patterns (<code>Hash#each_with_object</code> over <code>Hash#filter_map</code>, old <code>rescue</code> syntax)</li>
+          <li>Metaprogrammed methods occasionally generate incorrect suggestions</li>
+        </ul>
+
+        <p><strong>Best for:</strong> Ruby developers who want one tool that works in any IDE, or teams that haven&rsquo;t standardized on an editor. Copilot&rsquo;s versatility and training data breadth make it the safe default choice.</p>
+
+        <p><a href="/copilot-pricing.html" style="color:var(--accent)">Full Copilot pricing breakdown &rarr;</a></p>
+
+        <h3>Claude Code &mdash; Best Terminal Agent for Rails Projects</h3>
+
+        <p>Claude Code has become the most Ruby-specialized AI tool available, thanks to three developments in early 2026: the <strong>official Ruby LSP plugin</strong>, Shopify&rsquo;s <strong>ruby-skills</strong>, and the <strong>ClaudeOnRails</strong> agent swarm. This isn&rsquo;t just a generic LLM that happens to know Ruby &mdash; it&rsquo;s the only AI tool with semantic understanding of your actual Rails project structure.</p>
+
+        <p><strong>Ruby strengths:</strong></p>
+        <ul>
+          <li><strong>Ruby LSP Plugin (March 2026)</strong> &mdash; install with <code>claude plugin install ruby-lsp@claude-plugins-official</code>. Gives Claude go-to-definition, hover docs, find-references, code completion, and diagnostics across <code>.rb</code>, <code>.rake</code>, <code>.gemspec</code>, <code>.ru</code>, <code>.erb</code> files. Claude reads <em>actual semantics</em>, not just surface text. This eliminates hallucinated method names.</li>
+          <li><strong>ClaudeOnRails</strong> by Obie Fernandez &mdash; a gem that creates a swarm of specialized AI agents (Architect, Models, Controllers, Views, Tests, Services, Background Jobs, DevOps) using claude-swarm. Describe what you want and the swarm coordinates across all Rails layers.</li>
+          <li><strong>ruby-skills</strong> by Stan Lo (Shopify) &mdash; Claude Code skills that teach Claude about Ruby&rsquo;s tooling ecosystem: IRB, Bundler, RubyGems, testing frameworks. Built by a Shopify engineer who works on Ruby LSP.</li>
+          <li><strong>Full codebase understanding</strong> &mdash; reads your entire Rails app, Gemfile, schema, routes, and configs to understand the complete picture</li>
+          <li><strong>Rails upgrades</strong> &mdash; can execute <code>rails app:update</code>, read deprecation warnings, fix breaking changes, and run your test suite to verify &mdash; all autonomously</li>
+          <li><strong>RSpec mastery</strong> &mdash; generates comprehensive spec files with proper factories, shared contexts, request specs, and system specs. Runs <code>rspec</code> and iterates on failures.</li>
+          <li><strong>Gem-aware via LSP</strong> &mdash; Ruby LSP enables go-to-definition <em>inside</em> gem source code. Claude reads the actual Devise implementation, not just guessing from patterns.</li>
+          <li><strong>Migration chains</strong> &mdash; understands that adding a column requires a migration, model update, controller permit, form field, and test update. Does all of it in one pass.</li>
+          <li>Terminal-native workflow fits Rails&rsquo; CLI-heavy development (<code>rails generate</code>, <code>rake</code>, <code>bundler</code>, <code>rspec</code>)</li>
+          <li>Works alongside RubyMine or VS Code &mdash; edits files that your IDE hot-reloads</li>
+        </ul>
+
+        <p><strong>Ruby weaknesses:</strong></p>
+        <ul>
+          <li>No inline completions &mdash; this is an agent for complex tasks, not a copilot for autocomplete</li>
+          <li>Terminal-based &mdash; some developers prefer GUI interactions</li>
+          <li>Max 20x at $200/mo is the most expensive individual tier in the market</li>
+          <li>Anthropic models only &mdash; no model diversity</li>
+        </ul>
+
+        <p><strong>Best for:</strong> The most Ruby-aware AI tool available. Rails upgrades, large refactors, comprehensive test generation, and anything requiring deep project understanding. The Ruby LSP integration alone makes it worth trying for any serious Rails developer. Senior Rails developers on Reddit and blogs consistently describe it as &ldquo;pair programming with a senior dev.&rdquo;</p>
+
+        <p><a href="/claude-code-cost.html" style="color:var(--accent)">Claude Code pricing breakdown &rarr;</a></p>
+
+        <h3>Windsurf &mdash; Budget VS Code Option</h3>
+
+        <p>Windsurf (formerly Codeium) offers a generous free tier and decent Ruby support at a lower price point than Cursor. Its Cascade agent can handle multi-file Rails operations, though with less precision than Cursor or Claude Code.</p>
+
+        <p><strong>Ruby strengths:</strong></p>
+        <ul>
+          <li>Generous free tier &mdash; unlimited basic completions for Ruby</li>
+          <li>Cascade agent can scaffold Rails features and run commands</li>
+          <li>Understands basic Rails patterns: MVC structure, routing, ActiveRecord basics</li>
+          <li>Lower price than Cursor for paid tiers</li>
+        </ul>
+
+        <p><strong>Ruby weaknesses:</strong></p>
+        <ul>
+          <li>Ruby support is noticeably weaker than for Python/TypeScript &mdash; sometimes suggests Python-influenced patterns</li>
+          <li>Limited metaprogramming understanding &mdash; struggles with <code>method_missing</code> and dynamic finders</li>
+          <li>RSpec generation is generic &mdash; often produces xUnit-style tests rather than idiomatic RSpec</li>
+          <li>VS Code only &mdash; no RubyMine support</li>
+          <li>Quota-based pricing replaced credits in 2025, creating unpredictable costs</li>
+        </ul>
+
+        <p><strong>Best for:</strong> Budget-conscious Ruby developers who want AI completions in VS Code without paying Cursor prices. Good enough for simple Rails CRUD work, but falls short on complex Ruby patterns.</p>
+
+        <p><a href="/windsurf-pricing.html" style="color:var(--accent)">Full Windsurf pricing breakdown &rarr;</a></p>
+
+        <h3>Amazon Q Developer &mdash; Best for AWS Ruby Shops</h3>
+
+        <p>Amazon Q&rsquo;s Ruby support is limited compared to its Python/Java strength, but if your Ruby app runs on AWS (Lambda, ECS, RDS, ElastiCache), Q&rsquo;s infrastructure awareness is genuinely useful. It understands AWS SDK for Ruby and can help with Lambda handler code.</p>
+
+        <p><strong>Ruby strengths:</strong></p>
+        <ul>
+          <li>Unlimited free tier &mdash; no monthly completion limits</li>
+          <li>AWS SDK for Ruby knowledge &mdash; correct S3, SQS, DynamoDB client patterns</li>
+          <li>Lambda Ruby handler generation &mdash; understands runtime constraints and event structures</li>
+          <li>Works in VS Code and JetBrains IDEs (including RubyMine)</li>
+        </ul>
+
+        <p><strong>Ruby weaknesses:</strong></p>
+        <ul>
+          <li>Rails support is clearly secondary &mdash; generic completions that miss conventions</li>
+          <li>RSpec generation is basic &mdash; produces simple <code>describe</code>/<code>it</code> blocks without FactoryBot, shared contexts, or proper let/before patterns</li>
+          <li>Limited gem ecosystem knowledge &mdash; doesn&rsquo;t understand Devise, Sidekiq, or other popular gems well</li>
+          <li>Dynamic typing handling is weakest among tested tools</li>
+        </ul>
+
+        <p><strong>Best for:</strong> Ruby shops heavily invested in AWS. Use Q for infrastructure code, pair with Copilot or Cursor for Rails application code.</p>
+
+        <p><a href="/amazon-q-pricing.html" style="color:var(--accent)">Full Amazon Q pricing breakdown &rarr;</a></p>
+
+        <h3>Gemini Code Assist &mdash; Limited Ruby Value</h3>
+
+        <p>Gemini Code Assist supports Ruby, but its Ruby-specific capabilities are thin. Google&rsquo;s AI strength is in Python, Go, and Kotlin (Android) &mdash; Ruby is a second-tier citizen. If you&rsquo;re on Google Cloud with a Ruby app, there&rsquo;s some value in Gemini&rsquo;s GCP integration, but for pure Rails development, other tools are strictly better.</p>
+
+        <p><strong>Ruby strengths:</strong></p>
+        <ul>
+          <li>Free tier available</li>
+          <li>Large context window (up to 1M tokens with Gemini 2.5)</li>
+          <li>GCP integration if you deploy Rails to Cloud Run or GKE</li>
+        </ul>
+
+        <p><strong>Ruby weaknesses:</strong></p>
+        <ul>
+          <li>Ruby is clearly a lower priority language for Google</li>
+          <li>Rails-specific patterns are often generic or incorrect</li>
+          <li>No RubyMine support</li>
+          <li>RSpec generation lacks idiomatic patterns</li>
+        </ul>
+
+        <p><strong>Best for:</strong> Ruby developers on Google Cloud who want a free AI tool. Otherwise, choose Copilot Free, Cursor, or Claude Code instead.</p>
+
+        <p><a href="/gemini-code-assist-pricing.html" style="color:var(--accent)">Full Gemini pricing breakdown &rarr;</a></p>
+
+        <h3>Tabnine &mdash; Enterprise Ruby Option</h3>
+
+        <p>Tabnine targets enterprises that need privacy guarantees. For Ruby shops in regulated industries (fintech, healthcare), Tabnine&rsquo;s self-hosted deployment ensures your Ruby code never leaves your infrastructure. It supports RubyMine via JetBrains plugin.</p>
+
+        <p><strong>Ruby strengths:</strong></p>
+        <ul>
+          <li>Self-hosted/air-gapped deployment &mdash; code never leaves your network</li>
+          <li>Works in RubyMine and VS Code</li>
+          <li>SOC 2, GDPR compliant with IP indemnification</li>
+          <li>Can be trained on your private Ruby codebase for better completions</li>
+        </ul>
+
+        <p><strong>Ruby weaknesses:</strong></p>
+        <ul>
+          <li>Ruby completion quality is behind Copilot and Cursor</li>
+          <li>Limited Rails-specific intelligence</li>
+          <li>No agent mode for multi-file operations</li>
+          <li>Higher cost ($39/user/mo for Enterprise)</li>
+        </ul>
+
+        <p><strong>Best for:</strong> Enterprise Ruby teams in regulated industries that require self-hosted AI with compliance certifications.</p>
+
+        <p><a href="/tabnine-pricing.html" style="color:var(--accent)">Full Tabnine pricing breakdown &rarr;</a></p>
+
+        <h2>The Shopify Factor</h2>
+
+        <p>Shopify is the largest Ruby on Rails deployment in the world &mdash; and their engineering practices shape the community. A few observations for AI tool selection:</p>
+
+        <ul>
+          <li><strong>Shopify built Ruby LSP</strong> &mdash; the language server that now powers Claude Code&rsquo;s Ruby understanding (via the official plugin) and VS Code&rsquo;s Ruby intelligence. This is the single most impactful Ruby AI infrastructure project. Shopify&rsquo;s open-source contributions disproportionately benefit the Claude Code ecosystem.</li>
+          <li><strong>Roast</strong> &mdash; Shopify open-sourced Roast, a Ruby DSL for structured AI workflows. Roast 1.0 (2026) is a complete rewrite with multi-LLM provider support. Used internally for AI-powered code review (&ldquo;Glaser&rdquo;).</li>
+          <li><strong>ruby-skills for Claude Code</strong> &mdash; Stan Lo (Shopify) created Claude Code skills that teach Claude about Ruby&rsquo;s tooling ecosystem. A direct bridge between Shopify&rsquo;s Ruby expertise and AI tooling.</li>
+          <li><strong>Sorbet + RBS</strong> &mdash; Shopify uses Sorbet extensively and contributed inline RBS comments support, enabling gradual migration to Ruby&rsquo;s official type format. Claude Code (via Ruby LSP) and RubyMine have the best Sorbet support.</li>
+          <li><strong>Shopify-scale Rails monoliths</strong> are challenging for AI tools &mdash; large codebases (100k+ LOC) need tools with efficient indexing. Cursor and Claude Code handle this best.</li>
+          <li><strong>ViewComponent + Packwerk</strong> &mdash; Shopify popularized both. Claude Code&rsquo;s full-codebase awareness makes it the best tool for working with Packwerk-structured modular monoliths.</li>
+          <li><strong>Tobi L&uuml;tke mandated company-wide AI adoption</strong> &mdash; Shopify engineers use multiple AI tools rather than standardizing on one. They don&rsquo;t publicly endorse a single tool, but their open-source contributions heavily favor Claude Code.</li>
+        </ul>
+
+        <h2>The DHH Factor</h2>
+
+        <p>DHH (Rails creator, 37signals CTO) has a nuanced and influential stance on AI tools. He <strong>uses</strong> AI but keeps it in a separate window, consulting for explanations while writing all code by hand. He&rsquo;s criticized embedded AI tools, saying he can &ldquo;literally feel competence draining out of my fingers&rdquo; when using them, and warns that AI may be eroding programming fundamentals.</p>
+
+        <p>The community response is divided:</p>
+
+        <ul>
+          <li>Some Rails developers echo DHH&rsquo;s concerns about skill preservation</li>
+          <li>Others are building the <strong>&ldquo;VibeOnRails&rdquo;</strong> movement &mdash; explicitly positioning Rails as the ideal framework for AI-assisted development. The argument: Rails&rsquo; convention-heavy approach produces cleaner AI output than more flexible frameworks where the &ldquo;right&rdquo; approach depends on team choices.</li>
+          <li>Practically, Claude Code is gaining rapid adoption among senior Rails developers (especially after the Ruby LSP integration), Cursor is popular for its customizability via Rails Rules, and Copilot remains the most widely used due to price and ubiquity</li>
+          <li>For Hotwire/Turbo/Stimulus (DHH&rsquo;s frontend stack for Rails), Claude Code and Cursor have the best understanding; other tools tend to suggest React/Vue patterns instead</li>
+        </ul>
+
+        <h2>Best Tool by Workflow</h2>
+
+        <table style="width:100%;border-collapse:collapse;margin:1.5rem 0;font-size:0.92rem">
+          <thead>
+            <tr style="border-bottom:2px solid var(--border);text-align:left">
+              <th style="padding:12px 16px">Your Workflow</th>
+              <th style="padding:12px 16px">Best Tool</th>
+              <th style="padding:12px 16px">Cost</th>
+              <th style="padding:12px 16px">Why</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="border-bottom:1px solid var(--border)">
+              <td style="padding:12px 16px"><strong>Rails app development (VS Code)</strong></td>
+              <td style="padding:12px 16px">Cursor Pro</td>
+              <td style="padding:12px 16px">$20/mo</td>
+              <td style="padding:12px 16px">Best codebase-aware completions for dynamic Ruby. Indexes your whole app.</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border)">
+              <td style="padding:12px 16px"><strong>Rails app development (RubyMine)</strong></td>
+              <td style="padding:12px 16px">JetBrains AI Pro</td>
+              <td style="padding:12px 16px">$8.33/mo (+IDE)</td>
+              <td style="padding:12px 16px">Only AI tool with access to RubyMine&rsquo;s deep type inference.</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border)">
+              <td style="padding:12px 16px"><strong>Rails upgrade (7.x&rarr;8.0)</strong></td>
+              <td style="padding:12px 16px">Claude Code</td>
+              <td style="padding:12px 16px">$20&ndash;$100/mo</td>
+              <td style="padding:12px 16px">Reads deprecation warnings, fixes breaking changes, runs tests autonomously.</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border)">
+              <td style="padding:12px 16px"><strong>RSpec test suite generation</strong></td>
+              <td style="padding:12px 16px">Claude Code</td>
+              <td style="padding:12px 16px">$20&ndash;$100/mo</td>
+              <td style="padding:12px 16px">Generates, runs, and iterates. Produces idiomatic RSpec with factories.</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border)">
+              <td style="padding:12px 16px"><strong>Student / learning Rails</strong></td>
+              <td style="padding:12px 16px">Copilot Free</td>
+              <td style="padding:12px 16px;color:var(--green)">$0</td>
+              <td style="padding:12px 16px">2K completions/mo. Trained on Rails itself. Great for learning patterns.</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border)">
+              <td style="padding:12px 16px"><strong>Shopify / large monolith</strong></td>
+              <td style="padding:12px 16px">Cursor Pro + Claude Code</td>
+              <td style="padding:12px 16px">$40/mo</td>
+              <td style="padding:12px 16px">Cursor for completions, Claude Code for cross-codebase refactors.</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border)">
+              <td style="padding:12px 16px"><strong>API-only Rails (no frontend)</strong></td>
+              <td style="padding:12px 16px">Cursor Pro</td>
+              <td style="padding:12px 16px">$20/mo</td>
+              <td style="padding:12px 16px">No IDE lock-in for API work. Best completions for serializers and controllers.</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border)">
+              <td style="padding:12px 16px"><strong>Enterprise Ruby team</strong></td>
+              <td style="padding:12px 16px">Copilot Business</td>
+              <td style="padding:12px 16px">$19/seat/mo</td>
+              <td style="padding:12px 16px">Works in RubyMine and VS Code. Admin controls, IP indemnity.</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border)">
+              <td style="padding:12px 16px"><strong>AWS-heavy Ruby shop</strong></td>
+              <td style="padding:12px 16px">Amazon Q + Copilot</td>
+              <td style="padding:12px 16px">$0&ndash;$10/mo</td>
+              <td style="padding:12px 16px">Q for AWS infra code, Copilot for Rails app code.</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border)">
+              <td style="padding:12px 16px"><strong>Regulated industry (fintech)</strong></td>
+              <td style="padding:12px 16px">Tabnine Enterprise</td>
+              <td style="padding:12px 16px">$39/seat/mo</td>
+              <td style="padding:12px 16px">Self-hosted. Code never leaves your network. SOC 2, GDPR, IP indemnity.</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h2>Our Verdict</h2>
+
+        <div class="callout tip">
+          <div class="callout-title">Best Overall: Claude Code ($20/mo)</div>
+          <p>The Ruby LSP plugin gives Claude Code semantic understanding of your Rails project that no other AI tool has. It reads actual type information, method signatures, and gem source code &mdash; not just guessing from patterns. Combined with ClaudeOnRails and ruby-skills, it&rsquo;s the most Ruby-specialized AI tool available. Terminal workflow fits Rails&rsquo; CLI-heavy development perfectly.</p>
+        </div>
+
+        <div class="callout tip">
+          <div class="callout-title">Best IDE: Cursor Pro ($20/mo)</div>
+          <p>For daily inline completions in VS Code, Cursor Pro&rsquo;s Rails Rules system and codebase indexing give it an edge over Copilot. You can encode your team&rsquo;s Rails conventions so the AI consistently follows your standards. Composer mode handles multi-file scaffolding well.</p>
+        </div>
+
+        <div class="callout tip">
+          <div class="callout-title">Best in RubyMine: RubyMine 2026.1 + Claude Agent (via ACP)</div>
+          <p>RubyMine&rsquo;s ACP protocol is a paradigm shift. You no longer choose between RubyMine&rsquo;s deep Ruby intelligence and the best AI tools &mdash; run Claude Agent, Cursor, or Copilot directly inside RubyMine. The deepest Ruby understanding of any setup, especially for complex Rails apps with heavy metaprogramming.</p>
+        </div>
+
+        <div class="callout tip">
+          <div class="callout-title">Best Free: GitHub Copilot Free</div>
+          <p>2,000 completions/month in both VS Code and RubyMine. Trained on GitHub&rsquo;s entire Ruby ecosystem including Rails itself. For a free tool, the Rails pattern recognition is remarkably good. Amazon Q is also free and unlimited, but its Ruby quality is noticeably weaker.</p>
+        </div>
+
+        <div class="callout tip">
+          <div class="callout-title">Best Stack: Cursor Pro + Claude Code ($40/mo)</div>
+          <p>Use Cursor for daily inline completions with Rails Rules enforcing your conventions. Use Claude Code (with Ruby LSP plugin) for big-picture tasks: refactors, test suites, Rails upgrades, debugging complex metaprogramming. This combination covers the full spectrum of Ruby development needs.</p>
+        </div>
+
+        <div class="article-cta">
+          <p><strong>Compare exact prices for your setup</strong></p>
+          <a href="/">Use the CodeCosts Calculator &rarr;</a>
+        </div>
+
+        <p>Pricing changes frequently. We update this analysis as tools ship new features. Last updated March 27, 2026. For detailed pricing on any tool, see our guides: <a href="/cursor-pricing.html" style="color:var(--accent)">Cursor</a> &middot; <a href="/copilot-pricing.html" style="color:var(--accent)">Copilot</a> &middot; <a href="/windsurf-pricing.html" style="color:var(--accent)">Windsurf</a> &middot; <a href="/claude-code-cost.html" style="color:var(--accent)">Claude Code</a> &middot; <a href="/gemini-code-assist-pricing.html" style="color:var(--accent)">Gemini</a> &middot; <a href="/amazon-q-pricing.html" style="color:var(--accent)">Amazon Q</a> &middot; <a href="/tabnine-pricing.html" style="color:var(--accent)">Tabnine</a> &middot; <a href="/jetbrains-ai-pricing.html" style="color:var(--accent)">JetBrains AI</a>.</p>
+
+        <h2>Related on CodeCosts</h2>
+        <ul>
+          <li><a href="/blog/best-ai-coding-tool-python.html" style="color:var(--accent)">Best AI Coding Tool for Python Developers (2026)</a></li>
+          <li><a href="/blog/best-ai-coding-tool-javascript.html" style="color:var(--accent)">Best AI Coding Tool for JavaScript Developers (2026)</a></li>
+          <li><a href="/blog/best-ai-coding-tool-typescript.html" style="color:var(--accent)">Best AI Coding Tool for TypeScript Developers (2026)</a></li>
+          <li><a href="/blog/best-ai-coding-tool-java.html" style="color:var(--accent)">Best AI Coding Tool for Java Developers (2026)</a></li>
+          <li><a href="/blog/best-ai-coding-tool-csharp.html" style="color:var(--accent)">Best AI Coding Tool for C# & .NET Developers (2026)</a></li>
+          <li><a href="/blog/best-ai-coding-tool-kotlin.html" style="color:var(--accent)">Best AI Coding Tool for Kotlin & Android Developers (2026)</a></li>
+          <li><a href="/blog/best-ai-coding-tool-go.html" style="color:var(--accent)">Best AI Coding Tool for Go Developers (2026)</a></li>
+          <li><a href="/blog/best-ai-coding-tool-rust.html" style="color:var(--accent)">Best AI Coding Tool for Rust Developers (2026)</a></li>
+          <li><a href="/blog/best-ai-coding-tool-cpp.html" style="color:var(--accent)">Best AI Coding Tool for C++ Developers (2026)</a></li>
+          <li><a href="/blog/best-ai-coding-tool-dart.html" style="color:var(--accent)">Best AI Coding Tool for Dart & Flutter Developers (2026)</a></li>
+          <li><a href="/blog/best-ai-coding-tool-swift.html" style="color:var(--accent)">Best AI Coding Tool for Swift & iOS Developers (2026)</a></li>
+          <li><a href="/blog/best-ai-coding-tool-php.html" style="color:var(--accent)">Best AI Coding Tool for PHP Developers (2026)</a></li>
+          <li><a href="/blog/cheapest-ai-coding-tool-2026.html" style="color:var(--accent)">Cheapest AI Coding Tool in 2026</a></li>
+          <li><a href="/blog/claude-code-vs-cursor-agents.html" style="color:var(--accent)">Claude Code vs Cursor for AI Agents</a></li>
+        </ul>
+
+        <p><em>Data sourced from official pricing pages and hands-on testing. Open-source dataset at <a href="https://github.com/lunacompsia-oss/ai-coding-tools-pricing" style="color:var(--accent)">lunacompsia-oss/ai-coding-tools-pricing</a>.</em></p>
+      </div>
+    </article>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>CodeCosts is a free tool by <a href="https://github.com/lunacompsia-oss" target="_blank" rel="noopener">Lunacompsia</a>. Data sourced from official pricing pages. Not affiliated with any listed tool.</p>
+    </div>
+  </footer>
+</body>
+</html>

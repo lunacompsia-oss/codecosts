@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cursor Now Works in JetBrains IDEs + Self-Hosted Agents for Enterprise (March 2026)</title>
+  <meta name="description" content="Cursor expanded beyond VS Code to JetBrains IDEs via ACP, launched self-hosted cloud agents for enterprise, and shipped Composer 2. Here's what changed and what it costs.">
+  <link rel="canonical" href="https://codecosts.pages.dev/blog/cursor-jetbrains-self-hosted-agents.html">
+  <meta property="og:title" content="Cursor Expands to JetBrains IDEs + Self-Hosted Enterprise Agents">
+  <meta property="og:description" content="Cursor broke out of VS Code. JetBrains integration, self-hosted agents, and Composer 2 — full breakdown.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://codecosts.pages.dev/blog/cursor-jetbrains-self-hosted-agents.html">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Cursor in JetBrains + Self-Hosted Agents (March 2026)">
+  <meta name="twitter:description" content="Cursor expands beyond VS Code with JetBrains ACP, self-hosted agents, and Composer 2.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💰</text></svg>">
+  <link rel="stylesheet" href="../style.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Cursor Now Works in JetBrains IDEs + Self-Hosted Agents for Enterprise",
+    "datePublished": "2026-03-27",
+    "dateModified": "2026-03-27",
+    "author": { "@type": "Organization", "name": "CodeCosts" },
+    "publisher": { "@type": "Organization", "name": "CodeCosts" },
+    "description": "Cursor expanded to JetBrains IDEs via ACP, launched self-hosted cloud agents, and shipped Composer 2 in March 2026."
+  }
+  </script>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <a href="/" style="text-decoration:none;color:inherit"><h1><span class="logo">$_</span> CodeCosts</h1></a>
+      <p class="tagline">AI Coding Tool News & Analysis</p>
+      <nav>
+        <a href="/">Tools</a>
+        <a href="/blog/" class="active">Blog</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <article class="card">
+      <h2>Cursor Now Works in JetBrains IDEs + Self-Hosted Agents for Enterprise</h2>
+      <div class="article-meta">
+        <span>March 27, 2026</span>
+        <span>7 min read</span>
+      </div>
+
+      <div class="article-content">
+        <p>March 2026 was Cursor's biggest month yet. Three announcements that reshape its competitive position: <strong>JetBrains IDE support</strong> (March 4), <strong>Composer 2</strong> — their own coding model (March 19), and <strong>self-hosted cloud agents</strong> for enterprise (March 25). Oh, and they crossed $2 billion in annualized revenue.</p>
+
+        <p>Here's what each change means for your workflow and your wallet.</p>
+
+        <h2>1. Cursor in JetBrains IDEs (via ACP)</h2>
+
+        <p>The biggest knock against Cursor has always been: <em>"I'd use it, but I'm not leaving IntelliJ."</em> That objection is gone.</p>
+
+        <p>On March 4, Cursor became available inside <strong>IntelliJ IDEA, PyCharm, WebStorm</strong>, and other JetBrains IDEs through the <strong>Agent Client Protocol (ACP)</strong> — a new open standard built by JetBrains and Zed that standardizes how IDEs communicate with AI coding agents.</p>
+
+        <h3>How It Works</h3>
+        <ul>
+          <li>ACP is like LSP (Language Server Protocol) but for AI agents — a standardized interface between your IDE and an external AI</li>
+          <li>Cursor runs as an external agent, not a plugin fork — you keep JetBrains' full refactoring, debugging, and code quality tools</li>
+          <li>Requires JetBrains 2025.3.2+ with the AI Assistant plugin enabled</li>
+          <li>No JetBrains AI subscription required — you authenticate with your existing Cursor account</li>
+        </ul>
+
+        <h3>What You Get</h3>
+        <ul>
+          <li>All frontier models: OpenAI, Anthropic, Google, and Cursor's own Composer 2</li>
+          <li>Secure codebase indexing and semantic search</li>
+          <li>Multi-file editing through Cursor's agent mode</li>
+          <li>Same features as the VS Code fork, running inside JetBrains</li>
+        </ul>
+
+        <div class="callout tip">
+          <div class="callout-title">Installation</div>
+          <p>Open the agent selector in your JetBrains IDE, choose "Install from ACP Registry," install Cursor, and sign in. That's it — no forked IDE to download.</p>
+        </div>
+
+        <h3>Why This Matters for Pricing</h3>
+        <p>Previously, choosing Cursor meant abandoning your JetBrains license (and its ecosystem). Now you can use both. A developer on JetBrains Ultimate ($24.90/month) + Cursor Pro ($20/month) gets the best of both worlds — though that's $45/month total, which is pricier than alternatives like Copilot Pro ($10/month) or JetBrains AI ($8.33/month).</p>
+
+        <h2>2. Composer 2: Cursor's Own AI Model</h2>
+
+        <p>On March 19, Cursor launched <strong>Composer 2</strong> — a proprietary code-only AI model optimized for multi-file edits, refactoring, and long-running coding tasks.</p>
+
+        <h3>Pricing</h3>
+        <table style="width:100%;border-collapse:collapse;margin:1.5rem 0">
+          <thead>
+            <tr style="border-bottom:2px solid var(--border);text-align:left">
+              <th style="padding:12px 16px">Tier</th>
+              <th style="padding:12px 16px">Input</th>
+              <th style="padding:12px 16px">Output</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="border-bottom:1px solid var(--border)">
+              <td style="padding:12px 16px">Standard</td>
+              <td style="padding:12px 16px">$0.50/M tokens</td>
+              <td style="padding:12px 16px">$2.50/M tokens</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border)">
+              <td style="padding:12px 16px">Fast</td>
+              <td style="padding:12px 16px">$1.50/M tokens</td>
+              <td style="padding:12px 16px">$7.50/M tokens</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <p>For context, that makes Composer 2 Standard <strong>cheaper than Claude Sonnet</strong> ($3/$15 per M tokens) and significantly cheaper than GPT-4.1 for coding tasks. Cursor claims it outperforms Opus 4.6 on some benchmarks while trailing GPT-5.4 — but at a fraction of the cost.</p>
+
+        <p>For Cursor Pro ($20/month) subscribers, Composer 2 is available within your existing fast request allocation — no extra cost unless you exceed your plan limits.</p>
+
+        <h2>3. Self-Hosted Cloud Agents (Enterprise)</h2>
+
+        <p>This is the enterprise play. On March 25, Cursor launched self-hosted cloud agents that keep <strong>all code and tool execution inside your own infrastructure</strong>.</p>
+
+        <h3>How It Works</h3>
+        <ul>
+          <li>Agent planning/inference runs in Cursor's cloud</li>
+          <li>Tool calls (file reads, builds, tests) execute on <strong>your machines</strong></li>
+          <li>Workers connect outbound via HTTPS — no inbound ports, no VPN tunnels, no firewall changes</li>
+          <li>Code, build outputs, and secrets never leave your network</li>
+        </ul>
+
+        <h3>Deployment Options</h3>
+        <ul>
+          <li><strong>Quick start:</strong> <code style="background:var(--surface);padding:2px 6px;border-radius:4px">agent worker start</code></li>
+          <li><strong>Kubernetes:</strong> Helm chart with <code style="background:var(--surface);padding:2px 6px;border-radius:4px">WorkerDeployment</code> resources and autoscaling</li>
+          <li><strong>Fleet management API:</strong> For non-Kubernetes environments</li>
+        </ul>
+
+        <h3>Who's Using It</h3>
+        <p>Cursor named three enterprise customers: <strong>Brex</strong> (financial services), <strong>Money Forward</strong> (deploying across ~1,000 engineers with Slack integration), and <strong>Notion</strong>. All three are in sectors where code leaving the network is a compliance non-starter.</p>
+
+        <div class="callout warning">
+          <div class="callout-title">Pricing Unknown</div>
+          <p>Self-hosted agents appear to be part of Cursor's Business ($40/seat) or Enterprise plans. No separate pricing has been published. If you need this, you're talking to Cursor's sales team.</p>
+        </div>
+
+        <h2>What This Means for the Market</h2>
+
+        <p>Cursor's March moves address its three biggest weaknesses:</p>
+
+        <ol>
+          <li><strong>"I can't leave JetBrains"</strong> → JetBrains ACP support (solved)</li>
+          <li><strong>"It's too expensive at scale"</strong> → Composer 2 cuts model costs (partially solved)</li>
+          <li><strong>"My company won't approve cloud-based code access"</strong> → Self-hosted agents (solved)</li>
+        </ol>
+
+        <p>The competitive landscape is shifting fast. Windsurf <a href="/blog/windsurf-kills-credits-quota-pricing.html" style="color:var(--accent)">just raised prices to match Cursor at $20/month</a>. Copilot has broader IDE support but no self-hosted agent option. Claude Code runs locally by default but lacks the visual IDE experience.</p>
+
+        <h3>Cursor by the Numbers (March 2026)</h3>
+        <ul>
+          <li><strong>Valuation:</strong> $29.3 billion (reportedly raising at $50B)</li>
+          <li><strong>Revenue:</strong> $2B+ annualized (crossed in February 2026)</li>
+          <li><strong>Revenue growth:</strong> $500M (May 2025) → $1B (Oct 2025) → $2B+ (Feb 2026)</li>
+          <li><strong>Fortune 500 adoption:</strong> 67% of Fortune 500 companies</li>
+          <li><strong>Code output:</strong> 150 million lines of enterprise code generated daily</li>
+        </ul>
+
+        <h2>Should You Switch to Cursor?</h2>
+
+        <p><strong>Consider Cursor if:</strong></p>
+        <ul>
+          <li>You were waiting for JetBrains support — it's here now</li>
+          <li>You want agent mode with background/cloud agents</li>
+          <li>Your company needs self-hosted code execution for compliance</li>
+          <li>You want access to Composer 2 alongside Claude, GPT-4.1, and Gemini</li>
+        </ul>
+
+        <p><strong>Stick with your current tool if:</strong></p>
+        <ul>
+          <li>You're happy with Copilot's GitHub integration and lower price ($10/month Pro)</li>
+          <li>You prefer terminal-native workflows (Claude Code is better suited)</li>
+          <li>$20/month for an individual seat is more than you want to spend — check <a href="/free-ai-coding-tools.html" style="color:var(--accent)">free alternatives</a></li>
+        </ul>
+
+        <div class="article-cta">
+          <p><strong>Compare Cursor to every alternative</strong></p>
+          <a href="/cursor-pricing.html">Full Cursor Pricing Breakdown →</a>
+        </div>
+
+        <p>For head-to-head matchups, see <a href="/copilot-vs-cursor.html" style="color:var(--accent)">Copilot vs Cursor</a>, <a href="/cursor-vs-windsurf.html" style="color:var(--accent)">Cursor vs Windsurf</a>, or <a href="/cursor-vs-claude-code.html" style="color:var(--accent)">Cursor vs Claude Code</a>. Or use the <a href="/" style="color:var(--accent)">cost calculator</a> to model your exact team costs.</p>
+      </div>
+    </article>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>CodeCosts is a free tool by <a href="https://github.com/lunacompsia-oss" target="_blank" rel="noopener">Lunacompsia</a>. Data sourced from official pricing pages. Not affiliated with any listed tool.</p>
+    </div>
+  </footer>
+</body>
+</html>

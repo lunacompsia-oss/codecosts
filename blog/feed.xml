@@ -9,6 +9,22 @@
     <atom:link href="https://codecosts.pages.dev/blog/feed.xml" rel="self" type="application/rss+xml"/>
 
     <item>
+      <title>Cursor Now Works in JetBrains IDEs + Self-Hosted Agents for Enterprise</title>
+      <link>https://codecosts.pages.dev/blog/cursor-jetbrains-self-hosted-agents.html</link>
+      <description>Cursor expanded to JetBrains via ACP, launched self-hosted cloud agents, and shipped Composer 2. Full breakdown of what changed and what it costs.</description>
+      <pubDate>Thu, 27 Mar 2026 14:00:00 GMT</pubDate>
+      <guid>https://codecosts.pages.dev/blog/cursor-jetbrains-self-hosted-agents.html</guid>
+    </item>
+
+    <item>
+      <title>Gemini Code Assist Free Tier: 90x More Completions Than Copilot Free</title>
+      <link>https://codecosts.pages.dev/blog/gemini-free-tier-vs-copilot-free.html</link>
+      <description>180,000 vs 2,000 completions per month. Full comparison of Gemini Code Assist Free and GitHub Copilot Free for 2026.</description>
+      <pubDate>Thu, 27 Mar 2026 13:00:00 GMT</pubDate>
+      <guid>https://codecosts.pages.dev/blog/gemini-free-tier-vs-copilot-free.html</guid>
+    </item>
+
+    <item>
       <title>GitHub Copilot Will Train on Your Code by Default — How to Opt Out</title>
       <link>https://codecosts.pages.dev/blog/github-copilot-data-training-opt-out.html</link>
       <description>Starting April 24, GitHub will use Free, Pro, and Pro+ user data to train AI models. Here's how to opt out before the deadline.</description>

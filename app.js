@@ -34,7 +34,7 @@ const tools = [
     autocomplete: true,
     chat: true,
     agent: true,
-    ides: "Cursor (VS Code fork)",
+    ides: "Cursor (VS Code fork), JetBrains (via ACP)",
     highlights: ["Multi-file editing (Composer)", "Codebase-aware context", "Model selection per request"]
   },
   {
@@ -93,7 +93,7 @@ const tools = [
     vendor: "Tabnine",
     url: "https://www.tabnine.com/pricing",
     tiers: [
-      { name: "Dev", monthly: 12, yearly: 144, limits: "AI chat + code completions" },
+      { name: "Dev", monthly: 9, yearly: 108, limits: "AI chat + code completions + agents" },
       { name: "Enterprise", monthly: 39, yearly: 468, limits: "Private models + SSO + audit" }
     ],
     models: "Protected (no training on your code)",

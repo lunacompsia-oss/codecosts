@@ -8,6 +8,7 @@ const tools = [
     tiers: [
       { name: "Free", monthly: 0, yearly: 0, limits: "2,000 completions + 50 chat messages/mo" },
       { name: "Pro", monthly: 10, yearly: 100, limits: "Unlimited completions + chat" },
+      { name: "Pro+", monthly: 39, yearly: 468, limits: "Opus/o1 access + unlimited agent mode" },
       { name: "Business", monthly: 19, yearly: 228, limits: "Admin controls + policy management" },
       { name: "Enterprise", monthly: 39, yearly: 468, limits: "Fine-tuning + knowledge bases" }
     ],
@@ -25,6 +26,8 @@ const tools = [
     tiers: [
       { name: "Hobby", monthly: 0, yearly: 0, limits: "2,000 completions + 50 slow requests" },
       { name: "Pro", monthly: 20, yearly: 192, limits: "Unlimited completions + 500 fast requests" },
+      { name: "Pro+", monthly: 60, yearly: 576, limits: "10x Pro usage + background agents" },
+      { name: "Ultra", monthly: 200, yearly: 1920, limits: "Unlimited fast requests" },
       { name: "Business", monthly: 40, yearly: 384, limits: "Admin + centralized billing + SAML SSO" }
     ],
     models: "GPT-4o, Claude 3.5/Opus, Gemini, custom",
@@ -42,6 +45,7 @@ const tools = [
       { name: "Pro (via Claude)", monthly: 20, yearly: 240, limits: "Limited usage per day" },
       { name: "Max 5x", monthly: 100, yearly: 1200, limits: "5x Pro usage" },
       { name: "Max 20x", monthly: 200, yearly: 2400, limits: "20x Pro usage" },
+      { name: "Team", monthly: 150, yearly: 1800, limits: "Per seat, admin + SSO" },
       { name: "API (pay-per-use)", monthly: null, yearly: null, limits: "Pay per token — ~$3/$15 per MTok (Sonnet)" }
     ],
     models: "Claude Sonnet 4, Claude Opus 4",
@@ -57,8 +61,9 @@ const tools = [
     url: "https://windsurf.com/pricing",
     tiers: [
       { name: "Free", monthly: 0, yearly: 0, limits: "Basic autocomplete + limited chat" },
-      { name: "Pro", monthly: 15, yearly: 120, limits: "Unlimited flows + advanced models" },
-      { name: "Enterprise", monthly: null, yearly: null, limits: "Custom pricing" }
+      { name: "Pro", monthly: 20, yearly: 192, limits: "Unlimited flows + advanced models" },
+      { name: "Max", monthly: 200, yearly: 1920, limits: "Unlimited premium requests" },
+      { name: "Enterprise", monthly: 40, yearly: 480, limits: "Admin + SSO + audit" }
     ],
     models: "GPT-4o, Claude, proprietary models",
     autocomplete: true,
@@ -87,7 +92,7 @@ const tools = [
     vendor: "Tabnine",
     url: "https://www.tabnine.com/pricing",
     tiers: [
-      { name: "Dev", monthly: 9, yearly: 108, limits: "AI chat + code completions" },
+      { name: "Dev", monthly: 12, yearly: 144, limits: "AI chat + code completions" },
       { name: "Enterprise", monthly: 39, yearly: 468, limits: "Private models + SSO + audit" }
     ],
     models: "Protected (no training on your code)",
@@ -98,27 +103,13 @@ const tools = [
     highlights: ["Privacy-focused", "No code training guarantee", "On-premises option"]
   },
   {
-    name: "Supermaven",
-    vendor: "Supermaven",
-    url: "https://supermaven.com/pricing",
-    tiers: [
-      { name: "Free", monthly: 0, yearly: 0, limits: "Basic completions" },
-      { name: "Pro", monthly: 10, yearly: 96, limits: "GPT-4 chat + faster completions" }
-    ],
-    models: "Proprietary (300K context)",
-    autocomplete: true,
-    chat: true,
-    agent: false,
-    ides: "VS Code, JetBrains, Neovim",
-    highlights: ["Fastest autocomplete (sub-100ms)", "300K token context window", "Low-latency inline suggestions"]
-  },
-  {
     name: "JetBrains AI",
     vendor: "JetBrains",
     url: "https://www.jetbrains.com/ai/",
     tiers: [
-      { name: "Free (with IDE)", monthly: 0, yearly: 0, limits: "Basic AI features with JetBrains IDE" },
-      { name: "All Products Pack", monthly: null, yearly: 289, limits: "Full AI included with IDE subscription" }
+      { name: "Free (with IDE)", monthly: 0, yearly: 0, limits: "Limited AI credits with JetBrains IDE" },
+      { name: "AI Pro", monthly: 10, yearly: 100, limits: "Full AI features" },
+      { name: "AI Ultimate", monthly: 30, yearly: 300, limits: "Premium models + higher limits" }
     ],
     models: "Multiple (JetBrains-curated)",
     autocomplete: true,
@@ -134,7 +125,7 @@ const tools = [
     tiers: [
       { name: "Free (Individual)", monthly: 0, yearly: 0, limits: "Code completions + chat" },
       { name: "Standard", monthly: 19, yearly: 228, limits: "Admin controls + Gemini 2.0" },
-      { name: "Enterprise", monthly: 45.25, yearly: 543, limits: "Custom models + Vertex integration" }
+      { name: "Enterprise", monthly: 75, yearly: 900, limits: "Custom models + Vertex integration" }
     ],
     models: "Gemini 2.0 Flash, Gemini 2.0 Pro",
     autocomplete: true,

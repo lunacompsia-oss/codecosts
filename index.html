@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CodeCosts — AI Coding Tool Comparison & Cost Calculator 2026</title>
+  <meta name="description" content="Compare pricing, features, and costs of AI coding assistants: GitHub Copilot, Cursor, Claude Code, Windsurf, and more. Interactive cost calculator included.">
+  <meta name="keywords" content="AI coding tool comparison, GitHub Copilot pricing, Cursor pricing, Claude Code cost, Windsurf pricing, AI code editor, best AI coding assistant 2026">
+  <link rel="canonical" href="https://codecosts.pages.dev/">
+  <meta property="og:title" content="CodeCosts — AI Coding Tool Comparison & Cost Calculator">
+  <meta property="og:description" content="Compare AI coding assistants side-by-side. Find the best tool for your budget.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://codecosts.pages.dev/">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="CodeCosts — AI Coding Tool Comparison & Cost Calculator">
+  <meta name="twitter:description" content="Compare AI coding assistants side-by-side. Find the best tool for your budget.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💰</text></svg>">
+  <link rel="stylesheet" href="style.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "CodeCosts",
+    "description": "AI Coding Tool Comparison & Cost Calculator",
+    "url": "https://codecosts.pages.dev/",
+    "applicationCategory": "DeveloperApplication",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    }
+  }
+  </script>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <h1><span class="logo">$_</span> CodeCosts</h1>
+      <p class="tagline">AI Coding Tool Comparison & Cost Calculator</p>
+      <p class="updated">Last updated: March 2026</p>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- Cost Calculator -->
+    <section id="calculator" class="card">
+      <h2>Cost Calculator</h2>
+      <p class="section-desc">Estimate your monthly and yearly costs based on team size.</p>
+      <div class="calc-grid">
+        <div class="calc-input">
+          <label for="team-size">Team size</label>
+          <input type="number" id="team-size" value="1" min="1" max="1000">
+        </div>
+        <div class="calc-input">
+          <label for="billing">Billing</label>
+          <select id="billing">
+            <option value="monthly">Monthly</option>
+            <option value="yearly">Yearly</option>
+          </select>
+        </div>
+      </div>
+      <div id="calc-results" class="calc-results"></div>
+    </section>
+
+    <!-- Quick Comparison -->
+    <section id="comparison" class="card">
+      <h2>Side-by-Side Comparison</h2>
+      <p class="section-desc">Compare AI coding assistants at a glance. Click column headers to sort.</p>
+      <div class="table-wrap">
+        <table id="comparison-table">
+          <thead>
+            <tr>
+              <th class="sortable" data-sort="name">Tool</th>
+              <th class="sortable" data-sort="free">Free Tier</th>
+              <th class="sortable" data-sort="pro-price">Pro Price</th>
+              <th class="sortable" data-sort="biz-price">Business Price</th>
+              <th>Models</th>
+              <th>Autocomplete</th>
+              <th>Chat</th>
+              <th>Agent Mode</th>
+              <th>IDEs</th>
+            </tr>
+          </thead>
+          <tbody id="comparison-body"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Detailed Breakdowns -->
+    <section id="details" class="card">
+      <h2>Detailed Breakdown</h2>
+      <p class="section-desc">In-depth look at each tool's pricing, limits, and features.</p>
+      <div id="detail-cards" class="detail-grid"></div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" class="card">
+      <h2>Frequently Asked Questions</h2>
+      <div class="faq-list">
+        <details>
+          <summary>Which AI coding tool is cheapest for a solo developer?</summary>
+          <p>Several tools offer free tiers: GitHub Copilot Free (2,000 completions/mo), Windsurf Free, and Amazon Q Developer Free. For a paid option, Claude Code via Claude Max ($20/mo) offers strong value with full agent capabilities.</p>
+        </details>
+        <details>
+          <summary>Which tool is best for teams?</summary>
+          <p>GitHub Copilot Business ($19/seat/mo) is the most established option with admin controls and policy management. Cursor Business ($40/seat/mo) offers more advanced AI features. Your choice depends on whether you prioritize ecosystem integration or cutting-edge AI capabilities.</p>
+        </details>
+        <details>
+          <summary>Do these tools work with my IDE?</summary>
+          <p>Most tools support VS Code. GitHub Copilot has the broadest IDE support (VS Code, JetBrains, Neovim, Xcode). Cursor and Windsurf are standalone editors (VS Code forks). Claude Code works in any terminal. Check the comparison table for specifics.</p>
+        </details>
+        <details>
+          <summary>Can I use multiple AI coding tools together?</summary>
+          <p>Yes. Many developers use a fast autocomplete tool (Copilot, Supermaven) alongside a more powerful agent tool (Claude Code, Cursor). Just be mindful of total costs adding up.</p>
+        </details>
+        <details>
+          <summary>How accurate is this data?</summary>
+          <p>We update pricing data regularly from official sources. Prices can change — always verify on the official pricing page before purchasing. Last update: March 2026.</p>
+        </details>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>CodeCosts is a free tool by <a href="https://github.com/lunacompsia-oss" target="_blank" rel="noopener">Lunacompsia</a>. Data sourced from official pricing pages. Not affiliated with any listed tool.</p>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>

@@ -9,6 +9,14 @@
     <atom:link href="https://codecosts.pages.dev/blog/feed.xml" rel="self" type="application/rss+xml"/>
 
     <item>
+      <title>AI Coding Tools for Networking Engineers 2026: Socket Programming, Protocol Implementation, Packet Processing &amp; eBPF Guide</title>
+      <link>https://codecosts.pages.dev/blog/ai-coding-tools-for-networking-engineers-2026.html</link>
+      <description>The networking engineer's guide to AI coding tools in 2026. Socket programming, protocol implementation, packet processing with eBPF/XDP, TLS/crypto, SDN controllers, async I/O, and network debugging.</description>
+      <pubDate>Sun, 29 Mar 2026 23:59:00 GMT</pubDate>
+      <guid>https://codecosts.pages.dev/blog/ai-coding-tools-for-networking-engineers-2026.html</guid>
+    </item>
+
+    <item>
       <title>AI Coding Tools for Audio &amp; DSP Engineers 2026: Real-Time Processing, Plugin Development, Filters &amp; Synthesis Guide</title>
       <link>https://codecosts.pages.dev/blog/ai-coding-tools-for-audio-dsp-engineers-2026.html</link>
       <description>The audio and DSP engineer's guide to AI coding tools in 2026. VST3/AU/AAX plugin development, real-time audio processing, IIR/FIR filter design, FFT spectral processing, synthesis algorithms, JUCE framework, and lock-free real-time patterns.</description>

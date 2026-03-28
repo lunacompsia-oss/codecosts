@@ -5,8 +5,16 @@
     <link>https://codecosts.pages.dev/blog/</link>
     <description>AI coding tool news, pricing updates, and analysis. Compare GitHub Copilot, Cursor, Windsurf, Claude Code, and more.</description>
     <language>en-us</language>
-    <lastBuildDate>Sat, 28 Mar 2026 18:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Sat, 28 Mar 2026 23:00:00 GMT</lastBuildDate>
     <atom:link href="https://codecosts.pages.dev/blog/feed.xml" rel="self" type="application/rss+xml"/>
+
+    <item>
+      <title>AI Coding Tools for Game Developers 2026: Unity, Unreal, Godot &amp; Shader Guide</title>
+      <link>https://codecosts.pages.dev/blog/ai-coding-tools-for-game-developers-2026.html</link>
+      <description>Game development AI tool guide for 2026. Every tool ranked for Unity C#, Unreal C++, Godot GDScript, HLSL/GLSL shaders, and engine-specific APIs. The engine problem, the shader problem, and engine-first recommendations from $0 to $40/mo.</description>
+      <pubDate>Sat, 28 Mar 2026 23:00:00 GMT</pubDate>
+      <guid>https://codecosts.pages.dev/blog/ai-coding-tools-for-game-developers-2026.html</guid>
+    </item>
 
     <item>
       <title>AI Coding Tools for Data Engineers 2026: Spark, dbt, Airflow &amp; SQL Pipeline Guide</title>

@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Coding Tools for ML Engineers 2026: PyTorch, Model Training, MLOps &amp; Experiment Tracking Guide</title>
+  <meta name="description" content="The ML engineer's guide to AI coding tools in 2026. Every tool ranked for PyTorch/JAX/TensorFlow workflows, distributed training, experiment tracking, model deployment, and GPU debugging. Task-first recommendations from $0 to $200/mo.">
+  <link rel="canonical" href="https://codecosts.pages.dev/blog/ai-coding-tools-for-ml-engineers-2026.html">
+  <meta property="og:title" content="AI Coding Tools for ML Engineers 2026: PyTorch, Training, MLOps &amp; Experiment Tracking">
+  <meta property="og:description" content="Every AI coding tool ranked for ML engineering. PyTorch/JAX/TensorFlow, distributed training, experiment tracking, model serving, and GPU debugging. Task-first recommendations from $0 to $200/mo.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://codecosts.pages.dev/blog/ai-coding-tools-for-ml-engineers-2026.html">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="AI Coding Tools for ML Engineers 2026: PyTorch, Training, MLOps &amp; Experiment Tracking">
+  <meta name="twitter:description" content="Task-first AI tool recommendations for ML engineers. PyTorch, distributed training, experiment tracking, model deployment &mdash; ranked and priced.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💰</text></svg>">
+  <link rel="stylesheet" href="../style.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "AI Coding Tools for ML Engineers 2026: PyTorch, Model Training, MLOps & Experiment Tracking Guide",
+    "datePublished": "2026-03-28",
+    "dateModified": "2026-03-28",
+    "author": { "@type": "Organization", "name": "CodeCosts" },
+    "publisher": { "@type": "Organization", "name": "CodeCosts" },
+    "description": "The ML engineer's guide to AI coding tools in 2026. Every tool ranked for PyTorch/JAX/TensorFlow, distributed training, experiment tracking, and model deployment."
+  }
+  </script>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <a href="/" style="text-decoration:none;color:inherit"><h1><span class="logo">$_</span> CodeCosts</h1></a>
+      <p class="tagline">AI Coding Tool News &amp; Analysis</p>
+      <nav>
+        <a href="/">Tools</a>
+        <a href="/blog/" class="active">Blog</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <article class="card">
+      <h2>AI Coding Tools for ML Engineers 2026: PyTorch, Model Training, MLOps &amp; Experiment Tracking Guide</h2>
+      <div class="article-meta">
+        <span>March 28, 2026</span>
+        <span>18 min read</span>
+      </div>
+
+      <div class="article-content">
+        <p>ML engineers do not write code the way application developers do. You write training loops, loss functions, data pipelines, and distributed training configs. Your &ldquo;application&rdquo; is a model that needs to converge, and a single misplaced <code>.detach()</code> or wrong tensor shape can mean eight hours of wasted GPU time. Your debugging tools are not print statements and breakpoints &mdash; they are loss curves, gradient histograms, and CUDA memory profilers.</p>
+
+        <p>Most AI coding tool reviews evaluate tools on web development tasks &mdash; React components, REST APIs, database queries. That tells you almost nothing about whether a tool can help you write a custom PyTorch <code>DataLoader</code> with proper collation, debug a shape mismatch in a multi-head attention layer, or generate a Hydra config for distributed training across four nodes. This guide evaluates every major AI coding tool through the lens of what ML engineers actually build.</p>
+
+        <div class="callout tip">
+          <div class="callout-title">TL;DR</div>
+          <p><strong>Best free ($0):</strong> GitHub Copilot Free &mdash; 2,000 completions/mo handles PyTorch boilerplate and knows common training loop patterns well. <strong>Best for training code ($20/mo):</strong> Cursor Pro &mdash; multi-file context means it reads your model architecture, dataset class, and config to generate training scripts that actually fit your codebase. <strong>Best for debugging &amp; MLOps ($20/mo):</strong> Claude Code &mdash; terminal-native agent that can read error logs, trace tensor shapes through your model, and fix CUDA issues in a loop. <strong>Best combo ($30/mo):</strong> Copilot Pro + Claude Code &mdash; Copilot for inline completions while writing model code, Claude Code for debugging training failures, writing deployment configs, and refactoring pipelines. <strong>AWS ML stack ($0&ndash;19/mo):</strong> Amazon Q Developer &mdash; purpose-built for SageMaker workflows.</p>
+        </div>
+
+        <h2>Why ML Engineering Is Different</h2>
+
+        <p>AI coding tools are trained heavily on web application code. For every PyTorch training loop on GitHub, there are a thousand Express.js servers. For every custom loss function, there are ten thousand React components. This training data imbalance creates real problems:</p>
+
+        <ul>
+          <li><strong>Tensor shape reasoning:</strong> ML code is fundamentally about shape transformations. A useful AI assistant must understand that a <code>[B, S, D]</code> tensor going through multi-head attention becomes <code>[B, H, S, D//H]</code>, and that a wrong reshape versus view can silently produce garbage gradients. Most tools cannot reason about shapes across function boundaries.</li>
+          <li><strong>Framework-specific idioms:</strong> PyTorch, JAX, and TensorFlow have fundamentally different programming models. PyTorch is imperative and eager, JAX is functional with explicit random keys and <code>jit</code> compilation, TensorFlow 2.x mixes eager and graph modes. A tool that generates PyTorch-style code in a JAX project is worse than useless.</li>
+          <li><strong>GPU and distributed code:</strong> Training code runs on accelerators with their own memory hierarchy, synchronization primitives, and failure modes. <code>torch.distributed</code>, DeepSpeed, FSDP, and <code>jax.pmap</code> have complex APIs that most tools hallucinate on because the training data is thin.</li>
+          <li><strong>Experiment management:</strong> ML code is versioned differently from application code. You need to track hyperparameters, metrics, model checkpoints, and data versions together. Tools that understand W&amp;B, MLflow, and Hydra configs save real time.</li>
+          <li><strong>Long feedback loops:</strong> A training run takes hours or days. An AI tool that introduces a subtle bug &mdash; wrong learning rate schedule, missing gradient clipping, incorrect data augmentation &mdash; costs GPU hours, not seconds of compile time. Correctness matters more than speed.</li>
+          <li><strong>Research code vs. production code:</strong> ML engineers constantly translate between messy notebook experiments and clean, reproducible training pipelines. The AI needs to handle both modes and help with the transition between them.</li>
+        </ul>
+
+        <h2>ML Framework Support Matrix</h2>
+
+        <p>Not all AI tools handle ML frameworks equally. Here is how the major tools perform on the frameworks and libraries ML engineers actually use:</p>
+
+        <div style="overflow-x:auto">
+          <table style="width:100%;border-collapse:collapse;margin:1.5rem 0">
+            <thead>
+              <tr style="border-bottom:2px solid var(--border)">
+                <th style="padding:12px 16px;text-align:left">Tool</th>
+                <th style="padding:12px 16px;text-align:left">PyTorch</th>
+                <th style="padding:12px 16px;text-align:left">JAX / Flax</th>
+                <th style="padding:12px 16px;text-align:left">TensorFlow / Keras</th>
+                <th style="padding:12px 16px;text-align:left">HuggingFace</th>
+                <th style="padding:12px 16px;text-align:left">Distributed</th>
+                <th style="padding:12px 16px;text-align:left">Notebook</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px"><strong>GitHub Copilot</strong></td>
+                <td style="padding:12px 16px"><span style="color:var(--green)">Excellent</span></td>
+                <td style="padding:12px 16px"><span style="color:var(--yellow)">Fair</span></td>
+                <td style="padding:12px 16px"><span style="color:var(--green)">Good</span></td>
+                <td style="padding:12px 16px"><span style="color:var(--green)">Good</span></td>
+                <td style="padding:12px 16px"><span style="color:var(--yellow)">Basic</span></td>
+                <td style="padding:12px 16px"><span style="color:var(--green)">Good</span> (VS Code)</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px"><strong>Cursor</strong></td>
+                <td style="padding:12px 16px"><span style="color:var(--green)">Excellent</span></td>
+                <td style="padding:12px 16px"><span style="color:var(--yellow)">Fair</span></td>
+                <td style="padding:12px 16px"><span style="color:var(--green)">Good</span></td>
+                <td style="padding:12px 16px"><span style="color:var(--green)">Excellent</span></td>
+                <td style="padding:12px 16px"><span style="color:var(--green)">Good</span></td>
+                <td style="padding:12px 16px"><span style="color:var(--green)">Good</span></td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px"><strong>Claude Code</strong></td>
+                <td style="padding:12px 16px"><span style="color:var(--green)">Excellent</span></td>
+                <td style="padding:12px 16px"><span style="color:var(--green)">Good</span></td>
+                <td style="padding:12px 16px"><span style="color:var(--green)">Good</span></td>
+                <td style="padding:12px 16px"><span style="color:var(--green)">Excellent</span></td>
+                <td style="padding:12px 16px"><span style="color:var(--green)">Good</span></td>
+                <td style="padding:12px 16px"><span style="color:var(--yellow)">N/A</span> (terminal)</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px"><strong>Windsurf</strong></td>
+                <td style="padding:12px 16px"><span style="color:var(--green)">Good</span></td>
+                <td style="padding:12px 16px"><span style="color:var(--yellow)">Basic</span></td>
+                <td style="padding:12px 16px"><span style="color:var(--green)">Good</span></td>
+                <td style="padding:12px 16px"><span style="color:var(--green)">Good</span></td>
+                <td style="padding:12px 16px"><span style="color:var(--yellow)">Basic</span></td>
+                <td style="padding:12px 16px"><span style="color:var(--green)">Good</span></td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px"><strong>Amazon Q</strong></td>
+                <td style="padding:12px 16px"><span style="color:var(--green)">Good</span></td>
+                <td style="padding:12px 16px"><span style="color:var(--red)">Weak</span></td>
+                <td style="padding:12px 16px"><span style="color:var(--green)">Good</span></td>
+                <td style="padding:12px 16px"><span style="color:var(--yellow)">Fair</span></td>
+                <td style="padding:12px 16px"><span style="color:var(--green)">Good</span> (SageMaker)</td>
+                <td style="padding:12px 16px"><span style="color:var(--green)">Good</span> (JupyterLab)</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px"><strong>Gemini Code Assist</strong></td>
+                <td style="padding:12px 16px"><span style="color:var(--green)">Good</span></td>
+                <td style="padding:12px 16px"><span style="color:var(--green)">Good</span></td>
+                <td style="padding:12px 16px"><span style="color:var(--green)">Excellent</span></td>
+                <td style="padding:12px 16px"><span style="color:var(--green)">Good</span></td>
+                <td style="padding:12px 16px"><span style="color:var(--yellow)">Fair</span></td>
+                <td style="padding:12px 16px"><span style="color:var(--green)">Excellent</span> (Colab)</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px"><strong>Tabnine</strong></td>
+                <td style="padding:12px 16px"><span style="color:var(--yellow)">Fair</span></td>
+                <td style="padding:12px 16px"><span style="color:var(--red)">Weak</span></td>
+                <td style="padding:12px 16px"><span style="color:var(--yellow)">Fair</span></td>
+                <td style="padding:12px 16px"><span style="color:var(--yellow)">Fair</span></td>
+                <td style="padding:12px 16px"><span style="color:var(--red)">Weak</span></td>
+                <td style="padding:12px 16px"><span style="color:var(--yellow)">Limited</span></td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px"><strong>JetBrains AI</strong></td>
+                <td style="padding:12px 16px"><span style="color:var(--green)">Good</span></td>
+                <td style="padding:12px 16px"><span style="color:var(--yellow)">Fair</span></td>
+                <td style="padding:12px 16px"><span style="color:var(--green)">Good</span></td>
+                <td style="padding:12px 16px"><span style="color:var(--green)">Good</span></td>
+                <td style="padding:12px 16px"><span style="color:var(--yellow)">Basic</span></td>
+                <td style="padding:12px 16px"><span style="color:var(--yellow)">Limited</span> (DataSpell)</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <p><strong>Key takeaway:</strong> PyTorch dominates the training data, so most tools handle it well. JAX is the weakest spot across the board &mdash; if you use JAX heavily, Claude Code and Gemini are your best bets. For TensorFlow/Keras, Gemini has an edge due to Google&rsquo;s ecosystem integration.</p>
+
+        <h2>Tool-by-Tool Breakdown for ML Work</h2>
+
+        <h3>Cursor &mdash; Best for Writing Training Code ($20/mo)</h3>
+
+        <p>Cursor&rsquo;s multi-file context is what makes it stand out for ML work. When you ask it to write a training script, it can simultaneously read your model definition in <code>model.py</code>, your dataset class in <code>data.py</code>, and your config in <code>config.yaml</code> to generate a training loop that actually fits your codebase. This matters because ML training scripts are not self-contained &mdash; they are the glue between a dozen other files.</p>
+
+        <p>Where Cursor excels for ML engineers:</p>
+        <ul>
+          <li><strong>Training loop generation:</strong> Give it your model and dataset, and Composer generates a complete training loop with optimizer, scheduler, checkpointing, and logging &mdash; matching your existing patterns, not generic boilerplate.</li>
+          <li><strong>HuggingFace integration:</strong> Excellent at generating Trainer configs, custom data collators, and tokenizer pipelines. It reads the HuggingFace docs well and generates code that follows current best practices.</li>
+          <li><strong>Config-driven code:</strong> Good at reading Hydra/OmegaConf configs and generating code that references the right config keys, which eliminates a common source of runtime errors.</li>
+          <li><strong>Refactoring research code:</strong> Use Composer to take a messy notebook experiment and restructure it into a proper training pipeline with proper separation of concerns.</li>
+        </ul>
+
+        <p>Where it struggles: debugging CUDA errors (it cannot run your code), distributed training patterns (thin training data), and JAX code (generates PyTorch-style patterns in JAX context).</p>
+
+        <p><strong>Pricing:</strong> Hobby $0 (50 slow requests) | Pro $20/mo (500 fast requests) | Ultra $200/mo (unlimited). The Pro tier is the sweet spot &mdash; 500 fast requests covers a heavy ML development day.</p>
+
+        <h3>Claude Code &mdash; Best for Debugging &amp; MLOps ($20/mo)</h3>
+
+        <p>Claude Code is a terminal-native agent, which gives it a unique advantage for ML engineers: it can actually run your code, read the error output, and fix it in a loop. When your training script crashes with a cryptic CUDA error or a shape mismatch deep inside a transformer layer, Claude Code can trace the issue by reading your model architecture, running the script with a small batch, analyzing the traceback, and proposing a fix &mdash; all without you switching contexts.</p>
+
+        <p>Where Claude Code excels for ML engineers:</p>
+        <ul>
+          <li><strong>Debugging training failures:</strong> It can read a full traceback, understand which tensor operation failed and why, trace shapes through your model, and suggest the specific fix. Not &ldquo;maybe try reshaping&rdquo; but &ldquo;the attention output is [B, H, S, D/H] but the projection expects [B, S, D], you need to transpose and reshape before the linear layer.&rdquo;</li>
+          <li><strong>CUDA memory debugging:</strong> Can analyze <code>torch.cuda.memory_summary()</code> output and suggest where to add gradient checkpointing, mixed precision, or activation offloading to fit your model in memory.</li>
+          <li><strong>MLOps pipelines:</strong> Excellent at writing Dockerfiles for training environments, Kubernetes job specs for distributed training, and CI/CD configs for model training and evaluation.</li>
+          <li><strong>Experiment management:</strong> Good at setting up W&amp;B integration, MLflow tracking, and writing evaluation scripts that produce structured metrics.</li>
+          <li><strong>Code review for correctness:</strong> Can spot subtle bugs like forgetting <code>model.eval()</code> before validation, not calling <code>optimizer.zero_grad()</code>, or using the wrong reduction in a loss function.</li>
+        </ul>
+
+        <p>Where it struggles: no autocomplete (it is an agent, not an IDE extension), no native notebook support (terminal-only), and it requires typing explicit prompts rather than flowing with inline completions.</p>
+
+        <p><strong>Pricing:</strong> Pro $20/mo (limited daily usage) | Max 5x $100/mo | Max 20x $200/mo | API pay-per-token. The Pro tier works for moderate usage; heavy debugging sessions may hit limits.</p>
+
+        <h3>GitHub Copilot &mdash; Best for Daily ML Coding ($0&ndash;10/mo)</h3>
+
+        <p>Copilot is the workhorse for day-to-day ML code. Its inline completions are fast and accurate for common PyTorch patterns &mdash; writing <code>nn.Module</code> subclasses, loss functions, data transforms, and evaluation loops. It cannot reason about your full codebase like Cursor, but for the 80% of ML code that follows standard patterns, it just works.</p>
+
+        <p>Where Copilot excels for ML engineers:</p>
+        <ul>
+          <li><strong>PyTorch boilerplate:</strong> Autocompletes <code>forward()</code> methods, <code>__getitem__()</code> in datasets, optimizer configurations, and learning rate schedulers with correct syntax.</li>
+          <li><strong>NumPy/pandas preprocessing:</strong> Strong at data cleaning, feature engineering, and transformation code that feeds into ML pipelines.</li>
+          <li><strong>Documentation and type hints:</strong> Generates accurate docstrings for model classes, including input/output tensor shapes when prompted.</li>
+          <li><strong>Broad IDE support:</strong> Works in VS Code, JetBrains (PyCharm), and Neovim &mdash; useful if you switch between IDEs for different tasks.</li>
+        </ul>
+
+        <p>Where it struggles: complex multi-file generation (training scripts that reference multiple modules), distributed training patterns, and framework-specific edge cases (JAX functional transforms, TF custom training loops with GradientTape).</p>
+
+        <p><strong>Pricing:</strong> Free (2,000 completions + 50 premium requests/mo) | Pro $10/mo (unlimited completions + 300 premium requests) | Pro+ $39/mo (1,500 premium requests + all models). The Free tier is genuinely useful for ML work. Pro is worth it if you use chat for debugging.</p>
+
+        <h3>Gemini Code Assist &mdash; Best for Notebook-First ML ($0)</h3>
+
+        <p>If your ML workflow lives in Google Colab or Jupyter notebooks, Gemini has the strongest native integration. The Data Science Agent can generate entire notebooks from a prompt, and the Colab integration provides inline completions and chat within the notebook interface. For TensorFlow/Keras users especially, this is the most natural experience.</p>
+
+        <p>Where Gemini excels for ML engineers:</p>
+        <ul>
+          <li><strong>Colab-native experience:</strong> No setup required. Completions and chat work directly in Colab notebooks with full cell context.</li>
+          <li><strong>TensorFlow/Keras:</strong> Best-in-class support for TensorFlow, likely due to Google&rsquo;s training data advantages. Custom training loops, Keras layers, and tf.data pipelines are all generated accurately.</li>
+          <li><strong>Data exploration:</strong> The Data Science Agent generates complete analysis notebooks with visualizations, statistical tests, and markdown explanations &mdash; useful for the EDA phase of ML projects.</li>
+          <li><strong>JAX support:</strong> Better than most competitors at JAX code, including <code>jax.jit</code>, <code>jax.vmap</code>, and Flax module patterns. Google&rsquo;s ecosystem advantage shows here.</li>
+        </ul>
+
+        <p>Where it struggles: limited usefulness outside notebooks, weaker at multi-file codebases (training pipelines split across modules), and the free tier has usage limits that heavy ML work may hit.</p>
+
+        <p><strong>Pricing:</strong> Free (completions + chat) | Standard $19/mo (higher limits) | Enterprise $75/mo (custom models). The Free tier covers most notebook-based ML work.</p>
+
+        <h3>Amazon Q Developer &mdash; Best for AWS ML Stack ($0&ndash;19/mo)</h3>
+
+        <p>If your ML infrastructure runs on AWS &mdash; SageMaker training jobs, S3 data storage, ECR for container images, Step Functions for pipelines &mdash; Amazon Q is the only tool that understands this entire stack natively. It can generate SageMaker training job configurations, debug CloudWatch logs from failed training runs, and write IAM policies for ML pipelines.</p>
+
+        <p>Where Amazon Q excels for ML engineers:</p>
+        <ul>
+          <li><strong>SageMaker integration:</strong> Generates training job configs, processing job scripts, and endpoint deployment code that follows SageMaker best practices.</li>
+          <li><strong>JupyterLab support:</strong> Native integration with SageMaker Studio and JupyterLab, providing completions and chat within notebooks.</li>
+          <li><strong>Infrastructure code:</strong> Strong at CloudFormation and CDK templates for ML infrastructure &mdash; training clusters, model registries, and inference endpoints.</li>
+          <li><strong>Security scanning:</strong> Built-in security analysis catches common ML deployment issues like overly permissive IAM roles on training jobs.</li>
+        </ul>
+
+        <p>Where it struggles: weaker at pure ML code (model architecture, training loops) compared to Cursor or Claude Code, no JAX support to speak of, and limited usefulness outside the AWS ecosystem.</p>
+
+        <p><strong>Pricing:</strong> Free (code suggestions + security scans) | Pro $19/mo (higher limits + admin). The Free tier is adequate for individual ML engineers on AWS.</p>
+
+        <h3>Windsurf &mdash; Solid All-Rounder ($20/mo)</h3>
+
+        <p>Windsurf&rsquo;s Cascade agent handles ML code competently but not exceptionally. Its strength is broad IDE support and the ability to edit multiple files at once. For ML teams that use diverse editors (VS Code, JetBrains, Vim), Windsurf provides a consistent experience.</p>
+
+        <p><strong>Pricing:</strong> Free (limited) | Pro $20/mo | Max $200/mo. Comparable to Cursor, but Cursor&rsquo;s multi-file context is stronger for ML-specific tasks.</p>
+
+        <h2>ML Task Comparison</h2>
+
+        <p>Here is how each tool handles the specific tasks ML engineers perform daily:</p>
+
+        <div style="overflow-x:auto">
+          <table style="width:100%;border-collapse:collapse;margin:1.5rem 0">
+            <thead>
+              <tr style="border-bottom:2px solid var(--border)">
+                <th style="padding:12px 16px;text-align:left">ML Task</th>
+                <th style="padding:12px 16px;text-align:left">Best Tool</th>
+                <th style="padding:12px 16px;text-align:left">Runner-Up</th>
+                <th style="padding:12px 16px;text-align:left">Why</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px">Write training loops</td>
+                <td style="padding:12px 16px"><strong>Cursor</strong></td>
+                <td style="padding:12px 16px">Claude Code</td>
+                <td style="padding:12px 16px">Multi-file context reads model + data + config together</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px">Debug shape mismatches</td>
+                <td style="padding:12px 16px"><strong>Claude Code</strong></td>
+                <td style="padding:12px 16px">Cursor</td>
+                <td style="padding:12px 16px">Can run code, read traceback, trace shapes, and fix</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px">CUDA memory optimization</td>
+                <td style="padding:12px 16px"><strong>Claude Code</strong></td>
+                <td style="padding:12px 16px">Cursor</td>
+                <td style="padding:12px 16px">Analyzes memory profiles and suggests gradient checkpointing, mixed precision</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px">HuggingFace fine-tuning</td>
+                <td style="padding:12px 16px"><strong>Cursor</strong></td>
+                <td style="padding:12px 16px">Copilot</td>
+                <td style="padding:12px 16px">Generates Trainer configs, custom collators, tokenizer pipelines</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px">Data preprocessing</td>
+                <td style="padding:12px 16px"><strong>Copilot</strong></td>
+                <td style="padding:12px 16px">Gemini</td>
+                <td style="padding:12px 16px">Fast inline completions for pandas/numpy transform chains</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px">Notebook exploration</td>
+                <td style="padding:12px 16px"><strong>Gemini</strong></td>
+                <td style="padding:12px 16px">Copilot</td>
+                <td style="padding:12px 16px">Native Colab integration, Data Science Agent generates full notebooks</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px">Distributed training config</td>
+                <td style="padding:12px 16px"><strong>Claude Code</strong></td>
+                <td style="padding:12px 16px">Cursor</td>
+                <td style="padding:12px 16px">Deep reasoning about DeepSpeed, FSDP, torchrun configs</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px">Model deployment / serving</td>
+                <td style="padding:12px 16px"><strong>Claude Code</strong></td>
+                <td style="padding:12px 16px">Amazon Q</td>
+                <td style="padding:12px 16px">Writes Dockerfiles, K8s specs, FastAPI serving code, TorchServe configs</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px">Experiment tracking setup</td>
+                <td style="padding:12px 16px"><strong>Cursor</strong></td>
+                <td style="padding:12px 16px">Claude Code</td>
+                <td style="padding:12px 16px">Integrates W&amp;B/MLflow logging into existing training code across files</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px">SageMaker pipelines</td>
+                <td style="padding:12px 16px"><strong>Amazon Q</strong></td>
+                <td style="padding:12px 16px">Claude Code</td>
+                <td style="padding:12px 16px">Native SageMaker understanding, training job configs, endpoint deployment</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px">JAX / Flax code</td>
+                <td style="padding:12px 16px"><strong>Gemini</strong></td>
+                <td style="padding:12px 16px">Claude Code</td>
+                <td style="padding:12px 16px">Google ecosystem advantage, better at functional transforms and jit patterns</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px">Model architecture design</td>
+                <td style="padding:12px 16px"><strong>Claude Code</strong></td>
+                <td style="padding:12px 16px">Cursor</td>
+                <td style="padding:12px 16px">Deep reasoning about attention mechanisms, normalization, and architecture tradeoffs</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h2>The GPU Cost Problem</h2>
+
+        <p>Here is something unique to ML engineering: the cost of your AI coding tool is trivial compared to your GPU costs. A single A100 instance on AWS costs $3&ndash;4/hour. A training run that takes 10 hours costs $30&ndash;40. If an AI tool helps you avoid one failed training run per month &mdash; catching a bug before you launch an expensive job &mdash; it pays for itself many times over.</p>
+
+        <p>This changes the cost calculus entirely. For a web developer, the difference between a $0 and $20/mo tool is a meaningful budget decision. For an ML engineer running $500+/month in GPU costs, the question is not &ldquo;can I afford $20/mo?&rdquo; but &ldquo;will this tool save me one failed training run?&rdquo;</p>
+
+        <div class="callout tip">
+          <div class="callout-title">Cost Perspective</div>
+          <p>If your monthly GPU bill is over $200, even the $200/mo Cursor Ultra or Claude Code Max 20x pays for itself if it prevents a single multi-day training failure. Optimize for correctness, not tool cost.</p>
+        </div>
+
+        <h2>Common ML Workflows and Tool Recommendations</h2>
+
+        <h3>Workflow 1: Research Experimentation</h3>
+        <p><strong>What you do:</strong> Explore data in notebooks, prototype model architectures, run quick experiments, iterate on hyperparameters.</p>
+        <p><strong>Best stack:</strong> <strong>Gemini</strong> (Colab notebooks, free) + <strong>Copilot Free</strong> (VS Code for .py files) = <strong>$0/mo</strong></p>
+        <p>Gemini handles notebook exploration natively. When you move to structured .py files, Copilot fills in PyTorch boilerplate. Both are free.</p>
+
+        <h3>Workflow 2: Production Training Pipelines</h3>
+        <p><strong>What you do:</strong> Write reproducible training scripts, configure distributed training, set up experiment tracking, build Docker images for training environments.</p>
+        <p><strong>Best stack:</strong> <strong>Cursor Pro</strong> ($20/mo) + <strong>Claude Code Pro</strong> ($20/mo) = <strong>$40/mo</strong></p>
+        <p>Cursor for writing multi-file training code that fits your codebase. Claude Code for debugging, writing deployment configs, and fixing the inevitable CUDA/distributed issues.</p>
+
+        <h3>Workflow 3: AWS-Native ML</h3>
+        <p><strong>What you do:</strong> Train on SageMaker, store data in S3, deploy to SageMaker endpoints, orchestrate with Step Functions.</p>
+        <p><strong>Best stack:</strong> <strong>Amazon Q Free</strong> ($0) + <strong>Copilot Pro</strong> ($10/mo) = <strong>$10/mo</strong></p>
+        <p>Amazon Q for SageMaker-specific code and infrastructure. Copilot for general ML code and preprocessing.</p>
+
+        <h3>Workflow 4: Fine-Tuning LLMs</h3>
+        <p><strong>What you do:</strong> Fine-tune foundation models with LoRA/QLoRA, build evaluation pipelines, optimize inference with quantization, deploy with vLLM or TGI.</p>
+        <p><strong>Best stack:</strong> <strong>Cursor Pro</strong> ($20/mo) + <strong>Claude Code Pro</strong> ($20/mo) = <strong>$40/mo</strong></p>
+        <p>Cursor for HuggingFace PEFT configs and training scripts. Claude Code for debugging OOM issues, writing evaluation harnesses, and deployment configs. This workflow has the most gotchas and benefits most from two complementary tools.</p>
+
+        <h2>Practical Tips for ML Engineers</h2>
+
+        <h3>1. Encode Your Tensor Shapes in Comments</h3>
+        <p>AI tools generate much better ML code when they can see the expected shapes. Add shape comments to your model code:</p>
+
+        <pre><code>def forward(self, x):
+    # x: [batch_size, seq_len, d_model]
+    attn_out = self.attention(x)  # [batch_size, seq_len, d_model]
+    x = self.norm1(x + attn_out)  # [batch_size, seq_len, d_model]
+    ff_out = self.feed_forward(x)  # [batch_size, seq_len, d_model]
+    return self.norm2(x + ff_out)  # [batch_size, seq_len, d_model]</code></pre>
+
+        <p>This is not just documentation &mdash; it is a prompt. The AI will use these shapes to generate correct downstream code and catch mismatches.</p>
+
+        <h3>2. Keep a Project README with Architecture Details</h3>
+        <p>Tools like Cursor and Claude Code read your project files for context. A <code>README.md</code> that describes your model architecture, dataset format, and training configuration acts as a persistent prompt that improves every AI suggestion.</p>
+
+        <h3>3. Use AI for the Boring Parts, Review the Critical Parts</h3>
+        <p>Let AI generate data loaders, logging boilerplate, config parsing, and evaluation metrics. Manually review loss functions, gradient updates, and distributed communication code. A bug in a data loader wastes a few minutes; a bug in gradient accumulation wastes days of GPU time.</p>
+
+        <h3>4. Leverage AI for Literature Implementation</h3>
+        <p>When implementing a model from a paper, paste the relevant equations into a chat prompt. Tools like Claude Code and Cursor can translate mathematical notation into PyTorch code reasonably well, especially for standard operations (attention, normalization, residual connections). Always verify against the paper&rsquo;s reference implementation if available.</p>
+
+        <h3>5. Ask for Correctness Checks Before Long Runs</h3>
+        <p>Before launching an expensive training run, ask your AI tool to review the training script for common bugs: learning rate schedule correctness, proper gradient clipping, correct checkpoint saving/loading, and correct metric logging. A five-minute review can save hours of GPU time.</p>
+
+        <h2>Team Pricing for ML Teams</h2>
+
+        <div style="overflow-x:auto">
+          <table style="width:100%;border-collapse:collapse;margin:1.5rem 0">
+            <thead>
+              <tr style="border-bottom:2px solid var(--border)">
+                <th style="padding:12px 16px;text-align:left">Scenario</th>
+                <th style="padding:12px 16px;text-align:left">Tool Stack</th>
+                <th style="padding:12px 16px;text-align:left">Cost/Seat/Mo</th>
+                <th style="padding:12px 16px;text-align:left">Best For</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px">$0 Research Stack</td>
+                <td style="padding:12px 16px">Copilot Free + Gemini Free</td>
+                <td style="padding:12px 16px"><strong>$0</strong></td>
+                <td style="padding:12px 16px">Academic researchers, students, notebook-heavy exploration</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px">Solo ML Engineer</td>
+                <td style="padding:12px 16px">Copilot Pro + Claude Code Pro</td>
+                <td style="padding:12px 16px"><strong>$30</strong></td>
+                <td style="padding:12px 16px">Individual contributors at startups, inline completions + agentic debugging</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px">ML Team (Startup)</td>
+                <td style="padding:12px 16px">Cursor Pro + Claude Code Pro</td>
+                <td style="padding:12px 16px"><strong>$40</strong></td>
+                <td style="padding:12px 16px">Teams writing production training pipelines, multi-file codebase-aware editing</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px">AWS ML Team</td>
+                <td style="padding:12px 16px">Amazon Q Pro + Copilot Pro</td>
+                <td style="padding:12px 16px"><strong>$29</strong></td>
+                <td style="padding:12px 16px">SageMaker-centric teams, AWS infrastructure-heavy workflows</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px">Enterprise ML Platform</td>
+                <td style="padding:12px 16px">Copilot Enterprise + Claude Code Team</td>
+                <td style="padding:12px 16px"><strong>$189</strong></td>
+                <td style="padding:12px 16px">Large teams needing SSO, audit logs, IP indemnity, knowledge bases</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px">Privacy-Required</td>
+                <td style="padding:12px 16px">Tabnine Enterprise</td>
+                <td style="padding:12px 16px"><strong>$39</strong></td>
+                <td style="padding:12px 16px">Defense, healthcare, finance &mdash; models trained on proprietary data that cannot touch cloud APIs</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h2>The Bottom Line</h2>
+
+        <p>ML engineering has a unique cost structure: your AI tool costs pennies compared to your GPU bill, but a single bug in your training code can cost hundreds of dollars in wasted compute. The right tool is the one that catches bugs before you launch expensive jobs.</p>
+
+        <ul>
+          <li><strong>Notebook-first research ($0):</strong> Gemini Code Assist Free (Colab-native) + Copilot Free (VS Code). Zero cost, solid coverage for exploration and prototyping.</li>
+          <li><strong>Production training pipelines ($40/mo):</strong> Cursor Pro + Claude Code Pro. Cursor writes multi-file training code; Claude Code debugs failures and writes deployment configs.</li>
+          <li><strong>AWS-native ML ($10/mo):</strong> Amazon Q Free + Copilot Pro. Native SageMaker understanding plus solid general ML completions.</li>
+          <li><strong>LLM fine-tuning ($40/mo):</strong> Cursor Pro + Claude Code Pro. The most gotcha-prone workflow benefits most from complementary tools.</li>
+          <li><strong>Privacy-constrained ($39/mo):</strong> Tabnine Enterprise. The only option when your code cannot touch cloud APIs.</li>
+        </ul>
+
+        <p>The real question for ML engineers is not &ldquo;which tool is cheapest?&rdquo; but &ldquo;which tool prevents the most wasted GPU time?&rdquo; A $20/mo tool that catches one shape mismatch before an 8-hour training run has already paid for itself three times over.</p>
+
+        <p>Compare all tools and pricing on the <a href="/" style="color:var(--accent)">CodeCosts homepage</a>, or see the <a href="/blog/best-ai-coding-tool-python.html" style="color:var(--accent)">Python language guide</a> for framework-specific comparisons.</p>
+
+        <h2>Related on CodeCosts</h2>
+        <ul>
+          <li><a href="/blog/ai-coding-tools-for-data-scientists-2026.html" style="color:var(--accent)">AI Coding Tools for Data Scientists 2026: Jupyter, pandas &amp; ML Pipeline Guide</a></li>
+          <li><a href="/blog/ai-coding-tools-for-data-engineers-2026.html" style="color:var(--accent)">AI Coding Tools for Data Engineers 2026: Spark, Airflow &amp; dbt Guide</a></li>
+          <li><a href="/blog/ai-coding-tools-for-devops-engineers-2026.html" style="color:var(--accent)">AI Coding Tools for DevOps Engineers 2026: Terraform, K8s &amp; CI/CD Guide</a></li>
+          <li><a href="/blog/best-ai-coding-tool-python.html" style="color:var(--accent)">Best AI Coding Tool for Python 2026</a></li>
+          <li><a href="/blog/ai-coding-tools-hidden-costs-2026.html" style="color:var(--accent)">The Hidden Costs of AI Coding Tools</a></li>
+        </ul>
+      </div>
+    </article>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>CodeCosts &mdash; Independent AI coding tool price tracker. No affiliate links. No sponsored rankings. Just data.</p>
+      <p><a href="/" style="color:var(--accent)">Compare all tools</a> &middot; <a href="/blog/">Blog</a></p>
+    </div>
+  </footer>
+</body>
+</html>

@@ -9,6 +9,14 @@
     <atom:link href="https://codecosts.pages.dev/blog/feed.xml" rel="self" type="application/rss+xml"/>
 
     <item>
+      <title>AI Coding Tools for Developer Advocates &amp; DevRel 2026: Live Demos, Sample Apps, Multi-Stack Fluency &amp; Content Creation Guide</title>
+      <link>https://codecosts.pages.dev/blog/ai-coding-tools-for-developer-advocates-devrel-2026.html</link>
+      <description>The developer advocate's guide to AI coding tools in 2026. Live coding demo reliability, multi-stack fluency across 9+ languages, sample app generation, code explanation quality, conference talk prep, community debugging, and content creation workflows.</description>
+      <pubDate>Sat, 28 Mar 2026 23:59:00 GMT</pubDate>
+      <guid>https://codecosts.pages.dev/blog/ai-coding-tools-for-developer-advocates-devrel-2026.html</guid>
+    </item>
+
+    <item>
       <title>AI Coding Tools for Full-Stack Engineers 2026: Frontend, Backend, APIs &amp; Context-Switching Guide</title>
       <link>https://codecosts.pages.dev/blog/ai-coding-tools-for-full-stack-engineers-2026.html</link>
       <description>The full-stack engineer's guide to AI coding tools in 2026. Context-switching between frontend and backend, full-stack framework support (Next.js, Remix, Rails, Laravel, Django), cross-layer refactoring, API design, monorepo support, and which tools handle polyglot codebases best.</description>

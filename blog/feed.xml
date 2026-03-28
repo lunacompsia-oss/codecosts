@@ -9,6 +9,14 @@
     <atom:link href="https://codecosts.pages.dev/blog/feed.xml" rel="self" type="application/rss+xml"/>
 
     <item>
+      <title>AI Coding Tools for Graphics &amp; GPU Programmers 2026: Vulkan, CUDA, Shaders, Ray Tracing &amp; Compute Guide</title>
+      <link>https://codecosts.pages.dev/blog/ai-coding-tools-for-graphics-gpu-programmers-2026.html</link>
+      <description>The graphics and GPU programmer's guide to AI coding tools in 2026. Vulkan pipeline setup, CUDA kernel optimization, HLSL/GLSL/WGSL shaders, ray tracing APIs, GPU memory management, and compute shader optimization.</description>
+      <pubDate>Sun, 29 Mar 2026 23:59:00 GMT</pubDate>
+      <guid>https://codecosts.pages.dev/blog/ai-coding-tools-for-graphics-gpu-programmers-2026.html</guid>
+    </item>
+
+    <item>
       <title>AI Coding Tools for Compiler Engineers 2026: LLVM, GCC, Parsing, IR Optimization &amp; Code Generation Guide</title>
       <link>https://codecosts.pages.dev/blog/ai-coding-tools-for-compiler-engineers-2026.html</link>
       <description>The compiler engineer's guide to AI coding tools in 2026. LLVM pass development, parser generators, type systems, register allocation, instruction selection, IR optimization, and miscompilation debugging.</description>

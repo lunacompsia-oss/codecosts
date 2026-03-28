@@ -9,6 +9,14 @@
     <atom:link href="https://codecosts.pages.dev/blog/feed.xml" rel="self" type="application/rss+xml"/>
 
     <item>
+      <title>AI Coding Tools for Audio &amp; DSP Engineers 2026: Real-Time Processing, Plugin Development, Filters &amp; Synthesis Guide</title>
+      <link>https://codecosts.pages.dev/blog/ai-coding-tools-for-audio-dsp-engineers-2026.html</link>
+      <description>The audio and DSP engineer's guide to AI coding tools in 2026. VST3/AU/AAX plugin development, real-time audio processing, IIR/FIR filter design, FFT spectral processing, synthesis algorithms, JUCE framework, and lock-free real-time patterns.</description>
+      <pubDate>Sun, 29 Mar 2026 23:59:00 GMT</pubDate>
+      <guid>https://codecosts.pages.dev/blog/ai-coding-tools-for-audio-dsp-engineers-2026.html</guid>
+    </item>
+
+    <item>
       <title>AI Coding Tools for Graphics &amp; GPU Programmers 2026: Vulkan, CUDA, Shaders, Ray Tracing &amp; Compute Guide</title>
       <link>https://codecosts.pages.dev/blog/ai-coding-tools-for-graphics-gpu-programmers-2026.html</link>
       <description>The graphics and GPU programmer's guide to AI coding tools in 2026. Vulkan pipeline setup, CUDA kernel optimization, HLSL/GLSL/WGSL shaders, ray tracing APIs, GPU memory management, and compute shader optimization.</description>

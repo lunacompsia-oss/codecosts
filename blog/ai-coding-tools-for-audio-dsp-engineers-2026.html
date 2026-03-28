@@ -1,0 +1,727 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Coding Tools for Audio &amp; DSP Engineers 2026: Real-Time Processing, Plugin Development, Filters &amp; Synthesis Guide</title>
+  <meta name="description" content="The audio and DSP engineer's guide to AI coding tools in 2026. Every tool evaluated for VST3/AU/AAX plugin development, real-time audio processing, IIR/FIR filter design, FFT analysis, synthesis algorithms, JUCE framework, and latency-critical code. Domain-first recommendations from $0 to $99/seat.">
+  <link rel="canonical" href="https://codecosts.pages.dev/blog/ai-coding-tools-for-audio-dsp-engineers-2026.html">
+  <meta property="og:title" content="AI Coding Tools for Audio &amp; DSP Engineers 2026: Real-Time Processing, Plugins &amp; DSP Algorithms">
+  <meta property="og:description" content="Every AI coding tool ranked for audio and DSP engineering. VST3/AU/AAX plugins, real-time processing, filter design, FFT, synthesis, JUCE, and latency-critical code. Domain-first recommendations from $0 to $99/seat.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://codecosts.pages.dev/blog/ai-coding-tools-for-audio-dsp-engineers-2026.html">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="AI Coding Tools for Audio &amp; DSP Engineers 2026: Real-Time Processing, Plugins &amp; DSP Algorithms">
+  <meta name="twitter:description" content="Domain-first AI tool recommendations for audio &amp; DSP engineers. Plugins, real-time processing, filters, FFT, synthesis &mdash; ranked and priced.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💰</text></svg>">
+  <link rel="stylesheet" href="../style.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "AI Coding Tools for Audio & DSP Engineers 2026: Real-Time Processing, Plugin Development, Filters & Synthesis Guide",
+    "datePublished": "2026-03-29",
+    "dateModified": "2026-03-29",
+    "author": { "@type": "Organization", "name": "CodeCosts" },
+    "publisher": { "@type": "Organization", "name": "CodeCosts" },
+    "description": "The audio and DSP engineer's guide to AI coding tools in 2026. Every tool evaluated for VST3/AU/AAX plugin development, real-time processing, IIR/FIR filter design, FFT analysis, synthesis algorithms, JUCE framework, and latency-critical code."
+  }
+  </script>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <a href="/" style="text-decoration:none;color:inherit"><h1><span class="logo">$_</span> CodeCosts</h1></a>
+      <p class="tagline">AI Coding Tool News &amp; Analysis</p>
+      <nav>
+        <a href="/">Tools</a>
+        <a href="/blog/" class="active">Blog</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <article class="card">
+      <h2>AI Coding Tools for Audio &amp; DSP Engineers 2026: Real-Time Processing, Plugin Development, Filters &amp; Synthesis Guide</h2>
+      <div class="article-meta">
+        <span>March 29, 2026</span>
+        <span>24 min read</span>
+      </div>
+
+      <div class="article-content">
+        <p>Audio and DSP engineering is software development under a contract that no other domain signs: <strong>deliver every sample on time, or the user hears it.</strong> A web server that takes 50ms longer on one request is invisible. An audio callback that misses its deadline by 50 microseconds produces a click, a pop, or a full dropout that the listener perceives instantly. Your code runs in a real-time thread where the rules of normal programming do not apply &mdash; no memory allocation, no locks that might block, no system calls, no file I/O, no exceptions, no logging to disk. You have a buffer of 64 to 1024 samples, a sample rate of 44.1 to 192 kHz, and a wall-clock budget measured in single-digit milliseconds. Miss it once and the user hears a glitch. Miss it consistently and they uninstall your plugin.</p>
+
+        <p>The mathematics are non-negotiable. An IIR biquad filter is five multiply-accumulate operations per sample, and if any coefficient is wrong by 0.001, your filter rings, clips, or becomes unstable at certain frequencies. An FFT-based spectral processor requires correct window functions, overlap-add reconstruction, and phase vocoder math that most programmers have never encountered. Wavetable synthesis requires band-limited oscillators to avoid aliasing &mdash; and aliasing is not a visual artifact you can ignore, it is an audible frequency that was not in the original signal. Every DSP algorithm has a mathematical specification, and &ldquo;close enough&rdquo; produces audible artifacts.</p>
+
+        <p>The toolchain is its own world. JUCE dominates cross-platform audio plugin development. The VST3, Audio Unit, and AAX plugin formats each have their own initialization sequences, parameter systems, bus configurations, and threading models. Pro Tools&rsquo; AAX format requires iLok-signed binaries and has latency compensation rules that differ from every other host. DAWs call your <code>processBlock()</code> from a real-time thread, your GUI from the message thread, and your parameter changes from either &mdash; and if you get the thread safety wrong, you get a race condition that manifests as a click at 3:47 in a mix session that the user cannot reproduce. This guide evaluates every major AI coding tool through the lens of what audio and DSP engineers actually write: not REST APIs, not database queries, but sample-accurate processing code, plugin framework boilerplate, filter coefficients, and lock-free data structures that bridge the real-time and GUI threads.</p>
+
+        <div class="callout tip">
+          <div class="callout-title">TL;DR</div>
+          <p><strong>Best free ($0):</strong> Gemini CLI Free &mdash; 1M token context handles large JUCE codebases and DSP algorithm discussions. <strong>Best for DSP algorithms ($20/mo):</strong> Claude Code &mdash; strongest mathematical reasoning for filter design, FFT processing, and synthesis math. <strong>Best for plugin development ($20/mo):</strong> Cursor Pro &mdash; indexes JUCE projects, autocompletes plugin boilerplate across files. <strong>Best combined ($40/mo):</strong> Claude Code + Cursor. <strong>Budget ($0):</strong> Copilot Free + Gemini CLI Free.</p>
+        </div>
+
+        <h2>Why Audio &amp; DSP Engineering Is Different</h2>
+        <ul>
+          <li><strong>Hard real-time deadlines:</strong> The audio callback must complete within the buffer period. At 48 kHz with a 128-sample buffer, you have 2.67 milliseconds. This is not a performance target &mdash; it is an absolute deadline. Any allocation, lock contention, or priority inversion in that callback produces an audible glitch. AI tools that suggest <code>std::vector::push_back()</code>, <code>new</code>, or <code>std::mutex::lock()</code> inside a <code>processBlock()</code> are generating code that will click and pop in production.</li>
+          <li><strong>Mathematical precision matters audibly:</strong> A coefficient error in a biquad filter is not a rounding issue &mdash; it is an audible resonance, instability, or frequency response deviation. Quantization noise in fixed-point DSP is a design parameter, not a bug to ignore. The difference between a correct and incorrect overlap-add FFT reconstruction is the difference between clean audio and metallic phasing artifacts. AI tools must understand the math, not just the syntax.</li>
+          <li><strong>Lock-free real-time/GUI communication:</strong> Audio plugins have two threads that must communicate without blocking: the real-time audio thread and the GUI/message thread. This requires lock-free FIFOs, atomic parameter smoothing, and careful memory ordering. A <code>std::mutex</code> between these threads is a correctness bug that might work 99.9% of the time and glitch during a live performance.</li>
+          <li><strong>Plugin format complexity:</strong> VST3, Audio Unit (v2 and v3), and AAX are three different plugin APIs with different parameter models, bus negotiation, state save/restore, and threading guarantees. JUCE abstracts most of this, but edge cases &mdash; sidechain routing, latency reporting, preset management, parameter automation curves &mdash; require format-specific knowledge that most AI tools lack.</li>
+          <li><strong>Aliasing and sample rate awareness:</strong> Every oscillator, waveshaper, and nonlinear process must be band-limited or oversampled to avoid aliasing. This is not optional &mdash; aliasing is immediately audible as inharmonic frequencies. AI tools that generate a naive sawtooth oscillator (<code>phase += freq/sampleRate; output = 2*phase - 1;</code>) are generating code with audible aliasing artifacts above ~5 kHz.</li>
+        </ul>
+
+        <h2>Audio &amp; DSP Task Support Matrix</h2>
+        <div style="overflow-x:auto">
+          <table style="width:100%;border-collapse:collapse;margin:1.5rem 0">
+            <thead>
+              <tr style="border-bottom:2px solid var(--border)">
+                <th style="padding:12px 16px;text-align:left">Task</th>
+                <th style="padding:12px 16px;text-align:center">Copilot</th>
+                <th style="padding:12px 16px;text-align:center">Cursor</th>
+                <th style="padding:12px 16px;text-align:center">Windsurf</th>
+                <th style="padding:12px 16px;text-align:center">Claude Code</th>
+                <th style="padding:12px 16px;text-align:center">Amazon Q</th>
+                <th style="padding:12px 16px;text-align:center">Gemini CLI</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px"><strong>Plugin Boilerplate (VST3/AU/AAX)</strong></td>
+                <td style="padding:12px 16px;text-align:center">Good</td>
+                <td style="padding:12px 16px;text-align:center"><strong>Excellent</strong></td>
+                <td style="padding:12px 16px;text-align:center">Good</td>
+                <td style="padding:12px 16px;text-align:center">Strong</td>
+                <td style="padding:12px 16px;text-align:center">Fair</td>
+                <td style="padding:12px 16px;text-align:center">Good</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px"><strong>IIR/FIR Filter Design</strong></td>
+                <td style="padding:12px 16px;text-align:center">Fair</td>
+                <td style="padding:12px 16px;text-align:center">Good</td>
+                <td style="padding:12px 16px;text-align:center">Fair</td>
+                <td style="padding:12px 16px;text-align:center"><strong>Excellent</strong></td>
+                <td style="padding:12px 16px;text-align:center">Fair</td>
+                <td style="padding:12px 16px;text-align:center">Strong</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px"><strong>FFT / Spectral Processing</strong></td>
+                <td style="padding:12px 16px;text-align:center">Fair</td>
+                <td style="padding:12px 16px;text-align:center">Good</td>
+                <td style="padding:12px 16px;text-align:center">Fair</td>
+                <td style="padding:12px 16px;text-align:center"><strong>Excellent</strong></td>
+                <td style="padding:12px 16px;text-align:center">Weak</td>
+                <td style="padding:12px 16px;text-align:center">Strong</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px"><strong>Real-Time Audio Callbacks</strong></td>
+                <td style="padding:12px 16px;text-align:center">Weak</td>
+                <td style="padding:12px 16px;text-align:center">Good</td>
+                <td style="padding:12px 16px;text-align:center">Fair</td>
+                <td style="padding:12px 16px;text-align:center"><strong>Strong</strong></td>
+                <td style="padding:12px 16px;text-align:center">Weak</td>
+                <td style="padding:12px 16px;text-align:center">Good</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px"><strong>Synthesis &amp; Oscillators</strong></td>
+                <td style="padding:12px 16px;text-align:center">Fair</td>
+                <td style="padding:12px 16px;text-align:center">Good</td>
+                <td style="padding:12px 16px;text-align:center">Fair</td>
+                <td style="padding:12px 16px;text-align:center"><strong>Excellent</strong></td>
+                <td style="padding:12px 16px;text-align:center">Weak</td>
+                <td style="padding:12px 16px;text-align:center">Strong</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px"><strong>Lock-Free RT/GUI Communication</strong></td>
+                <td style="padding:12px 16px;text-align:center">Weak</td>
+                <td style="padding:12px 16px;text-align:center">Fair</td>
+                <td style="padding:12px 16px;text-align:center">Weak</td>
+                <td style="padding:12px 16px;text-align:center"><strong>Strong</strong></td>
+                <td style="padding:12px 16px;text-align:center">Weak</td>
+                <td style="padding:12px 16px;text-align:center">Good</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px"><strong>JUCE Framework</strong></td>
+                <td style="padding:12px 16px;text-align:center">Good</td>
+                <td style="padding:12px 16px;text-align:center"><strong>Excellent</strong></td>
+                <td style="padding:12px 16px;text-align:center">Good</td>
+                <td style="padding:12px 16px;text-align:center">Strong</td>
+                <td style="padding:12px 16px;text-align:center">Fair</td>
+                <td style="padding:12px 16px;text-align:center">Good</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p><em>Ratings reflect each tool&rsquo;s ability to generate correct, real-time-safe, mathematically accurate code for the specific task. &ldquo;Excellent&rdquo; = understands the domain constraints and produces production-quality code. &ldquo;Weak&rdquo; = generates code that compiles but violates real-time safety or produces audible artifacts.</em></p>
+
+        <h2>1. Plugin Boilerplate &amp; JUCE Framework</h2>
+
+        <p>Audio plugin development starts with hundreds of lines of framework code before you write a single line of DSP. A JUCE-based VST3/AU plugin requires a <code>PluginProcessor</code> with correct parameter layout, bus configuration, state save/restore, and a <code>PluginEditor</code> with the GUI. The parameter system alone has subtleties: <code>AudioParameterFloat</code> ranges, skew factors for logarithmic knobs, parameter IDs that must remain stable across versions for automation recall, and <code>NormalisableRange</code> configurations that map 20&ndash;20,000 Hz to a 0&ndash;1 slider.</p>
+
+        <h3>What the tools generate well</h3>
+        <p><strong>Cursor</strong> excels here. With a JUCE project indexed, it autocompletes parameter declarations, <code>prepareToPlay()</code> implementations, and editor component layouts that match your existing code style. It correctly generates <code>AudioProcessorValueTreeState</code> parameter attachments and the corresponding slider/button components in the editor.</p>
+
+        <p><strong>Copilot</strong> generates solid JUCE boilerplate from comments. Writing <code>// Create a gain parameter from -60dB to +12dB with 0dB default</code> produces a correct <code>AudioParameterFloat</code> with appropriate range and skew. It knows the JUCE <code>Processor</code>/<code>Editor</code> pattern.</p>
+
+        <p><strong>Claude Code</strong> generates complete plugin scaffolds with correct threading considerations. Ask it to create a delay plugin with tempo sync and it produces the processor with BPM-aware delay time calculation, circular buffer management, and proper <code>prepareToPlay()</code> / <code>releaseResources()</code> lifecycle handling.</p>
+
+        <h3>What they get wrong</h3>
+        <p>All tools occasionally generate parameter IDs as string literals scattered across files instead of using a centralized <code>ParameterID</code> namespace &mdash; a maintenance nightmare when you have 30+ parameters. Copilot and Windsurf sometimes generate the deprecated <code>AudioProcessor::getNumParameters()</code> API instead of the modern <code>AudioProcessorValueTreeState</code> approach. Amazon Q generates generic C++ class structures that do not follow JUCE conventions at all.</p>
+
+        <h3>Example: JUCE plugin processor with parameter smoothing</h3>
+<pre><code>class GainPluginProcessor : public juce::AudioProcessor
+{
+public:
+    GainPluginProcessor()
+        : AudioProcessor(BusesProperties()
+            .withInput("Input", juce::AudioChannelSet::stereo(), true)
+            .withOutput("Output", juce::AudioChannelSet::stereo(), true)),
+          parameters(*this, nullptr, "Parameters",
+          {
+              std::make_unique&lt;juce::AudioParameterFloat&gt;(
+                  juce::ParameterID{"gain", 1},
+                  "Gain",
+                  juce::NormalisableRange&lt;float&gt;(-60.0f, 12.0f, 0.1f, 2.5f), // skew for dB
+                  0.0f,
+                  juce::AudioParameterFloatAttributes()
+                      .withLabel("dB"))
+          })
+    {
+        gainParam = parameters.getRawParameterValue("gain");
+    }
+
+    void prepareToPlay(double sampleRate, int samplesPerBlock) override
+    {
+        // Smoothing: 20ms ramp to avoid zipper noise on gain changes
+        gainSmoother.reset(sampleRate, 0.02);
+        gainSmoother.setCurrentAndTargetValue(juce::Decibels::decibelsToGain(gainParam-&gt;load()));
+    }
+
+    void processBlock(juce::AudioBuffer&lt;float&gt;&amp; buffer, juce::MidiBuffer&amp;) override
+    {
+        // Update target — atomic load is real-time safe
+        gainSmoother.setTargetValue(juce::Decibels::decibelsToGain(gainParam-&gt;load()));
+
+        for (int sample = 0; sample &lt; buffer.getNumSamples(); ++sample)
+        {
+            const float gain = gainSmoother.getNextValue();
+            for (int ch = 0; ch &lt; buffer.getNumChannels(); ++ch)
+                buffer.setSample(ch, sample, buffer.getSample(ch, sample) * gain);
+        }
+    }
+
+    // State save/restore for DAW recall
+    void getStateInformation(juce::MemoryBlock&amp; destData) override
+    {
+        auto state = parameters.copyState();
+        std::unique_ptr&lt;juce::XmlElement&gt; xml(state.createXml());
+        copyXmlToBinary(*xml, destData);
+    }
+
+    void setStateInformation(const void* data, int sizeInBytes) override
+    {
+        std::unique_ptr&lt;juce::XmlElement&gt; xml(getXmlFromBinary(data, sizeInBytes));
+        if (xml &amp;&amp; xml-&gt;hasTagName(parameters.state.getType()))
+            parameters.replaceState(juce::ValueTree::fromXml(*xml));
+    }
+
+private:
+    juce::AudioProcessorValueTreeState parameters;
+    std::atomic&lt;float&gt;* gainParam = nullptr;
+    juce::SmoothedValue&lt;float, juce::ValueSmoothingTypes::Multiplicative&gt; gainSmoother;
+
+    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(GainPluginProcessor)
+};</code></pre>
+        <p><strong>Claude Code</strong> generates this pattern correctly, including the critical <code>SmoothedValue</code> for zipper-noise prevention and the <code>juce::Decibels</code> conversion. <strong>Cursor</strong> produces similar quality when it has a JUCE project indexed. <strong>Copilot</strong> often omits the smoother and applies gain directly from the parameter &mdash; technically works but produces audible zipper artifacts on fast automation. <strong>Amazon Q</strong> generates a basic gain processor but misses <code>NormalisableRange</code> skew factors entirely.</p>
+
+        <h2>2. IIR/FIR Filter Design</h2>
+
+        <p>Filter design is where audio engineering meets applied mathematics. A second-order IIR biquad filter &mdash; the building block of equalizers, crossovers, and tone controls &mdash; requires computing coefficients from frequency, Q factor, and gain using transfer function math. The Robert Bristow-Johnson (RBJ) cookbook formulas are the standard, but implementing them correctly requires understanding: bilinear transform pre-warping, gain normalization, coefficient quantization effects in fixed-point, and cascading for higher-order filters.</p>
+
+        <h3>Where Claude Code leads</h3>
+        <p>Ask Claude Code to implement a parametric EQ band and it derives the correct RBJ peaking EQ coefficients with pre-warped frequency mapping:</p>
+
+<pre><code>struct BiquadCoeffs {
+    float b0, b1, b2, a1, a2; // normalized (a0 = 1)
+};
+
+// RBJ Peaking EQ coefficients
+BiquadCoeffs peakingEQ(float sampleRate, float freqHz, float Q, float gainDB)
+{
+    const float A  = std::pow(10.0f, gainDB / 40.0f); // sqrt of linear gain
+    const float w0 = 2.0f * juce::MathConstants&lt;float&gt;::pi * freqHz / sampleRate;
+    const float cosw0 = std::cos(w0);
+    const float sinw0 = std::sin(w0);
+    const float alpha = sinw0 / (2.0f * Q);
+
+    const float a0 = 1.0f + alpha / A;
+
+    return {
+        (1.0f + alpha * A) / a0,   // b0
+        (-2.0f * cosw0)   / a0,    // b1
+        (1.0f - alpha * A) / a0,   // b2
+        (-2.0f * cosw0)   / a0,    // a1
+        (1.0f - alpha / A) / a0    // a2
+    };
+}
+
+// Direct Form II Transposed — best for floating-point numerical behavior
+float processSample(const BiquadCoeffs&amp; c, float input, float&amp; z1, float&amp; z2)
+{
+    float output = c.b0 * input + z1;
+    z1 = c.b1 * input - c.a1 * output + z2;
+    z2 = c.b2 * input - c.a2 * output;
+    return output;
+}</code></pre>
+
+        <p>Claude Code correctly chooses Direct Form II Transposed (best numerical properties for floating-point) and handles the <code>A = 10^(dB/40)</code> convention for peaking filters (not <code>dB/20</code> &mdash; a common error). It also explains <em>why</em> Direct Form II Transposed is preferred over Direct Form I: better numerical stability with floating-point arithmetic due to smaller intermediate values.</p>
+
+        <h3>Where other tools struggle</h3>
+        <p><strong>Copilot</strong> generates biquad implementations but frequently confuses the gain formula &mdash; using <code>dB/20</code> instead of <code>dB/40</code> for peaking filters, which doubles the boost/cut. <strong>Windsurf</strong> generates Direct Form I implementations, which work but have worse numerical properties. <strong>Amazon Q</strong> generates textbook IIR filters but without sample-rate-dependent pre-warping, meaning the filter frequency is wrong at high frequencies. <strong>Gemini CLI</strong> handles the math well when given explicit formulas to implement but sometimes confuses the sign convention on feedback coefficients (<code>a1, a2</code>).</p>
+
+        <h3>FIR filter design</h3>
+        <p>For FIR filters, Claude Code correctly generates windowed-sinc lowpass filters with the Kaiser window, including the correct beta calculation from stopband attenuation. Cursor generates acceptable FIR implementations when it can reference an existing filter in the project. Copilot generates basic windowed-sinc filters but often omits the window function entirely, producing filters with poor stopband rejection.</p>
+
+        <h2>3. FFT &amp; Spectral Processing</h2>
+
+        <p>Spectral processing &mdash; pitch shifting, time stretching, spectral filtering, convolution reverb &mdash; requires correct FFT usage that goes far beyond calling <code>fft.performRealOnlyForwardTransform()</code>. The overlap-add or overlap-save reconstruction must be implemented correctly or you get discontinuities at block boundaries. Phase vocoder algorithms require inter-frame phase difference calculations with correct unwrapping. Convolution reverb requires partitioned convolution for low-latency operation. These are not coding patterns &mdash; they are signal processing algorithms with mathematical invariants that must be maintained.</p>
+
+        <h3>Example: Overlap-add spectral processing</h3>
+<pre><code>class SpectralProcessor
+{
+public:
+    SpectralProcessor(int fftOrder)
+        : fftSize(1 &lt;&lt; fftOrder),
+          fft(fftOrder),
+          window(fftSize, juce::dsp::WindowingFunction&lt;float&gt;::hann, true), // normalize
+          hopSize(fftSize / 4), // 75% overlap for Hann window — meets COLA constraint
+          fftData(fftSize * 2, 0.0f),
+          outputAccumulator(fftSize * 2, 0.0f)
+    {
+    }
+
+    void processSpectralFrame(float* fftData, int fftSize)
+    {
+        // Override in subclass: modify magnitude/phase in frequency domain
+        // fftData layout: [re0, im0, re1, im1, ... re(N/2), im(N/2)]
+    }
+
+    void pushSample(float sample)
+    {
+        inputFifo[inputWritePos] = sample;
+        inputWritePos = (inputWritePos + 1) % fftSize;
+        samplesSinceLastFFT++;
+
+        if (samplesSinceLastFFT &gt;= hopSize)
+        {
+            samplesSinceLastFFT = 0;
+
+            // Copy input with correct circular buffer read
+            for (int i = 0; i &lt; fftSize; ++i)
+            {
+                int readPos = (inputWritePos + i) % fftSize;
+                fftData[i] = inputFifo[readPos];
+            }
+
+            // Apply analysis window
+            window.multiplyWithWindowingTable(fftData.data(), fftSize);
+
+            // Forward FFT
+            fft.performRealOnlyForwardTransform(fftData.data(), true);
+
+            // Spectral modification (subclass override)
+            processSpectralFrame(fftData.data(), fftSize);
+
+            // Inverse FFT
+            fft.performRealOnlyInverseTransform(fftData.data());
+
+            // Apply synthesis window and overlap-add
+            window.multiplyWithWindowingTable(fftData.data(), fftSize);
+
+            for (int i = 0; i &lt; fftSize; ++i)
+                outputAccumulator[(outputReadPos + i) % outputAccumulator.size()] += fftData[i];
+        }
+    }
+
+    float popSample()
+    {
+        float out = outputAccumulator[outputReadPos];
+        outputAccumulator[outputReadPos] = 0.0f; // clear after reading
+        outputReadPos = (outputReadPos + 1) % outputAccumulator.size();
+        return out;
+    }
+
+private:
+    int fftSize, hopSize;
+    juce::dsp::FFT fft;
+    juce::dsp::WindowingFunction&lt;float&gt; window;
+    std::vector&lt;float&gt; fftData;
+    std::vector&lt;float&gt; outputAccumulator;
+    std::array&lt;float, 8192&gt; inputFifo{};
+    int inputWritePos = 0, outputReadPos = 0;
+    int samplesSinceLastFFT = 0;
+};</code></pre>
+
+        <p><strong>Claude Code</strong> generates this overlap-add pattern with the correct COLA (Constant Overlap-Add) constraint: Hann window with 75% overlap. It explains that this combination guarantees perfect reconstruction &mdash; the overlapped windows sum to unity at every sample. <strong>Gemini CLI</strong> handles this well when given detailed specifications. <strong>Cursor</strong> generates acceptable FFT processing when an existing spectral processor is in the project to reference.</p>
+
+        <p><strong>Copilot</strong> generates FFT code that often uses 50% overlap with a Hann window &mdash; which does <em>not</em> satisfy COLA and introduces amplitude modulation artifacts at block boundaries. <strong>Windsurf</strong> generates basic FFT wrappers but misses the overlap-add accumulator entirely, producing discontinuous output. <strong>Amazon Q</strong> generates FFT calls but not the surrounding buffer management, which is where all the bugs live.</p>
+
+        <h2>4. Real-Time Audio Callbacks</h2>
+
+        <p>The <code>processBlock()</code> callback is where audio engineering diverges most sharply from normal software development. On the real-time audio thread, these operations are <strong>forbidden</strong>:</p>
+        <ul>
+          <li><strong>Memory allocation:</strong> <code>new</code>, <code>malloc</code>, <code>std::vector::push_back()</code> (may reallocate), <code>std::string</code> construction</li>
+          <li><strong>Blocking synchronization:</strong> <code>std::mutex::lock()</code>, <code>std::condition_variable::wait()</code>, any system call that might block</li>
+          <li><strong>I/O:</strong> File reads/writes, network calls, <code>std::cout</code>, logging frameworks</li>
+          <li><strong>Exceptions:</strong> <code>throw</code>, <code>try/catch</code> blocks (stack unwinding is unpredictable)</li>
+          <li><strong>Virtual dispatch in hot paths:</strong> Vtable lookups can cause cache misses (acceptable in setup, avoid in per-sample loops)</li>
+        </ul>
+
+        <p>AI tools that do not understand these constraints generate code that <em>works on your development machine</em> but glitches under real DAW conditions with multiple plugins, high track counts, and small buffer sizes.</p>
+
+        <h3>Claude Code&rsquo;s real-time awareness</h3>
+        <p>Claude Code is the strongest tool for real-time-safe code generation. Ask it to implement a delay effect and it pre-allocates the delay buffer in <code>prepareToPlay()</code>, uses a raw circular buffer (not <code>std::deque</code>), and smooths the delay time parameter to avoid discontinuities. It flags <code>std::vector</code> resizing and mutex locking as real-time violations when you ask it to review existing audio code.</p>
+
+        <h3>Where tools fail</h3>
+        <p><strong>Copilot</strong> is the most dangerous here. It autocompletes based on general C++ patterns, and general C++ patterns use <code>std::vector</code>, <code>std::string</code>, and <code>std::mutex</code> freely. In a <code>processBlock()</code> function, Copilot will suggest <code>std::vector&lt;float&gt; temp(numSamples)</code> for a temporary buffer &mdash; a per-block heap allocation that will eventually cause a dropout. <strong>Windsurf</strong> and <strong>Amazon Q</strong> have the same problem. <strong>Cursor</strong> is better when it has real-time-safe examples in the project to reference, but it still occasionally suggests allocating patterns.</p>
+
+        <h3>Lock-free parameter communication</h3>
+<pre><code>// Real-time safe parameter update pattern
+class RealtimeSafeDelay
+{
+public:
+    void prepareToPlay(double sampleRate, int maxBlockSize)
+    {
+        // All allocation happens here, NEVER in processBlock
+        delayBuffer.resize(static_cast&lt;size_t&gt;(sampleRate * maxDelaySeconds) + 1);
+        std::fill(delayBuffer.begin(), delayBuffer.end(), 0.0f);
+        smoothedDelay.reset(sampleRate, 0.05); // 50ms smoothing
+    }
+
+    void processBlock(juce::AudioBuffer&lt;float&gt;&amp; buffer)
+    {
+        // Atomic load — no lock, no allocation
+        smoothedDelay.setTargetValue(delayTimeMs.load(std::memory_order_relaxed)
+                                     * sampleRate * 0.001f);
+
+        for (int i = 0; i &lt; buffer.getNumSamples(); ++i)
+        {
+            const float delaySamples = smoothedDelay.getNextValue();
+
+            // Fractional delay with linear interpolation
+            const int readPos1 = static_cast&lt;int&gt;(writePos - delaySamples + delayBuffer.size())
+                                 % delayBuffer.size();
+            const int readPos2 = (readPos1 + 1) % delayBuffer.size();
+            const float frac = delaySamples - std::floor(delaySamples);
+
+            for (int ch = 0; ch &lt; buffer.getNumChannels(); ++ch)
+            {
+                float delayed = delayBuffer[readPos1] * (1.0f - frac)
+                              + delayBuffer[readPos2] * frac;
+                float input = buffer.getSample(ch, i);
+                buffer.setSample(ch, i, input + delayed * feedback);
+                delayBuffer[writePos] = input;
+            }
+            writePos = (writePos + 1) % delayBuffer.size();
+        }
+    }
+
+    // Called from GUI thread — atomic store, no lock needed
+    void setDelayTime(float ms) { delayTimeMs.store(ms, std::memory_order_relaxed); }
+
+private:
+    std::vector&lt;float&gt; delayBuffer; // allocated in prepareToPlay, never resized
+    size_t writePos = 0;
+    float feedback = 0.5f;
+    double sampleRate = 44100.0;
+    static constexpr float maxDelaySeconds = 2.0f;
+    std::atomic&lt;float&gt; delayTimeMs{500.0f};
+    juce::SmoothedValue&lt;float&gt; smoothedDelay;
+};</code></pre>
+
+        <p>Note: no <code>new</code>, no <code>mutex</code>, no <code>string</code>, no <code>vector::push_back()</code> in <code>processBlock()</code>. The delay buffer is pre-allocated in <code>prepareToPlay()</code>. The delay time crosses threads via <code>std::atomic</code> with relaxed ordering (sufficient for single-value parameter updates). The <code>SmoothedValue</code> prevents discontinuities when the delay time changes.</p>
+
+        <h2>5. Synthesis &amp; Oscillators</h2>
+
+        <p>Synthesis is where the aliasing problem is most acute. A naive sawtooth oscillator &mdash; <code>output = 2.0 * phase - 1.0</code> &mdash; produces harmonics at every integer multiple of the fundamental frequency. Above the Nyquist frequency (sampleRate/2), those harmonics fold back as aliasing. At 44.1 kHz, a 5 kHz sawtooth has only 4 harmonics below Nyquist; the rest alias. The result is audibly inharmonic &mdash; metallic, harsh, and wrong.</p>
+
+        <h3>Band-limited oscillators</h3>
+        <p>The standard solutions are PolyBLEP (polynomial band-limited step), wavetable synthesis with band-limited tables, or oversampled + filtered generation. Claude Code is the only tool that consistently generates PolyBLEP oscillators without being explicitly asked:</p>
+
+<pre><code>class PolyBLEPOscillator
+{
+public:
+    float nextSample(float frequency, float sampleRate)
+    {
+        const float dt = frequency / sampleRate; // phase increment (normalized)
+        float output = 0.0f;
+
+        // Naive sawtooth
+        output = 2.0f * phase - 1.0f;
+
+        // PolyBLEP correction at discontinuity
+        output -= polyBLEP(phase, dt);
+
+        // Advance phase
+        phase += dt;
+        if (phase &gt;= 1.0f) phase -= 1.0f;
+
+        return output;
+    }
+
+private:
+    float phase = 0.0f;
+
+    // 2-sample polyBLEP residual
+    static float polyBLEP(float t, float dt)
+    {
+        if (t &lt; dt) // just after discontinuity
+        {
+            t /= dt;
+            return t + t - t * t - 1.0f;
+        }
+        else if (t &gt; 1.0f - dt) // just before discontinuity
+        {
+            t = (t - 1.0f) / dt;
+            return t * t + t + t + 1.0f;
+        }
+        return 0.0f;
+    }
+};</code></pre>
+
+        <p><strong>Claude Code</strong> generates correct PolyBLEP with explanation of why the polynomial approximation works (it subtracts the aliased energy at the discontinuity). <strong>Gemini CLI</strong> generates PolyBLEP when asked specifically. <strong>Cursor</strong> generates it when there is an existing PolyBLEP in the project. <strong>Copilot</strong>, <strong>Windsurf</strong>, and <strong>Amazon Q</strong> consistently generate naive (aliased) oscillators unless the comment explicitly says &ldquo;band-limited&rdquo; or &ldquo;PolyBLEP.&rdquo;</p>
+
+        <h3>Wavetable synthesis</h3>
+        <p>For wavetable oscillators, the key requirement is multiple tables at different band-limit levels &mdash; the table used for a 100 Hz note contains more harmonics than the table for a 5 kHz note. Claude Code correctly generates wavetable sets with mipmap-style harmonic reduction. Other tools generate single-table implementations that alias at high pitches.</p>
+
+        <h2>6. Lock-Free Data Structures for Audio</h2>
+
+        <p>Audio plugins need lock-free communication between the real-time audio thread and the GUI/message thread. The canonical patterns are: single-producer single-consumer (SPSC) lock-free FIFOs for streaming data (waveform displays, level meters), atomic variables for single parameters, and lock-free value wrappers for complex state (preset changes, IR loading).</p>
+
+<pre><code>// SPSC lock-free FIFO for audio thread -> GUI thread communication
+// (e.g., sending waveform data or level readings to the display)
+template&lt;typename T, size_t Capacity&gt;
+class RealtimeFifo
+{
+public:
+    bool push(const T&amp; value) // called from audio thread
+    {
+        const size_t currentWrite = writePos.load(std::memory_order_relaxed);
+        const size_t nextWrite = (currentWrite + 1) % Capacity;
+
+        if (nextWrite == readPos.load(std::memory_order_acquire))
+            return false; // full — drop, never block
+
+        buffer[currentWrite] = value;
+        writePos.store(nextWrite, std::memory_order_release);
+        return true;
+    }
+
+    bool pop(T&amp; value) // called from GUI thread
+    {
+        const size_t currentRead = readPos.load(std::memory_order_relaxed);
+
+        if (currentRead == writePos.load(std::memory_order_acquire))
+            return false; // empty
+
+        value = buffer[currentRead];
+        readPos.store((currentRead + 1) % Capacity, std::memory_order_release);
+        return true;
+    }
+
+private:
+    std::array&lt;T, Capacity&gt; buffer{};
+    std::atomic&lt;size_t&gt; readPos{0};
+    std::atomic&lt;size_t&gt; writePos{0};
+};</code></pre>
+
+        <p><strong>Claude Code</strong> generates this pattern with correct memory ordering: <code>acquire</code> on the position written by the other thread, <code>release</code> on our own write position, <code>relaxed</code> on our own read. It explains the happens-before relationships. <strong>Gemini CLI</strong> generates correct lock-free FIFOs when given detailed specifications. <strong>Cursor</strong> and <strong>Copilot</strong> generate FIFOs but often use <code>memory_order_seq_cst</code> everywhere (correct but unnecessary overhead) or worse, use no atomic operations at all. <strong>Windsurf</strong> and <strong>Amazon Q</strong> generate mutex-based queues &mdash; fundamentally wrong for real-time audio.</p>
+
+        <h2>7. Audio-Specific Debugging &amp; Profiling</h2>
+
+        <p>Audio bugs are uniquely difficult to diagnose. A click in the output could be: a buffer discontinuity from incorrect overlap-add, a denormal number causing a CPU spike, a race condition on a shared variable, a filter instability from bad coefficients, or a missed callback deadline. Standard debuggers are useless &mdash; you cannot breakpoint a real-time thread without causing the very dropout you are trying to debug.</p>
+
+        <h3>Denormal handling</h3>
+        <p>Denormalized floating-point numbers (values near zero with reduced precision) cause massive CPU spikes on x86 processors because denormal arithmetic is ~100x slower than normal arithmetic. IIR filter state variables naturally decay toward denormals. The fix is to flush denormals to zero:</p>
+
+<pre><code>void prepareToPlay(double sampleRate, int samplesPerBlock) override
+{
+    // Flush denormals to zero for this thread
+    juce::ScopedNoDenormals noDenormals;
+    // ... or manually:
+    // _mm_setcsr(_mm_getcsr() | 0x8040); // FTZ + DAZ on x86
+}
+
+void processBlock(juce::AudioBuffer&lt;float&gt;&amp; buffer, juce::MidiBuffer&amp;) override
+{
+    juce::ScopedNoDenormals noDenormals; // set FTZ+DAZ for this callback
+
+    // Alternative: add tiny DC offset to prevent denormals in feedback paths
+    constexpr float antiDenormal = 1e-20f;
+    for (auto&amp; state : filterStates)
+        state += antiDenormal;
+
+    // ... process audio ...
+}</code></pre>
+
+        <p><strong>Claude Code</strong> consistently includes denormal protection in IIR filter code and explains why. <strong>Cursor</strong> includes it when existing code in the project uses <code>ScopedNoDenormals</code>. Other tools almost never mention denormals &mdash; resulting in plugins that work perfectly at normal signal levels but spike the CPU meter to 100% during fade-outs or silence.</p>
+
+        <h3>SIMD optimization</h3>
+        <p>Audio processing is embarrassingly parallel at the sample level &mdash; the same operation applied to every sample in a buffer. SIMD (SSE/AVX/NEON) can process 4&ndash;8 samples per instruction. JUCE&rsquo;s <code>FloatVectorOperations</code> class provides SIMD-accelerated operations for common patterns (multiply, add, copy, clear).</p>
+
+        <p><strong>Claude Code</strong> suggests <code>FloatVectorOperations::multiply()</code> for bulk gain operations and generates correct manual SSE intrinsics for custom per-sample DSP when asked. <strong>Copilot</strong> generates scalar loops that the compiler <em>might</em> auto-vectorize. <strong>Cursor</strong> suggests JUCE&rsquo;s SIMD helpers when they exist in the project. Other tools generate scalar code exclusively.</p>
+
+        <h2>When to Use Each Tool</h2>
+        <div style="overflow-x:auto">
+          <table style="width:100%;border-collapse:collapse;margin:1.5rem 0">
+            <thead>
+              <tr style="border-bottom:2px solid var(--border)">
+                <th style="padding:12px 16px;text-align:left">Task</th>
+                <th style="padding:12px 16px;text-align:left">Best Tool</th>
+                <th style="padding:12px 16px;text-align:left">Why</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px">IIR/FIR filter design</td>
+                <td style="padding:12px 16px"><strong>Claude Code</strong></td>
+                <td style="padding:12px 16px">Correct coefficient math, proper Direct Form selection, explains stability</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px">FFT / spectral processing</td>
+                <td style="padding:12px 16px"><strong>Claude Code</strong></td>
+                <td style="padding:12px 16px">Correct overlap-add, COLA window selection, phase vocoder math</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px">JUCE plugin boilerplate</td>
+                <td style="padding:12px 16px"><strong>Cursor Pro</strong></td>
+                <td style="padding:12px 16px">Codebase-indexed autocomplete matches project conventions</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px">Synthesis / oscillators</td>
+                <td style="padding:12px 16px"><strong>Claude Code</strong></td>
+                <td style="padding:12px 16px">Generates band-limited (PolyBLEP) oscillators by default</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px">Real-time safety review</td>
+                <td style="padding:12px 16px"><strong>Claude Code</strong></td>
+                <td style="padding:12px 16px">Flags allocations, locks, and I/O in audio callbacks</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px">Lock-free data structures</td>
+                <td style="padding:12px 16px"><strong>Claude Code</strong></td>
+                <td style="padding:12px 16px">Correct memory ordering, SPSC patterns, atomic semantics</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px">Large JUCE codebase navigation</td>
+                <td style="padding:12px 16px"><strong>Gemini CLI Free</strong></td>
+                <td style="padding:12px 16px">1M token context fits entire JUCE project + framework headers</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h2>What AI Tools Get Wrong About Audio &amp; DSP</h2>
+        <ul>
+          <li><strong>Real-time safety violations:</strong> Every tool except Claude Code routinely generates heap allocations, mutex locks, and string operations inside <code>processBlock()</code>. This is the #1 source of AI-generated audio bugs &mdash; code that works in testing but glitches in production.</li>
+          <li><strong>Naive (aliased) oscillators:</strong> Copilot, Windsurf, and Amazon Q default to non-band-limited oscillator implementations. The aliasing is immediately audible on any note above ~2 kHz.</li>
+          <li><strong>Incorrect filter coefficient math:</strong> Confusing dB/20 with dB/40 for peaking EQ, omitting bilinear transform pre-warping, using wrong sign conventions for feedback coefficients. Any of these produces a filter with incorrect frequency response.</li>
+          <li><strong>Missing denormal protection:</strong> Only Claude Code consistently handles denormalized floats. Other tools generate IIR filters that spike the CPU to 100% during silence or fade-outs.</li>
+          <li><strong>Ignoring latency reporting:</strong> Plugins that add latency (look-ahead limiters, FFT-based effects, linear-phase EQs) must report it via <code>setLatencySamples()</code> for the DAW to compensate. AI tools almost never include this, causing timing misalignment in multi-track sessions.</li>
+          <li><strong>Single-table wavetable synthesis:</strong> All tools except Claude Code generate single wavetable implementations that alias at high pitches. Correct wavetable synthesis requires mipmap-style multi-resolution tables.</li>
+          <li><strong>Incorrect overlap-add reconstruction:</strong> 50% overlap with a Hann window does not satisfy COLA. This produces amplitude modulation artifacts that are subtle but audible on sustained tones.</li>
+        </ul>
+
+        <h2>Cost Model: What Audio &amp; DSP Engineers Actually Pay</h2>
+
+        <h3>Scenario 1: Hobbyist / Learning DSP &mdash; $0/month</h3>
+        <ul>
+          <li><strong>Copilot Free</strong> (2,000 completions/mo) for basic JUCE boilerplate and C++ autocomplete</li>
+          <li>Plus <strong>Gemini CLI Free</strong> for discussing DSP algorithms and getting filter coefficient derivations</li>
+          <li>Sufficient for learning, personal plugins, and small projects. The free tier handles JUCE autocomplete and basic DSP questions. You will need to manually verify real-time safety and filter math.</li>
+        </ul>
+
+        <h3>Scenario 2: Indie Plugin Developer &mdash; $10/month</h3>
+        <ul>
+          <li><strong>Copilot Pro</strong> ($10/mo) for unlimited completions in your JUCE projects</li>
+          <li>Good for daily plugin development workflow. Copilot handles the repetitive parts (parameter declarations, component layouts, build configuration) while you focus on DSP algorithm implementation. Be vigilant about real-time safety in autocompleted code.</li>
+        </ul>
+
+        <h3>Scenario 3: Serious DSP Work &mdash; $20/month</h3>
+        <ul>
+          <li><strong>Claude Code</strong> ($20/mo) for filter design, spectral processing, synthesis algorithms, and real-time safety review</li>
+          <li>The best single tool for audio DSP engineers. Claude Code&rsquo;s mathematical reasoning handles coefficient derivation, its real-time awareness prevents safety violations, and it generates correct band-limited oscillators and overlap-add processors. Use it as your DSP algorithm co-pilot and real-time code reviewer.</li>
+        </ul>
+
+        <h3>Scenario 4: Professional Plugin Developer &mdash; $20/month</h3>
+        <ul>
+          <li><strong>Cursor Pro</strong> ($20/mo) for codebase-indexed JUCE development, multi-file refactoring, and plugin format boilerplate</li>
+          <li>Best for the plugin development workflow: Cursor indexes your entire JUCE project, autocompletes parameter systems that match your conventions, and handles cross-file refactoring (renaming a parameter ID across processor, editor, and preset files). Weaker than Claude Code on DSP math, but stronger on daily development speed.</li>
+        </ul>
+
+        <h3>Scenario 5: Full Pipeline &mdash; $40/month</h3>
+        <ul>
+          <li><strong>Claude Code</strong> ($20/mo) for DSP algorithm design, filter math, real-time safety review, and lock-free patterns</li>
+          <li>Plus <strong>Cursor Pro</strong> ($20/mo) for codebase-indexed JUCE development, plugin boilerplate, and multi-file editing</li>
+          <li>The optimal combination: Claude Code for the hard problems (filter design, spectral processing, synthesis algorithms, real-time safety audits) and Cursor for the daily workflow (parameter systems, GUI layouts, preset management, build configuration). This is what professional plugin developers with tight release schedules use.</li>
+        </ul>
+
+        <h3>Scenario 6: Studio / Enterprise &mdash; $99/seat</h3>
+        <ul>
+          <li><strong>Copilot Enterprise</strong> ($39/mo) or <strong>Cursor Business</strong> ($40/mo) for team-wide codebase indexing, access controls, and audit logging</li>
+          <li>Plus <strong>Claude Code</strong> ($20/mo) for architecture-level DSP system design</li>
+          <li>Audio software companies (plugin vendors, DAW developers, game audio middleware companies) have proprietary DSP libraries, custom plugin frameworks, and internal real-time coding standards. Enterprise tiers index the full proprietary codebase, ensuring team-wide consistency on coding conventions, real-time safety rules, and DSP algorithm implementations.</li>
+        </ul>
+
+        <h2>The Audio &amp; DSP Engineer&rsquo;s Verdict</h2>
+
+        <p>AI tools for audio and DSP engineering in 2026 are powerful for the mechanical parts and dangerous for the mathematical parts. They are excellent at generating JUCE plugin boilerplate &mdash; the <code>PluginProcessor</code>, the <code>PluginEditor</code>, the parameter system, the preset management, the build configuration for VST3/AU/AAX. They are excellent at scaffolding standard patterns: delay lines, gain stages, simple filters, MIDI handling. They are excellent at the 80% of audio plugin code that is framework plumbing, not signal processing.</p>
+
+        <p>They are dangerous for DSP algorithm correctness. A filter with wrong coefficients, an oscillator with aliasing, an FFT processor with incorrect overlap &mdash; these are bugs that you hear, not bugs that crash. They pass every unit test you can write (the output is a valid float, the function returns, the buffer has the right length) but they produce audio artifacts that make your plugin sound broken. The only test that catches them is listening, and AI tools cannot listen.</p>
+
+        <p>The right workflow for audio engineers: <strong>AI generates the plugin framework, you write the DSP core. AI scaffolds the parameter system, you derive the filter coefficients. AI produces the JUCE boilerplate, you verify the real-time safety.</strong> Let Claude Code derive your biquad coefficients and check your overlap-add math. Let Cursor manage your 50-parameter plugin&rsquo;s UI layout and state management. Let Gemini CLI analyze your entire codebase for real-time safety violations. Then listen to the output, measure the frequency response, and verify on multiple DAWs before you ship. The framework code is 5&ndash;10x faster with AI. The DSP math still requires an engineer&rsquo;s ears and a signal processing textbook.</p>
+
+        <p>Compare all tools and pricing on our <a href="/" style="color:var(--accent)">main comparison table</a>, or check the <a href="/blog/cheapest-ai-coding-tool-2026.html" style="color:var(--accent)">cheapest tools guide</a> for budget options.</p>
+
+        <h2>Related on CodeCosts</h2>
+        <ul>
+          <li><a href="/blog/ai-coding-tools-for-embedded-iot-engineers-2026.html" style="color:var(--accent)">AI Coding Tools for Embedded/IoT Engineers (2026)</a> &mdash; real-time constraints, interrupt handling, low-latency loops</li>
+          <li><a href="/blog/ai-coding-tools-for-firmware-engineers-2026.html" style="color:var(--accent)">AI Coding Tools for Firmware Engineers (2026)</a> &mdash; timing-critical code, hardware integration, real-time control</li>
+          <li><a href="/blog/ai-coding-tools-for-performance-engineers-2026.html" style="color:var(--accent)">AI Coding Tools for Performance Engineers (2026)</a> &mdash; profiling, optimization, latency analysis</li>
+          <li><a href="/blog/ai-coding-tools-for-systems-programmers-2026.html" style="color:var(--accent)">AI Coding Tools for Systems Programmers (2026)</a> &mdash; low-level optimization, memory-critical algorithms</li>
+        </ul>
+      </div>
+    </article>
+
+    <!-- Related Posts -->
+    <section class="card">
+      <h3>Related Posts</h3>
+      <div class="blog-list" style="margin-top:1rem">
+        <a href="/blog/ai-coding-tools-for-embedded-iot-engineers-2026.html" class="blog-post-card">
+          <h3>AI Coding Tools for Embedded/IoT Engineers 2026: Real-Time, RTOS &amp; Hardware Interface Guide</h3>
+          <div class="blog-meta"><span>March 25, 2026</span><span>20 min read</span></div>
+          <p class="blog-excerpt">Every AI coding tool evaluated for embedded and IoT development. Real-time constraints, RTOS integration, HAL drivers, and cross-compilation from $0 to enterprise.</p>
+          <span class="read-more">Read more &rarr;</span>
+        </a>
+        <a href="/blog/ai-coding-tools-for-firmware-engineers-2026.html" class="blog-post-card">
+          <h3>AI Coding Tools for Firmware Engineers 2026: Embedded C/C++, RTOS, HAL &amp; Cross-Compilation Guide</h3>
+          <div class="blog-meta"><span>March 28, 2026</span><span>22 min read</span></div>
+          <p class="blog-excerpt">Every AI coding tool evaluated for firmware development. Bare-metal C, RTOS integration, peripheral HALs, bootloaders, and cross-compilation from $0 to enterprise.</p>
+          <span class="read-more">Read more &rarr;</span>
+        </a>
+        <a href="/blog/ai-coding-tools-for-performance-engineers-2026.html" class="blog-post-card">
+          <h3>AI Coding Tools for Performance Engineers 2026: Profiling, Optimization &amp; Benchmarking Guide</h3>
+          <div class="blog-meta"><span>March 26, 2026</span><span>20 min read</span></div>
+          <p class="blog-excerpt">Every AI coding tool evaluated for profiling, optimization, and benchmarking workflows. CPU and memory analysis, flame graphs, and performance regression detection.</p>
+          <span class="read-more">Read more &rarr;</span>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>CodeCosts &mdash; Independent AI coding tool price tracker. Updated March 2026.</p>
+      <p style="margin-top:0.5rem"><a href="/" style="color:var(--accent)">Compare all tools</a> &middot; <a href="/blog/" style="color:var(--accent)">Blog</a> &middot; <a href="/blog/feed.xml" style="color:var(--accent)">RSS</a></p>
+    </div>
+  </footer>
+</body>
+</html>

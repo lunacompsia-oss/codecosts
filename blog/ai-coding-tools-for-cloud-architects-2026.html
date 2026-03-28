@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Coding Tools for Cloud Architects 2026: IaC, Multi-Cloud Design, Cost Optimization &amp; Cloud-Native Architecture Guide</title>
+  <meta name="description" content="The cloud architect's guide to AI coding tools in 2026. Every tool ranked for Terraform modules, multi-cloud design, FinOps analysis, landing zone design, and compliance-as-code. Task-first recommendations from $0 to $200/mo.">
+  <link rel="canonical" href="https://codecosts.pages.dev/blog/ai-coding-tools-for-cloud-architects-2026.html">
+  <meta property="og:title" content="AI Coding Tools for Cloud Architects 2026: IaC, Multi-Cloud &amp; FinOps">
+  <meta property="og:description" content="Every AI coding tool ranked for cloud architecture. Terraform, multi-cloud design, cost optimization, landing zones, and the $0 to $200/mo stacks.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://codecosts.pages.dev/blog/ai-coding-tools-for-cloud-architects-2026.html">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="AI Coding Tools for Cloud Architects 2026: IaC, Multi-Cloud &amp; FinOps">
+  <meta name="twitter:description" content="Every AI coding tool ranked for cloud architecture. Terraform, multi-cloud, FinOps, landing zones, and the $0 to $200/mo stacks for cloud architects.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💰</text></svg>">
+  <link rel="stylesheet" href="../style.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "AI Coding Tools for Cloud Architects 2026: IaC, Multi-Cloud Design, Cost Optimization & Cloud-Native Architecture Guide",
+    "datePublished": "2026-03-28",
+    "dateModified": "2026-03-28",
+    "author": { "@type": "Organization", "name": "CodeCosts" },
+    "publisher": { "@type": "Organization", "name": "CodeCosts" },
+    "description": "The cloud architect's guide to AI coding tools in 2026. Every tool ranked for Terraform modules, multi-cloud design, FinOps analysis, landing zone design, and compliance-as-code."
+  }
+  </script>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <a href="/" style="text-decoration:none;color:inherit"><h1><span class="logo">$_</span> CodeCosts</h1></a>
+      <p class="tagline">AI Coding Tool News &amp; Analysis</p>
+      <nav>
+        <a href="/">Tools</a>
+        <a href="/blog/" class="active">Blog</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <article class="card">
+      <h2>AI Coding Tools for Cloud Architects 2026: IaC, Multi-Cloud Design, Cost Optimization &amp; Cloud-Native Architecture Guide</h2>
+      <div class="article-meta">
+        <span>March 28, 2026</span>
+        <span>20 min read</span>
+      </div>
+
+      <div class="article-content">
+        <p>You are staring at a spreadsheet with 47 AWS accounts, 12 Azure subscriptions, and 3 GCP projects. The CISO wants compliance-as-code enforced across all of them by Q3. Finance is asking why cloud spend jumped 34% last quarter. A product team needs a new landing zone for a workload migration &mdash; 200 services, half of them stateful, most undocumented. And your Terraform state files are drifting in ways that <code>terraform plan</code> output alone cannot explain. This is Tuesday for a cloud architect. Most AI coding tool reviews test whether a tool can write a React component or a Python function. That tells you nothing about whether it can reason through the trade-offs between <code>aws_ecs_service</code> and <code>azurerm_kubernetes_cluster</code>, generate a compliant VPC design across three clouds, or catch that your S3 bucket policy just granted public read access to production data.</p>
+
+        <p>This guide evaluates every major AI coding tool through the lens of what cloud architects actually do. Not DevOps (CI/CD pipelines and deployments), not platform engineering (internal developer platforms), not solutions architecture (cross-domain system design). Cloud architecture: IaC at scale, multi-cloud strategy, cost optimization, landing zone design, security posture, and migration planning.</p>
+
+        <div class="callout tip">
+          <div class="callout-title">TL;DR</div>
+          <p><strong>Best free ($0):</strong> GitHub Copilot Free &mdash; decent Terraform and CloudFormation completions, 2,000/mo is enough for architects who review more IaC than they write. <strong>Best for IaC work ($20/mo):</strong> Cursor Pro &mdash; codebase-aware Terraform refactoring, multi-file module composition, <code>.cursorrules</code> for enforcing tagging and naming standards. <strong>Best for cloud reasoning ($20/mo):</strong> Claude Code &mdash; strongest at reasoning through cloud service trade-offs, IaC review, cost optimization analysis, and multi-cloud design patterns. <strong>Best combo ($30/mo):</strong> Claude Code + Copilot Free &mdash; Claude Code for architectural decisions and complex IaC, Copilot for inline completions during light edits.</p>
+        </div>
+
+        <h2>Why Cloud Architecture Is Different</h2>
+
+        <p>Cloud architects evaluate AI tools differently from every other engineering role. You are not writing application code. You are designing systems that span clouds, accounts, regions, and compliance boundaries. Here is what matters:</p>
+
+        <ul>
+          <li><strong>IaC fluency across multiple DSLs:</strong> You work in Terraform HCL, Pulumi (TypeScript/Python/Go), CloudFormation YAML/JSON, Bicep, and CDK. A tool that excels at HCL but chokes on Bicep is only useful for half your week. You need consistent quality across all IaC languages, including understanding of provider-specific resource schemas and argument constraints.</li>
+          <li><strong>Provider knowledge freshness:</strong> Cloud services change weekly. AWS launched 90+ new services in 2025 alone. An AI tool suggesting <code>aws_ecs_cluster</code> with the deprecated <code>capacity_providers</code> argument (replaced by <code>aws_ecs_cluster_capacity_providers</code> in 2024) is not just wrong &mdash; it wastes an hour of your debugging time. You need tools trained on current provider documentation.</li>
+          <li><strong>Cost-awareness in every suggestion:</strong> A DevOps engineer asks &ldquo;does this Terraform work?&rdquo; A cloud architect asks &ldquo;does this Terraform work, and will it cost $800/mo or $8,000/mo?&rdquo; AI tools that suggest <code>m5.4xlarge</code> when <code>m7g.xlarge</code> achieves the same throughput at 40% lower cost are actively harmful to your job.</li>
+          <li><strong>Multi-cloud breadth:</strong> You need to reason about the same workload across AWS, Azure, and GCP simultaneously. What is the Azure equivalent of an AWS Transit Gateway? When should you use GCP Shared VPC vs. VPC Peering? Tools locked to a single cloud provider&rsquo;s ecosystem cannot support multi-cloud strategy work.</li>
+          <li><strong>Security and compliance understanding:</strong> Every resource you provision must satisfy compliance requirements &mdash; CIS benchmarks, SOC 2 controls, HIPAA, PCI DSS. An AI tool that generates an <code>azurerm_storage_account</code> without <code>min_tls_version = "TLS1_2"</code> or an <code>aws_s3_bucket</code> without server-side encryption is creating audit findings, not saving you time.</li>
+          <li><strong>Landing zone complexity:</strong> Designing an AWS Control Tower setup with organizational units, service control policies, account baselines, networking topology, shared services, and centralized logging is a multi-hundred-file IaC challenge. You need AI tools that can hold the entire landing zone architecture in context, not just autocomplete the next line of HCL.</li>
+        </ul>
+
+        <h2>Cloud Architect Task Support Matrix</h2>
+
+        <p>Here is how each tool performs on the six core tasks that define a cloud architect&rsquo;s work:</p>
+
+        <div style="overflow-x:auto">
+          <table style="width:100%;border-collapse:collapse;margin:1.5rem 0">
+            <thead>
+              <tr style="border-bottom:2px solid var(--border)">
+                <th style="padding:12px 16px;text-align:left">Tool</th>
+                <th style="padding:12px 16px;text-align:left">Terraform/IaC Authoring</th>
+                <th style="padding:12px 16px;text-align:left">Cloud Service Trade-offs</th>
+                <th style="padding:12px 16px;text-align:left">Cost Optimization</th>
+                <th style="padding:12px 16px;text-align:left">Security &amp; Compliance</th>
+                <th style="padding:12px 16px;text-align:left">Migration Planning</th>
+                <th style="padding:12px 16px;text-align:left">Landing Zone Design</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px"><strong>GitHub Copilot</strong></td>
+                <td style="padding:12px 16px;color:var(--green)">Strong</td>
+                <td style="padding:12px 16px">Adequate</td>
+                <td style="padding:12px 16px">Weak</td>
+                <td style="padding:12px 16px">Adequate</td>
+                <td style="padding:12px 16px">Weak</td>
+                <td style="padding:12px 16px">Weak</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px"><strong>Cursor</strong></td>
+                <td style="padding:12px 16px;color:var(--green)">Excellent</td>
+                <td style="padding:12px 16px;color:var(--green)">Good</td>
+                <td style="padding:12px 16px">Adequate</td>
+                <td style="padding:12px 16px;color:var(--green)">Good</td>
+                <td style="padding:12px 16px">Adequate</td>
+                <td style="padding:12px 16px;color:var(--green)">Good</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px"><strong>Claude Code</strong></td>
+                <td style="padding:12px 16px;color:var(--green)">Excellent</td>
+                <td style="padding:12px 16px;color:var(--green)">Excellent</td>
+                <td style="padding:12px 16px;color:var(--green)">Strong</td>
+                <td style="padding:12px 16px;color:var(--green)">Excellent</td>
+                <td style="padding:12px 16px;color:var(--green)">Strong</td>
+                <td style="padding:12px 16px;color:var(--green)">Strong</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px"><strong>Windsurf</strong></td>
+                <td style="padding:12px 16px;color:var(--green)">Good</td>
+                <td style="padding:12px 16px">Adequate</td>
+                <td style="padding:12px 16px">Weak</td>
+                <td style="padding:12px 16px;color:var(--green)">Good</td>
+                <td style="padding:12px 16px">Weak</td>
+                <td style="padding:12px 16px">Adequate</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px"><strong>Amazon Q</strong></td>
+                <td style="padding:12px 16px;color:var(--green)">Strong (AWS)</td>
+                <td style="padding:12px 16px;color:var(--green)">Strong (AWS only)</td>
+                <td style="padding:12px 16px;color:var(--green)">Good (AWS only)</td>
+                <td style="padding:12px 16px;color:var(--green)">Excellent (AWS)</td>
+                <td style="padding:12px 16px;color:var(--green)">Good (AWS only)</td>
+                <td style="padding:12px 16px;color:var(--green)">Good (AWS only)</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px"><strong>Tabnine</strong></td>
+                <td style="padding:12px 16px">Adequate</td>
+                <td style="padding:12px 16px">Weak</td>
+                <td style="padding:12px 16px">Weak</td>
+                <td style="padding:12px 16px">Adequate</td>
+                <td style="padding:12px 16px">Weak</td>
+                <td style="padding:12px 16px">Weak</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <p><strong>Key insight:</strong> Cloud architecture work is dominated by reasoning and trade-off analysis, not code generation volume. Tools like Copilot that excel at fast inline completions provide less value here than tools like Claude Code that can hold complex multi-cloud context and reason through architectural decisions. Amazon Q is the exception for AWS-only shops &mdash; its deep AWS knowledge is genuinely useful, but it falls apart the moment you need Azure or GCP reasoning.</p>
+
+        <h2>IaC Authoring &amp; Review</h2>
+
+        <p>Cloud architects write and review more Terraform than any other role. Not single resources &mdash; entire modules, compositions, and multi-environment configurations. The IaC tasks that matter most are the ones where AI tools either save you 30 minutes or cost you 2 hours debugging bad output.</p>
+
+        <h3>Terraform Module Composition</h3>
+
+        <p>When you tell Claude Code &ldquo;create a reusable Terraform module for an EKS cluster with managed node groups, IRSA configuration, and VPC-CNI add-on,&rdquo; it generates <code>main.tf</code>, <code>variables.tf</code>, <code>outputs.tf</code>, and <code>versions.tf</code> in one operation. It understands that <code>aws_eks_cluster</code> needs an IAM role with <code>AmazonEKSClusterPolicy</code>, that IRSA requires an OIDC provider linked to the cluster, and that the VPC-CNI add-on has specific IAM requirements. It wires the dependency graph correctly without you specifying <code>depends_on</code> blocks.</p>
+
+        <p>Cursor achieves similar results through its Composer feature &mdash; you can prompt it to refactor a monolithic <code>main.tf</code> into child modules, and it will split resources, create variable passthrough, and update the root module&rsquo;s <code>module</code> blocks. The <code>.cursorrules</code> file is particularly valuable here: encode rules like &ldquo;all resources must have a <code>tags</code> argument that merges <code>var.common_tags</code> with resource-specific tags&rdquo; and every generated resource follows your tagging standard.</p>
+
+        <p>Copilot handles single-resource completions well &mdash; type <code>resource "aws_rds_instance"</code> and it fills in reasonable defaults for engine, instance class, storage, and backup settings. But it cannot coordinate changes across files. If your new RDS instance needs a security group, a subnet group, a parameter group, and KMS key, you are making four separate completion requests in four separate files.</p>
+
+        <h3>CloudFormation &amp; Bicep</h3>
+
+        <p>Amazon Q is the clear winner for CloudFormation. It generates nested stacks, cross-stack references with <code>Fn::ImportValue</code>, and CloudFormation Guard rules for policy-as-code. It understands <code>DeletionPolicy</code>, <code>UpdateReplacePolicy</code>, and resource-specific update behaviors that trip up other tools. For CDK users, Amazon Q generates type-safe constructs that follow AWS best practices.</p>
+
+        <p>For Azure Bicep, the landscape is thinner. Claude Code handles Bicep syntax and Azure resource schemas competently &mdash; it knows the difference between <code>Microsoft.ContainerService/managedClusters</code> API versions and will generate Bicep modules with proper parameter decorators and output declarations. Copilot provides basic Bicep completions. Amazon Q is nearly useless for Bicep.</p>
+
+        <h3>Detecting IaC Anti-Patterns</h3>
+
+        <p>This is where reasoning-heavy tools pull ahead. Ask Claude Code to review a Terraform module and it will flag: hardcoded AMI IDs instead of data source lookups, missing <code>lifecycle</code> blocks on stateful resources, <code>count</code> used where <code>for_each</code> would prevent index-based drift, resources without tags, security groups with inline rules instead of separate <code>aws_security_group_rule</code> resources, and missing <code>prevent_destroy</code> on databases. Cursor with a well-written <code>.cursorrules</code> catches many of the same issues during generation, but it is less effective at reviewing existing code you paste in.</p>
+
+        <p>Amazon Q&rsquo;s free security scanning catches the compliance-adjacent anti-patterns &mdash; unencrypted storage, overly permissive IAM, missing logging &mdash; but it does not catch structural anti-patterns like poor module composition or incorrect use of Terraform workspaces.</p>
+
+        <h2>Cloud Service Selection &amp; Trade-offs</h2>
+
+        <p>This is the task that separates cloud architecture from infrastructure engineering. You are not just provisioning an ECS service &mdash; you are deciding whether it should be ECS on Fargate, ECS on EC2, EKS with Karpenter, Lambda behind API Gateway, or App Runner. The right answer depends on traffic patterns, cost constraints, team expertise, compliance requirements, and integration needs.</p>
+
+        <p>Claude Code is the strongest tool for this kind of reasoning. Ask it &ldquo;compare ECS Fargate vs. EKS with Karpenter for a workload with 50 RPS baseline, 500 RPS peak, requiring GPU access for inference, running in us-east-1 and eu-west-1&rdquo; and it produces a structured trade-off analysis covering cost (Fargate pricing vs. EC2 spot pricing with Karpenter), scaling behavior (Fargate cold starts vs. Karpenter node provisioning latency), GPU support (Fargate does not support GPU, so EKS wins by default), multi-region complexity, and operational overhead. It does not just list features &mdash; it reasons through the constraints to a recommendation.</p>
+
+        <p>For multi-cloud comparisons, Claude Code can map equivalent services: AWS Transit Gateway maps to Azure Virtual WAN or GCP Cloud Interconnect. AWS Organizations maps to Azure Management Groups or GCP Organization hierarchy. It understands that these are not exact equivalents &mdash; Azure Virtual WAN bundles VPN and ExpressRoute connectivity that Transit Gateway handles separately, and GCP&rsquo;s Shared VPC model is architecturally different from both.</p>
+
+        <p>Amazon Q excels within AWS &mdash; ask it whether to use Aurora Serverless v2 or RDS Provisioned for a bursty workload and it gives a nuanced answer with ACU pricing breakpoints. But ask it to compare Aurora Serverless against Azure Cosmos DB or Cloud Spanner and it becomes vague and unhelpful. This is the fundamental limitation of vendor-specific tools for multi-cloud architects.</p>
+
+        <p>Copilot and Windsurf do not meaningfully support service selection reasoning. They are code completion tools, not architectural advisors.</p>
+
+        <h2>Cost Optimization &amp; FinOps</h2>
+
+        <p>Cloud cost optimization is increasingly part of the cloud architect&rsquo;s mandate. You are expected to design cost-efficient architectures, not just functional ones. AI tools can help in several specific ways.</p>
+
+        <h3>Right-Sizing Analysis</h3>
+
+        <p>Claude Code can analyze your Terraform configurations and flag potential over-provisioning. Feed it a module with <code>instance_type = "m5.4xlarge"</code> and context about the workload (&ldquo;this runs a Node.js API with 2GB memory usage at peak&rdquo;) and it will recommend <code>m7g.medium</code> or <code>t4g.large</code> with a cost comparison. It understands that Graviton instances offer ~20% better price-performance for most workloads, that burstable instances (T-series) are appropriate for low-utilization services, and that the right answer depends on sustained vs. bursty CPU patterns.</p>
+
+        <h3>Reserved Capacity &amp; Savings Plans</h3>
+
+        <p>Ask Claude Code to review your Terraform for Reserved Instance or Savings Plans opportunities and it will identify resources with stable, predictable usage: RDS instances, ElastiCache clusters, Redshift nodes, and consistently-sized EC2 instances. It can generate the Terraform for <code>aws_ec2_capacity_reservation</code> or help you calculate whether Compute Savings Plans at 1-year no-upfront vs. 3-year all-upfront makes sense for your usage pattern. No other AI coding tool reasons about cloud pricing models at this depth.</p>
+
+        <h3>Cost Allocation Tagging</h3>
+
+        <p>One of the most impactful FinOps tasks is ensuring every resource has proper cost allocation tags. Claude Code can audit an entire Terraform codebase and identify resources missing <code>Environment</code>, <code>Team</code>, <code>CostCenter</code>, or <code>Project</code> tags. Cursor with a <code>.cursorrules</code> file that mandates tagging prevents the problem at creation time &mdash; every generated resource automatically includes your required tags. This is one area where Cursor&rsquo;s rules-based approach is arguably more effective than Claude Code&rsquo;s review-based approach, because prevention beats detection.</p>
+
+        <h3>Budget Alerting IaC</h3>
+
+        <p>Claude Code can generate complete <code>aws_budgets_budget</code> resources with notification thresholds, SNS topics, and Lambda functions for automated cost anomaly responses. It can also generate equivalent Azure Cost Management alert rules or GCP billing budget configurations. None of the other tools handle budget alerting IaC with the same multi-cloud coverage.</p>
+
+        <h2>Security &amp; Compliance in Cloud</h2>
+
+        <p>Every cloud resource you provision must satisfy security and compliance requirements. AI tools that generate insecure defaults are worse than useless &mdash; they create audit findings that take longer to fix than writing the code from scratch.</p>
+
+        <h3>IAM Policy Design</h3>
+
+        <p>Amazon Q has a genuine edge here. Ask it to generate an IAM policy for a Lambda function that reads from DynamoDB and writes to S3, and it produces a least-privilege policy with specific resource ARNs, action-level granularity, and condition keys. It understands the difference between <code>dynamodb:GetItem</code> and <code>dynamodb:Query</code>, and it will scope the S3 permissions to a specific bucket prefix rather than <code>s3:*</code> on <code>*</code>. For AWS IAM specifically, Amazon Q is the best tool available.</p>
+
+        <p>Claude Code produces good IAM policies across all three clouds. It generates AWS IAM policies, Azure role definitions with proper <code>assignableScopes</code>, and GCP IAM custom roles with correct permission strings. It also understands cross-account trust policies, service-linked roles, and permission boundaries &mdash; concepts that Amazon Q handles well for AWS but that Claude Code handles across clouds.</p>
+
+        <p>Copilot autocompletes IAM policy JSON, but it tends toward overly permissive policies. If you type <code>"Effect": "Allow"</code>, it will happily complete with <code>"Action": "*"</code> because that is the most common pattern in training data. This is dangerous. You need to review every IAM policy Copilot generates character by character.</p>
+
+        <h3>Network Segmentation</h3>
+
+        <p>VPC design is a cloud architect staple. Claude Code generates complete VPC architectures: public subnets with NAT gateways, private subnets for applications, isolated subnets for databases, proper route tables, NACLs, and VPC flow logs. It understands CIDR math &mdash; ask for a VPC that supports 4 AZs with 3 subnet tiers and room for future expansion, and it calculates non-overlapping CIDR blocks that leave room for peering with other VPCs.</p>
+
+        <p>For multi-cloud networking, Claude Code can design hub-and-spoke topologies using AWS Transit Gateway, Azure Virtual WAN hubs, and GCP Cloud Routers, including the cross-cloud VPN tunnels or dedicated interconnects that link them. This is the kind of multi-cloud reasoning that no vendor-specific tool can provide.</p>
+
+        <h3>Compliance-as-Code</h3>
+
+        <p>Cloud architects increasingly write compliance policies in OPA/Rego (for Terraform with Conftest or OPA Gatekeeper), HashiCorp Sentinel, or AWS Config Rules. Claude Code generates Rego policies that check for specific compliance controls: &ldquo;write a Rego policy that ensures all S3 buckets have versioning enabled, server-side encryption with KMS, and no public access block disabled.&rdquo; It produces correct Rego syntax with <code>deny</code> rules, meaningful error messages, and proper input traversal for Terraform plan JSON.</p>
+
+        <p>Sentinel policy generation is weaker across all tools because Sentinel is proprietary with less training data. Claude Code handles basic Sentinel policies but struggles with complex <code>import</code> statements and the <code>tfplan/v2</code> import structure. For Sentinel-heavy shops, you will still need significant manual work.</p>
+
+        <h2>Migration Planning</h2>
+
+        <p>Cloud migration projects are where cloud architects earn their keep. Moving 200 workloads from on-premises or between clouds requires dependency mapping, migration strategy selection (6 Rs: rehost, replatform, repurchase, refactor, retain, retire), runbook generation, and cutover planning.</p>
+
+        <h3>Dependency Mapping</h3>
+
+        <p>Claude Code can take an inventory spreadsheet (pasted as CSV or described in text) and generate a dependency graph: &ldquo;Service A depends on Database B, which is accessed by Services A, C, and D. Service C also depends on Message Queue E.&rdquo; It identifies migration wave groupings based on dependencies &mdash; database B and queue E must migrate before services A, C, and D. This is not code generation; it is architectural reasoning that happens to be useful in a terminal.</p>
+
+        <h3>Migration Runbooks</h3>
+
+        <p>Ask Claude Code to generate a migration runbook for moving an RDS MySQL instance to Aurora with minimal downtime and it produces a step-by-step procedure: create read replica, promote replica, update application connection strings, verify replication lag, perform cutover during maintenance window, validate data integrity, and rollback procedure if validation fails. It generates the specific AWS CLI commands and Terraform changes for each step. No other AI coding tool produces runbooks at this quality for cloud migrations.</p>
+
+        <h3>IaC for Migration Infrastructure</h3>
+
+        <p>Migration projects often require temporary infrastructure: DMS replication instances, VPN tunnels between source and target, CloudEndure/AWS MGN staging servers, or Azure Migrate appliances. Claude Code generates the Terraform for this temporary infrastructure with proper tagging (so it gets cleaned up after migration) and lifecycle rules. Cursor can do this too, especially if you have existing migration module patterns in your codebase that it can reference.</p>
+
+        <h2>Landing Zone Design</h2>
+
+        <p>Landing zones are the highest-complexity IaC challenge a cloud architect faces. A production-grade AWS landing zone involves AWS Organizations, organizational units, service control policies, account baselines (CloudTrail, Config, GuardDuty, Security Hub), centralized networking (Transit Gateway, shared VPCs), centralized logging (CloudWatch, S3 log archive), and identity federation (IAM Identity Center). That is easily 50+ Terraform files across 10+ modules.</p>
+
+        <h3>Multi-Account Strategy</h3>
+
+        <p>Claude Code can design an AWS organizational unit structure based on your requirements. Tell it &ldquo;we have 4 business units, each needing dev/staging/prod environments, plus shared services for networking, security, and logging&rdquo; and it generates the OU hierarchy, suggested account structure, and the Terraform for <code>aws_organizations_organizational_unit</code> and <code>aws_organizations_account</code> resources. It creates service control policies that deny risky actions (leaving the organization, disabling CloudTrail, creating IAM users instead of using SSO) and attaches them to the appropriate OUs.</p>
+
+        <p>For Azure, Claude Code generates Management Group hierarchies with Azure Policy assignments, subscription placement, and diagnostic settings. For GCP, it generates organization policies, folder structures, and project factory configurations. The multi-cloud coverage means you can design parallel landing zones across clouds using a single tool.</p>
+
+        <h3>Shared Services Networking</h3>
+
+        <p>Landing zone networking is where most teams get stuck. Claude Code generates hub-and-spoke network topologies: a shared services VPC/VNet/VPC with Transit Gateway/Virtual WAN/Cloud Router, spoke VPCs for each workload account, and the peering/attachment configurations that connect them. It handles CIDR allocation across accounts, DNS resolution (Route53 Resolver, Azure Private DNS zones, Cloud DNS forwarding), and egress patterns (centralized NAT vs. distributed NAT, centralized firewall vs. per-account security groups).</p>
+
+        <p>Amazon Q handles the AWS-specific landing zone patterns well &mdash; it understands Control Tower, AFT (Account Factory for Terraform), and the AWS Landing Zone Accelerator. If your landing zone is AWS-only, Amazon Q is a strong complement to Claude Code for the AWS-specific scaffolding.</p>
+
+        <h2>Head-to-Head: 12 Cloud Architect Tasks</h2>
+
+        <p>Here is the best tool for each specific cloud architecture task:</p>
+
+        <div style="overflow-x:auto">
+          <table style="width:100%;border-collapse:collapse;margin:1.5rem 0">
+            <thead>
+              <tr style="border-bottom:2px solid var(--border)">
+                <th style="padding:12px 16px;text-align:left">Task</th>
+                <th style="padding:12px 16px;text-align:left">Best Tool</th>
+                <th style="padding:12px 16px;text-align:left">Why</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px">Write a reusable Terraform module</td>
+                <td style="padding:12px 16px"><strong>Claude Code</strong></td>
+                <td style="padding:12px 16px">Multi-file editing creates main.tf + variables.tf + outputs.tf + versions.tf in one pass with correct dependency wiring</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px">Refactor monolithic Terraform into modules</td>
+                <td style="padding:12px 16px"><strong>Cursor</strong></td>
+                <td style="padding:12px 16px">Composer sees the full codebase, splits resources into modules, and updates root module references</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px">ECS vs. EKS vs. Lambda decision</td>
+                <td style="padding:12px 16px"><strong>Claude Code</strong></td>
+                <td style="padding:12px 16px">Reasons through cost, scaling, GPU, compliance, and team constraints to a recommendation</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px">Generate AWS IAM least-privilege policy</td>
+                <td style="padding:12px 16px"><strong>Amazon Q</strong></td>
+                <td style="padding:12px 16px">Deepest AWS IAM knowledge, action-level granularity, condition keys, and resource ARN scoping</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px">Multi-cloud service comparison</td>
+                <td style="padding:12px 16px"><strong>Claude Code</strong></td>
+                <td style="padding:12px 16px">Only tool that meaningfully reasons across AWS, Azure, and GCP simultaneously</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px">Right-sizing EC2/VM instances</td>
+                <td style="padding:12px 16px"><strong>Claude Code</strong></td>
+                <td style="padding:12px 16px">Knows current instance families, Graviton pricing, and burstable vs. fixed performance trade-offs</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px">CloudFormation + CDK authoring</td>
+                <td style="padding:12px 16px"><strong>Amazon Q</strong></td>
+                <td style="padding:12px 16px">Native AWS integration, L2 construct generation, cross-stack references, and Guard rule authoring</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px">VPC/network architecture design</td>
+                <td style="padding:12px 16px"><strong>Claude Code</strong></td>
+                <td style="padding:12px 16px">CIDR math, multi-AZ layout, subnet tiering, and cross-cloud networking topology</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px">Write OPA/Rego compliance policies</td>
+                <td style="padding:12px 16px"><strong>Claude Code</strong></td>
+                <td style="padding:12px 16px">Generates correct Rego syntax with deny rules, input traversal for Terraform plan JSON</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px">Migration runbook generation</td>
+                <td style="padding:12px 16px"><strong>Claude Code</strong></td>
+                <td style="padding:12px 16px">Produces step-by-step procedures with CLI commands, Terraform changes, and rollback steps</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px">Landing zone OU/account structure</td>
+                <td style="padding:12px 16px"><strong>Claude Code / Amazon Q</strong></td>
+                <td style="padding:12px 16px">Claude Code for multi-cloud, Amazon Q for AWS Control Tower and AFT specifics</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px">Quick inline HCL edit</td>
+                <td style="padding:12px 16px"><strong>Copilot</strong></td>
+                <td style="padding:12px 16px">Fastest for single-resource edits in a file you already have open</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h2>Cost Analysis</h2>
+
+        <p>Cloud architects write less code by volume than application developers but spend more time on reasoning-heavy tasks. Your tool spend should reflect that &mdash; investing in reasoning quality over completion volume.</p>
+
+        <div style="overflow-x:auto">
+          <table style="width:100%;border-collapse:collapse;margin:1.5rem 0">
+            <thead>
+              <tr style="border-bottom:2px solid var(--border)">
+                <th style="padding:12px 16px;text-align:left">Monthly Cost</th>
+                <th style="padding:12px 16px;text-align:left">Stack</th>
+                <th style="padding:12px 16px;text-align:left">Annual</th>
+                <th style="padding:12px 16px;text-align:left">Best For</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px;color:var(--green)">$0</td>
+                <td style="padding:12px 16px">Copilot Free + Amazon Q Free</td>
+                <td style="padding:12px 16px;color:var(--green)">$0</td>
+                <td style="padding:12px 16px">AWS-focused architects doing light IaC editing</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px;color:var(--green)">$10</td>
+                <td style="padding:12px 16px">Copilot Individual</td>
+                <td style="padding:12px 16px;color:var(--green)">$120</td>
+                <td style="padding:12px 16px">Unlimited completions for daily IaC work, agent mode</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px">$20</td>
+                <td style="padding:12px 16px">Claude Code (Pro)</td>
+                <td style="padding:12px 16px">$240</td>
+                <td style="padding:12px 16px">Best reasoning for multi-cloud design, cost analysis, and IaC review</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px">$20</td>
+                <td style="padding:12px 16px">Cursor Pro</td>
+                <td style="padding:12px 16px">$240</td>
+                <td style="padding:12px 16px">Codebase-aware Terraform refactoring with enforced rules</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px">$30</td>
+                <td style="padding:12px 16px">Claude Code + Copilot Free</td>
+                <td style="padding:12px 16px">$360</td>
+                <td style="padding:12px 16px">Best combo &mdash; Claude Code for architecture, Copilot for inline edits</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px">$40</td>
+                <td style="padding:12px 16px">Cursor Pro + Claude Code</td>
+                <td style="padding:12px 16px">$480</td>
+                <td style="padding:12px 16px">Full coverage: codebase-aware IDE + terminal reasoning agent</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px">$200</td>
+                <td style="padding:12px 16px">Cursor Ultra</td>
+                <td style="padding:12px 16px">$2,400</td>
+                <td style="padding:12px 16px">Unlimited premium model access for architects generating high IaC volume</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <p><strong>The sweet spot for most cloud architects is $20&ndash;$30/mo.</strong> Claude Code at $20/mo gives you the best architectural reasoning. Adding Copilot Free ($0) gives you inline completions for the small edits that don&rsquo;t justify a full Claude Code prompt. The $0 stack (Copilot Free + Amazon Q Free) is a legitimate starting point for AWS-focused architects who want to evaluate before spending.</p>
+
+        <h2>Cloud Architect Workflow Patterns</h2>
+
+        <p>How you use AI tools depends on which kind of cloud architecture you do most. Here are four personas and their optimal tool configurations:</p>
+
+        <h3>1. The IaC Specialist</h3>
+
+        <p>You spend 80% of your time writing and reviewing Terraform modules. You manage hundreds of modules across dozens of repositories. Your bottleneck is not design &mdash; it is the sheer volume of HCL you need to produce, review, and maintain.</p>
+
+        <p><strong>Optimal stack:</strong> Cursor Pro ($20/mo) + Copilot Free ($0). Cursor&rsquo;s Composer handles multi-file module refactoring and creation. The <code>.cursorrules</code> file enforces your standards across every generated resource. Copilot provides fast inline completions for the small edits. Use Claude Code (via free API access) for occasional architectural questions.</p>
+
+        <h3>2. The Multi-Cloud Strategist</h3>
+
+        <p>You design architectures that span AWS, Azure, and GCP. You need to reason about equivalent services, cross-cloud networking, and unified governance. Your deliverables are architecture decision records, reference architectures, and cross-cloud IaC patterns.</p>
+
+        <p><strong>Optimal stack:</strong> Claude Code ($20/mo) + Copilot Free ($0). Claude Code is the only tool that meaningfully reasons across all three clouds. You spend most of your time in conversation with the agent &mdash; comparing services, designing network topologies, reviewing trade-offs. Copilot handles the mechanical IaC editing. Avoid Amazon Q &mdash; its AWS-only focus is a liability for multi-cloud work.</p>
+
+        <h3>3. The FinOps-Focused Architect</h3>
+
+        <p>Your primary mandate is reducing cloud spend. You analyze cost reports, identify optimization opportunities, implement reserved capacity strategies, and ensure cost allocation tagging across the organization. Your success metric is dollars saved per quarter.</p>
+
+        <p><strong>Optimal stack:</strong> Claude Code ($20/mo). You need a tool that understands cloud pricing models, instance family comparisons, and commitment discount strategies. Claude Code handles all of this. Pair with Amazon Q Free for AWS-specific cost optimization &mdash; it understands Savings Plans, Reserved Instance flexibility, and spot instance interruption rates. Skip Cursor unless you are also doing heavy IaC refactoring.</p>
+
+        <h3>4. The Migration Lead</h3>
+
+        <p>You are running a large-scale migration &mdash; hundreds of workloads moving to the cloud or between clouds. Your work is dependency mapping, migration strategy selection, runbook generation, cutover planning, and temporary infrastructure provisioning.</p>
+
+        <p><strong>Optimal stack:</strong> Claude Code ($20/mo) + Amazon Q Free (if migrating to AWS). Claude Code generates migration runbooks, dependency analyses, and cutover checklists better than any other tool. Amazon Q adds value for AWS-specific migration services (DMS, MGN, Application Discovery Service). The combination costs only $20/mo and covers both architectural reasoning and cloud-specific tooling.</p>
+
+        <h2>Rules Files for Cloud Architecture Work</h2>
+
+        <p>Both Cursor and Claude Code support project-level rules files that enforce your cloud architecture standards. Here are examples tuned for cloud architects.</p>
+
+        <h3>Example .cursorrules for Terraform Projects</h3>
+
+        <p>Place this in the root of your Terraform repository:</p>
+
+        <pre><code># Cloud Architecture Standards
+
+## Terraform Conventions
+- All resources MUST include a `tags` argument merging `var.common_tags`
+  with resource-specific tags including `Name`, `Environment`, and `ManagedBy = "terraform"`
+- Use `for_each` instead of `count` for named resources to prevent index-based drift
+- All variables MUST have `description` and `type` declarations
+- All outputs MUST have `description` declarations
+- Use `terraform-aws-modules` community modules where available
+  instead of raw resources
+- Pin provider versions with `~>` pessimistic constraints (e.g., `~> 5.0`)
+
+## Security Requirements
+- S3 buckets: require `server_side_encryption_configuration` and
+  `public_access_block`
+- Security groups: use separate `aws_security_group_rule` resources,
+  never inline `ingress`/`egress` blocks
+- IAM policies: never use `"Action": "*"` or `"Resource": "*"` &mdash;
+  scope to specific actions and ARNs
+- RDS/Aurora: require `storage_encrypted = true` and
+  `deletion_protection = true`
+- KMS keys: require `enable_key_rotation = true`
+
+## Naming Conventions
+- Resources: `{project}-{environment}-{component}-{resource_type}`
+- Variables: snake_case, prefixed by component (e.g., `vpc_cidr_block`)
+- Outputs: snake_case, prefixed by component (e.g., `vpc_id`, `subnet_private_ids`)
+- File structure: main.tf, variables.tf, outputs.tf, versions.tf, data.tf, locals.tf</code></pre>
+
+        <h3>Example CLAUDE.md for Cloud Design Reviews</h3>
+
+        <p>Place this in your project root for Claude Code:</p>
+
+        <pre><code># Cloud Architecture Review Context
+
+## Role
+You are reviewing IaC as a senior cloud architect.
+Focus on security, cost, reliability, and operational excellence.
+
+## Review Checklist
+When reviewing Terraform or IaC files, always check:
+1. Security: encryption at rest, encryption in transit, least-privilege IAM,
+   no public access unless explicitly required
+2. Cost: right-sized instances, lifecycle rules on storage,
+   reserved capacity candidates flagged
+3. Reliability: multi-AZ deployment, automated backups, health checks,
+   auto-scaling configured
+4. Tagging: all resources tagged with Environment, Team, CostCenter, Project
+5. State: remote backend configured, state locking enabled,
+   no hardcoded values that should be variables
+
+## Cloud Context
+- Primary cloud: AWS (us-east-1, eu-west-1)
+- Secondary cloud: Azure (East US 2, West Europe)
+- IaC tool: Terraform with S3 backend
+- Compliance: SOC 2, HIPAA for healthcare workloads
+- Naming: {bu}-{env}-{component}-{resource}</code></pre>
+
+        <h2>Common Pitfalls: 6 Cloud Architect Mistakes with AI Tools</h2>
+
+        <h3>1. Trusting AI-Generated IAM Policies Without Review</h3>
+
+        <p>Every AI tool, including Amazon Q, occasionally generates overly permissive IAM policies. The training data is full of <code>"Action": "s3:*"</code> and <code>"Resource": "*"</code> because that is what most example code uses. Always run AI-generated IAM policies through <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-policy-validation.html" style="color:var(--accent)">IAM Access Analyzer</a> or an equivalent tool before applying them. A single overly permissive policy can undo weeks of security hardening.</p>
+
+        <h3>2. Using AI for Instance Sizing Without Cost Context</h3>
+
+        <p>AI tools default to &ldquo;safe&rdquo; instance sizes &mdash; which means oversized. If you ask for an RDS instance without specifying your workload characteristics, you will get <code>db.r6g.xlarge</code> when <code>db.t4g.medium</code> would suffice. Always provide CPU, memory, and IOPS requirements when asking AI tools to select instance types. The difference between a lazy default and a right-sized recommendation can be $500/mo per resource.</p>
+
+        <h3>3. Assuming Multi-Cloud Knowledge Is Equally Deep</h3>
+
+        <p>Every AI tool, including Claude Code, knows AWS better than Azure, and Azure better than GCP. This is a function of training data volume &mdash; AWS has the largest market share and the most publicly available Terraform code. When using AI tools for Azure or GCP architecture, verify resource arguments against current provider documentation. An AI tool confidently generating <code>azurerm_kubernetes_cluster</code> with a deprecated argument will compile fine but fail on <code>terraform apply</code>.</p>
+
+        <h3>4. Letting AI Design Your CIDR Scheme Without a Plan</h3>
+
+        <p>AI tools generate syntactically valid CIDR blocks, but they do not know your existing network topology. If you ask Claude Code to design a VPC with <code>10.0.0.0/16</code> and you already have three VPCs using <code>10.0.0.0/16</code>, <code>10.1.0.0/16</code>, and <code>10.2.0.0/16</code> with peering, the AI-generated VPC will cause routing conflicts. Always provide your existing CIDR allocations as context. Better yet, maintain a CIDR allocation registry (an HCL locals block or a YAML file) in your repository and reference it in your AI prompts.</p>
+
+        <h3>5. Using Vendor-Specific Tools for Multi-Cloud Decisions</h3>
+
+        <p>Amazon Q will never recommend Azure Cosmos DB over DynamoDB, even when Cosmos DB is the better fit for a globally distributed workload requiring multi-region writes with strong consistency. Vendor tools are optimized to recommend vendor services. If you are making cross-cloud decisions, use a vendor-neutral tool (Claude Code, Cursor, Copilot) and validate against each cloud&rsquo;s documentation independently.</p>
+
+        <h3>6. Generating Landing Zone IaC Without Understanding the Architecture</h3>
+
+        <p>AI tools can generate hundreds of lines of organizational unit, SCP, and account baseline Terraform. But if you apply that IaC without understanding why each SCP exists, what the account baseline configures, and how the networking topology connects, you will spend months untangling it when something breaks. Use AI tools to accelerate landing zone implementation, not to replace landing zone design. Design the architecture first (on a whiteboard, in a document), then use AI tools to generate the IaC that implements it.</p>
+
+        <h2>Recommendations by Cloud Architect Role</h2>
+
+        <div style="overflow-x:auto">
+          <table style="width:100%;border-collapse:collapse;margin:1.5rem 0">
+            <thead>
+              <tr style="border-bottom:2px solid var(--border)">
+                <th style="padding:12px 16px;text-align:left">Role</th>
+                <th style="padding:12px 16px;text-align:left">Recommended Stack</th>
+                <th style="padding:12px 16px;text-align:left">Monthly Cost</th>
+                <th style="padding:12px 16px;text-align:left">Why</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px"><strong>Junior Cloud Architect</strong></td>
+                <td style="padding:12px 16px">Copilot Free + Amazon Q Free</td>
+                <td style="padding:12px 16px;color:var(--green)">$0</td>
+                <td style="padding:12px 16px">Learn IaC patterns from completions; Amazon Q teaches AWS best practices through suggestions</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px"><strong>Senior Cloud Architect</strong></td>
+                <td style="padding:12px 16px">Claude Code + Copilot Free</td>
+                <td style="padding:12px 16px">$20</td>
+                <td style="padding:12px 16px">Claude Code for design reasoning and IaC review; Copilot for daily editing speed</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px"><strong>Principal Cloud Architect</strong></td>
+                <td style="padding:12px 16px">Claude Code + Cursor Pro</td>
+                <td style="padding:12px 16px">$40</td>
+                <td style="padding:12px 16px">Full architectural reasoning + codebase-aware refactoring for standards enforcement</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px"><strong>Cloud Practice Lead</strong></td>
+                <td style="padding:12px 16px">Claude Code + Cursor Pro</td>
+                <td style="padding:12px 16px">$40</td>
+                <td style="padding:12px 16px">Generate reference architectures and module libraries; Cursor rules enforce team standards</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px"><strong>FinOps Engineer</strong></td>
+                <td style="padding:12px 16px">Claude Code + Amazon Q Free</td>
+                <td style="padding:12px 16px">$20</td>
+                <td style="padding:12px 16px">Claude Code for cross-cloud cost analysis; Amazon Q for AWS Savings Plans and Reserved Instance guidance</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px"><strong>Cloud Security Architect</strong></td>
+                <td style="padding:12px 16px">Claude Code + Amazon Q Free</td>
+                <td style="padding:12px 16px">$20</td>
+                <td style="padding:12px 16px">Claude Code for OPA/Rego policies and cross-cloud IAM; Amazon Q for AWS IAM and security scanning</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h2>The Bottom Line</h2>
+
+        <p>Cloud architecture AI tooling in 2026 comes down to one question: do you need reasoning or do you need completions?</p>
+
+        <ul>
+          <li><strong>IaC volume is your bottleneck?</strong> Cursor Pro ($20/mo) with a well-tuned <code>.cursorrules</code> file. It generates standards-compliant Terraform faster than any other tool.</li>
+          <li><strong>Architectural decisions are your bottleneck?</strong> Claude Code ($20/mo). It is the only tool that reasons through multi-cloud trade-offs, cost implications, and security posture at the level a cloud architect needs.</li>
+          <li><strong>AWS-only shop?</strong> Amazon Q Free is a no-brainer addition to any stack. The IAM policy generation and security scanning alone justify installing it.</li>
+          <li><strong>Multi-cloud?</strong> Avoid vendor-specific tools for architectural decisions. Claude Code + Copilot Free ($20/mo) gives you vendor-neutral reasoning plus fast inline editing.</li>
+          <li><strong>Migration project?</strong> Claude Code ($20/mo) for runbooks, dependency mapping, and cutover planning. Add Amazon Q Free if migrating to AWS.</li>
+          <li><strong>Landing zone build?</strong> Claude Code + Cursor Pro ($40/mo). Claude Code designs the architecture, Cursor implements it across dozens of files with consistent standards.</li>
+        </ul>
+
+        <p>The biggest shift in cloud architecture AI tooling is the move from &ldquo;autocomplete my HCL&rdquo; to &ldquo;reason through my architecture.&rdquo; Copilot-style completions are table stakes. The real value for cloud architects is in tools that understand cloud service trade-offs, cost models, compliance requirements, and multi-cloud patterns. That is a reasoning problem, not a completion problem &mdash; and it is why Claude Code leads for this role.</p>
+
+        <p>Compare all tools and pricing on our <a href="/" style="color:var(--accent)">main comparison table</a>, read the <a href="/blog/hidden-costs-ai-coding-tools.html" style="color:var(--accent)">hidden costs guide</a> before committing to a paid plan, or check the <a href="/blog/ai-coding-tools-for-enterprise-2026.html" style="color:var(--accent)">enterprise guide</a> if you need compliance and procurement details.</p>
+
+        <h2>Related on CodeCosts</h2>
+        <ul>
+          <li><a href="/blog/ai-coding-tools-for-solutions-architects-2026.html" style="color:var(--accent)">AI Coding Tools for Solutions Architects (2026)</a> &mdash; RFCs, ADRs, cross-domain system design</li>
+          <li><a href="/blog/ai-coding-tools-for-devops-engineers-2026.html" style="color:var(--accent)">AI Coding Tools for DevOps Engineers (2026)</a> &mdash; CI/CD, Docker, Kubernetes deployments</li>
+          <li><a href="/blog/ai-coding-tools-for-platform-engineers-2026.html" style="color:var(--accent)">AI Coding Tools for Platform Engineers (2026)</a> &mdash; Backstage, K8s operators, golden paths</li>
+          <li><a href="/blog/ai-coding-tools-for-sres-2026.html" style="color:var(--accent)">AI Coding Tools for SREs (2026)</a> &mdash; Observability, SLOs, incident response</li>
+          <li><a href="/blog/ai-coding-tools-for-security-engineers-2026.html" style="color:var(--accent)">AI Coding Tools for Security Engineers (2026)</a> &mdash; AppSec, vulnerability scanning, compliance</li>
+          <li><a href="/blog/cheapest-ai-coding-tool-2026.html" style="color:var(--accent)">Cheapest AI Coding Tools in 2026: Complete Cost Comparison</a></li>
+          <li><a href="/blog/ai-coding-tools-for-enterprise-2026.html" style="color:var(--accent)">AI Coding Tools for Enterprise (2026)</a> &mdash; Procurement, compliance, and deployment models</li>
+        </ul>
+      </div>
+    </article>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>CodeCosts &mdash; Independent AI coding tool price tracker. Updated March 2026.</p>
+      <p style="margin-top:0.5rem"><a href="/" style="color:var(--accent)">Compare all tools</a> &middot; <a href="/blog/" style="color:var(--accent)">Blog</a> &middot; <a href="/blog/feed.xml" style="color:var(--accent)">RSS</a></p>
+    </div>
+  </footer>
+</body>
+</html>

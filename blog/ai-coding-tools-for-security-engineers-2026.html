@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Coding Tools for Security Engineers 2026: Pentesting, SIEM, IaC Scanning &amp; Compliance Guide</title>
+  <meta name="description" content="The security engineer's guide to AI coding tools in 2026. Every tool ranked for pentesting scripts, SIEM rule writing (Splunk SPL, KQL, Sigma), IaC security scanning, vulnerability research, and compliance-sensitive environments. Domain-first recommendations from $0 to $40/mo.">
+  <link rel="canonical" href="https://codecosts.pages.dev/blog/ai-coding-tools-for-security-engineers-2026.html">
+  <meta property="og:title" content="AI Coding Tools for Security Engineers 2026: Pentesting, SIEM, IaC &amp; Compliance">
+  <meta property="og:description" content="Every AI coding tool ranked for security engineering. Pentesting automation, SIEM rules, IaC scanning, vulnerability research, reverse engineering, and air-gapped deployment options. Domain-first recommendations.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://codecosts.pages.dev/blog/ai-coding-tools-for-security-engineers-2026.html">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="AI Coding Tools for Security Engineers 2026: Pentesting, SIEM, IaC &amp; Compliance">
+  <meta name="twitter:description" content="Domain-first AI tool recommendations for security engineers. Pentesting, SIEM, IaC scanning, compliance &mdash; ranked and priced.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💰</text></svg>">
+  <link rel="stylesheet" href="../style.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "AI Coding Tools for Security Engineers 2026: Pentesting, SIEM, IaC Scanning & Compliance Guide",
+    "datePublished": "2026-03-28",
+    "dateModified": "2026-03-28",
+    "author": { "@type": "Organization", "name": "CodeCosts" },
+    "publisher": { "@type": "Organization", "name": "CodeCosts" },
+    "description": "The security engineer's guide to AI coding tools in 2026. Every tool ranked for pentesting scripts, SIEM rule writing, IaC security scanning, vulnerability research, and compliance-sensitive environments."
+  }
+  </script>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <a href="/" style="text-decoration:none;color:inherit"><h1><span class="logo">$_</span> CodeCosts</h1></a>
+      <p class="tagline">AI Coding Tool News &amp; Analysis</p>
+      <nav>
+        <a href="/">Tools</a>
+        <a href="/blog/" class="active">Blog</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <article class="card">
+      <h2>AI Coding Tools for Security Engineers 2026: Pentesting, SIEM, IaC Scanning &amp; Compliance Guide</h2>
+      <div class="article-meta">
+        <span>March 28, 2026</span>
+        <span>20 min read</span>
+      </div>
+
+      <div class="article-content">
+        <p>Security engineering is not software engineering. You do not ship features &mdash; you find flaws, write detection rules, harden infrastructure, and respond to incidents at 3 AM. Your &ldquo;code&rdquo; is a Splunk SPL query that catches lateral movement, a Python script that fuzzes a REST API, a Sigma rule that detects credential dumping, a Terraform policy that blocks public S3 buckets, or a YARA rule that identifies a malware family.</p>
+
+        <p>This is the context problem: <strong>AI coding tools are trained on application code, not security tooling.</strong> For every Sigma rule on GitHub, there are a hundred thousand React components. For every Splunk SPL correlation search, there are a million Express.js route handlers. For every YARA rule, there are endless TODO app tutorials. The models know Python well &mdash; but they know <code>flask.route</code> far better than <code>scapy.sendp</code>.</p>
+
+        <p>This guide evaluates every major AI coding tool through the lens of what security engineers actually build &mdash; not web apps, not dashboards, but detection rules, exploitation scripts, security automation, infrastructure hardening, and incident response tooling. And critically, we evaluate <strong>whether you can even use these tools</strong> given your organization&rsquo;s compliance requirements.</p>
+
+        <div class="callout tip">
+          <div class="callout-title">TL;DR</div>
+          <p><strong>Best free ($0):</strong> GitHub Copilot Free &mdash; decent Python completions for scripting, works in VS Code, 2,000 completions/mo. <strong>Best for pentesting ($20/mo):</strong> Claude Code &mdash; terminal-native agent that reasons about attack chains, generates multi-step exploit scripts, understands protocol-level details. <strong>Best for SIEM rules ($20/mo):</strong> Cursor Pro &mdash; multi-file context helps when writing correlated detection rules across multiple log sources. <strong>Best for IaC security ($10/mo):</strong> Copilot Pro &mdash; strong Terraform/CloudFormation completions, integrates with GitHub Advanced Security. <strong>Best for air-gapped/compliance ($12/mo):</strong> Tabnine Pro &mdash; the only tool with true self-hosted deployment for SOC 2, FedRAMP, and classified environments. <strong>Best combo ($30/mo):</strong> Copilot Pro + Claude Code &mdash; inline completions for daily scripting, deep reasoning for complex vulnerability research and detection engineering.</p>
+        </div>
+
+        <h2>The Context Problem: Why Security Breaks AI Tools</h2>
+
+        <p>Consider a typical detection engineering task: you need to write a Splunk correlation rule that detects Kerberoasting activity. This involves:</p>
+
+        <ol>
+          <li>Understanding the attack technique (T1558.003 in MITRE ATT&amp;CK)</li>
+          <li>Knowing which Windows Event IDs to query (4769 with encryption type 0x17)</li>
+          <li>Writing the SPL query with correct field names for your Splunk deployment</li>
+          <li>Adding statistical thresholds to reduce false positives (e.g., &gt;5 TGS requests from one account in 10 minutes)</li>
+          <li>Creating a corresponding Sigma rule for portability</li>
+          <li>Writing a test case using Atomic Red Team or a manual simulation</li>
+        </ol>
+
+        <p>AI tools can write Python and YAML all day. But Splunk SPL is a niche query language with deployment-specific field names. Sigma rules have a precise YAML schema that changes between versions. MITRE ATT&amp;CK technique IDs must be exact &mdash; T1558.003 is Kerberoasting, not T1558.001 (Golden Ticket). <strong>The tool that understands security domain knowledge &mdash; not just syntax &mdash; wins for detection engineering.</strong></p>
+
+        <h2>The Five Security Problems AI Tools Cannot Ignore</h2>
+
+        <h3>1. The Sensitivity Problem</h3>
+
+        <p>This is the elephant in the room. Every cloud-based AI coding tool sends your code to an external server for inference. For security engineers, this means:</p>
+
+        <ul>
+          <li><strong>Detection rules:</strong> Your SIEM queries reveal exactly what you can and cannot detect. Sending them to an AI provider tells that provider (and potentially any breach of that provider) your blind spots.</li>
+          <li><strong>Exploitation scripts:</strong> Your custom exploit code, tailored to your organization&rsquo;s infrastructure, is now on someone else&rsquo;s servers.</li>
+          <li><strong>Incident response:</strong> IR playbooks contain details about your security architecture, escalation procedures, and response capabilities.</li>
+          <li><strong>Vulnerability research:</strong> Unpublished zero-day details in your code context could leak before you have a patch.</li>
+          <li><strong>Compliance:</strong> SOC 2, FedRAMP, CMMC, PCI DSS, HIPAA &mdash; many frameworks restrict where sensitive data can be processed. Code that touches regulated data may itself be regulated.</li>
+        </ul>
+
+        <p><strong>This is why the air-gapped/self-hosted question matters more for security than any other domain.</strong> A frontend engineer sending React components to Copilot has minimal risk. A security engineer sending detection rules for their SOC has significant risk.</p>
+
+        <div class="callout warning">
+          <div class="callout-title">Critical: Know your data classification</div>
+          <p>Before using any cloud-based AI tool, classify the code you will write with it. Public-facing scripts and generic tooling? Cloud AI is fine. Detection rules, IR playbooks, and exploit code specific to your organization? Consider self-hosted options or use AI only for generic patterns, never with real indicator data.</p>
+        </div>
+
+        <h3>2. The Dual-Use Problem</h3>
+
+        <p>Security tools are inherently dual-use. A port scanner is a defensive tool and an offensive tool. A credential harvester tests your own defenses and could attack others. AI coding tools handle this inconsistently:</p>
+
+        <ul>
+          <li><strong>Copilot:</strong> Generally generates offensive security code (Nmap wrappers, Metasploit resource scripts, basic exploit patterns) without resistance. Refuses to generate malware or destructive payloads.</li>
+          <li><strong>Claude Code:</strong> Will generate pentesting scripts, fuzzing tools, and security assessment code when context is clear. More cautious with exploit development &mdash; requires clear authorized-testing context. Refuses weaponized malware.</li>
+          <li><strong>Cursor:</strong> Uses multiple model backends; behavior varies. Claude-backed completions are more cautious than GPT-backed ones for offensive content.</li>
+          <li><strong>Amazon Q:</strong> Most restrictive &mdash; often refuses security-adjacent code generation. Frustrating for legitimate red team work.</li>
+          <li><strong>Gemini Code Assist:</strong> Moderate restrictions. Generates scanning scripts but balks at exploitation code.</li>
+        </ul>
+
+        <p>The practical impact: <strong>red teamers and pentesters will find Claude Code and Copilot most useful</strong> because they understand the authorized-testing context. Blue teamers writing detection rules face fewer restrictions across all tools. If you regularly write offensive security tooling, test a tool&rsquo;s willingness to assist before committing to a subscription.</p>
+
+        <h3>3. The Query Language Problem</h3>
+
+        <p>Security engineers write in languages that barely exist in AI training data:</p>
+
+        <ul>
+          <li><strong>Splunk SPL:</strong> Proprietary query language. AI tools know the basics (<code>index=main sourcetype=WinEventLog</code>) but struggle with advanced SPL &mdash; <code>tstats</code>, <code>datamodel</code> acceleration, custom macros, subsearches, and deployment-specific field names (your CIM mapping is unique to your environment).</li>
+          <li><strong>KQL (Kusto):</strong> Microsoft Sentinel&rsquo;s query language. Better represented in training data than SPL thanks to Microsoft documentation, but tools still confuse KQL for Azure Data Explorer with KQL for Sentinel (slightly different capabilities).</li>
+          <li><strong>Sigma rules:</strong> YAML-based detection format. AI tools can write YAML, but Sigma has specific field mappings, log source definitions, and modifier syntax (<code>|endswith</code>, <code>|contains|all</code>) that tools frequently get wrong.</li>
+          <li><strong>YARA rules:</strong> Pattern-matching language for malware identification. Extremely niche &mdash; AI tools generate syntactically valid YARA but often produce rules that are too broad (high false positives) or miss critical hex patterns.</li>
+          <li><strong>Snort/Suricata rules:</strong> Network detection rules with precise protocol-specific syntax. AI tools struggle with byte offsets, content matches, and flow direction.</li>
+          <li><strong>Rego (OPA):</strong> Policy language for Open Policy Agent, used in Kubernetes admission control and IaC policy. Growing in training data but still niche.</li>
+        </ul>
+
+        <h3>4. The Toolchain Problem</h3>
+
+        <p>Security engineers use specialized tools that AI assistants cannot interact with:</p>
+
+        <ul>
+          <li><strong>Burp Suite:</strong> Web application security testing. Extensions are written in Java/Python, but the tool itself has no AI integration. You write Burp extensions in a separate IDE and load them.</li>
+          <li><strong>IDA Pro / Ghidra:</strong> Reverse engineering. Ghidra scripts are Java/Python, IDA uses IDAPython. No AI tool integrates with their UIs, though you can use AI to generate scripts externally.</li>
+          <li><strong>Metasploit:</strong> Ruby-based framework. AI tools can generate module templates, but you still manually load and test them in <code>msfconsole</code>.</li>
+          <li><strong>SIEM platforms:</strong> Splunk, Sentinel, Elastic &mdash; all have web-based query editors. You write queries in VS Code and paste them, or use API-based workflows.</li>
+          <li><strong>Terraform/CloudFormation:</strong> These are the exception &mdash; AI tools work well with IaC because it is file-based and well-represented in training data.</li>
+        </ul>
+
+        <p><strong>The workflow implication:</strong> Security engineers live in terminals and specialized GUIs. Terminal-native tools (Claude Code) have an advantage over IDE-based tools because security work often happens in <code>tmux</code> sessions, SSH connections, and jump boxes &mdash; not in VS Code on your laptop.</p>
+
+        <h3>5. The Accuracy Problem</h3>
+
+        <p>In security, a wrong answer is worse than no answer. A detection rule that looks right but has a logic error creates a false sense of security. A pentesting script that mishandles a buffer creates a crash instead of a controlled exploit. Specific accuracy failures:</p>
+
+        <ul>
+          <li><strong>Outdated CVE knowledge:</strong> AI tools have training cutoffs. They know CVE-2021-44228 (Log4Shell) but may not know CVEs published last month. Never rely on AI for current vulnerability intelligence.</li>
+          <li><strong>Wrong MITRE ATT&amp;CK mappings:</strong> Tools frequently suggest plausible but incorrect technique IDs. Always verify against the official ATT&amp;CK matrix.</li>
+          <li><strong>Insecure &ldquo;security&rdquo; code:</strong> AI tools generate encryption code with hardcoded IVs, authentication code with timing vulnerabilities, and input validation that misses edge cases. The irony: the tool you use to write security code may introduce security vulnerabilities.</li>
+          <li><strong>Overly permissive IAM policies:</strong> When generating AWS IAM or Azure RBAC policies, AI tools default to broader permissions than necessary. <code>"Effect": "Allow", "Action": "*"</code> appears in AI-generated policies far too often.</li>
+        </ul>
+
+        <h2>Security Engineering Support Matrix</h2>
+
+        <div style="overflow-x:auto">
+          <table style="width:100%;border-collapse:collapse;margin:1.5rem 0">
+            <thead>
+              <tr style="border-bottom:2px solid var(--border)">
+                <th style="padding:12px 16px;text-align:left">Capability</th>
+                <th style="padding:12px 16px;text-align:left">Copilot</th>
+                <th style="padding:12px 16px;text-align:left">Claude Code</th>
+                <th style="padding:12px 16px;text-align:left">Cursor</th>
+                <th style="padding:12px 16px;text-align:left">Amazon Q</th>
+                <th style="padding:12px 16px;text-align:left">Gemini</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px">Python security scripting</td>
+                <td style="padding:12px 16px;color:var(--green)">Excellent</td>
+                <td style="padding:12px 16px;color:var(--green)">Excellent</td>
+                <td style="padding:12px 16px;color:var(--green)">Excellent</td>
+                <td style="padding:12px 16px;color:var(--green)">Good</td>
+                <td style="padding:12px 16px;color:var(--green)">Good</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px">Go security tooling</td>
+                <td style="padding:12px 16px;color:var(--green)">Good</td>
+                <td style="padding:12px 16px;color:var(--green)">Good</td>
+                <td style="padding:12px 16px;color:var(--green)">Good</td>
+                <td style="padding:12px 16px">Adequate</td>
+                <td style="padding:12px 16px">Adequate</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px">Bash/shell automation</td>
+                <td style="padding:12px 16px;color:var(--green)">Good</td>
+                <td style="padding:12px 16px;color:var(--green)">Excellent</td>
+                <td style="padding:12px 16px;color:var(--green)">Good</td>
+                <td style="padding:12px 16px">Adequate</td>
+                <td style="padding:12px 16px">Adequate</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px">Splunk SPL</td>
+                <td style="padding:12px 16px">Adequate</td>
+                <td style="padding:12px 16px;color:var(--green)">Good</td>
+                <td style="padding:12px 16px">Adequate</td>
+                <td style="padding:12px 16px">Basic</td>
+                <td style="padding:12px 16px">Basic</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px">KQL (Sentinel)</td>
+                <td style="padding:12px 16px;color:var(--green)">Good</td>
+                <td style="padding:12px 16px;color:var(--green)">Good</td>
+                <td style="padding:12px 16px">Adequate</td>
+                <td style="padding:12px 16px">Basic</td>
+                <td style="padding:12px 16px">Adequate</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px">Sigma rules</td>
+                <td style="padding:12px 16px">Adequate</td>
+                <td style="padding:12px 16px;color:var(--green)">Good</td>
+                <td style="padding:12px 16px">Adequate</td>
+                <td style="padding:12px 16px">Basic</td>
+                <td style="padding:12px 16px">Basic</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px">YARA rules</td>
+                <td style="padding:12px 16px">Adequate</td>
+                <td style="padding:12px 16px">Adequate</td>
+                <td style="padding:12px 16px">Basic</td>
+                <td style="padding:12px 16px;color:var(--red)">Poor</td>
+                <td style="padding:12px 16px">Basic</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px">Snort/Suricata rules</td>
+                <td style="padding:12px 16px">Basic</td>
+                <td style="padding:12px 16px">Adequate</td>
+                <td style="padding:12px 16px">Basic</td>
+                <td style="padding:12px 16px;color:var(--red)">Poor</td>
+                <td style="padding:12px 16px;color:var(--red)">Poor</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px">Terraform/IaC security</td>
+                <td style="padding:12px 16px;color:var(--green)">Excellent</td>
+                <td style="padding:12px 16px;color:var(--green)">Good</td>
+                <td style="padding:12px 16px;color:var(--green)">Good</td>
+                <td style="padding:12px 16px;color:var(--green)">Good</td>
+                <td style="padding:12px 16px;color:var(--green)">Good</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px">Rego / OPA policies</td>
+                <td style="padding:12px 16px">Adequate</td>
+                <td style="padding:12px 16px;color:var(--green)">Good</td>
+                <td style="padding:12px 16px">Adequate</td>
+                <td style="padding:12px 16px">Basic</td>
+                <td style="padding:12px 16px">Basic</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px">Offensive security / pentesting</td>
+                <td style="padding:12px 16px;color:var(--green)">Good</td>
+                <td style="padding:12px 16px;color:var(--green)">Good</td>
+                <td style="padding:12px 16px">Adequate</td>
+                <td style="padding:12px 16px;color:var(--red)">Restricted</td>
+                <td style="padding:12px 16px">Adequate</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px">Reverse engineering scripts</td>
+                <td style="padding:12px 16px">Adequate</td>
+                <td style="padding:12px 16px;color:var(--green)">Good</td>
+                <td style="padding:12px 16px">Adequate</td>
+                <td style="padding:12px 16px">Basic</td>
+                <td style="padding:12px 16px">Basic</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px">MITRE ATT&amp;CK knowledge</td>
+                <td style="padding:12px 16px">Adequate</td>
+                <td style="padding:12px 16px;color:var(--green)">Good</td>
+                <td style="padding:12px 16px">Adequate</td>
+                <td style="padding:12px 16px">Basic</td>
+                <td style="padding:12px 16px">Adequate</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px">Self-hosted / air-gapped</td>
+                <td style="padding:12px 16px;color:var(--red)">No</td>
+                <td style="padding:12px 16px;color:var(--red)">No</td>
+                <td style="padding:12px 16px;color:var(--red)">No</td>
+                <td style="padding:12px 16px">AWS only</td>
+                <td style="padding:12px 16px;color:var(--red)">No</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px">IP indemnity available</td>
+                <td style="padding:12px 16px;color:var(--green)">Business+</td>
+                <td style="padding:12px 16px;color:var(--green)">Enterprise</td>
+                <td style="padding:12px 16px;color:var(--green)">Business</td>
+                <td style="padding:12px 16px;color:var(--green)">Pro</td>
+                <td style="padding:12px 16px;color:var(--green)">Enterprise</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <p><strong>How to read this table:</strong> &ldquo;Excellent&rdquo; means the tool reliably generates correct, domain-appropriate code. &ldquo;Good&rdquo; means it works well with minor corrections. &ldquo;Adequate&rdquo; means it knows the concept but frequently makes domain-specific mistakes. &ldquo;Basic&rdquo; means it generates generic code that you must heavily adapt. &ldquo;Poor&rdquo; means incorrect or irrelevant suggestions. &ldquo;Restricted&rdquo; means the tool actively refuses to generate this type of content.</p>
+
+        <h2>Tool-by-Tool Breakdown for Security Engineers</h2>
+
+        <h3>GitHub Copilot &mdash; Best for IaC Security and Daily Scripting</h3>
+
+        <p><strong>Free:</strong> 2,000 completions/mo. <strong>Pro ($10/mo):</strong> Unlimited completions. <strong>Pro+ ($39/mo):</strong> Unlimited + premium models. <strong>Business ($19/user/mo):</strong> Admin controls, IP indemnity, org policy management.</p>
+
+        <p>Copilot is the strongest default for security engineers who spend most of their time in VS Code writing Python scripts, Terraform, and CloudFormation. Its GitHub integration is a major advantage &mdash; <strong>GitHub Advanced Security</strong> (code scanning, secret scanning, Dependabot) works alongside Copilot, and <strong>Copilot Autofix</strong> can automatically suggest remediations for security vulnerabilities found by CodeQL.</p>
+
+        <p><strong>Where it shines:</strong></p>
+        <ul>
+          <li>Terraform and CloudFormation &mdash; excellent at generating secure-by-default resource configurations, IAM policies, security group rules</li>
+          <li>Python security scripting &mdash; solid for <code>requests</code>, <code>paramiko</code>, <code>cryptography</code>, <code>boto3</code> patterns</li>
+          <li>GitHub Actions security workflows &mdash; CI/CD pipeline security scanning, SAST/DAST integration</li>
+          <li>Copilot Autofix &mdash; automatically generates pull request fixes for CodeQL-detected vulnerabilities (SQL injection, XSS, path traversal)</li>
+          <li>Secret scanning &mdash; integrated pattern detection for leaked credentials in code</li>
+        </ul>
+
+        <p><strong>Where it struggles:</strong></p>
+        <ul>
+          <li>Splunk SPL &mdash; generates basic queries but cannot handle <code>tstats</code>, datamodel acceleration, or your deployment-specific field names</li>
+          <li>Sigma rules &mdash; knows the YAML format but frequently uses wrong log source identifiers or field mappings</li>
+          <li>Offensive security &mdash; generates scanning scripts fine, but completions for exploitation code are hit-or-miss</li>
+          <li>YARA rules &mdash; produces syntactically valid rules but cannot reason about malware behavior to create effective detection logic</li>
+        </ul>
+
+        <div class="callout tip">
+          <div class="callout-title">Copilot tip for security teams</div>
+          <p>Use <code>.github/copilot-instructions.md</code> to set security context: &ldquo;This is a security operations repository. When generating IAM policies, use least-privilege principles. When generating detection rules, include MITRE ATT&amp;CK technique IDs. When generating Terraform, include encryption at rest and in transit by default.&rdquo; This significantly improves the security posture of generated code.</p>
+        </div>
+
+        <h3>Claude Code &mdash; Best for Complex Security Research and Pentesting</h3>
+
+        <p><strong>Pro ($20/mo):</strong> Included with Claude Pro. <strong>Max ($100/mo):</strong> 5x usage. <strong>Max ($200/mo):</strong> 20x usage.</p>
+
+        <p>Claude Code is a terminal-native agent, which matters enormously for security work. You are already in a terminal. You are SSH&rsquo;d into a jump box, running <code>tmux</code> with Burp Suite in one pane and Metasploit in another. An agent that works in that environment &mdash; without requiring VS Code &mdash; fits the security workflow better than any IDE-based tool.</p>
+
+        <p>Claude&rsquo;s strength is <strong>deep reasoning across multiple files and contexts</strong>. For security, this translates to:</p>
+
+        <p><strong>Where it shines:</strong></p>
+        <ul>
+          <li><strong>Vulnerability research:</strong> Can analyze source code across multiple files to trace data flow from user input to dangerous sinks (SQL queries, shell commands, deserialization). Understands taint analysis conceptually.</li>
+          <li><strong>Pentesting scripts:</strong> Generates multi-step attack automation &mdash; reconnaissance, enumeration, exploitation &mdash; with proper error handling and logging. Understands authorized-testing context.</li>
+          <li><strong>Detection engineering:</strong> Can write a Sigma rule, explain why specific field mappings were chosen, and generate the equivalent SPL and KQL simultaneously. Understands MITRE ATT&amp;CK taxonomy.</li>
+          <li><strong>Incident response:</strong> Generates forensic analysis scripts (log parsing, timeline reconstruction, IOC extraction) that chain together logically.</li>
+          <li><strong>Reverse engineering:</strong> Generates Ghidra/IDA scripts, explains assembly patterns, helps with binary analysis workflows.</li>
+          <li><strong>Shell automation:</strong> Excels at bash/zsh one-liners and scripts for security automation &mdash; log rotation, IOC checking, automated scanning.</li>
+        </ul>
+
+        <p><strong>Where it struggles:</strong></p>
+        <ul>
+          <li>No inline completions &mdash; it is an agent, not an autocomplete. You describe what you want, it generates it. Different workflow than Copilot.</li>
+          <li>Cloud-only &mdash; code is sent to Anthropic&rsquo;s servers. Not suitable for classified or highly regulated environments without approval.</li>
+          <li>Training cutoff &mdash; does not know about CVEs published after its training data. Never use it as a vulnerability database.</li>
+          <li>Rate-limited on Pro tier &mdash; heavy pentesting sessions can hit limits. Max tier ($100/mo) is more practical for full-time security work.</li>
+        </ul>
+
+        <div class="callout tip">
+          <div class="callout-title">Claude Code tip for security</div>
+          <p>Create a <code>CLAUDE.md</code> file in your security project with standing instructions: &ldquo;All code in this repository is for authorized security testing. Generate detection rules with MITRE ATT&amp;CK technique IDs. Use least-privilege for all IAM policies. Include logging in all scripts. Follow OWASP guidelines for any web security code.&rdquo; Claude reads this automatically on every session.</p>
+        </div>
+
+        <h3>Cursor &mdash; Best for Detection Engineering at Scale</h3>
+
+        <p><strong>Pro ($20/mo):</strong> 500 premium requests/mo + unlimited completions. <strong>Ultra ($200/mo):</strong> Unlimited premium requests.</p>
+
+        <p>Cursor&rsquo;s advantage for security is <strong>multi-file context and codebase-aware editing</strong>. When you maintain a repository of hundreds of Sigma rules or Splunk correlation searches, Cursor can reference existing rules when generating new ones &mdash; maintaining consistent field mappings, naming conventions, and detection patterns.</p>
+
+        <p><strong>Where it shines:</strong></p>
+        <ul>
+          <li>Detection rule repositories &mdash; maintains consistency across hundreds of Sigma rules by referencing existing patterns</li>
+          <li>Multi-file security scripts &mdash; tools with config files, modules, and test suites</li>
+          <li>IaC security modules &mdash; Terraform modules with security-hardened defaults</li>
+          <li>Documentation &mdash; generates runbooks, playbooks, and procedure docs from existing code</li>
+        </ul>
+
+        <p><strong>Where it struggles:</strong></p>
+        <ul>
+          <li>Not terminal-native &mdash; requires the Cursor IDE, which is less natural for security workflows</li>
+          <li>Model backend varies &mdash; security-sensitive completions depend on which model is active</li>
+          <li>No specialized security integrations &mdash; no equivalent to Copilot&rsquo;s GitHub Advanced Security</li>
+        </ul>
+
+        <h3>Amazon Q Developer &mdash; Best for AWS Security and IAM</h3>
+
+        <p><strong>Free:</strong> Limited monthly usage. <strong>Pro ($19/user/mo):</strong> Higher limits, organizational features.</p>
+
+        <p>Amazon Q is the obvious choice if your security work is AWS-centric. It has the deepest knowledge of AWS services, IAM policies, Security Hub, GuardDuty, and CloudTrail. Its <strong>security scanning</strong> feature analyzes code for vulnerabilities across Python, Java, JavaScript, and IaC templates.</p>
+
+        <p><strong>Where it shines:</strong></p>
+        <ul>
+          <li>AWS IAM policies &mdash; generates least-privilege policies with correct ARN formats and condition keys</li>
+          <li>CloudFormation / CDK security &mdash; understands AWS security best practices natively</li>
+          <li>GuardDuty / Security Hub &mdash; can generate Lambda functions for automated remediation of findings</li>
+          <li>CloudTrail analysis &mdash; generates Athena queries for log analysis</li>
+          <li>AWS security scanning &mdash; built-in code analysis for security vulnerabilities</li>
+        </ul>
+
+        <p><strong>Where it struggles:</strong></p>
+        <ul>
+          <li><strong>Most restrictive content policies</strong> &mdash; frequently refuses to generate pentesting scripts, even for clearly authorized testing. Frustrating for red teams.</li>
+          <li>Non-AWS security &mdash; poor at GCP, Azure, and on-premise security tooling</li>
+          <li>SIEM queries &mdash; limited Splunk/Sentinel knowledge</li>
+          <li>Offensive security &mdash; aggressively filtered, often unhelpful for red team work</li>
+        </ul>
+
+        <h3>Tabnine &mdash; Best (and Only Real Option) for Air-Gapped Environments</h3>
+
+        <p><strong>Pro ($12/mo):</strong> Cloud-hosted AI completions. <strong>Enterprise (custom pricing):</strong> Self-hosted, air-gapped deployment.</p>
+
+        <p>Tabnine is the only major AI coding tool that offers true <strong>self-hosted, air-gapped deployment</strong>. For security teams in defense contractors, government agencies, financial institutions, and healthcare organizations, this is not a feature &mdash; it is the only way to use AI coding tools at all.</p>
+
+        <p><strong>Where it shines:</strong></p>
+        <ul>
+          <li><strong>Air-gapped deployment</strong> &mdash; runs entirely on your infrastructure, no data leaves your network</li>
+          <li><strong>Compliance-friendly</strong> &mdash; SOC 2 Type II certified, FedRAMP-compatible deployment options</li>
+          <li><strong>Custom model training</strong> &mdash; Enterprise tier can train on your organization&rsquo;s codebase, learning your specific security patterns</li>
+          <li>Code privacy guarantees &mdash; zero data retention policy even on cloud tier</li>
+        </ul>
+
+        <p><strong>Where it struggles:</strong></p>
+        <ul>
+          <li>Code quality is a tier below Copilot and Claude &mdash; completions are correct but less sophisticated</li>
+          <li>Limited security domain knowledge &mdash; knows Python/Go/Bash but not SIEM query languages</li>
+          <li>No agent capabilities &mdash; inline completions only, no multi-step reasoning</li>
+          <li>Enterprise pricing is opaque &mdash; expect $30-50/user/mo for self-hosted</li>
+        </ul>
+
+        <h3>JetBrains AI &mdash; Best for Java/Kotlin Security Engineers</h3>
+
+        <p><strong>Free:</strong> Included with JetBrains IDE subscription. <strong>AI Pro ($8.33/mo billed yearly):</strong> Unlimited AI, full agent mode (ACP).</p>
+
+        <p>If your security tooling is Java-based (many enterprise SIEM integrations, custom Burp Suite extensions, Spring Security configurations), JetBrains AI in IntelliJ is a natural fit. The AI understands Java project structure deeply and can navigate complex security frameworks like Spring Security and Apache Shiro.</p>
+
+        <p><strong>Where it shines:</strong></p>
+        <ul>
+          <li>Java security frameworks &mdash; Spring Security configurations, OAuth2 implementations, JWT handling</li>
+          <li>Burp Suite extension development &mdash; IntelliJ is the standard IDE for Burp extension development in Java</li>
+          <li>Static analysis integrations &mdash; works alongside IntelliJ&rsquo;s built-in inspections and third-party security plugins</li>
+        </ul>
+
+        <p><strong>Where it struggles:</strong></p>
+        <ul>
+          <li>Limited outside Java/Kotlin &mdash; if your security work is Python/Go/Bash, other tools are better</li>
+          <li>No specialized security knowledge &mdash; does not understand SIEM languages, detection frameworks, or attack patterns</li>
+        </ul>
+
+        <h2>Security-Specific AI Tools: The Specialist Layer</h2>
+
+        <p>Beyond general-purpose coding tools, several AI-powered security tools deserve mention. These are not coding assistants &mdash; they are security products with AI features.</p>
+
+        <h3>GitHub Advanced Security + Copilot Autofix</h3>
+
+        <p><strong>Pricing:</strong> $49/committer/mo (GitHub Enterprise). Free for public repos.</p>
+
+        <p>The most mature AI-security integration available. CodeQL scans your code for vulnerabilities, and Copilot Autofix generates pull request fixes. Supports 10+ languages. Most effective for common web vulnerabilities (injection, XSS, path traversal). Does not replace manual security review but catches the low-hanging fruit that should never reach production.</p>
+
+        <h3>Semgrep + AI Rules</h3>
+
+        <p><strong>Pricing:</strong> Free (OSS engine). Team ($40/contributor/mo). Enterprise (custom).</p>
+
+        <p>Semgrep is a pattern-matching code analysis tool. Its AI features (Semgrep Assistant) triage findings, reduce false positives, and suggest custom rules. Write a Semgrep rule in YAML, and the AI explains what it does and suggests improvements. Particularly strong for custom security policies &mdash; &ldquo;no direct database queries in controller files,&rdquo; &ldquo;all API endpoints must check authentication.&rdquo;</p>
+
+        <h3>Snyk Code (AI-Powered SAST)</h3>
+
+        <p><strong>Pricing:</strong> Free (limited scans). Team ($25/developer/mo). Enterprise (custom).</p>
+
+        <p>Snyk Code uses AI-powered static analysis that claims to be faster and produce fewer false positives than traditional SAST. It understands data flow across files, which helps catch injection vulnerabilities that span multiple function calls. Integrates with Copilot-supported IDEs, so you can use both simultaneously &mdash; Copilot for code generation, Snyk for security scanning.</p>
+
+        <h3>Amazon CodeGuru Security</h3>
+
+        <p><strong>Pricing:</strong> Included with Amazon Q Developer.</p>
+
+        <p>Automated security reviewer for AWS deployments. Analyzes Python, Java, and JavaScript for security issues. Tightly integrated with AWS CI/CD pipelines (CodePipeline, CodeBuild). Best for organizations already deep in the AWS ecosystem.</p>
+
+        <h2>MCP Servers for Security Engineering</h2>
+
+        <p>The Model Context Protocol (MCP) allows AI tools to connect to external data sources. For security engineers, this is potentially transformative &mdash; imagine Claude Code with real-time access to your SIEM, CVE databases, or threat intelligence feeds.</p>
+
+        <p>Current state of security MCP servers (early, but growing):</p>
+
+        <ul>
+          <li><strong>NVD/CVE MCP servers</strong> &mdash; Community-built servers that query the National Vulnerability Database. Lets AI tools look up real CVE details instead of relying on (potentially outdated) training data. Early stage, but the concept is proven.</li>
+          <li><strong>Shodan MCP</strong> &mdash; Query Shodan data from within Claude Code. Useful for reconnaissance automation during pentests.</li>
+          <li><strong>VirusTotal MCP</strong> &mdash; Submit hashes and get analysis results directly in your AI tool session. Useful for malware triage.</li>
+          <li><strong>MITRE ATT&amp;CK MCP</strong> &mdash; Look up techniques, mitigations, and detection methods. Ensures correct technique IDs in detection rules.</li>
+          <li><strong>GitHub Security Advisory MCP</strong> &mdash; Query GitHub&rsquo;s security advisory database for up-to-date vulnerability information.</li>
+        </ul>
+
+        <p><strong>What&rsquo;s missing:</strong> No SIEM MCP servers yet (no Splunk, Sentinel, or Elastic integrations). No direct SOAR integrations. No cloud security posture management (CSPM) connections. The security MCP ecosystem is 6&ndash;12 months behind the general developer tooling ecosystem.</p>
+
+        <div class="callout tip">
+          <div class="callout-title">MCP setup for security</div>
+          <p>If you use Claude Code, MCP servers are configured in <code>~/.claude/settings.json</code> or your project&rsquo;s <code>.claude/settings.json</code>. Start with a CVE lookup server and MITRE ATT&amp;CK server &mdash; these two alone significantly improve Claude&rsquo;s security domain accuracy. Check the MCP server registry for community-built security servers.</p>
+        </div>
+
+        <h2>Compliance and Deployment Considerations</h2>
+
+        <p>For many security teams, the question is not &ldquo;which tool is best?&rdquo; but &ldquo;which tool can we use at all?&rdquo;</p>
+
+        <div style="overflow-x:auto">
+          <table style="width:100%;border-collapse:collapse;margin:1.5rem 0">
+            <thead>
+              <tr style="border-bottom:2px solid var(--border)">
+                <th style="padding:12px 16px;text-align:left">Requirement</th>
+                <th style="padding:12px 16px;text-align:left">Copilot</th>
+                <th style="padding:12px 16px;text-align:left">Claude Code</th>
+                <th style="padding:12px 16px;text-align:left">Cursor</th>
+                <th style="padding:12px 16px;text-align:left">Amazon Q</th>
+                <th style="padding:12px 16px;text-align:left">Tabnine</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px">SOC 2 Type II</td>
+                <td style="padding:12px 16px;color:var(--green)">Yes</td>
+                <td style="padding:12px 16px;color:var(--green)">Yes</td>
+                <td style="padding:12px 16px;color:var(--green)">Yes</td>
+                <td style="padding:12px 16px;color:var(--green)">Yes (AWS)</td>
+                <td style="padding:12px 16px;color:var(--green)">Yes</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px">Zero data retention</td>
+                <td style="padding:12px 16px;color:var(--green)">Business+</td>
+                <td style="padding:12px 16px">API only</td>
+                <td style="padding:12px 16px;color:var(--green)">Privacy mode</td>
+                <td style="padding:12px 16px;color:var(--green)">Pro</td>
+                <td style="padding:12px 16px;color:var(--green)">All tiers</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px">Self-hosted / on-premise</td>
+                <td style="padding:12px 16px;color:var(--red)">No</td>
+                <td style="padding:12px 16px;color:var(--red)">No</td>
+                <td style="padding:12px 16px;color:var(--red)">No</td>
+                <td style="padding:12px 16px">AWS VPC only</td>
+                <td style="padding:12px 16px;color:var(--green)">Yes (Enterprise)</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px">Air-gapped deployment</td>
+                <td style="padding:12px 16px;color:var(--red)">No</td>
+                <td style="padding:12px 16px;color:var(--red)">No</td>
+                <td style="padding:12px 16px;color:var(--red)">No</td>
+                <td style="padding:12px 16px;color:var(--red)">No</td>
+                <td style="padding:12px 16px;color:var(--green)">Yes (Enterprise)</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px">FedRAMP</td>
+                <td style="padding:12px 16px">GHE Cloud only</td>
+                <td style="padding:12px 16px;color:var(--red)">No</td>
+                <td style="padding:12px 16px;color:var(--red)">No</td>
+                <td style="padding:12px 16px;color:var(--green)">AWS GovCloud</td>
+                <td style="padding:12px 16px">On-premise</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px">IP indemnity</td>
+                <td style="padding:12px 16px;color:var(--green)">Business+</td>
+                <td style="padding:12px 16px;color:var(--green)">Enterprise</td>
+                <td style="padding:12px 16px;color:var(--green)">Business</td>
+                <td style="padding:12px 16px;color:var(--green)">Pro+</td>
+                <td style="padding:12px 16px;color:var(--green)">Enterprise</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px">SSO / SAML</td>
+                <td style="padding:12px 16px;color:var(--green)">Enterprise</td>
+                <td style="padding:12px 16px;color:var(--green)">Enterprise</td>
+                <td style="padding:12px 16px;color:var(--green)">Business</td>
+                <td style="padding:12px 16px;color:var(--green)">Pro</td>
+                <td style="padding:12px 16px;color:var(--green)">Enterprise</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px">Audit logging</td>
+                <td style="padding:12px 16px;color:var(--green)">Enterprise</td>
+                <td style="padding:12px 16px;color:var(--green)">Enterprise</td>
+                <td style="padding:12px 16px;color:var(--green)">Business</td>
+                <td style="padding:12px 16px;color:var(--green)">Pro</td>
+                <td style="padding:12px 16px;color:var(--green)">Enterprise</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h2>Recommended Security Engineer Stacks</h2>
+
+        <div style="overflow-x:auto">
+          <table style="width:100%;border-collapse:collapse;margin:1.5rem 0">
+            <thead>
+              <tr style="border-bottom:2px solid var(--border)">
+                <th style="padding:12px 16px;text-align:left">Monthly</th>
+                <th style="padding:12px 16px;text-align:left">Stack</th>
+                <th style="padding:12px 16px;text-align:left">Annual</th>
+                <th style="padding:12px 16px;text-align:left">Best For</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px;color:var(--green)">$0</td>
+                <td style="padding:12px 16px">Copilot Free (VS Code)</td>
+                <td style="padding:12px 16px;color:var(--green)">$0</td>
+                <td style="padding:12px 16px">Part-time security work, CTF players, students</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px;color:var(--green)">$0</td>
+                <td style="padding:12px 16px">Amazon Q Free (VS Code)</td>
+                <td style="padding:12px 16px;color:var(--green)">$0</td>
+                <td style="padding:12px 16px">AWS-only security teams, CloudTrail/GuardDuty work</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px;color:var(--green)">$10</td>
+                <td style="padding:12px 16px">Copilot Pro (VS Code)</td>
+                <td style="padding:12px 16px;color:var(--green)">$120</td>
+                <td style="padding:12px 16px">Blue team &mdash; IaC security, daily scripting, CI/CD security</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px;color:var(--green)">$12</td>
+                <td style="padding:12px 16px">Tabnine Pro</td>
+                <td style="padding:12px 16px;color:var(--green)">$144</td>
+                <td style="padding:12px 16px">Compliance-sensitive teams needing zero data retention</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px;color:var(--green)">$20</td>
+                <td style="padding:12px 16px">Claude Code (Claude Pro)</td>
+                <td style="padding:12px 16px;color:var(--green)">$240</td>
+                <td style="padding:12px 16px">Red team &mdash; pentesting, vuln research, exploit development</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px;color:var(--green)">$20</td>
+                <td style="padding:12px 16px">Cursor Pro</td>
+                <td style="padding:12px 16px;color:var(--green)">$240</td>
+                <td style="padding:12px 16px">Detection engineering &mdash; Sigma rule repos, SIEM content</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px;color:var(--green)">$30</td>
+                <td style="padding:12px 16px">Copilot Pro + Claude Code</td>
+                <td style="padding:12px 16px;color:var(--green)">$360</td>
+                <td style="padding:12px 16px">Full-spectrum &mdash; inline completions + deep security reasoning</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px">$40</td>
+                <td style="padding:12px 16px">Cursor Pro + Claude Code</td>
+                <td style="padding:12px 16px">$480</td>
+                <td style="padding:12px 16px">Detection engineering + red team in one stack</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px">Custom</td>
+                <td style="padding:12px 16px">Tabnine Enterprise (self-hosted)</td>
+                <td style="padding:12px 16px">Custom</td>
+                <td style="padding:12px 16px">Air-gapped / classified / FedRAMP environments</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h2>The Bottom Line</h2>
+
+        <p>Security AI tool selection comes down to three questions: what type of security work do you do, can your organization send code to external servers, and how much do you trust AI-generated security code?</p>
+
+        <ul>
+          <li><strong>Blue team / detection engineering?</strong> Copilot Pro ($10/mo) for daily IaC and scripting. Add Cursor Pro ($20/mo) if you maintain a large detection rule repository. Supplement with Semgrep for custom security policy enforcement.</li>
+          <li><strong>Red team / pentesting?</strong> Claude Code ($20/mo) as your primary tool &mdash; terminal-native, understands attack chains, generates multi-step scripts. Add Copilot Pro ($10/mo) for inline completions when writing reusable tooling.</li>
+          <li><strong>AppSec / secure code review?</strong> Copilot Business ($19/user/mo) with GitHub Advanced Security ($49/committer/mo). Copilot Autofix generates fixes for CodeQL findings. Add Snyk Code for additional coverage.</li>
+          <li><strong>Cloud security (AWS)?</strong> Amazon Q Developer ($0&ndash;19/mo) for IAM policies, CloudFormation, and GuardDuty automation. It understands AWS security primitives better than any general-purpose tool.</li>
+          <li><strong>GRC / compliance-sensitive?</strong> Tabnine Enterprise (self-hosted) is your only option for air-gapped and classified environments. If you can use cloud tools but need zero data retention, Tabnine Pro ($12/mo) is the safest individual option.</li>
+          <li><strong>Malware analysis / reverse engineering?</strong> Claude Code ($20/mo) for Ghidra/IDA script generation and binary analysis reasoning. No AI tool integrates with RE tools directly &mdash; you generate scripts externally and load them.</li>
+          <li><strong>SOC analyst?</strong> Start with Copilot Free ($0) for basic scripting. The main AI value for SOC work is not code generation &mdash; it is query generation (SPL, KQL). Claude Code ($20/mo) is currently the best at security query languages, but verify every query against your environment.</li>
+        </ul>
+
+        <p>The uncomfortable truth: <strong>AI-generated security code requires more review than AI-generated application code, not less.</strong> A wrong React component shows a broken button. A wrong detection rule creates a gap in your security posture that an attacker can exploit. A wrong IAM policy grants excessive access. Use AI tools to accelerate your security work, but never deploy AI-generated security rules, policies, or scripts without thorough review and testing.</p>
+
+        <p>Compare all the tools and pricing on our <a href="/" style="color:var(--accent)">main comparison table</a>, check the <a href="/free-ai-coding-tools.html" style="color:var(--accent)">free tier guide</a> for $0 options, read the <a href="/blog/ai-coding-tools-for-devops-engineers-2026.html" style="color:var(--accent)">DevOps engineer guide</a> for infrastructure-side tooling, or see the <a href="/blog/ai-coding-tools-for-enterprise-2026.html" style="color:var(--accent)">enterprise guide</a> for organizational procurement considerations.</p>
+      </div>
+    </article>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>CodeCosts &mdash; Independent AI coding tool price tracker. Updated March 2026.</p>
+      <p style="margin-top:0.5rem"><a href="/" style="color:var(--accent)">Compare all tools</a> &middot; <a href="/blog/" style="color:var(--accent)">Blog</a> &middot; <a href="/blog/feed.xml" style="color:var(--accent)">RSS</a></p>
+    </div>
+  </footer>
+</body>
+</html>

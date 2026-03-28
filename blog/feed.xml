@@ -9,6 +9,14 @@
     <atom:link href="https://codecosts.pages.dev/blog/feed.xml" rel="self" type="application/rss+xml"/>
 
     <item>
+      <title>AI Coding Tools for Technical Project Managers 2026: Sprint Planning, Dependencies, Risk Assessment &amp; Velocity Guide</title>
+      <link>https://codecosts.pages.dev/blog/ai-coding-tools-for-technical-project-managers-2026.html</link>
+      <description>The TPM's guide to AI coding tools in 2026. Sprint planning, cross-team dependency tracking, technical risk assessment, velocity analysis, migration coordination, and stakeholder reporting.</description>
+      <pubDate>Sat, 28 Mar 2026 23:59:00 GMT</pubDate>
+      <guid>https://codecosts.pages.dev/blog/ai-coding-tools-for-technical-project-managers-2026.html</guid>
+    </item>
+
+    <item>
       <title>AI Coding Tools for Release Engineers 2026: CI/CD Pipelines, Rollbacks, Feature Flags &amp; Release Orchestration Guide</title>
       <link>https://codecosts.pages.dev/blog/ai-coding-tools-for-release-engineers-2026.html</link>
       <description>The release engineer's guide to AI coding tools in 2026. Every tool ranked for pipeline orchestration, version management, rollback strategies, feature flags, release validation, and dependency auditing.</description>

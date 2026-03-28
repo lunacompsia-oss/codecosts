@@ -57,7 +57,7 @@
 
         <div class="callout tip">
           <div class="callout-title">TL;DR</div>
-          <p><strong>Best free ($0):</strong> GitHub Copilot Free &mdash; decent Python completions for scripting, works in VS Code, 2,000 completions/mo. <strong>Best for pentesting ($20/mo):</strong> Claude Code &mdash; terminal-native agent that reasons about attack chains, generates multi-step exploit scripts, understands protocol-level details. <strong>Best for SIEM rules ($20/mo):</strong> Cursor Pro &mdash; multi-file context helps when writing correlated detection rules across multiple log sources. <strong>Best for IaC security ($10/mo):</strong> Copilot Pro &mdash; strong Terraform/CloudFormation completions, integrates with GitHub Advanced Security. <strong>Best for air-gapped/compliance ($12/mo):</strong> Tabnine Pro &mdash; the only tool with true self-hosted deployment for SOC 2, FedRAMP, and classified environments. <strong>Best combo ($30/mo):</strong> Copilot Pro + Claude Code &mdash; inline completions for daily scripting, deep reasoning for complex vulnerability research and detection engineering.</p>
+          <p><strong>Best free ($0):</strong> GitHub Copilot Free &mdash; decent Python completions for scripting, works in VS Code, 2,000 completions/mo. <strong>Best for pentesting ($20/mo):</strong> Claude Code &mdash; terminal-native agent that reasons about attack chains, generates multi-step exploit scripts, understands protocol-level details. <strong>Best for SIEM rules ($20/mo):</strong> Cursor Pro &mdash; multi-file context helps when writing correlated detection rules across multiple log sources. <strong>Best for IaC security ($10/mo):</strong> Copilot Pro &mdash; strong Terraform/CloudFormation completions, integrates with GitHub Advanced Security. <strong>Best for air-gapped/compliance ($39/user/mo):</strong> Tabnine Code Assistant &mdash; the only tool with true self-hosted deployment for SOC 2, FedRAMP, and classified environments. Windsurf Enterprise also offers FedRAMP High compliance with a modern IDE experience. <strong>Best combo ($30/mo):</strong> Copilot Pro + Claude Code &mdash; inline completions for daily scripting, deep reasoning for complex vulnerability research and detection engineering.</p>
         </div>
 
         <h2>The Context Problem: Why Security Breaks AI Tools</h2>
@@ -128,7 +128,7 @@
         <p>Security engineers use specialized tools that AI assistants cannot interact with:</p>
 
         <ul>
-          <li><strong>Burp Suite:</strong> Web application security testing. Extensions are written in Java/Python, but the tool itself has no AI integration. You write Burp extensions in a separate IDE and load them.</li>
+          <li><strong>Burp Suite:</strong> Web application security testing. PortSwigger introduced AI-powered features in Burp Suite Professional (2025) &mdash; AI vulnerability analysis in scan results, AI-assisted authentication setup, and 10,000 free AI credits. Third-party MCP integrations bridge VS Code and Claude Code to Burp&rsquo;s proxy, Repeater, and Intruder.</li>
           <li><strong>IDA Pro / Ghidra:</strong> Reverse engineering. Ghidra scripts are Java/Python, IDA uses IDAPython. No AI tool integrates with their UIs, though you can use AI to generate scripts externally.</li>
           <li><strong>Metasploit:</strong> Ruby-based framework. AI tools can generate module templates, but you still manually load and test them in <code>msfconsole</code>.</li>
           <li><strong>SIEM platforms:</strong> Splunk, Sentinel, Elastic &mdash; all have web-based query editors. You write queries in VS Code and paste them, or use API-based workflows.</li>
@@ -147,6 +147,11 @@
           <li><strong>Insecure &ldquo;security&rdquo; code:</strong> AI tools generate encryption code with hardcoded IVs, authentication code with timing vulnerabilities, and input validation that misses edge cases. The irony: the tool you use to write security code may introduce security vulnerabilities.</li>
           <li><strong>Overly permissive IAM policies:</strong> When generating AWS IAM or Azure RBAC policies, AI tools default to broader permissions than necessary. <code>"Effect": "Allow", "Action": "*"</code> appears in AI-generated policies far too often.</li>
         </ul>
+
+        <div class="callout warning">
+          <div class="callout-title">The numbers are damning</div>
+          <p>Veracode&rsquo;s 2025&ndash;2026 GenAI Code Security Report (100+ LLMs, 80 tasks): <strong>45% of AI-generated code contains security vulnerabilities.</strong> CrowdStrike found 62% of code solutions have design flaws or known vulns. Academic studies show 86% failure to defend against XSS and 88% vulnerability to log injection. Java code has a 70%+ security flaw rate. The Spring 2026 update? These numbers have &ldquo;barely budged.&rdquo; Studies also show developers using AI assistants write significantly less secure code and exhibit a false sense of security. <strong>Treat all AI-generated code as untrusted input.</strong></p>
+        </div>
 
         <h2>Security Engineering Support Matrix</h2>
 
@@ -295,7 +300,7 @@
 
         <p><strong>Free:</strong> 2,000 completions/mo. <strong>Pro ($10/mo):</strong> Unlimited completions. <strong>Pro+ ($39/mo):</strong> Unlimited + premium models. <strong>Business ($19/user/mo):</strong> Admin controls, IP indemnity, org policy management.</p>
 
-        <p>Copilot is the strongest default for security engineers who spend most of their time in VS Code writing Python scripts, Terraform, and CloudFormation. Its GitHub integration is a major advantage &mdash; <strong>GitHub Advanced Security</strong> (code scanning, secret scanning, Dependabot) works alongside Copilot, and <strong>Copilot Autofix</strong> can automatically suggest remediations for security vulnerabilities found by CodeQL.</p>
+        <p>Copilot is the strongest default for security engineers who spend most of their time in VS Code writing Python scripts, Terraform, and CloudFormation. Its GitHub integration is a major advantage &mdash; <strong>GitHub Advanced Security</strong> (code scanning, secret scanning, Dependabot) works alongside Copilot, and <strong>Copilot Autofix</strong> can automatically suggest remediations for security vulnerabilities found by CodeQL. Autofix processed over <strong>460,000 security alerts in 2025</strong>, reducing average resolution time from 1.29 hours to 0.66 hours. It is free for all CodeQL users regardless of Copilot subscription. In Q2 2026, GitHub is expanding Autofix beyond CodeQL to cover <strong>Shell, Dockerfile, Terraform, and PHP</strong> &mdash; directly addressing IaC security scanning gaps.</p>
 
         <p><strong>Where it shines:</strong></p>
         <ul>
@@ -396,7 +401,7 @@
 
         <h3>Tabnine &mdash; Best (and Only Real Option) for Air-Gapped Environments</h3>
 
-        <p><strong>Pro ($12/mo):</strong> Cloud-hosted AI completions. <strong>Enterprise (custom pricing):</strong> Self-hosted, air-gapped deployment.</p>
+        <p><strong>Code Assistant ($39/user/mo):</strong> Cloud-hosted AI completions. <strong>Agentic Platform ($59/user/mo):</strong> Full agent capabilities. <strong>Enterprise (custom):</strong> Self-hosted, air-gapped deployment.</p>
 
         <p>Tabnine is the only major AI coding tool that offers true <strong>self-hosted, air-gapped deployment</strong>. For security teams in defense contractors, government agencies, financial institutions, and healthcare organizations, this is not a feature &mdash; it is the only way to use AI coding tools at all.</p>
 
@@ -457,31 +462,92 @@
 
         <p>Snyk Code uses AI-powered static analysis that claims to be faster and produce fewer false positives than traditional SAST. It understands data flow across files, which helps catch injection vulnerabilities that span multiple function calls. Integrates with Copilot-supported IDEs, so you can use both simultaneously &mdash; Copilot for code generation, Snyk for security scanning.</p>
 
-        <h3>Amazon CodeGuru Security</h3>
+        <h3>Uncoder AI (SOC Prime)</h3>
 
-        <p><strong>Pricing:</strong> Included with Amazon Q Developer.</p>
+        <p><strong>Pricing:</strong> Free tier available. Paid tiers for teams.</p>
 
-        <p>Automated security reviewer for AWS deployments. Analyzes Python, Java, and JavaScript for security issues. Tightly integrated with AWS CI/CD pipelines (CodePipeline, CodeBuild). Best for organizations already deep in the AWS ecosystem.</p>
+        <p>Translates Sigma rules to <strong>48 SIEM platforms</strong> &mdash; Splunk, Sentinel, Elastic, QRadar, Chronicle, and more. If you write detection rules, Uncoder is essential: write once in Sigma, deploy everywhere. The AI features help generate and optimize rules. Not a coding assistant, but a critical part of any detection engineering workflow.</p>
+
+        <h3>XBOW &mdash; Autonomous Pentesting</h3>
+
+        <p><strong>Pricing:</strong> ~$6,000 per engagement (vs. $15,000&ndash;50,000+ for human pentesting).</p>
+
+        <p>XBOW is the first AI system to reach #1 on HackerOne&rsquo;s US leaderboard, outperforming thousands of human ethical hackers. Founded by the creator of CodeQL (Oege de Moor), it delivers complete pentest results within 5 business days. Raised $120M Series C in March 2026. Not a coding assistant &mdash; a complement that handles the testing while you write detection rules and hardening scripts. Now integrated with Microsoft Security Copilot and Sentinel.</p>
+
+        <h3>Amazon CodeGuru Security (Discontinued)</h3>
+
+        <p><strong>Status:</strong> Discontinued November 2025. Capabilities absorbed into Amazon Q Developer.</p>
+
+        <p>If you were using CodeGuru, migrate to Amazon Q Developer, which now includes its security scanning capabilities.</p>
 
         <h2>MCP Servers for Security Engineering</h2>
 
-        <p>The Model Context Protocol (MCP) allows AI tools to connect to external data sources. For security engineers, this is potentially transformative &mdash; imagine Claude Code with real-time access to your SIEM, CVE databases, or threat intelligence feeds.</p>
+        <p>The Model Context Protocol (MCP) has become the integration layer connecting AI coding tools to security infrastructure. For security engineers, this is where the real power lies &mdash; connecting your AI assistant directly to your SIEM, RE tools, CVE databases, and threat intelligence feeds.</p>
 
-        <p>Current state of security MCP servers (early, but growing):</p>
+        <p>The security MCP ecosystem is surprisingly mature. Key servers:</p>
 
-        <ul>
-          <li><strong>NVD/CVE MCP servers</strong> &mdash; Community-built servers that query the National Vulnerability Database. Lets AI tools look up real CVE details instead of relying on (potentially outdated) training data. Early stage, but the concept is proven.</li>
-          <li><strong>Shodan MCP</strong> &mdash; Query Shodan data from within Claude Code. Useful for reconnaissance automation during pentests.</li>
-          <li><strong>VirusTotal MCP</strong> &mdash; Submit hashes and get analysis results directly in your AI tool session. Useful for malware triage.</li>
-          <li><strong>MITRE ATT&amp;CK MCP</strong> &mdash; Look up techniques, mitigations, and detection methods. Ensures correct technique IDs in detection rules.</li>
-          <li><strong>GitHub Security Advisory MCP</strong> &mdash; Query GitHub&rsquo;s security advisory database for up-to-date vulnerability information.</li>
-        </ul>
+        <div style="overflow-x:auto">
+          <table style="width:100%;border-collapse:collapse;margin:1.5rem 0">
+            <thead>
+              <tr style="border-bottom:2px solid var(--border)">
+                <th style="padding:12px 16px;text-align:left">MCP Server</th>
+                <th style="padding:12px 16px;text-align:left">What It Does</th>
+                <th style="padding:12px 16px;text-align:left">Maturity</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px"><strong>Splunk MCP (Official)</strong></td>
+                <td style="padding:12px 16px">Execute SPL searches, retrieve metadata, interact with KV stores, natural-language threat hunting. Available on Azure Marketplace.</td>
+                <td style="padding:12px 16px;color:var(--green)">Production</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px"><strong>Ghidra MCP</strong></td>
+                <td style="padding:12px 16px">179 MCP tools. Function analysis, decompilation, renaming, commenting, cross-binary analysis. Headless + GUI modes. Docker deployment.</td>
+                <td style="padding:12px 16px;color:var(--green)">Production</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px"><strong>IDA Pro MCP</strong></td>
+                <td style="padding:12px 16px">Read/write IDB, rename functions, set comments, control debugger. IDA MCP 2.0 (March 2026) adds headless mode for batch analysis.</td>
+                <td style="padding:12px 16px">Active</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px"><strong>Burp Suite MCP</strong></td>
+                <td style="padding:12px 16px">AI-assisted analysis, proxy history search, send HTTP requests, create Repeater tabs, passive/active scanning from Claude Code or VS Code.</td>
+                <td style="padding:12px 16px">Community</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px"><strong>NVD / CVE MCP</strong></td>
+                <td style="padding:12px 16px">Query NIST National Vulnerability Database. <code>get_cve</code> and <code>search_cve</code> tools for real-time CVE lookups.</td>
+                <td style="padding:12px 16px">Community</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px"><strong>MITRE ATT&amp;CK MCP</strong></td>
+                <td style="padding:12px 16px">Query techniques, tactics, groups, software. Ensures correct technique IDs in detection rules.</td>
+                <td style="padding:12px 16px">Community</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px"><strong>OpenCTI MCP</strong></td>
+                <td style="padding:12px 16px">Fetch threat intelligence: reports, malware, IoCs, threat actors. Mapped to MITRE ATT&amp;CK.</td>
+                <td style="padding:12px 16px">Community</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px"><strong>Security Detections MCP</strong></td>
+                <td style="padding:12px 16px">SPL optimizer, detection rule writing, Sigma-to-SPL conversion. Includes Claude skills for detection engineering.</td>
+                <td style="padding:12px 16px">Community</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
 
-        <p><strong>What&rsquo;s missing:</strong> No SIEM MCP servers yet (no Splunk, Sentinel, or Elastic integrations). No direct SOAR integrations. No cloud security posture management (CSPM) connections. The security MCP ecosystem is 6&ndash;12 months behind the general developer tooling ecosystem.</p>
+        <div class="callout warning">
+          <div class="callout-title">MCP security warning</div>
+          <p><strong>MCP itself is a security risk.</strong> Between January and February 2026, researchers filed over 30 CVEs targeting MCP servers. CVE-2025-6514 (CVSS 9.6) enabled arbitrary OS command execution via the popular <code>mcp-remote</code> package (437K downloads). Among 2,614 MCP implementations surveyed, 82% use file operations vulnerable to path traversal attacks. <strong>Audit any MCP server before installing.</strong> Read the source code. Run with least-privilege permissions. Never connect to untrusted remote MCP servers.</p>
+        </div>
 
         <div class="callout tip">
           <div class="callout-title">MCP setup for security</div>
-          <p>If you use Claude Code, MCP servers are configured in <code>~/.claude/settings.json</code> or your project&rsquo;s <code>.claude/settings.json</code>. Start with a CVE lookup server and MITRE ATT&amp;CK server &mdash; these two alone significantly improve Claude&rsquo;s security domain accuracy. Check the MCP server registry for community-built security servers.</p>
+          <p>If you use Claude Code, MCP servers are configured in <code>~/.claude/settings.json</code> or your project&rsquo;s <code>.claude/settings.json</code>. Start with the <strong>official Splunk MCP</strong> (for SIEM queries), <strong>NVD MCP</strong> (for CVE lookups), and <strong>MITRE ATT&amp;CK MCP</strong> (for technique IDs). These three alone transform Claude Code from a code generator into an integrated security workstation.</p>
         </div>
 
         <h2>Compliance and Deployment Considerations</h2>
@@ -601,9 +667,9 @@
                 <td style="padding:12px 16px">Blue team &mdash; IaC security, daily scripting, CI/CD security</td>
               </tr>
               <tr style="border-bottom:1px solid var(--border)">
-                <td style="padding:12px 16px;color:var(--green)">$12</td>
-                <td style="padding:12px 16px">Tabnine Pro</td>
-                <td style="padding:12px 16px;color:var(--green)">$144</td>
+                <td style="padding:12px 16px">$39</td>
+                <td style="padding:12px 16px">Tabnine Code Assistant</td>
+                <td style="padding:12px 16px">$468</td>
                 <td style="padding:12px 16px">Compliance-sensitive teams needing zero data retention</td>
               </tr>
               <tr style="border-bottom:1px solid var(--border)">
@@ -649,7 +715,7 @@
           <li><strong>Red team / pentesting?</strong> Claude Code ($20/mo) as your primary tool &mdash; terminal-native, understands attack chains, generates multi-step scripts. Add Copilot Pro ($10/mo) for inline completions when writing reusable tooling.</li>
           <li><strong>AppSec / secure code review?</strong> Copilot Business ($19/user/mo) with GitHub Advanced Security ($49/committer/mo). Copilot Autofix generates fixes for CodeQL findings. Add Snyk Code for additional coverage.</li>
           <li><strong>Cloud security (AWS)?</strong> Amazon Q Developer ($0&ndash;19/mo) for IAM policies, CloudFormation, and GuardDuty automation. It understands AWS security primitives better than any general-purpose tool.</li>
-          <li><strong>GRC / compliance-sensitive?</strong> Tabnine Enterprise (self-hosted) is your only option for air-gapped and classified environments. If you can use cloud tools but need zero data retention, Tabnine Pro ($12/mo) is the safest individual option.</li>
+          <li><strong>GRC / compliance-sensitive?</strong> Tabnine Enterprise (self-hosted) is your only option for true air-gapped and classified environments. Windsurf Enterprise offers FedRAMP High compliance with a more modern IDE experience. If you need a cloud tool with zero data retention, Tabnine Code Assistant ($39/user/mo) is the strictest option.</li>
           <li><strong>Malware analysis / reverse engineering?</strong> Claude Code ($20/mo) for Ghidra/IDA script generation and binary analysis reasoning. No AI tool integrates with RE tools directly &mdash; you generate scripts externally and load them.</li>
           <li><strong>SOC analyst?</strong> Start with Copilot Free ($0) for basic scripting. The main AI value for SOC work is not code generation &mdash; it is query generation (SPL, KQL). Claude Code ($20/mo) is currently the best at security query languages, but verify every query against your environment.</li>
         </ul>

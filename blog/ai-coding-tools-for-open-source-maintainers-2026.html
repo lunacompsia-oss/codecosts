@@ -57,7 +57,7 @@
 
         <div class="callout tip">
           <div class="callout-title">TL;DR</div>
-          <p><strong>Best free ($0):</strong> GitHub Copilot &mdash; free for maintainers of popular open source projects, with PR review built into GitHub. <strong>Best for deep code review ($20/mo):</strong> Claude Code &mdash; strongest at understanding large codebases, reviewing complex PRs, and generating thorough security patches. <strong>Best IDE experience ($20/mo):</strong> Cursor &mdash; fast multi-file navigation and refactoring for projects with complex dependency graphs. <strong>Best for automation ($0):</strong> Gemini CLI + GitHub Actions &mdash; free terminal tool that can script issue triage, changelog generation, and CI automation. <strong>OSS-specific programs:</strong> GitHub Copilot (free for popular OSS maintainers), OpenAI Codex for Open Source (6 months free ChatGPT Pro + API credits).</p>
+          <p><strong>Best free ($0):</strong> GitHub Copilot &mdash; free for maintainers of popular open source projects, with PR review built into GitHub. <strong>Best for deep code review ($20/mo):</strong> Claude Code &mdash; strongest at understanding large codebases, reviewing complex PRs, and generating thorough security patches. <strong>Best IDE experience ($20/mo):</strong> Cursor &mdash; fast multi-file navigation and refactoring for projects with complex dependency graphs. <strong>Best for automation ($0):</strong> Gemini CLI + GitHub Actions &mdash; free terminal tool that can script issue triage, changelog generation, and CI automation. <strong>OSS-specific programs:</strong> Anthropic Claude for Open Source (6 months Claude Max 20x &mdash; $1,200 value for 5K+ star projects), GitHub Copilot (free for popular OSS maintainers), OpenAI Codex for Open Source (6 months free ChatGPT Pro + API credits).</p>
         </div>
 
         <h2>Why Maintenance Is Different from Development</h2>
@@ -163,9 +163,9 @@
 
         <p><strong>Limitations:</strong> Copilot&rsquo;s code review is surface-level compared to Claude Code. It catches syntax and style issues reliably but struggles with logic errors, race conditions, and security vulnerabilities that require understanding how the changed code interacts with the rest of the system. The free tier for OSS maintainers requires maintaining a &ldquo;popular&rdquo; project &mdash; GitHub does not publish exact thresholds, but projects with 1,000+ stars generally qualify.</p>
 
-        <h3>Claude Code &mdash; Deep Code Review ($20/mo)</h3>
+        <h3>Claude Code &mdash; Deep Code Review (Free for Top OSS / $20/mo)</h3>
 
-        <p><strong>Price:</strong> $20/mo via Claude Max (included with Anthropic subscription). No OSS-specific free tier.</p>
+        <p><strong>Price:</strong> $20/mo via Claude Max. <strong>Free for OSS maintainers:</strong> Anthropic&rsquo;s &ldquo;Claude for Open Source&rdquo; program (launched Feb 26, 2026) gives 6 months of Claude Max 20x ($200/mo value, $1,200 total) to maintainers of projects with 5,000+ stars. Up to 10,000 maintainers qualify. If your project qualifies, this is the most generous free AI tool program available to any developer, period.</p>
 
         <p><strong>Why it matters for maintainers:</strong> Claude Code has the largest effective context window of any AI coding tool and the strongest reasoning capability. For maintainers, this translates directly into better PR review &mdash; it can ingest your entire codebase and understand how a PR&rsquo;s changes interact with code the contributor never touched. It catches the bugs that Copilot misses: race conditions introduced by a seemingly innocent refactor, security vulnerabilities created by changing a function&rsquo;s error handling, performance regressions from adding an allocation inside a hot loop.</p>
 
@@ -175,7 +175,7 @@
 
         <p><strong>Documentation:</strong> Claude Code generates high-quality migration guides, changelog entries, and API documentation. For maintainers shipping breaking changes, you can ask it to analyze the diff between two versions and produce a migration guide that covers every breaking change with before/after code examples. This alone can save hours per release.</p>
 
-        <p><strong>Limitations:</strong> Claude Code costs $20/mo with no OSS discount, which is a real barrier for unpaid volunteers. It has no native GitHub integration &mdash; you cannot trigger it automatically on PRs like Copilot. You have to use it manually from the terminal or build your own GitHub Actions integration. For maintainers who want set-and-forget automation, this is a significant gap.</p>
+        <p><strong>Limitations:</strong> Without the OSS program, Claude Code costs $20/mo, which is a barrier for unpaid volunteers. The OSS program requires 5,000+ star projects &mdash; maintainers of smaller projects pay full price. It has no native GitHub integration &mdash; you cannot trigger it automatically on PRs like Copilot. You have to use it manually from the terminal or build your own GitHub Actions integration. For maintainers who want set-and-forget automation, this is a significant gap.</p>
 
         <h3>Cursor &mdash; Best IDE for Codebase Navigation ($20/mo)</h3>
 
@@ -368,6 +368,12 @@
                 <td style="padding:12px 16px">Full Copilot access (completions + chat + PR review)</td>
                 <td style="padding:12px 16px">Maintainers of popular OSS projects (~1,000+ stars)</td>
                 <td style="padding:12px 16px">Automatic &mdash; check your GitHub settings</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px"><strong>Anthropic Claude for Open Source</strong></td>
+                <td style="padding:12px 16px">6 months Claude Max 20x ($200/mo value, $1,200 total)</td>
+                <td style="padding:12px 16px">Maintainers of projects with 5,000+ stars (up to 10K slots)</td>
+                <td style="padding:12px 16px">Apply via Anthropic&rsquo;s program page</td>
               </tr>
               <tr style="border-bottom:1px solid var(--border)">
                 <td style="padding:12px 16px"><strong>OpenAI Codex for Open Source</strong></td>

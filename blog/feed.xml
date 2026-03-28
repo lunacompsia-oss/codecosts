@@ -5,8 +5,16 @@
     <link>https://codecosts.pages.dev/blog/</link>
     <description>AI coding tool news, pricing updates, and analysis. Compare GitHub Copilot, Cursor, Windsurf, Claude Code, and more.</description>
     <language>en-us</language>
-    <lastBuildDate>Sat, 28 Mar 2026 23:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Sun, 29 Mar 2026 00:00:00 GMT</lastBuildDate>
     <atom:link href="https://codecosts.pages.dev/blog/feed.xml" rel="self" type="application/rss+xml"/>
+
+    <item>
+      <title>AI Coding Tools for Embedded &amp; IoT Engineers 2026: STM32, ESP32, Zephyr &amp; Bare-Metal Guide</title>
+      <link>https://codecosts.pages.dev/blog/ai-coding-tools-for-embedded-iot-engineers-2026.html</link>
+      <description>The embedded engineer's guide to AI coding tools in 2026. Every tool ranked for bare-metal C, RTOS firmware, HAL libraries, Arduino, ESP-IDF, Zephyr, and register-level programming. The training data problem, the IDE problem, and platform-first recommendations from $0 to $40/mo.</description>
+      <pubDate>Sun, 29 Mar 2026 00:00:00 GMT</pubDate>
+      <guid>https://codecosts.pages.dev/blog/ai-coding-tools-for-embedded-iot-engineers-2026.html</guid>
+    </item>
 
     <item>
       <title>AI Coding Tools for Game Developers 2026: Unity, Unreal, Godot &amp; Shader Guide</title>

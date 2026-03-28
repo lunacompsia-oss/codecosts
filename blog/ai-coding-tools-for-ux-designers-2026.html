@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Coding Tools for UX Designers 2026: Prototyping, Design-to-Code, Design Systems &amp; Interaction Implementation Guide</title>
+  <meta name="description" content="The UX designer's guide to AI coding tools in 2026. Every tool ranked for design-to-code translation, rapid prototyping, design system implementation, animation and micro-interactions, responsive layouts, and design QA. Task-first recommendations from $0 to $40/mo.">
+  <link rel="canonical" href="https://codecosts.pages.dev/blog/ai-coding-tools-for-ux-designers-2026.html">
+  <meta property="og:title" content="AI Coding Tools for UX Designers 2026: Prototyping, Design-to-Code &amp; Design Systems">
+  <meta property="og:description" content="Every AI coding tool ranked for UX design workflows. Design-to-code, prototyping, design systems, animations, responsive layouts, and the $0 to $40/mo stacks.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://codecosts.pages.dev/blog/ai-coding-tools-for-ux-designers-2026.html">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="AI Coding Tools for UX Designers 2026: Prototyping, Design-to-Code &amp; Design Systems">
+  <meta name="twitter:description" content="Every AI coding tool ranked for UX design workflows. Design-to-code, prototyping, design systems, animations, responsive layouts, and the $0 to $40/mo stacks.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💰</text></svg>">
+  <link rel="stylesheet" href="../style.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "AI Coding Tools for UX Designers 2026: Prototyping, Design-to-Code, Design Systems & Interaction Implementation Guide",
+    "datePublished": "2026-03-28",
+    "dateModified": "2026-03-28",
+    "author": { "@type": "Organization", "name": "CodeCosts" },
+    "publisher": { "@type": "Organization", "name": "CodeCosts" },
+    "description": "The UX designer's guide to AI coding tools in 2026. Every tool ranked for design-to-code translation, rapid prototyping, design system implementation, animation, responsive layouts, and design QA."
+  }
+  </script>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <a href="/" style="text-decoration:none;color:inherit"><h1><span class="logo">$_</span> CodeCosts</h1></a>
+      <p class="tagline">AI Coding Tool News &amp; Analysis</p>
+      <nav>
+        <a href="/">Tools</a>
+        <a href="/blog/" class="active">Blog</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <article class="card">
+      <h2>AI Coding Tools for UX Designers 2026: Prototyping, Design-to-Code, Design Systems &amp; Interaction Implementation Guide</h2>
+      <div class="article-meta">
+        <span>March 28, 2026</span>
+        <span>22 min read</span>
+      </div>
+
+      <div class="article-content">
+        <p>You finished the Figma prototype three days ago. The design review went well. Now it is sitting in the handoff queue while two engineers argue about whether to use CSS Grid or Flexbox for the card layout you spent four hours perfecting. When the implementation finally lands, the spacing is wrong, the hover states are missing, the responsive breakpoints collapse in ways your design never intended, and the loading skeleton looks nothing like your mockup. You open the PR, leave twelve comments, and the engineer marks six of them as &ldquo;won&rsquo;t fix &mdash; not in spec.&rdquo; This is a normal week for a UX designer.</p>
+
+        <p>Most AI coding tool reviews evaluate whether a tool can scaffold a REST API or debug a Python script. That tells you nothing about whether it can translate a Figma layout to pixel-accurate CSS, generate a working interactive prototype from a description, implement design tokens that actually cascade correctly, or produce animations that match your easing curves. UX designers have a fundamentally different relationship with code than engineers: you are not building backends or optimizing algorithms. You are bridging the gap between what you designed and what users actually experience.</p>
+
+        <p>This guide evaluates every major AI coding tool through the lens of what UX designers actually do. Not frontend engineering broadly (building full features with business logic), not product management (defining requirements). UX design: translating visual and interaction intent into working implementations that look, feel, and behave exactly as designed.</p>
+
+        <div class="callout tip">
+          <div class="callout-title">TL;DR</div>
+          <p><strong>Best free ($0):</strong> GitHub Copilot Free &mdash; generates CSS layouts and basic component structures from comments; 2,000 completions/mo handles prototyping sessions. <strong>Best for prototyping ($20/mo):</strong> Claude Code &mdash; strongest at translating design descriptions into complete, working HTML/CSS/JS prototypes; understands design intent, not just code syntax. <strong>Best for implementation ($20/mo):</strong> Cursor Pro &mdash; codebase-aware design system enforcement via <code>.cursorrules</code>, multi-file component generation, visual context through image paste. <strong>Best combo ($20/mo):</strong> Claude Code + Copilot Free &mdash; Claude Code for design-to-code translation and complex layouts, Copilot for inline CSS completions during refinement.</p>
+        </div>
+
+        <h2>Why UX Design Is Different</h2>
+
+        <p>UX designers evaluate AI tools differently from most engineering roles. You are not optimizing for raw code output or algorithmic correctness. You are optimizing for visual fidelity, interaction quality, and the speed at which you can go from idea to interactive artifact. Here is what matters:</p>
+
+        <ul>
+          <li><strong>Visual precision is non-negotiable:</strong> Engineers can ship a feature with 8px of extra padding and nobody notices. For a UX designer, 8px is the difference between a layout that breathes and one that feels cramped. You need AI tools that understand spacing systems, typographic scales, color relationships, and visual hierarchy &mdash; not just tools that produce &ldquo;working&rdquo; CSS. A component that functions correctly but looks wrong has failed your requirements.</li>
+          <li><strong>Design tokens are the source of truth:</strong> Your design system has specific values for spacing (4, 8, 12, 16, 24, 32, 48), colors (primitives, semantic aliases, component-specific tokens), typography (font families, sizes, weights, line heights), and elevation (shadow values). AI tools that generate <code>margin: 15px</code> or <code>color: #3b82f6</code> instead of <code>margin: var(--space-4)</code> or <code>color: var(--color-primary)</code> are creating technical debt that diverges from the design system. You need tools that respect token architecture.</li>
+          <li><strong>Interaction design is behavior, not decoration:</strong> A button hover state is not just a color change. It communicates affordance, provides feedback, and guides attention. Transitions need specific timing functions and durations. Micro-interactions need to feel responsive without being distracting. You need AI tools that understand easing curves (<code>cubic-bezier(0.4, 0, 0.2, 1)</code> vs <code>ease-in-out</code>), animation sequencing, and the difference between motion that serves the user and motion that serves the ego.</li>
+          <li><strong>Responsive design is not just media queries:</strong> Your design has three or four breakpoints, but responsive design is about fluid behavior between those breakpoints. Container queries, clamp() for fluid typography, aspect-ratio for media, and logical properties for internationalization. AI tools that generate a desktop layout and a mobile layout with a <code>@media (max-width: 768px)</code> in between are producing 2018-era CSS. You need tools that understand modern responsive techniques.</li>
+          <li><strong>Prototyping speed is your competitive advantage:</strong> The faster you can go from sketch to interactive prototype, the faster your team makes decisions. You do not need production-quality code for a prototype &mdash; you need something that looks right and behaves right enough to test with users or present to stakeholders. AI tools that over-engineer prototypes with TypeScript generics and error boundaries are slowing you down.</li>
+          <li><strong>You are not building alone:</strong> Your code will be handed to engineers, integrated into a design system, or used as a reference implementation. It needs to follow conventions that engineers recognize, use components they already have, and respect the architecture they maintain. AI tools that generate bespoke implementations ignoring existing component libraries create friction, not value.</li>
+        </ul>
+
+        <h2>UX Designer Task Support Matrix</h2>
+
+        <p>Here is how each tool performs on the six core tasks that define a UX designer&rsquo;s coding work:</p>
+
+        <div style="overflow-x:auto">
+          <table style="width:100%;border-collapse:collapse;margin:1.5rem 0">
+            <thead>
+              <tr style="border-bottom:2px solid var(--border)">
+                <th style="text-align:left;padding:0.75rem">Task</th>
+                <th style="text-align:center;padding:0.75rem">Copilot</th>
+                <th style="text-align:center;padding:0.75rem">Cursor</th>
+                <th style="text-align:center;padding:0.75rem">Windsurf</th>
+                <th style="text-align:center;padding:0.75rem">Claude Code</th>
+                <th style="text-align:center;padding:0.75rem">Amazon Q</th>
+                <th style="text-align:center;padding:0.75rem">Gemini CLI</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:0.75rem"><strong>Design-to-Code</strong></td>
+                <td style="text-align:center;padding:0.75rem">Good</td>
+                <td style="text-align:center;padding:0.75rem"><strong>Excellent</strong></td>
+                <td style="text-align:center;padding:0.75rem">Good</td>
+                <td style="text-align:center;padding:0.75rem"><strong>Excellent</strong></td>
+                <td style="text-align:center;padding:0.75rem">Fair</td>
+                <td style="text-align:center;padding:0.75rem">Good</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:0.75rem"><strong>Rapid Prototyping</strong></td>
+                <td style="text-align:center;padding:0.75rem">Fair</td>
+                <td style="text-align:center;padding:0.75rem">Good</td>
+                <td style="text-align:center;padding:0.75rem">Good</td>
+                <td style="text-align:center;padding:0.75rem"><strong>Excellent</strong></td>
+                <td style="text-align:center;padding:0.75rem">Fair</td>
+                <td style="text-align:center;padding:0.75rem">Good</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:0.75rem"><strong>Design Systems</strong></td>
+                <td style="text-align:center;padding:0.75rem">Good</td>
+                <td style="text-align:center;padding:0.75rem"><strong>Excellent</strong></td>
+                <td style="text-align:center;padding:0.75rem">Good</td>
+                <td style="text-align:center;padding:0.75rem">Good</td>
+                <td style="text-align:center;padding:0.75rem">Fair</td>
+                <td style="text-align:center;padding:0.75rem">Fair</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:0.75rem"><strong>Animation &amp; Micro-interactions</strong></td>
+                <td style="text-align:center;padding:0.75rem">Fair</td>
+                <td style="text-align:center;padding:0.75rem">Good</td>
+                <td style="text-align:center;padding:0.75rem">Fair</td>
+                <td style="text-align:center;padding:0.75rem"><strong>Excellent</strong></td>
+                <td style="text-align:center;padding:0.75rem">Poor</td>
+                <td style="text-align:center;padding:0.75rem">Fair</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:0.75rem"><strong>Responsive Layouts</strong></td>
+                <td style="text-align:center;padding:0.75rem">Good</td>
+                <td style="text-align:center;padding:0.75rem"><strong>Excellent</strong></td>
+                <td style="text-align:center;padding:0.75rem">Good</td>
+                <td style="text-align:center;padding:0.75rem"><strong>Excellent</strong></td>
+                <td style="text-align:center;padding:0.75rem">Fair</td>
+                <td style="text-align:center;padding:0.75rem">Good</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:0.75rem"><strong>Design QA &amp; Refinement</strong></td>
+                <td style="text-align:center;padding:0.75rem">Fair</td>
+                <td style="text-align:center;padding:0.75rem"><strong>Excellent</strong></td>
+                <td style="text-align:center;padding:0.75rem">Good</td>
+                <td style="text-align:center;padding:0.75rem">Good</td>
+                <td style="text-align:center;padding:0.75rem">Poor</td>
+                <td style="text-align:center;padding:0.75rem">Fair</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <p><strong>Reading the matrix:</strong> &ldquo;Excellent&rdquo; means the tool handles the task reliably with minimal correction. &ldquo;Good&rdquo; means it produces useful output that needs refinement. &ldquo;Fair&rdquo; means it understands the task but output quality is inconsistent. &ldquo;Poor&rdquo; means the tool struggles to produce usable output for this specific task.</p>
+
+        <h2>Design-to-Code Translation</h2>
+
+        <p>The core UX designer workflow: you have a design (in Figma, Sketch, or your head) and you need working HTML/CSS/JS that matches it. This is where AI tools have the highest potential impact for designers.</p>
+
+        <h3>Cursor Pro: Visual Context Changes Everything</h3>
+        <p>Cursor&rsquo;s ability to paste images directly into the chat is transformative for design-to-code work. Screenshot your Figma frame, paste it into Cursor, and describe what you want. Cursor generates HTML and CSS that approximates the layout, spacing, and visual structure. It is not pixel-perfect on first pass &mdash; no tool is &mdash; but it gives you a 70-80% starting point that you refine rather than building from scratch.</p>
+
+        <p>Where Cursor excels is iterative refinement. Paste the screenshot again, point to the gap between your design and the output (&ldquo;the card spacing should be 24px not 16px, the title should be semibold not bold&rdquo;), and Cursor adjusts. This screenshot-iterate-refine loop is faster than writing CSS from scratch, especially for complex layouts.</p>
+
+        <p>With <code>.cursorrules</code>, you can enforce your design system conventions: &ldquo;Always use design tokens from tokens.css,&rdquo; &ldquo;Use the existing Button component from @/components/ui,&rdquo; &ldquo;Follow our spacing scale: 4, 8, 12, 16, 24, 32, 48px.&rdquo; This prevents Cursor from generating one-off values that diverge from the system.</p>
+
+        <h3>Claude Code: Design Intent, Not Just Pixels</h3>
+        <p>Claude Code cannot see images (it is terminal-based), but it compensates with exceptional understanding of design descriptions. Describe a layout in natural language &mdash; &ldquo;a pricing card with a highlighted popular tier, the selected tier should have an elevated shadow and accent border, secondary tiers should feel receded&rdquo; &mdash; and Claude Code generates HTML/CSS that captures the intent. It understands visual hierarchy, emphasis, and information architecture in ways that translate naturally to CSS.</p>
+
+        <p>Claude Code&rsquo;s strength is reasoning about <em>why</em> design decisions exist. Ask it to implement a navigation pattern and it considers touch target sizes, focus states, keyboard accessibility, and responsive behavior &mdash; the full UX picture, not just the visual surface. This makes its output more complete and closer to production-ready.</p>
+
+        <p>For Figma-to-code specifically, the workflow is: export your design as a structured description (layer names, spacing values, color tokens) and feed it to Claude Code. The output respects semantic HTML, uses appropriate landmarks, and structures the CSS logically. It will not match a screenshot pixel-for-pixel, but it produces clean, maintainable code that engineers can work with.</p>
+
+        <h3>Copilot: Fast Inline CSS Completions</h3>
+        <p>Copilot is not the best at generating complete layouts from descriptions, but it is excellent at the micro-level: write a CSS comment like <code>/* card with rounded corners, subtle shadow, hover lift effect */</code> and Copilot completes the properties. For designers who are comfortable writing CSS but want speed boosts, Copilot&rsquo;s inline completions feel like having an assistant who knows every CSS property and its syntax.</p>
+
+        <h2>Rapid Prototyping</h2>
+
+        <p>When you need a clickable prototype for a usability test next Tuesday, you do not need production code. You need something that looks real and behaves well enough to test the interaction model.</p>
+
+        <h3>Claude Code: Zero-to-Prototype in Minutes</h3>
+        <p>Claude Code is the best prototyping tool for UX designers because it generates complete, self-contained HTML files. Describe a flow &mdash; &ldquo;a three-step onboarding wizard with progress indicator, form validation on each step, animated transitions between steps, and a completion state with confetti&rdquo; &mdash; and Claude Code produces a single HTML file with embedded CSS and JavaScript that you can open in a browser immediately. No build step. No npm install. No framework configuration.</p>
+
+        <p>This matters enormously for designers. Most AI coding tools assume you are working inside a React project with a build pipeline. Claude Code is happy to generate a standalone <code>prototype.html</code> that does exactly what you described. Share it via email, host it on a simple server, or open it locally. The friction between &ldquo;idea&rdquo; and &ldquo;interactive artifact&rdquo; is as low as it gets.</p>
+
+        <p>For multi-page prototypes, Claude Code generates linked HTML files with consistent navigation, shared styles, and realistic transitions. Ask for &ldquo;a dashboard with sidebar navigation, three main views, and a settings modal&rdquo; and you get four HTML files with working navigation between them.</p>
+
+        <h3>Cursor Pro: Prototyping Inside Your Codebase</h3>
+        <p>If your prototype needs to use existing components from your design system, Cursor Pro is the better choice. Its codebase awareness means it knows about your Button, Card, Modal, and Input components. Ask it to &ldquo;build a checkout flow prototype using our existing components&rdquo; and it pulls in the real components rather than generating generic HTML. The prototype looks exactly like your product because it uses the same building blocks.</p>
+
+        <p>Cursor&rsquo;s Composer mode generates multi-file prototypes within your project structure. This is slower than Claude Code&rsquo;s standalone approach but produces output that is closer to production code and easier for engineers to adopt.</p>
+
+        <h3>Windsurf: Middle Ground</h3>
+        <p>Windsurf&rsquo;s Cascade feature handles multi-step prototyping tasks well. It can generate a series of connected pages with consistent styling. The output quality for CSS and layout is good, though it tends to over-engineer prototypes with unnecessary TypeScript types and error handling that you do not need for testing.</p>
+
+        <h2>Design System Implementation</h2>
+
+        <p>Design tokens, component variants, documentation, and governance. The design system is where UX designers and engineers must share a common language, and AI tools can bridge the gap.</p>
+
+        <h3>Cursor Pro: Design System Enforcement</h3>
+        <p>Cursor&rsquo;s <code>.cursorrules</code> file is effectively a machine-readable design system spec. Define your tokens, component APIs, and naming conventions, and Cursor enforces them across every file it touches. This is the closest thing to having a design system linter built into your AI assistant.</p>
+
+        <p>For token implementation, describe your design token structure and Cursor generates the CSS custom properties, TypeScript types, and component props that engineers need. It maintains consistency across files because it reads the entire codebase, ensuring a new component uses the same token references as existing ones.</p>
+
+        <pre><code>/* Cursor generates token-aware CSS like this */
+.card {
+  padding: var(--space-6);
+  border-radius: var(--radius-lg);
+  background: var(--color-surface);
+  box-shadow: var(--shadow-sm);
+  transition: box-shadow var(--duration-fast) var(--ease-out);
+}
+
+.card:hover {
+  box-shadow: var(--shadow-md);
+}</code></pre>
+
+        <h3>Claude Code: Token Architecture Design</h3>
+        <p>Claude Code excels at designing the token architecture itself. Describe your design system&rsquo;s needs &mdash; &ldquo;we need primitive color tokens, semantic aliases, component-specific tokens, and dark mode support&rdquo; &mdash; and Claude Code generates a complete token hierarchy with naming conventions, cascade rules, and documentation. It understands three-tier token architecture (primitive &rarr; semantic &rarr; component) and generates CSS custom properties that reference correctly through the layers.</p>
+
+        <p>For generating component documentation, Claude Code produces Storybook stories, usage guidelines, and prop tables from component code. Describe what the component does and Claude Code generates the documentation that helps other designers and engineers use it correctly.</p>
+
+        <h3>Token Generation Example</h3>
+        <p>A real-world token architecture that Claude Code or Cursor can generate and maintain:</p>
+
+        <pre><code>/* Primitive tokens — the raw palette */
+:root {
+  --blue-50: #eff6ff;
+  --blue-500: #3b82f6;
+  --blue-600: #2563eb;
+  --blue-700: #1d4ed8;
+  --gray-50: #f9fafb;
+  --gray-100: #f3f4f6;
+  --gray-200: #e5e7eb;
+  --gray-800: #1f2937;
+  --gray-900: #111827;
+}
+
+/* Semantic tokens — meaning, not color */
+:root {
+  --color-primary: var(--blue-600);
+  --color-primary-hover: var(--blue-700);
+  --color-surface: var(--gray-50);
+  --color-surface-raised: white;
+  --color-text: var(--gray-900);
+  --color-text-muted: var(--gray-800);
+  --color-border: var(--gray-200);
+}
+
+/* Dark mode — swap semantics, not components */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-primary: var(--blue-500);
+    --color-primary-hover: var(--blue-600);
+    --color-surface: var(--gray-900);
+    --color-surface-raised: var(--gray-800);
+    --color-text: var(--gray-50);
+    --color-text-muted: var(--gray-200);
+    --color-border: var(--gray-800);
+  }
+}
+
+/* Spacing scale */
+:root {
+  --space-1: 0.25rem;  /* 4px */
+  --space-2: 0.5rem;   /* 8px */
+  --space-3: 0.75rem;  /* 12px */
+  --space-4: 1rem;     /* 16px */
+  --space-6: 1.5rem;   /* 24px */
+  --space-8: 2rem;     /* 32px */
+  --space-12: 3rem;    /* 48px */
+}</code></pre>
+
+        <h2>Animation and Micro-Interactions</h2>
+
+        <p>The difference between a UI that feels alive and one that feels static comes down to motion. Easing curves, timing, sequencing, and purpose &mdash; these are design decisions that most AI tools treat as afterthoughts.</p>
+
+        <h3>Claude Code: Motion Design Language</h3>
+        <p>Claude Code understands motion design principles. Ask for &ldquo;a card that lifts on hover with a smooth spring-like ease, and the shadow expands slightly before the card moves up&rdquo; and it produces CSS with sequenced transitions, appropriate cubic-bezier curves, and the shadow-then-translate ordering you described. It does not just add <code>transition: all 0.3s ease</code> to everything.</p>
+
+        <p>For complex animation sequences, Claude Code generates CSS @keyframes or JavaScript-based animations with proper timing. Describe a page entrance animation &mdash; &ldquo;elements fade in and slide up sequentially with 50ms stagger, the hero content first, then the navigation, then the sidebar&rdquo; &mdash; and Claude Code produces the staggered animation with correct delays and a natural deceleration curve.</p>
+
+        <pre><code>/* Claude Code generates nuanced motion */
+.card {
+  transition:
+    transform 200ms cubic-bezier(0.2, 0, 0, 1),
+    box-shadow 150ms cubic-bezier(0.2, 0, 0, 1);
+  /* shadow leads the transform by 50ms for depth perception */
+}
+
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow:
+    0 4px 6px -1px rgb(0 0 0 / 0.1),
+    0 2px 4px -2px rgb(0 0 0 / 0.1);
+}
+
+/* Staggered entrance */
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hero { animation: slideUp 400ms cubic-bezier(0.2, 0, 0, 1) both; }
+.nav { animation: slideUp 400ms cubic-bezier(0.2, 0, 0, 1) 50ms both; }
+.sidebar { animation: slideUp 400ms cubic-bezier(0.2, 0, 0, 1) 100ms both; }</code></pre>
+
+        <h3>Cursor Pro: Animation Within Context</h3>
+        <p>Cursor is good at adding animations to existing components without breaking them. If your component already has transitions, Cursor reads the existing timing and easing values and generates new animations that feel consistent. It also respects <code>prefers-reduced-motion</code> when reminded in <code>.cursorrules</code>, which is important for accessibility.</p>
+
+        <h3>The Reduced Motion Gap</h3>
+        <p>A critical UX design consideration: all motion must respect <code>prefers-reduced-motion</code>. Most AI tools forget this unless prompted. Add it to your rules file:</p>
+
+        <pre><code>@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}</code></pre>
+
+        <h2>Responsive Layouts</h2>
+
+        <p>Modern responsive design goes far beyond media queries. Container queries, fluid typography, intrinsic sizing, and logical properties. Here is where each tool stands.</p>
+
+        <h3>Claude Code: Modern CSS Fluency</h3>
+        <p>Claude Code generates genuinely modern responsive CSS. Ask for a responsive grid and you get <code>clamp()</code> for fluid sizing, <code>container</code> queries where appropriate, <code>min()</code>/<code>max()</code> for intrinsic constraints, and proper <code>aspect-ratio</code> for media. It understands the difference between a layout that adapts at breakpoints and one that flows fluidly.</p>
+
+        <pre><code>/* Claude Code generates modern responsive patterns */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(300px, 100%), 1fr));
+  gap: var(--space-6);
+}
+
+.heading {
+  font-size: clamp(1.5rem, 1rem + 2vw, 2.5rem);
+  line-height: 1.2;
+}
+
+.hero-image {
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  width: 100%;
+}
+
+/* Container queries for component-level responsiveness */
+.card-container {
+  container-type: inline-size;
+}
+
+@container (min-width: 400px) {
+  .card {
+    flex-direction: row;
+    align-items: center;
+  }
+  .card-image {
+    width: 40%;
+    flex-shrink: 0;
+  }
+}</code></pre>
+
+        <h3>Cursor Pro: Responsive Refactoring</h3>
+        <p>Cursor excels at making existing layouts responsive. Paste a component that only works at desktop width and ask Cursor to &ldquo;make this responsive with mobile-first breakpoints.&rdquo; Because it reads your existing CSS, it adapts rather than rewrites &mdash; maintaining your visual intent while adding the responsive behavior. It also handles the tricky cases: navigation patterns that collapse to hamburger menus, data tables that reflow for mobile, and form layouts that stack vertically on small screens.</p>
+
+        <h3>Copilot: Quick Media Queries</h3>
+        <p>Copilot handles basic responsive patterns well at the line level. Type <code>@media</code> and it completes with breakpoints that match your existing stylesheet. For designers who know what responsive CSS they want and just need faster typing, Copilot delivers. It does not generate complex fluid layouts from scratch, but it accelerates the mechanical work of writing media queries and responsive overrides.</p>
+
+        <h2>Design QA and Refinement</h2>
+
+        <p>The implementation is &ldquo;done&rdquo; but it does not match the design. Pixel differences, missing states, wrong font weights, incorrect spacing. Design QA is where AI tools can save hours of back-and-forth with engineers.</p>
+
+        <h3>Cursor Pro: Visual Diff Refinement</h3>
+        <p>Cursor&rsquo;s image pasting enables a powerful design QA workflow: screenshot the design, screenshot the implementation, paste both into Cursor, and ask &ldquo;what are the differences?&rdquo; Cursor identifies visual discrepancies &mdash; spacing, colors, font properties, alignment &mdash; and generates the CSS fixes. This turns design QA from a tedious comment-on-PR process into a direct-fix workflow.</p>
+
+        <p>For component state coverage, Cursor reads your component code and can identify which states are implemented (default, hover, active, focus, disabled, loading, error) and which are missing. This catches the common problem of engineers implementing the happy path but forgetting edge states that were in the Figma design.</p>
+
+        <h3>Claude Code: Systematic QA Checklist</h3>
+        <p>Claude Code cannot compare screenshots, but it excels at systematic QA reviews. Feed it a component and it checks: Are all interactive states styled? Are focus states visible? Do colors use tokens or hardcoded values? Is the spacing using the design system scale? Are there hover/active states for clickable elements? Does the responsive behavior degrade gracefully?</p>
+
+        <p>For design system compliance, Claude Code can audit a codebase for token usage, flagging everywhere hardcoded values appear instead of design tokens. This is invaluable for maintaining design system consistency across a growing codebase.</p>
+
+        <h2>Head-to-Head: 12 UX Design Tasks</h2>
+
+        <div style="overflow-x:auto">
+          <table style="width:100%;border-collapse:collapse;margin:1.5rem 0">
+            <thead>
+              <tr style="border-bottom:2px solid var(--border)">
+                <th style="text-align:left;padding:0.75rem">Task</th>
+                <th style="text-align:left;padding:0.75rem">Best Tool</th>
+                <th style="text-align:left;padding:0.75rem">Why</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:0.75rem">Screenshot to HTML/CSS</td>
+                <td style="padding:0.75rem"><strong>Cursor Pro</strong></td>
+                <td style="padding:0.75rem">Image input gives direct visual reference; iterative refinement via repasting</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:0.75rem">Description to prototype</td>
+                <td style="padding:0.75rem"><strong>Claude Code</strong></td>
+                <td style="padding:0.75rem">Generates complete standalone HTML prototypes with no build step</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:0.75rem">Design token architecture</td>
+                <td style="padding:0.75rem"><strong>Claude Code</strong></td>
+                <td style="padding:0.75rem">Understands three-tier token systems, cascade rules, dark mode strategies</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:0.75rem">Component variant generation</td>
+                <td style="padding:0.75rem"><strong>Cursor Pro</strong></td>
+                <td style="padding:0.75rem">Codebase-aware; generates variants consistent with existing component API</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:0.75rem">CSS animation / transitions</td>
+                <td style="padding:0.75rem"><strong>Claude Code</strong></td>
+                <td style="padding:0.75rem">Understands easing curves, sequencing, and motion design principles</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:0.75rem">Responsive grid layouts</td>
+                <td style="padding:0.75rem"><strong>Claude Code</strong></td>
+                <td style="padding:0.75rem">Generates modern CSS: container queries, clamp(), auto-fill grids</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:0.75rem">Existing component refactoring</td>
+                <td style="padding:0.75rem"><strong>Cursor Pro</strong></td>
+                <td style="padding:0.75rem">Multi-file awareness prevents breaking dependencies when restructuring</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:0.75rem">Design-implementation diff</td>
+                <td style="padding:0.75rem"><strong>Cursor Pro</strong></td>
+                <td style="padding:0.75rem">Paste design + implementation screenshots, get CSS fixes</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:0.75rem">Storybook story generation</td>
+                <td style="padding:0.75rem"><strong>Cursor Pro</strong></td>
+                <td style="padding:0.75rem">Reads component props and generates stories for all variants and states</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:0.75rem">Dark mode implementation</td>
+                <td style="padding:0.75rem"><strong>Claude Code</strong></td>
+                <td style="padding:0.75rem">Designs semantic token layers that make dark mode a token swap, not a rewrite</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:0.75rem">Form UX patterns</td>
+                <td style="padding:0.75rem"><strong>Claude Code</strong></td>
+                <td style="padding:0.75rem">Generates forms with validation, error states, accessible labels, and feedback</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:0.75rem">Quick CSS property completion</td>
+                <td style="padding:0.75rem"><strong>Copilot</strong></td>
+                <td style="padding:0.75rem">Fastest inline CSS completions for designers who know what they want</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h2>Cost Analysis for UX Designers</h2>
+
+        <div style="overflow-x:auto">
+          <table style="width:100%;border-collapse:collapse;margin:1.5rem 0">
+            <thead>
+              <tr style="border-bottom:2px solid var(--border)">
+                <th style="text-align:left;padding:0.75rem">Tier</th>
+                <th style="text-align:left;padding:0.75rem">Stack</th>
+                <th style="text-align:center;padding:0.75rem">Cost</th>
+                <th style="text-align:left;padding:0.75rem">Best For</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:0.75rem">Free</td>
+                <td style="padding:0.75rem">Copilot Free</td>
+                <td style="text-align:center;padding:0.75rem">$0</td>
+                <td style="padding:0.75rem">Designers writing occasional CSS, quick property lookups</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:0.75rem">Free</td>
+                <td style="padding:0.75rem">Gemini CLI Free</td>
+                <td style="text-align:center;padding:0.75rem">$0</td>
+                <td style="padding:0.75rem">Large CSS file analysis, token audits</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:0.75rem">Starter</td>
+                <td style="padding:0.75rem">Copilot Pro</td>
+                <td style="text-align:center;padding:0.75rem">$10</td>
+                <td style="padding:0.75rem">More completions for sustained styling work</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:0.75rem">Pro Design</td>
+                <td style="padding:0.75rem">Claude Code</td>
+                <td style="text-align:center;padding:0.75rem">$20</td>
+                <td style="padding:0.75rem">Prototyping, animation, design-to-code from descriptions</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:0.75rem">Pro Design</td>
+                <td style="padding:0.75rem">Cursor Pro</td>
+                <td style="text-align:center;padding:0.75rem">$20</td>
+                <td style="padding:0.75rem">Design QA, component work, screenshot-based workflow</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:0.75rem">Combo</td>
+                <td style="padding:0.75rem">Claude Code + Copilot Free</td>
+                <td style="text-align:center;padding:0.75rem">$20</td>
+                <td style="padding:0.75rem">Best overall: prototyping + inline completions</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:0.75rem">Max</td>
+                <td style="padding:0.75rem">Claude Code + Cursor Pro</td>
+                <td style="text-align:center;padding:0.75rem">$40</td>
+                <td style="padding:0.75rem">Full pipeline: design-to-code + QA + design system + prototyping</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h2>Workflow Patterns for UX Designers</h2>
+
+        <h3>Pattern 1: The Rapid Prototyper</h3>
+        <p>You need an interactive prototype for a usability test or stakeholder presentation.</p>
+        <ol>
+          <li><strong>Describe the flow to Claude Code:</strong> &ldquo;Three-step onboarding wizard. Step 1: account type selection with card-style radio buttons. Step 2: profile form with real-time validation. Step 3: workspace setup with a progress animation. Include a progress bar at the top, back/next buttons, and smooth slide transitions between steps.&rdquo;</li>
+          <li><strong>Get a working prototype:</strong> Claude Code generates a self-contained HTML file. Open it in a browser. The interactions work.</li>
+          <li><strong>Refine with Claude Code:</strong> &ldquo;The transition between steps should be faster &mdash; 200ms not 400ms. The progress bar should use our brand blue. Add a subtle pulse animation to the CTA button on the final step.&rdquo;</li>
+          <li><strong>Test with users:</strong> Share the HTML file or host it. Collect feedback on the interaction model, not the pixel details.</li>
+        </ol>
+
+        <h3>Pattern 2: The Design System Builder</h3>
+        <p>You are building or extending a design system and need to implement tokens, components, and documentation.</p>
+        <ol>
+          <li><strong>Token architecture with Claude Code:</strong> Describe your design system needs. Claude Code generates the complete token hierarchy: primitives, semantics, component tokens, with dark mode support.</li>
+          <li><strong>Component implementation with Cursor Pro:</strong> Build components in your codebase. Cursor&rsquo;s <code>.cursorrules</code> enforces token usage and naming conventions. Generate all component variants from the spec.</li>
+          <li><strong>Documentation with Claude Code:</strong> Feed each component to Claude Code. It generates Storybook stories, usage guidelines, do/don&rsquo;t examples, and accessibility notes.</li>
+          <li><strong>QA with Cursor Pro:</strong> Screenshot the Figma component, paste into Cursor alongside the implementation. Fix any visual discrepancies.</li>
+        </ol>
+
+        <h3>Pattern 3: The Design QA Specialist</h3>
+        <p>Engineers implemented your designs. Now you need to verify fidelity and fix discrepancies.</p>
+        <ol>
+          <li><strong>Visual diff with Cursor Pro:</strong> Screenshot the Figma design and the implementation side by side. Paste both into Cursor. Ask for differences.</li>
+          <li><strong>Generate fixes:</strong> Cursor produces the CSS changes needed to close the gap. Apply them directly.</li>
+          <li><strong>State coverage audit with Claude Code:</strong> Feed the component code to Claude Code. Ask &ldquo;which interactive states are styled? Which are missing?&rdquo; Claude Code identifies gaps: no disabled state, no loading skeleton, no error state, focus ring missing.</li>
+          <li><strong>Token compliance audit:</strong> Claude Code scans for hardcoded values that should be tokens. Every <code>#3b82f6</code> that should be <code>var(--color-primary)</code> gets flagged.</li>
+        </ol>
+
+        <h3>Pattern 4: The Interaction Designer</h3>
+        <p>You are designing and implementing micro-interactions that bring the UI to life.</p>
+        <ol>
+          <li><strong>Describe the interaction to Claude Code:</strong> &ldquo;When the user clicks Add to Cart, the button should show a brief checkmark animation, the cart icon in the header should bounce, and a toast notification should slide in from the bottom right with a 3-second auto-dismiss.&rdquo;</li>
+          <li><strong>Implement with Claude Code:</strong> Get the complete CSS animations and JavaScript. Claude Code understands sequencing &mdash; the button animation triggers first, the cart bounce follows with a 200ms delay, the toast appears after 400ms.</li>
+          <li><strong>Integrate with Cursor Pro:</strong> Move the interaction code into your component library. Cursor ensures it works with existing state management and does not conflict with other animations.</li>
+          <li><strong>Add reduced motion fallback:</strong> Claude Code generates the <code>prefers-reduced-motion</code> variant that removes non-essential motion while preserving the functional feedback (checkmark still appears, just without animation).</li>
+        </ol>
+
+        <h2>Rules Files: Enforcing Design Standards</h2>
+
+        <h3>Example .cursorrules for UX Design</h3>
+        <pre><code># UX Design Engineering Rules
+
+## Design Tokens
+- ALWAYS use design tokens from tokens.css — never hardcode colors, spacing, or typography
+- Spacing scale: --space-1 (4px) through --space-12 (48px)
+- Colors: use semantic tokens (--color-primary, --color-surface) not primitives (--blue-500)
+- Typography: use type scale tokens (--text-sm, --text-base, --text-lg)
+- Border radius: use radius tokens (--radius-sm, --radius-md, --radius-lg)
+
+## CSS Patterns
+- Mobile-first: start with mobile layout, add complexity with min-width queries
+- Use CSS Grid for page layouts, Flexbox for component internals
+- Use clamp() for fluid typography instead of breakpoint-specific sizes
+- Use container queries for component-level responsiveness
+- Use logical properties (margin-inline, padding-block) for RTL support
+
+## Components
+- Always check existing components in @/components/ui/ before creating new ones
+- Component variants should use data-attributes (data-size, data-variant) not class names
+- All interactive elements need: default, hover, active, focus-visible, disabled states
+- Focus styles: 2px offset outline using --color-focus, never outline: none without replacement
+
+## Animation
+- Default transition: 150ms for interactions, 200ms for layout changes
+- Easing: cubic-bezier(0.2, 0, 0, 1) for enter, cubic-bezier(0.4, 0, 1, 1) for exit
+- Always include @media (prefers-reduced-motion: reduce) fallback
+- No animation on elements smaller than 24px — it creates visual noise
+
+## Prototyping
+- Prototypes can skip TypeScript, error handling, and state management
+- Prototypes MUST look visually correct — that is their purpose
+- Use inline styles in prototypes if it is faster than setting up tokens
+- Include realistic content (not lorem ipsum) in prototypes</code></pre>
+
+        <h3>Example CLAUDE.md for UX Design</h3>
+        <pre><code># UX Design Project Context
+
+## Stack
+- Framework: React 18 with TypeScript
+- Styling: Tailwind CSS v4 with custom theme
+- Components: Radix UI primitives + custom design system
+- Icons: Lucide React
+- Animation: Framer Motion for complex, CSS for simple
+
+## Design System
+- Tokens are in src/styles/tokens.css
+- Components are in src/components/ui/
+- Each component has variants via data-attributes
+- Storybook stories are colocated (Button.stories.tsx)
+
+## When I Ask for a Prototype
+1. Generate a standalone HTML file unless I specify otherwise
+2. Embed all CSS and JS inline — no external dependencies
+3. Use realistic content, not placeholders
+4. Include all interactive states (hover, active, focus)
+5. Make it responsive — it will be shown on phones too
+6. Add smooth transitions between states and pages
+
+## When I Ask to Implement a Design
+1. Use existing components from src/components/ui/ first
+2. Use design tokens — never hardcode values
+3. Implement ALL states from the design (hover, disabled, loading, error)
+4. Add prefers-reduced-motion handling for any animation
+5. Test at 320px, 768px, and 1280px widths</code></pre>
+
+        <h2>Common Pitfalls: AI Tools and UX Design</h2>
+
+        <ol>
+          <li><strong>Generic components instead of your design system.</strong> AI tools default to generating bespoke HTML/CSS for every request. They do not know you already have a Button, Card, and Modal component unless you tell them. Always reference your component library in rules files or prompts. A generated <code>&lt;button class=&quot;bg-blue-500 px-4 py-2 rounded&rdquo;&gt;</code> when you have <code>&lt;Button variant=&quot;primary&quot;&gt;</code> is technical debt, not productivity.</li>
+          <li><strong>Hardcoded values everywhere.</strong> AI tools love magic numbers. <code>margin: 15px</code>, <code>color: #374151</code>, <code>font-size: 14px</code>. Every hardcoded value is a divergence from your design system that will not update when tokens change. Enforce token usage in your rules file and audit output for hardcoded values.</li>
+          <li><strong>Missing interaction states.</strong> AI tools generate the default state beautifully and forget everything else. No hover. No focus-visible. No disabled. No loading. No error. A component is not done until all interactive states are styled. Explicitly ask for all states or list them in your rules file.</li>
+          <li><strong>Over-engineered prototypes.</strong> You asked for a prototype and got TypeScript generics, custom hooks, error boundaries, and a state management library. For prototyping, explicitly tell the tool: &ldquo;This is a prototype. HTML, CSS, and vanilla JS only. Skip types, error handling, and build tools.&rdquo;</li>
+          <li><strong>Desktop-only output.</strong> Most AI tools generate desktop layouts by default. If you do not specify responsive behavior, you will get a fixed-width layout that breaks on mobile. Always specify &ldquo;responsive&rdquo; or &ldquo;mobile-first&rdquo; in your prompts, or add it to your rules file.</li>
+          <li><strong>Ignoring prefers-reduced-motion.</strong> AI tools add animations without considering users who have requested reduced motion. This is both a UX failure and an accessibility failure. Every animation should have a <code>prefers-reduced-motion</code> fallback. No exceptions.</li>
+        </ol>
+
+        <h2>Recommendations by Role</h2>
+
+        <div style="overflow-x:auto">
+          <table style="width:100%;border-collapse:collapse;margin:1.5rem 0">
+            <thead>
+              <tr style="border-bottom:2px solid var(--border)">
+                <th style="text-align:left;padding:0.75rem">Role</th>
+                <th style="text-align:left;padding:0.75rem">Recommended Stack</th>
+                <th style="text-align:center;padding:0.75rem">Monthly Cost</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:0.75rem">UX Designer Learning to Code</td>
+                <td style="padding:0.75rem">Copilot Free &mdash; inline completions teach CSS patterns as you type</td>
+                <td style="text-align:center;padding:0.75rem">$0</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:0.75rem">UX Designer Building Prototypes</td>
+                <td style="padding:0.75rem">Claude Code &mdash; fastest path from description to interactive prototype</td>
+                <td style="text-align:center;padding:0.75rem">$20</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:0.75rem">UX Designer on an Engineering Team</td>
+                <td style="padding:0.75rem">Cursor Pro &mdash; works inside the codebase, uses existing components</td>
+                <td style="text-align:center;padding:0.75rem">$20</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:0.75rem">Design System Lead</td>
+                <td style="padding:0.75rem">Claude Code + Cursor Pro &mdash; architecture design + codebase enforcement</td>
+                <td style="text-align:center;padding:0.75rem">$40</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:0.75rem">UX/UI Freelancer</td>
+                <td style="padding:0.75rem">Claude Code + Copilot Free &mdash; rapid prototyping + inline CSS help</td>
+                <td style="text-align:center;padding:0.75rem">$20</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:0.75rem">Design QA Specialist</td>
+                <td style="padding:0.75rem">Cursor Pro &mdash; visual diff workflow with screenshot comparison</td>
+                <td style="text-align:center;padding:0.75rem">$20</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h2>The Bottom Line</h2>
+
+        <p>AI coding tools for UX designers in 2026 split along the creation-refinement axis:</p>
+
+        <ul>
+          <li><strong>Creating from scratch?</strong> Claude Code ($20/mo). It translates design descriptions into complete, working prototypes faster than any other tool. Self-contained HTML files with no build step, modern CSS, thoughtful animations, and responsive layouts. It understands design intent, not just code syntax.</li>
+          <li><strong>Refining within a codebase?</strong> Cursor Pro ($20/mo) with a comprehensive <code>.cursorrules</code> file. Screenshot-based design QA, codebase-aware component generation, design system enforcement, and multi-file refactoring. The visual context from image pasting changes the workflow entirely.</li>
+          <li><strong>Doing both?</strong> Claude Code + Copilot Free ($20/mo) for most UX designers. Claude Code + Cursor Pro ($40/mo) for design system leads who need both creation and governance.</li>
+          <li><strong>Budget-constrained?</strong> Copilot Free ($0) for inline CSS completions. Add Gemini CLI Free for large-file analysis. Together, $0.</li>
+        </ul>
+
+        <p>The biggest gap in AI tooling for UX designers is <strong>Figma-native integration</strong>. No AI coding tool directly reads a Figma file and produces matching code with your design tokens. The workaround is either screenshots (Cursor) or detailed descriptions (Claude Code). The tool that closes this gap &mdash; reading Figma&rsquo;s design token format, understanding component variants, and generating code that uses your existing component library &mdash; will be the one that finally eliminates the design-development handoff gap.</p>
+
+        <p>Compare all tools and pricing on our <a href="/" style="color:var(--accent)">main comparison table</a>, read the <a href="/blog/hidden-costs-ai-coding-tools.html" style="color:var(--accent)">hidden costs guide</a> before committing to a paid plan, or check the <a href="/blog/ai-coding-tools-for-frontend-engineers-2026.html" style="color:var(--accent)">frontend engineers guide</a> if you want deeper technical CSS coverage.</p>
+
+        <h2>Related on CodeCosts</h2>
+        <ul>
+          <li><a href="/blog/ai-coding-tools-for-frontend-engineers-2026.html" style="color:var(--accent)">AI Coding Tools for Frontend Engineers (2026)</a> &mdash; Full frontend development: React, Vue, CSS architecture, build tools</li>
+          <li><a href="/blog/ai-coding-tools-for-product-managers-2026.html" style="color:var(--accent)">AI Coding Tools for Product Managers (2026)</a> &mdash; Prototyping, specs, user research tools</li>
+          <li><a href="/blog/ai-coding-tools-for-accessibility-engineers-2026.html" style="color:var(--accent)">AI Coding Tools for Accessibility Engineers (2026)</a> &mdash; WCAG compliance, ARIA patterns, a11y testing</li>
+          <li><a href="/blog/ai-coding-tools-for-freelancers-2026.html" style="color:var(--accent)">AI Coding Tools for Freelancers (2026)</a> &mdash; Multi-client workflows, time-to-value optimization</li>
+          <li><a href="/blog/ai-coding-tools-for-technical-leads-staff-engineers-2026.html" style="color:var(--accent)">AI Coding Tools for Technical Leads &amp; Staff Engineers (2026)</a> &mdash; Code review, standards enforcement, team enablement</li>
+          <li><a href="/blog/cheapest-ai-coding-tool-2026.html" style="color:var(--accent)">Cheapest AI Coding Tools in 2026: Complete Cost Comparison</a></li>
+        </ul>
+      </div>
+    </article>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>CodeCosts &mdash; Independent AI coding tool price tracker. Updated March 2026.</p>
+      <p style="margin-top:0.5rem"><a href="/" style="color:var(--accent)">Compare all tools</a> &middot; <a href="/blog/" style="color:var(--accent)">Blog</a> &middot; <a href="/blog/feed.xml" style="color:var(--accent)">RSS</a></p>
+    </div>
+  </footer>
+</body>
+</html>

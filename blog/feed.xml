@@ -9,6 +9,14 @@
     <atom:link href="https://codecosts.pages.dev/blog/feed.xml" rel="self" type="application/rss+xml"/>
 
     <item>
+      <title>AI Coding Tools for UX Designers 2026: Prototyping, Design-to-Code, Design Systems &amp; Interaction Implementation Guide</title>
+      <link>https://codecosts.pages.dev/blog/ai-coding-tools-for-ux-designers-2026.html</link>
+      <description>The UX designer's guide to AI coding tools in 2026. Design-to-code translation, rapid prototyping, design system implementation, animation and micro-interactions, responsive layouts, and design QA.</description>
+      <pubDate>Sat, 28 Mar 2026 23:59:00 GMT</pubDate>
+      <guid>https://codecosts.pages.dev/blog/ai-coding-tools-for-ux-designers-2026.html</guid>
+    </item>
+
+    <item>
       <title>AI Coding Tools for Accessibility Engineers 2026: WCAG, ARIA, Screen Readers &amp; Automated A11y Testing Guide</title>
       <link>https://codecosts.pages.dev/blog/ai-coding-tools-for-accessibility-engineers-2026.html</link>
       <description>The accessibility engineer's guide to AI coding tools in 2026. WCAG compliance mapping, ARIA pattern generation, screen reader compatibility, focus management, color contrast analysis, keyboard navigation, automated a11y testing, and remediation workflows.</description>

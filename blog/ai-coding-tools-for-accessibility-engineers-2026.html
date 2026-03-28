@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Coding Tools for Accessibility Engineers 2026: WCAG, ARIA, Screen Readers &amp; Automated A11y Testing Guide</title>
+  <meta name="description" content="The accessibility engineer's guide to AI coding tools in 2026. Every tool ranked for WCAG compliance, ARIA pattern generation, screen reader compatibility, color contrast analysis, keyboard navigation, automated a11y testing, and remediation workflows. Task-first recommendations from $0 to $40/mo.">
+  <link rel="canonical" href="https://codecosts.pages.dev/blog/ai-coding-tools-for-accessibility-engineers-2026.html">
+  <meta property="og:title" content="AI Coding Tools for Accessibility Engineers 2026: WCAG, ARIA &amp; A11y Testing">
+  <meta property="og:description" content="Every AI coding tool ranked for accessibility engineering. WCAG compliance, ARIA patterns, screen reader testing, color contrast, keyboard navigation, and the $0 to $40/mo stacks.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://codecosts.pages.dev/blog/ai-coding-tools-for-accessibility-engineers-2026.html">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="AI Coding Tools for Accessibility Engineers 2026: WCAG, ARIA &amp; A11y Testing">
+  <meta name="twitter:description" content="Every AI coding tool ranked for accessibility engineering. WCAG compliance, ARIA patterns, screen reader testing, color contrast, and the $0 to $40/mo stacks.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💰</text></svg>">
+  <link rel="stylesheet" href="../style.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "AI Coding Tools for Accessibility Engineers 2026: WCAG, ARIA, Screen Readers & Automated A11y Testing Guide",
+    "datePublished": "2026-03-28",
+    "dateModified": "2026-03-28",
+    "author": { "@type": "Organization", "name": "CodeCosts" },
+    "publisher": { "@type": "Organization", "name": "CodeCosts" },
+    "description": "The accessibility engineer's guide to AI coding tools in 2026. Every tool ranked for WCAG compliance, ARIA pattern generation, screen reader compatibility, color contrast analysis, keyboard navigation, and automated a11y testing."
+  }
+  </script>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <a href="/" style="text-decoration:none;color:inherit"><h1><span class="logo">$_</span> CodeCosts</h1></a>
+      <p class="tagline">AI Coding Tool News &amp; Analysis</p>
+      <nav>
+        <a href="/">Tools</a>
+        <a href="/blog/" class="active">Blog</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <article class="card">
+      <h2>AI Coding Tools for Accessibility Engineers 2026: WCAG, ARIA, Screen Readers &amp; Automated A11y Testing Guide</h2>
+      <div class="article-meta">
+        <span>March 28, 2026</span>
+        <span>22 min read</span>
+      </div>
+
+      <div class="article-content">
+        <p>Your backlog has 340 WCAG violations from the latest axe-core scan, 12 of them critical. Legal just forwarded a demand letter citing ADA Title III. The design team shipped a new component library last sprint with zero accessibility documentation, and three of the seven new components trap keyboard focus. The marketing site has decorative images with alt text that says &ldquo;image1.png&rdquo; and form inputs with no associated labels. A screen reader user reported that the checkout flow is completely unusable because live regions are not announcing cart updates. This is a normal week for an accessibility engineer.</p>
+
+        <p>Most AI coding tool reviews test whether a tool can write a React component or generate a REST endpoint. That tells you nothing about whether it can generate correct ARIA attributes for a custom combobox, reason about focus management in a single-page application, produce color combinations that meet WCAG 2.2 AA contrast ratios, or write axe-core integration tests that catch regressions before they ship.</p>
+
+        <p>This guide evaluates every major AI coding tool through the lens of what accessibility engineers actually do. Not frontend engineering broadly (building UI), not QA (testing generally). Accessibility engineering: ensuring digital products are perceivable, operable, understandable, and robust for all users, including those who use assistive technologies.</p>
+
+        <div class="callout tip">
+          <div class="callout-title">TL;DR</div>
+          <p><strong>Best free ($0):</strong> GitHub Copilot Free &mdash; generates semantic HTML patterns and basic ARIA attributes; 2,000 completions/mo covers focused a11y remediation work. <strong>Best for remediation ($20/mo):</strong> Claude Code &mdash; strongest at reasoning through complex ARIA patterns, focus management logic, WCAG success criteria interpretation, and explaining <em>why</em> something fails, not just what to fix. <strong>Best for implementation ($20/mo):</strong> Cursor Pro &mdash; codebase-aware component refactoring, enforces a11y patterns via <code>.cursorrules</code>, multi-file fixes when updating shared components. <strong>Best combo ($20/mo):</strong> Claude Code + Copilot Free &mdash; Claude Code for a11y architecture decisions and complex ARIA, Copilot for inline completions during remediation.</p>
+        </div>
+
+        <h2>Why Accessibility Engineering Is Different</h2>
+
+        <p>Accessibility engineers evaluate AI tools differently from most engineering roles. You are not just writing code that works visually. You are ensuring code works for users who cannot see the screen, cannot use a mouse, process information differently, or use assistive technologies that interact with the DOM in ways most developers never consider. Here is what matters:</p>
+
+        <ul>
+          <li><strong>Semantic HTML is the foundation, not a nice-to-have:</strong> Most AI tools default to <code>&lt;div&gt;</code> and <code>&lt;span&gt;</code> for everything, then bolt on ARIA to compensate. This is fundamentally wrong. A <code>&lt;button&gt;</code> gives you keyboard interaction, focus management, and screen reader announcement for free. A <code>&lt;div role=&quot;button&quot; tabindex=&quot;0&quot;&gt;</code> requires you to manually implement Enter and Space key handlers, focus styles, and the correct ARIA states. You need AI tools that reach for native HTML elements first and only use ARIA when native semantics are genuinely insufficient.</li>
+          <li><strong>ARIA is a contract, not a decoration:</strong> Adding <code>role=&quot;tab&quot;</code> to an element is a promise to assistive technology that this element behaves like a tab. That means it must be inside a <code>tablist</code>, it must have <code>aria-selected</code>, arrow keys must move between tabs, and the associated <code>tabpanel</code> must have <code>aria-labelledby</code> pointing back. Most AI tools add ARIA roles without implementing the required keyboard interaction patterns or state management. Incomplete ARIA is worse than no ARIA &mdash; it tells screen readers to expect behavior that does not exist.</li>
+          <li><strong>Focus management is invisible but critical:</strong> When a modal opens, focus must move into it. When it closes, focus must return to the trigger. When a list item is deleted, focus must move to a logical next element, not get lost on the <code>&lt;body&gt;</code>. When a single-page app navigates, focus must move to the new content or a skip link. AI tools that generate modals, dialogs, and dynamic content without focus management create experiences where keyboard and screen reader users get stranded.</li>
+          <li><strong>Color is not information:</strong> &ldquo;Click the red button&rdquo; is meaningless to a colorblind user. Error states communicated only through color fail for 8% of men. Graphs that use color alone to distinguish data series are useless to millions. You need AI tools that understand WCAG 1.4.1 (Use of Color) and generate components that convey information through multiple channels: text, icons, patterns, and position, not just color.</li>
+          <li><strong>Testing requires assistive technology knowledge:</strong> An axe-core scan catches about 30-40% of accessibility issues. The rest require manual testing with screen readers (VoiceOver, NVDA, JAWS), keyboard-only navigation, zoom to 200-400%, and Windows High Contrast Mode. You need AI tools that can generate test cases that go beyond automated scanning and describe manual testing procedures for the issues automation cannot catch.</li>
+          <li><strong>Legal compliance is not optional:</strong> WCAG 2.1 AA is the de facto legal standard in most jurisdictions. The EU&rsquo;s European Accessibility Act (EAA) takes effect June 2025. ADA Title III lawsuits hit 4,600+ in 2024. You need AI tools that understand the difference between WCAG A, AA, and AAA, know which success criteria apply to which content types, and can map violations to specific WCAG references &mdash; not just say &ldquo;this needs better accessibility.&rdquo;</li>
+        </ul>
+
+        <h2>Accessibility Engineer Task Support Matrix</h2>
+
+        <p>Here is how each tool performs on the six core tasks that define an accessibility engineer&rsquo;s work:</p>
+
+        <div style="overflow-x:auto">
+          <table style="width:100%;border-collapse:collapse;margin:1.5rem 0">
+            <thead>
+              <tr style="border-bottom:2px solid var(--border)">
+                <th style="text-align:left;padding:0.75rem">Task</th>
+                <th style="text-align:center;padding:0.75rem">Copilot</th>
+                <th style="text-align:center;padding:0.75rem">Cursor</th>
+                <th style="text-align:center;padding:0.75rem">Windsurf</th>
+                <th style="text-align:center;padding:0.75rem">Claude Code</th>
+                <th style="text-align:center;padding:0.75rem">Amazon Q</th>
+                <th style="text-align:center;padding:0.75rem">Gemini CLI</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:0.75rem"><strong>Semantic HTML &amp; ARIA</strong></td>
+                <td style="text-align:center;padding:0.75rem">Good</td>
+                <td style="text-align:center;padding:0.75rem">Good</td>
+                <td style="text-align:center;padding:0.75rem">Fair</td>
+                <td style="text-align:center;padding:0.75rem"><strong>Excellent</strong></td>
+                <td style="text-align:center;padding:0.75rem">Fair</td>
+                <td style="text-align:center;padding:0.75rem">Good</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:0.75rem"><strong>Focus Management</strong></td>
+                <td style="text-align:center;padding:0.75rem">Fair</td>
+                <td style="text-align:center;padding:0.75rem">Good</td>
+                <td style="text-align:center;padding:0.75rem">Fair</td>
+                <td style="text-align:center;padding:0.75rem"><strong>Good</strong></td>
+                <td style="text-align:center;padding:0.75rem">Poor</td>
+                <td style="text-align:center;padding:0.75rem">Fair</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:0.75rem"><strong>Color &amp; Contrast</strong></td>
+                <td style="text-align:center;padding:0.75rem">Fair</td>
+                <td style="text-align:center;padding:0.75rem">Fair</td>
+                <td style="text-align:center;padding:0.75rem">Fair</td>
+                <td style="text-align:center;padding:0.75rem"><strong>Good</strong></td>
+                <td style="text-align:center;padding:0.75rem">Poor</td>
+                <td style="text-align:center;padding:0.75rem">Good</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:0.75rem"><strong>Automated A11y Testing</strong></td>
+                <td style="text-align:center;padding:0.75rem">Good</td>
+                <td style="text-align:center;padding:0.75rem"><strong>Good</strong></td>
+                <td style="text-align:center;padding:0.75rem">Fair</td>
+                <td style="text-align:center;padding:0.75rem"><strong>Excellent</strong></td>
+                <td style="text-align:center;padding:0.75rem">Fair</td>
+                <td style="text-align:center;padding:0.75rem">Fair</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:0.75rem"><strong>WCAG Compliance Mapping</strong></td>
+                <td style="text-align:center;padding:0.75rem">Poor</td>
+                <td style="text-align:center;padding:0.75rem">Fair</td>
+                <td style="text-align:center;padding:0.75rem">Poor</td>
+                <td style="text-align:center;padding:0.75rem"><strong>Excellent</strong></td>
+                <td style="text-align:center;padding:0.75rem">Poor</td>
+                <td style="text-align:center;padding:0.75rem">Good</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:0.75rem"><strong>Remediation Workflows</strong></td>
+                <td style="text-align:center;padding:0.75rem">Good</td>
+                <td style="text-align:center;padding:0.75rem"><strong>Excellent</strong></td>
+                <td style="text-align:center;padding:0.75rem">Fair</td>
+                <td style="text-align:center;padding:0.75rem"><strong>Excellent</strong></td>
+                <td style="text-align:center;padding:0.75rem">Fair</td>
+                <td style="text-align:center;padding:0.75rem">Fair</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h2>Semantic HTML &amp; ARIA Pattern Generation</h2>
+
+        <p>The first rule of ARIA is: do not use ARIA if you can use native HTML. The second rule is: if you must use ARIA, implement the full pattern. Most AI tools violate both.</p>
+
+        <p><strong>What to test:</strong> Ask the tool to build a custom dropdown (combobox), a tab interface, an accordion, a dialog, and a data table with sorting. These five patterns cover the majority of ARIA complexity in real applications.</p>
+
+        <p><strong>Claude Code</strong> is the strongest here. When asked to build a combobox, it reaches for <code>&lt;input&gt;</code> with <code>role=&quot;combobox&quot;</code>, <code>aria-expanded</code>, <code>aria-activedescendant</code>, <code>aria-controls</code> pointing to the listbox, and implements the full keyboard pattern: arrow keys to navigate options, Enter to select, Escape to close, and Home/End for first/last option. It generates the associated <code>role=&quot;listbox&quot;</code> with <code>role=&quot;option&quot;</code> children and manages <code>aria-selected</code> state. Critically, it explains <em>why</em> each attribute is needed, which helps you verify correctness.</p>
+
+        <p><strong>Cursor Pro</strong> generates correct ARIA patterns when you have a <code>.cursorrules</code> file that specifies your a11y conventions. Without it, quality varies. With rules like &ldquo;all interactive components must follow WAI-ARIA Authoring Practices 1.2&rdquo; and &ldquo;prefer native HTML over ARIA roles,&rdquo; Cursor produces consistently good output and enforces patterns across your codebase.</p>
+
+        <p><strong>Copilot</strong> generates decent semantic HTML and basic ARIA. It adds <code>aria-label</code> and <code>role</code> attributes correctly for simple patterns. For complex widgets like comboboxes and tree views, it frequently misses attributes (<code>aria-activedescendant</code> omitted, <code>aria-expanded</code> not toggled) or implements incomplete keyboard handlers.</p>
+
+        <p><strong>Windsurf and Amazon Q</strong> tend to over-rely on <code>&lt;div&gt;</code> with ARIA roles rather than using native elements. You will frequently need to refactor <code>&lt;div role=&quot;button&quot;&gt;</code> back to <code>&lt;button&gt;</code>. Amazon Q is better when working with AWS Amplify UI components, which have built-in accessibility, but for custom components it struggles.</p>
+
+        <h2>Focus Management in Dynamic Applications</h2>
+
+        <p>Focus management is where most AI tools fail hardest, because it requires understanding user intent across time, not just generating static markup.</p>
+
+        <h3>Modal and Dialog Focus Trapping</h3>
+
+        <p>A correctly implemented modal must: (1) move focus to the first focusable element (or the dialog itself) on open, (2) trap Tab and Shift+Tab within the modal boundaries, (3) close on Escape, (4) return focus to the trigger element on close, and (5) prevent interaction with content behind the modal via <code>aria-hidden=&quot;true&quot;</code> on the rest of the page or <code>inert</code> attribute.</p>
+
+        <p><strong>Claude Code</strong> generates modals that implement all five requirements. It uses the native <code>&lt;dialog&gt;</code> element when appropriate (which handles focus trapping and backdrop natively) and falls back to a custom implementation with a focus trap when <code>&lt;dialog&gt;</code> support is insufficient. It remembers to set <code>inert</code> on sibling containers and restores focus on close.</p>
+
+        <p><strong>Cursor Pro</strong> handles focus trapping well when you are working in a React codebase with existing patterns to reference. It picks up focus trap utilities from your existing code and applies them consistently to new modals. Without existing patterns, it sometimes forgets focus restoration on close.</p>
+
+        <p><strong>Copilot</strong> generates modals that move focus on open but frequently misses focus restoration on close. The keyboard user opens a modal, does something, closes it, and focus is now on <code>&lt;body&gt;</code> &mdash; they have to Tab through the entire page to get back to where they were. This is one of the most common a11y failures in production.</p>
+
+        <h3>Single-Page Application Route Changes</h3>
+
+        <p>When a SPA navigates to a new &ldquo;page,&rdquo; the browser does not perform a full page load, so the screen reader does not announce the new content. You need to: (1) move focus to a heading or landmark at the top of the new content, (2) announce the page change via a live region or document title update, and (3) ensure the browser&rsquo;s back button returns focus to the correct position.</p>
+
+        <p><strong>Claude Code</strong> understands this problem and generates route change handlers that update <code>document.title</code>, move focus to an <code>&lt;h1&gt;</code> with <code>tabindex=&quot;-1&quot;</code>, and optionally use an <code>aria-live=&quot;polite&quot;</code> region to announce navigation. It knows the difference between React Router, Next.js, and Vue Router focus management patterns.</p>
+
+        <p>Most other tools treat SPA navigation as a routing concern, not an accessibility concern, and generate no focus management code for route changes.</p>
+
+        <h3>Dynamic Content Updates</h3>
+
+        <p>When content updates without a page reload &mdash; a chat message arrives, a form validates, a notification appears &mdash; screen readers need to be informed. This requires <code>aria-live</code> regions with the correct politeness level (<code>polite</code> for non-urgent updates, <code>assertive</code> for errors and time-sensitive information) and <code>aria-atomic</code> to control whether the entire region or just the change is announced.</p>
+
+        <p><strong>Claude Code</strong> correctly distinguishes between <code>aria-live=&quot;polite&quot;</code> and <code>aria-live=&quot;assertive&quot;</code> and explains when to use each. It knows that live regions must exist in the DOM before content is injected (a common bug: creating a live region and immediately adding content means the first update is not announced). It generates the pattern of rendering an empty live region on mount and updating it when events occur.</p>
+
+        <p><strong>Cursor</strong> and <strong>Copilot</strong> add <code>aria-live</code> attributes when prompted but often use <code>assertive</code> for everything (which is disruptive for non-critical updates) and sometimes create live regions dynamically, which means the first announcement is swallowed.</p>
+
+        <h2>Color Contrast &amp; Visual Accessibility</h2>
+
+        <p>WCAG 2.2 requires a minimum contrast ratio of 4.5:1 for normal text and 3:1 for large text (18px+ bold or 24px+ regular) at AA level. Non-text elements (icons, borders, focus indicators) require 3:1 against adjacent colors.</p>
+
+        <h3>Contrast Ratio Calculation</h3>
+
+        <p><strong>Claude Code</strong> can calculate contrast ratios when given two hex, RGB, or HSL values and tell you whether they pass AA, AAA, or fail. It understands relative luminance calculations and can suggest the nearest color that passes a given threshold. When generating CSS, it flags combinations that are likely to fail &mdash; light gray text on white backgrounds, for example.</p>
+
+        <p><strong>Gemini CLI</strong> handles contrast calculations well due to its large context window, which lets you paste an entire CSS file and ask it to audit all color combinations. It identifies pairs that fail WCAG AA and suggests alternatives.</p>
+
+        <p>Most other tools do not proactively flag contrast issues. They generate whatever colors you ask for or that exist in your codebase, regardless of whether the combinations meet WCAG requirements.</p>
+
+        <h3>Dark Mode Accessibility</h3>
+
+        <p>Dark mode is not just inverting colors. Common failures include: focus indicators that are visible on light backgrounds but invisible on dark, disabled state colors that lose sufficient contrast, link colors that pass on white but fail on dark gray, and shadows that provide visual separation in light mode but disappear in dark mode.</p>
+
+        <p><strong>Claude Code</strong> generates dark mode implementations that use CSS custom properties with separate light and dark tokens, ensuring each token pair meets contrast requirements independently. It knows to test focus indicators (<code>:focus-visible</code> outlines) against both light and dark backgrounds.</p>
+
+        <p><strong>Cursor Pro</strong> is effective here if your codebase already has a design token system. It extends existing token patterns consistently. Without tokens, it tends to use <code>filter: invert(1)</code> or simple color swaps that break contrast.</p>
+
+        <h3>High Contrast Mode and Forced Colors</h3>
+
+        <p>Windows High Contrast Mode (now &ldquo;Forced Colors&rdquo; in CSS) overrides your colors with system colors. Custom focus indicators, borders, and icons that rely on specific colors disappear. You need to use <code>@media (forced-colors: active)</code> to provide fallbacks.</p>
+
+        <p><strong>Claude Code</strong> is the only tool that consistently generates <code>forced-colors</code> media queries when building custom components. It knows that <code>transparent</code> borders become visible in forced-colors mode (useful for custom checkbox/radio indicators) and that SVG icons need <code>currentColor</code> fill to adapt.</p>
+
+        <p>All other tools ignore forced-colors mode entirely unless explicitly prompted.</p>
+
+        <h2>Keyboard Navigation &amp; Interaction Patterns</h2>
+
+        <p>Every interactive element must be operable with a keyboard alone. This means: focusable, has visible focus indicators, responds to expected keys (Enter/Space for buttons, arrow keys for menus/tabs/listboxes), and follows the <a href="https://www.w3.org/WAI/ARIA/apg/" style="color:var(--accent)">WAI-ARIA Authoring Practices Guide (APG)</a> keyboard patterns.</p>
+
+        <h3>Tab Order and Skip Navigation</h3>
+
+        <p>Tab order should follow visual reading order. Positive <code>tabindex</code> values (1, 2, 3...) are almost always wrong &mdash; they create a parallel tab order that confuses users. Skip navigation links let keyboard users bypass repetitive content (navigation bars) to reach main content.</p>
+
+        <p><strong>Claude Code</strong> never generates positive <code>tabindex</code> values and explains why they are harmful. When building page layouts, it includes skip navigation links and landmark regions (<code>&lt;main&gt;</code>, <code>&lt;nav&gt;</code>, <code>&lt;aside&gt;</code>) that screen reader users can navigate directly.</p>
+
+        <p><strong>Copilot</strong> occasionally generates <code>tabindex=&quot;1&quot;</code> or <code>tabindex=&quot;2&quot;</code> when trying to make elements focusable. This is a bug, not a feature. Always replace with <code>tabindex=&quot;0&quot;</code> (natural tab order) or <code>tabindex=&quot;-1&quot;</code> (programmatically focusable only).</p>
+
+        <h3>Roving Tabindex vs. aria-activedescendant</h3>
+
+        <p>For composite widgets (tab lists, menus, toolbars), there are two keyboard navigation patterns: roving tabindex (move <code>tabindex=&quot;0&quot;</code> between children, others get <code>tabindex=&quot;-1&quot;</code>) and <code>aria-activedescendant</code> (container keeps focus, points to the visually active child). Each has trade-offs.</p>
+
+        <p><strong>Claude Code</strong> knows both patterns, explains the trade-offs (roving tabindex works better with screen readers that have browse mode; <code>aria-activedescendant</code> is simpler to implement for complex widgets), and lets you choose. It implements whichever pattern you select correctly.</p>
+
+        <p>Most other tools default to roving tabindex for everything, which is usually fine but can be problematic for widgets where the container needs to handle other keyboard events (like a rich text editor toolbar).</p>
+
+        <h3>Custom Keyboard Shortcuts</h3>
+
+        <p>WCAG 2.1 SC 2.1.4 (Character Key Shortcuts) requires that single-character keyboard shortcuts can be turned off, remapped, or are only active when a component has focus. AI tools frequently generate single-key shortcuts (press &ldquo;d&rdquo; to delete, &ldquo;e&rdquo; to edit) without any mechanism to disable them, which interferes with screen reader commands and speech input.</p>
+
+        <p><strong>Claude Code</strong> flags this issue when generating keyboard shortcut handlers and suggests modifier keys (Ctrl+D instead of D alone) or focus-scoped shortcuts. Other tools generate bare key handlers without considering this WCAG requirement.</p>
+
+        <h2>Automated Accessibility Testing</h2>
+
+        <p>Automated testing catches 30-40% of WCAG violations. The rest require manual testing. But that 30-40% includes the highest-volume issues: missing alt text, missing form labels, color contrast failures, missing landmark regions, and duplicate IDs. Catching these automatically prevents regression and frees you to focus on the harder manual testing.</p>
+
+        <h3>axe-core Integration</h3>
+
+        <p><strong>Claude Code</strong> generates comprehensive axe-core test setups for any framework. For React Testing Library, it integrates <code>jest-axe</code> with custom configuration that excludes rules you have intentionally suppressed (with documentation of why). For Cypress, it sets up <code>cypress-axe</code> with <code>cy.checkA11y()</code> calls and custom impact level thresholds. For Playwright, it integrates <code>@axe-core/playwright</code> with per-page and per-component scanning.</p>
+
+        <p>Example Claude Code output for React Testing Library:</p>
+
+        <pre><code>import { render } from '@testing-library/react';
+import { axe, toHaveNoViolations } from 'jest-axe';
+
+expect.extend(toHaveNoViolations);
+
+describe('SearchCombobox accessibility', () => {
+  it('has no axe violations in default state', async () => {
+    const { container } = render(&lt;SearchCombobox /&gt;);
+    const results = await axe(container);
+    expect(results).toHaveNoViolations();
+  });
+
+  it('has no axe violations when expanded', async () => {
+    const { container, getByRole } = render(
+      &lt;SearchCombobox options={mockOptions} /&gt;
+    );
+    await userEvent.click(getByRole('combobox'));
+    const results = await axe(container);
+    expect(results).toHaveNoViolations();
+  });
+
+  it('has no axe violations with selection', async () => {
+    const { container, getByRole } = render(
+      &lt;SearchCombobox options={mockOptions} /&gt;
+    );
+    await userEvent.click(getByRole('combobox'));
+    await userEvent.click(getByRole('option', { name: 'React' }));
+    const results = await axe(container);
+    expect(results).toHaveNoViolations();
+  });
+});</code></pre>
+
+        <p><strong>Cursor Pro</strong> generates similar test code but adapts to whatever testing framework exists in your project. If you already use Playwright, it adds axe scans to existing test files. If you use Cypress, it extends your existing commands. This codebase-awareness makes it faster for adding a11y tests to established projects.</p>
+
+        <p><strong>Copilot</strong> generates basic axe-core tests but often misses testing different component states. A combobox needs to be tested closed, open, with a selection, and in error state &mdash; Copilot usually only tests the default render.</p>
+
+        <h3>CI Pipeline Integration</h3>
+
+        <p>Accessibility tests must run in CI to prevent regression. This means: axe-core scans on every PR, Lighthouse accessibility audits on key pages, and optionally pa11y-ci for crawling multi-page sites.</p>
+
+        <p><strong>Claude Code</strong> generates complete CI configurations that include axe-core in the test suite, Lighthouse CI with accessibility score thresholds (fail the build if the score drops below 90), and reporting that surfaces specific WCAG violations in PR comments.</p>
+
+        <p><strong>Cursor</strong> integrates well with existing CI configurations, adding a11y test steps to whatever pipeline you already have. It is less opinionated about the specific tools but adapts to your existing setup effectively.</p>
+
+        <h3>Manual Testing Checklists</h3>
+
+        <p>For the 60-70% of issues that automated tools miss, you need manual testing procedures. <strong>Claude Code</strong> generates structured manual testing checklists organized by WCAG principle (Perceivable, Operable, Understandable, Robust) that include specific steps:</p>
+
+        <ul>
+          <li>&ldquo;Navigate the entire checkout flow using only Tab, Shift+Tab, Enter, Space, and Escape. Verify focus is visible at every step.&rdquo;</li>
+          <li>&ldquo;Enable VoiceOver (Cmd+F5 on Mac). Navigate to the search combobox using VO+Right Arrow. Verify the role, name, and state are announced correctly.&rdquo;</li>
+          <li>&ldquo;Zoom the browser to 400%. Verify no content is clipped, overlapping, or requires horizontal scrolling.&rdquo;</li>
+          <li>&ldquo;Enable Windows High Contrast Mode. Verify all interactive elements remain visible and focus indicators are distinguishable.&rdquo;</li>
+        </ul>
+
+        <p>No other tool generates this level of manual testing guidance. Most produce only automated test code.</p>
+
+        <h2>WCAG Compliance Mapping &amp; Audit Support</h2>
+
+        <p>When remediating a11y issues or responding to an audit, you need to map each violation to a specific WCAG success criterion, explain the impact, and prioritize fixes.</p>
+
+        <h3>Violation-to-WCAG Mapping</h3>
+
+        <p><strong>Claude Code</strong> excels here. Give it an axe-core violation report or describe an issue, and it maps it to the exact WCAG 2.2 success criterion, level (A, AA, AAA), and principle. For example:</p>
+
+        <ul>
+          <li>&ldquo;Missing alt text on product image&rdquo; &rarr; <strong>WCAG 1.1.1 Non-text Content (Level A)</strong> &mdash; &ldquo;All non-text content that is presented to the user has a text alternative that serves the equivalent purpose. For decorative images, use <code>alt=&quot;&quot;</code> and <code>role=&quot;presentation&quot;</code>. For informative images, describe the content and function.&rdquo;</li>
+          <li>&ldquo;Form submits with no error feedback&rdquo; &rarr; <strong>WCAG 3.3.1 Error Identification (Level A)</strong> + <strong>3.3.3 Error Suggestion (Level AA)</strong> &mdash; &ldquo;Errors must be identified and described in text. If the error can be corrected, suggestions must be provided.&rdquo;</li>
+        </ul>
+
+        <p><strong>Gemini CLI</strong> also performs well on WCAG mapping due to its large context &mdash; you can paste entire audit reports and get structured mappings back. However, it is less precise on the nuances of specific success criteria.</p>
+
+        <p>Other tools can identify that something is &ldquo;an accessibility issue&rdquo; but rarely map it to the specific WCAG criterion, which is what auditors and legal teams require.</p>
+
+        <h3>VPAT and ACR Generation Support</h3>
+
+        <p>Voluntary Product Accessibility Templates (VPATs) and Accessibility Conformance Reports (ACRs) document how a product meets WCAG, Section 508, and EN 301 549. <strong>Claude Code</strong> can help structure VPAT responses by generating per-criterion assessments based on your codebase analysis, though you should always have an accessibility specialist review the final document.</p>
+
+        <h2>Remediation Workflows</h2>
+
+        <p>Most accessibility work is not building new accessible components &mdash; it is fixing existing inaccessible ones. This is where codebase-aware tools have a significant advantage.</p>
+
+        <h3>Bulk Remediation</h3>
+
+        <p><strong>Cursor Pro</strong> is strongest for bulk remediation. Give it an axe-core report with 50 &ldquo;images without alt text&rdquo; violations across 30 files, and it can fix them in a single multi-file operation. Its codebase awareness means it understands your component patterns &mdash; if your <code>&lt;ProductCard&gt;</code> component renders images, it fixes the component once rather than fixing each instance.</p>
+
+        <p><strong>Claude Code</strong> is equally effective but works differently. It analyzes the pattern of violations, identifies the root cause (usually a shared component), and suggests fixing the source rather than the symptoms. For 50 missing alt text violations, it finds the three components that render images and adds required <code>alt</code> props with TypeScript enforcement.</p>
+
+        <p><strong>Copilot</strong> handles file-by-file remediation well but cannot coordinate multi-file fixes. You fix each file individually, which is slow for large-scale remediation.</p>
+
+        <h3>Component Library Accessibility Retrofit</h3>
+
+        <p>When a design team ships a component library without accessibility, you need to retrofit ARIA, keyboard handling, and focus management into every component. This is one of the most time-consuming accessibility tasks.</p>
+
+        <p><strong>Claude Code</strong> analyzes a component and generates a complete accessibility retrofit: adds ARIA attributes, implements keyboard handlers, adds focus management, and writes tests. For a custom select component, it adds <code>role=&quot;listbox&quot;</code>, <code>aria-expanded</code>, <code>aria-activedescendant</code>, keyboard navigation (arrow keys, Home, End, type-ahead), and focus trapping &mdash; essentially rebuilding the interactive behavior that a native <code>&lt;select&gt;</code> provides for free.</p>
+
+        <p><strong>Cursor Pro</strong> with a comprehensive <code>.cursorrules</code> file enforces accessibility requirements as components are being built, preventing the retrofit problem in the first place. This is the more cost-effective approach: require accessibility from the start.</p>
+
+        <h2>Head-to-Head: 12 Accessibility Engineering Tasks</h2>
+
+        <div style="overflow-x:auto">
+          <table style="width:100%;border-collapse:collapse;margin:1.5rem 0">
+            <thead>
+              <tr style="border-bottom:2px solid var(--border)">
+                <th style="text-align:left;padding:0.75rem">Task</th>
+                <th style="text-align:left;padding:0.75rem">Best Tool</th>
+                <th style="text-align:left;padding:0.75rem">Why</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:0.75rem">Build accessible combobox from scratch</td>
+                <td style="padding:0.75rem"><strong>Claude Code</strong></td>
+                <td style="padding:0.75rem">Full WAI-ARIA APG pattern with keyboard handling and state management</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:0.75rem">Fix 50+ axe-core violations across codebase</td>
+                <td style="padding:0.75rem"><strong>Cursor Pro</strong></td>
+                <td style="padding:0.75rem">Multi-file refactoring, fixes root component rather than each instance</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:0.75rem">Add focus management to SPA navigation</td>
+                <td style="padding:0.75rem"><strong>Claude Code</strong></td>
+                <td style="padding:0.75rem">Understands framework-specific routing and focus patterns</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:0.75rem">Write axe-core + Playwright test suite</td>
+                <td style="padding:0.75rem"><strong>Claude Code</strong></td>
+                <td style="padding:0.75rem">Tests all component states, not just default render</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:0.75rem">Audit color contrast across entire CSS</td>
+                <td style="padding:0.75rem"><strong>Gemini CLI</strong></td>
+                <td style="padding:0.75rem">Large context fits full stylesheets; identifies all failing pairs</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:0.75rem">Retrofit keyboard navigation into component library</td>
+                <td style="padding:0.75rem"><strong>Claude Code</strong></td>
+                <td style="padding:0.75rem">Generates complete keyboard patterns per WAI-ARIA APG</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:0.75rem">Generate WCAG compliance mapping for audit</td>
+                <td style="padding:0.75rem"><strong>Claude Code</strong></td>
+                <td style="padding:0.75rem">Maps violations to specific success criteria with levels</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:0.75rem">Implement dark mode with a11y</td>
+                <td style="padding:0.75rem"><strong>Cursor Pro</strong></td>
+                <td style="padding:0.75rem">Extends existing token systems, enforces contrast per theme</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:0.75rem">Add screen reader announcements to chat UI</td>
+                <td style="padding:0.75rem"><strong>Claude Code</strong></td>
+                <td style="padding:0.75rem">Correct aria-live region implementation with proper timing</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:0.75rem">Fix focus trap in modal component</td>
+                <td style="padding:0.75rem"><strong>Claude Code</strong></td>
+                <td style="padding:0.75rem">Handles edge cases: focus restoration, inert attribute, nested modals</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:0.75rem">Add a11y tests to existing CI pipeline</td>
+                <td style="padding:0.75rem"><strong>Cursor Pro</strong></td>
+                <td style="padding:0.75rem">Adapts to existing CI config, adds a11y steps without restructuring</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:0.75rem">Implement forced-colors mode support</td>
+                <td style="padding:0.75rem"><strong>Claude Code</strong></td>
+                <td style="padding:0.75rem">Only tool that generates forced-colors media queries proactively</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h2>Cost Analysis: What Accessibility Engineers Actually Pay</h2>
+
+        <div style="overflow-x:auto">
+          <table style="width:100%;border-collapse:collapse;margin:1.5rem 0">
+            <thead>
+              <tr style="border-bottom:2px solid var(--border)">
+                <th style="text-align:left;padding:0.75rem">Tier</th>
+                <th style="text-align:left;padding:0.75rem">Stack</th>
+                <th style="text-align:center;padding:0.75rem">Monthly</th>
+                <th style="text-align:left;padding:0.75rem">Best For</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:0.75rem">Free</td>
+                <td style="padding:0.75rem">Copilot Free</td>
+                <td style="text-align:center;padding:0.75rem">$0</td>
+                <td style="padding:0.75rem">Developers adding basic a11y to their own code</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:0.75rem">Free</td>
+                <td style="padding:0.75rem">Gemini CLI Free</td>
+                <td style="text-align:center;padding:0.75rem">$0</td>
+                <td style="padding:0.75rem">CSS contrast audits, large file analysis</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:0.75rem">Starter</td>
+                <td style="padding:0.75rem">Copilot Pro</td>
+                <td style="text-align:center;padding:0.75rem">$10</td>
+                <td style="padding:0.75rem">More completions for sustained remediation work</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:0.75rem">Pro A11y</td>
+                <td style="padding:0.75rem">Claude Code</td>
+                <td style="text-align:center;padding:0.75rem">$20</td>
+                <td style="padding:0.75rem">Full-time accessibility engineers &mdash; ARIA, WCAG mapping, testing</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:0.75rem">Pro A11y</td>
+                <td style="padding:0.75rem">Cursor Pro</td>
+                <td style="text-align:center;padding:0.75rem">$20</td>
+                <td style="padding:0.75rem">Bulk remediation, codebase-wide a11y enforcement</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:0.75rem">Combo</td>
+                <td style="padding:0.75rem">Claude Code + Copilot Free</td>
+                <td style="text-align:center;padding:0.75rem">$20</td>
+                <td style="padding:0.75rem">Best overall: design + implementation + remediation</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:0.75rem">Max</td>
+                <td style="padding:0.75rem">Claude Code + Cursor Pro</td>
+                <td style="text-align:center;padding:0.75rem">$40</td>
+                <td style="padding:0.75rem">Large-scale remediation + complex ARIA + WCAG audit support</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h2>Workflow Patterns for Accessibility Engineers</h2>
+
+        <h3>Pattern 1: The Remediation Sprint</h3>
+        <p>You have an axe-core audit with 200+ violations and two weeks to fix them.</p>
+        <ol>
+          <li><strong>Triage with Claude Code:</strong> Feed the violation report. Claude Code groups violations by root cause (e.g., 40 missing alt texts trace to 3 shared image components), maps each to WCAG criteria, and prioritizes by impact (Level A before AA, critical before moderate).</li>
+          <li><strong>Bulk fix with Cursor Pro:</strong> Fix the root-cause components. Cursor&rsquo;s multi-file editing handles propagating changes across the codebase.</li>
+          <li><strong>Verify with Claude Code:</strong> Generate axe-core tests for each fixed component in all its states. Add to CI.</li>
+          <li><strong>Manual testing list from Claude Code:</strong> For issues automation cannot catch, generate a manual testing checklist organized by page and interaction type.</li>
+        </ol>
+
+        <h3>Pattern 2: The Proactive A11y Reviewer</h3>
+        <p>You review every PR for accessibility before it merges.</p>
+        <ol>
+          <li><strong>Set up .cursorrules or CLAUDE.md</strong> with your a11y requirements: &ldquo;All interactive elements must be keyboard operable,&rdquo; &ldquo;All images must have alt text,&rdquo; &ldquo;ARIA roles must follow WAI-ARIA APG patterns.&rdquo;</li>
+          <li><strong>PR diff review with Claude Code:</strong> Paste the diff. Claude Code identifies a11y issues in new code: missing labels, incorrect ARIA, broken keyboard patterns, color contrast concerns.</li>
+          <li><strong>Auto-fix with Cursor:</strong> Apply fixes directly to the PR branch using Cursor&rsquo;s codebase-aware editing.</li>
+        </ol>
+
+        <h3>Pattern 3: The Design System A11y Lead</h3>
+        <p>You own accessibility for a shared component library used across multiple teams.</p>
+        <ol>
+          <li><strong>Component specification with Claude Code:</strong> For each new component, generate the complete a11y specification: ARIA roles, states, properties, keyboard interaction pattern, focus management behavior, and screen reader announcement expectations.</li>
+          <li><strong>Implementation with Cursor Pro:</strong> Build components with the spec as context in <code>.cursorrules</code>. Cursor enforces the patterns across all component variants.</li>
+          <li><strong>Testing with Claude Code:</strong> Generate comprehensive test suites covering all states, keyboard interactions, and screen reader announcements. Include both axe-core automated tests and manual testing checklists.</li>
+        </ol>
+
+        <h3>Pattern 4: The Compliance Engineer</h3>
+        <p>You maintain WCAG conformance documentation and respond to legal/audit inquiries.</p>
+        <ol>
+          <li><strong>Audit with Claude Code:</strong> Analyze the codebase against WCAG 2.2 AA success criteria. Generate a structured report mapping each criterion to its conformance status.</li>
+          <li><strong>VPAT drafting with Claude Code:</strong> Generate per-criterion assessments for the VPAT/ACR. Claude Code produces specific, evidence-based statements rather than generic &ldquo;supports&rdquo;/&ldquo;does not support.&rdquo;</li>
+          <li><strong>Remediation tracking:</strong> For each non-conformant criterion, generate a remediation plan with effort estimates and code-level fix descriptions.</li>
+        </ol>
+
+        <h2>Rules Files: Enforcing Accessibility Standards</h2>
+
+        <h3>Example .cursorrules for Accessibility Engineering</h3>
+        <pre><code># Accessibility Engineering Rules
+
+## HTML & Semantics
+- ALWAYS use native HTML elements before ARIA (button, not div[role=button])
+- All images MUST have alt text. Decorative images: alt="" role="presentation"
+- All form inputs MUST have associated labels (for/id or aria-labelledby)
+- Tables MUST have caption or aria-label and th with scope attributes
+- Do NOT use positive tabindex values (1, 2, 3) — only 0 or -1
+
+## ARIA
+- Follow WAI-ARIA Authoring Practices Guide 1.2 for all widget patterns
+- ARIA roles MUST have all required states and properties
+- aria-live regions must exist in DOM before content is injected
+- Use aria-live="polite" for non-urgent updates, "assertive" only for errors
+- aria-expanded, aria-selected, aria-checked must toggle correctly
+
+## Keyboard
+- All interactive elements must be keyboard operable
+- Modals: trap focus, close on Escape, restore focus to trigger on close
+- Tab lists: arrow keys between tabs, Tab moves to panel
+- Menus: arrow keys navigate, Enter/Space select, Escape closes
+- Single-character shortcuts must have modifier keys or be focus-scoped
+
+## Visual
+- Color contrast: 4.5:1 for normal text, 3:1 for large text (WCAG AA)
+- Non-text contrast: 3:1 for UI components and graphics
+- Never use color alone to convey information
+- Focus indicators: visible, 3:1 contrast against adjacent colors
+- Support @media (forced-colors: active) for custom components
+
+## Testing
+- Every component must have axe-core tests for all interactive states
+- Test keyboard navigation in every component test
+- Include aria-role assertions in component tests</code></pre>
+
+        <h3>Example CLAUDE.md for Accessibility Engineering</h3>
+        <pre><code># Accessibility Project Context
+
+## Stack
+- Framework: React 18 with TypeScript
+- Component Library: Custom design system (ds-components)
+- Testing: Playwright + @axe-core/playwright, Jest + jest-axe
+- CI: GitHub Actions with Lighthouse CI (a11y threshold: 95)
+- Standards: WCAG 2.2 AA conformance required
+
+## Accessibility Rules
+- All components must follow WAI-ARIA APG 1.2 patterns
+- Native HTML elements first, ARIA only when native is insufficient
+- Every interactive component must have keyboard tests
+- axe-core tests required for all states (default, open, error, disabled)
+- Focus management: document in component JSDoc where focus moves
+- Color tokens: every foreground/background pair must meet 4.5:1
+
+## When I Ask to Fix an A11y Issue
+1. Identify the WCAG success criterion being violated
+2. Explain why it fails (not just what to change)
+3. Fix the root cause (shared component), not individual instances
+4. Add axe-core test covering the fixed issue
+5. Add manual testing step if automated coverage is insufficient
+
+## When I Ask for a New Component
+1. List all ARIA roles, states, and properties needed
+2. Define the complete keyboard interaction pattern
+3. Implement with native HTML where possible
+4. Add comprehensive tests: axe-core + keyboard + screen reader assertions
+5. Include forced-colors media query if component has custom visuals</code></pre>
+
+        <h2>Common Pitfalls: AI Tools and Accessibility</h2>
+
+        <ol>
+          <li><strong>ARIA soup.</strong> AI tools add ARIA attributes liberally without understanding the implications. A <code>&lt;div&gt;</code> with <code>role=&quot;button&quot;</code>, <code>aria-label</code>, <code>aria-pressed</code>, <code>aria-expanded</code>, and <code>aria-haspopup</code> is not accessible &mdash; it is confusing. Each ARIA attribute is a promise to assistive technology. Only add what you need, and implement the behavior each attribute promises.</li>
+          <li><strong>Alt text that describes the file, not the content.</strong> AI tools frequently generate alt text like &ldquo;hero-banner.jpg&rdquo; or &ldquo;product image&rdquo; instead of describing what the image actually shows. Alt text should convey the same information a sighted user gets. &ldquo;Woman using laptop in coffee shop&rdquo; is useful. &ldquo;Image&rdquo; is not.</li>
+          <li><strong>aria-label overriding visible text.</strong> If a button has visible text &ldquo;Submit&rdquo; and <code>aria-label=&quot;Submit form data to server&quot;</code>, screen reader users hear the aria-label, which diverges from what sighted users see. Speech input users who say &ldquo;click Submit&rdquo; may fail because the accessible name does not start with the visible text. Use <code>aria-label</code> only when there is no visible text, and use <code>aria-describedby</code> for supplemental information.</li>
+          <li><strong>Focus traps with no escape.</strong> AI-generated modals sometimes trap focus but forget the Escape key handler. The keyboard user is literally trapped. Always verify that Escape closes the component and returns focus.</li>
+          <li><strong>Live regions created dynamically.</strong> If you create an <code>aria-live</code> region and immediately inject content, the first announcement is lost because the screen reader had not registered the region yet. Always render the live region in the initial DOM and update its content later. AI tools consistently get this wrong.</li>
+          <li><strong>Testing only the happy path.</strong> AI-generated a11y tests usually render the component once and run axe-core. But many violations only appear in specific states: expanded dropdowns, error states, loading states, disabled states. Test every state, not just the default render.</li>
+        </ol>
+
+        <h2>Recommendations by Role</h2>
+
+        <div style="overflow-x:auto">
+          <table style="width:100%;border-collapse:collapse;margin:1.5rem 0">
+            <thead>
+              <tr style="border-bottom:2px solid var(--border)">
+                <th style="text-align:left;padding:0.75rem">Role</th>
+                <th style="text-align:left;padding:0.75rem">Recommended Stack</th>
+                <th style="text-align:center;padding:0.75rem">Monthly Cost</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:0.75rem">Developer Adding A11y to Own Code</td>
+                <td style="padding:0.75rem">Copilot Free &mdash; basic ARIA and semantic HTML guidance</td>
+                <td style="text-align:center;padding:0.75rem">$0</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:0.75rem">Frontend Dev Assigned A11y Tasks</td>
+                <td style="padding:0.75rem">Cursor Pro &mdash; codebase-aware fixes, .cursorrules for a11y conventions</td>
+                <td style="text-align:center;padding:0.75rem">$20</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:0.75rem">Dedicated Accessibility Engineer</td>
+                <td style="padding:0.75rem">Claude Code + Copilot Free &mdash; WCAG reasoning + inline completions</td>
+                <td style="text-align:center;padding:0.75rem">$20</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:0.75rem">A11y Team Lead / Design System</td>
+                <td style="padding:0.75rem">Claude Code + Cursor Pro &mdash; spec generation + codebase enforcement</td>
+                <td style="text-align:center;padding:0.75rem">$40</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:0.75rem">Compliance / VPAT Author</td>
+                <td style="padding:0.75rem">Claude Code &mdash; WCAG criterion mapping, audit documentation support</td>
+                <td style="text-align:center;padding:0.75rem">$20</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:0.75rem">Agency / Freelance A11y Consultant</td>
+                <td style="padding:0.75rem">Claude Code + Gemini CLI Free &mdash; audits + large-file contrast analysis</td>
+                <td style="text-align:center;padding:0.75rem">$20</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h2>The Bottom Line</h2>
+
+        <p>Accessibility engineering AI tooling in 2026 splits along the knowledge-execution axis:</p>
+
+        <ul>
+          <li><strong>WCAG knowledge is your bottleneck?</strong> Claude Code ($20/mo). It is the only tool that reasons through WCAG success criteria, explains why something fails, maps violations to specific criteria and levels, and generates complete WAI-ARIA APG patterns. It is like having a senior accessibility consultant available for every code decision.</li>
+          <li><strong>Remediation speed is your bottleneck?</strong> Cursor Pro ($20/mo) with a comprehensive <code>.cursorrules</code> file. Multi-file refactoring for bulk fixes, codebase-aware pattern enforcement, and the ability to fix the root component rather than each instance.</li>
+          <li><strong>Doing both?</strong> Claude Code + Copilot Free ($20/mo) for most accessibility engineers. Claude Code + Cursor Pro ($40/mo) for teams doing large-scale remediation or maintaining design system accessibility.</li>
+          <li><strong>Budget-constrained?</strong> Copilot Free ($0) covers basic semantic HTML and ARIA. Gemini CLI Free adds large-context CSS auditing. Together, $0.</li>
+        </ul>
+
+        <p>The biggest gap in AI tooling for accessibility engineers is <strong>screen reader behavior prediction</strong>. No AI tool today can reliably tell you exactly how VoiceOver, NVDA, and JAWS will announce a given piece of markup, because screen reader behavior is not standardized and varies between versions. Until AI tools can simulate assistive technology output, manual testing with real screen readers remains essential. The tools that bridge this gap &mdash; perhaps by integrating with screen reader testing APIs &mdash; will transform accessibility engineering.</p>
+
+        <p>Compare all tools and pricing on our <a href="/" style="color:var(--accent)">main comparison table</a>, read the <a href="/blog/hidden-costs-ai-coding-tools.html" style="color:var(--accent)">hidden costs guide</a> before committing to a paid plan, or check the <a href="/blog/ai-coding-tools-for-enterprise-2026.html" style="color:var(--accent)">enterprise guide</a> if you need compliance and procurement details.</p>
+
+        <h2>Related on CodeCosts</h2>
+        <ul>
+          <li><a href="/blog/ai-coding-tools-for-frontend-engineers-2026.html" style="color:var(--accent)">AI Coding Tools for Frontend Engineers (2026)</a> &mdash; UI development, component architecture, CSS patterns</li>
+          <li><a href="/blog/ai-coding-tools-for-qa-engineers-2026.html" style="color:var(--accent)">AI Coding Tools for QA Engineers (2026)</a> &mdash; Test automation, CI integration, quality assurance</li>
+          <li><a href="/blog/ai-coding-tools-for-security-engineers-2026.html" style="color:var(--accent)">AI Coding Tools for Security Engineers (2026)</a> &mdash; Compliance, audit support, security patterns</li>
+          <li><a href="/blog/ai-coding-tools-for-product-managers-2026.html" style="color:var(--accent)">AI Coding Tools for Product Managers (2026)</a> &mdash; Inclusive design, user research, requirements</li>
+          <li><a href="/blog/ai-coding-tools-for-technical-leads-staff-engineers-2026.html" style="color:var(--accent)">AI Coding Tools for Technical Leads &amp; Staff Engineers (2026)</a> &mdash; Code review, standards enforcement, team enablement</li>
+          <li><a href="/blog/cheapest-ai-coding-tool-2026.html" style="color:var(--accent)">Cheapest AI Coding Tools in 2026: Complete Cost Comparison</a></li>
+        </ul>
+      </div>
+    </article>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>CodeCosts &mdash; Independent AI coding tool price tracker. Updated March 2026.</p>
+      <p style="margin-top:0.5rem"><a href="/" style="color:var(--accent)">Compare all tools</a> &middot; <a href="/blog/" style="color:var(--accent)">Blog</a> &middot; <a href="/blog/feed.xml" style="color:var(--accent)">RSS</a></p>
+    </div>
+  </footer>
+</body>
+</html>

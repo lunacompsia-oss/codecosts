@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Coding Tools for Technical Leads &amp; Staff Engineers 2026: Code Quality, Architecture, Mentoring &amp; Deep Codebase Context Guide</title>
+  <meta name="description" content="The tech lead and staff engineer's guide to AI coding tools in 2026. Code quality gatekeeping, architecture-level AI usage, mentoring juniors who use AI, deep codebase context, and which tools actually understand your system.">
+  <link rel="canonical" href="https://codecosts.pages.dev/blog/ai-coding-tools-for-technical-leads-staff-engineers-2026.html">
+  <meta property="og:title" content="AI Coding Tools for Technical Leads &amp; Staff Engineers 2026: Code Quality, Architecture &amp; Mentoring Guide">
+  <meta property="og:description" content="Code quality gatekeeping, architecture-level AI, mentoring juniors who use AI, and which tools actually understand your codebase at the level you need.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://codecosts.pages.dev/blog/ai-coding-tools-for-technical-leads-staff-engineers-2026.html">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="AI Coding Tools for Technical Leads &amp; Staff Engineers 2026: Code Quality, Architecture &amp; Mentoring Guide">
+  <meta name="twitter:description" content="Code quality gatekeeping, architecture-level AI, mentoring juniors who use AI, and deep codebase context.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💰</text></svg>">
+  <link rel="stylesheet" href="../style.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "AI Coding Tools for Technical Leads & Staff Engineers 2026: Code Quality, Architecture, Mentoring & Deep Codebase Context Guide",
+    "datePublished": "2026-03-28",
+    "dateModified": "2026-03-28",
+    "author": { "@type": "Organization", "name": "CodeCosts" },
+    "publisher": { "@type": "Organization", "name": "CodeCosts" },
+    "description": "The tech lead and staff engineer's guide to AI coding tools in 2026. Code quality gatekeeping, architecture-level AI usage, mentoring juniors who use AI, deep codebase context, and which tools actually understand your system."
+  }
+  </script>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <a href="/" style="text-decoration:none;color:inherit"><h1><span class="logo">$_</span> CodeCosts</h1></a>
+      <p class="tagline">AI Coding Tool News &amp; Analysis</p>
+      <nav>
+        <a href="/">Tools</a>
+        <a href="/blog/" class="active">Blog</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <article class="card">
+      <h2>AI Coding Tools for Technical Leads &amp; Staff Engineers 2026: Code Quality, Architecture, Mentoring &amp; Deep Codebase Context Guide</h2>
+      <div class="article-meta">
+        <span>March 28, 2026</span>
+        <span>20 min read</span>
+      </div>
+
+      <div class="article-content">
+        <p>You are the person who says no. When a junior opens a PR with a clever abstraction that will be unmaintainable in six months, you catch it. When someone introduces a second ORM because the AI suggested it, you catch it. When an architectural boundary gets crossed because autocomplete does not understand your system&rsquo;s module graph, you catch it. That is the job of a tech lead or staff engineer &mdash; maintaining the conceptual integrity of a codebase while the team ships fast.</p>
+
+        <p>AI coding tools change this dynamic in two ways. First, they make <em>you</em> faster at the mechanical parts of your job: writing RFCs, prototyping architectural spikes, reviewing large PRs, and migrating legacy code. Second, they make <em>everyone else</em> faster at producing code that may or may not align with the system&rsquo;s architecture. Both effects are real. The question is whether AI tools are a net amplifier or a net liability for the kind of work you do.</p>
+
+        <p>This guide evaluates AI coding tools from the perspective of someone who cares about long-term code health, architectural consistency, and team technical growth &mdash; not just lines-per-hour.</p>
+
+        <div class="callout tip">
+          <div class="callout-title">TL;DR</div>
+          <p><strong>Best for architecture-level work:</strong> Claude Code ($20/mo + API, or Team $30/seat + API) &mdash; multi-file agents that understand cross-cutting concerns, best at large refactors and migrations. <strong>Best for daily coding + review:</strong> Cursor Pro ($20/mo) or Business ($40/seat) &mdash; deep codebase indexing, composer mode for multi-file edits, strong context window. <strong>Best for team standardization:</strong> GitHub Copilot Business ($19/seat) &mdash; custom instructions enforce patterns, native PR review, lowest friction for the team you lead. <strong>Best for deep code exploration:</strong> Cursor or Claude Code &mdash; both handle &ldquo;explain this system&rdquo; questions across large codebases. <strong>Pragmatic combo:</strong> Copilot Business for the team + Claude Code for yourself (architecture, migrations, RFC drafting).</p>
+        </div>
+
+        <h2>Why Tech Leads Evaluate AI Tools Differently</h2>
+
+        <p>Individual contributors optimize for personal velocity. Engineering managers optimize for team cost and adoption. Tech leads and staff engineers optimize for something harder to measure: <strong>system coherence over time</strong>. Here is what that means in practice:</p>
+
+        <ul>
+          <li><strong>Code quality ceiling, not floor:</strong> You do not care whether AI generates code faster. You care whether the generated code meets your standards. The relevant question is not &ldquo;how much code can this tool produce?&rdquo; but &ldquo;how much of that code would I approve in review?&rdquo;</li>
+          <li><strong>Architectural awareness:</strong> Most AI tools operate at the file level. Your thinking operates at the system level. You need tools that understand module boundaries, dependency directions, and why certain patterns exist &mdash; not tools that suggest the fastest solution that violates your layered architecture.</li>
+          <li><strong>Codebase context depth:</strong> You have spent years building a mental model of your system. The tool needs to approach that depth, or at least not actively contradict it. Shallow context produces plausible-looking code that subtly breaks invariants.</li>
+          <li><strong>Mentoring implications:</strong> When juniors use AI to generate code, they may ship working features without understanding the patterns behind them. This changes your mentoring strategy. You need tools that support learning, not just output.</li>
+          <li><strong>Review load:</strong> If AI makes your team faster at writing code but that code requires more thorough review because of quality variance, you have traded their time for yours. The net effect may be negative for the team.</li>
+        </ul>
+
+        <h2>The Tech Lead&rsquo;s Tool Evaluation Matrix</h2>
+
+        <p>These are the dimensions that matter when your job is maintaining system integrity:</p>
+
+        <div style="overflow-x:auto">
+          <table style="width:100%;border-collapse:collapse;margin:1.5rem 0">
+            <thead>
+              <tr style="border-bottom:2px solid var(--border);text-align:left">
+                <th style="padding:12px 16px">Dimension</th>
+                <th style="padding:12px 16px">Copilot</th>
+                <th style="padding:12px 16px">Cursor</th>
+                <th style="padding:12px 16px">Windsurf</th>
+                <th style="padding:12px 16px">Claude Code</th>
+                <th style="padding:12px 16px">Amazon Q</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px"><strong>Codebase context depth</strong></td>
+                <td style="padding:12px 16px">Medium &mdash; repo-level indexing, limited cross-file reasoning</td>
+                <td style="padding:12px 16px;color:var(--green)"><strong>High</strong> &mdash; full codebase indexing, .cursorrules for custom patterns</td>
+                <td style="padding:12px 16px">Medium &mdash; project indexing, Cascade multi-file flow</td>
+                <td style="padding:12px 16px;color:var(--green)"><strong>High</strong> &mdash; reads entire repo on demand, CLAUDE.md for custom rules</td>
+                <td style="padding:12px 16px">Medium &mdash; workspace indexing, strong on AWS patterns</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px"><strong>Multi-file refactoring</strong></td>
+                <td style="padding:12px 16px">Basic &mdash; Copilot Edits works across files but limited scope</td>
+                <td style="padding:12px 16px;color:var(--green)"><strong>Strong</strong> &mdash; Composer mode plans and executes multi-file changes</td>
+                <td style="padding:12px 16px">Good &mdash; Cascade handles multi-step flows</td>
+                <td style="padding:12px 16px;color:var(--green)"><strong>Strongest</strong> &mdash; agent mode runs shell, edits files, verifies changes</td>
+                <td style="padding:12px 16px">Good &mdash; /transform for cross-file edits</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px"><strong>Architecture pattern enforcement</strong></td>
+                <td style="padding:12px 16px">Custom instructions (org-wide) + .github/copilot-instructions.md</td>
+                <td style="padding:12px 16px;color:var(--green)"><strong>.cursorrules</strong> per-project, highly customizable</td>
+                <td style="padding:12px 16px">.windsurfrules per-project</td>
+                <td style="padding:12px 16px;color:var(--green)"><strong>CLAUDE.md</strong> per-project + per-directory, hierarchical</td>
+                <td style="padding:12px 16px">Limited &mdash; no custom rules file</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px"><strong>Code review assistance</strong></td>
+                <td style="padding:12px 16px;color:var(--green)"><strong>Native GitHub PR review</strong> &mdash; inline suggestions, summaries</td>
+                <td style="padding:12px 16px">In-editor review only</td>
+                <td style="padding:12px 16px">In-editor review only</td>
+                <td style="padding:12px 16px">CLI-based review; can analyze PRs via gh integration</td>
+                <td style="padding:12px 16px">PR review via CodeGuru integration</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px"><strong>Explaining complex code</strong></td>
+                <td style="padding:12px 16px">Good &mdash; /explain works well for single files</td>
+                <td style="padding:12px 16px;color:var(--green)"><strong>Excellent</strong> &mdash; codebase-aware explanations, traces call chains</td>
+                <td style="padding:12px 16px">Good &mdash; can trace flows across files</td>
+                <td style="padding:12px 16px;color:var(--green)"><strong>Excellent</strong> &mdash; can read entire systems and explain interactions</td>
+                <td style="padding:12px 16px">Good &mdash; especially for AWS service patterns</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px"><strong>Legacy code migration</strong></td>
+                <td style="padding:12px 16px">Limited &mdash; works file-by-file</td>
+                <td style="padding:12px 16px">Good &mdash; Composer can handle multi-file migrations</td>
+                <td style="padding:12px 16px">Moderate &mdash; Cascade helps but needs guidance</td>
+                <td style="padding:12px 16px;color:var(--green)"><strong>Best</strong> &mdash; agent mode for large-scale migrations, runs tests to verify</td>
+                <td style="padding:12px 16px">Good &mdash; /transform designed for upgrades (Java, Python, JS)</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px"><strong>Price per seat</strong></td>
+                <td style="padding:12px 16px">$19/mo (Business)</td>
+                <td style="padding:12px 16px">$20/mo (Pro) or $40/mo (Business)</td>
+                <td style="padding:12px 16px">$15/mo (Pro) or $60/mo (Max)</td>
+                <td style="padding:12px 16px">$20/mo + API (individual) or $30/seat + API (Team)</td>
+                <td style="padding:12px 16px">$19/mo (Pro)</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <p><strong>Key takeaway:</strong> Copilot wins on team standardization and PR review integration. Cursor wins on daily codebase-aware coding. Claude Code wins on architecture-level work &mdash; migrations, large refactors, and system-level reasoning. The right choice depends on where you spend most of your time.</p>
+
+        <h2>The Code Quality Problem: AI Output vs. Your Standards</h2>
+
+        <p>Every tech lead who has reviewed AI-generated code has noticed the same pattern: it works, but it is not how you would have written it. Sometimes the difference is stylistic. Sometimes it is architectural. The distinction matters.</p>
+
+        <h3>Stylistic drift vs. architectural violations</h3>
+
+        <p><strong>Stylistic drift</strong> is when AI generates code that uses different naming conventions, comment styles, or formatting than your codebase. This is annoying but fixable with linters, formatters, and custom instructions. Every major tool now supports custom rules files:</p>
+
+        <ul>
+          <li><strong>Copilot:</strong> <code>.github/copilot-instructions.md</code> (repo-level) + organization-wide custom instructions in GitHub settings</li>
+          <li><strong>Cursor:</strong> <code>.cursorrules</code> (project root) &mdash; most flexible, supports detailed pattern descriptions</li>
+          <li><strong>Windsurf:</strong> <code>.windsurfrules</code> (project root)</li>
+          <li><strong>Claude Code:</strong> <code>CLAUDE.md</code> (project root + subdirectories) &mdash; hierarchical, so you can set different rules for <code>src/api/</code> vs. <code>src/frontend/</code></li>
+        </ul>
+
+        <p><strong>Architectural violations</strong> are when AI generates code that crosses module boundaries, introduces circular dependencies, uses the wrong data access pattern, or bypasses your abstraction layers. These are harder to catch because the code compiles, passes tests, and delivers the feature &mdash; but erodes the system over time.</p>
+
+        <div class="callout warning">
+          <div class="callout-title">The real risk</div>
+          <p>AI tools do not understand <em>why</em> your architecture exists. They see that a pattern works and replicate it &mdash; including anti-patterns that exist as legacy code you have not yet cleaned up. If 60% of your codebase accesses the database directly instead of through the repository layer, AI will suggest direct database access 60% of the time. The tool learns from your worst code as readily as your best.</p>
+        </div>
+
+        <h3>Mitigation strategies that actually work</h3>
+
+        <ol>
+          <li><strong>Custom rules files as architectural documentation.</strong> Do not just list style preferences. Document module boundaries, dependency rules, and forbidden patterns. Example for a <code>.cursorrules</code> or <code>CLAUDE.md</code>:
+            <pre style="background:var(--bg-alt);padding:1rem;border-radius:8px;overflow-x:auto;margin:1rem 0"><code># Architecture Rules
+- NEVER import from src/internal/ in src/api/ — internal modules are not exposed to the API layer
+- Database access ONLY through src/repositories/ — no direct SQL or ORM calls in services or handlers
+- All new API endpoints must go through src/middleware/auth.ts — no unauthenticated routes
+- Error types are defined in src/errors/ — do not create ad-hoc error classes
+- Feature flags are read via src/config/features.ts — no environment variable reads in business logic</code></pre>
+          </li>
+          <li><strong>CI-enforced architecture checks.</strong> Tools like <a href="https://github.com/nicksenger/dependency-cruiser" style="color:var(--accent)">dependency-cruiser</a> (JS/TS), <a href="https://www.archunit.org/" style="color:var(--accent)">ArchUnit</a> (Java), or <a href="https://github.com/rycus86/import-linter" style="color:var(--accent)">import-linter</a> (Python) catch boundary violations in CI regardless of whether a human or AI wrote the code. If you do not have these, adding them is the highest-leverage thing you can do before adopting AI tools.</li>
+          <li><strong>Scope AI to safe zones.</strong> Let AI tools handle tests, documentation, boilerplate, and isolated utilities freely. Gate AI-assisted changes to core architecture, data models, and public APIs with mandatory human review. This is not about distrusting AI &mdash; it is about matching the tool&rsquo;s strength (fast, pattern-based code generation) to the right parts of the codebase.</li>
+        </ol>
+
+        <h2>Architecture-Level AI: What Actually Works</h2>
+
+        <p>The most valuable AI use case for tech leads is not writing code faster &mdash; it is reasoning about systems. Here are the architecture tasks where AI tools deliver real value, ranked by reliability:</p>
+
+        <h3>High reliability (trust but verify)</h3>
+
+        <ul>
+          <li><strong>Codebase exploration:</strong> &ldquo;Trace the request flow from the /api/orders endpoint to the database.&rdquo; Both Cursor (codebase-indexed chat) and Claude Code (reads files on demand) handle this well. This replaces hours of grep + manual tracing.</li>
+          <li><strong>Dependency analysis:</strong> &ldquo;What modules depend on UserService? What breaks if I change its interface?&rdquo; Claude Code excels here because it can read the entire dependency graph and run tests to verify.</li>
+          <li><strong>RFC and design doc drafting:</strong> Provide the problem statement and constraints; AI generates a structured RFC. You edit rather than write from scratch. Saves 60&ndash;70% of RFC writing time.</li>
+          <li><strong>Large-scale renaming and signature changes:</strong> Renaming a widely-used interface, changing a function signature across 50 call sites. Claude Code agent mode handles this reliably because it can verify each change compiles.</li>
+        </ul>
+
+        <h3>Medium reliability (heavy guidance needed)</h3>
+
+        <ul>
+          <li><strong>Migration planning:</strong> &ldquo;We need to migrate from Express to Fastify. What are all the touch points?&rdquo; AI identifies most of them but misses subtle ones (custom middleware adapters, monkey-patched request objects). Use AI output as a starting checklist, not a complete plan.</li>
+          <li><strong>Pattern extraction:</strong> &ldquo;Find all places where we do manual retry logic and extract a common retry utility.&rdquo; Works well when the pattern is syntactically similar. Fails when the same concept is implemented with different control flow.</li>
+          <li><strong>Test coverage gap analysis:</strong> &ldquo;What code paths in PaymentService have no test coverage?&rdquo; AI approximates this by reading tests and source, but does not replace actual coverage tools. Use it for a quick directional answer.</li>
+        </ul>
+
+        <h3>Low reliability (use as brainstorming only)</h3>
+
+        <ul>
+          <li><strong>Architecture decisions:</strong> &ldquo;Should we use event sourcing for order management?&rdquo; AI provides a balanced pro/con list but cannot weigh your team&rsquo;s experience, your operational constraints, or your business context. The answer sounds authoritative but is generic.</li>
+          <li><strong>Performance optimization strategy:</strong> AI suggests common optimizations (caching, indexing, connection pooling) but cannot diagnose your specific bottleneck without profiler data. Do not let AI guess where your system is slow.</li>
+          <li><strong>System decomposition:</strong> &ldquo;Should we extract this into a microservice?&rdquo; The answer requires understanding team structure, deployment complexity, and operational maturity that AI does not have.</li>
+        </ul>
+
+        <h2>Head-to-Head: 12 Tech Lead Tasks</h2>
+
+        <div style="overflow-x:auto">
+          <table style="width:100%;border-collapse:collapse;margin:1.5rem 0">
+            <thead>
+              <tr style="border-bottom:2px solid var(--border);text-align:left">
+                <th style="padding:12px 16px">Task</th>
+                <th style="padding:12px 16px">Best tool</th>
+                <th style="padding:12px 16px">Why</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px">Review a 500-line PR</td>
+                <td style="padding:12px 16px"><strong>Copilot</strong></td>
+                <td style="padding:12px 16px">Native GitHub PR review; summarizes changes, flags potential issues, inline suggestions</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px">Trace a bug across 10 files</td>
+                <td style="padding:12px 16px"><strong>Cursor</strong></td>
+                <td style="padding:12px 16px">Codebase indexing + chat; ask &ldquo;how does data flow from X to Y?&rdquo; and get file-referenced answers</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px">Large-scale migration (framework, library, API version)</td>
+                <td style="padding:12px 16px"><strong>Claude Code</strong></td>
+                <td style="padding:12px 16px">Agent mode: reads codebase, plans migration, edits files, runs tests, iterates on failures</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px">Write an RFC or design doc</td>
+                <td style="padding:12px 16px"><strong>Claude Code</strong></td>
+                <td style="padding:12px 16px">Reads existing codebase for context, generates structured RFC with alternatives and trade-offs</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px">Enforce coding patterns across a team</td>
+                <td style="padding:12px 16px"><strong>Copilot + Cursor</strong></td>
+                <td style="padding:12px 16px">Copilot: org-wide custom instructions. Cursor: .cursorrules per project. Both steer AI output toward your patterns</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px">Explain legacy code to a new team member</td>
+                <td style="padding:12px 16px"><strong>Cursor</strong></td>
+                <td style="padding:12px 16px">Codebase-aware chat explains how components interact; better than reading raw source</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px">Refactor a module without changing behavior</td>
+                <td style="padding:12px 16px"><strong>Claude Code</strong></td>
+                <td style="padding:12px 16px">Agent can refactor, run existing tests to verify behavior, and fix regressions in a loop</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px">Prototype an architectural spike</td>
+                <td style="padding:12px 16px"><strong>Cursor</strong></td>
+                <td style="padding:12px 16px">Composer mode generates multi-file prototypes fast; ideal for throwaway exploration</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px">Audit dependencies for security</td>
+                <td style="padding:12px 16px"><strong>Amazon Q</strong></td>
+                <td style="padding:12px 16px">Built-in vulnerability scanning; identifies CVEs and suggests upgrades with compatibility info</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px">Onboard yourself to unfamiliar codebase</td>
+                <td style="padding:12px 16px"><strong>Cursor</strong></td>
+                <td style="padding:12px 16px">Index the repo, ask &ldquo;how does authentication work?&rdquo; &mdash; fastest way to build a mental model</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px">Write integration tests for a complex flow</td>
+                <td style="padding:12px 16px"><strong>Claude Code</strong></td>
+                <td style="padding:12px 16px">Reads the flow end-to-end, generates tests that cover the actual integration points, runs them</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px">Daily inline coding (autocomplete)</td>
+                <td style="padding:12px 16px"><strong>Copilot or Cursor</strong></td>
+                <td style="padding:12px 16px">Both excellent for autocomplete; Cursor has slight edge with codebase-aware suggestions</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <p><strong>Pattern:</strong> Copilot for team-wide standards and PR review. Cursor for daily coding and codebase exploration. Claude Code for the heavy architecture work that defines your role.</p>
+
+        <h2>Mentoring in the Age of AI: The Tech Lead&rsquo;s New Challenge</h2>
+
+        <p>Your junior and mid-level engineers are using AI to write code. This is not optional &mdash; fighting it is like fighting IDEs in 2005. But it changes what mentoring looks like:</p>
+
+        <h3>The problem</h3>
+
+        <p>AI lets junior developers ship features they do not fully understand. The code works. The PR looks clean. But the developer cannot explain why the code is structured that way, what trade-offs were made, or what would break if requirements changed. They have built a feature without building the understanding that would make them capable of building the next feature independently.</p>
+
+        <p>This is not hypothetical. If you review PRs from juniors who use AI heavily, you have seen it: correct code that the author cannot defend or modify without re-prompting the AI.</p>
+
+        <h3>What works</h3>
+
+        <ol>
+          <li><strong>Review the prompts, not just the code.</strong> Ask juniors to include their AI conversation in the PR description (or link to it). Review how they decomposed the problem, what context they provided to the AI, and whether they understood the AI&rsquo;s output before accepting it. The quality of the prompt reveals the quality of the understanding.</li>
+          <li><strong>Ask &ldquo;what would you change if X?&rdquo;</strong> During PR review, pose a hypothetical change: &ldquo;What if we needed to support pagination here?&rdquo; or &ldquo;What if this table grows to 10M rows?&rdquo; If the developer cannot answer without consulting the AI, they do not understand the code well enough. This is not a gotcha &mdash; it is a learning prompt.</li>
+          <li><strong>AI-assisted pairing, not AI-replaced thinking.</strong> Encourage juniors to use AI as a pairing partner: &ldquo;Explain this error to me&rdquo; rather than &ldquo;fix this error.&rdquo; The former builds understanding; the latter builds dependency. Cursor&rsquo;s chat mode and Claude Code&rsquo;s conversational style both support this well.</li>
+          <li><strong>Gradually increase the code review bar.</strong> Week 1: the PR works and passes tests. Week 4: the PR follows the team&rsquo;s patterns. Week 8: the PR demonstrates the developer understands the system context around their change. This progression works whether the code is AI-generated or not.</li>
+          <li><strong>Assign &ldquo;no-AI&rdquo; tasks selectively.</strong> Some tasks are specifically valuable for learning: debugging a production issue, tracing a race condition, understanding why a test is flaky. These teach skills that AI cannot shortcut. Do not ban AI broadly &mdash; assign specific learning tasks where manual work builds understanding.</li>
+        </ol>
+
+        <h3>Tool recommendations for mentoring</h3>
+
+        <ul>
+          <li><strong>Cursor</strong> is best for junior mentoring because the chat interface lets developers ask &ldquo;why&rdquo; questions about the codebase and get contextual answers. It is a learning tool, not just a code generator.</li>
+          <li><strong>Claude Code</strong> is best for mid-level developers who need to understand system-level interactions. The conversational agent can walk through how components connect, explain architectural decisions, and suggest approaches the developer can evaluate.</li>
+          <li><strong>Copilot</strong> is the most constrained (autocomplete-focused), which can actually be an advantage for juniors &mdash; it suggests completions rather than generating entire implementations, keeping the developer in the driver&rsquo;s seat.</li>
+        </ul>
+
+        <h2>Custom Rules Files: Your Most Powerful Lever</h2>
+
+        <p>If you adopt only one practice from this guide, make it this: write a custom rules file for your project. This is the single most effective way to steer AI-generated code toward your architectural standards.</p>
+
+        <h3>What to include</h3>
+
+        <div style="overflow-x:auto">
+          <table style="width:100%;border-collapse:collapse;margin:1.5rem 0">
+            <thead>
+              <tr style="border-bottom:2px solid var(--border);text-align:left">
+                <th style="padding:12px 16px">Category</th>
+                <th style="padding:12px 16px">Example rules</th>
+                <th style="padding:12px 16px">Why it matters</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px"><strong>Module boundaries</strong></td>
+                <td style="padding:12px 16px">&ldquo;src/domain/ never imports from src/infrastructure/&rdquo;</td>
+                <td style="padding:12px 16px">Prevents dependency inversions that AI frequently introduces</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px"><strong>Preferred patterns</strong></td>
+                <td style="padding:12px 16px">&ldquo;Use Result&lt;T, Error&gt; for all service returns, never throw&rdquo;</td>
+                <td style="padding:12px 16px">AI defaults to try/catch unless told otherwise</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px"><strong>Forbidden patterns</strong></td>
+                <td style="padding:12px 16px">&ldquo;NEVER use any in TypeScript. Use unknown and narrow.&rdquo;</td>
+                <td style="padding:12px 16px">AI takes the path of least resistance; explicit bans prevent lazy typing</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px"><strong>Data access rules</strong></td>
+                <td style="padding:12px 16px">&ldquo;All database queries go through repository classes in src/repos/&rdquo;</td>
+                <td style="padding:12px 16px">Keeps the data layer contained instead of leaking across services</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px"><strong>Testing conventions</strong></td>
+                <td style="padding:12px 16px">&ldquo;Integration tests use testcontainers, not mocks. Unit tests mock external boundaries only.&rdquo;</td>
+                <td style="padding:12px 16px">AI loves mocking everything; explicit rules enforce real integration testing</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px"><strong>Naming conventions</strong></td>
+                <td style="padding:12px 16px">&ldquo;Handlers: *Handler. Services: *Service. Repos: *Repository. No other suffixes.&rdquo;</td>
+                <td style="padding:12px 16px">Prevents proliferation of Manager, Helper, Utils classes</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px"><strong>API design</strong></td>
+                <td style="padding:12px 16px">&ldquo;REST endpoints return { data, meta, errors }. No other envelope formats.&rdquo;</td>
+                <td style="padding:12px 16px">Consistency across endpoints regardless of who (or what) writes them</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>Tool comparison for rules enforcement</h3>
+
+        <ul>
+          <li><strong>Claude Code (CLAUDE.md)</strong> is the most powerful option. It supports hierarchical rules: a root <code>CLAUDE.md</code> sets project-wide standards, and subdirectory files add module-specific rules. For example, <code>src/api/CLAUDE.md</code> can enforce REST conventions while <code>src/workers/CLAUDE.md</code> enforces queue processing patterns. The AI reads these files automatically.</li>
+          <li><strong>Cursor (.cursorrules)</strong> is a single file at the project root, but it is the most widely adopted and well-tested. The AI reliably follows detailed .cursorrules instructions.</li>
+          <li><strong>Copilot (custom instructions)</strong> works at the organization level (GitHub settings) plus per-repo <code>.github/copilot-instructions.md</code>. Good for team-wide standards; less granular than Cursor or Claude Code for per-module rules.</li>
+        </ul>
+
+        <p><strong>Recommendation:</strong> Write the rules file even if you are not sure which AI tool your team will use. The rules are transferable between tools with minor format changes, and the act of writing them clarifies your own architectural standards.</p>
+
+        <h2>Cost Modeling for Tech Lead Roles</h2>
+
+        <p>Tech leads and staff engineers typically use AI tools more intensively than other developers. You are doing code review, codebase exploration, refactoring, RFC drafting, and mentoring &mdash; all of which consume more AI context and requests than simple autocomplete. Here is what that looks like financially:</p>
+
+        <div style="overflow-x:auto">
+          <table style="width:100%;border-collapse:collapse;margin:1.5rem 0">
+            <thead>
+              <tr style="border-bottom:2px solid var(--border);text-align:left">
+                <th style="padding:12px 16px">Tool</th>
+                <th style="padding:12px 16px">Plan</th>
+                <th style="padding:12px 16px">Monthly cost</th>
+                <th style="padding:12px 16px">Rate limit risk for heavy use</th>
+                <th style="padding:12px 16px">Overage cost</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px"><strong>Copilot</strong></td>
+                <td style="padding:12px 16px">Business</td>
+                <td style="padding:12px 16px">$19</td>
+                <td style="padding:12px 16px;color:var(--green)">Low &mdash; premium model requests may run out on heavy days</td>
+                <td style="padding:12px 16px">Premium requests limited; falls back to base model</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px"><strong>Cursor</strong></td>
+                <td style="padding:12px 16px">Pro</td>
+                <td style="padding:12px 16px">$20</td>
+                <td style="padding:12px 16px">Medium &mdash; 500 fast requests/mo; heavy users hit this in 2&ndash;3 weeks</td>
+                <td style="padding:12px 16px">Slowed requests (still works, just slower)</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px"><strong>Cursor</strong></td>
+                <td style="padding:12px 16px">Business</td>
+                <td style="padding:12px 16px">$40</td>
+                <td style="padding:12px 16px;color:var(--green)">Low &mdash; pooled fast requests across team</td>
+                <td style="padding:12px 16px">Pooled; heavy users covered by light users</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px"><strong>Claude Code</strong></td>
+                <td style="padding:12px 16px">Max (individual)</td>
+                <td style="padding:12px 16px">$100&ndash;200</td>
+                <td style="padding:12px 16px">Medium &mdash; 5x or 20x usage vs Pro; heavy architecture work can push limits</td>
+                <td style="padding:12px 16px">Rate limited; no dollar overage</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px"><strong>Claude Code</strong></td>
+                <td style="padding:12px 16px">Team + API</td>
+                <td style="padding:12px 16px">$30 + usage</td>
+                <td style="padding:12px 16px;color:var(--green)">None &mdash; pay per token, no artificial limits</td>
+                <td style="padding:12px 16px">$60&ndash;150/mo typical for heavy architecture use</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px"><strong>Windsurf</strong></td>
+                <td style="padding:12px 16px">Pro</td>
+                <td style="padding:12px 16px">$15</td>
+                <td style="padding:12px 16px;color:var(--red)">High &mdash; action-based credits deplete fast on multi-file work</td>
+                <td style="padding:12px 16px">Credits exhausted; must wait or buy more</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px"><strong>Amazon Q</strong></td>
+                <td style="padding:12px 16px">Pro</td>
+                <td style="padding:12px 16px">$19</td>
+                <td style="padding:12px 16px;color:var(--green)">None &mdash; unlimited usage</td>
+                <td style="padding:12px 16px">$0</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <p><strong>Budget recommendation:</strong> If your company pays for your tools, push for Cursor Business ($40/seat) for daily work plus Claude Code Team for architecture work. Total: ~$70&ndash;180/month. If you are paying out of pocket, Cursor Pro ($20) + Claude Code API ($30 seat + $30&ndash;60 usage) is the best value for the work you do. If budget is tight, Copilot Business ($19) covers 80% of needs.</p>
+
+        <h2>The Tech Lead&rsquo;s AI Adoption Playbook</h2>
+
+        <p>You are probably not just choosing a tool for yourself &mdash; you are setting the technical direction for your team&rsquo;s AI adoption. Here is a phased approach:</p>
+
+        <h3>Phase 1: Foundation (Week 1&ndash;2)</h3>
+
+        <ol>
+          <li><strong>Write your custom rules file.</strong> Before anyone on the team uses an AI tool, document your architectural standards in a <code>.cursorrules</code>, <code>CLAUDE.md</code>, or <code>.github/copilot-instructions.md</code>. This is the single most impactful step.</li>
+          <li><strong>Add CI architecture checks.</strong> Dependency-cruiser, ArchUnit, or import-linter. If AI-generated code violates module boundaries, CI should catch it before you do.</li>
+          <li><strong>Baseline your metrics.</strong> Capture current cycle time, PR review time, bug rate, and deployment frequency. You cannot measure AI impact without a baseline.</li>
+        </ol>
+
+        <h3>Phase 2: Controlled rollout (Week 3&ndash;4)</h3>
+
+        <ol>
+          <li><strong>Start with yourself and senior developers.</strong> You and other experienced developers try the tool first. You will discover edge cases, prompt patterns, and failure modes before juniors encounter them.</li>
+          <li><strong>Document what works.</strong> Create a team-internal &ldquo;AI patterns&rdquo; doc: &ldquo;For X type of task, use Y approach with Z tool.&rdquo; Real examples from your codebase, not generic tips.</li>
+          <li><strong>Establish review expectations.</strong> Agree on what changes in code review when AI is involved. Do you review AI-generated code more carefully, or the same? (The correct answer is the same &mdash; but be explicit about it.)</li>
+        </ol>
+
+        <h3>Phase 3: Team-wide adoption (Week 5+)</h3>
+
+        <ol>
+          <li><strong>Roll out to the full team with the rules file and patterns doc.</strong> New users start with guardrails already in place.</li>
+          <li><strong>Weekly AI retrospective (first month only).</strong> 15 minutes: what worked, what produced bad code, what patterns should we add to the rules file? This catches problems early and builds shared knowledge.</li>
+          <li><strong>Monitor review load.</strong> If your PR review time increases significantly, AI is producing more code but lower quality. Tighten the rules file or adjust which tasks are AI-assisted.</li>
+        </ol>
+
+        <h2>When AI Tools Make Your Job Harder</h2>
+
+        <p>Honest assessment: there are situations where AI tools create more work for tech leads, not less.</p>
+
+        <ul>
+          <li><strong>Inconsistent patterns across PRs.</strong> Developer A uses Copilot and generates Express-style middleware. Developer B uses Cursor and generates a different abstraction. Developer C writes it manually in yet another style. Without strong rules files and CI checks, AI amplifies inconsistency.</li>
+          <li><strong>Premature abstraction.</strong> AI tools love generating abstractions: factory patterns, strategy patterns, dependency injection containers. For a 500-line microservice, this is over-engineering. You will spend review time asking &ldquo;why is there a factory here?&rdquo; when the answer is &ldquo;the AI suggested it.&rdquo;</li>
+          <li><strong>Test quality decline.</strong> AI-generated tests often test implementation details rather than behavior. They pass now but break on every refactor. Watch for tests that assert on specific SQL queries, mock chain lengths, or internal state that should be an implementation detail.</li>
+          <li><strong>Copy-paste propagation.</strong> AI learns from your codebase. If you have copy-pasted code, AI will suggest more of it instead of pointing you to the shared utility. The tool reinforces existing technical debt.</li>
+          <li><strong>Context window limits on large systems.</strong> Your mental model spans the entire system. AI context windows span thousands of tokens. For systems with complex invariants spread across many files, AI may produce locally correct but globally wrong code.</li>
+        </ul>
+
+        <h2>Tool-by-Tool Verdict for Tech Leads</h2>
+
+        <h3>GitHub Copilot Business ($19/seat)</h3>
+        <p><strong>Best for:</strong> team standardization, PR review integration, lowest-friction team adoption.<br>
+        <strong>Limitation for tech leads:</strong> Weakest at multi-file architectural work. You will still need another tool for migrations and large refactors.<br>
+        <strong>Verdict:</strong> The safe default for the team you lead. Probably not sufficient as your personal primary tool if you do architecture-heavy work.</p>
+
+        <h3>Cursor Pro/Business ($20&ndash;$40/seat)</h3>
+        <p><strong>Best for:</strong> daily coding with deep codebase context, codebase exploration, architectural spike prototyping.<br>
+        <strong>Limitation for tech leads:</strong> Composer mode is good but not as autonomous as Claude Code for large migrations. .cursorrules is powerful but single-file (no directory hierarchy).<br>
+        <strong>Verdict:</strong> The best daily driver for tech leads. Codebase indexing + .cursorrules is the closest to having an AI that understands your system. Business plan for teams, Pro for individual use.</p>
+
+        <h3>Claude Code Team ($30/seat + API)</h3>
+        <p><strong>Best for:</strong> architecture-level work &mdash; migrations, large refactors, RFC drafting, cross-cutting changes.<br>
+        <strong>Limitation for tech leads:</strong> Terminal-based (no IDE autocomplete). API costs add up for heavy use. Learning curve is steeper than IDE-integrated tools.<br>
+        <strong>Verdict:</strong> The architecture tool. Not a replacement for Cursor or Copilot for daily coding, but unmatched for the system-level work that defines the tech lead role. Worth the API costs for the time saved on migrations and large refactors.</p>
+
+        <h3>Windsurf Pro ($15/mo)</h3>
+        <p><strong>Best for:</strong> budget-conscious individual use, Cascade flow for multi-step tasks.<br>
+        <strong>Limitation for tech leads:</strong> Credit-based pricing means heavy architecture work depletes credits fast. Weaker codebase context than Cursor. Less customizable rules.<br>
+        <strong>Verdict:</strong> Not ideal for tech leads. The credit system does not align with how you use AI tools &mdash; heavy, bursty, context-intensive work.</p>
+
+        <h3>Amazon Q Developer Pro ($19/mo)</h3>
+        <p><strong>Best for:</strong> AWS-heavy codebases, security scanning, unlimited usage without rate limits.<br>
+        <strong>Limitation for tech leads:</strong> Weaker general-purpose coding than Cursor or Claude Code. No custom rules file for architecture enforcement.<br>
+        <strong>Verdict:</strong> Strong addition if you work heavily with AWS. Not a primary tool for architecture work, but the unlimited usage and security scanning are genuinely useful.</p>
+
+        <h2>Common Tech Lead Mistakes with AI Tools</h2>
+
+        <ol>
+          <li><strong>No rules file.</strong> Adopting AI tools without a custom rules file is like giving a new hire no onboarding. The tool has no idea what patterns you expect. This is the #1 fixable mistake.</li>
+          <li><strong>Same tool for every task.</strong> Autocomplete, chat, and agent mode are different capabilities suited to different tasks. Using only autocomplete means missing the architecture-level value. Using only agents means fighting the tool on simple edits.</li>
+          <li><strong>Reviewing AI code less carefully.</strong> &ldquo;The AI wrote it, so it is probably fine&rdquo; is the most dangerous assumption. AI-generated code needs the same review as human-written code. It is often <em>more</em> subtly wrong because it compiles and passes basic tests.</li>
+          <li><strong>Not measuring the effect on review load.</strong> If your team ships 30% more PRs but each PR takes 20% longer to review, the net effect on the team may be negative. Track your review time.</li>
+          <li><strong>Banning AI instead of guiding it.</strong> Some tech leads react to bad AI code by restricting or banning tools. This pushes usage underground. Better to provide strong guardrails (rules files, CI checks, review standards) and let the team use AI within those boundaries.</li>
+          <li><strong>Ignoring the mentoring impact.</strong> Juniors who ship AI-generated code without understanding it are building features without building skills. Adjust your mentoring approach; do not just accept that AI-generated PRs look clean.</li>
+          <li><strong>Optimizing for personal productivity only.</strong> You might be 2x faster with Claude Code, but if your team is struggling with AI adoption or producing inconsistent code, your individual productivity gain is a team net negative. Focus on team-level outcomes.</li>
+        </ol>
+
+        <h2>5 Tips for Tech Leads &amp; Staff Engineers</h2>
+
+        <ol>
+          <li><strong>Write the rules file first, adopt the tool second.</strong> Your architectural standards should lead AI adoption, not follow it. Every project should have a custom rules file before the first AI-generated PR.</li>
+          <li><strong>Use two tools, not one.</strong> An IDE-integrated tool (Copilot or Cursor) for daily coding, plus an agent tool (Claude Code) for architecture work. They complement each other; neither replaces the other.</li>
+          <li><strong>Review prompts, not just code.</strong> When reviewing AI-assisted PRs from junior developers, ask about the prompts. The prompt quality reveals whether the developer understands the problem or is just delegating to the AI.</li>
+          <li><strong>Invest in CI architecture checks.</strong> Automated boundary enforcement catches AI-generated violations that are easy to miss in review. This is infrastructure that pays for itself regardless of AI tool choice.</li>
+          <li><strong>Measure review load alongside velocity.</strong> If your team ships faster but your review backlog grows, the system is not healthier. Track both production and quality metrics.</li>
+        </ol>
+
+        <h2>Related Guides</h2>
+
+        <ul>
+          <li><a href="/blog/ai-coding-tools-for-engineering-managers-2026.html" style="color:var(--accent)">Engineering Managers guide</a> &mdash; ROI frameworks, rollout playbooks, adoption tracking, and budget justification for 5&ndash;50 dev teams</li>
+          <li><a href="/blog/ai-coding-tools-for-ctos-vp-engineering-2026.html" style="color:var(--accent)">CTOs &amp; VPs of Engineering guide</a> &mdash; Org-wide strategy, vendor risk, compliance, and budget modeling for 50&ndash;500+ engineers</li>
+          <li><a href="/blog/ai-coding-tools-for-solutions-architects-2026.html" style="color:var(--accent)">Solutions Architects guide</a> &mdash; Architecture-level AI tool usage for system design and integration planning</li>
+          <li><a href="/blog/ai-coding-tools-for-backend-engineers-2026.html" style="color:var(--accent)">Backend Engineers guide</a> &mdash; Language-specific AI performance, debugging, and server-side development</li>
+          <li><a href="/blog/ai-coding-tools-for-security-engineers-2026.html" style="color:var(--accent)">Security Engineers guide</a> &mdash; Vulnerability scanning, secure coding patterns, and AI-specific security risks</li>
+          <li><a href="/blog/ai-coding-tools-for-cisos-2026.html" style="color:var(--accent)">CISOs guide</a> &mdash; Data governance, vendor risk assessment, shadow AI policy, and compliance frameworks</li>
+          <li><a href="/blog/hidden-costs-ai-coding-tools.html" style="color:var(--accent)">Hidden Costs of AI Coding Tools</a> &mdash; Rate limits, usage-based pricing traps, and real cost modeling</li>
+          <li><a href="/" style="color:var(--accent)">Interactive cost calculator</a> &mdash; Model costs for your exact team size and usage pattern</li>
+        </ul>
+
+      </div>
+    </article>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>CodeCosts is a free tool by <a href="https://github.com/lunacompsia-oss" target="_blank" rel="noopener">Lunacompsia</a>. Data sourced from official pricing pages. Not affiliated with any listed tool. <a href="/blog/">Read more articles &rarr;</a></p>
+    </div>
+  </footer>
+</body>
+</html>

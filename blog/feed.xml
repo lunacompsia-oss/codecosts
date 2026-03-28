@@ -5,8 +5,16 @@
     <link>https://codecosts.pages.dev/blog/</link>
     <description>AI coding tool news, pricing updates, and analysis. Compare GitHub Copilot, Cursor, Windsurf, Claude Code, and more.</description>
     <language>en-us</language>
-    <lastBuildDate>Sat, 28 Mar 2026 17:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Sat, 28 Mar 2026 19:00:00 GMT</lastBuildDate>
     <atom:link href="https://codecosts.pages.dev/blog/feed.xml" rel="self" type="application/rss+xml"/>
+
+    <item>
+      <title>AI Coding Tools for Database Administrators 2026: SQL Optimization, Schema Design, Migration &amp; Performance Tuning Guide</title>
+      <link>https://codecosts.pages.dev/blog/ai-coding-tools-for-database-administrators-2026.html</link>
+      <description>The DBA's guide to AI coding tools in 2026. Every tool ranked for complex SQL, query optimization from EXPLAIN output, schema design, zero-downtime migrations, stored procedures, and performance tuning across PostgreSQL, MySQL, SQL Server, and MongoDB. Task-first recommendations from $0 to $40/mo.</description>
+      <pubDate>Sat, 28 Mar 2026 19:00:00 GMT</pubDate>
+      <guid>https://codecosts.pages.dev/blog/ai-coding-tools-for-database-administrators-2026.html</guid>
+    </item>
 
     <item>
       <title>AI Coding Tools for Solutions Architects 2026: Architecture Design, PoCs, RFCs &amp; Technical Evaluation Guide</title>

@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Coding Tools for Technical Writers 2026: API Docs, Code Examples, Docs-as-Code &amp; Style Guide Compliance</title>
+  <meta name="description" content="The technical writer's guide to AI coding tools in 2026. Every tool ranked for API documentation, code example generation, docs-as-code workflows, Markdown/RST fluency, style guide compliance, and SDK reference writing. Task-first recommendations from $0 to $40/mo.">
+  <link rel="canonical" href="https://codecosts.pages.dev/blog/ai-coding-tools-for-technical-writers-2026.html">
+  <meta property="og:title" content="AI Coding Tools for Technical Writers 2026: API Docs, Code Examples &amp; Docs-as-Code">
+  <meta property="og:description" content="Every AI coding tool ranked for technical writing work. API documentation, code examples, docs-as-code workflows, and style guide compliance. Task-first recommendations from $0 to $40/mo.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://codecosts.pages.dev/blog/ai-coding-tools-for-technical-writers-2026.html">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="AI Coding Tools for Technical Writers 2026: API Docs, Code Examples &amp; Docs-as-Code">
+  <meta name="twitter:description" content="Every AI coding tool ranked for technical writing work. API docs, code examples, docs-as-code, and style guide compliance. From $0 to $40/mo.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💰</text></svg>">
+  <link rel="stylesheet" href="../style.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "AI Coding Tools for Technical Writers 2026: API Docs, Code Examples, Docs-as-Code & Style Guide Compliance",
+    "datePublished": "2026-03-28",
+    "dateModified": "2026-03-28",
+    "author": { "@type": "Organization", "name": "CodeCosts" },
+    "publisher": { "@type": "Organization", "name": "CodeCosts" },
+    "description": "The technical writer's guide to AI coding tools in 2026. Every tool ranked for API documentation, code example generation, docs-as-code workflows, and style guide compliance."
+  }
+  </script>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <a href="/" style="text-decoration:none;color:inherit"><h1><span class="logo">$_</span> CodeCosts</h1></a>
+      <p class="tagline">AI Coding Tool News &amp; Analysis</p>
+      <nav>
+        <a href="/">Tools</a>
+        <a href="/blog/" class="active">Blog</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <article class="card">
+      <h2>AI Coding Tools for Technical Writers 2026: API Docs, Code Examples, Docs-as-Code &amp; Style Guide Compliance</h2>
+      <div class="article-meta">
+        <span>March 28, 2026</span>
+        <span>17 min read</span>
+      </div>
+
+      <div class="article-content">
+        <p>Technical writers occupy a unique space between code and communication. You are not building applications &mdash; you are explaining them. Your daily work involves writing API reference documentation from source code, creating code examples that actually compile and run, maintaining docs-as-code repositories in Markdown or reStructuredText, enforcing style guide consistency across hundreds of pages, generating SDK quickstart guides, writing changelogs and release notes from git history, and turning complex internal systems into documentation that external developers can follow without filing a support ticket.</p>
+
+        <p>Most AI coding tool reviews test on software engineering tasks: building features, writing tests, debugging production code. That tells you nothing about whether a tool can read a Go function signature and produce a correct, well-structured API reference entry, generate a working Python code example that matches a REST endpoint&rsquo;s actual behavior, or rewrite a paragraph to comply with the Google Developer Documentation Style Guide. This guide evaluates every major AI coding tool through the lens of what technical writers actually do.</p>
+
+        <div class="callout tip">
+          <div class="callout-title">TL;DR</div>
+          <p><strong>Best free ($0):</strong> GitHub Copilot Free &mdash; 2,000 completions/mo handles Markdown boilerplate, code fence completion, and frontmatter generation. <strong>Best for docs work ($20/mo):</strong> Claude Code &mdash; excels at reading source code and generating accurate API docs, multi-language code examples, and style-consistent prose. <strong>Best in-IDE ($20/mo):</strong> Cursor &mdash; strong codebase-aware completion for docs-as-code repos with cross-file reference resolution. <strong>Best combo ($20/mo):</strong> Claude Code + Copilot Free &mdash; Claude Code for generating docs from source, Copilot for inline Markdown completion.</p>
+        </div>
+
+        <h2>Why Technical Writing Is Different from Software Engineering</h2>
+
+        <p>Technical writing has fundamentally different requirements from application development. Understanding why helps you evaluate which AI tools genuinely help versus which ones generate plausible-looking documentation that misleads developers:</p>
+
+        <ul>
+          <li><strong>Accuracy is non-negotiable:</strong> A code example that does not compile, an API parameter described with the wrong type, or a curl command with a missing header does not just look bad &mdash; it destroys trust. Developers who hit a broken example in your docs stop reading your docs and go to Stack Overflow. AI tools that generate &ldquo;approximately correct&rdquo; documentation are actively harmful because the errors look authoritative.</li>
+          <li><strong>Source code is the source of truth:</strong> Documentation must reflect what the code actually does, not what it was designed to do. AI tools need to read source code, type definitions, and function signatures &mdash; not hallucinate parameter names from training data. A tool that generates API docs without reading the actual codebase is guessing.</li>
+          <li><strong>Style consistency matters more than style quality:</strong> Whether you follow the Google Developer Documentation Style Guide, the Microsoft Style Guide, or your company&rsquo;s custom guide, consistency across hundreds of pages matters more than any individual sentence being perfect. AI tools that write beautifully but inconsistently create more work than they save.</li>
+          <li><strong>Multi-language code examples:</strong> API documentation often needs the same operation shown in Python, JavaScript, Go, Java, curl, and sometimes Ruby or PHP. Each example must use idiomatic patterns for that language, handle errors appropriately, and produce the same result. Generating one correct example is easy; generating six consistent, idiomatic examples is hard.</li>
+          <li><strong>Docs-as-code tooling:</strong> Technical writers work in Markdown, reStructuredText, AsciiDoc, MDX, and YAML frontmatter. They use static site generators like Docusaurus, MkDocs, Sphinx, Hugo, and Jekyll. AI tools need to understand these formats and their specific syntax extensions &mdash; admonitions, tabs, code groups, API reference directives &mdash; not just generic Markdown.</li>
+          <li><strong>Information architecture, not just content:</strong> Good documentation is not just well-written pages &mdash; it is well-organized pages. Technical writers think about navigation, progressive disclosure, prerequisites, cross-references, and the difference between conceptual docs, how-to guides, tutorials, and reference material. AI tools that dump everything into one page miss the point.</li>
+        </ul>
+
+        <h2>Technical Writer Task Support Matrix</h2>
+
+        <p>Technical writers juggle documentation generation, code example creation, style enforcement, and tooling. Here is how each AI tool handles the technical writer&rsquo;s daily workflow:</p>
+
+        <div style="overflow-x:auto">
+          <table style="width:100%;border-collapse:collapse;margin:1.5rem 0">
+            <thead>
+              <tr style="border-bottom:2px solid var(--border)">
+                <th style="padding:12px 16px;text-align:left">Tool</th>
+                <th style="padding:12px 16px;text-align:left">API Doc Generation</th>
+                <th style="padding:12px 16px;text-align:left">Code Examples</th>
+                <th style="padding:12px 16px;text-align:left">Style Compliance</th>
+                <th style="padding:12px 16px;text-align:left">Docs-as-Code</th>
+                <th style="padding:12px 16px;text-align:left">Multi-Language</th>
+                <th style="padding:12px 16px;text-align:left">Release Notes</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px"><strong>GitHub Copilot</strong></td>
+                <td style="padding:12px 16px;color:var(--yellow)">Adequate</td>
+                <td style="padding:12px 16px;color:var(--green)">Good</td>
+                <td style="padding:12px 16px;color:var(--yellow)">Weak</td>
+                <td style="padding:12px 16px;color:var(--green)">Good</td>
+                <td style="padding:12px 16px;color:var(--yellow)">Adequate</td>
+                <td style="padding:12px 16px;color:var(--yellow)">Adequate</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px"><strong>Cursor</strong></td>
+                <td style="padding:12px 16px;color:var(--green)">Strong</td>
+                <td style="padding:12px 16px;color:var(--green)">Strong</td>
+                <td style="padding:12px 16px;color:var(--green)">Good</td>
+                <td style="padding:12px 16px;color:var(--green)">Strong</td>
+                <td style="padding:12px 16px;color:var(--green)">Good</td>
+                <td style="padding:12px 16px;color:var(--green)">Good</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px"><strong>Claude Code</strong></td>
+                <td style="padding:12px 16px;color:var(--green)">Excellent</td>
+                <td style="padding:12px 16px;color:var(--green)">Excellent</td>
+                <td style="padding:12px 16px;color:var(--green)">Excellent</td>
+                <td style="padding:12px 16px;color:var(--green)">Strong</td>
+                <td style="padding:12px 16px;color:var(--green)">Excellent</td>
+                <td style="padding:12px 16px;color:var(--green)">Excellent</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px"><strong>Windsurf</strong></td>
+                <td style="padding:12px 16px;color:var(--green)">Good</td>
+                <td style="padding:12px 16px;color:var(--green)">Good</td>
+                <td style="padding:12px 16px;color:var(--yellow)">Adequate</td>
+                <td style="padding:12px 16px;color:var(--green)">Good</td>
+                <td style="padding:12px 16px;color:var(--green)">Good</td>
+                <td style="padding:12px 16px;color:var(--green)">Good</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px"><strong>Amazon Q</strong></td>
+                <td style="padding:12px 16px;color:var(--yellow)">Adequate</td>
+                <td style="padding:12px 16px;color:var(--yellow)">Adequate</td>
+                <td style="padding:12px 16px;color:var(--yellow)">Weak</td>
+                <td style="padding:12px 16px;color:var(--yellow)">Adequate</td>
+                <td style="padding:12px 16px;color:var(--yellow)">Adequate</td>
+                <td style="padding:12px 16px;color:var(--yellow)">Adequate</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px"><strong>Gemini Code Assist</strong></td>
+                <td style="padding:12px 16px;color:var(--green)">Good</td>
+                <td style="padding:12px 16px;color:var(--green)">Good</td>
+                <td style="padding:12px 16px;color:var(--yellow)">Adequate</td>
+                <td style="padding:12px 16px;color:var(--yellow)">Adequate</td>
+                <td style="padding:12px 16px;color:var(--green)">Good</td>
+                <td style="padding:12px 16px;color:var(--yellow)">Adequate</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h2>Tool-by-Tool Breakdown</h2>
+
+        <h3>Claude Code ($20/mo Max5 / $100/mo Max20) &mdash; The Documentation Engine</h3>
+
+        <p>Claude Code is the strongest tool for technical writers because it excels at the core challenge of documentation work: reading source code and producing accurate, well-structured, stylistically consistent documentation.</p>
+
+        <p><strong>API documentation from source:</strong> Claude Code&rsquo;s standout capability for technical writers is reading an entire codebase and generating API reference documentation that reflects actual behavior. Point it at a Go package, a Python module, or a TypeScript SDK, and it will produce parameter descriptions, return value documentation, error codes, and usage notes that match the implementation. It correctly identifies required vs. optional parameters, default values, and validation constraints that are buried in the code but missing from existing docs. This is not autocomplete &mdash; this is reading hundreds of lines of source and synthesizing accurate reference material.</p>
+
+        <p><strong>Multi-language code examples:</strong> Ask Claude Code to generate the same API call in Python, JavaScript, Go, Java, and curl, and you get idiomatic code in each language. The Python example uses <code>requests</code> with proper session handling. The JavaScript example uses <code>fetch</code> with async/await. The Go example handles the <code>error</code> return correctly. The Java example uses <code>HttpClient</code> with try-with-resources. Each example handles authentication, error responses, and pagination consistently. This is Claude Code&rsquo;s biggest time-saver for API documentation teams &mdash; a task that takes hours manually takes minutes.</p>
+
+        <p><strong>Style guide compliance:</strong> You can paste your style guide rules into Claude Code&rsquo;s context and ask it to review or rewrite documentation to comply. It handles specific rules well: &ldquo;use second person,&rdquo; &ldquo;avoid future tense,&rdquo; &ldquo;write in active voice,&rdquo; &ldquo;use sentence case for headings,&rdquo; &ldquo;spell out numbers under ten.&rdquo; More importantly, it maintains these rules consistently across an entire document, not just the first paragraph. It can audit an existing docs set and flag violations with suggested fixes.</p>
+
+        <p><strong>Release notes and changelogs:</strong> Feed Claude Code a git log or a set of PR descriptions and it produces well-organized release notes. It categorizes changes (features, fixes, breaking changes, deprecations), writes user-facing descriptions instead of developer-facing commit messages, and flags breaking changes that need migration guidance. It understands semantic versioning implications and can suggest whether a release is a patch, minor, or major bump.</p>
+
+        <p><strong>Limitations:</strong> Claude Code runs in the terminal, not in a docs-site preview. You cannot see rendered Markdown while working. For inline Markdown completion while typing in an editor, you need a separate tool. It does not integrate directly with docs-site build systems (Docusaurus, MkDocs) &mdash; it generates the content, but you handle the build.</p>
+
+        <h3>Cursor ($20/mo Pro / $40/mo Business) &mdash; Best IDE for Docs-as-Code</h3>
+
+        <p>Cursor is the strongest IDE-based option for technical writers who maintain documentation in a code repository alongside the product codebase.</p>
+
+        <p><strong>Codebase-aware docs:</strong> Cursor&rsquo;s project indexing is powerful for docs-as-code. If your documentation repo sits alongside the source code (or you open both in a workspace), Cursor can reference the actual implementation when generating docs. Ask it to document a function, and it reads the function&rsquo;s source, tests, and existing docs to produce an accurate description. This cross-reference capability is what separates Cursor from tools that only see the file you are currently editing.</p>
+
+        <p><strong>Markdown and MDX completion:</strong> Cursor&rsquo;s tab completion understands Markdown structure. It predicts heading levels, autocompletes link references, generates code fence language tags, and fills in frontmatter fields based on your existing patterns. For MDX files (used in Docusaurus and similar frameworks), it handles JSX component imports and props correctly. For reStructuredText, it understands directives, roles, and cross-reference syntax.</p>
+
+        <p><strong>Cross-file consistency:</strong> When you update an API endpoint, Cursor can help you find and update all the documentation pages that reference it. Its codebase search and chat features understand the relationship between code and docs, making it easier to keep documentation in sync with the implementation.</p>
+
+        <p><strong>Limitations:</strong> Cursor&rsquo;s chat is good for in-context questions, but for large-scale documentation generation tasks (like &ldquo;generate the complete API reference for this SDK&rdquo;), Claude Code&rsquo;s extended thinking and larger context window are more effective. Cursor works best for incremental documentation updates and maintenance, not bulk generation.</p>
+
+        <h3>GitHub Copilot (Free: 2k completions / $10/mo Pro / $39/mo Pro+) &mdash; The Markdown Accelerator</h3>
+
+        <p>Copilot is the safe default for technical writers who want AI assistance without disrupting their existing editor workflow.</p>
+
+        <p><strong>Markdown completion:</strong> Good at predicting the next section of a Markdown document based on the structure you have established. If you are writing a series of API endpoint pages with a consistent format (Description, Parameters, Request, Response, Errors), Copilot learns the pattern after the first page and suggests the structure for subsequent pages. This boilerplate acceleration is where Copilot saves the most time for docs work.</p>
+
+        <p><strong>Code examples:</strong> Solid at generating code examples within Markdown code fences. It reads the surrounding documentation context to produce relevant examples. For single-language examples in Python or JavaScript, it is reliable. For multi-language examples, it tends to produce the first language well but lose consistency across subsequent languages.</p>
+
+        <p><strong>Free tier value:</strong> 2,000 completions per month is generous for technical writers. Documentation work involves more prose and less code than engineering, so the free tier likely covers most writers. This makes Copilot an excellent complement to Claude Code or Cursor.</p>
+
+        <p><strong>Limitations:</strong> Copilot does not enforce style guide rules. It generates text based on patterns, not rules. If your style guide says &ldquo;use present tense&rdquo; but surrounding paragraphs use past tense, Copilot will match the surrounding text, not the guide. It cannot audit existing docs for compliance. It also struggles with complex cross-references and link resolution in large documentation sets.</p>
+
+        <h3>Windsurf ($15/mo Pro / $60/mo Team) &mdash; Multi-File Docs Projects</h3>
+
+        <p>Windsurf is useful for technical writers working on larger documentation projects &mdash; restructuring a docs site, migrating between frameworks, or updating documentation across many files simultaneously.</p>
+
+        <p><strong>Multi-file operations:</strong> Windsurf&rsquo;s Cascade feature can read across your entire docs directory to understand structure, then make coordinated changes across multiple files. If you need to rename a concept across 50 pages, update a parameter name in every code example, or restructure navigation after adding a new section, Windsurf handles the multi-file orchestration well.</p>
+
+        <p><strong>Framework migrations:</strong> If you are migrating from Jekyll to Docusaurus, or from Sphinx to MkDocs, Windsurf can read the source format and generate the target format across multiple files. It understands frontmatter differences, directive syntax translation, and navigation configuration for each framework.</p>
+
+        <p><strong>Code examples:</strong> Good at generating working code examples, particularly when it can read the source code for context. It handles Python and JavaScript well, and produces reasonable Go and Java examples. Not as strong as Claude Code at maintaining idiom consistency across all six languages in a multi-language example set.</p>
+
+        <p><strong>Limitations:</strong> Windsurf is more optimized for full-stack development than documentation workflows. Its style compliance capabilities are limited &mdash; it will follow explicit instructions in a prompt but does not maintain style rules as consistently across long documents as Claude Code does.</p>
+
+        <h3>Amazon Q Developer (Free tier / $19/mo Pro) &mdash; AWS Documentation Specialist</h3>
+
+        <p>Amazon Q has a narrow but deep strength for technical writers: documenting AWS services and integrations.</p>
+
+        <p><strong>AWS-specific docs:</strong> If you are writing documentation for applications built on AWS, Amazon Q understands service configurations, IAM policies, CloudFormation templates, and CDK constructs in detail. It generates accurate documentation for AWS service integrations that other tools sometimes get wrong &mdash; particularly around IAM permission requirements, resource ARN formats, and service quotas.</p>
+
+        <p><strong>Limitations:</strong> Outside of AWS-specific documentation, Amazon Q is weaker than general-purpose tools for technical writing tasks. Its style compliance is limited, its multi-language code example generation is adequate but not strong, and it does not handle docs-as-code frameworks as fluently as Cursor or Claude Code. Best as a supplement for teams documenting AWS infrastructure.</p>
+
+        <h3>Gemini Code Assist (Free tier / $19/mo Standard) &mdash; Google Ecosystem Docs</h3>
+
+        <p>Gemini is useful for technical writers working within Google&rsquo;s ecosystem, particularly for GCP documentation and Android development guides.</p>
+
+        <p><strong>GCP and Android:</strong> Strong at generating documentation for Google Cloud services, Firebase, and Android APIs. It understands Kotlin/Java Android patterns, Firebase configuration, and GCP service-specific terminology. If your documentation covers Google technologies, Gemini adds value as a specialist tool.</p>
+
+        <p><strong>Code examples:</strong> Good at generating Python and JavaScript examples, particularly for Google APIs. Produces correct authentication patterns for Google services (service accounts, OAuth, API keys) that other tools sometimes get wrong.</p>
+
+        <p><strong>Limitations:</strong> Gemini&rsquo;s style compliance and docs-as-code support lag behind Claude Code and Cursor. It does not handle reStructuredText well, and its Markdown-specific features (admonitions, tabs, code groups) are limited to basic syntax. For general technical writing work outside Google&rsquo;s ecosystem, it is not the strongest choice.</p>
+
+        <h2>Head-to-Head: 10 Technical Writing Tasks Compared</h2>
+
+        <div style="overflow-x:auto">
+          <table style="width:100%;border-collapse:collapse;margin:1.5rem 0;font-size:0.95em">
+            <thead>
+              <tr style="border-bottom:2px solid var(--border)">
+                <th style="padding:10px 12px;text-align:left">Task</th>
+                <th style="padding:10px 12px;text-align:left">Claude Code</th>
+                <th style="padding:10px 12px;text-align:left">Cursor</th>
+                <th style="padding:10px 12px;text-align:left">Copilot</th>
+                <th style="padding:10px 12px;text-align:left">Windsurf</th>
+                <th style="padding:10px 12px;text-align:left">Amazon Q</th>
+                <th style="padding:10px 12px;text-align:left">Gemini</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:10px 12px">Generate REST API reference from Express routes</td>
+                <td style="padding:10px 12px;color:var(--green)">Best</td>
+                <td style="padding:10px 12px;color:var(--green)">Strong</td>
+                <td style="padding:10px 12px;color:var(--yellow)">Adequate</td>
+                <td style="padding:10px 12px;color:var(--green)">Good</td>
+                <td style="padding:10px 12px;color:var(--yellow)">Adequate</td>
+                <td style="padding:10px 12px;color:var(--green)">Good</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:10px 12px">Write same API call in 5 languages</td>
+                <td style="padding:10px 12px;color:var(--green)">Best</td>
+                <td style="padding:10px 12px;color:var(--green)">Good</td>
+                <td style="padding:10px 12px;color:var(--yellow)">Adequate</td>
+                <td style="padding:10px 12px;color:var(--green)">Good</td>
+                <td style="padding:10px 12px;color:var(--yellow)">Adequate</td>
+                <td style="padding:10px 12px;color:var(--green)">Good</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:10px 12px">Rewrite 20 pages to match style guide</td>
+                <td style="padding:10px 12px;color:var(--green)">Best</td>
+                <td style="padding:10px 12px;color:var(--green)">Good</td>
+                <td style="padding:10px 12px;color:var(--yellow)">Weak</td>
+                <td style="padding:10px 12px;color:var(--yellow)">Adequate</td>
+                <td style="padding:10px 12px;color:var(--yellow)">Weak</td>
+                <td style="padding:10px 12px;color:var(--yellow)">Adequate</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:10px 12px">Generate Docusaurus page from code</td>
+                <td style="padding:10px 12px;color:var(--green)">Strong</td>
+                <td style="padding:10px 12px;color:var(--green)">Best</td>
+                <td style="padding:10px 12px;color:var(--green)">Good</td>
+                <td style="padding:10px 12px;color:var(--green)">Good</td>
+                <td style="padding:10px 12px;color:var(--yellow)">Adequate</td>
+                <td style="padding:10px 12px;color:var(--yellow)">Adequate</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:10px 12px">Write changelog from 50 PR descriptions</td>
+                <td style="padding:10px 12px;color:var(--green)">Best</td>
+                <td style="padding:10px 12px;color:var(--green)">Good</td>
+                <td style="padding:10px 12px;color:var(--yellow)">Adequate</td>
+                <td style="padding:10px 12px;color:var(--green)">Good</td>
+                <td style="padding:10px 12px;color:var(--yellow)">Adequate</td>
+                <td style="padding:10px 12px;color:var(--yellow)">Adequate</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:10px 12px">Migrate RST docs to Markdown/MDX</td>
+                <td style="padding:10px 12px;color:var(--green)">Strong</td>
+                <td style="padding:10px 12px;color:var(--green)">Good</td>
+                <td style="padding:10px 12px;color:var(--yellow)">Weak</td>
+                <td style="padding:10px 12px;color:var(--green)">Best</td>
+                <td style="padding:10px 12px;color:var(--yellow)">Weak</td>
+                <td style="padding:10px 12px;color:var(--yellow)">Adequate</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:10px 12px">Audit code examples for correctness</td>
+                <td style="padding:10px 12px;color:var(--green)">Best</td>
+                <td style="padding:10px 12px;color:var(--green)">Strong</td>
+                <td style="padding:10px 12px;color:var(--yellow)">Adequate</td>
+                <td style="padding:10px 12px;color:var(--green)">Good</td>
+                <td style="padding:10px 12px;color:var(--yellow)">Adequate</td>
+                <td style="padding:10px 12px;color:var(--green)">Good</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:10px 12px">Generate OpenAPI spec from implementation</td>
+                <td style="padding:10px 12px;color:var(--green)">Best</td>
+                <td style="padding:10px 12px;color:var(--green)">Strong</td>
+                <td style="padding:10px 12px;color:var(--yellow)">Adequate</td>
+                <td style="padding:10px 12px;color:var(--green)">Good</td>
+                <td style="padding:10px 12px;color:var(--yellow)">Adequate</td>
+                <td style="padding:10px 12px;color:var(--green)">Good</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:10px 12px">Write SDK quickstart tutorial</td>
+                <td style="padding:10px 12px;color:var(--green)">Best</td>
+                <td style="padding:10px 12px;color:var(--green)">Good</td>
+                <td style="padding:10px 12px;color:var(--yellow)">Adequate</td>
+                <td style="padding:10px 12px;color:var(--green)">Good</td>
+                <td style="padding:10px 12px;color:var(--yellow)">Adequate</td>
+                <td style="padding:10px 12px;color:var(--green)">Good</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:10px 12px">Update all docs after API breaking change</td>
+                <td style="padding:10px 12px;color:var(--green)">Strong</td>
+                <td style="padding:10px 12px;color:var(--green)">Best</td>
+                <td style="padding:10px 12px;color:var(--yellow)">Weak</td>
+                <td style="padding:10px 12px;color:var(--green)">Strong</td>
+                <td style="padding:10px 12px;color:var(--yellow)">Weak</td>
+                <td style="padding:10px 12px;color:var(--yellow)">Adequate</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h2>Benchmark: API Reference Generation from Source Code</h2>
+
+        <p>The highest-value task for technical writers using AI is generating API reference documentation directly from source code. We tested each tool on a real scenario: a Node.js/Express REST API with 8 endpoints, request/response validation via Zod schemas, authentication middleware, rate limiting, and custom error codes. The task: read the source and produce a complete API reference page in Markdown with accurate parameter tables, example requests/responses, error codes, and authentication requirements.</p>
+
+        <h3>What good output looks like</h3>
+
+        <p>A correct API reference entry for a <code>POST /api/v2/users</code> endpoint should include:</p>
+        <ul>
+          <li>HTTP method and path</li>
+          <li>Description of what the endpoint does</li>
+          <li>Authentication requirements (which token type, which scopes)</li>
+          <li>Request body parameters with types, required/optional status, validation rules (min length, regex pattern, enum values), and defaults</li>
+          <li>Response body schema with actual field names and types from the Zod output schema</li>
+          <li>Error responses with specific error codes, not just generic 400/500</li>
+          <li>A working curl example with correct headers, body, and a realistic response</li>
+          <li>Rate limit information from the middleware configuration</li>
+        </ul>
+
+        <h3>Results</h3>
+
+        <p><strong>Claude Code:</strong> Produced the most accurate reference. It read the Zod schemas and extracted exact validation rules (email format, password minimum 8 characters, username regex <code>/^[a-z0-9_-]{3,30}$/</code>). It identified that the endpoint requires a Bearer token with <code>users:write</code> scope by tracing the middleware chain. It listed all 6 custom error codes from the error handler (<code>USER_EXISTS</code>, <code>INVALID_EMAIL_DOMAIN</code>, <code>RATE_LIMIT_EXCEEDED</code>, etc.). The curl example was correct and runnable. It also noted the rate limit of 10 requests/minute from the middleware configuration, which other tools missed entirely.</p>
+
+        <p><strong>Cursor:</strong> Strong results, particularly when the source code was open in the workspace. It correctly identified parameter types and required fields from the Zod schema. It missed two of the six custom error codes (the ones defined in a separate error constants file that it did not automatically include in context). The curl example was correct. It handled the authentication documentation well but described it as &ldquo;Bearer token required&rdquo; without specifying the scope.</p>
+
+        <p><strong>Copilot:</strong> Generated a structurally correct page but with accuracy gaps. It described parameter types correctly for simple fields (string, number) but missed validation constraints (no mention of minimum length, regex patterns, or enum values). It listed generic HTTP error codes (400, 401, 500) instead of the custom error codes. The curl example was functional but used placeholder values that did not match the schema&rsquo;s validation rules.</p>
+
+        <p><strong>Windsurf:</strong> Good results for the main endpoint documentation. It read the Zod schema correctly and produced accurate parameter tables. It handled the response schema well. However, it conflated two middleware layers (authentication and rate limiting) in its description, and the error code list was incomplete. The curl example was correct.</p>
+
+        <p><strong>Amazon Q and Gemini:</strong> Both produced adequate but generic API documentation. They described the endpoint correctly at a high level but missed implementation-specific details: custom error codes, specific validation rules, rate limit configuration, and scope requirements. The output read like documentation written from a design spec rather than from reading the actual code.</p>
+
+        <h2>Benchmark: Multi-Language Code Example Consistency</h2>
+
+        <p>We tested each tool on generating the same API operation &mdash; creating a resource with authentication, handling pagination in the response, and processing a webhook callback &mdash; in Python, JavaScript (Node.js), Go, Java, and curl. We evaluated: does each example compile/run, does it handle errors, does it use idiomatic patterns for that language, and are all five examples functionally equivalent?</p>
+
+        <h3>Results</h3>
+
+        <p><strong>Claude Code:</strong> All five examples were correct, idiomatic, and functionally equivalent. The Python example used <code>requests.Session()</code> with retry logic. The JavaScript example used <code>fetch</code> with <code>async/await</code> and proper <code>AbortController</code> timeout. The Go example used <code>http.Client</code> with context cancellation and proper <code>defer resp.Body.Close()</code>. The Java example used <code>HttpClient</code> with <code>CompletableFuture</code>. All five handled pagination by following <code>Link</code> headers, not by hardcoding page numbers. All five included the same error handling pattern: check for rate limiting (429), retry with backoff, and surface the error message from the response body.</p>
+
+        <p><strong>Cursor:</strong> Four of five examples were correct. The Python, JavaScript, and curl examples were idiomatic and correct. The Go example had a minor issue: it did not check <code>resp.StatusCode</code> before reading the body for success, which could panic on certain error responses. The Java example worked but used the older <code>HttpURLConnection</code> API instead of the modern <code>HttpClient</code>.</p>
+
+        <p><strong>Copilot:</strong> Three of five examples were correct. Python and curl were solid. JavaScript used <code>axios</code> instead of native <code>fetch</code> (a dependency assumption). The Go example compiled but did not handle pagination. The Java example used a third-party library (<code>OkHttp</code>) instead of the standard library, and the pagination handling was incomplete.</p>
+
+        <p><strong>Windsurf:</strong> Four of five examples were correct. Similar to Cursor&rsquo;s results, with strong Python and JavaScript output. The Go example was correct and idiomatic. The Java example was adequate but used verbose patterns. The curl example did not include the pagination loop, just the single request.</p>
+
+        <h2>Docs-as-Code Framework Strengths</h2>
+
+        <div style="overflow-x:auto">
+          <table style="width:100%;border-collapse:collapse;margin:1.5rem 0;font-size:0.95em">
+            <thead>
+              <tr style="border-bottom:2px solid var(--border)">
+                <th style="padding:10px 12px;text-align:left">Framework</th>
+                <th style="padding:10px 12px;text-align:left">Best Tool</th>
+                <th style="padding:10px 12px;text-align:left">Notes</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:10px 12px">Docusaurus (MDX)</td>
+                <td style="padding:10px 12px">Cursor</td>
+                <td style="padding:10px 12px">JSX component imports, sidebar config, MDX syntax extensions</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:10px 12px">MkDocs (Material)</td>
+                <td style="padding:10px 12px">Claude Code</td>
+                <td style="padding:10px 12px">Admonitions, tabs, navigation YAML, plugin configuration</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:10px 12px">Sphinx (RST)</td>
+                <td style="padding:10px 12px">Claude Code</td>
+                <td style="padding:10px 12px">Directives, roles, autodoc config, cross-references, toctree</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:10px 12px">Hugo</td>
+                <td style="padding:10px 12px">Cursor</td>
+                <td style="padding:10px 12px">Go template syntax, shortcodes, frontmatter, taxonomy</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:10px 12px">Readme.com / GitBook</td>
+                <td style="padding:10px 12px">Claude Code</td>
+                <td style="padding:10px 12px">Custom block syntax, API definition import, variable substitution</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:10px 12px">OpenAPI / Swagger</td>
+                <td style="padding:10px 12px">Claude Code</td>
+                <td style="padding:10px 12px">Schema generation from code, spec validation, example generation</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:10px 12px">Storybook (MDX)</td>
+                <td style="padding:10px 12px">Cursor</td>
+                <td style="padding:10px 12px">Component stories, args tables, addon configuration</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h2>5 Practical Tips for Technical Writers Using AI Tools</h2>
+
+        <ol>
+          <li><strong>Always feed the source code, not the spec:</strong> Documentation written from design specs drifts from reality. Feed AI tools the actual implementation &mdash; route handlers, type definitions, validation schemas &mdash; and you get docs that match what the code does, not what it was supposed to do. This is the single biggest accuracy improvement you can make.</li>
+          <li><strong>Provide your style guide as context:</strong> Paste the relevant sections of your style guide into the AI tool&rsquo;s context before asking it to generate or review content. Be specific: &ldquo;Use second person. Use present tense. Use sentence case for headings. Spell out numbers under ten. Avoid &lsquo;please&rsquo; and &lsquo;simply.&rsquo;&rdquo; The more explicit the rules, the more consistent the output.</li>
+          <li><strong>Test every code example:</strong> AI-generated code examples look correct more often than they are correct. Copy every example into a file and run it. Check that authentication works, that the response matches what you documented, and that error handling actually triggers. A broken code example in your docs is worse than no example at all.</li>
+          <li><strong>Use AI for first drafts, not final drafts:</strong> AI excels at producing a structured first draft from source code &mdash; the parameter tables, the basic descriptions, the boilerplate. It is weaker at the nuanced editorial work: choosing the right analogy for a complex concept, deciding what to omit, structuring a tutorial for progressive learning. Use AI for the 60% that is mechanical, then apply your expertise to the 40% that makes good docs great.</li>
+          <li><strong>Batch operations for consistency:</strong> When generating multi-language code examples or auditing multiple pages for style compliance, process them in a single session rather than one at a time. Tools like Claude Code maintain context within a session, so the fifth language example benefits from the patterns established in the first four. Batching also prevents drift between pages.</li>
+        </ol>
+
+        <h2>Spending Guide: $0 to $40/mo</h2>
+
+        <div style="overflow-x:auto">
+          <table style="width:100%;border-collapse:collapse;margin:1.5rem 0">
+            <thead>
+              <tr style="border-bottom:2px solid var(--border)">
+                <th style="padding:12px 16px;text-align:left">Budget</th>
+                <th style="padding:12px 16px;text-align:left">Setup</th>
+                <th style="padding:12px 16px;text-align:left">Best For</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px"><strong>$0/mo</strong></td>
+                <td style="padding:12px 16px">Copilot Free (2k completions)</td>
+                <td style="padding:12px 16px">Markdown boilerplate, simple code examples, frontmatter completion</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px"><strong>$10/mo</strong></td>
+                <td style="padding:12px 16px">Copilot Pro (unlimited completions)</td>
+                <td style="padding:12px 16px">High-volume Markdown editing with consistent inline completion</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px"><strong>$20/mo</strong></td>
+                <td style="padding:12px 16px">Claude Code Max5 + Copilot Free</td>
+                <td style="padding:12px 16px">Best overall: Claude Code for API doc generation, style audits, and multi-language examples; Copilot for inline Markdown completion</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px"><strong>$20/mo</strong></td>
+                <td style="padding:12px 16px">Cursor Pro + Copilot Free</td>
+                <td style="padding:12px 16px">Docs-as-code teams who live in VS Code with source code alongside docs</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px"><strong>$35/mo</strong></td>
+                <td style="padding:12px 16px">Claude Code Max5 + Windsurf Pro</td>
+                <td style="padding:12px 16px">Large docs projects with frequent multi-file restructuring</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px"><strong>$40/mo</strong></td>
+                <td style="padding:12px 16px">Claude Code Max5 + Cursor Pro</td>
+                <td style="padding:12px 16px">Maximum capability: Claude Code for generation + Cursor for in-IDE editing and cross-referencing</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h2>The Bottom Line</h2>
+
+        <p>Technical writing is one of the areas where AI tools deliver the most dramatic productivity gains &mdash; but only if you use them correctly. The mechanical parts of documentation (parameter tables, boilerplate structure, multi-language examples, style compliance auditing) are exactly what AI handles well. The editorial parts (deciding what to document, structuring information for learning, choosing the right level of detail) still require a skilled technical writer.</p>
+
+        <p>Claude Code at $20/mo is the strongest single tool for technical writers because it excels at the highest-value tasks: reading source code and generating accurate API documentation, producing consistent multi-language code examples, enforcing style guide rules across large doc sets, and synthesizing changelogs from git history. Pair it with Copilot Free for inline Markdown completion, and you have a $20/mo stack that covers the full technical writing workflow.</p>
+
+        <p>If you work primarily in an IDE with source code open alongside your docs, Cursor at $20/mo is the strongest choice for its codebase-aware completion and cross-file reference capabilities. For large-scale docs migrations or restructuring, Windsurf&rsquo;s multi-file orchestration is the best option.</p>
+
+        <p>One principle applies universally: always verify AI-generated documentation against the source code, and always test AI-generated code examples. The fastest way to lose developer trust is to ship documentation that does not match reality. Use AI to write the first draft, then apply your expertise to make it accurate, complete, and genuinely helpful.</p>
+
+        <p>Compare all tools and pricing on the <a href="/" style="color:var(--accent)">CodeCosts homepage</a>. If you write backend code alongside docs, see our <a href="/blog/ai-coding-tools-for-backend-engineers-2026.html" style="color:var(--accent)">Backend Engineers guide</a>. If you work on developer platforms, check the <a href="/blog/ai-coding-tools-for-platform-engineers-2026.html" style="color:var(--accent)">Platform Engineers guide</a>. For freelance documentation work, see the <a href="/blog/ai-coding-tools-for-freelancers-2026.html" style="color:var(--accent)">Freelancers guide</a>.</p>
+
+        <h2>Related on CodeCosts</h2>
+
+        <ul>
+          <li><a href="/blog/ai-coding-tools-for-backend-engineers-2026.html" style="color:var(--accent)">AI Coding Tools for Backend Engineers 2026</a></li>
+          <li><a href="/blog/ai-coding-tools-for-frontend-engineers-2026.html" style="color:var(--accent)">AI Coding Tools for Frontend Engineers 2026</a></li>
+          <li><a href="/blog/ai-coding-tools-for-platform-engineers-2026.html" style="color:var(--accent)">AI Coding Tools for Platform Engineers 2026</a></li>
+          <li><a href="/blog/ai-coding-tools-for-freelancers-2026.html" style="color:var(--accent)">AI Coding Tools for Freelancers 2026</a></li>
+          <li><a href="/blog/best-free-ai-coding-tool-2026.html" style="color:var(--accent)">Best Free AI Coding Tool 2026</a></li>
+          <li><a href="/blog/ai-coding-cost-calculator.html" style="color:var(--accent)">AI Coding Cost Calculator</a></li>
+        </ul>
+
+      </div>
+    </article>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>CodeCosts &mdash; Independent AI coding tool price tracker. Updated March 2026.</p>
+      <p style="margin-top:0.5rem"><a href="/">Compare all tools</a> &middot; <a href="/blog/">Blog</a> &middot; <a href="/blog/feed.xml">RSS</a></p>
+    </div>
+  </footer>
+</body>
+</html>

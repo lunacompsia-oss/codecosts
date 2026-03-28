@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Coding Tools for Build Engineers 2026: Bazel, Gradle, CMake, CI/CD Pipelines &amp; Dependency Management Guide</title>
+  <meta name="description" content="The build engineer's guide to AI coding tools in 2026. Every tool evaluated for Bazel rule development, Gradle optimization, CMake configuration, dependency resolution, build caching, CI/CD pipelines, and monorepo build graph optimization.">
+  <link rel="canonical" href="https://codecosts.pages.dev/blog/ai-coding-tools-for-build-engineers-2026.html">
+  <meta property="og:title" content="AI Coding Tools for Build Engineers 2026: Bazel, Gradle, CMake, CI/CD &amp; Dependency Management">
+  <meta property="og:description" content="Every AI coding tool ranked for build engineering. Bazel Starlark rules, Gradle build scripts, CMake cross-platform configs, dependency resolution, remote caching, CI/CD pipelines, and monorepo optimization. Domain-first recommendations from $0 to $99/mo.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://codecosts.pages.dev/blog/ai-coding-tools-for-build-engineers-2026.html">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="AI Coding Tools for Build Engineers 2026: Bazel, Gradle, CMake, CI/CD &amp; Dependency Management">
+  <meta name="twitter:description" content="Domain-first AI tool recommendations for build engineers. Bazel, Gradle, CMake, dependency management, remote caching, CI/CD pipelines &mdash; ranked and priced.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💰</text></svg>">
+  <link rel="stylesheet" href="../style.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "AI Coding Tools for Build Engineers 2026: Bazel, Gradle, CMake, CI/CD Pipelines & Dependency Management Guide",
+    "datePublished": "2026-03-28",
+    "dateModified": "2026-03-28",
+    "author": { "@type": "Organization", "name": "CodeCosts" },
+    "publisher": { "@type": "Organization", "name": "CodeCosts" },
+    "description": "The build engineer's guide to AI coding tools in 2026. Every tool evaluated for Bazel rule development, Gradle optimization, CMake configuration, dependency resolution, build caching, CI/CD pipelines, and monorepo build graph optimization."
+  }
+  </script>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <a href="/" style="text-decoration:none;color:inherit"><h1><span class="logo">$_</span> CodeCosts</h1></a>
+      <p class="tagline">AI Coding Tool News &amp; Analysis</p>
+      <nav>
+        <a href="/">Tools</a>
+        <a href="/blog/" class="active">Blog</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <article class="card">
+      <h2>AI Coding Tools for Build Engineers 2026: Bazel, Gradle, CMake, CI/CD Pipelines &amp; Dependency Management Guide</h2>
+      <div class="article-meta">
+        <span>March 28, 2026</span>
+        <span>22 min read</span>
+      </div>
+
+      <div class="article-content">
+        <p>You write code that nobody sees but everybody depends on. Your build configuration is infrastructure-as-code, except the infrastructure is the entire engineering organization&rsquo;s ability to ship software. When your build is fast and correct, nobody thanks you. When it breaks, every engineer on the team is blocked, Slack lights up, and the VP of Engineering asks why the deploy pipeline has been red for two hours. Your job exists at the intersection of correctness, performance, and developer experience &mdash; and the margin for error is zero because a broken build is a broken company.</p>
+
+        <p>This is what makes build engineering fundamentally different from application development: <strong>you write in DSLs that most AI tools have barely seen in training data.</strong> Starlark is not Python, even though it looks like it. Groovy DSL for Gradle is not general-purpose Groovy. CMake is not any language anyone would design on purpose. Ask an AI to write a React component and you get production-quality code. Ask it to write a Bazel rule that correctly propagates <code>ProtoInfo</code> providers through a transitive dependency graph while maintaining hermeticity for remote execution, and you get something that loads without errors but silently produces incorrect outputs because it does not understand depset traversal order.</p>
+
+        <p>This guide evaluates every major AI coding tool through the lens of what build engineers actually do: writing Bazel rules in Starlark, optimizing Gradle build scripts, wrestling CMake into cross-platform submission, resolving diamond dependency conflicts, configuring remote build caches, designing CI/CD pipelines that do not waste 40 minutes on every push, and optimizing monorepo build graphs so that a one-line change does not trigger a full rebuild. We test against real-world build scenarios &mdash; not toy single-target examples but production patterns that expose whether the model actually understands how build systems think.</p>
+
+        <p>The short version: AI tools are surprisingly good at generating build configurations because build DSLs are structured and deterministic. They are surprisingly bad at debugging build failures because cache misses, hermeticity violations, and dependency conflicts require reasoning about system state that no AI can observe. The best workflow is AI-draft-then-verify, and this guide shows you exactly which tool drafts best for each build engineering task.</p>
+
+        <div class="callout tip">
+          <div class="callout-title">TL;DR</div>
+          <p><strong>Best free ($0):</strong> Gemini CLI Free &mdash; 1M token context handles massive BUILD files and dependency graphs. <strong>Best for Bazel ($20/mo):</strong> Claude Code &mdash; strongest reasoning about Starlark rules, dependency chains, and remote execution configs. <strong>Best IDE ($20/mo):</strong> Cursor Pro &mdash; codebase-aware completions across build configs and source. <strong>Best combined ($40/mo):</strong> Claude Code + Cursor. <strong>Budget ($0):</strong> Copilot Free + Gemini CLI Free.</p>
+        </div>
+
+        <h2>Why Build Engineering Is Different</h2>
+
+        <p>Build engineers evaluate AI tools on a completely different axis than application developers. A web developer asks &ldquo;does this tool write clean TypeScript?&rdquo; A build engineer asks &ldquo;does this tool understand that Starlark is not Python, that depsets are not lists, that actions must be hermetic for remote execution, and that a cache key includes the entire transitive closure of inputs including the toolchain hash?&rdquo;</p>
+
+        <ul>
+          <li><strong>Build configs are in DSLs, not mainstream languages.</strong> Starlark looks like Python but has no classes, no recursion, no mutation after freeze. Gradle&rsquo;s Kotlin DSL looks like Kotlin but executes in a multi-phase configuration/execution lifecycle. CMake is its own circle of hell. AI tools trained on Python and JavaScript produce code that <em>looks</em> correct but violates semantic rules of these DSLs in ways that cause silent failures.</li>
+          <li><strong>Reproducibility is a correctness requirement.</strong> If your build produces different outputs from the same inputs, your cache is poisoned, your remote execution is broken, and your CI results are meaningless. Hermeticity &mdash; the property that a build action depends only on its declared inputs &mdash; matters more here than in any other discipline. AI tools that suggest reading environment variables or accessing the network during build actions generate code that works locally and breaks everything else.</li>
+          <li><strong>Cache invalidation is the core intellectual challenge.</strong> A 95% cache hit rate means your 30-minute build takes 90 seconds. A 60% hit rate means 12 minutes and developers alt-tab to Twitter. Understanding what goes into a cache key &mdash; input hashes, compiler flags, toolchain version, platform constraints &mdash; is the difference between a build system that flies and one that recompiles the world on every commit.</li>
+          <li><strong>The dependency graph is your entire mental model.</strong> Application developers think in call stacks. Build engineers think in DAGs. Every decision &mdash; whether to add a dependency, how to structure a target, where to draw the package boundary &mdash; is a decision about graph shape that determines parallelism, cache granularity, and rebuild scope.</li>
+          <li><strong>A broken build blocks everyone.</strong> A bug in application code affects one feature. A bug in the build system affects every engineer, every CI run, and every deploy. The blast radius is the entire organization.</li>
+        </ul>
+
+        <h2>Build Engineering Task Support Matrix</h2>
+
+        <p>We tested each tool against seven core build engineering tasks. Ratings reflect real-world performance on build system prompts, not generic coding ability.</p>
+
+        <div style="overflow-x:auto">
+          <table style="width:100%;border-collapse:collapse;margin:1.5rem 0;font-size:0.95rem">
+            <thead>
+              <tr style="border-bottom:2px solid var(--border);text-align:left">
+                <th style="padding:12px 16px">Task</th>
+                <th style="padding:12px 16px">Copilot</th>
+                <th style="padding:12px 16px">Cursor</th>
+                <th style="padding:12px 16px">Windsurf</th>
+                <th style="padding:12px 16px">Claude Code</th>
+                <th style="padding:12px 16px">Amazon Q</th>
+                <th style="padding:12px 16px">Gemini CLI</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px"><strong>Bazel Rule &amp; Target Development</strong></td>
+                <td style="padding:12px 16px">Poor</td>
+                <td style="padding:12px 16px">Good</td>
+                <td style="padding:12px 16px">Fair</td>
+                <td style="padding:12px 16px"><strong>Excellent</strong></td>
+                <td style="padding:12px 16px">Poor</td>
+                <td style="padding:12px 16px">Good</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px"><strong>Gradle Build Script Optimization</strong></td>
+                <td style="padding:12px 16px">Fair</td>
+                <td style="padding:12px 16px"><strong>Excellent</strong></td>
+                <td style="padding:12px 16px">Good</td>
+                <td style="padding:12px 16px"><strong>Excellent</strong></td>
+                <td style="padding:12px 16px">Good</td>
+                <td style="padding:12px 16px">Good</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px"><strong>CMake Configuration &amp; Cross-Platform Builds</strong></td>
+                <td style="padding:12px 16px">Fair</td>
+                <td style="padding:12px 16px">Good</td>
+                <td style="padding:12px 16px">Fair</td>
+                <td style="padding:12px 16px"><strong>Excellent</strong></td>
+                <td style="padding:12px 16px">Fair</td>
+                <td style="padding:12px 16px">Good</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px"><strong>Dependency Resolution &amp; Version Conflicts</strong></td>
+                <td style="padding:12px 16px">Fair</td>
+                <td style="padding:12px 16px">Good</td>
+                <td style="padding:12px 16px">Good</td>
+                <td style="padding:12px 16px"><strong>Excellent</strong></td>
+                <td style="padding:12px 16px">Good</td>
+                <td style="padding:12px 16px">Good</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px"><strong>Build Cache &amp; Remote Execution Config</strong></td>
+                <td style="padding:12px 16px">Poor</td>
+                <td style="padding:12px 16px">Fair</td>
+                <td style="padding:12px 16px">Fair</td>
+                <td style="padding:12px 16px"><strong>Excellent</strong></td>
+                <td style="padding:12px 16px">Fair</td>
+                <td style="padding:12px 16px">Good</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px"><strong>CI/CD Pipeline Configuration</strong></td>
+                <td style="padding:12px 16px">Good</td>
+                <td style="padding:12px 16px"><strong>Excellent</strong></td>
+                <td style="padding:12px 16px">Good</td>
+                <td style="padding:12px 16px"><strong>Excellent</strong></td>
+                <td style="padding:12px 16px">Good</td>
+                <td style="padding:12px 16px">Good</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px"><strong>Monorepo Build Graph Optimization</strong></td>
+                <td style="padding:12px 16px">Poor</td>
+                <td style="padding:12px 16px">Good</td>
+                <td style="padding:12px 16px">Fair</td>
+                <td style="padding:12px 16px"><strong>Excellent</strong></td>
+                <td style="padding:12px 16px">Fair</td>
+                <td style="padding:12px 16px"><strong>Excellent</strong></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <p><strong>How to read this table:</strong> <em>Excellent</em> = the tool handles this task reliably with build-system-aware output that respects hermeticity and caching semantics. <em>Good</em> = usable but requires build-specific corrections. <em>Fair</em> = produces syntactically valid configs that miss build system semantics. <em>Poor</em> = output violates build system invariants or introduces cache correctness issues.</p>
+
+        <h2>Bazel Rule &amp; Target Development</h2>
+
+        <p>Writing custom Bazel rules is the most demanding task in build engineering. You need Starlark&rsquo;s restrictions, the provider system, depsets, actions, and the execution model. This is where AI tools have the widest quality spread.</p>
+
+        <h3>Claude Code: Deep Starlark Reasoning</h3>
+
+        <p>Claude Code produces the most semantically correct Bazel rules of any tool tested. Given a custom rule task for protobuf code generation with gRPC support:</p>
+
+        <pre><code>&gt; Write a custom Bazel rule that compiles .proto files to Python
+  and C++ with gRPC. Must propagate ProtoInfo for transitive deps,
+  use hermetic protoc toolchain, support remote execution.
+
+Claude Code generates:
+
+def _proto_grpc_library_impl(ctx):
+    # Collect transitive sources via ProtoInfo provider
+    transitive_sources = depset(
+        direct = ctx.files.srcs,
+        transitive = [dep[ProtoInfo].transitive_sources
+                      for dep in ctx.attr.deps],
+    )
+    # Build protoc args from depset — uses ctx.actions.args()
+    # NOT eager to_list() during analysis (the #1 Bazel perf mistake)
+    import_args = ctx.actions.args()
+    import_args.add_all(transitive_imports, format_each = "-I%s")
+
+    # Hermetic protoc from toolchain, not host-installed
+    protoc = ctx.toolchains["@rules_proto//proto:toolchain_type"]
+        .proto.protoc_executable
+
+    ctx.actions.run(
+        executable = protoc,
+        arguments = [import_args, "--python_out=...", "--cpp_out=..."],
+        inputs = depset(direct=ctx.files.srcs,
+                        transitive=[transitive_sources]),
+        tools = [ctx.executable._grpc_python_plugin,
+                 ctx.executable._grpc_cpp_plugin],
+        outputs = [py_out, py_grpc_out, cc_out, cc_hdr],
+        mnemonic = "ProtoGrpcCompile",
+        execution_requirements = {"requires-network": "false"},
+    )
+    return [
+        DefaultInfo(files = depset([py_out, py_grpc_out, cc_out, cc_hdr])),
+        ProtoInfo(srcs=ctx.files.srcs,
+                  transitive_sources=transitive_sources,
+                  transitive_proto_path=transitive_imports),
+    ]</code></pre>
+
+        <p>Several expert-level details. First, <code>ctx.actions.args()</code> with <code>add_all</code> instead of eagerly converting the depset to a list during analysis &mdash; this is the single most common Bazel performance mistake, causing quadratic memory usage in large graphs. Second, proper separation of <code>inputs</code> (files) and <code>tools</code> (executables) &mdash; this matters for remote execution because tools are uploaded to the executor while inputs are fetched from CAS. Third, <code>execution_requirements</code> declaring no network access, required for remote execution sandboxing. Most AI tools omit this and produce rules that work locally but fail on remote executors.</p>
+
+        <h3>Cursor: Pattern Matching Across BUILD Files</h3>
+
+        <p>Cursor&rsquo;s strength is codebase awareness. If your repo has 200 BUILD files with established patterns, Cursor generates new targets matching your conventions &mdash; same visibility declarations, same tags, same test size classifications. Where it falls short is writing new custom rules from scratch: it produces valid Starlark syntax but misuses depsets (iterating directly instead of <code>to_list()</code>), conflates analysis-time and execution-time operations, and generates non-remotely-executable rules that access the host filesystem.</p>
+
+        <h3>Copilot &amp; Amazon Q: Starlark Blind Spots</h3>
+
+        <p>Both tools treat Starlark as Python. Copilot produced rules using mutable global state and recursive functions &mdash; forbidden in Starlark. Amazon Q generated rules calling <code>ctx.actions.run_shell</code> with inline bash reading environment variables, destroying hermeticity. If your build uses <code>--incompatible_strict_action_env</code> (and it should), Q&rsquo;s output breaks immediately.</p>
+
+        <h2>Gradle Build Script Optimization</h2>
+
+        <p>Gradle builds are where developer time goes to die. An 8-minute build on a 50-module project is common, and most of that time is wasted on configuration overhead, unnecessary task dependencies, and cache misses.</p>
+
+        <h3>Cursor: Codebase-Aware Gradle Optimization</h3>
+
+        <p>Cursor excels because it sees your entire multi-module build at once:</p>
+
+        <pre><code>&gt; 47-module Gradle build takes 8min clean, 3min incremental. Optimize.
+
+Cursor analysis (with project indexed):
+1. Configuration phase: 45s — 30 subprojects eagerly resolve deps
+2. allprojects {} applies plugins eagerly to all 47 modules
+3. Custom task uses project.exec {} during configuration — breaks
+   configuration cache
+4. buildSrc changes invalidate entire build
+
+// FIX: Replace eager allprojects {} with convention plugins
+// Move to buildSrc/src/main/kotlin/example.java-conventions.gradle.kts
+plugins { `java-library` }
+dependencies { implementation(platform("com.example:bom:1.0")) }
+
+// FIX: Configuration-cache-compatible task
+// BEFORE: project.exec {} runs during CONFIGURATION
+// AFTER: providers.exec {} defers to EXECUTION phase
+tasks.register("generateVersion") {
+    val gitHash = providers.exec {
+        commandLine("git", "rev-parse", "HEAD")
+    }.standardOutput.asText.map { it.trim() }
+    doLast { writeVersionFile(gitHash.get()) }
+}
+
+// gradle.properties
+org.gradle.configuration-cache=true
+org.gradle.parallel=true
+org.gradle.caching=true
+
+Result: 8min clean → 4min, 3min incremental → 40sec</code></pre>
+
+        <p>The critical fix is item 3: calling <code>project.exec {}</code> during configuration is the number one reason teams cannot enable Gradle&rsquo;s configuration cache, which is the single biggest performance win available. Cursor identified this by scanning the entire project, not just the file you are editing. The <code>providers.exec</code> replacement defers execution to the execution phase, making the build configuration-cache compatible.</p>
+
+        <h3>Claude Code: Dependency Resolution Deep Dive</h3>
+
+        <p>Claude Code complements Cursor by reasoning about <em>why</em> the build is slow at a deeper level &mdash; dependency resolution strategies that force Gradle to contact Maven Central during every configuration, <code>implementation</code> vs <code>api</code> misuse that bloats compile classpaths, and annotation processor configurations that prevent incremental compilation.</p>
+
+        <h2>CMake Configuration &amp; Cross-Platform Builds</h2>
+
+        <p>CMake&rsquo;s syntax was designed by committee in 1999 and has been accumulating backward-compatible complexity since. Modern CMake (target-based, generator expressions) is a different language from legacy CMake (<code>include_directories</code>, variable scopes), and AI tools frequently mix the two.</p>
+
+        <h3>Claude Code: Modern CMake Done Right</h3>
+
+        <pre><code>&gt; CMakeLists.txt for C++ library "mathcore" — Linux/macOS/Windows,
+  uses Eigen3, exports package config, shared+static, tests.
+
+cmake_minimum_required(VERSION 3.21)
+project(mathcore VERSION 2.1.0 LANGUAGES CXX)
+
+option(BUILD_SHARED_LIBS "Build shared libraries" ON)
+option(MATHCORE_BUILD_TESTS "Build test suite" ON)
+
+find_package(Eigen3 3.4 REQUIRED CONFIG)
+add_library(mathcore src/linalg.cpp src/transforms.cpp
+    src/interpolation.cpp)
+
+# Generator expressions: different paths for build vs install
+target_include_directories(mathcore PUBLIC
+    $&lt;BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include&gt;
+    $&lt;INSTALL_INTERFACE:include&gt;)
+target_link_libraries(mathcore PUBLIC Eigen3::Eigen)
+
+# Windows DLL export handling via nested generator expressions
+target_compile_definitions(mathcore PRIVATE
+    $&lt;$&lt;BOOL:${BUILD_SHARED_LIBS}&gt;:MATHCORE_EXPORTS&gt;)
+
+# Platform-aware compiler warnings
+target_compile_options(mathcore PRIVATE
+    $&lt;$&lt;CXX_COMPILER_ID:MSVC&gt;:/W4 /WX&gt;
+    $&lt;$&lt;NOT:$&lt;CXX_COMPILER_ID:MSVC&gt;&gt;:-Wall -Wextra -Wpedantic&gt;)
+
+# Proper install with package config and version compatibility
+include(GNUInstallDirs)
+install(TARGETS mathcore EXPORT mathcore-targets
+    LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
+    ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
+    RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR})
+install(EXPORT mathcore-targets FILE mathcore-targets.cmake
+    NAMESPACE mathcore::
+    DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/mathcore)
+
+# Version compatibility for find_package(mathcore 2.0)
+include(CMakePackageConfigHelpers)
+write_basic_package_version_file(mathcore-config-version.cmake
+    VERSION ${PROJECT_VERSION} COMPATIBILITY SameMajorVersion)
+
+# Tests with GoogleTest discovery
+if(MATHCORE_BUILD_TESTS)
+    enable_testing()
+    find_package(GTest 1.12 REQUIRED CONFIG)
+    add_executable(mathcore_tests tests/test_linalg.cpp)
+    target_link_libraries(mathcore_tests PRIVATE mathcore GTest::gtest_main)
+    include(GoogleTest)
+    gtest_discover_tests(mathcore_tests)
+endif()</code></pre>
+
+        <p>The generator expressions are the tell. <code>$&lt;BUILD_INTERFACE:...&gt;</code> vs <code>$&lt;INSTALL_INTERFACE:...&gt;</code> ensures consumers get correct include paths whether building from source or using the installed package. The Windows DLL export handling with conditional logic, proper <code>GNUInstallDirs</code>, and namespaced export targets mean downstream projects can <code>find_package(mathcore 2.0 REQUIRED)</code> with correct version checking. Most AI tools either ignore Windows entirely or hardcode <code>__declspec(dllexport)</code> without conditionals.</p>
+
+        <h3>Gemini CLI: CMake Documentation as Context</h3>
+
+        <p>Gemini CLI&rsquo;s 1M context window creates a useful CMake workflow: feed it the CMake documentation for <code>find_package</code>, <code>install</code>, and generator expressions alongside your existing CMakeLists.txt files, and it produces configurations that match both the documentation and your project conventions. This is particularly valuable for CMake because the official documentation is sprawling and poorly cross-referenced &mdash; having an AI that can hold the entire relevant documentation in context while generating code saves constant tab-switching between cmake.org pages.</p>
+
+        <h3>Other Tools: Legacy CMake Habits</h3>
+
+        <p>Copilot and Windsurf frequently generate legacy patterns: <code>include_directories()</code> instead of <code>target_include_directories()</code>, global variable manipulation instead of target properties. These create dependency leakage in multi-target builds where one target&rsquo;s include paths pollute another&rsquo;s compilation. Amazon Q produces modern-ish CMake but struggles with generator expressions and consistently generates incorrect Windows install rules (missing RUNTIME DESTINATION for DLLs). Cursor generates reasonable CMake when it can pattern-match against existing files in your project but struggles with generator expression syntax when writing from scratch.</p>
+
+        <h2>Dependency Resolution &amp; Version Conflicts</h2>
+
+        <p>The diamond dependency problem is the build engineer&rsquo;s daily nemesis. Module A depends on Library X v1.4. Module B depends on Library X v2.1. They deploy to the same service. What happens next is either a resolution strategy or a production outage.</p>
+
+        <h3>Claude Code: Layered Dependency Analysis</h3>
+
+        <pre><code>&gt; Diamond dependency: :services:auth needs guava:31.1 via :libs:crypto.
+  :services:api needs guava:33.0 via :libs:http-client. Gradle resolves
+  to 33.0 but crypto uses APIs removed in 32.0. Fix without forking.
+
+Claude Code analysis — resolution options ranked by preference:
+
+1. BEST: Update :libs:crypto to replace Closeables.closeQuietly()
+   with try-with-resources. 3 call sites. Root cause fix.
+
+2. GOVERNANCE: Enforce consistent versions via BOM + strict resolution
+   dependencyResolutionManagement {
+       versionCatalogs { create("libs") {
+           library("guava", "com.google.guava:guava:33.0-jre")
+       }}
+   }
+   // Plus: failOnVersionConflict() to prevent silent resolution
+
+3. BRIDGE: Force version alignment across monorepo
+   resolutionStrategy.eachDependency {
+       if (requested.group == "com.google.guava") {
+           useVersion("33.0-jre")
+           because("Aligned per ADR-047")
+       }
+   }
+
+4. WORST: Shade Guava in :libs:crypto via Shadow plugin
+   shadowJar { relocate("com.google", "crypto.shaded.com.google") }
+   // Last resort: +3MB JAR size, hides security patches</code></pre>
+
+        <p>The layered approach separates expertise from generic advice. Most AI tools jump straight to version forcing (Option 3) without identifying the actual API incompatibility or suggesting the proper fix. Claude Code traces the dependency chain, identifies the specific breaking change (<code>Closeables.closeQuietly()</code> removed in Guava 32.0), and presents options ranked by architectural cleanliness. The <code>failOnVersionConflict()</code> recommendation is particularly important &mdash; without it, Gradle silently picks the highest version, which is exactly how this problem went undetected in the first place. Option 4 (shading) is flagged as a last resort because it hides transitive vulnerabilities from security scanners, a detail that most AI tools and many engineers overlook.</p>
+
+        <h3>Gemini CLI: Full Dependency Tree Analysis</h3>
+
+        <p>Gemini CLI&rsquo;s 1M context is ideal here. Feed it the output of <code>gradle dependencies --configuration runtimeClasspath</code> (50KB+ for large projects) and it traces every transitive path, identifies all version conflicts, and flags dependencies pulled in by multiple paths with different versions. It cannot reason about fixes as deeply as Claude Code, but it is the best tool for understanding your dependency graph&rsquo;s current state.</p>
+
+        <h2>Build Cache &amp; Remote Execution Configuration</h2>
+
+        <p>Remote caching and remote execution are the most impactful optimizations available, and the most complex to configure correctly. A misconfigured cache serves stale artifacts and causes impossible-to-debug production issues.</p>
+
+        <h3>Claude Code: Cache Debugging</h3>
+
+        <pre><code>&gt; Bazel remote cache hit rate dropped from 92% to 34% after
+  toolchain update. Builds: 3min → 22min. gRPC backend on buildbarn.
+
+Claude Code debugging approach:
+
+1. Compare action digests before/after toolchain change:
+   $ bazel aquery 'mnemonic("CppCompile", //src:core)' --output=jsonproto
+   Cache key = hash of: input digests + command args + tool digests
+   + env vars + execution platform properties
+
+2. Likely culprit: compiler binary hash changed. Even if output
+   is identical, Bazel treats the compiler as an input:
+   $ find $(bazel info output_base)/external/toolchain \
+       -name "gcc" -exec sha256sum {} \;
+
+3. Critical distinction most people miss:
+   --disk_cache stores by action key ONLY
+   --remote_cache stores by action key AND validates outputs exist in CAS
+   A disk_cache hit that's a remote_cache miss = CAS garbage collected
+   your outputs. Check buildbarn retention policy.
+
+4. Hermeticity check — find non-hermetic actions:
+   $ bazel build //src:core --experimental_remote_cache_check \
+       --remote_upload_local_results=false
+   Builds locally, compares against cache. Mismatch = non-hermetic
+   action (timestamp in output, absolute path leak, etc.)
+
+5. Safe interim fix: read cache but don't write
+   build --remote_accept_cached=true
+   build --remote_upload_local_results=false
+   Prevents contaminating cache while investigating.</code></pre>
+
+        <p>The <code>--disk_cache</code> vs <code>--remote_cache</code> distinction in item 3 is knowledge you only acquire debugging cache misses at 2am. Documentation treats them as interchangeable, but they have fundamentally different validation semantics. <code>--disk_cache</code> trusts the action key match. <code>--remote_cache</code> also requires output files to exist in CAS, so garbage collection causes cache misses even when action keys match. Claude Code explains this correctly, saving hours of confusion.</p>
+
+        <h3>Other Tools: Cache Configuration Without Understanding</h3>
+
+        <p>Copilot suggested <code>--remote_upload_local_results=true</code> alongside <code>--spawn_strategy=local</code>, which uploads non-hermetic local results to the shared cache &mdash; poisoning it for every developer. Amazon Q generates reasonable gRPC configs for AWS backends but cannot debug cache key issues. Windsurf can write <code>.bazelrc</code> files but does not understand the caching model behind the flags.</p>
+
+        <h2>CI/CD Pipeline Configuration</h2>
+
+        <p>A 45-minute CI pipeline is not a pipeline &mdash; it is a tax on every pull request. Build engineers are responsible for making CI fast enough that developers do not context-switch while waiting for green.</p>
+
+        <h3>Claude Code &amp; Cursor: Pipeline Optimization</h3>
+
+        <pre><code>&gt; GitHub Actions CI: 45 minutes. 47 Gradle modules, ~8000 tests.
+  Steps: checkout, build all, test all, Docker, security scan.
+  Target: under 12 minutes.
+
+Optimized pipeline (key structural changes):
+
+1. Path filtering: dorny/paths-filter determines affected modules
+   → eliminates ~60% of work on average PR
+
+2. Parallel matrix build: affected modules build concurrently
+   on ubuntu-latest-16-cores runners
+
+3. Test sharding: 8000 tests across 4 parallel runners
+   -Ptest.shard.index=${{ matrix.shard }} -Ptest.shard.total=4
+
+4. Gradle build cache: gradle/actions/setup-gradle@v4 with
+   cache-read-only on PRs (only main writes to cache)
+
+5. Configuration cache: --configuration-cache saves 45s per
+   Gradle invocation
+
+6. Concurrency control: cancel in-progress runs for same PR
+   concurrency:
+     group: ci-${{ github.ref }}
+     cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+7. Conditional Docker: only build images on main, not on PRs
+
+Result: 45min → 11min (avg PR), 8min (when path filter eliminates modules)</code></pre>
+
+        <p>CI optimization is not about making single steps faster &mdash; it is about eliminating unnecessary work and parallelizing the rest. Path filtering alone removes 60% of CI time because most PRs touch a small fraction of the monorepo. Test sharding converts a 20-minute sequential run into four 5-minute parallel runs. Gradle build cache turns clean builds into incremental builds across CI runs.</p>
+
+        <h3>Copilot: Decent CI Scaffolding</h3>
+
+        <p>Copilot generates functional GitHub Actions and GitLab CI YAML for standard workflows. It knows common action versions, proper YAML syntax, and basic caching patterns. Where it falls short is structural optimization &mdash; it generates a linear pipeline (build, then test, then deploy) when a parallel matrix strategy would cut time by 60%. It also defaults to <code>actions/cache</code> for Gradle instead of the purpose-built <code>gradle/actions/setup-gradle</code>, which handles cache key computation, deduplication, and cleanup automatically.</p>
+
+        <h3>Amazon Q &amp; Windsurf: Reasonable CI Templates</h3>
+
+        <p>Amazon Q generates solid GitHub Actions and GitLab CI, especially for AWS deployments with proper IAM role assumption via OIDC &mdash; a security best practice that most tools miss. Windsurf produces clean YAML with good step organization but does not optimize for build system awareness &mdash; it caches <code>~/.gradle</code> but does not enable Gradle&rsquo;s own build cache, which is the higher-impact optimization. Neither tool suggests path filtering or test sharding, which are the two highest-impact CI optimizations for monorepos.</p>
+
+        <h2>Monorepo Build Graph Optimization</h2>
+
+        <p>In a monorepo with 500+ targets, knowing which targets need rebuilding after a change is the difference between a 2-minute incremental build and a 30-minute full rebuild.</p>
+
+        <h3>Claude Code &amp; Gemini CLI: Graph-Aware Analysis</h3>
+
+        <pre><code>&gt; Script to compute affected Bazel targets from git diff. Handle:
+  source changes, BUILD changes, .bzl changes, WORKSPACE changes.
+
+Claude Code generates four-category affected target analysis:
+
+Category 1: WORKSPACE/MODULE.bazel changes → rebuild all (//...)
+Category 2: .bzl file changes → bazel query "rbuildfiles(path)"
+  to find all BUILD files that load the changed Starlark file
+Category 3: BUILD file changes → all targets in that package
+Category 4: Source changes → bazel query to find owning target
+
+# Combine and compute transitive reverse dependencies
+AFFECTED=$(bazel query "rdeps(//..., set($ALL_DIRECT))" \
+    --keep_going --output=label | sort -u)
+
+# Filter to testable targets for CI
+TESTS=$(bazel query "kind('.*_test', set($AFFECTED))" \
+    --keep_going --output=label | sort -u)</code></pre>
+
+        <p>The four-category classification is the expert detail. Most scripts only handle source changes and miss that a <code>.bzl</code> change can affect every package that loads it. The <code>rbuildfiles</code> query for .bzl changes is particularly important and rarely seen in tutorials &mdash; it finds BUILD files that transitively load the changed Starlark file, capturing the full blast radius of a macro or rule definition change.</p>
+
+        <p>Gemini CLI complements this by analyzing query output. Feed it <code>bazel query 'deps(//src:main)' --output graph</code> (thousands of lines for large targets) and it identifies redundant dependency paths, overly broad dependencies that increase rebuild scope, and targets that should be split for better cache granularity. Its 1M context window handles dependency graphs that would exceed any other tool&rsquo;s context limit.</p>
+
+        <h3>Other Tools: Flat Dependency Thinking</h3>
+
+        <p>Copilot and Windsurf produce affected-target scripts that only handle source file changes &mdash; the simplest case. They miss that BUILD file changes affect all targets in the package, that <code>.bzl</code> changes cascade through every file that loads them, and that WORKSPACE changes potentially invalidate everything. Amazon Q handles basic <code>bazel query</code> syntax but does not compose the multi-category analysis needed for correct affected-target computation. The result is CI pipelines that either rebuild too much (wasting time) or too little (missing affected targets and shipping broken builds).</p>
+
+        <h2>Cost Breakdown: What Build Engineers Actually Need</h2>
+
+        <p>Build engineering economics are unique: one build engineer typically supports 10-100 application developers. AI tool costs are offset by saved CI minutes and reduced developer wait time across the organization.</p>
+
+        <h3>Scenario 1: Solo Build Engineer, OSS Project &mdash; $0/month</h3>
+        <ul>
+          <li><strong>Gemini CLI Free</strong> &mdash; 1M context for build graphs and dependency trees</li>
+          <li><strong>Copilot Free</strong> &mdash; basic completions for CMake, Makefile, YAML</li>
+          <li><strong>Limitation:</strong> no deep Starlark reasoning, no cache debugging. You are the expert; tools handle syntax.</li>
+        </ul>
+
+        <h3>Scenario 2: Small Team Build Engineer &mdash; $10/month</h3>
+        <ul>
+          <li><strong>Copilot Pro</strong> ($10/mo) &mdash; better completions for Gradle Kotlin DSL and YAML, with model selection</li>
+          <li>Supplement with <strong>Gemini CLI Free</strong> for large-context analysis</li>
+          <li><strong>Sweet spot for:</strong> standard build tools (Gradle, Maven, npm) without custom Bazel rules.</li>
+        </ul>
+
+        <h3>Scenario 3: Mid-Size Platform Team &mdash; $20/month</h3>
+        <ul>
+          <li><strong>Claude Code</strong> ($20/mo) &mdash; Bazel rules, dependency conflicts, cache debugging</li>
+          <li>OR <strong>Cursor Pro</strong> ($20/mo) &mdash; codebase-aware completions across hundreds of BUILD files</li>
+          <li><strong>Better choice:</strong> Claude Code if you write custom rules and debug caches. Cursor if you manage a large Gradle/Maven monorepo.</li>
+        </ul>
+
+        <h3>Scenario 4: Large Monorepo Build Infra &mdash; $40/month</h3>
+        <ul>
+          <li><strong>Claude Code</strong> ($20/mo) + <strong>Cursor Pro</strong> ($20/mo)</li>
+          <li>Claude for deep analysis: cache hit rate drops, custom rule design, diamond dependency resolution</li>
+          <li>Cursor for daily work: BUILD file completions, multi-file refactoring, convention plugin development</li>
+        </ul>
+
+        <h3>Scenario 5: Enterprise Build Platform Team &mdash; $60/month</h3>
+        <ul>
+          <li><strong>Cursor Business</strong> ($40/mo) for team-wide indexing and access controls</li>
+          <li>Plus <strong>Claude Code</strong> ($20/mo) for architecture-level reasoning</li>
+          <li>Enterprise features: audit logs, centralized prompt templates, enforcement that AI-generated BUILD files pass buildifier lint.</li>
+        </ul>
+
+        <h3>Scenario 6: Google/Meta-Scale Build Infra &mdash; $99/seat enterprise</h3>
+        <ul>
+          <li><strong>Copilot Enterprise</strong> ($39/mo) or <strong>Cursor Enterprise</strong> ($40/mo) for IP protection and custom model fine-tuning</li>
+          <li>Plus <strong>Claude Code</strong> ($20/mo) for deep reasoning</li>
+          <li>At this scale, your build system is proprietary (Blaze, Buck2, internal fork). Fine-tuning or RAG over internal docs is the only way AI tools produce useful output. Free tools trained on public Bazel docs cannot help with custom rule sets and execution platforms.</li>
+        </ul>
+
+        <h2>The Build-Specific Verdict</h2>
+
+        <p>AI tools for build engineering in 2026 occupy a unique position. Build configurations are highly structured, deterministic, and well-suited to AI generation &mdash; there are fewer possible correct configurations for a Bazel rule than for an arbitrary feature. This means AI tools generate correct build configs at a higher rate than correct application code. The pattern-matching nature of build configuration plays to AI&rsquo;s strengths.</p>
+
+        <p>But there is a critical gap: AI tools are excellent at generating build configs and terrible at debugging the failures that result from incorrect ones. A cache miss does not produce an error &mdash; it produces a slow build. A non-hermetic action does not fail &mdash; it succeeds with subtly wrong output. A dependency conflict does not crash &mdash; it links the wrong version and fails at runtime three weeks later. These problems require reasoning about system state that AI tools cannot observe.</p>
+
+        <p>The practical approach:</p>
+
+        <ul>
+          <li><strong>Use AI aggressively for:</strong> BUILD file generation, Gradle scaffolding, CMake targets, CI/CD YAML, dependency catalog management, documentation, migration scripts (Maven to Gradle, Make to CMake, Bazel version upgrades).</li>
+          <li><strong>Use AI cautiously for:</strong> custom Bazel rules with complex providers, remote execution config, cache key analysis, toolchain definitions, cross-compilation toolchain files.</li>
+          <li><strong>Never trust AI for:</strong> cache correctness without verification, hermeticity guarantees, production remote execution configs without sandbox testing, WORKSPACE dependency resolution without running the build.</li>
+        </ul>
+
+        <p>The best build engineering AI workflow in 2026 is <strong>&ldquo;AI drafts the config, you verify the dependency graph.&rdquo;</strong> Generate the BUILD file with Claude Code, then run <code>bazel query</code> to verify the structure. Generate the Gradle optimization with Cursor, then run <code>gradle buildHealth</code> to confirm configuration cache compatibility. Generate the CI pipeline, then watch the first run to confirm cache behavior. The draft-and-verify cycle is dramatically faster than writing from scratch, and the verification step catches the subtle semantic errors that AI tools consistently produce in build system code.</p>
+
+        <p>Compare all tools and pricing on our <a href="/" style="color:var(--accent)">main comparison table</a>, or check the <a href="/blog/cheapest-ai-coding-tool-2026.html" style="color:var(--accent)">cheapest tools guide</a> for budget options.</p>
+
+        <h2>Related on CodeCosts</h2>
+        <ul>
+          <li><a href="/blog/ai-coding-tools-for-devops-engineers-2026.html" style="color:var(--accent)">AI Coding Tools for DevOps Engineers (2026)</a> &mdash; deployment, infrastructure, operations</li>
+          <li><a href="/blog/ai-coding-tools-for-platform-engineers-2026.html" style="color:var(--accent)">AI Coding Tools for Platform Engineers (2026)</a> &mdash; internal developer platforms, self-service infrastructure</li>
+          <li><a href="/blog/ai-coding-tools-for-release-engineers-2026.html" style="color:var(--accent)">AI Coding Tools for Release Engineers (2026)</a> &mdash; release pipelines, versioning, rollbacks</li>
+          <li><a href="/blog/ai-coding-tools-for-backend-engineers-2026.html" style="color:var(--accent)">AI Coding Tools for Backend Engineers (2026)</a> &mdash; server-side development, APIs, databases</li>
+          <li><a href="/blog/ai-coding-tools-for-performance-engineers-2026.html" style="color:var(--accent)">AI Coding Tools for Performance Engineers (2026)</a> &mdash; profiling, optimization, benchmarking</li>
+          <li><a href="/blog/cheapest-ai-coding-tool-2026.html" style="color:var(--accent)">Cheapest AI Coding Tools in 2026: Complete Cost Comparison</a></li>
+        </ul>
+      </div>
+    </article>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>CodeCosts &mdash; Independent AI coding tool price tracker. Updated March 2026.</p>
+      <p style="margin-top:0.5rem"><a href="/" style="color:var(--accent)">Compare all tools</a> &middot; <a href="/blog/" style="color:var(--accent)">Blog</a> &middot; <a href="/blog/feed.xml" style="color:var(--accent)">RSS</a></p>
+    </div>
+  </footer>
+</body>
+</html>

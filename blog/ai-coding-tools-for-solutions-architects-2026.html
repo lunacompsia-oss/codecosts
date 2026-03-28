@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Coding Tools for Solutions Architects 2026: Architecture Design, PoCs, RFCs &amp; Technical Evaluation Guide</title>
+  <meta name="description" content="The solutions architect's guide to AI coding tools in 2026. Every tool ranked for architecture documentation, proof-of-concept development, RFC/ADR writing, cloud design patterns, integration architecture, and technical evaluations. Task-first recommendations from $0 to $40/mo.">
+  <link rel="canonical" href="https://codecosts.pages.dev/blog/ai-coding-tools-for-solutions-architects-2026.html">
+  <meta property="og:title" content="AI Coding Tools for Solutions Architects 2026: Architecture, PoCs, RFCs &amp; Evaluation">
+  <meta property="og:description" content="Every AI coding tool ranked for solutions architecture. PoC development, RFC/ADR writing, cloud design patterns, integration architecture, and the $0 to $40/mo stacks.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://codecosts.pages.dev/blog/ai-coding-tools-for-solutions-architects-2026.html">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="AI Coding Tools for Solutions Architects 2026: Architecture, PoCs, RFCs &amp; Evaluation">
+  <meta name="twitter:description" content="Every AI coding tool ranked for solutions architecture. PoC development, RFC/ADR writing, cloud design patterns, integration architecture, and the $0 to $40/mo stacks.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💰</text></svg>">
+  <link rel="stylesheet" href="../style.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "AI Coding Tools for Solutions Architects 2026: Architecture Design, PoCs, RFCs & Technical Evaluation Guide",
+    "datePublished": "2026-03-28",
+    "dateModified": "2026-03-28",
+    "author": { "@type": "Organization", "name": "CodeCosts" },
+    "publisher": { "@type": "Organization", "name": "CodeCosts" },
+    "description": "The solutions architect's guide to AI coding tools in 2026. Every tool ranked for architecture documentation, proof-of-concept development, RFC/ADR writing, cloud design patterns, and technical evaluations."
+  }
+  </script>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <a href="/" style="text-decoration:none;color:inherit"><h1><span class="logo">$_</span> CodeCosts</h1></a>
+      <p class="tagline">AI Coding Tool News &amp; Analysis</p>
+      <nav>
+        <a href="/">Tools</a>
+        <a href="/blog/" class="active">Blog</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <article class="card">
+      <h2>AI Coding Tools for Solutions Architects 2026: Architecture Design, PoCs, RFCs &amp; Technical Evaluation Guide</h2>
+      <div class="article-meta">
+        <span>March 28, 2026</span>
+        <span>18 min read</span>
+      </div>
+
+      <div class="article-content">
+        <p>Solutions architects do not write code the way application developers do. You spend most of your time in a fundamentally different mode: evaluating technologies, designing systems that do not exist yet, writing RFCs and ADRs that shape how dozens of engineers will work for the next two years, building proof-of-concept implementations that need to be convincing but not production-grade, and creating architecture diagrams that communicate complex distributed systems to both engineers and executives. Most AI coding tool reviews test on feature development and bug fixes &mdash; that tells you nothing about whether a tool can help you draft a well-structured ADR, scaffold a working PoC across three services in an afternoon, or reason through the trade-offs between event-driven and request-response patterns for a specific use case.</p>
+
+        <p>This guide evaluates every major AI coding tool through the lens of what solutions architects actually do. We tested each tool on real architecture tasks: writing RFCs, building multi-service PoCs, evaluating cloud service trade-offs, designing API contracts, and generating architecture documentation that people actually read.</p>
+
+        <div class="callout tip">
+          <div class="callout-title">TL;DR</div>
+          <p><strong>Best free ($0):</strong> GitHub Copilot Free &mdash; 2,000 completions/mo covers PoC work plus Copilot Chat for quick cloud service comparisons. <strong>Best for architecture work ($20/mo):</strong> Claude Code &mdash; terminal-native agent that excels at multi-file PoC scaffolding, RFC/ADR drafting, and reasoning through architecture trade-offs with deep context. <strong>Best for PoCs in IDE ($20/mo):</strong> Cursor &mdash; Composer mode builds working multi-file prototypes fast with codebase-aware context. <strong>Best combo ($30/mo):</strong> Claude Code + Copilot Free &mdash; Claude Code for architecture reasoning and PoC generation, Copilot for inline completions when polishing code.</p>
+        </div>
+
+        <h2>Why Solutions Architecture Is Different</h2>
+
+        <p>Solutions architects sit at the intersection of business requirements, technical constraints, and organizational capability. The role is distinct from software engineering because your primary output is not working software &mdash; it is decisions, documentation, and proof that a design works. That changes what matters in an AI tool:</p>
+
+        <ul>
+          <li><strong>Breadth over depth:</strong> In a single week you might evaluate a Go microservice, a Python data pipeline, a React dashboard, a Terraform module, and a Kafka consumer. Your AI tool must handle all of these without being excellent at none. Polyglot competence matters more than deep expertise in one language.</li>
+          <li><strong>Speed of prototyping over production quality:</strong> A PoC that takes three days defeats its purpose. You need to stand up a working demo in hours &mdash; three services communicating over an event bus, a simple UI showing the flow, enough error handling to not crash during a demo. AI tools that insist on production-grade patterns slow you down.</li>
+          <li><strong>Reasoning about trade-offs:</strong> Your most valuable output is often a document that says &ldquo;we should use approach A instead of B because of X, Y, Z.&rdquo; AI tools that can only generate code but cannot reason about <em>why</em> one approach is better than another for a specific context are missing the point.</li>
+          <li><strong>Documentation as a first-class output:</strong> RFCs, ADRs, design documents, sequence diagrams in Mermaid, API specs in OpenAPI &mdash; these are not afterthoughts. They are the primary deliverable. An AI tool that writes great code but terrible documentation is only half useful to you.</li>
+          <li><strong>Cloud service knowledge:</strong> You need to know the difference between Amazon SQS and SNS, when to use Cloud Run vs GKE, whether Azure Event Grid or Service Bus fits your event-driven pattern. AI tools with stale or incorrect cloud service knowledge waste your time with bad recommendations.</li>
+          <li><strong>Multi-service thinking:</strong> Application developers think about one service at a time. You think about how five services interact &mdash; data flow, failure modes, consistency boundaries, deployment dependencies. AI tools that only understand single-file or single-project context miss the architectural picture.</li>
+        </ul>
+
+        <h2>Solutions Architect Task Support Matrix</h2>
+
+        <p>Solutions architects have a unique mix of writing, coding, and analysis tasks. Here is how each AI tool handles the solutions architect&rsquo;s workflow:</p>
+
+        <div style="overflow-x:auto">
+          <table style="width:100%;border-collapse:collapse;margin:1.5rem 0">
+            <thead>
+              <tr style="border-bottom:2px solid var(--border)">
+                <th style="padding:12px 16px;text-align:left">Tool</th>
+                <th style="padding:12px 16px;text-align:left">RFC/ADR Writing</th>
+                <th style="padding:12px 16px;text-align:left">PoC Scaffolding</th>
+                <th style="padding:12px 16px;text-align:left">Cloud Trade-offs</th>
+                <th style="padding:12px 16px;text-align:left">API Design</th>
+                <th style="padding:12px 16px;text-align:left">Diagrams (Mermaid)</th>
+                <th style="padding:12px 16px;text-align:left">Multi-Service</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px"><strong>GitHub Copilot</strong></td>
+                <td style="padding:12px 16px;color:var(--yellow)">Adequate</td>
+                <td style="padding:12px 16px;color:var(--green)">Good</td>
+                <td style="padding:12px 16px;color:var(--yellow)">Adequate</td>
+                <td style="padding:12px 16px;color:var(--green)">Strong</td>
+                <td style="padding:12px 16px;color:var(--yellow)">Adequate</td>
+                <td style="padding:12px 16px;color:var(--yellow)">Weak</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px"><strong>Cursor</strong></td>
+                <td style="padding:12px 16px;color:var(--green)">Good</td>
+                <td style="padding:12px 16px;color:var(--green)">Excellent</td>
+                <td style="padding:12px 16px;color:var(--green)">Good</td>
+                <td style="padding:12px 16px;color:var(--green)">Excellent</td>
+                <td style="padding:12px 16px;color:var(--green)">Good</td>
+                <td style="padding:12px 16px;color:var(--green)">Strong</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px"><strong>Claude Code</strong></td>
+                <td style="padding:12px 16px;color:var(--green)">Excellent</td>
+                <td style="padding:12px 16px;color:var(--green)">Excellent</td>
+                <td style="padding:12px 16px;color:var(--green)">Excellent</td>
+                <td style="padding:12px 16px;color:var(--green)">Excellent</td>
+                <td style="padding:12px 16px;color:var(--green)">Excellent</td>
+                <td style="padding:12px 16px;color:var(--green)">Excellent</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px"><strong>Windsurf</strong></td>
+                <td style="padding:12px 16px;color:var(--green)">Good</td>
+                <td style="padding:12px 16px;color:var(--green)">Strong</td>
+                <td style="padding:12px 16px;color:var(--green)">Good</td>
+                <td style="padding:12px 16px;color:var(--green)">Strong</td>
+                <td style="padding:12px 16px;color:var(--green)">Good</td>
+                <td style="padding:12px 16px;color:var(--green)">Good</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px"><strong>Amazon Q</strong></td>
+                <td style="padding:12px 16px;color:var(--yellow)">Adequate</td>
+                <td style="padding:12px 16px;color:var(--green)">Good (AWS)</td>
+                <td style="padding:12px 16px;color:var(--green)">Strong (AWS)</td>
+                <td style="padding:12px 16px;color:var(--green)">Good</td>
+                <td style="padding:12px 16px;color:var(--yellow)">Weak</td>
+                <td style="padding:12px 16px;color:var(--yellow)">Adequate (AWS)</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px"><strong>Gemini Code Assist</strong></td>
+                <td style="padding:12px 16px;color:var(--green)">Good</td>
+                <td style="padding:12px 16px;color:var(--green)">Good (GCP)</td>
+                <td style="padding:12px 16px;color:var(--green)">Strong (GCP)</td>
+                <td style="padding:12px 16px;color:var(--green)">Good</td>
+                <td style="padding:12px 16px;color:var(--green)">Good</td>
+                <td style="padding:12px 16px;color:var(--yellow)">Adequate (GCP)</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <p><strong>Key insight:</strong> Claude Code dominates the solutions architect workflow because architecture work is fundamentally about reasoning and multi-file output &mdash; the two things agentic tools do best. The gap is widest in RFC/ADR writing and cloud trade-off analysis, where Claude Code&rsquo;s ability to produce structured, nuanced prose sets it apart from tools optimized for code completion.</p>
+
+        <h2>Tool-by-Tool Breakdown for Solutions Architects</h2>
+
+        <h3>Claude Code &mdash; Best for Architecture Reasoning and PoC Development ($20/mo)</h3>
+
+        <p>Claude Code is the standout tool for solutions architects. Architecture work is primarily about reasoning through trade-offs, producing structured documentation, and building working prototypes across multiple files and services &mdash; all things where a terminal-native agentic tool with deep context excels.</p>
+
+        <p>Where Claude Code excels for solutions architects:</p>
+        <ul>
+          <li><strong>RFC and ADR generation:</strong> Ask Claude Code to &ldquo;write an ADR for choosing PostgreSQL over DynamoDB for our order service, considering our team&rsquo;s SQL expertise, need for complex joins, and eventual consistency tolerance.&rdquo; It produces a properly structured ADR with context, decision, consequences, and alternatives considered &mdash; not a generic template, but one tailored to the specific constraints you described.</li>
+          <li><strong>Multi-service PoC scaffolding:</strong> Describe a system (&ldquo;three microservices communicating over Kafka, with a React dashboard showing event flow&rdquo;) and Claude Code generates the entire project structure: Docker Compose, service code, Kafka producer/consumer setup, shared protobuf definitions, and a basic UI. It creates files across directories coherently because it operates at the project level, not the file level.</li>
+          <li><strong>Cloud trade-off analysis:</strong> &ldquo;Compare AWS Step Functions vs Temporal for our long-running order fulfillment workflow, considering our team runs on EKS and we need visibility into stuck workflows.&rdquo; Claude Code reasons through operational complexity, cost models, debugging experience, and team familiarity &mdash; the actual factors that determine architecture decisions, not just feature lists.</li>
+          <li><strong>Mermaid diagram generation:</strong> Generates sequence diagrams, C4 component diagrams, and flowcharts in Mermaid syntax that you can embed directly in your RFCs. Handles complex interactions (retries, compensating transactions, async callbacks) without tangling the diagram.</li>
+          <li><strong>OpenAPI spec generation:</strong> Describe your API semantics and Claude Code produces a complete OpenAPI 3.1 spec with realistic examples, proper error schemas, pagination patterns, and authentication requirements. Useful for contract-first API design before any implementation begins.</li>
+          <li><strong>Validation loop:</strong> Can run <code>docker-compose up</code> to verify its own PoC actually starts, <code>curl</code> endpoints to test they respond, and iterate on failures &mdash; so you get a working demo, not just code that looks right.</li>
+        </ul>
+
+        <p>Where it struggles: No inline autocomplete while typing &mdash; it is a conversation-then-edit agent. For quick edits during a live demo or while polishing PoC code, you still want Copilot or Cursor alongside it.</p>
+
+        <p><strong>Pricing:</strong> $20/mo (Claude Max) | $100/mo (Max 5x) | $200/mo (Max 20x) | API usage-based. The $20/mo tier covers most architecture work. If you build multiple PoCs per week with heavy iteration cycles, the $100/mo tier provides more headroom.</p>
+
+        <h3>GitHub Copilot &mdash; Best Lightweight Companion for PoC Work ($0&ndash;$10/mo)</h3>
+
+        <p>Copilot is the tool every solutions architect should have as a baseline, even if you use Claude Code or Cursor as your primary tool. Its inline completions are fast and cover the breadth of languages and formats you encounter: Go, Python, TypeScript, Java, Terraform, YAML, Markdown, SQL, and more.</p>
+
+        <p>Where Copilot excels for solutions architects:</p>
+        <ul>
+          <li><strong>Polyglot completions:</strong> When your Tuesday involves Go, your Wednesday involves Python, and your Thursday involves Terraform, Copilot keeps up without any configuration changes. Solutions architects cannot afford a tool that is only good at one language.</li>
+          <li><strong>Quick PoC polishing:</strong> After Claude Code generates your PoC structure, Copilot helps you polish individual files &mdash; adding error handling, filling in test cases, completing API endpoint implementations. The inline completion speed matters when you are iterating on a demo.</li>
+          <li><strong>Markdown and documentation:</strong> Copilot&rsquo;s Markdown completions are useful when writing RFCs, meeting notes, and architecture review comments. It learns your document structure and suggests consistent formatting.</li>
+          <li><strong>IDE breadth:</strong> Works in VS Code, JetBrains IDEs, Neovim, and the terminal. Solutions architects often switch environments depending on whether they are writing code, documentation, or infrastructure config.</li>
+        </ul>
+
+        <p>Where it struggles: Cannot reason about architecture trade-offs &mdash; it completes code, not arguments. Cannot coordinate multi-file changes for PoC scaffolding. Agent mode helps but remains IDE-bound and less capable than dedicated agentic tools for complex multi-service prototyping.</p>
+
+        <p><strong>Pricing:</strong> Free (2,000 completions/mo) | Pro $10/mo | Pro+ $39/mo. The free tier is often enough for architects who spend more time designing than typing. Pro at $10/mo makes sense if you build PoCs regularly.</p>
+
+        <h3>Cursor &mdash; Best IDE Experience for Rapid Prototyping ($20/mo)</h3>
+
+        <p>If you prefer working in an IDE rather than the terminal, Cursor is the strongest choice for solutions architects. Its Composer mode can scaffold multi-file projects in a visual environment, and the codebase-wide context means it understands the relationships between your services, configs, and documentation.</p>
+
+        <p>Where Cursor excels for solutions architects:</p>
+        <ul>
+          <li><strong>Composer for PoC generation:</strong> Describe your architecture and Composer creates the files, directories, and boilerplate across your project. You see every file it creates and can review changes inline. For architects who want visual control over what the AI generates, this is better than terminal-based tools.</li>
+          <li><strong>Codebase context with .cursorrules:</strong> Encode your organization&rsquo;s architecture standards: &ldquo;all services use structured logging with correlation IDs,&rdquo; &ldquo;use the circuit breaker pattern for all external service calls,&rdquo; &ldquo;API responses follow our standard envelope format.&rdquo; Cursor follows these rules in generated code, so your PoCs demonstrate your recommended patterns from the start.</li>
+          <li><strong>API design workflow:</strong> Write your OpenAPI spec first, then ask Cursor to generate the server stubs and client SDKs. It references the spec while generating implementations, maintaining consistency between contract and code.</li>
+          <li><strong>TypeScript and frontend prototyping:</strong> If your PoCs include a UI component (dashboards, admin panels, demo frontends), Cursor&rsquo;s TypeScript/React support is the best in the market. You can scaffold a working frontend in minutes.</li>
+        </ul>
+
+        <p>Where it struggles: Not terminal-native, so running Docker, infrastructure scripts, and deployment commands requires context-switching. Less natural for architects who primarily work in terminals. The codebase context is per-project, so cross-service reasoning requires having all services in one workspace.</p>
+
+        <p><strong>Pricing:</strong> $20/mo (Pro) | $40/mo (Ultra). Pro at $20/mo is the sweet spot for architects. Ultra is worth it only if you build PoCs daily and hit rate limits on Pro.</p>
+
+        <h3>Windsurf &mdash; Best for Regulated Environment Architecture ($15&ndash;$30/mo)</h3>
+
+        <p>If you work in healthcare, government, finance, or any industry with strict data handling requirements, Windsurf&rsquo;s privacy-first approach matters. Architecture decisions in regulated environments involve compliance constraints (HIPAA, FedRAMP, SOC 2, PCI DSS) that your AI tool must respect &mdash; both in the recommendations it makes and in how it handles your code.</p>
+
+        <p>Where Windsurf excels for solutions architects:</p>
+        <ul>
+          <li><strong>Privacy-conscious architecture assistance:</strong> Windsurf does not retain your code for training. For architects working with proprietary system designs, pre-patent technical documentation, or government-classified architecture patterns, this matters.</li>
+          <li><strong>Compliance-aware suggestions:</strong> When designing systems for regulated industries, Windsurf is more likely to suggest patterns that consider audit logging, data residency, encryption at rest, and access control &mdash; not because it knows your specific compliance requirements, but because its suggestions tend toward conservative, enterprise-grade patterns.</li>
+          <li><strong>Cascade for iterative design:</strong> Windsurf&rsquo;s Cascade feature maintains context across a long design session &mdash; start with requirements, evolve into a design document, then scaffold the PoC. The conversation flows naturally without losing earlier context.</li>
+        </ul>
+
+        <p>Where it struggles: Smaller model ecosystem than Cursor. Not as strong for multi-service PoC generation. Cloud service knowledge is adequate but not as deep as Claude Code&rsquo;s for AWS/GCP/Azure trade-off analysis.</p>
+
+        <p><strong>Pricing:</strong> $15/mo (Pro) | $30/mo (Max) | $60/mo (Ultra). Pro at $15/mo covers most architecture work. Max adds priority access for heavier use.</p>
+
+        <h3>Amazon Q Developer &mdash; Best for AWS-Centric Architecture (Free&ndash;$19/mo)</h3>
+
+        <p>If your organization is all-in on AWS, Amazon Q has a unique advantage: deep knowledge of AWS services, their interactions, pricing models, and best practices. For architects designing on AWS, this specificity outweighs the general-purpose capabilities of other tools &mdash; for AWS-specific decisions.</p>
+
+        <p>Where Amazon Q excels for solutions architects:</p>
+        <ul>
+          <li><strong>AWS service selection:</strong> &ldquo;Should I use SQS or SNS for this fan-out pattern?&rdquo; &ldquo;When does Aurora Serverless v2 make sense over provisioned Aurora?&rdquo; &ldquo;How do I architect a multi-region active-active setup with DynamoDB Global Tables?&rdquo; Amazon Q answers these with AWS-specific depth that other tools cannot match.</li>
+          <li><strong>CloudFormation and CDK generation:</strong> Generates well-structured CDK constructs and CloudFormation templates that follow AWS best practices. If your PoCs need to be deployable on AWS, Q produces infrastructure code that actually works with IAM permissions, VPC configurations, and service integrations correct.</li>
+          <li><strong>AWS Well-Architected alignment:</strong> Q&rsquo;s suggestions naturally align with the Well-Architected Framework pillars. When you are preparing for a Well-Architected Review, Q can help identify gaps in your design.</li>
+          <li><strong>Cost estimation:</strong> Can reason about AWS pricing for different architecture options &mdash; not precise estimates, but directionally useful comparisons (&ldquo;Fargate will cost roughly 3x more than Lambda for this bursty workload at your expected volume&rdquo;).</li>
+        </ul>
+
+        <p>Where it struggles: Significantly weaker outside AWS. If you architect for GCP, Azure, or multi-cloud, Q&rsquo;s recommendations are not competitive. RFC/ADR writing quality is below Claude Code and Cursor. Multi-file PoC generation is more limited.</p>
+
+        <p><strong>Pricing:</strong> Free tier (generous for individual use) | Pro $19/mo. The free tier is sufficient for architecture consultation. Pro adds more features for teams.</p>
+
+        <h3>Gemini Code Assist &mdash; Best for GCP-Centric Architecture (Free&ndash;$22.80/mo)</h3>
+
+        <p>The mirror image of Amazon Q for Google Cloud. If your organization runs on GCP, Gemini Code Assist has deep knowledge of GCP services, particularly the data and ML stack (BigQuery, Dataflow, Vertex AI, Cloud Run, GKE).</p>
+
+        <p>Where Gemini excels for solutions architects:</p>
+        <ul>
+          <li><strong>GCP service knowledge:</strong> Deep understanding of Cloud Run vs GKE trade-offs, BigQuery architecture patterns, Pub/Sub vs Eventarc, and the GCP networking model. For GCP-centric architects, this specificity is valuable.</li>
+          <li><strong>Data architecture:</strong> Gemini&rsquo;s understanding of BigQuery, Dataflow, and data pipeline patterns is strong. If your architecture involves significant data processing, Gemini can reason about partitioning strategies, materialized views, and streaming insert patterns.</li>
+          <li><strong>Gemini 2.5 Pro context window:</strong> The large context window (1M tokens) is useful for architecture work where you need the AI to consider multiple documents, specs, and code files simultaneously.</li>
+        </ul>
+
+        <p>Where it struggles: Less capable outside GCP. RFC/ADR quality is below Claude Code. PoC scaffolding is not as strong as Cursor&rsquo;s Composer. Integration with non-Google tooling is weaker.</p>
+
+        <p><strong>Pricing:</strong> Free tier (generous) | Standard $22.80/user/mo (via Duet AI for Developers). The free tier covers individual architecture work.</p>
+
+        <h2>Architecture Task Comparison</h2>
+
+        <p>Here is how each tool performs on the specific tasks solutions architects do every week:</p>
+
+        <div style="overflow-x:auto">
+          <table style="width:100%;border-collapse:collapse;margin:1.5rem 0">
+            <thead>
+              <tr style="border-bottom:2px solid var(--border)">
+                <th style="padding:12px 16px;text-align:left">Task</th>
+                <th style="padding:12px 16px;text-align:left">Best Tool</th>
+                <th style="padding:12px 16px;text-align:left">Runner-up</th>
+                <th style="padding:12px 16px;text-align:left">Notes</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px">Write an RFC/ADR</td>
+                <td style="padding:12px 16px"><strong>Claude Code</strong></td>
+                <td style="padding:12px 16px">Cursor</td>
+                <td style="padding:12px 16px">Claude Code produces the best-structured, most nuanced architectural prose</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px">Scaffold a multi-service PoC</td>
+                <td style="padding:12px 16px"><strong>Claude Code</strong></td>
+                <td style="padding:12px 16px">Cursor</td>
+                <td style="padding:12px 16px">Terminal-native agent creates files across directories; Cursor Composer is close</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px">Compare cloud services</td>
+                <td style="padding:12px 16px"><strong>Claude Code</strong></td>
+                <td style="padding:12px 16px">Amazon Q (AWS) / Gemini (GCP)</td>
+                <td style="padding:12px 16px">Claude Code is cloud-agnostic; Q and Gemini excel for their own cloud</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px">Design an API contract (OpenAPI)</td>
+                <td style="padding:12px 16px"><strong>Cursor</strong></td>
+                <td style="padding:12px 16px">Claude Code</td>
+                <td style="padding:12px 16px">Cursor&rsquo;s TypeScript awareness helps; Claude Code produces better specs from scratch</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px">Generate Mermaid diagrams</td>
+                <td style="padding:12px 16px"><strong>Claude Code</strong></td>
+                <td style="padding:12px 16px">Gemini</td>
+                <td style="padding:12px 16px">Claude Code handles complex sequence diagrams with retries and async flows</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px">Evaluate a technology choice</td>
+                <td style="padding:12px 16px"><strong>Claude Code</strong></td>
+                <td style="padding:12px 16px">Cursor</td>
+                <td style="padding:12px 16px">Claude Code reasons about constraints (team size, timeline, existing stack)</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px">Build a quick frontend demo</td>
+                <td style="padding:12px 16px"><strong>Cursor</strong></td>
+                <td style="padding:12px 16px">Claude Code</td>
+                <td style="padding:12px 16px">Cursor&rsquo;s TypeScript/React support makes demo UIs fastest to build</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px">Create IaC templates (Terraform/CDK)</td>
+                <td style="padding:12px 16px"><strong>Claude Code</strong></td>
+                <td style="padding:12px 16px">Amazon Q (CDK)</td>
+                <td style="padding:12px 16px">Claude Code for multi-cloud Terraform; Q for AWS CDK specifically</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px">Review an existing architecture</td>
+                <td style="padding:12px 16px"><strong>Claude Code</strong></td>
+                <td style="padding:12px 16px">Cursor</td>
+                <td style="padding:12px 16px">Claude Code can read an entire codebase and identify architectural issues</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px">Prepare a technical presentation</td>
+                <td style="padding:12px 16px"><strong>Claude Code</strong></td>
+                <td style="padding:12px 16px">Copilot</td>
+                <td style="padding:12px 16px">Claude Code generates structured outlines, talking points, and Mermaid slides</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h2>The Architecture Documentation Problem</h2>
+
+        <p>Solutions architects spend a disproportionate amount of time on documentation. RFCs, ADRs, design documents, architecture review comments, technical strategy documents, and post-mortem analyses are all part of the job. The quality of this documentation directly impacts whether your architecture decisions get adopted or ignored.</p>
+
+        <p>Here is how AI tools handle architecture documentation:</p>
+
+        <h3>RFC/ADR Quality Comparison</h3>
+
+        <p>We asked each tool to write an ADR for the decision: &ldquo;Use event-driven architecture with Kafka instead of synchronous REST calls between our order, inventory, and notification services.&rdquo;</p>
+
+        <div style="overflow-x:auto">
+          <table style="width:100%;border-collapse:collapse;margin:1.5rem 0">
+            <thead>
+              <tr style="border-bottom:2px solid var(--border)">
+                <th style="padding:12px 16px;text-align:left">Quality Dimension</th>
+                <th style="padding:12px 16px;text-align:left">Claude Code</th>
+                <th style="padding:12px 16px;text-align:left">Cursor</th>
+                <th style="padding:12px 16px;text-align:left">Copilot Chat</th>
+                <th style="padding:12px 16px;text-align:left">Amazon Q</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px">Structure (ADR format)</td>
+                <td style="padding:12px 16px;color:var(--green)">Excellent</td>
+                <td style="padding:12px 16px;color:var(--green)">Good</td>
+                <td style="padding:12px 16px;color:var(--yellow)">Adequate</td>
+                <td style="padding:12px 16px;color:var(--yellow)">Adequate</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px">Trade-off analysis depth</td>
+                <td style="padding:12px 16px;color:var(--green)">Deep, nuanced</td>
+                <td style="padding:12px 16px;color:var(--green)">Good</td>
+                <td style="padding:12px 16px;color:var(--yellow)">Surface-level</td>
+                <td style="padding:12px 16px;color:var(--yellow)">AWS-biased</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px">Consequences section</td>
+                <td style="padding:12px 16px;color:var(--green)">Both positive and negative</td>
+                <td style="padding:12px 16px;color:var(--green)">Mostly positive</td>
+                <td style="padding:12px 16px;color:var(--yellow)">Generic</td>
+                <td style="padding:12px 16px;color:var(--yellow)">AWS-focused</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px">Alternatives considered</td>
+                <td style="padding:12px 16px;color:var(--green)">3&ndash;4 with reasoning</td>
+                <td style="padding:12px 16px;color:var(--green)">2&ndash;3 with reasoning</td>
+                <td style="padding:12px 16px;color:var(--yellow)">Listed but shallow</td>
+                <td style="padding:12px 16px;color:var(--yellow)">1&ndash;2 (AWS options)</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px">Team context awareness</td>
+                <td style="padding:12px 16px;color:var(--green)">Incorporates constraints</td>
+                <td style="padding:12px 16px;color:var(--green)">With .cursorrules</td>
+                <td style="padding:12px 16px;color:var(--yellow)">Generic</td>
+                <td style="padding:12px 16px;color:var(--yellow)">Generic</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px">Ready to submit?</td>
+                <td style="padding:12px 16px;color:var(--green)">80% done, needs team input</td>
+                <td style="padding:12px 16px;color:var(--green)">70% done</td>
+                <td style="padding:12px 16px;color:var(--yellow)">50% &mdash; needs rewrite</td>
+                <td style="padding:12px 16px;color:var(--yellow)">50% &mdash; needs broadening</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <p><strong>Key finding:</strong> Claude Code produces ADRs that are close to submission-ready because it naturally structures arguments with both pros and cons, considers the human factors (team expertise, timeline pressure, operational burden), and generates the &ldquo;alternatives considered&rdquo; section that most tools either skip or fill with generic options. You still need to add your specific organizational context and get team feedback, but the reasoning framework is solid.</p>
+
+        <h2>The PoC Speed Problem</h2>
+
+        <p>A proof of concept has one job: prove that an approach works before the team commits to building it. The faster you can produce a working PoC, the faster decisions get made. But speed without quality produces demos that crash during stakeholder reviews &mdash; which is worse than no demo at all.</p>
+
+        <p>We timed each tool on a realistic PoC task: &ldquo;Build a working demo of three microservices (order, inventory, notification) communicating over an event bus, with a simple web dashboard showing the event flow in real time.&rdquo;</p>
+
+        <div style="overflow-x:auto">
+          <table style="width:100%;border-collapse:collapse;margin:1.5rem 0">
+            <thead>
+              <tr style="border-bottom:2px solid var(--border)">
+                <th style="padding:12px 16px;text-align:left">Tool</th>
+                <th style="padding:12px 16px;text-align:left">Time to Working Demo</th>
+                <th style="padding:12px 16px;text-align:left">Files Generated</th>
+                <th style="padding:12px 16px;text-align:left">Demo Stability</th>
+                <th style="padding:12px 16px;text-align:left">Code Quality</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px"><strong>Claude Code</strong></td>
+                <td style="padding:12px 16px;color:var(--green)">~25 min</td>
+                <td style="padding:12px 16px">18&ndash;22 files</td>
+                <td style="padding:12px 16px;color:var(--green)">High &mdash; self-validates with docker-compose</td>
+                <td style="padding:12px 16px;color:var(--green)">Clean, idiomatic</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px"><strong>Cursor Composer</strong></td>
+                <td style="padding:12px 16px;color:var(--green)">~30 min</td>
+                <td style="padding:12px 16px">15&ndash;20 files</td>
+                <td style="padding:12px 16px;color:var(--green)">Good &mdash; needs manual docker-compose tweaks</td>
+                <td style="padding:12px 16px;color:var(--green)">Clean</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px"><strong>Copilot Agent</strong></td>
+                <td style="padding:12px 16px;color:var(--yellow)">~60 min</td>
+                <td style="padding:12px 16px">10&ndash;15 files</td>
+                <td style="padding:12px 16px;color:var(--yellow)">Medium &mdash; needs manual wiring</td>
+                <td style="padding:12px 16px;color:var(--green)">Good</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px"><strong>Windsurf Cascade</strong></td>
+                <td style="padding:12px 16px;color:var(--green)">~35 min</td>
+                <td style="padding:12px 16px">15&ndash;18 files</td>
+                <td style="padding:12px 16px;color:var(--green)">Good</td>
+                <td style="padding:12px 16px;color:var(--green)">Clean</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px"><strong>Amazon Q</strong></td>
+                <td style="padding:12px 16px;color:var(--yellow)">~45 min (AWS services)</td>
+                <td style="padding:12px 16px">12&ndash;15 files</td>
+                <td style="padding:12px 16px;color:var(--yellow)">Medium (AWS-specific)</td>
+                <td style="padding:12px 16px;color:var(--green)">Good (AWS patterns)</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <p><strong>Key finding:</strong> Claude Code&rsquo;s advantage is not just speed &mdash; it is the validation loop. Because it can run <code>docker-compose up</code>, hit endpoints with <code>curl</code>, and fix errors autonomously, the PoC actually works when it says it does. Other tools generate code that looks correct but often has wiring issues (wrong port numbers, missing environment variables, incompatible library versions) that you discover only when you try to run it.</p>
+
+        <h2>Cloud Architecture Decision Support</h2>
+
+        <p>One of the most valuable uses of AI for solutions architects is reasoning through cloud service selections. You are not looking for documentation links &mdash; you are looking for contextual reasoning about which service fits your specific constraints.</p>
+
+        <h3>Multi-Cloud vs Single-Cloud Tools</h3>
+
+        <div style="overflow-x:auto">
+          <table style="width:100%;border-collapse:collapse;margin:1.5rem 0">
+            <thead>
+              <tr style="border-bottom:2px solid var(--border)">
+                <th style="padding:12px 16px;text-align:left">Scenario</th>
+                <th style="padding:12px 16px;text-align:left">Best Tool</th>
+                <th style="padding:12px 16px;text-align:left">Why</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px">AWS-only shop, deep AWS questions</td>
+                <td style="padding:12px 16px"><strong>Amazon Q</strong></td>
+                <td style="padding:12px 16px">Deepest AWS service knowledge, including pricing nuances and service limits</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px">GCP-only shop, data-heavy architecture</td>
+                <td style="padding:12px 16px"><strong>Gemini</strong></td>
+                <td style="padding:12px 16px">Best BigQuery, Dataflow, and GCP networking knowledge</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px">Multi-cloud or cloud-agnostic design</td>
+                <td style="padding:12px 16px"><strong>Claude Code</strong></td>
+                <td style="padding:12px 16px">No cloud vendor bias; compares AWS, GCP, and Azure fairly</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px">Evaluating build-vs-buy (SaaS vs self-host)</td>
+                <td style="padding:12px 16px"><strong>Claude Code</strong></td>
+                <td style="padding:12px 16px">Reasons about operational cost, team burden, and vendor lock-in &mdash; not just features</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px">Kubernetes architecture (any cloud)</td>
+                <td style="padding:12px 16px"><strong>Claude Code</strong></td>
+                <td style="padding:12px 16px">Cloud-agnostic K8s expertise; for cloud-specific (EKS/GKE/AKS), vendor tools add value</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px">Serverless architecture decisions</td>
+                <td style="padding:12px 16px"><strong>Amazon Q</strong> (AWS) / <strong>Claude Code</strong> (multi-cloud)</td>
+                <td style="padding:12px 16px">Q knows Lambda cold start patterns and pricing; Claude Code compares across providers</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h2>5 Practical Tips for Solutions Architects Using AI Tools</h2>
+
+        <ol>
+          <li>
+            <p><strong>Start with the decision, not the code.</strong> Before asking an AI tool to scaffold a PoC, first ask it to reason through the architecture decision. &ldquo;Compare event-driven vs request-response for this use case, given these constraints: [team size, timeline, consistency requirements, existing tech].&rdquo; The architecture reasoning is more valuable than the prototype code. If the reasoning is sound, the PoC is easy. If the reasoning is wrong, the PoC is waste.</p>
+          </li>
+          <li>
+            <p><strong>Use AI-generated ADRs as first drafts, not final documents.</strong> Claude Code produces ADRs that are 80% ready, but the remaining 20% &mdash; your organization&rsquo;s specific context, team dynamics, political considerations, budget constraints &mdash; is the part that actually determines whether the decision gets accepted. Use the AI draft to structure your thinking, then add the context only you know.</p>
+          </li>
+          <li>
+            <p><strong>Encode your architecture standards in tool config.</strong> If you use Cursor, put your standards in <code>.cursorrules</code>. If you use Claude Code, put them in <code>CLAUDE.md</code>. Standards like &ldquo;all services must have health check endpoints,&rdquo; &ldquo;use structured JSON logging,&rdquo; &ldquo;include circuit breakers for external calls&rdquo; should be in the tool config so every PoC demonstrates your recommended patterns from the start. This is especially valuable when other architects or engineers look at your PoC as a reference implementation.</p>
+          </li>
+          <li>
+            <p><strong>Use two tools, not one.</strong> The optimal setup for most solutions architects is one agentic tool (Claude Code or Cursor) for heavy architecture work and PoC generation, plus one autocomplete tool (Copilot) for inline completions when polishing. The agentic tool does the creative, multi-file work; the autocomplete tool keeps you fast when editing individual files. This combination covers the full breadth of architecture work at $20&ndash;$30/mo.</p>
+          </li>
+          <li>
+            <p><strong>Validate AI cloud recommendations against current pricing pages.</strong> AI tools have training data cutoff dates. Cloud provider pricing changes frequently &mdash; new instance types, reserved pricing adjustments, service tier changes. If an AI tool recommends a specific cloud service based on cost, verify the current pricing before putting it in your architecture document. The reasoning about trade-offs is usually sound; the specific numbers may be stale.</p>
+          </li>
+        </ol>
+
+        <h2>Workflow Recommendations by Scenario</h2>
+
+        <div style="overflow-x:auto">
+          <table style="width:100%;border-collapse:collapse;margin:1.5rem 0">
+            <thead>
+              <tr style="border-bottom:2px solid var(--border)">
+                <th style="padding:12px 16px;text-align:left">Scenario</th>
+                <th style="padding:12px 16px;text-align:left">Recommended Stack</th>
+                <th style="padding:12px 16px;text-align:left">Monthly Cost</th>
+                <th style="padding:12px 16px;text-align:left">Best For</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px">Budget-conscious architect</td>
+                <td style="padding:12px 16px">Copilot Free + Amazon Q Free</td>
+                <td style="padding:12px 16px"><strong>$0</strong></td>
+                <td style="padding:12px 16px">Autocomplete + AWS-specific questions; solid baseline for light PoC work</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px">Architecture-first architect</td>
+                <td style="padding:12px 16px">Claude Code</td>
+                <td style="padding:12px 16px"><strong>$20</strong></td>
+                <td style="padding:12px 16px">RFC/ADR writing, trade-off analysis, multi-service PoCs, architecture reviews</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px">Visual/IDE-oriented architect</td>
+                <td style="padding:12px 16px">Cursor Pro</td>
+                <td style="padding:12px 16px"><strong>$20</strong></td>
+                <td style="padding:12px 16px">Architects who prefer IDE-based workflows, heavy TypeScript/frontend PoCs</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px">Full-spectrum architect</td>
+                <td style="padding:12px 16px">Claude Code + Copilot Free</td>
+                <td style="padding:12px 16px"><strong>$20</strong></td>
+                <td style="padding:12px 16px">Best of both worlds: agentic architecture + inline completions</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px">AWS enterprise architect</td>
+                <td style="padding:12px 16px">Amazon Q Pro + Claude Code</td>
+                <td style="padding:12px 16px"><strong>$39</strong></td>
+                <td style="padding:12px 16px">Deep AWS knowledge + cloud-agnostic architecture reasoning</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px">Regulated environment architect</td>
+                <td style="padding:12px 16px">Windsurf Pro + Copilot Free</td>
+                <td style="padding:12px 16px"><strong>$15</strong></td>
+                <td style="padding:12px 16px">HIPAA/FedRAMP/SOC 2 environments, privacy-conscious organizations</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h2>The Bottom Line</h2>
+
+        <p>Solutions architecture is a reasoning-heavy, documentation-heavy, breadth-over-depth role &mdash; and that is exactly where agentic AI tools shine. Unlike application development where inline autocomplete drives the most value, architecture work benefits most from tools that can reason about trade-offs, produce structured documentation, and scaffold multi-service prototypes.</p>
+
+        <p>Claude Code at $20/mo is the strongest single tool for solutions architects because it excels at the three things you do most: write architecture documents, build working PoCs across multiple services, and reason through technology trade-offs with nuance. Add Copilot Free for inline completions, and you have a $20/mo stack that covers the full spectrum of architecture work.</p>
+
+        <p>If you are an AWS or GCP shop, adding Amazon Q or Gemini Code Assist (both free tier) gives you vendor-specific depth that general-purpose tools cannot match. The combination of a cloud-agnostic reasoning tool (Claude Code) plus a cloud-specific tool (Q or Gemini) gives you the best of both worlds.</p>
+
+        <p>The one caveat: AI tools are excellent at generating architecture <em>artifacts</em> (documents, diagrams, code) but cannot replace the judgment that comes from understanding your specific organization &mdash; its politics, risk tolerance, team capabilities, and strategic direction. Use AI to accelerate the mechanical work so you can spend more time on the human side of architecture: building consensus, mentoring engineers, and making sure the right trade-offs are made for the right reasons.</p>
+
+        <p>Compare all tools and pricing on the <a href="/" style="color:var(--accent)">CodeCosts homepage</a>. If you also manage infrastructure, see our <a href="/blog/ai-coding-tools-for-devops-engineers-2026.html" style="color:var(--accent)">DevOps engineers guide</a>. For platform-specific architecture, check the <a href="/blog/ai-coding-tools-for-platform-engineers-2026.html" style="color:var(--accent)">Platform Engineers guide</a>. For enterprise evaluation, see our <a href="/blog/ai-coding-tools-for-enterprise-2026.html" style="color:var(--accent)">Enterprise guide</a>.</p>
+
+        <h2>Related on CodeCosts</h2>
+
+        <ul>
+          <li><a href="/blog/ai-coding-tools-for-backend-engineers-2026.html" style="color:var(--accent)">AI Coding Tools for Backend Engineers 2026</a></li>
+          <li><a href="/blog/ai-coding-tools-for-devops-engineers-2026.html" style="color:var(--accent)">AI Coding Tools for DevOps Engineers 2026</a></li>
+          <li><a href="/blog/ai-coding-tools-for-platform-engineers-2026.html" style="color:var(--accent)">AI Coding Tools for Platform Engineers 2026</a></li>
+          <li><a href="/blog/ai-coding-tools-for-enterprise-2026.html" style="color:var(--accent)">AI Coding Tools for Enterprise 2026</a></li>
+          <li><a href="/blog/ai-coding-tools-for-security-engineers-2026.html" style="color:var(--accent)">AI Coding Tools for Security Engineers 2026</a></li>
+          <li><a href="/blog/best-free-ai-coding-tool-2026.html" style="color:var(--accent)">Best Free AI Coding Tool 2026</a></li>
+        </ul>
+
+      </div>
+    </article>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>CodeCosts — Independent AI coding tool price tracker. Updated March 2026.</p>
+      <p style="margin-top:0.5rem"><a href="/">Compare all tools</a> · <a href="/blog/">Blog</a> · <a href="/blog/feed.xml">RSS</a></p>
+    </div>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Coding Tools for Enterprise 2026: Compliance, Procurement & the 50+ Seat Playbook</title>
+  <meta name="description" content="The enterprise buyer's guide to AI coding tools. SSO, SOC 2, HIPAA, FedRAMP, IP indemnity, self-hosted options, and real cost modeling for 50-500+ developer teams.">
+  <link rel="canonical" href="https://codecosts.pages.dev/blog/ai-coding-tools-for-enterprise-2026.html">
+  <meta property="og:title" content="AI Coding Tools for Enterprise 2026: The Complete Procurement Guide">
+  <meta property="og:description" content="SSO, SOC 2, HIPAA, FedRAMP, IP indemnity, self-hosted options, and real cost modeling for 50-500+ developer teams.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://codecosts.pages.dev/blog/ai-coding-tools-for-enterprise-2026.html">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="AI Coding Tools for Enterprise 2026: The Complete Procurement Guide">
+  <meta name="twitter:description" content="SSO, SOC 2, HIPAA, FedRAMP, IP indemnity, and real cost modeling for 50-500+ developer teams.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💰</text></svg>">
+  <link rel="stylesheet" href="../style.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "AI Coding Tools for Enterprise 2026: Compliance, Procurement & the 50+ Seat Playbook",
+    "datePublished": "2026-03-27",
+    "dateModified": "2026-03-27",
+    "author": { "@type": "Organization", "name": "CodeCosts" },
+    "publisher": { "@type": "Organization", "name": "CodeCosts" },
+    "description": "The enterprise buyer's guide to AI coding tools. SSO, SOC 2, HIPAA, FedRAMP, IP indemnity, self-hosted options, and real cost modeling for 50-500+ developer teams."
+  }
+  </script>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <a href="/" style="text-decoration:none;color:inherit"><h1><span class="logo">$_</span> CodeCosts</h1></a>
+      <p class="tagline">AI Coding Tool News &amp; Analysis</p>
+      <nav>
+        <a href="/">Tools</a>
+        <a href="/blog/" class="active">Blog</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <article class="card">
+      <h2>AI Coding Tools for Enterprise 2026: Compliance, Procurement &amp; the 50+ Seat Playbook</h2>
+      <div class="article-meta">
+        <span>March 27, 2026</span>
+        <span>16 min read</span>
+      </div>
+
+      <div class="article-content">
+        <p>Enterprise AI coding tool procurement is not a developer productivity decision. It is a security, compliance, and legal decision that happens to affect developer productivity. If you are an engineering leader, IT director, or procurement manager evaluating AI coding assistants for 50 or more developers, this guide addresses the questions your security team, legal counsel, and CFO will actually ask &mdash; not just the features your developers want.</p>
+
+        <p>We have a <a href="/ai-coding-tools-for-teams.html" style="color:var(--accent)">quick-reference comparison table</a> for team features. This is the deep guide: how to navigate procurement, satisfy compliance requirements, model real costs at scale, and avoid the traps that turn a productivity tool into a security incident.</p>
+
+        <div class="callout tip">
+          <div class="callout-title">TL;DR</div>
+          <p><strong>Default choice for most enterprises:</strong> GitHub Copilot Enterprise ($39/seat) &mdash; deepest IDE support, IP indemnity, SOC 2, integrates with existing GitHub infrastructure. <strong>Regulated industries (HIPAA/FedRAMP):</strong> Windsurf Enterprise (self-hosted + FedRAMP High) or Amazon Q Developer Pro ($19/seat, inherits AWS compliance). <strong>Air-gapped/defense:</strong> Tabnine Enterprise (fully air-gapped deployment). <strong>Power users:</strong> Add Claude Code Team ($150/seat) for senior architects doing complex multi-file work. <strong>Budget-constrained at scale:</strong> Amazon Q Developer Pro at $19/seat is half the price of Copilot Enterprise with comparable compliance.</p>
+        </div>
+
+        <h2>Why Enterprise Procurement Is Different</h2>
+
+        <p>When a developer signs up for Cursor with a personal credit card, the evaluation takes five minutes. When procurement buys 200 seats of an AI coding tool, the evaluation involves:</p>
+
+        <ul>
+          <li><strong>Security review:</strong> Where does code go? Is it used for training? What data residency guarantees exist? Can we get the SOC 2 Type II report?</li>
+          <li><strong>Legal review:</strong> Who owns the generated code? What IP indemnity exists? What happens if generated code infringes a patent?</li>
+          <li><strong>Compliance review:</strong> Does it meet our regulatory requirements (HIPAA, FedRAMP, SOX, PCI-DSS)? Can we audit usage?</li>
+          <li><strong>IT review:</strong> Does it support our SSO provider? Can we provision and deprovision users via SCIM? Can we enforce policies centrally?</li>
+          <li><strong>Finance review:</strong> What is the total cost of ownership? Are there usage-based overages? What is the annual commitment?</li>
+        </ul>
+
+        <p>The tool your developers love is irrelevant if it fails any of these gates. This guide addresses each gate systematically.</p>
+
+        <h2>The Enterprise Pricing Landscape</h2>
+
+        <p>Enterprise AI coding tool pricing in 2026 spans a 8x range, from $19/seat to $150/seat. The price differences are not primarily about AI quality &mdash; they reflect deployment models, compliance coverage, and bundled services.</p>
+
+        <table style="width:100%;border-collapse:collapse;margin:1.5rem 0">
+          <thead>
+            <tr style="border-bottom:2px solid var(--border);text-align:left">
+              <th style="padding:12px 16px">Tool</th>
+              <th style="padding:12px 16px">Enterprise Price</th>
+              <th style="padding:12px 16px">Billing Model</th>
+              <th style="padding:12px 16px">Usage Limits</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="border-bottom:1px solid var(--border)">
+              <td style="padding:12px 16px"><strong>Amazon Q Developer Pro</strong></td>
+              <td style="padding:12px 16px;color:var(--green)">$19/seat/mo</td>
+              <td style="padding:12px 16px">Per seat</td>
+              <td style="padding:12px 16px">Unlimited completions + agents</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border)">
+              <td style="padding:12px 16px"><strong>GitHub Copilot Business</strong></td>
+              <td style="padding:12px 16px">$19/seat/mo</td>
+              <td style="padding:12px 16px">Per seat</td>
+              <td style="padding:12px 16px">Unlimited completions, usage-based premium requests</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border)">
+              <td style="padding:12px 16px"><strong>GitHub Copilot Enterprise</strong></td>
+              <td style="padding:12px 16px">$39/seat/mo</td>
+              <td style="padding:12px 16px">Per seat</td>
+              <td style="padding:12px 16px">1,000 premium requests/user/mo ($0.04/overage)</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border)">
+              <td style="padding:12px 16px"><strong>Tabnine Code Assistant</strong></td>
+              <td style="padding:12px 16px">$39/seat/mo</td>
+              <td style="padding:12px 16px">Annual subscription</td>
+              <td style="padding:12px 16px">Unlimited completions; LLM pass-through costs</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border)">
+              <td style="padding:12px 16px"><strong>Cursor Business</strong></td>
+              <td style="padding:12px 16px">$40/seat/mo</td>
+              <td style="padding:12px 16px">Per seat</td>
+              <td style="padding:12px 16px">Pooled premium requests</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border)">
+              <td style="padding:12px 16px"><strong>Gemini Code Assist Enterprise</strong></td>
+              <td style="padding:12px 16px">$45&ndash;$75/seat/mo</td>
+              <td style="padding:12px 16px">Annual</td>
+              <td style="padding:12px 16px">Custom agent limits</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border)">
+              <td style="padding:12px 16px"><strong>JetBrains AI Ultimate</strong></td>
+              <td style="padding:12px 16px">~$50/seat/mo</td>
+              <td style="padding:12px 16px">Annual</td>
+              <td style="padding:12px 16px">Credit-based with org limits</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border)">
+              <td style="padding:12px 16px"><strong>Tabnine Agentic Platform</strong></td>
+              <td style="padding:12px 16px">$59/seat/mo</td>
+              <td style="padding:12px 16px">Annual subscription</td>
+              <td style="padding:12px 16px">Full agentic workflows + LLM pass-through</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border)">
+              <td style="padding:12px 16px"><strong>Windsurf Enterprise</strong></td>
+              <td style="padding:12px 16px">Custom (~$60+)</td>
+              <td style="padding:12px 16px">Contact sales</td>
+              <td style="padding:12px 16px">~1,000 credits/user/mo</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border)">
+              <td style="padding:12px 16px"><strong>Claude Code Team</strong></td>
+              <td style="padding:12px 16px">$150/seat/mo</td>
+              <td style="padding:12px 16px">Seat + API usage</td>
+              <td style="padding:12px 16px">No included usage &mdash; 100% API billed</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="callout warning">
+          <div class="callout-title">Watch for hidden costs</div>
+          <p><strong>Usage-based overages</strong> can blow up budgets. GitHub Copilot Enterprise charges $0.04 per premium request beyond 1,000/user/month. Claude Code is entirely usage-based on top of the seat fee. Tabnine passes through LLM provider costs. Model the 90th-percentile developer, not the average, when forecasting costs. See our <a href="/blog/hidden-costs-ai-coding-tools.html" style="color:var(--accent)">hidden costs deep-dive</a> for details.</p>
+        </div>
+
+        <h2>Annual Cost Modeling: 50, 100, and 500 Seats</h2>
+
+        <p>The table below shows annual costs at three common enterprise scales. These are base seat costs only &mdash; usage-based overages will add 10&ndash;30% for tools with premium request limits.</p>
+
+        <table style="width:100%;border-collapse:collapse;margin:1.5rem 0">
+          <thead>
+            <tr style="border-bottom:2px solid var(--border);text-align:left">
+              <th style="padding:12px 16px">Tool</th>
+              <th style="padding:12px 16px">50 Seats/Year</th>
+              <th style="padding:12px 16px">100 Seats/Year</th>
+              <th style="padding:12px 16px">500 Seats/Year</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="border-bottom:1px solid var(--border)">
+              <td style="padding:12px 16px"><strong>Amazon Q Pro</strong></td>
+              <td style="padding:12px 16px;color:var(--green)">$11,400</td>
+              <td style="padding:12px 16px;color:var(--green)">$22,800</td>
+              <td style="padding:12px 16px;color:var(--green)">$114,000</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border)">
+              <td style="padding:12px 16px"><strong>Copilot Business</strong></td>
+              <td style="padding:12px 16px;color:var(--green)">$11,400</td>
+              <td style="padding:12px 16px;color:var(--green)">$22,800</td>
+              <td style="padding:12px 16px;color:var(--green)">$114,000</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border)">
+              <td style="padding:12px 16px"><strong>Copilot Enterprise</strong></td>
+              <td style="padding:12px 16px">$23,400</td>
+              <td style="padding:12px 16px">$46,800</td>
+              <td style="padding:12px 16px">$234,000</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border)">
+              <td style="padding:12px 16px"><strong>Tabnine Code Asst.</strong></td>
+              <td style="padding:12px 16px">$23,400</td>
+              <td style="padding:12px 16px">$46,800</td>
+              <td style="padding:12px 16px">$234,000</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border)">
+              <td style="padding:12px 16px"><strong>Cursor Business</strong></td>
+              <td style="padding:12px 16px">$24,000</td>
+              <td style="padding:12px 16px">$48,000</td>
+              <td style="padding:12px 16px">$240,000</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border)">
+              <td style="padding:12px 16px"><strong>Gemini Enterprise</strong></td>
+              <td style="padding:12px 16px">$27,000&ndash;$45,000</td>
+              <td style="padding:12px 16px">$54,000&ndash;$90,000</td>
+              <td style="padding:12px 16px">$270,000&ndash;$450,000</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border)">
+              <td style="padding:12px 16px"><strong>JetBrains AI</strong></td>
+              <td style="padding:12px 16px">$30,000</td>
+              <td style="padding:12px 16px">$60,000</td>
+              <td style="padding:12px 16px">$300,000</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border)">
+              <td style="padding:12px 16px"><strong>Windsurf Enterprise</strong></td>
+              <td style="padding:12px 16px">~$36,000+</td>
+              <td style="padding:12px 16px">~$72,000+</td>
+              <td style="padding:12px 16px">~$360,000+</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border)">
+              <td style="padding:12px 16px"><strong>Claude Code Team</strong></td>
+              <td style="padding:12px 16px">$90,000+ *</td>
+              <td style="padding:12px 16px">$180,000+ *</td>
+              <td style="padding:12px 16px">$900,000+ *</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <p><em>* Claude Code Team costs are seat fees only. API usage costs are additional and highly variable &mdash; typically $50&ndash;$300+/developer/month depending on usage patterns. Budget $200&ndash;$350/seat/month total.</em></p>
+
+        <p>At 500 seats, the difference between Amazon Q Pro ($114K/year) and Claude Code Team ($900K+ seat fees alone) is $786,000. This is why the &ldquo;best tool for individual developers&rdquo; is rarely the best tool for enterprise deployment.</p>
+
+        <h2>The Four Compliance Gates</h2>
+
+        <p>Your security and legal teams will ask about these four things. If you cannot answer all four, procurement will stall.</p>
+
+        <h3>Gate 1: Data Privacy &mdash; &ldquo;Is our code used for training?&rdquo;</h3>
+
+        <p>This is the first question every CISO asks, and the answer in 2026 is mostly good news:</p>
+
+        <ul>
+          <li><strong>GitHub Copilot Business/Enterprise:</strong> Code is <strong>not</strong> used for training. Zero-retention on suggestions. <a href="/blog/github-copilot-data-training-opt-out.html" style="color:var(--accent)">Full opt-out details here.</a></li>
+          <li><strong>Amazon Q Developer Pro:</strong> Code is <strong>not</strong> used for training. AWS service terms apply.</li>
+          <li><strong>Cursor Business/Enterprise:</strong> Privacy mode available. Zero data retention when enabled.</li>
+          <li><strong>Windsurf Enterprise:</strong> Code is <strong>not</strong> used for training. Self-hosted option means code never leaves your network.</li>
+          <li><strong>Tabnine Enterprise:</strong> Code is <strong>not</strong> used for training. Air-gapped deployment means zero external data flow.</li>
+          <li><strong>Gemini Code Assist Enterprise:</strong> Code is <strong>not</strong> used for training. VPC Service Controls available for network isolation.</li>
+          <li><strong>Claude Code Team/Enterprise:</strong> Code is <strong>not</strong> used for training per Anthropic&rsquo;s commercial terms.</li>
+        </ul>
+
+        <p><strong>Bottom line:</strong> Every tool at the Business/Enterprise tier now guarantees code is not used for training. This was a differentiator in 2024. In 2026, it is table stakes. The real question is now <em>where</em> code is processed and <em>how long</em> it is retained, not <em>whether</em> it trains a model.</p>
+
+        <h3>Gate 2: IP Indemnity &mdash; &ldquo;Who is liable if generated code infringes?&rdquo;</h3>
+
+        <p>IP indemnity means the vendor assumes legal liability if AI-generated code infringes someone else&rsquo;s intellectual property. This matters for enterprises because it shifts risk from your company to the vendor.</p>
+
+        <table style="width:100%;border-collapse:collapse;margin:1.5rem 0">
+          <thead>
+            <tr style="border-bottom:2px solid var(--border);text-align:left">
+              <th style="padding:12px 16px">Tool</th>
+              <th style="padding:12px 16px">IP Indemnity</th>
+              <th style="padding:12px 16px">Notes</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="border-bottom:1px solid var(--border)">
+              <td style="padding:12px 16px"><strong>GitHub Copilot Business/Enterprise</strong></td>
+              <td style="padding:12px 16px;color:var(--green)">Yes</td>
+              <td style="padding:12px 16px">Microsoft assumes liability. Requires duplication detection filter enabled.</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border)">
+              <td style="padding:12px 16px"><strong>Amazon Q Developer Pro</strong></td>
+              <td style="padding:12px 16px;color:var(--green)">Yes</td>
+              <td style="padding:12px 16px">Covered under AWS service terms.</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border)">
+              <td style="padding:12px 16px"><strong>Gemini Code Assist</strong></td>
+              <td style="padding:12px 16px;color:var(--green)">Yes</td>
+              <td style="padding:12px 16px">Both Standard and Enterprise tiers.</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border)">
+              <td style="padding:12px 16px"><strong>Tabnine Enterprise</strong></td>
+              <td style="padding:12px 16px;color:var(--green)">Yes</td>
+              <td style="padding:12px 16px">Contract terms. &ldquo;License-safe AI usage&rdquo; branding.</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border)">
+              <td style="padding:12px 16px"><strong>Cursor Enterprise</strong></td>
+              <td style="padding:12px 16px">Not documented</td>
+              <td style="padding:12px 16px">Zero-retention marketed as alternative. Negotiate in contract.</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border)">
+              <td style="padding:12px 16px"><strong>Windsurf Enterprise</strong></td>
+              <td style="padding:12px 16px">Not confirmed</td>
+              <td style="padding:12px 16px">Requires contract negotiation. Ask explicitly.</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border)">
+              <td style="padding:12px 16px"><strong>Claude Code Enterprise</strong></td>
+              <td style="padding:12px 16px">Not confirmed</td>
+              <td style="padding:12px 16px">Requires Anthropic contract review.</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <p><strong>Recommendation:</strong> If your legal team requires IP indemnity (and they probably should), your shortlist narrows to GitHub Copilot, Amazon Q, Gemini Code Assist, and Tabnine. For Cursor, Windsurf, and Claude Code, explicitly negotiate IP indemnity language into your enterprise contract before signing.</p>
+
+        <h3>Gate 3: Compliance Certifications &mdash; &ldquo;Does it meet our regulatory requirements?&rdquo;</h3>
+
+        <table style="width:100%;border-collapse:collapse;margin:1.5rem 0">
+          <thead>
+            <tr style="border-bottom:2px solid var(--border);text-align:left">
+              <th style="padding:12px 16px">Tool</th>
+              <th style="padding:12px 16px">SOC 2</th>
+              <th style="padding:12px 16px">HIPAA</th>
+              <th style="padding:12px 16px">FedRAMP</th>
+              <th style="padding:12px 16px">ISO 27001</th>
+              <th style="padding:12px 16px">Air-Gapped</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="border-bottom:1px solid var(--border)">
+              <td style="padding:12px 16px"><strong>Windsurf Enterprise</strong></td>
+              <td style="padding:12px 16px;color:var(--green)">Yes</td>
+              <td style="padding:12px 16px;color:var(--green)">Yes + BAA</td>
+              <td style="padding:12px 16px;color:var(--green)">High</td>
+              <td style="padding:12px 16px">&mdash;</td>
+              <td style="padding:12px 16px;color:var(--green)">Yes</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border)">
+              <td style="padding:12px 16px"><strong>Amazon Q Pro</strong></td>
+              <td style="padding:12px 16px;color:var(--green)">Yes</td>
+              <td style="padding:12px 16px;color:var(--green)">Yes</td>
+              <td style="padding:12px 16px;color:var(--green)">High (GovCloud)</td>
+              <td style="padding:12px 16px;color:var(--green)">Yes</td>
+              <td style="padding:12px 16px">&mdash;</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border)">
+              <td style="padding:12px 16px"><strong>Gemini Enterprise</strong></td>
+              <td style="padding:12px 16px;color:var(--green)">Yes</td>
+              <td style="padding:12px 16px;color:var(--green)">Yes + BAA</td>
+              <td style="padding:12px 16px;color:var(--green)">Yes</td>
+              <td style="padding:12px 16px;color:var(--green)">Yes</td>
+              <td style="padding:12px 16px">&mdash;</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border)">
+              <td style="padding:12px 16px"><strong>Tabnine Enterprise</strong></td>
+              <td style="padding:12px 16px;color:var(--green)">Yes</td>
+              <td style="padding:12px 16px">&mdash;</td>
+              <td style="padding:12px 16px">&mdash;</td>
+              <td style="padding:12px 16px;color:var(--green)">Yes</td>
+              <td style="padding:12px 16px;color:var(--green)">Yes</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border)">
+              <td style="padding:12px 16px"><strong>Copilot Enterprise</strong></td>
+              <td style="padding:12px 16px;color:var(--green)">Yes</td>
+              <td style="padding:12px 16px">&mdash;</td>
+              <td style="padding:12px 16px">Moderate</td>
+              <td style="padding:12px 16px;color:var(--green)">Yes</td>
+              <td style="padding:12px 16px">&mdash;</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border)">
+              <td style="padding:12px 16px"><strong>Cursor Enterprise</strong></td>
+              <td style="padding:12px 16px;color:var(--green)">Yes</td>
+              <td style="padding:12px 16px">&mdash;</td>
+              <td style="padding:12px 16px">&mdash;</td>
+              <td style="padding:12px 16px">&mdash;</td>
+              <td style="padding:12px 16px">&mdash;</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border)">
+              <td style="padding:12px 16px"><strong>Claude Code</strong></td>
+              <td style="padding:12px 16px;color:var(--green)">Yes</td>
+              <td style="padding:12px 16px">&mdash;</td>
+              <td style="padding:12px 16px">&mdash;</td>
+              <td style="padding:12px 16px">&mdash;</td>
+              <td style="padding:12px 16px">&mdash;</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border)">
+              <td style="padding:12px 16px"><strong>JetBrains AI</strong></td>
+              <td style="padding:12px 16px">&mdash;</td>
+              <td style="padding:12px 16px">&mdash;</td>
+              <td style="padding:12px 16px">&mdash;</td>
+              <td style="padding:12px 16px">&mdash;</td>
+              <td style="padding:12px 16px">Partial *</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <p><em>* JetBrains AI supports local models via Ollama/LM Studio and on-premise IDE Services, providing partial air-gapped capability.</em></p>
+
+        <p><strong>If you need HIPAA:</strong> Windsurf Enterprise (with BAA), Amazon Q Pro (via AWS), or Gemini Enterprise (with BAA). These three are the only options with documented HIPAA compliance for AI coding tools.</p>
+
+        <p><strong>If you need FedRAMP:</strong> Amazon Q (FedRAMP High via GovCloud), Windsurf Enterprise (FedRAMP High via AWS Marketplace), or Gemini Enterprise. GitHub Copilot is at FedRAMP Moderate and pursuing Higher.</p>
+
+        <p><strong>If you need air-gapped deployment:</strong> Tabnine Enterprise (fully air-gapped, on-premise, zero external connectivity) or Windsurf Enterprise (self-hosted with GPU). These are the only two options for defense, intelligence, or critical infrastructure environments.</p>
+
+        <h3>Gate 4: SSO &amp; Admin Controls &mdash; &ldquo;Can IT manage this?&rdquo;</h3>
+
+        <p>Every tool at the Business/Enterprise tier supports SAML SSO. The differences are in the details:</p>
+
+        <ul>
+          <li><strong>SCIM provisioning:</strong> GitHub Copilot, Amazon Q (via IAM Identity Center), Tabnine, Gemini (via Google Cloud IAM), and Cursor Enterprise all support automated user provisioning and deprovisioning. This is critical for organizations with frequent onboarding/offboarding.</li>
+          <li><strong>Audit logging:</strong> All enterprise tiers offer some form of audit logging, but depth varies. GitHub Copilot Enterprise provides granular usage analytics. Amazon Q integrates with CloudTrail. Gemini integrates with Cloud Audit Logs.</li>
+          <li><strong>Policy enforcement:</strong> Can you block specific file types from being sent to the AI? Can you enforce privacy mode organization-wide? GitHub Copilot, Cursor, and Tabnine offer the most granular policy controls.</li>
+          <li><strong>Usage dashboards:</strong> GitHub Copilot Enterprise and Gemini Enterprise provide the most detailed adoption and usage analytics for engineering leaders.</li>
+        </ul>
+
+        <h2>Deployment Strategy: Centralized vs. Developer Choice</h2>
+
+        <p>Enterprise AI coding tool adoption follows one of three patterns. Each has trade-offs:</p>
+
+        <h3>Pattern 1: Single Tool, Mandated (most common at 500+ devs)</h3>
+
+        <p><strong>How it works:</strong> Procurement selects one tool. All developers use it. No exceptions.</p>
+
+        <p><strong>Best tool for this pattern:</strong> GitHub Copilot Enterprise. It works in VS Code, JetBrains, Neovim, and Xcode. It has the broadest IDE support of any enterprise-tier tool. At 500+ seats, Microsoft&rsquo;s enterprise sales team will negotiate volume discounts.</p>
+
+        <p><strong>Pros:</strong> One vendor to manage, one security review, one contract, simplified compliance, volume discounts.</p>
+
+        <p><strong>Cons:</strong> Developer satisfaction varies. Some developers will use the tool grudgingly or not at all. You will have shadow IT &mdash; developers using personal accounts on unapproved tools.</p>
+
+        <h3>Pattern 2: Approved List (most common at 50&ndash;500 devs)</h3>
+
+        <p><strong>How it works:</strong> Security reviews 2&ndash;3 tools. Developers choose from the approved list. Budget per developer is fixed.</p>
+
+        <p><strong>Best combination:</strong> GitHub Copilot Business ($19/seat) as the default + Cursor Business ($40/seat) or Claude Code Team ($150/seat) for developers who request and justify them.</p>
+
+        <p><strong>Pros:</strong> Higher developer satisfaction. Senior developers get power tools. Lower shadow IT risk.</p>
+
+        <p><strong>Cons:</strong> Multiple vendor relationships. Harder to aggregate usage data. Mixed compliance posture if tools have different certification levels.</p>
+
+        <h3>Pattern 3: Bring Your Own Tool (declining in popularity)</h3>
+
+        <p><strong>How it works:</strong> Developers use whatever they want. Company reimburses up to a cap.</p>
+
+        <p><strong>Reality:</strong> This was common in 2024. By 2026, most enterprises have moved away from it because it creates unmanageable security risk. If you are still doing this with 50+ developers, your security team is probably unhappy about it.</p>
+
+        <h2>The Enterprise Buyer&rsquo;s Decision Matrix</h2>
+
+        <p>Based on your primary constraint, here is the fastest path to a decision:</p>
+
+        <h3>If your primary constraint is <strong>budget</strong>:</h3>
+        <p>Amazon Q Developer Pro ($19/seat) or GitHub Copilot Business ($19/seat). Both are half the price of the next tier. Amazon Q is the better choice if you are already on AWS. Copilot Business is the better choice if you are already on GitHub.</p>
+
+        <h3>If your primary constraint is <strong>compliance</strong>:</h3>
+        <ul>
+          <li><strong>Healthcare (HIPAA):</strong> Windsurf Enterprise or Amazon Q Pro</li>
+          <li><strong>Government (FedRAMP):</strong> Amazon Q Pro (GovCloud) or Windsurf Enterprise</li>
+          <li><strong>Defense/Intelligence (air-gapped):</strong> Tabnine Enterprise</li>
+          <li><strong>Finance (SOX/PCI):</strong> Any tool with SOC 2 Type II (most enterprise tiers qualify)</li>
+        </ul>
+
+        <h3>If your primary constraint is <strong>developer productivity</strong>:</h3>
+        <p>GitHub Copilot Enterprise ($39/seat) as the org-wide default, plus Claude Code Team seats for your top 10&ndash;20% of developers doing architectural work. Copilot covers daily coding. Claude Code handles the complex multi-file, multi-step tasks that no autocomplete tool can match.</p>
+
+        <h3>If your primary constraint is <strong>data sovereignty</strong>:</h3>
+        <p>Tabnine Enterprise (fully self-hosted, air-gapped, on-premise) or Windsurf Enterprise (self-hosted with GPU). JetBrains AI with local models is a lighter alternative but with reduced AI capability.</p>
+
+        <h2>The Procurement Checklist</h2>
+
+        <p>Before signing any enterprise contract, request these four documents from the vendor:</p>
+
+        <ol>
+          <li><strong>SOC 2 Type II Report</strong> &mdash; Not just &ldquo;SOC 2 certified&rdquo; but the actual report. Your security team needs to review the controls.</li>
+          <li><strong>Data Processing Agreement (DPA)</strong> &mdash; Where is data processed? How long is it retained? What happens to data if you terminate the contract?</li>
+          <li><strong>IP Indemnity Language</strong> &mdash; Not marketing claims but the actual contract language. Have legal review it.</li>
+          <li><strong>Training Opt-Out Confirmation</strong> &mdash; Written confirmation that your code will not be used to train models, not just a checkbox in settings.</li>
+        </ol>
+
+        <p>Any vendor that cannot provide all four within a week is not ready for enterprise deployment.</p>
+
+        <h2>Coming in 2026: What to Watch</h2>
+
+        <ul>
+          <li><strong>EU AI Act enforcement begins August 2026</strong> for high-risk AI systems. If your developers are using AI to write code for medical devices, autonomous vehicles, or critical infrastructure, you may need to document which code was AI-generated and audit the AI&rsquo;s training data. Tools with comprehensive audit logging will have an advantage.</li>
+          <li><strong>ISO 42001 (AI Management Systems)</strong> is becoming the enterprise governance standard alongside SOC 2. Expect procurement to start asking for this certification in late 2026.</li>
+          <li><strong>GitHub Copilot is pursuing FedRAMP High</strong> &mdash; currently at Moderate. If achieved, it becomes the default for most government agencies.</li>
+          <li><strong>Self-hosted options are expanding.</strong> Tabnine and Windsurf lead today, but expect more vendors to offer VPC or on-premise deployment as enterprises demand data sovereignty.</li>
+        </ul>
+
+        <div class="callout tip">
+          <div class="callout-title">Bottom line</div>
+          <p>Enterprise AI coding tool procurement is a security decision first, a compliance decision second, and a developer experience decision third. Start with what your security and legal teams will approve, then optimize for developer satisfaction within those constraints. The &ldquo;best&rdquo; tool is the one your security team says yes to and your developers actually use.</p>
+        </div>
+
+        <div class="article-cta">
+          <p><strong>Model exact costs for your team size</strong></p>
+          <a href="/">Use the CodeCosts Calculator &rarr;</a>
+        </div>
+
+        <h2>Related on CodeCosts</h2>
+        <ul>
+          <li><a href="/ai-coding-tools-for-teams.html" style="color:var(--accent)">Quick Reference: AI Coding Tools for Teams (comparison tables)</a></li>
+          <li><a href="/blog/ai-coding-tools-for-startups-2026.html" style="color:var(--accent)">AI Coding Tools for Startups 2026: Bootstrap to Series A</a></li>
+          <li><a href="/blog/hidden-costs-ai-coding-tools.html" style="color:var(--accent)">The Hidden Costs of AI Coding Tools</a></li>
+          <li><a href="/blog/github-copilot-data-training-opt-out.html" style="color:var(--accent)">GitHub Copilot Data &amp; Training: What You Need to Know</a></li>
+          <li><a href="/blog/cursor-pro-vs-business.html" style="color:var(--accent)">Cursor Pro vs Business: Which Plan Do You Need?</a></li>
+          <li><a href="/blog/copilot-pro-vs-pro-plus.html" style="color:var(--accent)">Copilot Pro vs Pro+: Is the Upgrade Worth It?</a></li>
+          <li><a href="/blog/ai-coding-tools-for-solutions-architects-2026.html" style="color:var(--accent)">AI Coding Tools for Solutions Architects (2026)</a> &mdash; RFCs, ADRs, PoCs, architecture evaluation</li>
+          <li><a href="/" style="color:var(--accent)">Compare All AI Coding Tools</a></li>
+        </ul>
+
+        <p><em>Data sourced from official pricing pages, March 2026. Open-source dataset at <a href="https://github.com/lunacompsia-oss/ai-coding-tools-pricing" style="color:var(--accent)">lunacompsia-oss/ai-coding-tools-pricing</a>.</em></p>
+      </div>
+    </article>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>CodeCosts is a free tool by <a href="https://github.com/lunacompsia-oss" target="_blank" rel="noopener">Lunacompsia</a>. Data sourced from official pricing pages. Not affiliated with any listed tool.</p>
+    </div>
+  </footer>
+</body>
+</html>

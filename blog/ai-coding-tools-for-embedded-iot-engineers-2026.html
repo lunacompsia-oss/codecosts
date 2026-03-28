@@ -346,7 +346,7 @@
 
         <p><strong>Hobby (free):</strong> 2,000 completions. <strong>Pro ($20/mo):</strong> Unlimited completions + 500 premium requests. <strong>Ultra ($200/mo):</strong> Unlimited everything. <strong>Business ($40/user/mo):</strong> Admin controls.</p>
 
-        <p>Cursor is a VS Code fork, so it works with PlatformIO out of the box. Its multi-file editing (Composer) is particularly useful for embedded work where adding a feature touches multiple files. It can edit your driver source, header, and RTOS task file in a single operation.</p>
+        <p>Cursor is a VS Code fork, so PlatformIO works &mdash; but with caveats. Since Cursor 1.0, there are documented PlatformIO compatibility issues: C++ IntelliSense can be disabled by default, and extension marketplace differences cause problems. The workaround is importing PlatformIO settings from a VS Code installation. Despite these friction points, Cursor&rsquo;s multi-file editing (Composer) is particularly useful for embedded work where adding a feature touches multiple files.</p>
 
         <p><strong>Where it shines:</strong></p>
         <ul>
@@ -387,27 +387,33 @@
           <li>Only works in VS Code and JetBrains &mdash; no Keil/IAR</li>
         </ul>
 
-        <h3>JetBrains AI &mdash; Best for CLion Embedded Workflows</h3>
+        <h3>JetBrains AI + CLion &mdash; Best Native Embedded IDE with AI</h3>
 
-        <p><strong>Free tier:</strong> Basic AI features. <strong>Paid ($8.33/mo with All Products Pack):</strong> Full AI Assistant.</p>
+        <p><strong>AI:</strong> Free (AI features included in all JetBrains IDEs since 2025.2). <strong>CLion:</strong> ~$100/yr individual, or $290/yr with All Products Pack.</p>
 
-        <p>JetBrains CLion is the other major IDE for embedded development (after VS Code). It supports CMake-based embedded projects (Zephyr, ESP-IDF, STM32 with CMake), and JetBrains AI works inside it. The code analysis and refactoring tools are stronger than VS Code for large C/C++ codebases.</p>
+        <p>CLion is the only AI-enabled IDE with native embedded debugging integration &mdash; it can flash firmware, debug via J-Link/ST-Link/OpenOCD, and inspect peripheral registers, all while providing AI completions. The March 2026 release (CLion 2026.1) added Agent Client Protocol (ACP) support, meaning you can now use GitHub Copilot or other external AI agents inside CLion alongside JetBrains&rsquo; own AI. It also has native Zephyr/West build system support that no other AI IDE offers.</p>
 
         <p><strong>Where it shines:</strong></p>
         <ul>
-          <li>CLion + CMake embedded projects &mdash; deep C/C++ code analysis combined with AI suggestions</li>
-          <li>Zephyr projects (CMake-based) &mdash; CLion understands the build system</li>
-          <li>Refactoring &mdash; rename symbols across header and source files with AI assistance</li>
-          <li>Code analysis &mdash; static analysis + AI suggestions catch more bugs than either alone</li>
+          <li>Only AI IDE with native flash + debug + peripheral register inspection</li>
+          <li>CLion 2026.1 ACP support &mdash; use Copilot, Codex, or other agents inside CLion</li>
+          <li>Zephyr/West native support &mdash; unique among AI-enabled IDEs</li>
+          <li>PlatformIO plugin available, plus direct arm-none-eabi-gcc toolchains</li>
+          <li>Deep C/C++ static analysis + refactoring combined with AI suggestions</li>
         </ul>
 
         <p><strong>Where it struggles:</strong></p>
         <ul>
-          <li>No PlatformIO support in CLion &mdash; PlatformIO only supports VS Code natively</li>
-          <li>Non-CMake projects &mdash; Keil/IAR project files are not supported</li>
-          <li>AI quality for embedded &mdash; AI suggestions are generic C/C++, not embedded-specific</li>
-          <li>Less popular in embedded &mdash; fewer embedded engineers use CLion, so less community knowledge</li>
+          <li>CLion requires a paid JetBrains subscription (~$100/yr for CLion alone)</li>
+          <li>JetBrains AI (Junie agent) is newer and less battle-tested than Copilot&rsquo;s agent mode</li>
+          <li>Heavier IDE than VS Code &mdash; slower startup, higher resource usage</li>
+          <li>Less popular in embedded industry than Keil or IAR &mdash; smaller community</li>
         </ul>
+
+        <div class="callout tip">
+          <div class="callout-title">CLion dark horse</div>
+          <p>CLion 2026.1 may be the most underrated embedded AI setup: free built-in AI + ACP support for Copilot/Codex + native embedded debugging + Zephyr support. If you are starting fresh and want one IDE for everything, CLion is the strongest option. The barrier is the JetBrains subscription cost.</p>
+        </div>
 
         <h3>Gemini Code Assist &mdash; Best Free Tier for Hobbyists</h3>
 
@@ -461,17 +467,17 @@
               </tr>
               <tr style="border-bottom:1px solid var(--border)">
                 <td style="padding:12px 16px"><strong>STM32CubeIDE</strong> (Eclipse)</td>
-                <td style="padding:12px 16px;color:var(--red)">None (Eclipse AI plugins exist but are poor)</td>
+                <td style="padding:12px 16px">Copilot plugin (basic, no agent mode)</td>
                 <td style="padding:12px 16px">STM32 official workflow</td>
               </tr>
               <tr style="border-bottom:1px solid var(--border)">
                 <td style="padding:12px 16px"><strong>Keil MDK</strong></td>
-                <td style="padding:12px 16px;color:var(--red)">None</td>
+                <td style="padding:12px 16px">Basic AI suggestions (2025+, limited)</td>
                 <td style="padding:12px 16px">ARM commercial, automotive, defense</td>
               </tr>
               <tr style="border-bottom:1px solid var(--border)">
                 <td style="padding:12px 16px"><strong>IAR Embedded Workbench</strong></td>
-                <td style="padding:12px 16px;color:var(--red)">None</td>
+                <td style="padding:12px 16px">Cloud diagnostics only (2025+, minimal)</td>
                 <td style="padding:12px 16px">Safety-critical, medical, automotive</td>
               </tr>
               <tr style="border-bottom:1px solid var(--border)">
@@ -534,16 +540,79 @@
 
         <h2>MCP Servers and Embedded-Specific Integrations</h2>
 
-        <p>The Model Context Protocol (MCP) ecosystem is nascent for embedded development, but a few integrations are emerging:</p>
+        <p>The Model Context Protocol (MCP) ecosystem for embedded is small but real &mdash; and it is the most exciting development in AI-assisted embedded engineering. MCP servers let AI agents (Claude Code, Cline, etc.) interact with embedded toolchains programmatically.</p>
+
+        <h3>PlatformIO MCP Server</h3>
+
+        <p>An open-source MCP server that exposes 11 PlatformIO tools to AI agents: board discovery (<code>list_boards</code>, <code>get_board_info</code>), device management (<code>list_devices</code>), project operations (<code>init_project</code>, <code>build_project</code>, <code>upload_firmware</code>, <code>start_monitor</code>), and library management (<code>search_libraries</code>, <code>install_library</code>). This means an AI agent can create a PlatformIO project, compile firmware, flash a connected device, and monitor serial output &mdash; all through natural language. Supports 1,000+ boards. Early stage but functional.</p>
+
+        <h3>ESP-IDF MCP Server</h3>
+
+        <p>Bridges AI assistants to the ESP-IDF CLI environment, enabling ESP32 project management, build, and flash operations through MCP. Open-source, active development.</p>
+
+        <h3>Embedded Debugger MCP Server (probe-rs)</h3>
+
+        <p>The most significant development: an MCP server that exposes hardware debugging via probe-rs. Supports J-Link, ST-Link V2/V3, DAPLink, and Black Magic Probe. Can flash firmware, read/write memory, set breakpoints, and inspect registers on ARM Cortex-M, RISC-V, and Cortex-A targets. <strong>This is the first tool enabling AI agents to do hardware-in-the-loop debugging</strong> &mdash; an AI agent could theoretically flash firmware, hit a breakpoint, inspect registers, and diagnose issues. Early, but this closes the loop that has been missing from AI-assisted embedded development.</p>
+
+        <h3>Arduino Cloud AI Assistant</h3>
+
+        <p>Arduino&rsquo;s cloud IDE includes a built-in AI assistant powered by Anthropic Claude. It has context on the specific Arduino board being used, the libraries in the project, and Arduino&rsquo;s official documentation. Unlike general-purpose AI tools, it was designed specifically for Arduino hardware.</p>
+
+        <h3>What Does NOT Exist Yet</h3>
 
         <ul>
-          <li><strong>STM32 MCP Server:</strong> Community-built MCP server that provides Claude Code (and other MCP-compatible tools) with STM32 reference manual data, register maps, and HAL documentation. Early stage, but dramatically improves AI accuracy for STM32-specific code.</li>
-          <li><strong>PlatformIO:</strong> No official MCP integration yet, but PlatformIO&rsquo;s project structure is well-understood by AI tools running in VS Code.</li>
-          <li><strong>Zephyr:</strong> No MCP integration. The Zephyr project has discussed AI tooling but nothing shipped yet.</li>
-          <li><strong>ESP-IDF:</strong> No official MCP integration. Espressif has AI documentation tools but no IDE-level AI integration.</li>
+          <li><strong>No STM32CubeMX MCP server</strong> &mdash; no way for AI to programmatically configure pin assignments, clock trees, or peripheral settings</li>
+          <li><strong>No Keil/IAR MCP integration</strong> &mdash; proprietary IDEs have no MCP support</li>
+          <li><strong>No JTAG/SWD trace analysis MCP</strong> &mdash; AI cannot analyze real-time trace data</li>
+          <li><strong>No MISRA compliance MCP</strong> &mdash; no way to pipe static analysis results back to AI for iterative fixing</li>
         </ul>
 
-        <p><strong>The big opportunity:</strong> MCP servers that expose chip reference manuals, pin mux tables, and peripheral register maps to AI tools would transform embedded AI assistance. Today, you must paste this information into prompts manually. Tomorrow, an MCP server could make it automatic.</p>
+        <h2>Embedder (YC S25): The Embedded-Specific AI Tool</h2>
+
+        <p>A new category is emerging. Embedder, a Y Combinator S25 startup, is building &ldquo;Cursor for firmware&rdquo; with a critical differentiator: <strong>it parses actual hardware documentation (PDF datasheets, timing diagrams, schematics) and generates code that respects all hardware constraints.</strong> Their approach directly attacks the register hallucination problem &mdash; the #1 issue embedded engineers face with general AI tools.</p>
+
+        <p>Claimed features: datasheet parsing for verified driver code, register address verification against documentation, STM32/ESP32/nRF52/NXP/RISC-V support, and reported use in ISO 26262 (automotive) and IEC 62304 (medical) contexts. A CLI agent mode for flash/test/debug on real hardware is upcoming.</p>
+
+        <p><strong>Community skepticism is real:</strong> NDA concerns about uploading proprietary datasheets to a cloud service, requests for self-hosted options, and the usual startup risk. But if their datasheet parsing actually prevents register hallucination, it solves the problem that makes every other AI tool unreliable for embedded. Worth watching.</p>
+
+        <h2>The Evidence: IoT-SkillsBench (March 2026)</h2>
+
+        <p>The most rigorous academic assessment of AI for embedded comes from IoT-SkillsBench, which tested Claude Sonnet 4.5 across 42 embedded tasks on real hardware:</p>
+
+        <div style="overflow-x:auto">
+          <table style="width:100%;border-collapse:collapse;margin:1.5rem 0">
+            <thead>
+              <tr style="border-bottom:2px solid var(--border)">
+                <th style="padding:12px 16px;text-align:left">Configuration</th>
+                <th style="padding:12px 16px;text-align:left">Arduino (ATmega2560)</th>
+                <th style="padding:12px 16px;text-align:left">ESP-IDF (ESP32-S3)</th>
+                <th style="padding:12px 16px;text-align:left">Zephyr (nRF52840)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px">Baseline (no domain knowledge)</td>
+                <td style="padding:12px 16px;color:var(--green)">42/42 (100%)</td>
+                <td style="padding:12px 16px">~33/42 (~79%)</td>
+                <td style="padding:12px 16px;color:var(--red)">~28/42 (~67%)</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px">LLM-generated domain docs</td>
+                <td style="padding:12px 16px">Inconsistent</td>
+                <td style="padding:12px 16px">Sometimes worse</td>
+                <td style="padding:12px 16px">Sometimes worse</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px">Human-expert domain docs</td>
+                <td style="padding:12px 16px;color:var(--green)">Near-perfect</td>
+                <td style="padding:12px 16px;color:var(--green)">Near-perfect</td>
+                <td style="padding:12px 16px;color:var(--green)">Near-perfect</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <p><strong>Key takeaway:</strong> AI tools work perfectly on Arduino (massive training data) but degrade to 67% on Zephyr. <strong>Human-curated context documents &mdash; not larger models or more tokens &mdash; are the solution.</strong> This is why project-level instruction files (<code>CLAUDE.md</code>, <code>.cursorrules</code>, <code>copilot-instructions.md</code>) are the single highest-impact thing you can do. A 30% accuracy improvement from a text file is better than any model upgrade.</p>
 
         <h2>Practical Tips: Getting the Most from AI Tools in Embedded</h2>
 

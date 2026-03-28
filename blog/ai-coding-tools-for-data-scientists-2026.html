@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Coding Tools for Data Scientists 2026: Jupyter, pandas &amp; ML Pipeline Guide</title>
+  <meta name="description" content="The data scientist's guide to AI coding tools in 2026. Jupyter notebook support ranked, best tools for pandas/numpy/sklearn workflows, ML pipeline recommendations, and the $0 to $40/mo stacks for every DS workflow.">
+  <link rel="canonical" href="https://codecosts.pages.dev/blog/ai-coding-tools-for-data-scientists-2026.html">
+  <meta property="og:title" content="AI Coding Tools for Data Scientists 2026: Jupyter, pandas &amp; ML Pipelines">
+  <meta property="og:description" content="Jupyter notebook support ranked, best tools for pandas/numpy/sklearn, ML pipeline recommendations, and the $0 to $40/mo stacks for every DS workflow.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://codecosts.pages.dev/blog/ai-coding-tools-for-data-scientists-2026.html">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="AI Coding Tools for Data Scientists 2026: Jupyter, pandas &amp; ML Pipelines">
+  <meta name="twitter:description" content="Jupyter notebook support ranked, best tools for pandas/numpy/sklearn, ML pipeline recommendations, and stacks from $0 to $40/mo.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💰</text></svg>">
+  <link rel="stylesheet" href="../style.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "AI Coding Tools for Data Scientists 2026: Jupyter, pandas & ML Pipeline Guide",
+    "datePublished": "2026-03-28",
+    "dateModified": "2026-03-28",
+    "author": { "@type": "Organization", "name": "CodeCosts" },
+    "publisher": { "@type": "Organization", "name": "CodeCosts" },
+    "description": "The data scientist's guide to AI coding tools in 2026. Jupyter notebook support ranked, best tools for pandas/numpy/sklearn workflows, ML pipeline recommendations, and the $0 to $40/mo stacks for every DS workflow."
+  }
+  </script>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <a href="/" style="text-decoration:none;color:inherit"><h1><span class="logo">$_</span> CodeCosts</h1></a>
+      <p class="tagline">AI Coding Tool News &amp; Analysis</p>
+      <nav>
+        <a href="/">Tools</a>
+        <a href="/blog/" class="active">Blog</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <article class="card">
+      <h2>AI Coding Tools for Data Scientists 2026: Jupyter, pandas &amp; ML Pipeline Guide</h2>
+      <div class="article-meta">
+        <span>March 28, 2026</span>
+        <span>15 min read</span>
+      </div>
+
+      <div class="article-content">
+        <p>Data scientists do not write code the same way software engineers do. You live in notebooks. You explore data interactively. You write throwaway cells that become production pipelines. Your workflow bounces between pandas one-liners, sklearn experiments, and multi-file ML training scripts &mdash; sometimes in the same hour. Most AI coding tool reviews ignore all of this.</p>
+
+        <p>The tools that win &ldquo;best AI coding assistant&rdquo; awards are almost always evaluated on software engineering tasks: refactoring, test writing, and building web apps. That tells you nothing about whether they can autocomplete a <code>groupby().agg()</code> chain, generate a matplotlib visualization from a prompt, or help you debug a tensor shape mismatch in PyTorch. This guide evaluates every major tool through the lens of what data scientists actually do.</p>
+
+        <div class="callout tip">
+          <div class="callout-title">TL;DR</div>
+          <p><strong>Best notebook experience ($0):</strong> Gemini Code Assist Free &mdash; native Colab integration, Data Science Agent that generates full notebooks, 6,000 completions/day. <strong>Best all-rounder ($10/mo):</strong> GitHub Copilot Pro &mdash; solid Jupyter support in VS Code, excellent pandas/numpy completions, 300 premium requests. <strong>Best for ML pipelines ($20/mo):</strong> Claude Code via Claude Pro &mdash; terminal agent that reasons through complex multi-file training code, debugging, and refactoring. <strong>Power combo ($30/mo):</strong> Copilot Pro + Claude Code &mdash; Copilot for notebook exploration, Claude Code for production pipeline work. <strong>AWS ML stack ($0&ndash;19/mo):</strong> Amazon Q Developer &mdash; purpose-built for SageMaker and JupyterLab.</p>
+        </div>
+
+        <h2>The Notebook Problem</h2>
+
+        <p>Here is the uncomfortable truth: most AI coding tools were built for <code>.py</code> files in traditional IDEs. Jupyter notebooks are an afterthought, if they are supported at all. This matters because notebooks are where data scientists spend 60&ndash;80% of their time during exploration, prototyping, and analysis phases.</p>
+
+        <p>Notebook support varies wildly across tools:</p>
+
+        <div style="overflow-x:auto">
+          <table style="width:100%;border-collapse:collapse;margin:1.5rem 0">
+            <thead>
+              <tr style="border-bottom:2px solid var(--border)">
+                <th style="padding:12px 16px;text-align:left">Tool</th>
+                <th style="padding:12px 16px;text-align:left">Jupyter Support</th>
+                <th style="padding:12px 16px;text-align:left">Cell Completions</th>
+                <th style="padding:12px 16px;text-align:left">Notebook Chat</th>
+                <th style="padding:12px 16px;text-align:left">Notes</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px"><strong>Gemini Code Assist</strong></td>
+                <td style="padding:12px 16px;color:var(--green)">Best-in-class</td>
+                <td style="padding:12px 16px;color:var(--green)">Yes</td>
+                <td style="padding:12px 16px;color:var(--green)">Yes</td>
+                <td style="padding:12px 16px">Native Colab integration + Data Science Agent</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px"><strong>Amazon Q Developer</strong></td>
+                <td style="padding:12px 16px;color:var(--green)">Good</td>
+                <td style="padding:12px 16px;color:var(--green)">Yes</td>
+                <td style="padding:12px 16px">Limited</td>
+                <td style="padding:12px 16px">JupyterLab Python-only support, SageMaker native</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px"><strong>GitHub Copilot</strong></td>
+                <td style="padding:12px 16px;color:var(--green)">Good</td>
+                <td style="padding:12px 16px;color:var(--green)">Yes</td>
+                <td style="padding:12px 16px;color:var(--green)">Yes</td>
+                <td style="padding:12px 16px">Works in VS Code notebooks, reliable completions</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px"><strong>JetBrains AI</strong></td>
+                <td style="padding:12px 16px;color:var(--green)">Good</td>
+                <td style="padding:12px 16px;color:var(--green)">Yes</td>
+                <td style="padding:12px 16px;color:var(--green)">Yes</td>
+                <td style="padding:12px 16px">Full Jupyter in PyCharm, Scientific Mode, DataFrame viewer</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px"><strong>Cursor</strong></td>
+                <td style="padding:12px 16px">Partial</td>
+                <td style="padding:12px 16px;color:var(--green)">Yes</td>
+                <td style="padding:12px 16px;color:var(--green)">Yes</td>
+                <td style="padding:12px 16px">VS Code fork &mdash; notebooks work but not optimized for them</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px"><strong>Windsurf</strong></td>
+                <td style="padding:12px 16px">Partial</td>
+                <td style="padding:12px 16px;color:var(--green)">Yes</td>
+                <td style="padding:12px 16px">Limited</td>
+                <td style="padding:12px 16px">VS Code fork, basic notebook support</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px"><strong>Claude Code</strong></td>
+                <td style="padding:12px 16px;color:var(--red)">No</td>
+                <td style="padding:12px 16px;color:var(--red)">No</td>
+                <td style="padding:12px 16px;color:var(--red)">No</td>
+                <td style="padding:12px 16px">Terminal agent &mdash; no notebook UI, but excels at .py pipeline work</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <p>If you live in Jupyter notebooks, Gemini Code Assist is the clear winner. If you work in VS Code notebooks, Copilot is the most reliable option. If your workflow is primarily <code>.py</code> scripts and production ML code, Claude Code&rsquo;s lack of notebook support stops mattering.</p>
+
+        <h2>Tool-by-Tool Breakdown for Data Science</h2>
+
+        <h3>Gemini Code Assist &mdash; Best for Notebook-First Workflows</h3>
+
+        <p><strong>Price:</strong> Free (6,000 completions/day, 240 chats/day) or $19/mo Standard</p>
+
+        <p>Gemini is the only tool with a dedicated <strong>Data Science Agent</strong> that can generate complete notebooks from natural language prompts. Ask it to &ldquo;analyze this CSV and find correlations between columns A, B, and C&rdquo; and it produces a full notebook with imports, data loading, visualization, and statistical analysis. For exploratory data analysis, nothing else comes close.</p>
+
+        <p>The free tier is remarkably generous: 6,000 code completions per day and 240 chat messages. For most data scientists doing interactive exploration, you will never hit these limits. The native Google Colab integration means zero setup &mdash; it just works in the environment many data scientists already use.</p>
+
+        <p><strong>Best for:</strong> EDA, notebook-heavy workflows, Google Colab users, quick data exploration, visualization generation.</p>
+        <p><strong>Weakness:</strong> Tied to Google ecosystem. Less effective for complex multi-file ML pipelines or non-Google cloud deployments.</p>
+
+        <h3>GitHub Copilot Pro &mdash; Best All-Round Value</h3>
+
+        <p><strong>Price:</strong> Free (2,000 completions/mo) or $10/mo Pro (unlimited completions, 300 premium requests)</p>
+
+        <p>Copilot has the broadest training data for Python data science libraries. Its pandas completions are excellent &mdash; it understands method chaining, knows the difference between <code>.apply()</code> and vectorized operations, and can autocomplete complex <code>groupby</code> + <code>agg</code> patterns. NumPy broadcasting, sklearn pipeline construction, and matplotlib customization all work well.</p>
+
+        <p>In VS Code, Copilot works seamlessly with Jupyter notebooks. Cell-level completions are fast, and the chat panel can explain code, suggest optimizations, or generate entire cells. The free tier (2,000 completions/month) is tight for daily use but fine for occasional data analysis projects.</p>
+
+        <p>At $10/mo, Copilot Pro is the no-brainer default for most data scientists. The 300 premium requests/month give you access to GPT-4o and Claude Sonnet for harder questions. That is enough for daily use unless you are doing heavy chat-driven development.</p>
+
+        <p><strong>Best for:</strong> General data science work, VS Code notebook users, pandas/numpy/sklearn workflows, cost-conscious data scientists.</p>
+        <p><strong>Weakness:</strong> Premium request limits can feel tight during intense debugging sessions.</p>
+
+        <h3>Claude Code &mdash; Best for ML Pipeline Development</h3>
+
+        <p><strong>Price:</strong> $20/mo (Claude Pro) or $100/mo (Claude Max) or $200/mo (Claude Max 20x)</p>
+
+        <p>Claude Code is a terminal agent, not an IDE plugin. It cannot autocomplete notebook cells. It cannot render visualizations inline. If your entire workflow is Jupyter notebooks, this is the wrong tool.</p>
+
+        <p>But if you are building production ML pipelines &mdash; training scripts, data preprocessing modules, model evaluation frameworks, CI/CD for ML, experiment tracking integration &mdash; Claude Code is arguably the best tool available. Its reasoning capability means it can understand an entire ML codebase, trace data flow through preprocessing steps, identify why a model is not converging, and refactor a monolithic training script into modular components.</p>
+
+        <p>The workflow for data scientists: do your exploration in notebooks with Copilot or Gemini, then hand the resulting logic to Claude Code to turn it into production-ready <code>.py</code> modules with proper error handling, logging, type hints, and tests.</p>
+
+        <p><strong>Best for:</strong> Production ML code, training pipelines, model deployment scripts, debugging complex ML issues, large codebase refactoring.</p>
+        <p><strong>Weakness:</strong> No notebook support. Terminal-only interface has a learning curve. Token-based usage can get expensive during long debugging sessions.</p>
+
+        <h3>Amazon Q Developer &mdash; Best for AWS ML Stack</h3>
+
+        <p><strong>Price:</strong> Free (code suggestions + security scans) or $19/mo Pro</p>
+
+        <p>If your ML workflow runs on AWS &mdash; SageMaker notebooks, S3 data storage, Lambda inference endpoints, Step Functions for orchestration &mdash; Amazon Q is purpose-built for your stack. It has native JupyterLab support with Python-focused completions, and it understands AWS service APIs deeply.</p>
+
+        <p>The free tier includes code suggestions and security scanning, which is genuinely useful for data scientists who may not think about security in their data processing scripts. The <code>/test</code> command for autonomous test generation is valuable when you need to add tests to data transformation functions that were originally notebook experiments.</p>
+
+        <p><strong>Best for:</strong> AWS-centric ML workflows, SageMaker users, data engineers building on AWS.</p>
+        <p><strong>Weakness:</strong> Heavily AWS-focused. Less useful if you work with GCP, Azure, or on-premise infrastructure.</p>
+
+        <h3>Cursor Pro &mdash; Best IDE Experience for Multi-File DS Projects</h3>
+
+        <p><strong>Price:</strong> $20/mo Pro or $40/mo Business or $200/mo Ultra</p>
+
+        <p>Cursor is a VS Code fork with deep AI integration. For data scientists working primarily in <code>.py</code> files rather than notebooks, Cursor&rsquo;s multi-file editing and Composer feature are powerful. You can describe a change across your entire ML pipeline &mdash; &ldquo;add early stopping to the training loop and log it to MLflow&rdquo; &mdash; and Cursor will edit multiple files in one pass.</p>
+
+        <p>Notebook support exists because Cursor inherits VS Code&rsquo;s notebook functionality, but it is not optimized for it. The AI features work in notebooks, but the experience is not as smooth as Copilot in VS Code or Gemini in Colab.</p>
+
+        <p><strong>Best for:</strong> Data scientists who work primarily in .py files, multi-file ML projects, those who want an AI-first IDE.</p>
+        <p><strong>Weakness:</strong> Notebook experience is secondary. At $20/mo, it competes directly with Copilot Pro ($10) + the savings. Cursor Ultra at $200/mo is rarely justified for data science work.</p>
+
+        <h3>JetBrains AI (PyCharm) &mdash; Best Integrated DS Environment</h3>
+
+        <p><strong>Price:</strong> Bundled with PyCharm Pro subscription (~$8&ndash;25/mo depending on plan)</p>
+
+        <p>PyCharm&rsquo;s Scientific Mode was built for data science before AI coding tools existed. It has a DataFrame viewer, inline variable explorer, Jupyter integration, and matplotlib rendering built into the IDE. Adding JetBrains AI on top gives you completions that understand this context &mdash; it knows you are working with a DataFrame and suggests appropriate operations.</p>
+
+        <p>The downside is cost and complexity. PyCharm Pro is not free, and the AI features require a separate or bundled subscription. If you are already a PyCharm user, adding AI is a natural extension. If you are not, switching from VS Code or Colab just for the AI features is not worth it.</p>
+
+        <p><strong>Best for:</strong> Existing PyCharm users, those who want the deepest Python IDE integration, professional data scientists in corporate environments.</p>
+        <p><strong>Weakness:</strong> Expensive. Heavy IDE. Not notebook-first &mdash; the Jupyter experience is good but not as lightweight as VS Code or Colab.</p>
+
+        <h2>Data Science Feature Comparison</h2>
+
+        <div style="overflow-x:auto">
+          <table style="width:100%;border-collapse:collapse;margin:1.5rem 0">
+            <thead>
+              <tr style="border-bottom:2px solid var(--border)">
+                <th style="padding:12px 16px;text-align:left">Feature</th>
+                <th style="padding:12px 16px;text-align:left">Gemini</th>
+                <th style="padding:12px 16px;text-align:left">Copilot</th>
+                <th style="padding:12px 16px;text-align:left">Claude Code</th>
+                <th style="padding:12px 16px;text-align:left">Amazon Q</th>
+                <th style="padding:12px 16px;text-align:left">Cursor</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px">pandas completions</td>
+                <td style="padding:12px 16px;color:var(--green)">Excellent</td>
+                <td style="padding:12px 16px;color:var(--green)">Excellent</td>
+                <td style="padding:12px 16px;color:var(--green)">Good</td>
+                <td style="padding:12px 16px;color:var(--green)">Good</td>
+                <td style="padding:12px 16px;color:var(--green)">Good</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px">NumPy / SciPy</td>
+                <td style="padding:12px 16px;color:var(--green)">Good</td>
+                <td style="padding:12px 16px;color:var(--green)">Excellent</td>
+                <td style="padding:12px 16px;color:var(--green)">Good</td>
+                <td style="padding:12px 16px;color:var(--green)">Good</td>
+                <td style="padding:12px 16px;color:var(--green)">Good</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px">sklearn pipelines</td>
+                <td style="padding:12px 16px;color:var(--green)">Good</td>
+                <td style="padding:12px 16px;color:var(--green)">Good</td>
+                <td style="padding:12px 16px;color:var(--green)">Excellent</td>
+                <td style="padding:12px 16px;color:var(--green)">Good</td>
+                <td style="padding:12px 16px;color:var(--green)">Good</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px">PyTorch / TensorFlow</td>
+                <td style="padding:12px 16px;color:var(--green)">Good</td>
+                <td style="padding:12px 16px;color:var(--green)">Good</td>
+                <td style="padding:12px 16px;color:var(--green)">Excellent</td>
+                <td style="padding:12px 16px;color:var(--green)">Good</td>
+                <td style="padding:12px 16px;color:var(--green)">Good</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px">Visualization (matplotlib/plotly)</td>
+                <td style="padding:12px 16px;color:var(--green)">Excellent</td>
+                <td style="padding:12px 16px;color:var(--green)">Good</td>
+                <td style="padding:12px 16px">Limited</td>
+                <td style="padding:12px 16px">Basic</td>
+                <td style="padding:12px 16px;color:var(--green)">Good</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px">Jupyter notebooks</td>
+                <td style="padding:12px 16px;color:var(--green)">Best</td>
+                <td style="padding:12px 16px;color:var(--green)">Good</td>
+                <td style="padding:12px 16px;color:var(--red)">None</td>
+                <td style="padding:12px 16px;color:var(--green)">Good</td>
+                <td style="padding:12px 16px">Partial</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px">Multi-file ML code</td>
+                <td style="padding:12px 16px">Basic</td>
+                <td style="padding:12px 16px;color:var(--green)">Good</td>
+                <td style="padding:12px 16px;color:var(--green)">Best</td>
+                <td style="padding:12px 16px;color:var(--green)">Good</td>
+                <td style="padding:12px 16px;color:var(--green)">Excellent</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px">Data Science Agent</td>
+                <td style="padding:12px 16px;color:var(--green)">Yes</td>
+                <td style="padding:12px 16px;color:var(--red)">No</td>
+                <td style="padding:12px 16px;color:var(--red)">No</td>
+                <td style="padding:12px 16px;color:var(--red)">No</td>
+                <td style="padding:12px 16px;color:var(--red)">No</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h2>Recommended Stacks by DS Workflow</h2>
+
+        <p>Data science is not one job. An analyst building dashboards has different needs than a deep learning researcher training models on GPUs. Here are the best tool combinations for each common workflow:</p>
+
+        <h3>1. Exploratory Data Analysis &amp; Reporting ($0/mo)</h3>
+
+        <p><strong>Stack:</strong> Gemini Code Assist Free (Google Colab) + GitHub Copilot Free (VS Code)</p>
+
+        <p>This is the $0 power combo. Gemini in Colab handles your notebook-heavy exploration: generating visualizations, writing SQL queries, cleaning data, and producing analysis notebooks you can share. Copilot Free in VS Code covers any <code>.py</code> scripts you need for data processing or automation.</p>
+
+        <p>The Gemini free tier (6,000 completions/day) is so generous that most analysts will never need to upgrade. Add Copilot Free (2,000 completions/month) for the occasional Python scripting outside of notebooks.</p>
+
+        <h3>2. Classical ML &amp; Feature Engineering ($10/mo)</h3>
+
+        <p><strong>Stack:</strong> GitHub Copilot Pro ($10/mo)</p>
+
+        <p>If your daily work is pandas data wrangling, sklearn model training, and feature engineering pipelines, Copilot Pro is the right choice. Unlimited completions means you never hit a wall during long feature engineering sessions. The VS Code Jupyter integration is solid for iterative model development.</p>
+
+        <p>Copilot understands sklearn idioms well &mdash; it can autocomplete <code>Pipeline</code> and <code>ColumnTransformer</code> constructions, suggest appropriate preprocessors for different feature types, and generate cross-validation boilerplate. At $10/mo, nothing else matches this value for classical ML work.</p>
+
+        <h3>3. Deep Learning &amp; Research ($20&ndash;30/mo)</h3>
+
+        <p><strong>Stack:</strong> GitHub Copilot Pro ($10/mo) + Claude Code via Claude Pro ($20/mo)</p>
+
+        <p>Deep learning code is different from data analysis code. Training loops are complex, debugging tensor shape mismatches requires reasoning through multiple transformation steps, and model architectures span many files. This is where Claude Code shines.</p>
+
+        <p>Use Copilot for day-to-day coding and notebook exploration. When you hit a complex problem &mdash; a training loop that is not converging, a custom loss function that needs debugging, or a model architecture that needs refactoring &mdash; switch to Claude Code. Its ability to reason through an entire codebase and understand the flow from data loading through training to evaluation is unmatched.</p>
+
+        <p>At $30/mo total, this combo covers both interactive exploration and serious ML engineering.</p>
+
+        <h3>4. MLOps &amp; Production ML ($20&ndash;40/mo)</h3>
+
+        <p><strong>Stack:</strong> Cursor Pro ($20/mo) or Copilot Pro + Claude Code ($30/mo)</p>
+
+        <p>If you are deploying models to production &mdash; building inference APIs, setting up experiment tracking with MLflow or Weights &amp; Biases, writing Dockerfiles for model serving, configuring Kubernetes for training jobs &mdash; you need tools that understand infrastructure code as well as ML code.</p>
+
+        <p>Cursor Pro&rsquo;s multi-file editing is excellent for MLOps work where changes touch model code, config files, Dockerfiles, and CI/CD pipelines simultaneously. Alternatively, the Copilot + Claude Code combo gives you broad coverage with Claude Code handling the complex infrastructure reasoning.</p>
+
+        <h3>5. AWS-Centric ML ($0&ndash;19/mo)</h3>
+
+        <p><strong>Stack:</strong> Amazon Q Developer Free or Pro ($19/mo)</p>
+
+        <p>If your entire ML stack is on AWS &mdash; SageMaker for training, S3 for data, Lambda for inference, Step Functions for orchestration &mdash; Amazon Q is the obvious choice. It understands AWS APIs deeply and can generate boilerplate for SageMaker training jobs, S3 data loading patterns, and Lambda deployment configurations.</p>
+
+        <p>The free tier is sufficient for individual data scientists. The $19/mo Pro tier adds higher limits and enterprise features if your team needs them.</p>
+
+        <h2>Pricing Summary for Data Scientists</h2>
+
+        <div style="overflow-x:auto">
+          <table style="width:100%;border-collapse:collapse;margin:1.5rem 0">
+            <thead>
+              <tr style="border-bottom:2px solid var(--border)">
+                <th style="padding:12px 16px;text-align:left">Monthly Budget</th>
+                <th style="padding:12px 16px;text-align:left">Best Stack</th>
+                <th style="padding:12px 16px;text-align:left">Annual Cost</th>
+                <th style="padding:12px 16px;text-align:left">Best For</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px;color:var(--green)">$0</td>
+                <td style="padding:12px 16px">Gemini Free + Copilot Free</td>
+                <td style="padding:12px 16px;color:var(--green)">$0</td>
+                <td style="padding:12px 16px">EDA, analysis, students, researchers</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px;color:var(--green)">$10</td>
+                <td style="padding:12px 16px">Copilot Pro</td>
+                <td style="padding:12px 16px;color:var(--green)">$120</td>
+                <td style="padding:12px 16px">Classical ML, feature engineering, general DS</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px;color:var(--green)">$19</td>
+                <td style="padding:12px 16px">Amazon Q Pro</td>
+                <td style="padding:12px 16px;color:var(--green)">$228</td>
+                <td style="padding:12px 16px">AWS ML stack (SageMaker, S3, Lambda)</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px;color:var(--green)">$20</td>
+                <td style="padding:12px 16px">Claude Code (Claude Pro)</td>
+                <td style="padding:12px 16px;color:var(--green)">$240</td>
+                <td style="padding:12px 16px">Production ML pipelines, complex debugging</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px;color:var(--green)">$30</td>
+                <td style="padding:12px 16px">Copilot Pro + Claude Code</td>
+                <td style="padding:12px 16px;color:var(--green)">$360</td>
+                <td style="padding:12px 16px">Deep learning research, full-stack DS</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px">$40</td>
+                <td style="padding:12px 16px">Cursor Pro + Claude Code</td>
+                <td style="padding:12px 16px">$480</td>
+                <td style="padding:12px 16px">MLOps, production systems, large codebases</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h2>Common DS Tasks: Which Tool Wins?</h2>
+
+        <p>Here is a practical decision matrix for specific data science tasks:</p>
+
+        <div style="overflow-x:auto">
+          <table style="width:100%;border-collapse:collapse;margin:1.5rem 0">
+            <thead>
+              <tr style="border-bottom:2px solid var(--border)">
+                <th style="padding:12px 16px;text-align:left">Task</th>
+                <th style="padding:12px 16px;text-align:left">Best Tool</th>
+                <th style="padding:12px 16px;text-align:left">Why</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px">Quick EDA on a new dataset</td>
+                <td style="padding:12px 16px"><strong>Gemini in Colab</strong></td>
+                <td style="padding:12px 16px">Data Science Agent generates full analysis notebook</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px">pandas data wrangling</td>
+                <td style="padding:12px 16px"><strong>Copilot Pro</strong></td>
+                <td style="padding:12px 16px">Best method chain completions, fast inline suggestions</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px">Writing sklearn pipelines</td>
+                <td style="padding:12px 16px"><strong>Copilot Pro</strong></td>
+                <td style="padding:12px 16px">Knows Pipeline/ColumnTransformer patterns cold</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px">Debugging PyTorch training loop</td>
+                <td style="padding:12px 16px"><strong>Claude Code</strong></td>
+                <td style="padding:12px 16px">Reasons through tensor shapes and gradient flow across files</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px">Building matplotlib/plotly charts</td>
+                <td style="padding:12px 16px"><strong>Gemini in Colab</strong></td>
+                <td style="padding:12px 16px">Generates + renders inline, iterates on styling</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px">Feature engineering at scale</td>
+                <td style="padding:12px 16px"><strong>Copilot Pro</strong></td>
+                <td style="padding:12px 16px">Fast completions for repetitive transform patterns</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px">Refactoring notebook to production .py</td>
+                <td style="padding:12px 16px"><strong>Claude Code</strong></td>
+                <td style="padding:12px 16px">Understands full codebase, adds error handling and tests</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px">Setting up MLflow/W&amp;B experiment tracking</td>
+                <td style="padding:12px 16px"><strong>Cursor Pro</strong></td>
+                <td style="padding:12px 16px">Multi-file edits across training + config + logging code</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px">SageMaker training job config</td>
+                <td style="padding:12px 16px"><strong>Amazon Q</strong></td>
+                <td style="padding:12px 16px">Native AWS API understanding, template generation</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px">Writing SQL for data extraction</td>
+                <td style="padding:12px 16px"><strong>Copilot Pro</strong></td>
+                <td style="padding:12px 16px">Good SQL completions, understands context from Python code</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h2>The Two-Phase Workflow</h2>
+
+        <p>The most productive data scientists in 2026 use different tools for different phases of their work. Trying to use one tool for everything is like using a screwdriver as a hammer &mdash; it technically works, but you are making your life harder.</p>
+
+        <p><strong>Phase 1: Exploration</strong> (notebooks, EDA, prototyping)</p>
+        <ul>
+          <li>Use Gemini in Colab or Copilot in VS Code notebooks</li>
+          <li>Priority: fast completions, inline rendering, interactive feedback</li>
+          <li>You are writing throwaway code &mdash; speed matters more than quality</li>
+        </ul>
+
+        <p><strong>Phase 2: Production</strong> (.py modules, pipelines, deployment)</p>
+        <ul>
+          <li>Use Claude Code or Cursor for production ML code</li>
+          <li>Priority: reasoning about complex logic, multi-file changes, testing</li>
+          <li>You are writing code that will run in production &mdash; quality matters more than speed</li>
+        </ul>
+
+        <p>The $30/mo combo of Copilot Pro + Claude Code covers both phases. Copilot handles Phase 1 beautifully. Claude Code handles Phase 2 with the deep reasoning that production ML code demands. Most data scientists will find this is the sweet spot.</p>
+
+        <h2>What About Cursor Ultra ($200/mo)?</h2>
+
+        <p>Cursor Ultra gives you unlimited premium model requests. For most data science work, this is overkill. The standard Cursor Pro at $20/mo provides 500 fast premium requests, which is enough for most workflows. The only scenario where Ultra makes sense is if you are doing extremely heavy chat-driven development &mdash; for example, building a complex ML platform from scratch with constant AI assistance. Even then, the $30/mo Copilot + Claude Code combo gives you more capability for less money.</p>
+
+        <h2>Free Tier Comparison for Data Scientists</h2>
+
+        <p>If you are a student, researcher, or just getting started, here is how the free tiers stack up for data science work:</p>
+
+        <div style="overflow-x:auto">
+          <table style="width:100%;border-collapse:collapse;margin:1.5rem 0">
+            <thead>
+              <tr style="border-bottom:2px solid var(--border)">
+                <th style="padding:12px 16px;text-align:left">Free Tier</th>
+                <th style="padding:12px 16px;text-align:left">Completions</th>
+                <th style="padding:12px 16px;text-align:left">Chat</th>
+                <th style="padding:12px 16px;text-align:left">DS Rating</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px"><strong>Gemini Code Assist</strong></td>
+                <td style="padding:12px 16px;color:var(--green)">6,000/day</td>
+                <td style="padding:12px 16px;color:var(--green)">240/day</td>
+                <td style="padding:12px 16px;color:var(--green)">Best free tier for DS</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px"><strong>Amazon Q Developer</strong></td>
+                <td style="padding:12px 16px;color:var(--green)">Unlimited</td>
+                <td style="padding:12px 16px">Limited</td>
+                <td style="padding:12px 16px;color:var(--green)">Excellent if on AWS</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px"><strong>GitHub Copilot</strong></td>
+                <td style="padding:12px 16px">2,000/mo</td>
+                <td style="padding:12px 16px">50/mo</td>
+                <td style="padding:12px 16px">Good but limited quota</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px"><strong>Windsurf</strong></td>
+                <td style="padding:12px 16px">Limited</td>
+                <td style="padding:12px 16px">Limited</td>
+                <td style="padding:12px 16px">Basic, not DS-focused</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <p>The clear winner for free data science use is Gemini Code Assist. The daily limits are high enough for full-time use, the Colab integration is seamless, and the Data Science Agent is a genuine differentiator. Combine it with Amazon Q Free if you work on AWS, or Copilot Free for VS Code scripting.</p>
+
+        <h2>The Bottom Line</h2>
+
+        <p>Data science AI tool selection comes down to one question: where do you spend most of your time?</p>
+
+        <ul>
+          <li><strong>Mostly in notebooks?</strong> Start with Gemini Code Assist (free). Upgrade to Copilot Pro ($10/mo) when you want better completions in VS Code.</li>
+          <li><strong>Mostly in .py files building ML systems?</strong> Start with Copilot Pro ($10/mo). Add Claude Code ($20/mo) when you are debugging complex training pipelines.</li>
+          <li><strong>Both?</strong> The $30/mo Copilot Pro + Claude Code combo is the best value in data science tooling. Notebooks and production code, covered.</li>
+          <li><strong>All on AWS?</strong> Amazon Q Developer (free or $19/mo). It understands your stack better than any general-purpose tool.</li>
+        </ul>
+
+        <p>Do not pay $200/mo for Cursor Ultra or Claude Max when $30/mo covers 95% of data science workflows. Save the premium budget for compute &mdash; GPU hours are a better investment than unlimited AI chat requests.</p>
+
+        <p>Compare all the tools and pricing on our <a href="/" style="color:var(--accent)">main comparison table</a>, check the <a href="/free-ai-coding-tools.html" style="color:var(--accent)">free tier guide</a> if you want to start at $0, or read the <a href="/blog/best-ai-coding-tool-python.html" style="color:var(--accent)">Python developer guide</a> for language-specific recommendations beyond data science.</p>
+
+        <h2>Related on CodeCosts</h2>
+        <ul>
+          <li><a href="/blog/best-ai-coding-tool-python.html" style="color:var(--accent)">Best AI Coding Tool for Python Developers (2026)</a></li>
+          <li><a href="/blog/best-ai-coding-tool-java.html" style="color:var(--accent)">Best AI Coding Tool for Java Developers (2026)</a> &mdash; relevant for Spark and big data pipelines</li>
+          <li><a href="/blog/best-free-ai-coding-tool-2026.html" style="color:var(--accent)">Best Free AI Coding Tools in 2026</a></li>
+          <li><a href="/blog/cheapest-ai-coding-tool-2026.html" style="color:var(--accent)">Cheapest AI Coding Tools in 2026: Complete Cost Comparison</a></li>
+          <li><a href="/blog/copilot-vs-cursor-2026.html" style="color:var(--accent)">GitHub Copilot vs Cursor (2026): Which Is Better?</a></li>
+        </ul>
+      </div>
+    </article>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>CodeCosts &mdash; Independent AI coding tool price tracker. Updated March 2026.</p>
+      <p style="margin-top:0.5rem"><a href="/" style="color:var(--accent)">Compare all tools</a> &middot; <a href="/blog/" style="color:var(--accent)">Blog</a> &middot; <a href="/blog/feed.xml" style="color:var(--accent)">RSS</a></p>
+    </div>
+  </footer>
+</body>
+</html>

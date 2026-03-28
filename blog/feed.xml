@@ -5,8 +5,16 @@
     <link>https://codecosts.pages.dev/blog/</link>
     <description>AI coding tool news, pricing updates, and analysis. Compare GitHub Copilot, Cursor, Windsurf, Claude Code, and more.</description>
     <language>en-us</language>
-    <lastBuildDate>Sat, 28 Mar 2026 19:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Sat, 28 Mar 2026 23:00:00 GMT</lastBuildDate>
     <atom:link href="https://codecosts.pages.dev/blog/feed.xml" rel="self" type="application/rss+xml"/>
+
+    <item>
+      <title>AI Coding Tools for Academics &amp; Researchers 2026: Data Analysis, Statistical Modeling, Figures, LaTeX &amp; Reproducibility Guide</title>
+      <link>https://codecosts.pages.dev/blog/ai-coding-tools-for-academics-researchers-2026.html</link>
+      <description>The researcher's guide to AI coding tools in 2026. Every tool ranked for data analysis, statistical modeling, publication-quality figures, LaTeX, Jupyter notebooks, reproducibility, and R/Python/Julia/MATLAB support. Academic discounts and budget stacks from $0 to $40/mo.</description>
+      <pubDate>Sat, 28 Mar 2026 23:00:00 GMT</pubDate>
+      <guid>https://codecosts.pages.dev/blog/ai-coding-tools-for-academics-researchers-2026.html</guid>
+    </item>
 
     <item>
       <title>AI Coding Tools for Product Managers 2026: SQL Queries, Prototyping, Data Analysis &amp; Automation Guide</title>

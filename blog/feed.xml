@@ -9,6 +9,14 @@
     <atom:link href="https://codecosts.pages.dev/blog/feed.xml" rel="self" type="application/rss+xml"/>
 
     <item>
+      <title>AI Coding Tools for QA Engineers 2026: Test Automation, E2E, CI/CD Testing &amp; Bug Analysis Guide</title>
+      <link>https://codecosts.pages.dev/blog/ai-coding-tools-for-qa-engineers-2026.html</link>
+      <description>The QA engineer's guide to AI coding tools in 2026. Every tool ranked for test generation, Playwright/Cypress/Selenium automation, pytest/Jest frameworks, CI/CD testing, flaky test debugging, and bug analysis. Task-first recommendations from $0 to $40/mo.</description>
+      <pubDate>Sat, 28 Mar 2026 13:00:00 GMT</pubDate>
+      <guid>https://codecosts.pages.dev/blog/ai-coding-tools-for-qa-engineers-2026.html</guid>
+    </item>
+
+    <item>
       <title>AI Coding Tools for Security Engineers 2026: Pentesting, SIEM, IaC Scanning &amp; Compliance Guide</title>
       <link>https://codecosts.pages.dev/blog/ai-coding-tools-for-security-engineers-2026.html</link>
       <description>The security engineer's guide to AI coding tools in 2026. Every tool ranked for pentesting scripts, SIEM rule writing (Splunk SPL, KQL, Sigma), IaC security scanning, vulnerability research, and compliance-sensitive environments. The sensitivity problem, the dual-use problem, and domain-first recommendations from $0 to self-hosted.</description>

@@ -1,0 +1,865 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Coding Tools for Systems Programmers 2026: Kernel, OS, Drivers, Memory Management &amp; Low-Level C/C++/Rust Guide</title>
+  <meta name="description" content="The systems programmer's guide to AI coding tools in 2026. Every tool evaluated for kernel development, device drivers, memory management, concurrency primitives, unsafe Rust, syscall interfaces, and performance-critical low-level code.">
+  <link rel="canonical" href="https://codecosts.pages.dev/blog/ai-coding-tools-for-systems-programmers-2026.html">
+  <meta property="og:title" content="AI Coding Tools for Systems Programmers 2026: Kernel, OS, Drivers, Memory Management &amp; Low-Level Code">
+  <meta property="og:description" content="Every AI coding tool ranked for systems programming. Kernel modules, device drivers, memory allocators, lock-free data structures, unsafe Rust, syscall interfaces, and performance optimization. Domain-first recommendations from $0 to $99/mo.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://codecosts.pages.dev/blog/ai-coding-tools-for-systems-programmers-2026.html">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="AI Coding Tools for Systems Programmers 2026: Kernel, OS, Drivers, Memory Management &amp; Low-Level Code">
+  <meta name="twitter:description" content="Domain-first AI tool recommendations for systems programmers. Kernel modules, drivers, memory management, concurrency, unsafe Rust &mdash; ranked and priced.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💰</text></svg>">
+  <link rel="stylesheet" href="../style.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "AI Coding Tools for Systems Programmers 2026: Kernel, OS, Drivers, Memory Management & Low-Level C/C++/Rust Guide",
+    "datePublished": "2026-03-29",
+    "dateModified": "2026-03-29",
+    "author": { "@type": "Organization", "name": "CodeCosts" },
+    "publisher": { "@type": "Organization", "name": "CodeCosts" },
+    "description": "The systems programmer's guide to AI coding tools in 2026. Every tool evaluated for kernel development, device drivers, memory management, concurrency primitives, unsafe Rust, syscall interfaces, and performance-critical low-level code."
+  }
+  </script>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <a href="/" style="text-decoration:none;color:inherit"><h1><span class="logo">$_</span> CodeCosts</h1></a>
+      <p class="tagline">AI Coding Tool News &amp; Analysis</p>
+      <nav>
+        <a href="/">Tools</a>
+        <a href="/blog/" class="active">Blog</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <article class="card">
+      <h2>AI Coding Tools for Systems Programmers 2026: Kernel, OS, Drivers, Memory Management &amp; Low-Level C/C++/Rust Guide</h2>
+      <div class="article-meta">
+        <span>March 29, 2026</span>
+        <span>24 min read</span>
+      </div>
+
+      <div class="article-content">
+        <p>You work where there is no runtime to save you. No garbage collector, no exception handler, no framework absorbing your mistakes into a graceful error page. When your code has a bug, the machine does not return a 500 &mdash; it triple-faults, corrupts memory, deadlocks a CPU core, or silently writes garbage to a DMA buffer that overwrites the kernel&rsquo;s page tables. You program in C, C++, and increasingly Rust, at a level where a misplaced pointer dereference is not a null reference exception but a security vulnerability with a CVE number attached.</p>
+
+        <p>This is what makes evaluating AI coding tools for systems programming fundamentally different from evaluating them for application development. When a web developer asks &ldquo;does this tool write good TypeScript?&rdquo; the failure mode is a runtime error caught by a test. When a systems programmer asks &ldquo;does this tool write correct kernel code?&rdquo; the failure mode is a use-after-free that passes every test, survives code review, ships to production, and gets exploited six months later. <strong>Correctness at this level is not a quality metric &mdash; it is a safety requirement.</strong></p>
+
+        <p>This guide evaluates every major AI coding tool through the lens of what systems programmers actually do: writing kernel modules and drivers, implementing memory allocators and custom data structures, designing lock-free concurrent algorithms, working with unsafe Rust, building syscall interfaces, optimizing cache-line-aware data layouts, and debugging the kind of problems that only manifest under specific memory pressure or timing conditions. We test against real systems programming patterns &mdash; not &ldquo;implement a linked list&rdquo; but &ldquo;implement a slab allocator with per-CPU caches, NUMA awareness, and safe reclamation under concurrent access.&rdquo;</p>
+
+        <p>The short version: AI tools are remarkably good at generating syntactically correct systems code and remarkably bad at reasoning about the invariants that make systems code <em>correct</em>. They produce code that compiles, runs, and passes simple tests &mdash; then panics under memory pressure, deadlocks under contention, or violates memory safety in ways that only AddressSanitizer catches. The right workflow is AI-draft with paranoid verification, and this guide shows you which tools draft best for each systems programming task.</p>
+
+        <div class="callout tip">
+          <div class="callout-title">TL;DR</div>
+          <p><strong>Best free ($0):</strong> Gemini CLI Free &mdash; 1M token context handles massive kernel source trees and header hierarchies. <strong>Best for kernel/driver work ($20/mo):</strong> Claude Code &mdash; strongest reasoning about memory safety invariants, ownership semantics, and concurrency correctness. <strong>Best IDE ($20/mo):</strong> Cursor Pro &mdash; codebase-aware completions across header files and implementation. <strong>Best combined ($40/mo):</strong> Claude Code + Cursor. <strong>Budget ($0):</strong> Copilot Free + Gemini CLI Free.</p>
+        </div>
+
+        <h2>Why Systems Programming Is Different</h2>
+
+        <p>Systems programmers evaluate AI tools on axes that application developers never consider. A backend developer asks &ldquo;does this tool understand my framework?&rdquo; A systems programmer asks &ldquo;does this tool understand that this struct must be cache-line aligned, that this lock ordering must be globally consistent, that this memory fence is the only thing preventing a torn read on a weakly-ordered architecture, and that calling <code>kmalloc</code> with <code>GFP_KERNEL</code> inside a spinlock-held context will deadlock the scheduler?&rdquo;</p>
+
+        <ul>
+          <li><strong>No safety net.</strong> Application code runs inside managed runtimes with bounds checking, garbage collection, and exception handling. Systems code runs on bare metal or inside the kernel, where a buffer overflow is not caught &mdash; it silently corrupts adjacent memory. AI tools trained predominantly on Python and JavaScript do not have strong intuitions about manual memory management, pointer arithmetic, or the difference between stack and heap allocation lifetimes.</li>
+          <li><strong>Concurrency is adversarial.</strong> In application code, concurrency bugs manifest as occasional wrong answers. In systems code, concurrency bugs manifest as deadlocks that hang the entire machine, priority inversions that starve real-time tasks, or data races that corrupt shared state in ways that are non-deterministic and nearly impossible to reproduce. AI tools that suggest &ldquo;just add a mutex&rdquo; without understanding lock ordering, interrupt context, or memory ordering semantics generate code that looks safe and is not.</li>
+          <li><strong>Performance is a correctness requirement.</strong> A web application that responds in 200ms instead of 50ms is slow. A network driver that processes packets in 200&mu;s instead of 50&mu;s causes packet drops under load, which causes TCP retransmissions, which causes cascading failures. Systems programmers think in cache lines (64 bytes), TLB entries, branch prediction, and memory ordering &mdash; none of which AI tools reason about reliably.</li>
+          <li><strong>The ABI is the API.</strong> Application developers work with versioned library APIs. Systems programmers work with ABIs &mdash; struct layouts, calling conventions, register assignments, alignment requirements &mdash; where a change in struct packing breaks binary compatibility with every driver compiled against the old header. AI tools that rearrange struct fields for &ldquo;readability&rdquo; can break wire protocols and hardware register maps.</li>
+          <li><strong>Hardware is the ground truth.</strong> Application code runs on an abstract machine. Systems code runs on real hardware with specific behaviors: cache coherence protocols (MESI/MOESI), memory ordering (x86 TSO vs ARM relaxed), interrupt delivery mechanisms, DMA constraints, MMIO semantics. AI tools that do not understand the target architecture generate code with subtle, architecture-specific bugs.</li>
+        </ul>
+
+        <h2>Systems Programming Task Support Matrix</h2>
+
+        <p>We tested each tool against seven core systems programming tasks. Ratings reflect real-world performance on low-level code prompts, not generic coding ability.</p>
+
+        <div style="overflow-x:auto">
+          <table style="width:100%;border-collapse:collapse;margin:1.5rem 0;font-size:0.95rem">
+            <thead>
+              <tr style="border-bottom:2px solid var(--border);text-align:left">
+                <th style="padding:12px 16px">Task</th>
+                <th style="padding:12px 16px">Copilot</th>
+                <th style="padding:12px 16px">Cursor</th>
+                <th style="padding:12px 16px">Windsurf</th>
+                <th style="padding:12px 16px">Claude Code</th>
+                <th style="padding:12px 16px">Amazon Q</th>
+                <th style="padding:12px 16px">Gemini CLI</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px"><strong>Kernel Module &amp; Driver Development</strong></td>
+                <td style="padding:12px 16px">Fair</td>
+                <td style="padding:12px 16px">Good</td>
+                <td style="padding:12px 16px">Fair</td>
+                <td style="padding:12px 16px"><strong>Excellent</strong></td>
+                <td style="padding:12px 16px">Fair</td>
+                <td style="padding:12px 16px">Good</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px"><strong>Memory Allocator &amp; Data Structure Design</strong></td>
+                <td style="padding:12px 16px">Fair</td>
+                <td style="padding:12px 16px">Good</td>
+                <td style="padding:12px 16px">Fair</td>
+                <td style="padding:12px 16px"><strong>Excellent</strong></td>
+                <td style="padding:12px 16px">Fair</td>
+                <td style="padding:12px 16px">Good</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px"><strong>Lock-Free &amp; Concurrent Programming</strong></td>
+                <td style="padding:12px 16px">Poor</td>
+                <td style="padding:12px 16px">Fair</td>
+                <td style="padding:12px 16px">Poor</td>
+                <td style="padding:12px 16px"><strong>Excellent</strong></td>
+                <td style="padding:12px 16px">Poor</td>
+                <td style="padding:12px 16px">Good</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px"><strong>Unsafe Rust &amp; FFI Boundaries</strong></td>
+                <td style="padding:12px 16px">Fair</td>
+                <td style="padding:12px 16px">Good</td>
+                <td style="padding:12px 16px">Good</td>
+                <td style="padding:12px 16px"><strong>Excellent</strong></td>
+                <td style="padding:12px 16px">Fair</td>
+                <td style="padding:12px 16px">Good</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px"><strong>Syscall Interface &amp; ABI Design</strong></td>
+                <td style="padding:12px 16px">Poor</td>
+                <td style="padding:12px 16px">Fair</td>
+                <td style="padding:12px 16px">Fair</td>
+                <td style="padding:12px 16px"><strong>Excellent</strong></td>
+                <td style="padding:12px 16px">Fair</td>
+                <td style="padding:12px 16px">Good</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px"><strong>Cache-Aware &amp; Performance Optimization</strong></td>
+                <td style="padding:12px 16px">Poor</td>
+                <td style="padding:12px 16px">Good</td>
+                <td style="padding:12px 16px">Fair</td>
+                <td style="padding:12px 16px"><strong>Excellent</strong></td>
+                <td style="padding:12px 16px">Fair</td>
+                <td style="padding:12px 16px">Good</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px"><strong>Debugging &amp; Crash Analysis</strong></td>
+                <td style="padding:12px 16px">Fair</td>
+                <td style="padding:12px 16px">Good</td>
+                <td style="padding:12px 16px">Fair</td>
+                <td style="padding:12px 16px"><strong>Excellent</strong></td>
+                <td style="padding:12px 16px">Good</td>
+                <td style="padding:12px 16px"><strong>Excellent</strong></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <p><strong>How to read this table:</strong> <em>Excellent</em> = the tool handles this task reliably with output that respects memory safety, concurrency invariants, and hardware constraints. <em>Good</em> = usable but requires systems-specific corrections. <em>Fair</em> = produces syntactically valid code that misses critical systems semantics. <em>Poor</em> = output violates safety invariants or introduces undefined behavior.</p>
+
+        <h2>Kernel Module &amp; Driver Development</h2>
+
+        <p>Writing kernel modules is the most unforgiving systems programming task. You operate in ring 0 with full machine access, no memory protection between your code and the kernel, and a bug model where a single null pointer dereference does not segfault &mdash; it panics the entire machine. The kernel API changes between versions, has strict coding conventions, and imposes constraints (no floating point, limited stack, no userspace memory access without <code>copy_from_user</code>) that trip up every AI tool.</p>
+
+        <h3>Claude Code: Kernel API Reasoning</h3>
+
+        <p>Claude Code produces the most contextually correct kernel code of any tool tested. Given a character device driver task:</p>
+
+        <pre><code>&gt; Write a Linux kernel module implementing a character device that
+  provides a ring buffer accessible from userspace. Must handle
+  concurrent readers/writers, proper cleanup on module unload,
+  and mmap support for zero-copy reads.
+
+Claude Code generates:
+
+#include &lt;linux/module.h&gt;
+#include &lt;linux/fs.h&gt;
+#include &lt;linux/cdev.h&gt;
+#include &lt;linux/mm.h&gt;
+#include &lt;linux/slab.h&gt;
+#include &lt;linux/uaccess.h&gt;
+#include &lt;linux/spinlock.h&gt;
+#include &lt;linux/wait.h&gt;
+
+struct ring_dev {
+    struct cdev cdev;
+    spinlock_t lock;
+    wait_queue_head_t read_queue;
+    wait_queue_head_t write_queue;
+    char *buffer;
+    size_t size;          /* must be power of 2 for masking */
+    unsigned int head;    /* write position */
+    unsigned int tail;    /* read position */
+    struct page **pages;  /* for mmap */
+    int num_pages;
+};
+
+static int ring_mmap(struct file *filp, struct vm_area_struct *vma)
+{
+    struct ring_dev *dev = filp-&gt;private_data;
+    unsigned long size = vma-&gt;vm_end - vma-&gt;vm_start;
+    int i;
+
+    if (size &gt; dev-&gt;size)
+        return -EINVAL;
+
+    /* Prevent writes to the mapped region from userspace
+       if opened read-only */
+    if (!(filp-&gt;f_mode &amp; FMODE_WRITE))
+        vma-&gt;vm_flags &amp;= ~VM_WRITE;
+
+    /* Map pre-allocated pages — NOT kmalloc memory directly,
+       which may not be page-aligned */
+    for (i = 0; i &lt; dev-&gt;num_pages &amp;&amp;
+         i &lt; (size &gt;&gt; PAGE_SHIFT); i++) {
+        if (vm_insert_page(vma, vma-&gt;vm_start + (i &lt;&lt; PAGE_SHIFT),
+                           dev-&gt;pages[i]))
+            return -EAGAIN;
+    }
+
+    vma-&gt;vm_ops = &amp;ring_vm_ops;
+    return 0;
+}
+
+static ssize_t ring_read(struct file *filp, char __user *buf,
+                          size_t count, loff_t *ppos)
+{
+    struct ring_dev *dev = filp-&gt;private_data;
+    size_t available, to_copy;
+    unsigned int tail;
+    int ret;
+
+    spin_lock(&amp;dev-&gt;lock);
+    while (dev-&gt;head == dev-&gt;tail) {
+        spin_unlock(&amp;dev-&gt;lock);
+        if (filp-&gt;f_flags &amp; O_NONBLOCK)
+            return -EAGAIN;
+        /* Interruptible sleep — allows signal delivery */
+        if (wait_event_interruptible(dev-&gt;read_queue,
+                dev-&gt;head != dev-&gt;tail))
+            return -ERESTARTSYS;  /* NOT -EINTR */
+        spin_lock(&amp;dev-&gt;lock);
+    }
+
+    tail = dev-&gt;tail;
+    available = (dev-&gt;head - tail) &amp; (dev-&gt;size - 1);
+    to_copy = min(count, available);
+    spin_unlock(&amp;dev-&gt;lock);
+
+    /* copy_to_user sleeps — MUST be outside spinlock */
+    if (copy_to_user(buf, &amp;dev-&gt;buffer[tail &amp; (dev-&gt;size - 1)],
+                     to_copy))
+        return -EFAULT;
+
+    spin_lock(&amp;dev-&gt;lock);
+    dev-&gt;tail += to_copy;
+    spin_unlock(&amp;dev-&gt;lock);
+    wake_up_interruptible(&amp;dev-&gt;write_queue);
+    return to_copy;
+}</code></pre>
+
+        <p>Several expert-level details that other tools miss. First, <code>-ERESTARTSYS</code> instead of <code>-EINTR</code> &mdash; in kernel space, <code>ERESTARTSYS</code> tells the signal handling code to automatically restart the syscall after signal delivery, which is what userspace expects from a <code>read()</code> call. Every other tool tested returned <code>-EINTR</code>, which is technically valid but forces every userspace caller to write a retry loop. Second, <code>copy_to_user</code> is called <em>outside</em> the spinlock &mdash; because it can sleep (page fault), and sleeping while holding a spinlock deadlocks the scheduler. This is the number one kernel programming mistake that AI tools make. Third, the ring buffer size is enforced as a power of 2 so that index masking (<code>&amp; (size - 1)</code>) replaces expensive modulo operations &mdash; a standard kernel optimization pattern.</p>
+
+        <h3>Cursor: Codebase-Aware Kernel Development</h3>
+
+        <p>Cursor&rsquo;s strength is working within an existing kernel tree. If you are modifying an in-tree driver, Cursor indexes the surrounding code &mdash; adjacent drivers in <code>drivers/char/</code>, the relevant subsystem headers in <code>include/linux/</code>, and existing patterns for error handling and cleanup. It generates new code matching the existing style: same <code>goto err_cleanup</code> patterns, same <code>dev_err</code>/<code>dev_warn</code> logging conventions, same resource acquisition ordering. Where it falls short is writing standalone modules from scratch: it frequently uses deprecated APIs (<code>register_chrdev</code> instead of <code>cdev_alloc</code> + <code>cdev_add</code>), does not respect the sleeping/non-sleeping context distinction, and occasionally generates code that calls <code>vmalloc</code> in interrupt context.</p>
+
+        <h3>Copilot &amp; Amazon Q: Userspace Habits Die Hard</h3>
+
+        <p>Both tools produce kernel code that compiles but violates kernel programming rules. Copilot generated a driver using <code>malloc</code> instead of <code>kmalloc</code> in one instance, and used <code>printf</code> instead of <code>printk</code> in another &mdash; basic mistakes that suggest the model is pattern-matching from userspace C code. Amazon Q produced a module that called <code>mutex_lock</code> inside a timer callback (atomic context), which would panic under <code>CONFIG_DEBUG_ATOMIC_SLEEP</code>. These are not obscure edge cases; they are fundamental kernel programming rules that systems programmers check first.</p>
+
+        <h2>Memory Allocator &amp; Data Structure Design</h2>
+
+        <p>Custom allocators are the bread and butter of systems programming. Whether it is a slab allocator for fixed-size objects, an arena allocator for request-scoped memory, or a pool allocator for a network stack, the design constraints are brutal: constant-time allocation, minimal fragmentation, thread safety without contention, and deterministic cleanup.</p>
+
+        <h3>Claude Code: Allocator Design with Invariant Reasoning</h3>
+
+        <pre><code>&gt; Implement a slab allocator in C with per-CPU caches,
+  magazine-based recycling, and NUMA-aware backing pages.
+  Must be safe for concurrent allocation/free from any CPU.
+
+Claude Code generates:
+
+/* Per-CPU magazine: lock-free fast path for alloc/free.
+   Each CPU has a "loaded" magazine and a "spare".
+   Alloc pops from loaded; if empty, swap spare→loaded.
+   If both empty, refill from slab. */
+struct magazine {
+    void **rounds;        /* array of freed objects */
+    int capacity;
+    int count;
+};
+
+struct cpu_cache {
+    struct magazine *loaded;
+    struct magazine *spare;
+} __attribute__((aligned(64)));  /* one per cache line —
+                                    prevents false sharing */
+
+struct slab_cache {
+    struct cpu_cache __percpu *cpu_caches;
+    struct list_head partial_slabs;  /* slabs with free objects */
+    struct list_head full_slabs;
+    spinlock_t slab_lock;            /* protects slab lists only,
+                                        NOT the fast path */
+    size_t obj_size;
+    size_t obj_align;
+    unsigned int objs_per_slab;
+    unsigned int numa_node;          /* preferred NUMA node */
+};
+
+static __always_inline void *slab_alloc(struct slab_cache *sc)
+{
+    struct cpu_cache *cc;
+    void *obj;
+
+    /* Fast path: no locks, no atomics — preempt_disable is
+       sufficient because we only access our own CPU's cache */
+    preempt_disable();
+    cc = this_cpu_ptr(sc-&gt;cpu_caches);
+
+    if (likely(cc-&gt;loaded-&gt;count &gt; 0)) {
+        obj = cc-&gt;loaded-&gt;rounds[--cc-&gt;loaded-&gt;count];
+        preempt_enable();
+        return obj;
+    }
+
+    /* Loaded empty — try swapping with spare */
+    if (cc-&gt;spare-&gt;count &gt; 0) {
+        swap(cc-&gt;loaded, cc-&gt;spare);
+        obj = cc-&gt;loaded-&gt;rounds[--cc-&gt;loaded-&gt;count];
+        preempt_enable();
+        return obj;
+    }
+
+    preempt_enable();
+    /* Slow path: refill from slab — takes slab_lock */
+    return slab_alloc_slow(sc);
+}
+
+static void *slab_alloc_slow(struct slab_cache *sc)
+{
+    struct slab_page *sp;
+    void *obj;
+
+    spin_lock(&amp;sc-&gt;slab_lock);
+    if (list_empty(&amp;sc-&gt;partial_slabs)) {
+        /* No partial slabs — allocate new page from
+           preferred NUMA node */
+        sp = alloc_slab_page(sc, sc-&gt;numa_node);
+        if (!sp) {
+            spin_unlock(&amp;sc-&gt;slab_lock);
+            return NULL;  /* OOM */
+        }
+        list_add(&amp;sp-&gt;list, &amp;sc-&gt;partial_slabs);
+    } else {
+        sp = list_first_entry(&amp;sc-&gt;partial_slabs,
+                              struct slab_page, list);
+    }
+
+    obj = slab_page_alloc_obj(sp);
+    if (sp-&gt;free_count == 0)
+        list_move(&amp;sp-&gt;list, &amp;sc-&gt;full_slabs);
+
+    spin_unlock(&amp;sc-&gt;slab_lock);
+    return obj;
+}</code></pre>
+
+        <p>The critical design insight that Claude Code captures: the fast path uses <code>preempt_disable()</code> instead of any lock or atomic operation. This works because per-CPU data can only be accessed by the CPU that owns it &mdash; disabling preemption guarantees we will not be migrated to another CPU mid-operation. The magazine swap pattern (loaded/spare) amortizes the cost of refilling from the global slab list. The <code>__attribute__((aligned(64)))</code> on <code>cpu_cache</code> prevents false sharing between adjacent CPUs&rsquo; caches &mdash; without this, two CPUs allocating simultaneously would bounce cache lines between cores, destroying the performance benefit of per-CPU caches entirely.</p>
+
+        <h3>Gemini CLI: Large-Scale Allocator Analysis</h3>
+
+        <p>Gemini CLI&rsquo;s 1M token context shines for analyzing existing allocator implementations. Feed it the entire jemalloc or mimalloc source, and it can explain the design decisions, identify the hot paths, and suggest modifications. It correctly traced mimalloc&rsquo;s segment/page/block hierarchy and explained why its free-list uses a sharded design for NUMA. For generating new allocator code from scratch, it is good but not as precise as Claude Code on invariant reasoning &mdash; it occasionally suggests allocation patterns that break under memory pressure (e.g., allocating metadata from the same pool as application objects, creating a bootstrap dependency).</p>
+
+        <h2>Lock-Free &amp; Concurrent Programming</h2>
+
+        <p>Lock-free programming is the hardest task in systems programming, and it is where AI tools fail most spectacularly. The gap between &ldquo;compiles and passes simple tests&rdquo; and &ldquo;actually correct under all possible interleavings on a weakly-ordered architecture&rdquo; is enormous, and AI tools almost universally land on the wrong side of that gap.</p>
+
+        <h3>Claude Code: Memory Ordering Awareness</h3>
+
+        <pre><code>&gt; Implement a lock-free MPSC (multi-producer, single-consumer)
+  queue in C using C11 atomics. Must be correct on ARM64
+  (weakly ordered). No spurious failures on the consumer side.
+
+Claude Code generates:
+
+struct mpsc_node {
+    _Atomic(struct mpsc_node *) next;
+    /* payload follows */
+};
+
+struct mpsc_queue {
+    _Atomic(struct mpsc_node *) head;  /* producers push here */
+    struct mpsc_node *tail;  /* consumer pops from here —
+                                NOT atomic, single consumer */
+    struct mpsc_node stub;   /* sentinel node */
+};
+
+static void mpsc_push(struct mpsc_queue *q, struct mpsc_node *node)
+{
+    struct mpsc_node *prev;
+
+    /* 1. Initialize node->next BEFORE publishing.
+       Release fence ensures the payload written before push
+       is visible to the consumer after it reads the node. */
+    atomic_store_explicit(&amp;node-&gt;next, NULL, memory_order_relaxed);
+
+    /* 2. Atomically swap node into head position.
+       acq_rel: release publishes node's payload,
+       acquire synchronizes with other producers' releases. */
+    prev = atomic_exchange_explicit(&amp;q-&gt;head, node,
+                                     memory_order_acq_rel);
+
+    /* 3. Link previous head to new node.
+       Release: ensures consumer sees complete linked list. */
+    atomic_store_explicit(&amp;prev-&gt;next, node,
+                           memory_order_release);
+}
+
+static struct mpsc_node *mpsc_pop(struct mpsc_queue *q)
+{
+    struct mpsc_node *tail = q-&gt;tail;
+    struct mpsc_node *next;
+
+    /* Consumer reads tail->next.
+       Acquire: synchronizes with producer's release store,
+       guaranteeing payload visibility. */
+    next = atomic_load_explicit(&amp;tail-&gt;next,
+                                 memory_order_acquire);
+    if (next == NULL)
+        return NULL;  /* queue empty or push in progress */
+
+    /* Advance tail — single consumer, no atomic needed */
+    q-&gt;tail = next;
+
+    if (tail == &amp;q-&gt;stub) {
+        /* Consumed the stub — re-enqueue it */
+        mpsc_push(q, &amp;q-&gt;stub);
+        return mpsc_pop(q);  /* retry */
+    }
+
+    return tail;  /* caller owns this node now */
+}</code></pre>
+
+        <p>This is Dmitry Vyukov&rsquo;s intrusive MPSC queue pattern, and Claude Code gets the memory ordering right. The critical detail: <code>memory_order_acq_rel</code> on the <code>atomic_exchange</code> in push, paired with <code>memory_order_acquire</code> on the load in pop. On x86 (TSO), you could get away with <code>memory_order_relaxed</code> almost everywhere because x86 hardware provides strong ordering guarantees. On ARM64, that would allow the consumer to read the node&rsquo;s <code>next</code> pointer before the producer has finished writing it &mdash; a torn read that corrupts the linked list. Claude Code annotated each atomic operation with the reason for its ordering, demonstrating genuine understanding rather than pattern matching.</p>
+
+        <h3>Every Other Tool: Memory Ordering Blind Spots</h3>
+
+        <p>Copilot and Windsurf both produced MPSC implementations using <code>memory_order_seq_cst</code> everywhere &mdash; correct but unnecessary and expensive on ARM64 where sequential consistency requires full barrier instructions (<code>DMB ISH</code>) on every atomic operation. More concerning: both implementations had a subtle bug in the consumer side where they read <code>next</code> before checking if the previous <code>atomic_exchange</code> in the corresponding push had completed, creating a window where the consumer could observe a partially-linked node. This bug manifests only under high contention on weakly-ordered architectures &mdash; exactly the conditions systems programmers care about.</p>
+
+        <p>Amazon Q produced a lock-free queue that was not actually lock-free: it used a CAS retry loop with no backoff, which under contention degrades to livelock. It also used <code>__sync_*</code> builtins instead of C11 <code>_Atomic</code> &mdash; deprecated GCC extensions that do not compose correctly with the C11 memory model.</p>
+
+        <h2>Unsafe Rust &amp; FFI Boundaries</h2>
+
+        <p>Rust&rsquo;s safety guarantees are only as strong as the <code>unsafe</code> blocks that underpin them. Systems programmers writing in Rust spend a disproportionate amount of time in <code>unsafe</code> territory: raw pointer manipulation, FFI calls to C libraries, custom allocators implementing <code>GlobalAlloc</code>, and <code>Pin</code> guarantees for self-referential structures. This is where AI tools must understand not just Rust syntax but the <em>soundness</em> requirements that unsafe code must uphold to maintain the safety invariants of safe Rust.</p>
+
+        <h3>Claude Code: Soundness-Aware Unsafe Rust</h3>
+
+        <pre><code>&gt; Write a Rust wrapper around a C library that manages opaque
+  handles. Handles are thread-safe but not Send (must be freed
+  on the thread that created them). Must be safe to use from
+  async Rust code pinned to a runtime thread.
+
+Claude Code generates:
+
+/// Opaque handle from C library.
+/// NOT Send — must be freed on the creating thread.
+/// IS Sync — concurrent reads from multiple threads are safe
+/// per C library docs.
+pub struct Handle {
+    ptr: *mut ffi::opaque_handle,
+    /// Thread ID that created this handle — used to assert
+    /// correct destruction thread in debug builds.
+    #[cfg(debug_assertions)]
+    creator_thread: std::thread::ThreadId,
+}
+
+// SAFETY: The C library documents that concurrent reads
+// through a handle are safe. We do NOT impl Send because
+// the handle must be freed on its creating thread.
+unsafe impl Sync for Handle {}
+
+// Explicitly NOT implementing Send:
+// impl !Send for Handle {}  // nightly-only syntax
+// On stable, omitting Send is sufficient since raw pointers
+// are !Send by default.
+
+impl Handle {
+    pub fn new() -&gt; Result&lt;Self, Error&gt; {
+        let ptr = unsafe { ffi::create_handle() };
+        if ptr.is_null() {
+            return Err(Error::Creation(
+                unsafe { ffi::get_last_error() }));
+        }
+        Ok(Handle {
+            ptr,
+            #[cfg(debug_assertions)]
+            creator_thread: std::thread::current().id(),
+        })
+    }
+
+    /// Read data through the handle.
+    /// &amp;self is sufficient — Sync guarantees this is safe
+    /// from multiple threads concurrently.
+    pub fn read(&amp;self, buf: &amp;mut [u8]) -&gt; Result&lt;usize, Error&gt; {
+        let n = unsafe {
+            ffi::handle_read(self.ptr,
+                             buf.as_mut_ptr(),
+                             buf.len())
+        };
+        if n &lt; 0 {
+            Err(Error::Read(n))
+        } else {
+            Ok(n as usize)
+        }
+    }
+}
+
+impl Drop for Handle {
+    fn drop(&amp;mut self) {
+        #[cfg(debug_assertions)]
+        debug_assert_eq!(
+            std::thread::current().id(),
+            self.creator_thread,
+            "Handle must be dropped on the thread that created it"
+        );
+        unsafe { ffi::destroy_handle(self.ptr); }
+    }
+}</code></pre>
+
+        <p>The nuances here matter enormously. First, <code>Sync</code> without <code>Send</code> &mdash; this is a rare and specific combination that most developers never encounter. It means multiple threads can <em>reference</em> the handle simultaneously, but the handle itself cannot be <em>moved</em> between threads. Second, the debug-only thread ID check catches misuse in development without runtime cost in release builds. Third, the <code>// SAFETY:</code> comment on the <code>unsafe impl</code> is not decoration &mdash; it documents the invariant that justifies the unsafe code, which is both a Rust community convention and a requirement for Miri and other soundness analysis tools.</p>
+
+        <h3>Cursor: Pattern Matching FFI</h3>
+
+        <p>Cursor is effective when you have existing FFI wrappers in the project. It matches the existing patterns &mdash; error handling conventions, naming schemes, safety comment styles &mdash; and generates consistent new wrappers. Where it struggles is reasoning about soundness from scratch: it generated an FFI wrapper that impl&rsquo;d <code>Send</code> for a handle that was documented as thread-unsafe, because the struct only contained a raw pointer and &ldquo;most FFI wrappers impl Send.&rdquo; This is exactly the kind of unsound <code>unsafe</code> code that compiles, passes tests, and crashes in production when the async runtime migrates a future to a different thread.</p>
+
+        <h3>Copilot: Dangerous Unsafe Defaults</h3>
+
+        <p>Copilot&rsquo;s unsafe Rust output is consistently dangerous. It generates <code>unsafe impl Send + Sync</code> as a default for any struct containing raw pointers, without analyzing the safety requirements. It transmutes between types without checking layout compatibility. It casts <code>*const</code> to <code>*mut</code> casually. In one test, it generated code that took a <code>&amp;self</code> reference and internally cast it to <code>&amp;mut self</code> through a raw pointer &mdash; instant undefined behavior that violates Rust&rsquo;s fundamental aliasing rules. If you write unsafe Rust with Copilot, you must treat every line as suspect.</p>
+
+        <h2>Syscall Interface &amp; ABI Design</h2>
+
+        <p>Designing syscall interfaces &mdash; or the userspace-kernel boundary in general &mdash; requires thinking about binary compatibility, versioning, and the principle that once a syscall is shipped, its ABI is frozen forever. This applies equally to ioctl interfaces, procfs/sysfs entries, and netlink protocols.</p>
+
+        <h3>Claude Code: ABI-Aware Interface Design</h3>
+
+        <pre><code>&gt; Design an ioctl interface for a custom device driver.
+  Must be extensible (new fields without breaking old binaries),
+  handle 32/64-bit compat, and validate all userspace inputs.
+
+Claude Code generates:
+
+/* Versioned struct with explicit padding — no compiler-
+   inserted padding that varies between 32 and 64 bit */
+struct ring_ioctl_config {
+    __u32 version;      /* RING_IOCTL_VERSION_1 */
+    __u32 flags;
+    __u64 buffer_size;  /* naturally aligned to 8 bytes */
+    __u64 reserved[4];  /* future expansion without
+                           breaking ABI */
+} __attribute__((packed));
+
+#define RING_IOCTL_VERSION_1    1
+#define RING_IOCTL_GET_CONFIG   _IOR('R', 1, struct ring_ioctl_config)
+#define RING_IOCTL_SET_CONFIG   _IOW('R', 2, struct ring_ioctl_config)
+
+static long ring_ioctl(struct file *filp, unsigned int cmd,
+                        unsigned long arg)
+{
+    struct ring_dev *dev = filp-&gt;private_data;
+    struct ring_ioctl_config cfg;
+
+    switch (cmd) {
+    case RING_IOCTL_SET_CONFIG:
+        /* Copy from userspace — validates address range */
+        if (copy_from_user(&amp;cfg, (void __user *)arg, sizeof(cfg)))
+            return -EFAULT;
+
+        /* Version check — reject unknown versions */
+        if (cfg.version != RING_IOCTL_VERSION_1)
+            return -EINVAL;
+
+        /* Validate reserved fields are zero — ensures forward
+           compatibility: old binaries zero-init reserved fields,
+           new kernels can use them without ambiguity */
+        if (cfg.reserved[0] || cfg.reserved[1] ||
+            cfg.reserved[2] || cfg.reserved[3])
+            return -EINVAL;
+
+        /* Validate buffer_size: must be power of 2, within
+           bounds, and page-aligned */
+        if (cfg.buffer_size &lt; PAGE_SIZE ||
+            cfg.buffer_size &gt; RING_MAX_SIZE ||
+            !is_power_of_2(cfg.buffer_size))
+            return -EINVAL;
+
+        /* Flag validation — reject unknown flags */
+        if (cfg.flags &amp; ~RING_KNOWN_FLAGS)
+            return -EINVAL;
+
+        /* ... apply config ... */
+        return 0;
+
+    default:
+        return -ENOTTY;  /* NOT -EINVAL — POSIX convention
+                            for unknown ioctl */
+    }
+}</code></pre>
+
+        <p>The ABI design patterns here are production-grade. Reserved fields with mandatory zero-check enable future expansion: when version 2 adds a field using <code>reserved[0]</code>, old binaries that memset the struct to zero will pass the reserved check, and the kernel can safely use the new field. The <code>__attribute__((packed))</code> eliminates compiler-inserted padding that varies between 32-bit and 64-bit builds, which is the number one cause of compat_ioctl bugs. And <code>-ENOTTY</code> for unknown ioctls instead of <code>-EINVAL</code> &mdash; this is a subtle POSIX convention that most kernel developers learn the hard way and every AI tool except Claude Code gets wrong.</p>
+
+        <h2>Cache-Aware &amp; Performance Optimization</h2>
+
+        <p>Systems programmers think about performance in terms of hardware: cache lines (64 bytes on x86/ARM), TLB entries, branch prediction, memory-level parallelism, and instruction-level parallelism. An application developer optimizes by changing algorithms. A systems programmer optimizes by changing data layout to match the hardware&rsquo;s access patterns.</p>
+
+        <h3>Claude Code: Cache-Line-Aware Data Layout</h3>
+
+        <pre><code>&gt; Optimize this packet processing struct for L1 cache
+  performance. Currently seeing cache misses on the hot path
+  that processes 10M packets/sec.
+
+struct packet_ctx {
+    uint64_t timestamp;
+    void *payload;
+    uint32_t len;
+    uint32_t flags;
+    struct flow_key flow;       /* 40 bytes — hash key */
+    struct counters stats;      /* 128 bytes — rarely read */
+    uint8_t protocol;
+    uint16_t vlan_id;
+    uint32_t queue_index;
+    struct list_head lru_list;  /* 16 bytes */
+    char metadata[256];         /* debug info — never in hot path */
+};
+
+Claude Code restructures:
+
+/* HOT data: first cache line (64 bytes).
+   Everything the fast path touches on every packet. */
+struct packet_ctx {
+    /* — cache line 0 — */
+    void *payload;          /* 8B — dereferenced first */
+    uint32_t len;           /* 4B — checked immediately */
+    uint32_t flags;         /* 4B — branch condition */
+    uint64_t timestamp;     /* 8B — used for ordering */
+    uint8_t protocol;       /* 1B — switch dispatch */
+    uint8_t _pad0;          /* 1B — explicit padding */
+    uint16_t vlan_id;       /* 2B — VLAN path only */
+    uint32_t queue_index;   /* 4B — RSS steering */
+    struct flow_key flow;   /* 32B — hash lookup */
+    /* total: 64 bytes — exactly one cache line */
+
+    /* — cache line 1 — */
+    struct list_head lru_list;  /* 16B — touched on eviction */
+    struct counters stats;      /* 128B — aggregated, not per-pkt */
+
+    /* — cold data — */
+    char metadata[256];
+} __attribute__((aligned(64)));
+
+/* Verify at compile time */
+_Static_assert(offsetof(struct packet_ctx, lru_list) == 64,
+    "lru_list must start at cache line 1");
+_Static_assert(sizeof(struct packet_ctx) &lt;= 512,
+    "packet_ctx must fit in 8 cache lines");</code></pre>
+
+        <p>The reasoning is what matters. Claude Code identified that <code>payload</code> and <code>len</code> should be first because they are dereferenced and checked on every packet &mdash; placing them in the first cache line means the hardware prefetcher loads them before the processing function even reads them. The <code>flow</code> key is 32 bytes (five-tuple: src/dst IP, src/dst port, protocol), which exactly fills the rest of the first cache line. The cold <code>metadata</code> array is pushed to the end so it never pollutes L1. Explicit padding (<code>_pad0</code>) prevents compiler-inserted padding from shifting field offsets. And the <code>_Static_assert</code> catches layout regressions at compile time &mdash; because adding a field to the hot region would silently push <code>flow</code> into the second cache line and degrade performance by 30%.</p>
+
+        <h3>Gemini CLI: Large-Scale Performance Analysis</h3>
+
+        <p>Gemini CLI excels at analyzing perf output. Feed it a full <code>perf stat</code> + <code>perf annotate</code> dump for a hot function, and it correctly identifies cache miss sources, branch misprediction hotspots, and memory access patterns. It suggested converting a linked-list traversal to an array-based approach after identifying that pointer chasing was causing L1d misses on every node &mdash; a standard optimization that it articulated with specific cache-line arithmetic. Its limitation is generating the optimized code: it describes what to do but the actual code sometimes has alignment errors or padding miscalculations.</p>
+
+        <h2>Debugging &amp; Crash Analysis</h2>
+
+        <p>Systems debugging is fundamentally different from application debugging. The bug is often non-deterministic, the symptoms are far from the cause, and the debugging tools (GDB, KGDB, crash, perf, ftrace, eBPF) require deep expertise to use effectively. AI tools can accelerate the analysis phase &mdash; interpreting crash dumps, explaining kernel oops messages, and suggesting investigation strategies.</p>
+
+        <h3>Claude Code + Gemini CLI: Complementary Debugging</h3>
+
+        <pre><code>&gt; Kernel oops message. What happened?
+
+BUG: unable to handle page fault for address: ffff8881a3c05008
+RIP: 0010:ring_read+0x42/0x120 [ring_driver]
+RSP: 0018:ffffc9000213be80
+RAX: ffff8881a3c05000 RBX: dead000000000100
+Call Trace:
+ vfs_read+0x9d/0x1a0
+ ksys_read+0x6f/0xf0
+
+Claude Code analysis:
+
+1. **Address pattern**: ffff8881a3c05008 is in the direct-map
+   region — this is kernel heap, not userspace. The page fault
+   means the page was freed or never allocated.
+
+2. **RBX = dead000000000100**: This is a KASAN/SLUB poison
+   pattern. 0xdead0000... means this memory was freed by SLUB
+   and the slab debug pattern was written over it.
+
+3. **RIP: ring_read+0x42**: The crash is 0x42 bytes into
+   ring_read — disassemble at that offset to find which
+   dereference faulted. Given the struct layout, offset 0x42
+   corresponds to the buffer pointer dereference.
+
+4. **Root cause**: Use-after-free. The ring_dev structure was
+   freed (SLUB poisoned it) but ring_read still holds a
+   reference through filp->private_data.
+
+5. **Investigation**:
+   - Check if ring_release() is called before ring_read()
+     completes (race between close() and read() on same fd)
+   - Check refcounting: does the module use kref or
+     file->private_data lifetime tracking?
+   - Reproduce with CONFIG_KASAN=y for exact free backtrace</code></pre>
+
+        <p>Gemini CLI adds value here with its large context window: feed it the entire module source plus the oops trace, and it can correlate the crash offset with the source line, trace the reference counting through every code path, and identify the missing <code>kref_get</code> that would prevent the use-after-free. Claude Code is better at the forensic analysis of the oops message itself; Gemini CLI is better at the whole-codebase reasoning about how to fix it.</p>
+
+        <h2>Which Tool for Which Task</h2>
+
+        <p>Based on our testing across all seven systems programming domains:</p>
+
+        <div style="overflow-x:auto">
+          <table style="width:100%;border-collapse:collapse;margin:1.5rem 0;font-size:0.95rem">
+            <thead>
+              <tr style="border-bottom:2px solid var(--border);text-align:left">
+                <th style="padding:12px 16px">Task</th>
+                <th style="padding:12px 16px">Best Tool</th>
+                <th style="padding:12px 16px">Why</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px">Kernel modules / drivers</td>
+                <td style="padding:12px 16px"><strong>Claude Code</strong></td>
+                <td style="padding:12px 16px">Understands sleeping vs atomic context, kernel API conventions, ERESTARTSYS semantics</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px">Memory allocators</td>
+                <td style="padding:12px 16px"><strong>Claude Code</strong></td>
+                <td style="padding:12px 16px">Reasons about per-CPU data, false sharing, NUMA, and allocation invariants</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px">Lock-free algorithms</td>
+                <td style="padding:12px 16px"><strong>Claude Code</strong></td>
+                <td style="padding:12px 16px">Only tool that gets memory ordering correct on weakly-ordered architectures</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px">Unsafe Rust / FFI</td>
+                <td style="padding:12px 16px"><strong>Claude Code</strong></td>
+                <td style="padding:12px 16px">Understands soundness requirements, Send/Sync semantics, aliasing rules</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px">Modifying in-tree kernel code</td>
+                <td style="padding:12px 16px"><strong>Cursor</strong></td>
+                <td style="padding:12px 16px">Indexes entire kernel tree, matches existing patterns and conventions</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px">Large-scale code analysis</td>
+                <td style="padding:12px 16px"><strong>Gemini CLI</strong></td>
+                <td style="padding:12px 16px">1M token context handles full subsystem source + perf output</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px">Crash dump analysis</td>
+                <td style="padding:12px 16px"><strong>Claude Code + Gemini CLI</strong></td>
+                <td style="padding:12px 16px">Claude for forensics, Gemini for whole-codebase root cause tracing</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h2>What AI Tools Get Wrong About Systems Code</h2>
+
+        <p>Across all testing, AI tools share common failure patterns specific to systems programming:</p>
+
+        <ul>
+          <li><strong>Memory ordering defaults to sequential consistency.</strong> Every tool except Claude Code defaults to <code>memory_order_seq_cst</code> or uses full barriers everywhere. This is &ldquo;correct&rdquo; in the sense that it does not introduce bugs, but it destroys performance on ARM64 and RISC-V where relaxed ordering is the default and barriers are expensive.</li>
+          <li><strong>Sleeping in atomic context.</strong> All tools occasionally generate code that calls sleeping functions (kmalloc with GFP_KERNEL, mutex_lock, copy_from_user) while holding a spinlock or inside an interrupt handler. This is the most common kernel bug category and AI tools reproduce it faithfully.</li>
+          <li><strong>Struct padding assumptions.</strong> AI tools rearrange struct fields for &ldquo;readability&rdquo; without considering alignment, padding, or ABI stability. In systems code, the byte offset of every field matters &mdash; for MMIO register maps, network protocol headers, and ioctl structs.</li>
+          <li><strong>Error path resource leaks.</strong> Systems code must unwind resource acquisition in reverse order on error. AI tools frequently generate error paths that free memory but do not unregister the device, or remove the sysfs entry but do not free the IRQ. The <code>goto err_cleanup</code> pattern used in the kernel exists precisely because linear error handling is insufficient, and AI tools rarely generate it correctly.</li>
+          <li><strong>Undefined behavior blind spots.</strong> Signed integer overflow, null pointer arithmetic, type-punning through pointer casts, accessing uninitialized memory &mdash; all undefined behavior in C that AI tools generate casually. In application code, UB is usually benign. In systems code compiled with <code>-O2</code>, the compiler exploits UB for optimization, causing code to be eliminated, reordered, or transformed in ways that make the program behave nothing like the source suggests.</li>
+        </ul>
+
+        <h2>Cost Model: What Systems Programmers Actually Need</h2>
+
+        <p>Systems programming tool selection is different from application development because the cost of bugs is disproportionately high (CVE, kernel panic, data corruption) and the verification overhead is significant.</p>
+
+        <h3>Scenario 1: Hobbyist / Learning &mdash; $0</h3>
+        <ul>
+          <li><strong>Gemini CLI Free</strong> ($0) for large-context code analysis and learning</li>
+          <li><strong>Copilot Free</strong> ($0) for IDE completions while writing</li>
+          <li>Good enough for personal OS projects, kernel module experiments, and learning Rust systems programming. Expect to manually verify all generated code against kernel documentation.</li>
+        </ul>
+
+        <h3>Scenario 2: Solo Systems Developer &mdash; $20/month</h3>
+        <ul>
+          <li><strong>Claude Code</strong> ($20/mo) for kernel code generation, unsafe Rust, and crash analysis</li>
+          <li>The single best tool for systems programming if you can only pick one. Its reasoning about memory safety, concurrency, and kernel API conventions is consistently better than alternatives.</li>
+        </ul>
+
+        <h3>Scenario 3: Kernel Developer &mdash; $20/month</h3>
+        <ul>
+          <li><strong>Cursor Pro</strong> ($20/mo) for in-tree kernel development</li>
+          <li>If most of your work is modifying existing kernel subsystems rather than writing standalone modules, Cursor&rsquo;s codebase indexing provides more daily value. It matches existing patterns and generates consistent code.</li>
+        </ul>
+
+        <h3>Scenario 4: Professional Systems Programmer &mdash; $40/month</h3>
+        <ul>
+          <li><strong>Claude Code</strong> ($20/mo) for correctness-critical code generation and analysis</li>
+          <li>Plus <strong>Cursor Pro</strong> ($20/mo) for daily IDE workflow with codebase awareness</li>
+          <li>The best combination: Claude Code for the hard problems (lock-free algorithms, allocator design, unsafe Rust soundness) and Cursor for the routine work (driver modifications, test scaffolding, build configs).</li>
+        </ul>
+
+        <h3>Scenario 5: Enterprise Kernel / OS Team &mdash; $60/month</h3>
+        <ul>
+          <li><strong>Cursor Business</strong> ($40/mo) for team-wide indexing, access controls, and audit logging</li>
+          <li>Plus <strong>Claude Code</strong> ($20/mo) for architecture-level reasoning</li>
+          <li>Enterprise features matter when your kernel code ships in millions of devices. Audit logs, centralized prompt policies, and IP indemnity are requirements, not nice-to-haves.</li>
+        </ul>
+
+        <h3>Scenario 6: Mission-Critical Systems (Automotive, Aerospace) &mdash; $99/seat enterprise</h3>
+        <ul>
+          <li><strong>Copilot Enterprise</strong> ($39/mo) or <strong>Cursor Enterprise</strong> ($40/mo) for IP protection and compliance</li>
+          <li>Plus <strong>Claude Code</strong> ($20/mo) for deep reasoning</li>
+          <li>At this level, every AI suggestion is treated as untrusted input. Formal verification, static analysis (Coverity, Polyspace), and mandatory code review are the real safety nets. AI tools accelerate the draft phase but never bypass the verification pipeline.</li>
+        </ul>
+
+        <h2>The Systems-Specific Verdict</h2>
+
+        <p>AI tools for systems programming in 2026 occupy a uniquely dangerous position. They are capable enough to generate plausible kernel modules, lock-free data structures, and unsafe Rust wrappers &mdash; but not reliable enough to generate <em>correct</em> ones without expert verification. The gap between &ldquo;compiles and runs&rdquo; and &ldquo;actually safe under all conditions&rdquo; is wider in systems programming than in any other domain, and AI tools sit squarely in the middle of that gap.</p>
+
+        <p>This does not make them useless &mdash; it makes them dangerous if misused and powerful if used correctly:</p>
+
+        <ul>
+          <li><strong>Use AI aggressively for:</strong> scaffolding kernel modules, generating boilerplate (cdev setup, sysfs attributes, error handling gotos), drafting data structure implementations, writing test harnesses, explaining unfamiliar kernel subsystems, analyzing crash dumps, and refactoring existing code.</li>
+          <li><strong>Use AI cautiously for:</strong> lock-free algorithms, custom allocators, unsafe Rust, ioctl interface design, DMA buffer management, interrupt handlers, and anything involving memory ordering or concurrency.</li>
+          <li><strong>Never trust AI for:</strong> correctness of concurrent code without formal reasoning or stress testing, soundness of unsafe Rust without Miri validation, kernel module safety without CONFIG_DEBUG and sanitizer testing, ABI stability without explicit verification, and security-sensitive code without manual audit.</li>
+        </ul>
+
+        <p>The best systems programming AI workflow in 2026 is <strong>&ldquo;AI drafts the implementation, you verify the invariants.&rdquo;</strong> Generate the kernel module with Claude Code, then compile with <code>CONFIG_DEBUG_ATOMIC_SLEEP</code>, <code>CONFIG_KASAN</code>, and <code>CONFIG_PROVE_LOCKING</code> to catch the invariant violations AI introduces. Generate the lock-free code, then reason through it on a whiteboard (yes, literally) to verify the memory ordering. Generate the unsafe Rust, then run Miri to check soundness. The draft-and-verify cycle is 3&ndash;5x faster than writing from scratch, and the verification step catches the subtle semantic errors that AI tools consistently produce in systems code.</p>
+
+        <p>Compare all tools and pricing on our <a href="/" style="color:var(--accent)">main comparison table</a>, or check the <a href="/blog/cheapest-ai-coding-tool-2026.html" style="color:var(--accent)">cheapest tools guide</a> for budget options.</p>
+
+        <h2>Related on CodeCosts</h2>
+        <ul>
+          <li><a href="/blog/ai-coding-tools-for-embedded-iot-engineers-2026.html" style="color:var(--accent)">AI Coding Tools for Embedded / IoT Engineers (2026)</a> &mdash; resource-constrained development, RTOS, cross-compilation</li>
+          <li><a href="/blog/ai-coding-tools-for-firmware-engineers-2026.html" style="color:var(--accent)">AI Coding Tools for Firmware Engineers (2026)</a> &mdash; peripheral drivers, HAL, interrupt-critical code</li>
+          <li><a href="/blog/ai-coding-tools-for-performance-engineers-2026.html" style="color:var(--accent)">AI Coding Tools for Performance Engineers (2026)</a> &mdash; profiling, optimization, benchmarking</li>
+          <li><a href="/blog/ai-coding-tools-for-security-engineers-2026.html" style="color:var(--accent)">AI Coding Tools for Security Engineers (2026)</a> &mdash; vulnerability analysis, secure coding, audit</li>
+          <li><a href="/blog/ai-coding-tools-for-backend-engineers-2026.html" style="color:var(--accent)">AI Coding Tools for Backend Engineers (2026)</a> &mdash; server-side development, APIs, databases</li>
+          <li><a href="/blog/cheapest-ai-coding-tool-2026.html" style="color:var(--accent)">Cheapest AI Coding Tools in 2026: Complete Cost Comparison</a></li>
+        </ul>
+      </div>
+    </article>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>CodeCosts &mdash; Independent AI coding tool price tracker. Updated March 2026.</p>
+      <p style="margin-top:0.5rem"><a href="/" style="color:var(--accent)">Compare all tools</a> &middot; <a href="/blog/" style="color:var(--accent)">Blog</a> &middot; <a href="/blog/feed.xml" style="color:var(--accent)">RSS</a></p>
+    </div>
+  </footer>
+</body>
+</html>

@@ -45,7 +45,7 @@
       <h2>AI Coding Tools for Data Engineers 2026: Spark, dbt, Airflow &amp; SQL Pipeline Guide</h2>
       <div class="article-meta">
         <span>March 28, 2026</span>
-        <span>16 min read</span>
+        <span>18 min read</span>
       </div>
 
       <div class="article-content">
@@ -212,7 +212,7 @@
 
         <p><strong>Price:</strong> Free (code suggestions + security scans) or $19/mo Pro</p>
 
-        <p>If your data stack runs on AWS &mdash; Glue for ETL, Athena for queries, Redshift for warehousing, MWAA (Managed Airflow) for orchestration, S3 for storage, Step Functions for orchestration &mdash; Amazon Q is purpose-built for you. It knows AWS APIs deeply and generates correct Glue job scripts, Athena queries, Redshift DDL, and CloudFormation templates for data infrastructure.</p>
+        <p>If your data stack runs on AWS &mdash; Glue for ETL, Athena for queries, Redshift for warehousing, MWAA (Managed Airflow) for orchestration, S3 for storage, Step Functions for orchestration &mdash; Amazon Q is purpose-built for you. It generates PySpark and Scala ETL scripts from natural language, including DataFrame-based code generation with in-prompt context-aware job creation. It connects to 20+ data sources (Redshift, Snowflake, BigQuery, DynamoDB, MongoDB) and generates correct Glue job scripts, Athena queries, Redshift DDL, and CloudFormation templates for data infrastructure.</p>
 
         <p>The free tier includes unlimited code suggestions and security scanning, which catches IAM permission issues in your pipeline infrastructure code. The <code>/transform</code> command can help modernize legacy ETL scripts. For data engineers working entirely within the AWS ecosystem, Amazon Q eliminates the translation layer between &ldquo;I want to do X&rdquo; and &ldquo;here is the AWS-specific way to do X.&rdquo;</p>
 
@@ -317,6 +317,32 @@
 
         <p>For dbt-heavy projects (50+ models), specify your dbt conventions in the tool&rsquo;s configuration file. Document your naming conventions, materialization strategy, and custom macros. This gives the AI enough context to generate dbt-idiomatic code instead of generic SQL.</p>
 
+        <h2>The MCP Ecosystem: The Real Game-Changer for Data Engineers</h2>
+
+        <p>The biggest shift in AI coding tools for data engineering in 2026 is not a new model or IDE &mdash; it is the <strong>MCP (Model Context Protocol) ecosystem</strong>. MCP servers act as connectors between AI tools and your actual data infrastructure, giving the AI context it could never have from code alone.</p>
+
+        <p>Three MCP integrations matter most for data engineers:</p>
+
+        <ul>
+          <li><strong>dbt Power User MCP + dbt-labs/dbt-mcp:</strong> Exposes a <code>COMPILE_QUERY</code> tool that shows the AI your compiled SQL (as dbt renders it), not the raw Jinja template. Also provides model lineage, test results, semantic definitions, freshness info, and contracts. Works with Claude Code and Cursor. This single integration transforms dbt support from &ldquo;basic Jinja guessing&rdquo; to &ldquo;schema-aware model reasoning.&rdquo;</li>
+          <li><strong>Astronomer MCP Server:</strong> Gives AI tools access to Airflow DAG management, task logs, best practices, and version-aware patterns. Eliminates the &ldquo;Franken-DAG&rdquo; problem where AI mixes Airflow 1.x/2.x/3.x syntax. One install: <code>npx skills add astronomer/agents --skill '*'</code>.</li>
+          <li><strong>Database MCP servers:</strong> Connect AI tools to your actual warehouse (Snowflake, BigQuery, PostgreSQL, 30+ databases). Schema-aware completions without DataGrip &mdash; your AI knows your real column names, types, and relationships.</li>
+        </ul>
+
+        <p>If you use Claude Code or Cursor, installing dbt and Astronomer MCP servers should be step one. The improvement in suggestion quality is dramatic &mdash; it is the difference between an AI that guesses your table names and one that knows them.</p>
+
+        <h3>Snowflake Cortex Code &mdash; The Domain-Specific Newcomer</h3>
+
+        <p>Worth special mention: <strong>Snowflake Cortex Code</strong> ($20/mo + token consumption after 30-day trial) is a purpose-built AI tool for Snowflake data engineers. It reads your actual Snowflake metadata &mdash; tables, columns, relationships &mdash; and has native support for dbt model generation and Airflow DAG authoring using your warehouse context. It is CLI-first (also available in Snowsight). If your warehouse is Snowflake, this is the most schema-aware option available, though it does not help with non-Snowflake infrastructure.</p>
+
+        <h2>Adoption Reality Check</h2>
+
+        <p>According to Joe Reis&rsquo;s 2026 State of Data Engineering survey (1,101 respondents): <strong>82% of data engineers use AI tools daily or more</strong> (54% multiple times per day). Only 3.7% find them unhelpful. Primary use cases: writing SQL and Python code (82%), documentation and discovery (56%), pipeline debugging (29%), architecture design (21%).</p>
+
+        <p>But there is a gap between individual and organizational adoption: <strong>64% of organizations are still &ldquo;experimenting or using AI for tactical tasks only.&rdquo;</strong> Data engineers are using AI tools individually while their companies are still figuring out policy, procurement, and standards. The Hex State of Data Teams 2026 confirms this: 31% of data leaders cite trust as the top AI adoption barrier.</p>
+
+        <p>This means most data engineers are choosing their own tools. The recommendations below assume you have individual purchasing authority &mdash; which, based on the adoption data, most of you do.</p>
+
         <h2>Recommended Stacks by Data Engineering Workflow</h2>
 
         <h3>1. SQL-Heavy Warehouse Development ($0&ndash;10/mo)</h3>
@@ -347,13 +373,19 @@
 
         <p>If your entire stack is AWS &mdash; Glue ETL, Athena, Redshift, MWAA, Step Functions, S3, Lake Formation &mdash; Amazon Q understands your world better than any general-purpose tool. It generates correct Glue scripts, Athena DDL, Redshift optimization hints, and CloudFormation templates for data infrastructure. The free tier is sufficient for individual data engineers.</p>
 
-        <h3>5. GCP / BigQuery Data Platform ($0)</h3>
+        <h3>5. Snowflake + dbt Data Platform ($20/mo)</h3>
+
+        <p><strong>Stack:</strong> Snowflake Cortex Code ($20/mo) or Claude Code ($20/mo) + dbt MCP Server</p>
+
+        <p>Snowflake shops have a unique option: Cortex Code reads your actual Snowflake metadata and generates dbt models and Airflow DAGs grounded in your real schema. The alternative &mdash; Claude Code with the dbt Power User MCP server &mdash; gives broader capability (terminal agent + cross-file reasoning) but requires manual MCP setup. Choose Cortex Code for schema-first simplicity, or Claude Code for broader pipeline coverage.</p>
+
+        <h3>6. GCP / BigQuery Data Platform ($0)</h3>
 
         <p><strong>Stack:</strong> Gemini Code Assist Free</p>
 
         <p>For BigQuery-native workflows with Cloud Composer orchestration, Gemini&rsquo;s free tier (6,000 completions/day) provides excellent BigQuery SQL completions at zero cost. The native Google Cloud integration means it understands BigQuery-specific features like nested/repeated fields, partitioning, and clustering better than any competitor.</p>
 
-        <h3>6. Streaming / Kafka Pipelines ($20&ndash;30/mo)</h3>
+        <h3>7. Streaming / Kafka Pipelines ($20&ndash;30/mo)</h3>
 
         <p><strong>Stack:</strong> Copilot Pro ($10/mo) + Claude Code ($20/mo)</p>
 

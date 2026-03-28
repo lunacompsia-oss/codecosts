@@ -9,6 +9,14 @@
     <atom:link href="https://codecosts.pages.dev/blog/feed.xml" rel="self" type="application/rss+xml"/>
 
     <item>
+      <title>AI Coding Tools for Performance Engineers 2026: Profiling, Benchmarking, Load Testing &amp; Optimization Guide</title>
+      <link>https://codecosts.pages.dev/blog/ai-coding-tools-for-performance-engineers-2026.html</link>
+      <description>The performance engineer's guide to AI coding tools in 2026. Profiling and flame graph analysis, benchmark authoring, load test scripting, memory leak detection, database query optimization, and low-level CPU/memory optimization.</description>
+      <pubDate>Sat, 28 Mar 2026 23:59:00 GMT</pubDate>
+      <guid>https://codecosts.pages.dev/blog/ai-coding-tools-for-performance-engineers-2026.html</guid>
+    </item>
+
+    <item>
       <title>AI Coding Tools for Cloud Architects 2026: IaC, Multi-Cloud Design, Cost Optimization &amp; Cloud-Native Architecture Guide</title>
       <link>https://codecosts.pages.dev/blog/ai-coding-tools-for-cloud-architects-2026.html</link>
       <description>The cloud architect's guide to AI coding tools in 2026. Terraform and IaC authoring, multi-cloud design patterns, FinOps and cost optimization, landing zone design, migration planning, and security/compliance as code.</description>

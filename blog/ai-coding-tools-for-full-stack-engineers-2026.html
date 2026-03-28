@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Coding Tools for Full-Stack Engineers 2026: Frontend, Backend, APIs &amp; Context-Switching Guide</title>
+  <meta name="description" content="The full-stack engineer's guide to AI coding tools in 2026. Context-switching between frontend and backend, full-stack framework support (Next.js, Remix, Rails, Laravel), API design, database queries, and which tools handle polyglot codebases best.">
+  <link rel="canonical" href="https://codecosts.pages.dev/blog/ai-coding-tools-for-full-stack-engineers-2026.html">
+  <meta property="og:title" content="AI Coding Tools for Full-Stack Engineers 2026: Frontend, Backend, APIs &amp; Context-Switching Guide">
+  <meta property="og:description" content="Every AI coding tool ranked for full-stack development. Context-switching, full-stack frameworks, API design, and the $0 to $60/mo stacks for full-stack engineers.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://codecosts.pages.dev/blog/ai-coding-tools-for-full-stack-engineers-2026.html">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="AI Coding Tools for Full-Stack Engineers 2026: Frontend, Backend, APIs &amp; Context-Switching Guide">
+  <meta name="twitter:description" content="Every AI coding tool ranked for full-stack dev. Context-switching, frameworks, APIs &mdash; the $0 to $60/mo stacks.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💰</text></svg>">
+  <link rel="stylesheet" href="../style.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "AI Coding Tools for Full-Stack Engineers 2026: Frontend, Backend, APIs & Context-Switching Guide",
+    "datePublished": "2026-03-28",
+    "dateModified": "2026-03-28",
+    "author": { "@type": "Organization", "name": "CodeCosts" },
+    "publisher": { "@type": "Organization", "name": "CodeCosts" },
+    "description": "The full-stack engineer's guide to AI coding tools in 2026. Context-switching between frontend and backend, full-stack framework support, API design, database queries, and which tools handle polyglot codebases best."
+  }
+  </script>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <a href="/" style="text-decoration:none;color:inherit"><h1><span class="logo">$_</span> CodeCosts</h1></a>
+      <p class="tagline">AI Coding Tool News &amp; Analysis</p>
+      <nav>
+        <a href="/">Tools</a>
+        <a href="/blog/" class="active">Blog</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <article class="card">
+      <h2>AI Coding Tools for Full-Stack Engineers 2026: Frontend, Backend, APIs &amp; Context-Switching Guide</h2>
+      <div class="article-meta">
+        <span>March 28, 2026</span>
+        <span>22 min read</span>
+      </div>
+
+      <div class="article-content">
+        <p>You wrote a React component twenty minutes ago. Now you are debugging a database migration. In an hour you will be wiring up an API endpoint, writing validation logic, and wondering why your WebSocket connection drops every thirty seconds. That is full-stack engineering &mdash; not a job title, but a constant context switch between layers, languages, frameworks, and mental models.</p>
+
+        <p>Most AI coding tool reviews test one thing at a time: generate a function, complete a line, refactor a class. That tells you nothing about what matters to a full-stack engineer: can the tool follow you from a React component to the Express route that feeds it to the Prisma query that backs it? Can it understand that changing a database column name means updating the API response, the TypeScript type, the frontend component, and the test fixture?</p>
+
+        <p>This guide evaluates every major AI coding tool from the perspective of someone who touches every layer of the stack every day. We tested each tool on real full-stack tasks: building features end-to-end, refactoring across frontend and backend simultaneously, debugging issues that span layers, and working with full-stack frameworks like Next.js, Remix, Rails, Laravel, and Django.</p>
+
+        <div class="callout tip">
+          <div class="callout-title">TL;DR</div>
+          <p><strong>Best free ($0):</strong> GitHub Copilot Free &mdash; 2,000 completions/mo covers both frontend and backend, broad IDE support. <strong>Best all-rounder ($20/mo):</strong> Cursor Pro &mdash; Composer mode handles multi-file changes across stack layers, strong codebase indexing, best for full-stack frameworks. <strong>Best for cross-layer refactoring ($20/mo):</strong> Claude Code &mdash; terminal agent that sees your entire project, excels at changes that ripple from database to UI. <strong>Best for speed ($20/mo):</strong> Windsurf Pro &mdash; Cascade agent handles end-to-end features, fast autocomplete across languages. <strong>Best combo ($30&ndash;40/mo):</strong> Copilot Pro ($10) + Claude Code ($20) &mdash; Copilot for inline completions while coding, Claude Code for cross-layer features and refactors.</p>
+        </div>
+
+        <h2>Why Full-Stack Engineers Evaluate AI Tools Differently</h2>
+
+        <p>Frontend engineers optimize for component quality and framework patterns. Backend engineers optimize for API design and data layer correctness. Full-stack engineers optimize for something neither side benchmarks: <strong>how well the tool handles the boundaries between layers</strong>.</p>
+
+        <ul>
+          <li><strong>Context-switching cost:</strong> You jump between TypeScript/JSX, Python or Node.js, SQL, CSS, configuration files, and deployment manifests &mdash; sometimes in a single commit. The tool needs to switch with you without losing context or suggesting React patterns in your Express handler.</li>
+          <li><strong>Cross-layer awareness:</strong> A database schema change is not a backend task. It ripples through your ORM, API serialization, frontend types, form validation, and tests. You need a tool that can trace that chain, not one that treats each file as an island.</li>
+          <li><strong>Full-stack framework fluency:</strong> Next.js, Remix, Nuxt, SvelteKit, Rails, Laravel, Django &mdash; these frameworks blur the frontend/backend boundary by design. Server components, API routes, server actions, form handling &mdash; the tool needs to understand the framework&rsquo;s conventions, not just the language.</li>
+          <li><strong>Polyglot proficiency:</strong> In a single project you might use TypeScript, Python, SQL, GraphQL, YAML, Dockerfile syntax, and shell scripts. The tool needs to be competent across all of them, not excellent at one and mediocre at the rest.</li>
+          <li><strong>End-to-end feature velocity:</strong> You are not handing off to another engineer. When you build a feature, you build the whole thing: schema, migration, model, controller/route, API contract, frontend component, styling, and tests. The tool should accelerate the entire flow, not just fragments of it.</li>
+        </ul>
+
+        <h2>The Full-Stack Tool Evaluation Matrix</h2>
+
+        <p>We evaluated each tool on the dimensions that matter most when you work across every layer:</p>
+
+        <div style="overflow-x:auto">
+          <table style="width:100%;border-collapse:collapse;margin:1.5rem 0">
+            <thead>
+              <tr style="border-bottom:2px solid var(--border)">
+                <th style="text-align:left;padding:0.75rem">Dimension</th>
+                <th style="text-align:center;padding:0.75rem">Copilot</th>
+                <th style="text-align:center;padding:0.75rem">Cursor</th>
+                <th style="text-align:center;padding:0.75rem">Claude Code</th>
+                <th style="text-align:center;padding:0.75rem">Windsurf</th>
+                <th style="text-align:center;padding:0.75rem">Amazon Q</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:0.75rem"><strong>Cross-layer awareness</strong></td>
+                <td style="text-align:center;padding:0.75rem">Medium</td>
+                <td style="text-align:center;padding:0.75rem">High</td>
+                <td style="text-align:center;padding:0.75rem">Highest</td>
+                <td style="text-align:center;padding:0.75rem">High</td>
+                <td style="text-align:center;padding:0.75rem">Medium</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:0.75rem"><strong>Multi-file editing</strong></td>
+                <td style="text-align:center;padding:0.75rem">Limited</td>
+                <td style="text-align:center;padding:0.75rem">Strong</td>
+                <td style="text-align:center;padding:0.75rem">Strongest</td>
+                <td style="text-align:center;padding:0.75rem">Strong</td>
+                <td style="text-align:center;padding:0.75rem">Limited</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:0.75rem"><strong>Full-stack framework support</strong></td>
+                <td style="text-align:center;padding:0.75rem">Good</td>
+                <td style="text-align:center;padding:0.75rem">Excellent</td>
+                <td style="text-align:center;padding:0.75rem">Excellent</td>
+                <td style="text-align:center;padding:0.75rem">Good</td>
+                <td style="text-align:center;padding:0.75rem">Fair</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:0.75rem"><strong>Polyglot proficiency</strong></td>
+                <td style="text-align:center;padding:0.75rem">Excellent</td>
+                <td style="text-align:center;padding:0.75rem">Excellent</td>
+                <td style="text-align:center;padding:0.75rem">Excellent</td>
+                <td style="text-align:center;padding:0.75rem">Good</td>
+                <td style="text-align:center;padding:0.75rem">Good</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:0.75rem"><strong>Context-switch fluency</strong></td>
+                <td style="text-align:center;padding:0.75rem">Good</td>
+                <td style="text-align:center;padding:0.75rem">Excellent</td>
+                <td style="text-align:center;padding:0.75rem">Excellent</td>
+                <td style="text-align:center;padding:0.75rem">Good</td>
+                <td style="text-align:center;padding:0.75rem">Fair</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:0.75rem"><strong>API + database fluency</strong></td>
+                <td style="text-align:center;padding:0.75rem">Good</td>
+                <td style="text-align:center;padding:0.75rem">Good</td>
+                <td style="text-align:center;padding:0.75rem">Excellent</td>
+                <td style="text-align:center;padding:0.75rem">Good</td>
+                <td style="text-align:center;padding:0.75rem">Good (AWS)</td>
+              </tr>
+              <tr>
+                <td style="padding:0.75rem"><strong>Pro price</strong></td>
+                <td style="text-align:center;padding:0.75rem">$10/mo</td>
+                <td style="text-align:center;padding:0.75rem">$20/mo</td>
+                <td style="text-align:center;padding:0.75rem">$20/mo</td>
+                <td style="text-align:center;padding:0.75rem">$20/mo</td>
+                <td style="text-align:center;padding:0.75rem">$19/mo</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h2>The Context-Switching Problem</h2>
+
+        <p>A frontend engineer lives in JSX. A backend engineer lives in their server language. You live everywhere, and that is the core challenge AI tools need to solve for you.</p>
+
+        <h3>What context-switching actually looks like</h3>
+
+        <p>In a typical two-hour block, a full-stack engineer might:</p>
+
+        <ol>
+          <li>Add a column to a database migration (SQL or ORM syntax)</li>
+          <li>Update the model/schema to reflect it (TypeScript/Python/Ruby)</li>
+          <li>Modify the API endpoint to expose the new field (framework-specific)</li>
+          <li>Update or create API types/serializers (TypeScript interfaces, Pydantic models, serializers)</li>
+          <li>Wire the data into a frontend component (React/Vue/Svelte)</li>
+          <li>Add form validation for user input (Zod, Yup, or framework validator)</li>
+          <li>Write tests at multiple layers (unit, integration, E2E)</li>
+          <li>Update the Docker config if needed (YAML/Dockerfile)</li>
+        </ol>
+
+        <p>That is eight distinct mental contexts in a single feature. Every time you switch, there is a cognitive ramp-up cost. AI tools can either absorb that cost or amplify it.</p>
+
+        <h3>How tools handle context switches</h3>
+
+        <p><strong>Copilot</strong> adapts its completions to the current file type, but each file is largely independent. It does not remember that you just changed the API response shape when you switch to the frontend component. In practice, you end up manually ensuring consistency across layers.</p>
+
+        <p><strong>Cursor</strong> handles this significantly better through codebase indexing. When you open Composer and describe a cross-layer change, it can pull in the relevant files from both sides. The <code>@codebase</code> tag lets you ask questions like &ldquo;what frontend components consume this API endpoint?&rdquo; and get accurate answers.</p>
+
+        <p><strong>Claude Code</strong> operates at the project level by default. Because it runs in your terminal and can explore your file system, it naturally traces dependencies across layers. Tell it &ldquo;add an <code>email_verified</code> field to the user model and expose it through the API to the profile page&rdquo; and it will modify the migration, model, serializer, API route, TypeScript types, and frontend component in a single run.</p>
+
+        <p><strong>Windsurf</strong> uses Cascade to handle multi-file flows. It can follow a feature through multiple files, though it sometimes needs guidance about which files to include. Good at following explicit chains, less reliable at discovering implicit ones.</p>
+
+        <h2>Full-Stack Framework Deep Dive</h2>
+
+        <p>Full-stack frameworks are where AI tools get tested hardest, because these frameworks have their own conventions that override general language patterns.</p>
+
+        <h3>Next.js (App Router)</h3>
+
+        <p>Next.js App Router introduced server components, server actions, route handlers, and a file-based routing convention that trips up many AI tools. The distinction between <code>&quot;use client&quot;</code> and server components is critical &mdash; get it wrong and you ship broken code.</p>
+
+        <ul>
+          <li><strong>Cursor:</strong> Best-in-class for Next.js. Understands App Router conventions, correctly generates server components by default, handles <code>&quot;use client&quot;</code> boundaries well, knows the difference between <code>page.tsx</code>, <code>layout.tsx</code>, <code>loading.tsx</code>, and <code>route.ts</code>. Composer can scaffold entire route groups.</li>
+          <li><strong>Claude Code:</strong> Excellent. Generates correct server/client component boundaries, understands server actions, handles complex data fetching patterns (parallel routes, intercepting routes). Particularly strong when you need to refactor from Pages Router to App Router.</li>
+          <li><strong>Copilot:</strong> Good for individual files, but sometimes suggests Pages Router patterns in App Router projects or adds <code>&quot;use client&quot;</code> unnecessarily. Check the imports &mdash; it occasionally suggests deprecated patterns.</li>
+          <li><strong>Windsurf:</strong> Decent. Knows the basics of App Router but occasionally confuses conventions, especially around nested layouts and parallel routes. Autocomplete in server components is solid.</li>
+        </ul>
+
+        <h3>Remix / React Router v7</h3>
+
+        <ul>
+          <li><strong>Claude Code:</strong> Best here. Understands loaders, actions, form handling, and the &ldquo;progressive enhancement&rdquo; philosophy. Generates correct <code>loader</code>/<code>action</code> functions with proper TypeScript types.</li>
+          <li><strong>Cursor:</strong> Good. Handles loaders and actions correctly. Composer works well for building full route modules.</li>
+          <li><strong>Copilot:</strong> Sometimes confuses Remix conventions with Next.js conventions, especially around data loading patterns. Usually generates valid code but may not follow Remix idioms.</li>
+        </ul>
+
+        <h3>Rails</h3>
+
+        <ul>
+          <li><strong>Copilot:</strong> Excellent. Ruby support is strong, understands Rails conventions (MVC, ActiveRecord, migrations, concerns, service objects). Best autocomplete for ERB templates and model validations.</li>
+          <li><strong>Claude Code:</strong> Strong. Understands Rails conventions deeply, can scaffold entire resources following Rails conventions, handles complex ActiveRecord queries. Good at generating migrations from natural language descriptions.</li>
+          <li><strong>Cursor:</strong> Good, though codebase indexing works less smoothly with Ruby than with TypeScript. Composer handles multi-file Rails changes decently.</li>
+        </ul>
+
+        <h3>Laravel</h3>
+
+        <ul>
+          <li><strong>Copilot:</strong> Good PHP and Laravel support. Understands Eloquent, Blade templates, middleware, and artisan commands.</li>
+          <li><strong>Claude Code:</strong> Strong. Can generate entire resource controllers with form requests, policies, and tests. Understands Laravel conventions including Livewire and Inertia.js patterns.</li>
+          <li><strong>Cursor:</strong> Decent. PHP codebase indexing works but is not as refined as for TypeScript projects.</li>
+        </ul>
+
+        <h3>Django</h3>
+
+        <ul>
+          <li><strong>Copilot:</strong> Good Python support, understands Django ORM, class-based views, and template syntax.</li>
+          <li><strong>Claude Code:</strong> Strong. Handles Django REST Framework serializers, viewsets, and URL routing well. Can generate complete API endpoints with proper permissions and pagination.</li>
+          <li><strong>Amazon Q:</strong> Decent, especially if you deploy to AWS. Understands Django patterns but less opinionated about best practices.</li>
+        </ul>
+
+        <h2>Head-to-Head: 15 Full-Stack Tasks</h2>
+
+        <p>We tested each tool on real full-stack engineering tasks. Here is which tool won each one:</p>
+
+        <div style="overflow-x:auto">
+          <table style="width:100%;border-collapse:collapse;margin:1.5rem 0">
+            <thead>
+              <tr style="border-bottom:2px solid var(--border)">
+                <th style="text-align:left;padding:0.75rem">Task</th>
+                <th style="text-align:left;padding:0.75rem">Best Tool</th>
+                <th style="text-align:left;padding:0.75rem">Why</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:0.75rem">Build a CRUD feature end-to-end</td>
+                <td style="padding:0.75rem"><strong>Claude Code</strong></td>
+                <td style="padding:0.75rem">Single prompt generates migration, model, API route, types, component, and tests</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:0.75rem">Add a field to an existing model</td>
+                <td style="padding:0.75rem"><strong>Claude Code</strong></td>
+                <td style="padding:0.75rem">Traces all downstream consumers and updates them</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:0.75rem">Write an API endpoint</td>
+                <td style="padding:0.75rem"><strong>Copilot</strong></td>
+                <td style="padding:0.75rem">Fast inline completions, knows Express/Fastify/Hono patterns cold</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:0.75rem">Design a database schema</td>
+                <td style="padding:0.75rem"><strong>Claude Code</strong></td>
+                <td style="padding:0.75rem">Discusses trade-offs, generates migrations with proper indexes and constraints</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:0.75rem">Build a form with validation</td>
+                <td style="padding:0.75rem"><strong>Cursor</strong></td>
+                <td style="padding:0.75rem">Composer generates form + validation schema + API handler + types together</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:0.75rem">Debug a cross-layer bug</td>
+                <td style="padding:0.75rem"><strong>Claude Code</strong></td>
+                <td style="padding:0.75rem">Can read logs, check DB state, trace through API to frontend &mdash; all in terminal</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:0.75rem">Write integration tests</td>
+                <td style="padding:0.75rem"><strong>Claude Code</strong></td>
+                <td style="padding:0.75rem">Generates test fixtures, factory setup, API calls, and assertions across layers</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:0.75rem">Refactor API from REST to tRPC/GraphQL</td>
+                <td style="padding:0.75rem"><strong>Claude Code</strong></td>
+                <td style="padding:0.75rem">Handles the full migration: server definitions, client integration, type generation</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:0.75rem">Style a component (Tailwind/CSS)</td>
+                <td style="padding:0.75rem"><strong>Cursor</strong></td>
+                <td style="padding:0.75rem">Visual preview, knows your design tokens from codebase context</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:0.75rem">Write a database query (complex joins)</td>
+                <td style="padding:0.75rem"><strong>Copilot</strong></td>
+                <td style="padding:0.75rem">Fast SQL completions, good with Prisma/Drizzle/Sequelize query builders</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:0.75rem">Set up authentication (OAuth/JWT)</td>
+                <td style="padding:0.75rem"><strong>Claude Code</strong></td>
+                <td style="padding:0.75rem">Generates secure auth flow across frontend + API + middleware + database</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:0.75rem">Add real-time features (WebSocket/SSE)</td>
+                <td style="padding:0.75rem"><strong>Claude Code</strong></td>
+                <td style="padding:0.75rem">Understands server push + client subscription + reconnection logic</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:0.75rem">Write deployment configuration</td>
+                <td style="padding:0.75rem"><strong>Copilot</strong></td>
+                <td style="padding:0.75rem">Good Dockerfile, docker-compose, and CI/CD YAML completions</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:0.75rem">Scaffold a new microservice</td>
+                <td style="padding:0.75rem"><strong>Claude Code</strong></td>
+                <td style="padding:0.75rem">Generates project structure, boilerplate, config, and wiring to existing services</td>
+              </tr>
+              <tr>
+                <td style="padding:0.75rem">Inline code completion while typing</td>
+                <td style="padding:0.75rem"><strong>Copilot</strong></td>
+                <td style="padding:0.75rem">Fastest, least intrusive, best at completing partial lines across any language</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <p><strong>Pattern:</strong> Claude Code dominates cross-layer and complex tasks (9/15). Copilot wins single-file and speed-sensitive tasks (4/15). Cursor wins multi-file UI-heavy work (2/15). For full-stack engineers, the most time-consuming tasks are cross-layer &mdash; which is why agent-based tools provide disproportionate value.</p>
+
+        <h2>The API Layer: Where Full-Stack Engineers Live</h2>
+
+        <p>The API layer is arguably the most important context for full-stack engineers, because it is the contract between your frontend and backend. Get it wrong and both sides break.</p>
+
+        <h3>REST API design</h3>
+
+        <p>All tools generate REST endpoints competently, but they differ in how well they understand RESTful conventions:</p>
+
+        <ul>
+          <li><strong>Copilot</strong> generates correct Express/Fastify/Hono routes quickly but does not opine on resource naming, status codes, or error formats unless prompted.</li>
+          <li><strong>Cursor</strong> with codebase context will match your existing API style &mdash; if your other endpoints use <code>camelCase</code> response fields, new endpoints will too.</li>
+          <li><strong>Claude Code</strong> proactively follows REST best practices (proper status codes, pagination, filtering, error responses) and can generate OpenAPI specs alongside the implementation.</li>
+        </ul>
+
+        <h3>Type safety across the stack</h3>
+
+        <p>This is where full-stack engineers feel the most pain. You define a type on the server, serialize it in the API, and need the frontend to know about it &mdash; without manually duplicating the definition.</p>
+
+        <ul>
+          <li><strong>tRPC:</strong> All tools handle tRPC reasonably well. Claude Code is best at setting it up from scratch. Cursor and Copilot are good at completing tRPC router definitions once the setup exists.</li>
+          <li><strong>Zod + inference:</strong> Claude Code and Cursor both understand the <code>z.infer&lt;typeof schema&gt;</code> pattern and will generate Zod schemas that work across validation and type inference.</li>
+          <li><strong>OpenAPI codegen:</strong> Claude Code can generate both the spec and the code from it. Other tools are less reliable at maintaining spec-code consistency.</li>
+          <li><strong>Prisma/Drizzle types:</strong> All tools understand ORM-generated types, but Cursor&rsquo;s codebase indexing gives it an edge in knowing which Prisma types are available in which files.</li>
+        </ul>
+
+        <h3>Database queries and ORMs</h3>
+
+        <p>Full-stack engineers write more database queries than backend specialists might expect &mdash; you are often the same person building the UI and writing the query that feeds it.</p>
+
+        <ul>
+          <li><strong>Prisma:</strong> All tools handle Prisma well. Copilot&rsquo;s completions are fastest for simple queries. Claude Code is best for complex includes, transactions, and raw SQL fallbacks.</li>
+          <li><strong>Drizzle:</strong> Cursor and Claude Code handle Drizzle&rsquo;s SQL-like API well. Copilot sometimes suggests Knex or Prisma patterns instead.</li>
+          <li><strong>Raw SQL:</strong> Copilot has the best inline SQL completions. Claude Code is best for complex joins, CTEs, and explaining query plans.</li>
+          <li><strong>Migrations:</strong> Claude Code is the clear winner &mdash; it can generate migration files, test them, and even suggest rollback strategies.</li>
+        </ul>
+
+        <h2>The Monorepo Question</h2>
+
+        <p>Many full-stack projects use monorepos (Turborepo, Nx, pnpm workspaces) to keep frontend and backend code in one repository. This is great for code sharing but introduces a tool evaluation dimension that most reviews ignore.</p>
+
+        <h3>How tools handle monorepos</h3>
+
+        <ul>
+          <li><strong>Cursor:</strong> Handles monorepos well. Codebase indexing works across workspace packages. Composer can pull in files from any package. The <code>@codebase</code> search works across the entire repo.</li>
+          <li><strong>Claude Code:</strong> Excellent in monorepos. Because it operates at the file system level, workspace boundaries are transparent. It naturally navigates between <code>packages/api/</code> and <code>packages/web/</code> without configuration.</li>
+          <li><strong>Copilot:</strong> File-level completions work fine, but cross-package awareness is limited. It will not automatically know that changing a shared type in <code>packages/shared/</code> affects consumers in other packages.</li>
+          <li><strong>Windsurf:</strong> Monorepo support is decent but not as polished as Cursor&rsquo;s. Cascade sometimes needs explicit guidance about which packages to include.</li>
+        </ul>
+
+        <h3>Shared types and utilities</h3>
+
+        <p>The reason full-stack engineers love monorepos is shared code: types, validation schemas, constants, and utilities that both frontend and backend use. The tool needs to understand these shared dependencies.</p>
+
+        <p><strong>Best practice:</strong> Put your shared types in a dedicated package (<code>packages/shared/</code> or <code>packages/types/</code>) and use a tool that indexes across packages. Cursor and Claude Code both handle this well. Copilot needs you to have the shared file open in another tab.</p>
+
+        <h2>Authentication and Authorization: The Full-Stack Gauntlet</h2>
+
+        <p>Auth is the task that exposes whether a tool truly understands full-stack development, because it touches every layer: database (user model, sessions), server (middleware, token verification), API (protected routes, role checks), and frontend (login flows, token storage, route guards).</p>
+
+        <ul>
+          <li><strong>Claude Code</strong> is the clear winner here. Ask it to &ldquo;add email/password authentication with JWT&rdquo; and it generates the complete flow: user model with password hashing, login/register API routes, JWT middleware, frontend login form, token storage (with security considerations about localStorage vs httpOnly cookies), and protected route wrappers. It even warns about common security mistakes.</li>
+          <li><strong>Cursor</strong> handles auth well through Composer, especially when you reference a library like NextAuth, Lucia, or Clerk. It generates correct integration code when given a target library.</li>
+          <li><strong>Copilot</strong> generates individual auth components correctly but does not connect them. You will get a good JWT middleware function, but you need to wire it up yourself.</li>
+        </ul>
+
+        <div class="callout warning">
+          <div class="callout-title">Security warning</div>
+          <p>Never trust AI-generated authentication code without review. All tools occasionally suggest insecure patterns: weak hashing algorithms, JWTs without expiration, tokens in localStorage without CSRF protection, or missing rate limiting on login endpoints. Use AI to draft auth flows, then verify against OWASP guidelines.</p>
+        </div>
+
+        <h2>Testing Across the Stack</h2>
+
+        <p>Full-stack engineers need to write tests at multiple layers, and each layer has different tools and conventions. Here is how AI tools handle the full testing spectrum:</p>
+
+        <h3>Unit tests</h3>
+
+        <p>All tools generate decent unit tests. Copilot is fastest for function-level tests. Claude Code generates more comprehensive test cases including edge cases. Cursor is good at generating tests that follow your existing test patterns.</p>
+
+        <h3>Integration tests (API layer)</h3>
+
+        <p>This is where Claude Code shines. It generates complete integration tests with:</p>
+        <ul>
+          <li>Test database setup and teardown</li>
+          <li>Seed data / factory functions</li>
+          <li>Authenticated requests with proper headers</li>
+          <li>Response body and status code assertions</li>
+          <li>Edge cases (invalid input, missing auth, rate limits)</li>
+        </ul>
+
+        <h3>End-to-end tests (Playwright/Cypress)</h3>
+
+        <p>Claude Code and Cursor both generate good E2E tests. Claude Code is better at setting up test infrastructure (test users, seed data) alongside the test. Cursor is better at generating page object patterns if your project already uses them.</p>
+
+        <h3>The full-stack testing pattern</h3>
+
+        <p>The ideal approach for full-stack engineers: use Copilot for quick unit tests while coding, then Claude Code for comprehensive integration and E2E tests after the feature is complete. This mirrors the natural workflow &mdash; fast tests during development, thorough tests before merge.</p>
+
+        <h2>Cost Analysis for Full-Stack Engineers</h2>
+
+        <p>Full-stack engineers use AI tools more intensively than specialists because they work across more file types and make more cross-cutting changes. Here is what that means for pricing:</p>
+
+        <div style="overflow-x:auto">
+          <table style="width:100%;border-collapse:collapse;margin:1.5rem 0">
+            <thead>
+              <tr style="border-bottom:2px solid var(--border)">
+                <th style="text-align:left;padding:0.75rem">Setup</th>
+                <th style="text-align:center;padding:0.75rem">Monthly Cost</th>
+                <th style="text-align:left;padding:0.75rem">What You Get</th>
+                <th style="text-align:left;padding:0.75rem">Best For</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:0.75rem"><strong>Free tier only</strong></td>
+                <td style="text-align:center;padding:0.75rem">$0</td>
+                <td style="padding:0.75rem">Copilot Free (2,000 completions + 50 premium requests)</td>
+                <td style="padding:0.75rem">Side projects, learning, light usage</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:0.75rem"><strong>Budget pro</strong></td>
+                <td style="text-align:center;padding:0.75rem">$10</td>
+                <td style="padding:0.75rem">Copilot Pro (unlimited completions + 300 premium requests)</td>
+                <td style="padding:0.75rem">Daily coding across languages, inline speed</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:0.75rem"><strong>All-rounder</strong></td>
+                <td style="text-align:center;padding:0.75rem">$20</td>
+                <td style="padding:0.75rem">Cursor Pro (unlimited completions + 500 fast requests + Composer)</td>
+                <td style="padding:0.75rem">Full-stack framework projects, multi-file edits</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:0.75rem"><strong>Agent-first</strong></td>
+                <td style="text-align:center;padding:0.75rem">$20</td>
+                <td style="padding:0.75rem">Claude Code Pro (limited daily usage, full agent capabilities)</td>
+                <td style="padding:0.75rem">Complex features, cross-layer refactoring, migrations</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:0.75rem"><strong>Best combo</strong></td>
+                <td style="text-align:center;padding:0.75rem">$30</td>
+                <td style="padding:0.75rem">Copilot Pro ($10) + Claude Code ($20)</td>
+                <td style="padding:0.75rem">Fast completions + powerful agent for the heavy lifting</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:0.75rem"><strong>Power user</strong></td>
+                <td style="text-align:center;padding:0.75rem">$40</td>
+                <td style="padding:0.75rem">Cursor Pro ($20) + Claude Code ($20)</td>
+                <td style="padding:0.75rem">Best of both: Composer for daily work, Claude Code for big changes</td>
+              </tr>
+              <tr>
+                <td style="padding:0.75rem"><strong>Heavy usage</strong></td>
+                <td style="text-align:center;padding:0.75rem">$60</td>
+                <td style="padding:0.75rem">Cursor Pro+ ($60) with 10x Pro usage + background agents</td>
+                <td style="padding:0.75rem">High-volume full-stack work, never hitting rate limits</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="callout tip">
+          <div class="callout-title">Recommendation</div>
+          <p>For most full-stack engineers, the <strong>$30/mo Copilot Pro + Claude Code combo</strong> offers the best value. Copilot handles the fast inline completions you want while typing &mdash; it knows your imports, function signatures, and patterns. Claude Code handles the 20% of your work that takes 80% of the time: building features end-to-end, cross-layer refactoring, debugging issues that span frontend to database. Neither tool alone covers both needs as well as the pair.</p>
+        </div>
+
+        <h2>Full-Stack Workflow Patterns</h2>
+
+        <p>Here are three workflow patterns that full-stack engineers have found effective with AI tools:</p>
+
+        <h3>Pattern 1: The Feature Sprint</h3>
+
+        <p>Use Claude Code to scaffold the entire feature in one shot, then Copilot or Cursor to refine the details.</p>
+
+        <ol>
+          <li><strong>Design phase:</strong> Describe the feature to Claude Code. &ldquo;Build a comments system with nested replies, real-time updates, and moderation. Use Prisma for the database, tRPC for the API, and React Query on the frontend.&rdquo;</li>
+          <li><strong>Generation phase:</strong> Claude Code generates the schema, migration, tRPC router, React components, and tests.</li>
+          <li><strong>Refinement phase:</strong> Switch to Cursor or your IDE with Copilot. Polish the UI, adjust the styling, add loading states, handle edge cases. Inline completions are faster for this work.</li>
+          <li><strong>Testing phase:</strong> Back to Claude Code for integration tests and E2E tests that exercise the full flow.</li>
+        </ol>
+
+        <h3>Pattern 2: The Incremental Build</h3>
+
+        <p>Use Cursor or Copilot as your primary tool, calling Claude Code only for cross-layer operations.</p>
+
+        <ol>
+          <li><strong>Daily coding:</strong> Cursor Pro with Composer for multi-file changes within a single layer. Writing components, styling, individual API routes.</li>
+          <li><strong>Cross-layer changes:</strong> When a change touches 4+ files across frontend and backend, switch to Claude Code. &ldquo;Rename the <code>user.name</code> field to <code>user.displayName</code> everywhere&rdquo; &mdash; it handles the migration, model, API, frontend, and tests.</li>
+          <li><strong>Code review prep:</strong> Use Claude Code to review your own changes before submitting. &ldquo;Check this diff for consistency issues, missing error handling, or security problems.&rdquo;</li>
+        </ol>
+
+        <h3>Pattern 3: The Solo Founder Stack</h3>
+
+        <p>For solo full-stack engineers building products alone, optimize for maximum feature velocity with minimal tool overhead.</p>
+
+        <ol>
+          <li><strong>Primary tool:</strong> Claude Code for everything &mdash; features, debugging, refactoring, deployment scripts.</li>
+          <li><strong>Supplementary:</strong> Copilot Free for inline completions when writing code manually.</li>
+          <li><strong>Cost:</strong> $20/mo total. All the power of an agent for building features end-to-end, with free autocomplete for the small stuff.</li>
+        </ol>
+
+        <h2>Common Pitfalls for Full-Stack Engineers Using AI</h2>
+
+        <h3>1. Inconsistent patterns across layers</h3>
+
+        <p>The most common issue: AI suggests Express conventions in your Fastify project, or React Query patterns when your frontend uses SWR. Each tool call is stateless unless you provide context. <strong>Fix:</strong> Use rules files (<code>.cursorrules</code>, <code>.github/copilot-instructions.md</code>, <code>CLAUDE.md</code>) to document your stack and conventions. List your framework, ORM, state management, and styling approach. This one step eliminates most inconsistency.</p>
+
+        <h3>2. Over-engineering simple features</h3>
+
+        <p>AI agents love to generate comprehensive solutions. Ask for a todo list and you might get a full CQRS implementation with event sourcing. <strong>Fix:</strong> Be explicit about scope. &ldquo;Simple CRUD, no caching, no optimization, just make it work.&rdquo; You can always add complexity later.</p>
+
+        <h3>3. Ignoring the API contract</h3>
+
+        <p>When AI generates frontend and backend separately, the API contract between them can drift. The frontend expects <code>{ userName: string }</code> but the backend sends <code>{ user_name: string }</code>. <strong>Fix:</strong> Use type-safe APIs (tRPC, OpenAPI codegen) or always generate frontend and backend changes together.</p>
+
+        <h3>4. Copy-pasting without understanding</h3>
+
+        <p>Full-stack code interacts with many systems &mdash; databases, caches, queues, external APIs. If you accept AI-generated code without understanding the implications (N+1 queries, missing indexes, unbounded pagination), you will find out in production. <strong>Fix:</strong> Always review database queries and API endpoints. Use &ldquo;explain this code&rdquo; if you are unsure.</p>
+
+        <h3>5. Not testing the boundaries</h3>
+
+        <p>AI generates unit tests for individual functions but rarely tests the integration between layers. A frontend component works, the API works, but together they fail because of a data shape mismatch. <strong>Fix:</strong> Always ask for integration tests that exercise the full request/response cycle, not just unit tests.</p>
+
+        <h3>6. Using the wrong tool for the task</h3>
+
+        <p>Using an agent tool for quick inline completions wastes time and tokens. Using an autocomplete tool for a 10-file refactor wastes your time. <strong>Fix:</strong> Match the tool to the task. Inline completions for writing code. Agent mode for building features and refactoring. Chat for understanding code.</p>
+
+        <h2>Tool-by-Tool Verdict for Full-Stack Engineers</h2>
+
+        <h3>GitHub Copilot</h3>
+        <p><strong>Strengths:</strong> Fastest autocomplete across all languages, broadest IDE support (VS Code, JetBrains, Neovim, Xcode, Visual Studio), great for polyglot projects, cheapest paid tier ($10/mo). <strong>Weaknesses:</strong> Limited multi-file awareness, poor at cross-layer changes, agent mode exists but less mature than competitors. <strong>Verdict:</strong> Best as a supplementary tool for inline completions. Pair it with an agent tool for complex work.</p>
+
+        <h3>Cursor</h3>
+        <p><strong>Strengths:</strong> Composer mode for multi-file changes, strong codebase indexing, excellent Next.js/React support, good monorepo support, model flexibility. <strong>Weaknesses:</strong> VS Code fork means you are locked to one editor, codebase indexing less effective for non-TypeScript projects, Pro+ at $60/mo is expensive. <strong>Verdict:</strong> Best all-in-one tool if you are comfortable with the Cursor editor. Particularly strong for TypeScript-heavy full-stack projects.</p>
+
+        <h3>Claude Code</h3>
+        <p><strong>Strengths:</strong> Best cross-layer awareness, terminal-native (works with any IDE), handles end-to-end features and complex refactors, excellent at debugging cross-layer issues, generates comprehensive tests. <strong>Weaknesses:</strong> No autocomplete, requires terminal comfort, Pro tier has daily usage limits, Max at $100&ndash;200/mo is expensive for heavy use. <strong>Verdict:</strong> Best agent for full-stack engineering. The tool that most closely matches how full-stack engineers think &mdash; across layers, not within them.</p>
+
+        <h3>Windsurf</h3>
+        <p><strong>Strengths:</strong> Cascade agent is capable, broad IDE support (40+), good autocomplete, competitive pricing. <strong>Weaknesses:</strong> Cross-layer awareness not as deep as Claude Code or Cursor, framework convention understanding is less reliable, sometimes loses context in long multi-file flows. <strong>Verdict:</strong> Good all-rounder if you want agent capabilities without switching to Cursor&rsquo;s editor or the terminal. Solid choice for JetBrains users.</p>
+
+        <h3>Amazon Q Developer</h3>
+        <p><strong>Strengths:</strong> Free tier is generous, AWS integration is unmatched, good for backend-heavy full-stack work deployed on AWS. <strong>Weaknesses:</strong> Frontend support is adequate but not best-in-class, less sophisticated multi-file editing, framework support is narrower. <strong>Verdict:</strong> Choose this if your stack is heavily AWS-native (Lambda, DynamoDB, API Gateway). Otherwise, other tools serve full-stack engineers better.</p>
+
+        <h2>Rules Files: The Full-Stack Engineer&rsquo;s Secret Weapon</h2>
+
+        <p>The single most impactful thing a full-stack engineer can do with AI tools is write a good rules file. Because you work across so many contexts, the tool needs explicit guidance about your stack.</p>
+
+        <p>Here is what to include in your rules file:</p>
+
+        <pre style="background:var(--bg);padding:1rem;border-radius:0.5rem;overflow-x:auto;border:1px solid var(--border)"><code># Project Stack
+- Frontend: React 19 with Next.js 15 (App Router)
+- Backend: tRPC v11 with Drizzle ORM
+- Database: PostgreSQL 16
+- Styling: Tailwind CSS v4
+- Testing: Vitest (unit), Playwright (E2E)
+- Package manager: pnpm
+- Monorepo: Turborepo
+
+# Conventions
+- API: tRPC routers in packages/api/src/routers/
+- Database: Drizzle schemas in packages/db/src/schema/
+- Frontend: React components in apps/web/src/components/
+- Shared types: packages/shared/src/types/
+- Use camelCase for API response fields
+- Use snake_case for database columns
+- Server components by default, "use client" only when needed
+
+# Patterns
+- Data fetching: tRPC + React Query (no fetch())
+- Forms: React Hook Form + Zod validation
+- Auth: NextAuth.js with Drizzle adapter
+- Error handling: tRPC error codes, not HTTP status codes
+- State: React Query for server state, Zustand for client state</code></pre>
+
+        <p>This file goes in your project root as <code>.cursorrules</code>, <code>.github/copilot-instructions.md</code>, or <code>CLAUDE.md</code> depending on your tool. The investment is 15 minutes. The payoff is every AI suggestion aligning with your actual stack instead of generic defaults.</p>
+
+        <h2>Recommendations by Stack</h2>
+
+        <div style="overflow-x:auto">
+          <table style="width:100%;border-collapse:collapse;margin:1.5rem 0">
+            <thead>
+              <tr style="border-bottom:2px solid var(--border)">
+                <th style="text-align:left;padding:0.75rem">Stack</th>
+                <th style="text-align:left;padding:0.75rem">Primary Tool</th>
+                <th style="text-align:left;padding:0.75rem">Why</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:0.75rem">Next.js + Prisma/Drizzle</td>
+                <td style="padding:0.75rem"><strong>Cursor Pro</strong></td>
+                <td style="padding:0.75rem">Best App Router support, Composer handles server/client boundaries</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:0.75rem">Remix / React Router v7</td>
+                <td style="padding:0.75rem"><strong>Claude Code</strong></td>
+                <td style="padding:0.75rem">Best understanding of loader/action patterns and progressive enhancement</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:0.75rem">Rails</td>
+                <td style="padding:0.75rem"><strong>Copilot Pro</strong></td>
+                <td style="padding:0.75rem">Best Ruby autocomplete, strong Rails convention understanding</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:0.75rem">Laravel</td>
+                <td style="padding:0.75rem"><strong>Copilot Pro</strong></td>
+                <td style="padding:0.75rem">Good PHP support, understands Eloquent and Blade</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:0.75rem">Django + React/Vue</td>
+                <td style="padding:0.75rem"><strong>Claude Code</strong></td>
+                <td style="padding:0.75rem">Handles Python backend + JS frontend polyglot well</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:0.75rem">T3 Stack (Next.js + tRPC + Prisma)</td>
+                <td style="padding:0.75rem"><strong>Cursor Pro</strong></td>
+                <td style="padding:0.75rem">Type-safe stack plays to Cursor&rsquo;s TypeScript strengths</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:0.75rem">MERN (MongoDB, Express, React, Node)</td>
+                <td style="padding:0.75rem"><strong>Claude Code</strong></td>
+                <td style="padding:0.75rem">Best at tracing data flow through all four layers</td>
+              </tr>
+              <tr>
+                <td style="padding:0.75rem">AWS-native (Lambda, API Gateway, DynamoDB)</td>
+                <td style="padding:0.75rem"><strong>Amazon Q</strong></td>
+                <td style="padding:0.75rem">Best AWS service integration, understands SAM/CDK templates</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h2>The Bottom Line</h2>
+
+        <p>Full-stack engineering is about connecting layers, not mastering one. The AI tools that serve you best are the ones that think the way you do &mdash; across boundaries, not within them.</p>
+
+        <p>If you do one thing after reading this guide: <strong>write a rules file that documents your stack</strong>. It takes 15 minutes and transforms every AI tool from a generic code generator into a context-aware assistant that knows your framework, your conventions, and your patterns.</p>
+
+        <p>If you do two things: <strong>combine a fast autocomplete tool with a powerful agent</strong>. Use Copilot or Cursor for the thousands of small completions per day. Use Claude Code for the features and refactors that touch five files across three layers. Neither tool replaces the other &mdash; they complement each other the way a screwdriver complements a drill.</p>
+
+        <p>The full-stack engineer&rsquo;s superpower has always been seeing the whole system. The right AI tooling amplifies that superpower instead of fragmenting it.</p>
+
+        <div class="callout tip">
+          <div class="callout-title">Related guides</div>
+          <p>Working primarily on one side of the stack? See our <a href="/blog/ai-coding-tools-for-frontend-engineers-2026.html">Frontend Engineers</a> and <a href="/blog/ai-coding-tools-for-backend-engineers-2026.html">Backend Engineers</a> guides for deeper coverage. Managing a full-stack team? Check the <a href="/blog/ai-coding-tools-for-engineering-managers-2026.html">Engineering Managers</a> guide. Building a startup solo? See our <a href="/blog/ai-coding-tools-for-startups-2026.html">Startups</a> guide. Compare all tool prices on the <a href="/">CodeCosts homepage</a>.</p>
+        </div>
+
+      </div>
+    </article>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>CodeCosts is a free tool by <a href="https://github.com/lunacompsia-oss" target="_blank" rel="noopener">Lunacompsia</a>. Data sourced from official pricing pages. Not affiliated with any listed tool.</p>
+    </div>
+  </footer>
+</body>
+</html>

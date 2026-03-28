@@ -9,6 +9,14 @@
     <atom:link href="https://codecosts.pages.dev/blog/feed.xml" rel="self" type="application/rss+xml"/>
 
     <item>
+      <title>AI Coding Tools for Full-Stack Engineers 2026: Frontend, Backend, APIs &amp; Context-Switching Guide</title>
+      <link>https://codecosts.pages.dev/blog/ai-coding-tools-for-full-stack-engineers-2026.html</link>
+      <description>The full-stack engineer's guide to AI coding tools in 2026. Context-switching between frontend and backend, full-stack framework support (Next.js, Remix, Rails, Laravel, Django), cross-layer refactoring, API design, monorepo support, and which tools handle polyglot codebases best.</description>
+      <pubDate>Sat, 28 Mar 2026 23:59:00 GMT</pubDate>
+      <guid>https://codecosts.pages.dev/blog/ai-coding-tools-for-full-stack-engineers-2026.html</guid>
+    </item>
+
+    <item>
       <title>AI Coding Tools for Technical Leads &amp; Staff Engineers 2026: Code Quality, Architecture, Mentoring &amp; Deep Codebase Context Guide</title>
       <link>https://codecosts.pages.dev/blog/ai-coding-tools-for-technical-leads-staff-engineers-2026.html</link>
       <description>The tech lead and staff engineer's guide to AI coding tools in 2026. Code quality gatekeeping, architecture-level AI (migrations, RFCs, refactors), custom rules files, mentoring juniors who use AI, and which tools understand your codebase at the system level.</description>

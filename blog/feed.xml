@@ -5,8 +5,16 @@
     <link>https://codecosts.pages.dev/blog/</link>
     <description>AI coding tool news, pricing updates, and analysis. Compare GitHub Copilot, Cursor, Windsurf, Claude Code, and more.</description>
     <language>en-us</language>
-    <lastBuildDate>Sat, 28 Mar 2026 12:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Sat, 28 Mar 2026 15:00:00 GMT</lastBuildDate>
     <atom:link href="https://codecosts.pages.dev/blog/feed.xml" rel="self" type="application/rss+xml"/>
+
+    <item>
+      <title>AI Coding Tools for Platform Engineers 2026: Backstage, K8s Operators, IDP &amp; Developer Experience Guide</title>
+      <link>https://codecosts.pages.dev/blog/ai-coding-tools-for-platform-engineers-2026.html</link>
+      <description>The platform engineer's guide to AI coding tools in 2026. Every tool ranked for Backstage plugin development, Kubernetes operator writing, Crossplane compositions, golden path templates, and internal tooling. Task-first recommendations from $0 to $40/mo.</description>
+      <pubDate>Sat, 28 Mar 2026 15:00:00 GMT</pubDate>
+      <guid>https://codecosts.pages.dev/blog/ai-coding-tools-for-platform-engineers-2026.html</guid>
+    </item>
 
     <item>
       <title>AI Coding Tools for ML Engineers 2026: PyTorch, Model Training, MLOps &amp; Experiment Tracking Guide</title>

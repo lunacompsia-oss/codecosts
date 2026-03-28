@@ -1,0 +1,846 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Coding Tools for Design Engineers 2026: Design Systems, Tokens, Component Libraries &amp; Visual Quality Guide</title>
+  <meta name="description" content="The design engineer's guide to AI coding tools in 2026. Design token generation, component scaffolding from Figma specs, Storybook story authoring, visual regression prevention, motion and animation code, and design system governance. Task-first recommendations from $0 to $40/mo.">
+  <link rel="canonical" href="https://codecosts.pages.dev/blog/ai-coding-tools-for-design-engineers-2026.html">
+  <meta property="og:title" content="AI Coding Tools for Design Engineers 2026: Design Systems, Tokens &amp; Component Libraries">
+  <meta property="og:description" content="Every AI coding tool ranked for design engineer workflows. Token generation, component scaffolding, Storybook stories, visual regression, motion code, and the $0 to $40/mo stacks.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://codecosts.pages.dev/blog/ai-coding-tools-for-design-engineers-2026.html">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="AI Coding Tools for Design Engineers 2026: Design Systems, Tokens &amp; Component Libraries">
+  <meta name="twitter:description" content="Every AI coding tool ranked for design engineer workflows. Token generation, component scaffolding, Storybook stories, visual regression, motion code, and the $0 to $40/mo stacks.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💰</text></svg>">
+  <link rel="stylesheet" href="../style.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "AI Coding Tools for Design Engineers 2026: Design Systems, Tokens, Component Libraries & Visual Quality Guide",
+    "datePublished": "2026-03-28",
+    "dateModified": "2026-03-28",
+    "author": { "@type": "Organization", "name": "CodeCosts" },
+    "publisher": { "@type": "Organization", "name": "CodeCosts" },
+    "description": "The design engineer's guide to AI coding tools in 2026. Design token generation, component scaffolding, Storybook stories, visual regression prevention, motion code, and design system governance."
+  }
+  </script>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <a href="/" style="text-decoration:none;color:inherit"><h1><span class="logo">$_</span> CodeCosts</h1></a>
+      <p class="tagline">AI Coding Tool News &amp; Analysis</p>
+      <nav>
+        <a href="/">Tools</a>
+        <a href="/blog/" class="active">Blog</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <article class="card">
+      <h2>AI Coding Tools for Design Engineers 2026: Design Systems, Tokens, Component Libraries &amp; Visual Quality Guide</h2>
+      <div class="article-meta">
+        <span>March 28, 2026</span>
+        <span>22 min read</span>
+      </div>
+
+      <div class="article-content">
+        <p>You own the design system codebase. Not the Figma file &mdash; the engineers own that joke about &ldquo;source of truth&rdquo; too &mdash; but the actual tokens, the component library, the Storybook instance, the CI pipeline that catches visual regressions before they hit production. You sit between design and engineering, and both sides think you work for the other one. When a product designer asks why the button looks different in staging, you debug the token cascade. When a frontend engineer asks why their PR failed visual regression, you explain that <code>padding: 14px</code> is not the same as <code>padding: var(--space-3-5)</code> and no, there is no <code>--space-3-5</code> because the scale jumps from 12 to 16 intentionally.</p>
+
+        <p>Design engineers are the fastest-growing role in frontend, and the least understood by AI coding tool reviews. Most reviews evaluate tools on whether they can build a CRUD app or debug a Python script. That tells you nothing about whether a tool can generate a complete token hierarchy from a Figma variables export, scaffold a component with all its variants and states documented in Storybook, or refactor a CSS codebase from hardcoded values to design tokens without introducing visual regressions.</p>
+
+        <p>This guide evaluates every major AI coding tool through the lens of what design engineers actually do: building and maintaining design systems, enforcing visual consistency at scale, and bridging the gap between design intent and production code.</p>
+
+        <div class="callout tip">
+          <div class="callout-title">TL;DR</div>
+          <p><strong>Best free ($0):</strong> GitHub Copilot Free &mdash; solid inline completions for CSS custom properties and component boilerplate; 2,000 completions/mo covers most design system maintenance. <strong>Best for design system work ($20/mo):</strong> Cursor Pro &mdash; codebase-aware token enforcement via <code>.cursorrules</code>, multi-file component generation, image paste for visual QA. <strong>Best for scaffolding &amp; architecture ($20/mo):</strong> Claude Code &mdash; strongest at generating complete token hierarchies, Storybook stories with full variant coverage, and reasoning about design system architecture decisions. <strong>Best combo ($20/mo):</strong> Claude Code + Copilot Free &mdash; Claude Code for architecture and scaffolding, Copilot for inline token completions during daily work.</p>
+        </div>
+
+        <h2>Why Design Engineering Is Different</h2>
+
+        <p>Design engineers evaluate AI tools on a fundamentally different axis than other engineering roles. You are not building features or shipping endpoints. You are building the system that other people use to build features. This changes everything about what &ldquo;good AI output&rdquo; means:</p>
+
+        <ul>
+          <li><strong>Token correctness is non-negotiable:</strong> An AI tool that generates <code>color: #3b82f6</code> instead of <code>color: var(--color-primary)</code> has failed your requirements, even if the hex value is technically correct right now. Design tokens are indirection by design. The moment someone changes the primary color, every hardcoded value becomes a bug. You need AI tools that understand token architecture &mdash; primitive, semantic, and component-level tokens &mdash; and always reference through the correct layer.</li>
+          <li><strong>Component API design matters more than implementation:</strong> A React component that works is not the same as a React component with a well-designed prop API. You care about composability, variant exhaustiveness, sensible defaults, and whether the API guides consumers toward correct usage. AI tools that generate a <code>Button</code> with twenty boolean props instead of a discriminated <code>variant</code> union are creating API debt.</li>
+          <li><strong>Visual consistency is systemic, not local:</strong> A single component looking correct means nothing if it looks different from every other component that should share its visual language. You need AI tools that understand your system&rsquo;s conventions and apply them consistently across files, not tools that generate locally correct but globally inconsistent output.</li>
+          <li><strong>Documentation is part of the deliverable:</strong> A component without Storybook stories, prop documentation, and usage guidelines is an unfinished component. You need AI tools that generate documentation as naturally as they generate code &mdash; not as an afterthought you have to prompt separately.</li>
+          <li><strong>Breaking changes have blast radius:</strong> When you change a token value or component API, dozens of consuming teams are affected. You need AI tools that understand dependency graphs and can help you assess impact before you ship. An AI tool that cheerfully renames a prop without flagging the 47 files that import the component is dangerous.</li>
+          <li><strong>CSS is your primary language, not a secondary concern:</strong> Most AI tools treat CSS as something that happens after the &ldquo;real&rdquo; code. For you, CSS <em>is</em> the real code. Custom properties, cascade layers, container queries, <code>:has()</code> selectors, <code>@property</code> declarations, color-mix(), relative color syntax &mdash; you need AI tools that are fluent in modern CSS, not tools that generate <code>float: left</code> and call it a layout.</li>
+        </ul>
+
+        <h2>Design Engineer Task Support Matrix</h2>
+
+        <p>Here is how each tool performs on the seven core tasks that define a design engineer&rsquo;s work:</p>
+
+        <div style="overflow-x:auto">
+          <table style="width:100%;border-collapse:collapse;margin:1.5rem 0">
+            <thead>
+              <tr style="border-bottom:2px solid var(--border)">
+                <th style="text-align:left;padding:0.75rem">Task</th>
+                <th style="text-align:center;padding:0.75rem">Copilot</th>
+                <th style="text-align:center;padding:0.75rem">Cursor</th>
+                <th style="text-align:center;padding:0.75rem">Windsurf</th>
+                <th style="text-align:center;padding:0.75rem">Claude Code</th>
+                <th style="text-align:center;padding:0.75rem">Amazon Q</th>
+                <th style="text-align:center;padding:0.75rem">Gemini CLI</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:0.75rem"><strong>Token Generation</strong></td>
+                <td style="text-align:center;padding:0.75rem">Good</td>
+                <td style="text-align:center;padding:0.75rem"><strong>Excellent</strong></td>
+                <td style="text-align:center;padding:0.75rem">Good</td>
+                <td style="text-align:center;padding:0.75rem"><strong>Excellent</strong></td>
+                <td style="text-align:center;padding:0.75rem">Fair</td>
+                <td style="text-align:center;padding:0.75rem">Good</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:0.75rem"><strong>Component Scaffolding</strong></td>
+                <td style="text-align:center;padding:0.75rem">Good</td>
+                <td style="text-align:center;padding:0.75rem"><strong>Excellent</strong></td>
+                <td style="text-align:center;padding:0.75rem">Good</td>
+                <td style="text-align:center;padding:0.75rem"><strong>Excellent</strong></td>
+                <td style="text-align:center;padding:0.75rem">Fair</td>
+                <td style="text-align:center;padding:0.75rem">Good</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:0.75rem"><strong>Storybook Stories</strong></td>
+                <td style="text-align:center;padding:0.75rem">Fair</td>
+                <td style="text-align:center;padding:0.75rem">Good</td>
+                <td style="text-align:center;padding:0.75rem">Fair</td>
+                <td style="text-align:center;padding:0.75rem"><strong>Excellent</strong></td>
+                <td style="text-align:center;padding:0.75rem">Poor</td>
+                <td style="text-align:center;padding:0.75rem">Fair</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:0.75rem"><strong>Visual Regression Prevention</strong></td>
+                <td style="text-align:center;padding:0.75rem">Fair</td>
+                <td style="text-align:center;padding:0.75rem"><strong>Excellent</strong></td>
+                <td style="text-align:center;padding:0.75rem">Good</td>
+                <td style="text-align:center;padding:0.75rem">Good</td>
+                <td style="text-align:center;padding:0.75rem">Fair</td>
+                <td style="text-align:center;padding:0.75rem">Fair</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:0.75rem"><strong>Motion &amp; Animation</strong></td>
+                <td style="text-align:center;padding:0.75rem">Fair</td>
+                <td style="text-align:center;padding:0.75rem">Good</td>
+                <td style="text-align:center;padding:0.75rem">Fair</td>
+                <td style="text-align:center;padding:0.75rem"><strong>Excellent</strong></td>
+                <td style="text-align:center;padding:0.75rem">Poor</td>
+                <td style="text-align:center;padding:0.75rem">Fair</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:0.75rem"><strong>Design System Docs</strong></td>
+                <td style="text-align:center;padding:0.75rem">Fair</td>
+                <td style="text-align:center;padding:0.75rem">Good</td>
+                <td style="text-align:center;padding:0.75rem">Fair</td>
+                <td style="text-align:center;padding:0.75rem"><strong>Excellent</strong></td>
+                <td style="text-align:center;padding:0.75rem">Poor</td>
+                <td style="text-align:center;padding:0.75rem">Good</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:0.75rem"><strong>CSS Architecture</strong></td>
+                <td style="text-align:center;padding:0.75rem">Good</td>
+                <td style="text-align:center;padding:0.75rem"><strong>Excellent</strong></td>
+                <td style="text-align:center;padding:0.75rem">Good</td>
+                <td style="text-align:center;padding:0.75rem"><strong>Excellent</strong></td>
+                <td style="text-align:center;padding:0.75rem">Fair</td>
+                <td style="text-align:center;padding:0.75rem">Good</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <p><strong>Reading the matrix:</strong> &ldquo;Excellent&rdquo; means the tool handles the task reliably with minimal correction. &ldquo;Good&rdquo; means it produces useful output that needs refinement. &ldquo;Fair&rdquo; means it understands the task but output quality is inconsistent. &ldquo;Poor&rdquo; means the tool struggles to produce usable output for this specific task.</p>
+
+        <h2>Design Token Generation and Sync</h2>
+
+        <p>Design tokens are the atomic units of your design system. Getting AI tools to generate them correctly &mdash; not just valid CSS custom properties, but a well-architected token hierarchy &mdash; is the difference between a design system that scales and one that becomes a maintenance burden.</p>
+
+        <h3>Claude Code: Token Architecture from First Principles</h3>
+        <p>Claude Code excels at designing token systems from scratch. Describe your requirements &mdash; &ldquo;I need a three-tier token architecture: primitives for raw values, semantic tokens for meaning, and component tokens for specific use cases, with dark mode support via semantic layer swapping&rdquo; &mdash; and Claude Code generates a complete, well-organized token system.</p>
+
+        <p>Where Claude Code stands apart is its understanding of <em>why</em> token architecture decisions matter. Ask it to generate tokens and it will explain why semantic tokens should reference primitives (not the other way around), why component tokens should be optional and only exist when a component diverges from semantic defaults, and why dark mode should swap at the semantic layer rather than the primitive layer. This reasoning means the output is not just correct code but a correct architecture.</p>
+
+        <pre><code>/* Claude Code generates architecturally sound token hierarchies */
+
+/* Layer 1: Primitives — raw palette, never referenced directly in components */
+:root {
+  --slate-50: oklch(0.984 0.003 247.858);
+  --slate-100: oklch(0.968 0.007 247.896);
+  --slate-200: oklch(0.929 0.013 255.508);
+  --slate-700: oklch(0.392 0.03 265.755);
+  --slate-800: oklch(0.279 0.029 260.032);
+  --slate-900: oklch(0.208 0.042 265.755);
+  --blue-500: oklch(0.623 0.214 259.815);
+  --blue-600: oklch(0.546 0.245 262.881);
+}
+
+/* Layer 2: Semantic — meaning, referenced by components */
+:root {
+  --color-bg: var(--slate-50);
+  --color-bg-raised: white;
+  --color-bg-sunken: var(--slate-100);
+  --color-text: var(--slate-900);
+  --color-text-secondary: var(--slate-700);
+  --color-border: var(--slate-200);
+  --color-interactive: var(--blue-600);
+  --color-interactive-hover: var(--blue-500);
+}
+
+/* Dark mode: swap semantics only */
+[data-theme="dark"] {
+  --color-bg: var(--slate-900);
+  --color-bg-raised: var(--slate-800);
+  --color-bg-sunken: oklch(0.158 0.035 265.755);
+  --color-text: var(--slate-50);
+  --color-text-secondary: var(--slate-200);
+  --color-border: var(--slate-700);
+  --color-interactive: var(--blue-500);
+  --color-interactive-hover: var(--blue-600);
+}
+
+/* Layer 3: Component — only when diverging from semantic defaults */
+:root {
+  --button-bg: var(--color-interactive);
+  --button-bg-hover: var(--color-interactive-hover);
+  --button-text: white;
+  --input-border: var(--color-border);
+  --input-border-focus: var(--color-interactive);
+}</code></pre>
+
+        <p>Claude Code also handles token format conversion. Feed it a Figma Variables JSON export and ask for CSS custom properties, Tailwind config, or Style Dictionary format &mdash; it converts accurately and preserves the hierarchy. It understands the W3C Design Token Community Group format and can translate between it and proprietary formats.</p>
+
+        <h3>Cursor Pro: Token Enforcement Across the Codebase</h3>
+        <p>Cursor&rsquo;s strength is not generating the initial token architecture (Claude Code is better at that) but enforcing it across every file it touches. With a well-configured <code>.cursorrules</code> file, Cursor never generates hardcoded values. It references your tokens consistently.</p>
+
+        <p>The workflow: define your token conventions in <code>.cursorrules</code> &mdash; &ldquo;always use tokens from <code>tokens.css</code>, never hardcode colors, spacing, or shadows&rdquo; &mdash; and Cursor applies this rule to every suggestion. When you are building a new component, Cursor&rsquo;s completions use <code>var(--space-4)</code> instead of <code>1rem</code> and <code>var(--color-border)</code> instead of <code>#e5e7eb</code>. This systemic enforcement is invaluable when multiple engineers contribute to the component library.</p>
+
+        <p>Cursor also excels at token <em>migration</em>. Select a file with hardcoded values, ask Cursor to refactor it to use design tokens, and it maps values to the closest token intelligently &mdash; <code>#374151</code> becomes <code>var(--color-text-secondary)</code> because it reads your token file and finds the semantic match, not just the closest hex value.</p>
+
+        <h3>Copilot: Fast Token Completions</h3>
+        <p>Copilot cannot reason about token architecture, but it learns your patterns quickly. After a few files where you use <code>var(--space-N)</code> and <code>var(--color-*)</code>, Copilot&rsquo;s inline completions consistently suggest token references. It is not as reliable as Cursor&rsquo;s enforced rules, but for a free tool, it significantly reduces hardcoded value drift.</p>
+
+        <h2>Component Scaffolding from Figma Specs</h2>
+
+        <p>The core design engineer workflow: translating a Figma component specification into a production-ready React (or Vue, or Svelte) component with proper typing, variant support, accessibility, and documentation.</p>
+
+        <h3>Cursor Pro: Codebase-Aware Component Generation</h3>
+        <p>Cursor&rsquo;s codebase awareness makes it the strongest tool for component scaffolding within an existing design system. It reads your existing components, understands your patterns, and generates new components that feel like they belong in the library.</p>
+
+        <p>Paste a Figma component screenshot into Cursor&rsquo;s chat and describe what you need: &ldquo;This is a Card component with three variants: default, outlined, and elevated. It has optional header, body, and footer slots. It should follow the same pattern as our existing Dialog component for composability.&rdquo; Cursor reads your Dialog component, adopts its compositional pattern (compound component, render props, or whatever you use), and generates a Card that follows the same conventions.</p>
+
+        <pre><code>// Cursor generates components that match your existing patterns
+// If your library uses compound components:
+
+import { forwardRef, createContext, useContext } from 'react';
+import type { ComponentPropsWithRef } from 'react';
+import { cn } from '@/lib/utils';
+import styles from './Card.module.css';
+
+type CardVariant = 'default' | 'outlined' | 'elevated';
+
+interface CardContextValue {
+  variant: CardVariant;
+}
+
+const CardContext = createContext&lt;CardContextValue&gt;({
+  variant: 'default',
+});
+
+interface CardProps extends ComponentPropsWithRef&lt;'div'&gt; {
+  variant?: CardVariant;
+}
+
+const CardRoot = forwardRef&lt;HTMLDivElement, CardProps&gt;(
+  ({ variant = 'default', className, children, ...props }, ref) =&gt; (
+    &lt;CardContext.Provider value={{ variant }}&gt;
+      &lt;div
+        ref={ref}
+        className={cn(styles.card, styles[variant], className)}
+        {...props}
+      &gt;
+        {children}
+      &lt;/div&gt;
+    &lt;/CardContext.Provider&gt;
+  )
+);
+
+const CardHeader = forwardRef&lt;HTMLDivElement, ComponentPropsWithRef&lt;'div'&gt;&gt;(
+  ({ className, ...props }, ref) =&gt; (
+    &lt;div ref={ref} className={cn(styles.header, className)} {...props} /&gt;
+  )
+);
+
+const CardBody = forwardRef&lt;HTMLDivElement, ComponentPropsWithRef&lt;'div'&gt;&gt;(
+  ({ className, ...props }, ref) =&gt; (
+    &lt;div ref={ref} className={cn(styles.body, className)} {...props} /&gt;
+  )
+);
+
+const CardFooter = forwardRef&lt;HTMLDivElement, ComponentPropsWithRef&lt;'div'&gt;&gt;(
+  ({ className, ...props }, ref) =&gt; (
+    &lt;div ref={ref} className={cn(styles.footer, className)} {...props} /&gt;
+  )
+);
+
+export const Card = Object.assign(CardRoot, {
+  Header: CardHeader,
+  Body: CardBody,
+  Footer: CardFooter,
+});</code></pre>
+
+        <p>Cursor also generates the corresponding CSS Module file, TypeScript types export, and barrel file update &mdash; all in one Composer session. It understands that a design system component is not just a React file but a set of coordinated files.</p>
+
+        <h3>Claude Code: Variant-Complete Components</h3>
+        <p>Claude Code cannot see Figma screenshots, but it compensates with exhaustive variant thinking. Describe a component &mdash; &ldquo;a Tag component with size sm/md/lg, variant solid/subtle/outline, color from the system palette, dismissible option, and icon slot&rdquo; &mdash; and Claude Code generates not just the component but all variant combinations, edge cases (what happens when dismissible + icon are both present?), and sensible defaults.</p>
+
+        <p>Claude Code&rsquo;s prop API design is consistently good. It avoids boolean prop explosion (&ldquo;isSmall, isMedium, isLarge&rdquo;) in favor of union types. It generates discriminated unions when variants have different prop requirements. It adds JSDoc comments that explain <em>when</em> to use each variant, not just what it looks like.</p>
+
+        <h3>Windsurf: Solid Middle Ground</h3>
+        <p>Windsurf&rsquo;s Cascade feature handles multi-file component generation competently. It generates the component, styles, types, and index export. The output is clean and follows conventions. Where it falls short compared to Cursor is codebase awareness &mdash; it is less reliable at adopting your existing patterns and more likely to generate a component that technically works but feels like it came from a different library.</p>
+
+        <h2>Storybook Story Generation</h2>
+
+        <p>A component without Storybook stories is invisible to your consumers. Stories are documentation, testing surface, and visual regression baseline all in one. AI tools that can generate meaningful stories &mdash; not just a &ldquo;Default&rdquo; story with no args &mdash; save hours of tedious work.</p>
+
+        <h3>Claude Code: Complete Story Coverage</h3>
+        <p>Claude Code is the best tool for Storybook story generation because it thinks in terms of variant matrices, not individual examples. Give it a component file and ask for stories, and it generates:</p>
+
+        <ul>
+          <li>A <strong>default story</strong> with args controls for every prop</li>
+          <li><strong>Variant stories</strong> for every meaningful combination (size &times; variant, not the full cartesian product &mdash; it prunes redundant combinations)</li>
+          <li><strong>State stories</strong>: loading, disabled, error, empty, overflow</li>
+          <li><strong>Interaction stories</strong> with play functions for hover, focus, click sequences</li>
+          <li><strong>Composition stories</strong> showing the component used with other components from the library</li>
+          <li><strong>Edge case stories</strong>: very long text, missing optional props, RTL layout</li>
+        </ul>
+
+        <pre><code>// Claude Code generates comprehensive Storybook stories
+import type { Meta, StoryObj } from '@storybook/react';
+import { within, userEvent, expect } from '@storybook/test';
+import { Card } from './Card';
+import { Button } from '../Button';
+import { Badge } from '../Badge';
+
+const meta: Meta&lt;typeof Card&gt; = {
+  title: 'Components/Card',
+  component: Card,
+  argTypes: {
+    variant: {
+      control: 'select',
+      options: ['default', 'outlined', 'elevated'],
+      description: 'Visual style. Use outlined for secondary content, elevated for actionable cards.',
+    },
+  },
+  parameters: {
+    design: {
+      type: 'figma',
+      url: 'https://figma.com/file/...',
+    },
+  },
+};
+
+export default meta;
+type Story = StoryObj&lt;typeof Card&gt;;
+
+export const Default: Story = {
+  render: (args) =&gt; (
+    &lt;Card {...args}&gt;
+      &lt;Card.Header&gt;Card Title&lt;/Card.Header&gt;
+      &lt;Card.Body&gt;Card content goes here.&lt;/Card.Body&gt;
+    &lt;/Card&gt;
+  ),
+};
+
+export const AllVariants: Story = {
+  render: () =&gt; (
+    &lt;div style={{ display: 'flex', gap: 'var(--space-4)' }}&gt;
+      {(['default', 'outlined', 'elevated'] as const).map((variant) =&gt; (
+        &lt;Card key={variant} variant={variant} style={{ width: 240 }}&gt;
+          &lt;Card.Header&gt;{variant}&lt;/Card.Header&gt;
+          &lt;Card.Body&gt;Visual comparison of the {variant} variant.&lt;/Card.Body&gt;
+        &lt;/Card&gt;
+      ))}
+    &lt;/div&gt;
+  ),
+};
+
+export const WithFooterActions: Story = {
+  render: () =&gt; (
+    &lt;Card variant="elevated" style={{ width: 320 }}&gt;
+      &lt;Card.Header&gt;Confirm Action&lt;/Card.Header&gt;
+      &lt;Card.Body&gt;Are you sure you want to proceed?&lt;/Card.Body&gt;
+      &lt;Card.Footer&gt;
+        &lt;Button variant="ghost" size="sm"&gt;Cancel&lt;/Button&gt;
+        &lt;Button variant="primary" size="sm"&gt;Confirm&lt;/Button&gt;
+      &lt;/Card.Footer&gt;
+    &lt;/Card&gt;
+  ),
+};
+
+export const OverflowContent: Story = {
+  name: 'Edge Case: Overflow',
+  render: () =&gt; (
+    &lt;Card style={{ width: 200 }}&gt;
+      &lt;Card.Header&gt;
+        This is an extremely long title that should truncate or wrap gracefully
+      &lt;/Card.Header&gt;
+      &lt;Card.Body&gt;
+        {'Lorem ipsum dolor sit amet. '.repeat(20)}
+      &lt;/Card.Body&gt;
+    &lt;/Card&gt;
+  ),
+};
+
+export const KeyboardNavigation: Story = {
+  render: () =&gt; (
+    &lt;Card variant="elevated" tabIndex={0} role="button"&gt;
+      &lt;Card.Body&gt;Focusable card. Tab to focus, Enter to activate.&lt;/Card.Body&gt;
+    &lt;/Card&gt;
+  ),
+  play: async ({ canvasElement }) =&gt; {
+    const canvas = within(canvasElement);
+    const card = canvas.getByRole('button');
+    await userEvent.tab();
+    await expect(card).toHaveFocus();
+  },
+};</code></pre>
+
+        <h3>Cursor Pro: Stories That Use Your Existing Patterns</h3>
+        <p>Cursor generates stories that follow your existing Storybook conventions. If your stories use a specific decorator setup, custom viewports, or a particular arg naming convention, Cursor picks up these patterns and applies them. The stories it generates feel native to your Storybook instance, which matters when you have dozens of component stories that should look consistent in the sidebar.</p>
+
+        <h3>Copilot: Basic Story Scaffolding</h3>
+        <p>Copilot generates passable default stories from type inference. It reads your component&rsquo;s TypeScript types and generates a meta object with argTypes. The output is a starting point, not a finished story file &mdash; you will need to add variant combinations, edge cases, and play functions manually. Useful for the initial scaffold; insufficient for full coverage.</p>
+
+        <h2>Visual Regression Prevention</h2>
+
+        <p>Every CSS change is a potential visual regression. Design engineers need AI tools that understand the cascade, specificity, and the systemic impact of style changes &mdash; not tools that blindly modify CSS and hope for the best.</p>
+
+        <h3>Cursor Pro: See Before You Ship</h3>
+        <p>Cursor&rsquo;s image paste capability creates a unique visual regression workflow. Take a screenshot of the current component, paste it into Cursor, describe the change you want (&ldquo;increase the card padding from space-4 to space-6 but keep the header padding at space-4&rdquo;), and Cursor makes the targeted change. Then paste the updated screenshot and ask Cursor to compare: &ldquo;Does this match the intended change? Are there any unintended side effects?&rdquo;</p>
+
+        <p>More importantly, Cursor understands CSS specificity and cascade. When you ask it to change a style, it knows whether the change affects only the targeted element or cascades to children. It flags potential side effects: &ldquo;Changing <code>.card</code> padding will also affect <code>.card-header</code> because it inherits the parent&rsquo;s padding context for its negative margin trick.&rdquo; This cascade awareness prevents the most common class of visual regressions.</p>
+
+        <p>For CSS refactors &mdash; migrating from one methodology to another, or from hardcoded values to tokens &mdash; Cursor handles multi-file changes while maintaining visual equivalence. It maps <code>margin: 1rem</code> to <code>margin: var(--space-4)</code> (because 1rem = 16px = space-4 in your scale) rather than blindly replacing values.</p>
+
+        <h3>Claude Code: Reasoning About Impact</h3>
+        <p>Claude Code cannot see your UI, but it reasons about CSS impact exceptionally well. Describe a change and Claude Code explains the cascade consequences: &ldquo;If you change <code>--color-border</code> from <code>var(--slate-200)</code> to <code>var(--slate-300)</code>, these components will be affected: Card, Input, Divider, Table, and Dropdown. The Table border will darken more visibly than the Card border because Table uses <code>border: 2px solid var(--color-border)</code> while Card uses <code>1px</code>.&rdquo;</p>
+
+        <p>Claude Code is also excellent at writing visual regression test configurations. It generates Chromatic stories, Percy snapshot configs, or Playwright visual comparison tests that cover the specific variants most likely to regress.</p>
+
+        <h3>Gemini CLI: Large-File CSS Analysis</h3>
+        <p>Gemini CLI&rsquo;s large context window (1M tokens) makes it useful for analyzing large CSS codebases. Feed it your entire stylesheet and ask: &ldquo;Which selectors have specificity conflicts? Which properties are overridden by later rules? Where are the cascade dependencies?&rdquo; This bird&rsquo;s-eye analysis is useful for planning refactors, even if you use other tools for the actual implementation.</p>
+
+        <h2>Motion and Animation Code</h2>
+
+        <p>Design engineers own the motion language of the design system: timing curves, durations, spring configurations, entrance/exit patterns, and the rules about when motion should and should not be used. AI tools vary wildly in their ability to generate motion code that serves the design rather than just moves pixels.</p>
+
+        <h3>Claude Code: Motion Design Principles</h3>
+        <p>Claude Code understands motion design at the principle level, not just the syntax level. Ask for &ldquo;an entrance animation that feels natural and not distracting&rdquo; and it generates a subtle fade + translate with an appropriate deceleration curve and duration. Ask for &ldquo;a spring animation for a toggle switch&rdquo; and it calculates a cubic-bezier approximation of spring physics with realistic overshoot.</p>
+
+        <p>Where Claude Code excels is generating motion <em>systems</em>, not just individual animations. Ask for &ldquo;a motion token system for our design system&rdquo; and it produces:</p>
+
+        <pre><code>/* Claude Code generates systematic motion tokens */
+:root {
+  /* Durations — perceptual categories, not arbitrary values */
+  --duration-instant: 100ms;   /* micro-feedback: button press, toggle */
+  --duration-fast: 200ms;      /* element transitions: hover, focus */
+  --duration-normal: 300ms;    /* layout shifts: expand, collapse */
+  --duration-slow: 500ms;      /* entrance/exit: modals, pages */
+
+  /* Easing — purpose-driven, not aesthetic-driven */
+  --ease-out: cubic-bezier(0.2, 0, 0, 1);        /* entering: decelerates in */
+  --ease-in: cubic-bezier(0.8, 0, 1, 0.8);       /* exiting: accelerates out */
+  --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);   /* moving: smooth arc */
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1); /* playful: slight overshoot */
+
+  /* Composite tokens for common patterns */
+  --transition-color: color var(--duration-fast) var(--ease-out);
+  --transition-shadow: box-shadow var(--duration-fast) var(--ease-out);
+  --transition-transform: transform var(--duration-fast) var(--ease-out);
+}
+
+/* Reduced motion: respect user preference */
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --duration-instant: 0ms;
+    --duration-fast: 0ms;
+    --duration-normal: 0ms;
+    --duration-slow: 0ms;
+  }
+}
+
+/* Entrance animation — reusable via class */
+@keyframes enter-fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+}
+
+.animate-enter {
+  animation: enter-fade-up var(--duration-normal) var(--ease-out) both;
+}
+
+/* Staggered children */
+.animate-stagger &gt; * {
+  animation: enter-fade-up var(--duration-normal) var(--ease-out) both;
+}
+.animate-stagger &gt; :nth-child(1) { animation-delay: 0ms; }
+.animate-stagger &gt; :nth-child(2) { animation-delay: 50ms; }
+.animate-stagger &gt; :nth-child(3) { animation-delay: 100ms; }
+.animate-stagger &gt; :nth-child(4) { animation-delay: 150ms; }
+.animate-stagger &gt; :nth-child(5) { animation-delay: 200ms; }</code></pre>
+
+        <p>Claude Code also correctly handles <code>prefers-reduced-motion</code> by default, which many tools forget. It sets durations to zero rather than removing animations entirely, preserving layout shifts without the motion.</p>
+
+        <h3>Cursor Pro: Animation Within Context</h3>
+        <p>Cursor is good at generating animations that use your existing motion tokens. If you already have <code>--duration-fast</code> and <code>--ease-out</code> defined, Cursor references them instead of generating raw values. For Framer Motion users, Cursor generates motion variants that follow your existing animation patterns.</p>
+
+        <h3>Where All Tools Struggle</h3>
+        <p>Complex animation sequences &mdash; orchestrated multi-element entrances, physics-based interactions, gesture-driven animations &mdash; are where every tool degrades. GSAP timelines, Framer Motion layout animations, and View Transition API orchestration require deep understanding of timing dependencies that no current AI tool handles reliably. For these, AI tools are useful for generating the boilerplate (the timeline structure, the motion component wrapper) but you will hand-tune the timing, easing, and sequencing yourself.</p>
+
+        <h2>Design System Documentation as Context</h2>
+
+        <p>The most powerful AI coding tool optimization for design engineers is not which tool you choose &mdash; it is how you feed your design system documentation into that tool as context. Every tool produces better output when it knows your system&rsquo;s rules.</p>
+
+        <h3>Cursor: .cursorrules as Machine-Readable Design System</h3>
+        <p>The <code>.cursorrules</code> file is effectively a design system spec that Cursor enforces. A well-written rules file for a design engineer includes:</p>
+
+        <pre><code># Design System Rules for Cursor
+
+## Token Usage
+- ALWAYS use CSS custom properties from tokens.css
+- NEVER hardcode colors, spacing, shadows, or border-radius values
+- Reference semantic tokens (--color-text) not primitives (--slate-900)
+- Component tokens only when semantic tokens don't fit
+
+## Component Patterns
+- All components use forwardRef and accept className prop
+- Compound components for complex UI (Card.Header, Card.Body)
+- Variants via discriminated union type, not boolean props
+- CSS Modules for styling, cn() utility for className merging
+- Every component gets a .stories.tsx file
+
+## CSS Conventions
+- Mobile-first responsive (min-width breakpoints)
+- Container queries for component-level responsiveness
+- Logical properties (margin-inline, padding-block) for RTL support
+- Use oklch() for color values in token definitions
+
+## Motion
+- All transitions use motion tokens (--duration-*, --ease-*)
+- Always include prefers-reduced-motion handling
+- Entrance animations: fade + translateY(8px)
+- Exit animations: fade only (no translate)
+
+## Accessibility
+- Every interactive element: visible focus ring using --color-focus-ring
+- Color contrast: 4.5:1 for text, 3:1 for large text and UI components
+- Touch targets: minimum 44x44px
+- Screen reader text: use .sr-only utility class</code></pre>
+
+        <p>With this file in place, every Cursor suggestion follows your system. New engineers contributing to the design system get guardrails without you having to review every line.</p>
+
+        <h3>Claude Code: CLAUDE.md and Project Context</h3>
+        <p>Claude Code reads <code>CLAUDE.md</code> at the project root and any <code>.claude/</code> configuration files. For design system repositories, structure your CLAUDE.md to include token architecture decisions, component API conventions, and file organization patterns. Claude Code applies these rules to every generation and can explain <em>why</em> it made specific choices when asked.</p>
+
+        <h3>Copilot: Workspace Instructions</h3>
+        <p>Copilot reads <code>.github/copilot-instructions.md</code> for project-level context. Less powerful than Cursor&rsquo;s rules (it is more of a suggestion than an enforcement mechanism), but it nudges Copilot toward using your tokens and patterns. Worth configuring even if you use another tool as your primary.</p>
+
+        <h2>Cross-Tool Cost Model for Design Systems Teams</h2>
+
+        <p>Design systems teams are typically 2&ndash;5 people: a design engineer lead, one or two component developers, a documentation/Storybook owner, and sometimes a dedicated accessibility specialist. Here is how the costs break down for common team configurations:</p>
+
+        <div style="overflow-x:auto">
+          <table style="width:100%;border-collapse:collapse;margin:1.5rem 0">
+            <thead>
+              <tr style="border-bottom:2px solid var(--border)">
+                <th style="text-align:left;padding:0.75rem">Configuration</th>
+                <th style="text-align:center;padding:0.75rem">Per Seat</th>
+                <th style="text-align:center;padding:0.75rem">3-Person Team</th>
+                <th style="text-align:center;padding:0.75rem">5-Person Team</th>
+                <th style="text-align:left;padding:0.75rem">Best For</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:0.75rem"><strong>Copilot Free</strong></td>
+                <td style="text-align:center;padding:0.75rem">$0</td>
+                <td style="text-align:center;padding:0.75rem">$0</td>
+                <td style="text-align:center;padding:0.75rem">$0</td>
+                <td style="padding:0.75rem">Token completions, basic scaffolding</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:0.75rem"><strong>Copilot Pro</strong></td>
+                <td style="text-align:center;padding:0.75rem">$10</td>
+                <td style="text-align:center;padding:0.75rem">$30</td>
+                <td style="text-align:center;padding:0.75rem">$50</td>
+                <td style="padding:0.75rem">Unlimited completions, agent mode</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:0.75rem"><strong>Cursor Pro</strong></td>
+                <td style="text-align:center;padding:0.75rem">$20</td>
+                <td style="text-align:center;padding:0.75rem">$60</td>
+                <td style="text-align:center;padding:0.75rem">$100</td>
+                <td style="padding:0.75rem">Token enforcement, visual QA, multi-file generation</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:0.75rem"><strong>Claude Code</strong></td>
+                <td style="text-align:center;padding:0.75rem">$20</td>
+                <td style="text-align:center;padding:0.75rem">$60</td>
+                <td style="text-align:center;padding:0.75rem">$100</td>
+                <td style="padding:0.75rem">Architecture, Storybook stories, motion systems</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:0.75rem"><strong>Cursor + Copilot Free</strong></td>
+                <td style="text-align:center;padding:0.75rem">$20</td>
+                <td style="text-align:center;padding:0.75rem">$60</td>
+                <td style="text-align:center;padding:0.75rem">$100</td>
+                <td style="padding:0.75rem">Daily enforcement + free inline completions</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:0.75rem"><strong>Claude Code + Copilot Free</strong></td>
+                <td style="text-align:center;padding:0.75rem">$20</td>
+                <td style="text-align:center;padding:0.75rem">$60</td>
+                <td style="text-align:center;padding:0.75rem">$100</td>
+                <td style="padding:0.75rem">Architecture + inline completions</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:0.75rem"><strong>Cursor + Claude Code</strong></td>
+                <td style="text-align:center;padding:0.75rem">$40</td>
+                <td style="text-align:center;padding:0.75rem">$120</td>
+                <td style="text-align:center;padding:0.75rem">$200</td>
+                <td style="padding:0.75rem">Full stack: architecture + enforcement + visual QA</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:0.75rem"><strong>Windsurf</strong></td>
+                <td style="text-align:center;padding:0.75rem">$15</td>
+                <td style="text-align:center;padding:0.75rem">$45</td>
+                <td style="text-align:center;padding:0.75rem">$75</td>
+                <td style="padding:0.75rem">Budget team option, solid all-rounder</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <p><strong>Recommended stack for most design systems teams:</strong> Cursor Pro for the design engineer lead (token enforcement + visual QA), Claude Code for architecture sessions and Storybook story generation, Copilot Free for the rest of the team. Total cost for a 3-person team: $40/mo ($20 Cursor for lead + $20 Claude Code for architecture work + $0 Copilot Free for two other members). The lead uses Cursor daily and pulls in Claude Code for architecture decisions, token system design, and documentation sprints.</p>
+
+        <h2>Modern CSS and Design Engineers</h2>
+
+        <p>Design engineers push CSS harder than any other role. You need AI tools that understand the modern CSS features you actually use, not the CSS from five years ago.</p>
+
+        <h3>What Design Engineers Need from CSS Generation</h3>
+
+        <div style="overflow-x:auto">
+          <table style="width:100%;border-collapse:collapse;margin:1.5rem 0">
+            <thead>
+              <tr style="border-bottom:2px solid var(--border)">
+                <th style="text-align:left;padding:0.75rem">CSS Feature</th>
+                <th style="text-align:center;padding:0.75rem">Copilot</th>
+                <th style="text-align:center;padding:0.75rem">Cursor</th>
+                <th style="text-align:center;padding:0.75rem">Claude Code</th>
+                <th style="text-align:center;padding:0.75rem">Windsurf</th>
+                <th style="text-align:left;padding:0.75rem">Why It Matters</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:0.75rem">Container Queries</td>
+                <td style="text-align:center;padding:0.75rem">Fair</td>
+                <td style="text-align:center;padding:0.75rem">Good</td>
+                <td style="text-align:center;padding:0.75rem"><strong>Excellent</strong></td>
+                <td style="text-align:center;padding:0.75rem">Good</td>
+                <td style="padding:0.75rem">Component-level responsiveness</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:0.75rem">Cascade Layers</td>
+                <td style="text-align:center;padding:0.75rem">Poor</td>
+                <td style="text-align:center;padding:0.75rem">Good</td>
+                <td style="text-align:center;padding:0.75rem"><strong>Excellent</strong></td>
+                <td style="text-align:center;padding:0.75rem">Fair</td>
+                <td style="padding:0.75rem">Specificity management at scale</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:0.75rem"><code>:has()</code> Selector</td>
+                <td style="text-align:center;padding:0.75rem">Fair</td>
+                <td style="text-align:center;padding:0.75rem">Good</td>
+                <td style="text-align:center;padding:0.75rem"><strong>Excellent</strong></td>
+                <td style="text-align:center;padding:0.75rem">Good</td>
+                <td style="padding:0.75rem">Parent selection, state-driven styling</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:0.75rem">oklch() Colors</td>
+                <td style="text-align:center;padding:0.75rem">Fair</td>
+                <td style="text-align:center;padding:0.75rem">Good</td>
+                <td style="text-align:center;padding:0.75rem"><strong>Excellent</strong></td>
+                <td style="text-align:center;padding:0.75rem">Fair</td>
+                <td style="padding:0.75rem">Perceptually uniform color systems</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:0.75rem">Logical Properties</td>
+                <td style="text-align:center;padding:0.75rem">Good</td>
+                <td style="text-align:center;padding:0.75rem"><strong>Excellent</strong></td>
+                <td style="text-align:center;padding:0.75rem"><strong>Excellent</strong></td>
+                <td style="text-align:center;padding:0.75rem">Good</td>
+                <td style="padding:0.75rem">RTL/internationalization support</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:0.75rem"><code>@property</code></td>
+                <td style="text-align:center;padding:0.75rem">Poor</td>
+                <td style="text-align:center;padding:0.75rem">Fair</td>
+                <td style="text-align:center;padding:0.75rem">Good</td>
+                <td style="text-align:center;padding:0.75rem">Fair</td>
+                <td style="padding:0.75rem">Typed custom properties, animatable tokens</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:0.75rem">View Transitions</td>
+                <td style="text-align:center;padding:0.75rem">Poor</td>
+                <td style="text-align:center;padding:0.75rem">Fair</td>
+                <td style="text-align:center;padding:0.75rem">Good</td>
+                <td style="text-align:center;padding:0.75rem">Fair</td>
+                <td style="padding:0.75rem">Page and element transition animations</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:0.75rem">Subgrid</td>
+                <td style="text-align:center;padding:0.75rem">Fair</td>
+                <td style="text-align:center;padding:0.75rem">Good</td>
+                <td style="text-align:center;padding:0.75rem"><strong>Excellent</strong></td>
+                <td style="text-align:center;padding:0.75rem">Good</td>
+                <td style="padding:0.75rem">Nested grid alignment</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <p><strong>Key takeaway:</strong> Claude Code has the strongest understanding of modern CSS features, particularly cascade layers and container queries, which are critical for design system architecture. Cursor is the best at <em>applying</em> modern CSS within your existing codebase. Copilot lags behind on newer features &mdash; it still generates <code>@media</code> queries when container queries would be more appropriate for component-level responsiveness.</p>
+
+        <h2>Figma-to-Code Workflows</h2>
+
+        <p>No AI tool reads Figma files natively. But the workarounds available to design engineers are better than what most reviews suggest.</p>
+
+        <h3>The Token Export Pipeline</h3>
+        <p>Export your Figma Variables as JSON (via the Figma Variables REST API or a plugin like Tokens Studio). Feed this JSON to Claude Code and ask it to generate your token files. This pipeline is reproducible and can be scripted:</p>
+
+        <ol>
+          <li>Export Figma Variables to JSON</li>
+          <li>Feed JSON to Claude Code with your token architecture spec</li>
+          <li>Claude Code generates CSS custom properties, Tailwind config, or Style Dictionary tokens</li>
+          <li>Diff the output against your current tokens to see what changed</li>
+          <li>Review and commit</li>
+        </ol>
+
+        <p>This workflow makes Figma-to-code token sync a repeatable process rather than a manual translation exercise.</p>
+
+        <h3>The Screenshot Pipeline (Cursor)</h3>
+        <p>For component implementation, Cursor&rsquo;s image paste is the closest thing to Figma-native. Screenshot the Figma component (all variants, states, and responsive breakpoints), paste into Cursor, and describe: &ldquo;Implement this component using our design system tokens and component patterns.&rdquo; Cursor generates code that approximates the visual and uses your system&rsquo;s conventions.</p>
+
+        <h3>The Description Pipeline (Claude Code)</h3>
+        <p>For Claude Code, the most effective workflow is structured descriptions. Instead of vague prose, describe components as structured specs:</p>
+
+        <pre><code>Component: Notification Banner
+Variants: info, success, warning, error
+Anatomy: icon (left) + content (title + description, stacked) + dismiss button (right)
+Spacing: icon to content: space-3, content gap: space-1, padding: space-4
+Colors: each variant uses its semantic color token (--color-info, --color-success, etc.)
+  Background: 10% opacity of variant color
+  Border-left: 3px solid variant color
+  Icon + title: variant color at full opacity
+  Description: --color-text-secondary
+Behavior: dismiss button fades out the banner with duration-normal
+Responsive: full width, icon hides below 480px container width
+Accessibility: role="alert" for error/warning, role="status" for info/success</code></pre>
+
+        <p>Claude Code converts this structured spec into a complete component with more accuracy than an unstructured description because the spec eliminates ambiguity.</p>
+
+        <h2>Recommended Stacks by Team Scenario</h2>
+
+        <div style="overflow-x:auto">
+          <table style="width:100%;border-collapse:collapse;margin:1.5rem 0">
+            <thead>
+              <tr style="border-bottom:2px solid var(--border)">
+                <th style="text-align:left;padding:0.75rem">Scenario</th>
+                <th style="text-align:left;padding:0.75rem">Stack</th>
+                <th style="text-align:center;padding:0.75rem">Monthly Cost</th>
+                <th style="text-align:left;padding:0.75rem">Why</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:0.75rem"><strong>Solo design engineer</strong></td>
+                <td style="padding:0.75rem">Claude Code + Copilot Free</td>
+                <td style="text-align:center;padding:0.75rem">$20</td>
+                <td style="padding:0.75rem">Architecture + daily completions. Claude Code for token systems, Storybook, and architecture decisions. Copilot for inline CSS.</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:0.75rem"><strong>Design system team (3&ndash;5)</strong></td>
+                <td style="padding:0.75rem">Cursor Pro (lead) + Copilot Free (team)</td>
+                <td style="text-align:center;padding:0.75rem">$20</td>
+                <td style="padding:0.75rem">Lead enforces standards via .cursorrules; team gets free completions that follow patterns.</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:0.75rem"><strong>Design system + heavy docs</strong></td>
+                <td style="padding:0.75rem">Cursor Pro + Claude Code</td>
+                <td style="text-align:center;padding:0.75rem">$40</td>
+                <td style="padding:0.75rem">Cursor for daily component work, Claude Code for Storybook stories and documentation sprints.</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:0.75rem"><strong>Budget-constrained</strong></td>
+                <td style="padding:0.75rem">Copilot Free + Gemini CLI Free</td>
+                <td style="text-align:center;padding:0.75rem">$0</td>
+                <td style="padding:0.75rem">Copilot for completions, Gemini for large-file analysis and token audits. No cost, limited power.</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:0.75rem"><strong>Enterprise design system</strong></td>
+                <td style="padding:0.75rem">Cursor Business + Copilot Business</td>
+                <td style="text-align:center;padding:0.75rem">$60/seat</td>
+                <td style="padding:0.75rem">Admin controls, zero data retention, compliance features for regulated environments.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h2>The Bottom Line</h2>
+
+        <p>AI coding tools for design engineers in 2026 split along the architecture-enforcement axis:</p>
+
+        <ul>
+          <li><strong>Building a design system from scratch?</strong> Claude Code ($20/mo). It designs token architectures, generates comprehensive Storybook stories, creates motion systems, and understands modern CSS features better than any other tool. It reasons about <em>why</em> design decisions exist, not just how to implement them.</li>
+          <li><strong>Maintaining and enforcing an existing system?</strong> Cursor Pro ($20/mo) with a thorough <code>.cursorrules</code> file. Codebase-aware component generation, token enforcement across every suggestion, visual QA via screenshots, and multi-file refactoring that maintains visual equivalence.</li>
+          <li><strong>Doing both?</strong> Claude Code + Copilot Free ($20/mo) for solo design engineers. Cursor Pro + Claude Code ($40/mo) for design system leads who need both daily enforcement and architectural depth.</li>
+          <li><strong>Budget-constrained?</strong> Copilot Free ($0) for inline token completions. Add Gemini CLI Free for large-file CSS analysis. Together, $0.</li>
+        </ul>
+
+        <p>The biggest gap in AI tooling for design engineers is <strong>design token round-tripping</strong>. No tool natively reads Figma Variables, generates code tokens, and pushes changes back to Figma. The pipeline exists in pieces (Figma export &rarr; Claude Code &rarr; CSS custom properties) but requires manual orchestration. The tool that closes this loop &mdash; bidirectional Figma-to-code token sync with an AI that understands your architecture &mdash; will be the one that fundamentally changes how design systems are maintained.</p>
+
+        <p>Compare all tools and pricing on our <a href="/" style="color:var(--accent)">main comparison table</a>, read the <a href="/blog/hidden-costs-ai-coding-tools.html" style="color:var(--accent)">hidden costs guide</a> before committing to a paid plan, or check the <a href="/blog/ai-coding-tools-for-frontend-engineers-2026.html" style="color:var(--accent)">frontend engineers guide</a> for broader frontend coverage beyond design systems.</p>
+
+        <h2>Related on CodeCosts</h2>
+        <ul>
+          <li><a href="/blog/ai-coding-tools-for-ux-designers-2026.html" style="color:var(--accent)">AI Coding Tools for UX Designers (2026)</a> &mdash; Prototyping, design-to-code, interaction implementation</li>
+          <li><a href="/blog/ai-coding-tools-for-frontend-engineers-2026.html" style="color:var(--accent)">AI Coding Tools for Frontend Engineers (2026)</a> &mdash; Full frontend development: React, Vue, CSS, build tools</li>
+          <li><a href="/blog/ai-coding-tools-for-accessibility-engineers-2026.html" style="color:var(--accent)">AI Coding Tools for Accessibility Engineers (2026)</a> &mdash; WCAG compliance, ARIA patterns, a11y testing</li>
+          <li><a href="/blog/ai-coding-tools-for-technical-leads-staff-engineers-2026.html" style="color:var(--accent)">AI Coding Tools for Technical Leads &amp; Staff Engineers (2026)</a> &mdash; Code review, standards enforcement, team enablement</li>
+          <li><a href="/blog/ai-coding-tools-for-freelancers-2026.html" style="color:var(--accent)">AI Coding Tools for Freelancers (2026)</a> &mdash; Multi-client workflows, time-to-value optimization</li>
+          <li><a href="/blog/cheapest-ai-coding-tool-2026.html" style="color:var(--accent)">Cheapest AI Coding Tools in 2026: Complete Cost Comparison</a></li>
+        </ul>
+      </div>
+    </article>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>CodeCosts &mdash; Independent AI coding tool price tracker. Updated March 2026.</p>
+      <p style="margin-top:0.5rem"><a href="/" style="color:var(--accent)">Compare all tools</a> &middot; <a href="/blog/" style="color:var(--accent)">Blog</a> &middot; <a href="/blog/feed.xml" style="color:var(--accent)">RSS</a></p>
+    </div>
+  </footer>
+</body>
+</html>

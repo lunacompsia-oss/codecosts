@@ -9,6 +9,14 @@
     <atom:link href="https://codecosts.pages.dev/blog/feed.xml" rel="self" type="application/rss+xml"/>
 
     <item>
+      <title>AI Coding Tools for Design Engineers 2026: Design Systems, Tokens, Component Libraries &amp; Visual Quality Guide</title>
+      <link>https://codecosts.pages.dev/blog/ai-coding-tools-for-design-engineers-2026.html</link>
+      <description>The design engineer's guide to AI coding tools in 2026. Design token generation, component scaffolding from Figma specs, Storybook stories, visual regression prevention, motion and animation code, and design system governance.</description>
+      <pubDate>Sat, 28 Mar 2026 23:59:00 GMT</pubDate>
+      <guid>https://codecosts.pages.dev/blog/ai-coding-tools-for-design-engineers-2026.html</guid>
+    </item>
+
+    <item>
       <title>AI Coding Tools for Technical Recruiters 2026: Hiring, Screening, Job Descriptions &amp; Interview Assessment Guide</title>
       <link>https://codecosts.pages.dev/blog/ai-coding-tools-for-technical-recruiters-2026.html</link>
       <description>The technical recruiter's guide to AI coding tools in 2026. Understand what candidates use, write better job descriptions, assess AI-assisted coding skills, benchmark team tooling, and navigate the new hiring landscape.</description>

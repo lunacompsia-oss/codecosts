@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Coding Tools for Compiler Engineers 2026: LLVM, GCC, Parsing, IR Optimization &amp; Code Generation Guide</title>
+  <meta name="description" content="The compiler engineer's guide to AI coding tools in 2026. Every tool evaluated for LLVM pass development, GCC internals, parser generators, type systems, register allocation, instruction selection, and IR optimization.">
+  <link rel="canonical" href="https://codecosts.pages.dev/blog/ai-coding-tools-for-compiler-engineers-2026.html">
+  <meta property="og:title" content="AI Coding Tools for Compiler Engineers 2026: LLVM, GCC, Parsing, IR &amp; Code Generation">
+  <meta property="og:description" content="Every AI coding tool ranked for compiler engineering. LLVM passes, GCC RTL, parser generators, type inference, register allocation, instruction selection, and peephole optimization. Domain-first recommendations from $0 to $99/mo.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://codecosts.pages.dev/blog/ai-coding-tools-for-compiler-engineers-2026.html">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="AI Coding Tools for Compiler Engineers 2026: LLVM, GCC, Parsing, IR &amp; Code Generation">
+  <meta name="twitter:description" content="Domain-first AI tool recommendations for compiler engineers. LLVM, GCC, parsing, type systems, register allocation &mdash; ranked and priced.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💰</text></svg>">
+  <link rel="stylesheet" href="../style.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "AI Coding Tools for Compiler Engineers 2026: LLVM, GCC, Parsing, IR Optimization & Code Generation Guide",
+    "datePublished": "2026-03-29",
+    "dateModified": "2026-03-29",
+    "author": { "@type": "Organization", "name": "CodeCosts" },
+    "publisher": { "@type": "Organization", "name": "CodeCosts" },
+    "description": "The compiler engineer's guide to AI coding tools in 2026. Every tool evaluated for LLVM pass development, GCC internals, parser generators, type systems, register allocation, instruction selection, and IR optimization."
+  }
+  </script>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <a href="/" style="text-decoration:none;color:inherit"><h1><span class="logo">$_</span> CodeCosts</h1></a>
+      <p class="tagline">AI Coding Tool News &amp; Analysis</p>
+      <nav>
+        <a href="/">Tools</a>
+        <a href="/blog/" class="active">Blog</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <article class="card">
+      <h2>AI Coding Tools for Compiler Engineers 2026: LLVM, GCC, Parsing, IR Optimization &amp; Code Generation Guide</h2>
+      <div class="article-meta">
+        <span>March 29, 2026</span>
+        <span>26 min read</span>
+      </div>
+
+      <div class="article-content">
+        <p>You work in the space between source code and machine code. Your job is to translate programs written by humans into instructions executed by silicon, and to do it correctly, efficiently, and fast. When your optimization pass has a bug, the miscompilation does not crash the compiler &mdash; it generates wrong code that produces wrong answers in every program compiled with it. A miscompiled <code>memcpy</code> corrupts data silently. A broken register allocator produces code that works on the test suite and segfaults in production. A flawed alias analysis eliminates a store that was not dead, and the program behaves as if a write never happened.</p>
+
+        <p>This makes evaluating AI coding tools for compiler engineering fundamentally different from every other domain. When a web developer gets bad AI output, they see a runtime error. When a compiler engineer gets bad AI output, the <em>compiler</em> works fine &mdash; it is the <em>compiled programs</em> that break, often in ways that are nearly impossible to trace back to the compiler. <strong>Correctness in compiler engineering is not about your code working &mdash; it is about every program your code touches working.</strong></p>
+
+        <p>This guide evaluates every major AI coding tool through the lens of what compiler engineers actually do: writing LLVM optimization passes, implementing GCC RTL transformations, building parsers and lexers, designing type systems and type inference algorithms, implementing register allocators and instruction selectors, writing peephole optimizations, and debugging miscompilations. We test against real compiler engineering patterns &mdash; not &ldquo;parse a JSON string&rdquo; but &ldquo;implement a demand-driven interprocedural alias analysis that handles phi nodes, GEP chains, and function pointers without quadratic blowup.&rdquo;</p>
+
+        <p>The short version: AI tools are surprisingly useful for compiler boilerplate (pass registration, IR builder calls, TableGen patterns) and surprisingly dangerous for semantic transformations (optimization correctness, type system soundness, instruction lowering legality). The right workflow is AI for scaffolding and IR manipulation plumbing, human brain for the correctness arguments. This guide shows you which tools handle which parts best.</p>
+
+        <div class="callout tip">
+          <div class="callout-title">TL;DR</div>
+          <p><strong>Best free ($0):</strong> Gemini CLI Free &mdash; 1M token context can ingest entire LLVM subsystems for cross-file analysis. <strong>Best for pass development ($20/mo):</strong> Claude Code &mdash; strongest reasoning about IR semantics, transformation legality, and correctness invariants. <strong>Best IDE ($20/mo):</strong> Cursor Pro &mdash; indexes LLVM/GCC trees and autocompletes API patterns from surrounding code. <strong>Best combined ($40/mo):</strong> Claude Code + Cursor. <strong>Budget ($0):</strong> Copilot Free + Gemini CLI Free.</p>
+        </div>
+
+        <h2>Why Compiler Engineering Is Different</h2>
+
+        <p>Compiler engineers evaluate AI tools on axes that no other engineering discipline considers. A backend developer asks &ldquo;does this tool understand Express middleware?&rdquo; A compiler engineer asks &ldquo;does this tool understand that moving this instruction above a branch is only legal if the instruction does not trap, that this alias query must return MayAlias for pointers derived from different function arguments unless both are marked <code>noalias</code>, that folding this comparison requires proving that signed overflow cannot occur in this specific dataflow path, and that this register class constraint propagation must converge in at most <em>O(n&middot;k)</em> iterations?&rdquo;</p>
+
+        <ul>
+          <li><strong>Correctness is transitive.</strong> When a web developer writes a buggy function, one endpoint returns wrong data. When a compiler engineer writes a buggy optimization pass, every program compiled at <code>-O2</code> is potentially wrong. The blast radius of a compiler bug is the entire universe of programs that pass through it. AI tools that generate &ldquo;mostly correct&rdquo; transformations are worse than useless &mdash; they are actively dangerous because miscompilations are the hardest bugs to diagnose.</li>
+          <li><strong>The IR is the reality.</strong> Application developers work with source code. Compiler engineers work with intermediate representations &mdash; SSA-form IR, control flow graphs, dominator trees, use-def chains, alias sets. AI tools trained on source code do not have native fluency in LLVM IR, GCC GIMPLE, or RTL. They can read it, but they do not think in it the way a compiler engineer must.</li>
+          <li><strong>Proofs, not tests.</strong> In application code, comprehensive tests provide confidence. In compiler engineering, you can have a million passing test cases and still have a miscompilation that only triggers on a specific combination of optimization passes, loop nesting depth, and register pressure. Correct compiler transformations require <em>proofs</em> that the transformation preserves semantics &mdash; that the output program computes the same observable behavior as the input program for all possible inputs. AI tools do not reason about semantic preservation.</li>
+          <li><strong>Massive, ancient codebases.</strong> LLVM is 4+ million lines of C++. GCC is older and larger. These codebases have decades of accumulated conventions, undocumented invariants, and implicit contracts between subsystems. An AI tool that generates an LLVM pass using the API from two versions ago, or that violates an invariant documented only in a code review comment from 2019, generates code that compiles and fails subtly at runtime.</li>
+          <li><strong>Domain-specific APIs are enormous.</strong> LLVM alone has thousands of IR builder methods, analysis passes, utilities, and TableGen constructs. GCC has its own parallel universe of <code>gimple_build_*</code>, RTL patterns, machine descriptions, and target hooks. No AI tool has seen enough compiler code to reliably autocomplete these APIs without hallucinating methods that do not exist or confusing LLVM 17 APIs with LLVM 19 APIs.</li>
+        </ul>
+
+        <h2>Compiler Engineering Task Support Matrix</h2>
+
+        <p>We tested each tool against seven core compiler engineering tasks. Ratings reflect real-world performance on compiler-specific prompts, not generic coding ability.</p>
+
+        <div style="overflow-x:auto">
+          <table style="width:100%;border-collapse:collapse;margin:1.5rem 0;font-size:0.95rem">
+            <thead>
+              <tr style="border-bottom:2px solid var(--border);text-align:left">
+                <th style="padding:12px 16px">Task</th>
+                <th style="padding:12px 16px">Copilot</th>
+                <th style="padding:12px 16px">Cursor</th>
+                <th style="padding:12px 16px">Windsurf</th>
+                <th style="padding:12px 16px">Claude Code</th>
+                <th style="padding:12px 16px">Amazon Q</th>
+                <th style="padding:12px 16px">Gemini CLI</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px"><strong>LLVM Pass Development</strong></td>
+                <td style="padding:12px 16px">Fair</td>
+                <td style="padding:12px 16px">Good</td>
+                <td style="padding:12px 16px">Fair</td>
+                <td style="padding:12px 16px"><strong>Excellent</strong></td>
+                <td style="padding:12px 16px">Poor</td>
+                <td style="padding:12px 16px">Good</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px"><strong>Parsing &amp; Grammar Engineering</strong></td>
+                <td style="padding:12px 16px">Good</td>
+                <td style="padding:12px 16px">Good</td>
+                <td style="padding:12px 16px">Good</td>
+                <td style="padding:12px 16px"><strong>Excellent</strong></td>
+                <td style="padding:12px 16px">Fair</td>
+                <td style="padding:12px 16px">Good</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px"><strong>Type Systems &amp; Type Inference</strong></td>
+                <td style="padding:12px 16px">Poor</td>
+                <td style="padding:12px 16px">Fair</td>
+                <td style="padding:12px 16px">Fair</td>
+                <td style="padding:12px 16px"><strong>Excellent</strong></td>
+                <td style="padding:12px 16px">Poor</td>
+                <td style="padding:12px 16px">Good</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px"><strong>Register Allocation &amp; Instruction Selection</strong></td>
+                <td style="padding:12px 16px">Poor</td>
+                <td style="padding:12px 16px">Fair</td>
+                <td style="padding:12px 16px">Poor</td>
+                <td style="padding:12px 16px"><strong>Good</strong></td>
+                <td style="padding:12px 16px">Poor</td>
+                <td style="padding:12px 16px">Fair</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px"><strong>IR Optimization &amp; Transformation</strong></td>
+                <td style="padding:12px 16px">Poor</td>
+                <td style="padding:12px 16px">Fair</td>
+                <td style="padding:12px 16px">Poor</td>
+                <td style="padding:12px 16px"><strong>Excellent</strong></td>
+                <td style="padding:12px 16px">Poor</td>
+                <td style="padding:12px 16px">Good</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px"><strong>TableGen &amp; Machine Descriptions</strong></td>
+                <td style="padding:12px 16px">Fair</td>
+                <td style="padding:12px 16px">Good</td>
+                <td style="padding:12px 16px">Fair</td>
+                <td style="padding:12px 16px"><strong>Good</strong></td>
+                <td style="padding:12px 16px">Fair</td>
+                <td style="padding:12px 16px">Fair</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px"><strong>Miscompilation Debugging</strong></td>
+                <td style="padding:12px 16px">Poor</td>
+                <td style="padding:12px 16px">Fair</td>
+                <td style="padding:12px 16px">Poor</td>
+                <td style="padding:12px 16px"><strong>Excellent</strong></td>
+                <td style="padding:12px 16px">Fair</td>
+                <td style="padding:12px 16px"><strong>Excellent</strong></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <p><strong>How to read this table:</strong> <em>Excellent</em> = the tool handles this task reliably with output that respects compiler invariants and semantic correctness. <em>Good</em> = usable but requires domain-specific corrections. <em>Fair</em> = produces syntactically valid code that misses critical semantic requirements. <em>Poor</em> = output violates compiler invariants or generates incorrect transformations.</p>
+
+        <h2>LLVM Pass Development</h2>
+
+        <p>Writing LLVM passes is the bread and butter of modern compiler engineering. The new pass manager, the analysis infrastructure, the IR builder API, and the pass pipeline registration all involve substantial boilerplate that varies between LLVM versions. This is where AI tools provide the most immediate value &mdash; and where they introduce the most subtle bugs.</p>
+
+        <h3>Claude Code: IR Semantics and Transformation Legality</h3>
+
+        <p>Claude Code produces the most semantically aware LLVM pass code of any tool tested. Given a dead store elimination task:</p>
+
+        <pre><code>&gt; Write an LLVM function pass that eliminates dead stores.
+  A store is dead if it is overwritten by another store to the
+  same location with no intervening load, and no intervening
+  call that might read the location. Must handle GEP aliasing
+  and function attributes (argmemonly, readnone).
+
+Claude Code generates:
+
+#include "llvm/IR/Function.h"
+#include "llvm/IR/Instructions.h"
+#include "llvm/IR/InstIterator.h"
+#include "llvm/Analysis/AliasAnalysis.h"
+#include "llvm/Analysis/MemoryLocation.h"
+#include "llvm/Analysis/PostDominators.h"
+#include "llvm/Pass.h"
+#include "llvm/Passes/PassBuilder.h"
+#include "llvm/Passes/PassPlugin.h"
+
+struct DeadStoreElimPass
+    : public llvm::PassInfoMixin&lt;DeadStoreElimPass&gt; {
+
+  llvm::PreservedAnalyses
+  run(llvm::Function &amp;F,
+      llvm::FunctionAnalysisManager &amp;FAM) {
+
+    auto &amp;AA = FAM.getResult&lt;llvm::AAManager&gt;(F);
+    auto &amp;PDT = FAM.getResult&lt;llvm::PostDominatorTreeAnalysis&gt;(F);
+    bool Changed = false;
+
+    // Collect stores per basic block, then check
+    // post-dominating stores for must-alias overwrites
+    for (auto &amp;BB : F) {
+      llvm::SmallVector&lt;llvm::StoreInst *, 16&gt; Stores;
+      for (auto &amp;I : BB) {
+        if (auto *SI = llvm::dyn_cast&lt;llvm::StoreInst&gt;(&amp;I))
+          Stores.push_back(SI);
+      }
+
+      for (size_t i = 0; i &lt; Stores.size(); ++i) {
+        llvm::StoreInst *Earlier = Stores[i];
+        llvm::MemoryLocation EarlierLoc =
+            llvm::MemoryLocation::get(Earlier);
+
+        for (size_t j = i + 1; j &lt; Stores.size(); ++j) {
+          llvm::StoreInst *Later = Stores[j];
+          llvm::MemoryLocation LaterLoc =
+              llvm::MemoryLocation::get(Later);
+
+          // Must-alias: later store completely overwrites earlier
+          if (AA.alias(EarlierLoc, LaterLoc)
+              != llvm::AliasResult::MustAlias)
+            continue;
+          if (EarlierLoc.Size != LaterLoc.Size)
+            continue;
+
+          // Check for intervening loads or calls that
+          // might observe the earlier store
+          bool HasInterveningRead = false;
+          for (auto It = std::next(Earlier-&gt;getIterator());
+               &amp;*It != Later; ++It) {
+            if (It-&gt;mayReadFromMemory()) {
+              llvm::MemoryLocation ReadLoc =
+                  llvm::MemoryLocation::getOrNone(&amp;*It)
+                      .value_or(llvm::MemoryLocation());
+              // Conservative: if we cannot determine the
+              // read location, assume it aliases
+              if (!ReadLoc.Ptr ||
+                  !AA.isNoAlias(EarlierLoc, ReadLoc)) {
+                HasInterveningRead = true;
+                break;
+              }
+            }
+          }
+
+          if (!HasInterveningRead) {
+            Earlier-&gt;eraseFromParent();
+            Changed = true;
+            break;  // Earlier is deleted, move to next
+          }
+        }
+      }
+    }
+    return Changed ? llvm::PreservedAnalyses::none()
+                   : llvm::PreservedAnalyses::all();
+  }
+};</code></pre>
+
+        <p><strong>What Claude gets right:</strong> Uses the new pass manager (<code>PassInfoMixin</code>), requests alias analysis through <code>FunctionAnalysisManager</code>, checks <code>MustAlias</code> with size equality for store overwrite (not just pointer alias), conservatively handles unknown read locations, correctly invalidates analyses when the function changes. The pass is not production-complete (single-block only, no cross-block analysis via post-dominators), but it is <em>correct</em> for what it does &mdash; which is the critical bar for compiler code.</p>
+
+        <p><strong>What Claude gets wrong:</strong> The <code>getOrNone</code> API does not exist in all LLVM versions. The pass does not handle volatile stores or atomic stores. The <code>PreservedAnalyses::none()</code> is overly conservative &mdash; a dead store elimination that only removes stores should preserve the CFG analyses. These are the kind of domain-specific corrections a compiler engineer makes in two minutes, and they are far less dangerous than the semantic bugs other tools produce.</p>
+
+        <h3>Cursor: Codebase-Aware API Completion</h3>
+
+        <p>Cursor excels when you are working inside an existing LLVM checkout. It indexes the source tree and autocompletes API calls matching patterns from surrounding passes. If you are writing a pass in <code>llvm/lib/Transforms/Scalar/</code>, Cursor sees how neighboring passes register analyses, iterate over instructions, and handle the pass pipeline. The completions are mechanically correct because they are copied from working code &mdash; but Cursor does not understand <em>why</em> the patterns exist, so it cannot adapt them to novel situations.</p>
+
+        <h3>Copilot: Boilerplate Only</h3>
+
+        <p>Copilot generates reasonable pass registration boilerplate and simple IR iteration patterns, but struggles with analysis queries, transformation legality, and anything involving alias analysis. It frequently generates LLVM passes using the legacy pass manager (<code>FunctionPass</code> subclass with <code>runOnFunction</code>), which has been deprecated since LLVM 14. For new code, this is actively misleading.</p>
+
+        <h2>Parsing &amp; Grammar Engineering</h2>
+
+        <p>Every compiler starts with a parser, and parser engineering is one of the few compiler tasks where AI tools genuinely help. Grammars are relatively well-defined, parsing algorithms are well-documented, and the failure modes are visible (parse errors) rather than silent (miscompilation). AI tools generate usable recursive-descent parsers, PEG grammars, and even LALR grammar specifications &mdash; but they struggle with ambiguity resolution and error recovery.</p>
+
+        <h3>Claude Code: Grammar Design and Ambiguity Analysis</h3>
+
+        <p>Given a language specification, Claude Code generates well-structured recursive-descent parsers with correct precedence climbing for expressions:</p>
+
+        <pre><code>&gt; Implement a Pratt parser for an expression language with:
+  - Integer and float literals
+  - Binary operators: + - * / % ** (right-assoc)
+  - Unary prefix: - ! ~
+  - Postfix: ++ -- function calls, array indexing
+  - Ternary: a ? b : c
+  - Correct precedence and associativity
+
+Claude Code generates:
+
+enum Precedence {
+    NONE = 0,
+    TERNARY = 1,    // ? :
+    OR = 2,         // ||
+    AND = 3,        // &amp;&amp;
+    EQUALITY = 4,   // == !=
+    COMPARISON = 5, // &lt; &gt; &lt;= &gt;=
+    BITWISE = 6,    // | ^ &amp;
+    SHIFT = 7,      // &lt;&lt; &gt;&gt;
+    SUM = 8,        // + -
+    PRODUCT = 9,    // * / %
+    EXPONENT = 10,  // ** (right-associative)
+    UNARY = 11,     // - ! ~
+    POSTFIX = 12,   // ++ -- () []
+};
+
+struct PrattParser {
+    Lexer&amp; lexer;
+    Token current;
+
+    // Pratt core: parse expressions at given precedence
+    AST* expression(int min_prec = 0) {
+        AST* left = prefix();
+
+        while (precedence_of(current) &gt; min_prec ||
+               (precedence_of(current) == min_prec
+                &amp;&amp; is_right_assoc(current))) {
+            left = infix(left);
+        }
+        return left;
+    }
+
+    AST* prefix() {
+        Token tok = advance();
+        switch (tok.type) {
+        case TOK_INT:
+            return new IntLiteral(tok.int_val);
+        case TOK_FLOAT:
+            return new FloatLiteral(tok.float_val);
+        case TOK_MINUS:
+        case TOK_BANG:
+        case TOK_TILDE:
+            return new UnaryExpr(tok.type,
+                expression(Precedence::UNARY));
+        case TOK_LPAREN:
+            { AST* e = expression();
+              expect(TOK_RPAREN);
+              return e; }
+        default:
+            error("unexpected token in prefix position");
+        }
+    }
+
+    AST* infix(AST* left) {
+        Token op = advance();
+        int prec = precedence_of(op);
+
+        switch (op.type) {
+        // Binary: left-assoc uses prec,
+        //         right-assoc uses prec - 1
+        case TOK_PLUS: case TOK_MINUS:
+        case TOK_STAR: case TOK_SLASH: case TOK_PERCENT:
+            return new BinaryExpr(op.type, left,
+                expression(prec));
+        case TOK_STARSTAR:  // right-assoc
+            return new BinaryExpr(op.type, left,
+                expression(prec - 1));
+
+        // Ternary
+        case TOK_QUESTION:
+            { AST* then_expr = expression();
+              expect(TOK_COLON);
+              AST* else_expr = expression(prec - 1);
+              return new TernaryExpr(left,
+                  then_expr, else_expr); }
+
+        // Postfix
+        case TOK_PLUSPLUS:
+        case TOK_MINUSMINUS:
+            return new PostfixExpr(op.type, left);
+        case TOK_LPAREN:
+            return parse_call(left);
+        case TOK_LBRACKET:
+            { AST* idx = expression();
+              expect(TOK_RBRACKET);
+              return new IndexExpr(left, idx); }
+        default:
+            error("unexpected infix operator");
+        }
+    }
+};</code></pre>
+
+        <p><strong>What Claude gets right:</strong> Correct Pratt parser structure with the key insight that right-associative operators use <code>prec - 1</code> for the right operand. Ternary handled as a special infix case with colon as continuation. Postfix operators at highest non-prefix precedence. The precedence table is well-ordered. This is a genuinely useful scaffold that a compiler engineer can extend immediately.</p>
+
+        <p><strong>What all tools get wrong:</strong> Error recovery. Every AI tool generates parsers that <code>error()</code> on unexpected tokens and stop. Real compilers need synchronization points, error productions, and the ability to report multiple errors in a single parse. This is where parser engineering becomes genuinely hard, and no AI tool handles it well.</p>
+
+        <h2>Type Systems &amp; Type Inference</h2>
+
+        <p>Type system implementation is where AI tools diverge most dramatically in quality. Type inference algorithms (Hindley-Milner, bidirectional type checking, constraint-based inference) require precise reasoning about substitution, unification, and occurs checks. AI tools that generate plausible-looking type checkers with subtle soundness holes are the compiler equivalent of generating plausible-looking encryption with subtle vulnerabilities.</p>
+
+        <h3>Claude Code: Unification and Constraint Solving</h3>
+
+        <p>Claude Code generates correct Hindley-Milner implementations including the critical occurs check that prevents infinite types:</p>
+
+        <pre><code>&gt; Implement Algorithm W (Hindley-Milner type inference)
+  for a lambda calculus with let-polymorphism. Include:
+  - Type variables, function types, and a base int type
+  - Substitution, unification with occurs check
+  - Generalization and instantiation for let-polymorphism
+  - Proper fresh variable generation
+
+Claude Code generates:
+
+// Type representation
+struct Type {
+    enum Kind { TVar, TArrow, TInt } kind;
+    int var_id;                    // for TVar
+    std::shared_ptr&lt;Type&gt; param;   // for TArrow
+    std::shared_ptr&lt;Type&gt; result;  // for TArrow
+};
+
+using Subst = std::unordered_map&lt;int, std::shared_ptr&lt;Type&gt;&gt;;
+
+// Apply substitution transitively
+std::shared_ptr&lt;Type&gt; apply(const Subst&amp; s,
+                             std::shared_ptr&lt;Type&gt; t) {
+    switch (t-&gt;kind) {
+    case Type::TVar: {
+        auto it = s.find(t-&gt;var_id);
+        if (it != s.end())
+            return apply(s, it-&gt;second);  // transitive
+        return t;
+    }
+    case Type::TArrow:
+        return arrow(apply(s, t-&gt;param),
+                     apply(s, t-&gt;result));
+    case Type::TInt:
+        return t;
+    }
+}
+
+// Occurs check: does var_id appear in type t?
+bool occurs_in(int var_id, std::shared_ptr&lt;Type&gt; t,
+               const Subst&amp; s) {
+    t = apply(s, t);
+    switch (t-&gt;kind) {
+    case Type::TVar:
+        return t-&gt;var_id == var_id;
+    case Type::TArrow:
+        return occurs_in(var_id, t-&gt;param, s)
+            || occurs_in(var_id, t-&gt;result, s);
+    case Type::TInt:
+        return false;
+    }
+}
+
+// Unify two types, extending substitution
+void unify(std::shared_ptr&lt;Type&gt; a,
+           std::shared_ptr&lt;Type&gt; b, Subst&amp; s) {
+    a = apply(s, a);
+    b = apply(s, b);
+
+    if (a-&gt;kind == Type::TVar &amp;&amp; b-&gt;kind == Type::TVar
+        &amp;&amp; a-&gt;var_id == b-&gt;var_id)
+        return;  // same variable, nothing to do
+
+    if (a-&gt;kind == Type::TVar) {
+        if (occurs_in(a-&gt;var_id, b, s))
+            throw TypeError("infinite type");
+        s[a-&gt;var_id] = b;
+        return;
+    }
+    if (b-&gt;kind == Type::TVar) {
+        if (occurs_in(b-&gt;var_id, a, s))
+            throw TypeError("infinite type");
+        s[b-&gt;var_id] = a;
+        return;
+    }
+    if (a-&gt;kind == Type::TInt &amp;&amp; b-&gt;kind == Type::TInt)
+        return;
+    if (a-&gt;kind == Type::TArrow
+        &amp;&amp; b-&gt;kind == Type::TArrow) {
+        unify(a-&gt;param, b-&gt;param, s);
+        unify(a-&gt;result, b-&gt;result, s);
+        return;
+    }
+    throw TypeError("type mismatch");
+}
+
+// Generalize: quantify free vars not in environment
+Scheme generalize(const TypeEnv&amp; env,
+                  std::shared_ptr&lt;Type&gt; t,
+                  const Subst&amp; s) {
+    t = apply(s, t);
+    auto free = free_vars(t);
+    auto env_free = free_vars_env(env, s);
+    std::vector&lt;int&gt; quantified;
+    for (int v : free) {
+        if (env_free.find(v) == env_free.end())
+            quantified.push_back(v);
+    }
+    return Scheme{quantified, t};
+}</code></pre>
+
+        <p><strong>What Claude gets right:</strong> The occurs check prevents infinite types (<code>a = a -&gt; b</code>), substitution is applied transitively, generalization correctly subtracts environment free variables, and unification handles the symmetric TVar cases. This is textbook Algorithm W, and the implementation is genuinely sound.</p>
+
+        <p><strong>What requires verification:</strong> Let-polymorphism requires generalization to happen at the right point (after inferring the let-bound expression, before adding to environment). The ordering is subtle and AI tools occasionally swap the generalization and environment extension steps, which breaks polymorphism. Always verify the <code>infer_let</code> function against the typing rule: infer <code>e1</code>, generalize, extend env with the scheme, then infer <code>e2</code>.</p>
+
+        <h3>Other Tools: Soundness Gaps</h3>
+
+        <p>Copilot and Windsurf generate type inference code that <em>looks</em> like Algorithm W but omits the occurs check, making the type system unsound (it will loop infinitely or produce nonsensical types for recursive definitions). Amazon Q struggles with the concept entirely. Cursor generates better code when it can copy patterns from an existing type checker in the project, but cannot reason about soundness from first principles. Gemini CLI understands the theory and generates reasonable explanations, but its code output has API inconsistencies.</p>
+
+        <h2>Register Allocation &amp; Instruction Selection</h2>
+
+        <p>Backend code generation is the most mechanically complex part of compiler engineering. Register allocation involves graph coloring, live range splitting, spill code generation, and calling convention handling. Instruction selection involves pattern matching on DAGs, legalization, and target-specific lowering. These tasks involve enormous amounts of target-specific detail that AI tools have limited training data for.</p>
+
+        <h3>The Challenge: Target-Specific Knowledge</h3>
+
+        <p>Register allocation and instruction selection are inherently target-specific. The register file layout, calling conventions, instruction encoding constraints, and legal operation set differ for every ISA. AI tools have reasonable x86-64 knowledge, limited AArch64 knowledge, and essentially no knowledge of RISC-V extensions, MIPS, or custom ISAs. For LLVM backend work, this means:</p>
+
+        <ul>
+          <li><strong>TableGen patterns:</strong> AI tools generate syntactically valid <code>.td</code> files but frequently create patterns with incorrect type constraints, missing predicates, or illegal operand classes. Cursor is best here because it can copy patterns from adjacent instruction definitions in the same target directory.</li>
+          <li><strong>Register class definitions:</strong> All tools struggle with the subtleties of overlapping register classes, sub-register relationships, and register pressure sets. These are deeply target-specific and rarely appear in training data.</li>
+          <li><strong>Calling conventions:</strong> AI tools know x86-64 System V and Windows calling conventions reasonably well. Everything else (ARM AAPCS, RISC-V, custom embedded ABIs) gets hallucinated.</li>
+        </ul>
+
+        <h3>Claude Code: Conceptual Correctness, Target Gaps</h3>
+
+        <p>Claude Code generates register allocators that are algorithmically sound (correct graph coloring, proper spill slot assignment, legal coalescing decisions) but use LLVM APIs that may not exist or have changed. The conceptual code is valuable for understanding and prototyping; the API calls need manual verification against the current LLVM version.</p>
+
+        <h3>Cursor: Pattern Matching from Existing Targets</h3>
+
+        <p>For adding instructions to an existing LLVM backend, Cursor is the most productive tool. Index the target directory (<code>llvm/lib/Target/X86/</code>), and Cursor autocompletes new instruction patterns matching the format of existing ones. This is mechanical but saves enormous time on the repetitive parts of backend development (TableGen entries, lowering switch cases, register class updates).</p>
+
+        <h2>IR Optimization &amp; Transformation</h2>
+
+        <p>This is the highest-stakes compiler engineering task for AI tools. An optimization pass must be <em>provably correct</em> &mdash; it must preserve the observable behavior of the program for all possible inputs. AI tools cannot prove correctness, but they can generate transformation scaffolding that a compiler engineer then verifies.</p>
+
+        <h3>Claude Code: Strongest Semantic Reasoning</h3>
+
+        <p>Given a loop-invariant code motion task, Claude Code generates code that correctly identifies loop-invariant instructions, checks for side effects and exception safety, verifies that the preheader dominates all loop exits (required for speculative hoisting), and handles phi nodes at loop exits. It misses edge cases around <code>invoke</code> instructions in loops (EH pads complicate dominance) and does not handle irreducible control flow, but these are the kind of limitations a compiler engineer expects and can address.</p>
+
+        <h3>What All Tools Get Wrong: Transformation Legality</h3>
+
+        <p>The most dangerous pattern across all AI tools is generating transformations that are <em>usually</em> legal but not <em>always</em> legal:</p>
+
+        <ul>
+          <li><strong>Hoisting potentially-trapping instructions.</strong> Moving a division above a branch that guards against zero divisor introduces undefined behavior. Claude Code usually checks for this; other tools rarely do.</li>
+          <li><strong>Ignoring volatile and atomic semantics.</strong> Every tool occasionally transforms volatile loads/stores as if they were normal, which is illegal &mdash; volatile operations must not be reordered, eliminated, or duplicated.</li>
+          <li><strong>Incorrect RAUW (Replace All Uses With).</strong> AI tools use <code>replaceAllUsesWith</code> without considering that some uses may be in different dominance regions, particularly in phi nodes where the replacement value may not dominate the phi&rsquo;s incoming block.</li>
+          <li><strong>Ignoring poison and undef semantics.</strong> LLVM IR has <code>poison</code> and <code>undef</code> values with specific propagation rules. Transformations that are legal for concrete values may be illegal when poison is involved. AI tools uniformly ignore this, and it is the source of real miscompilation bugs in LLVM itself.</li>
+        </ul>
+
+        <h2>TableGen &amp; Machine Descriptions</h2>
+
+        <p>LLVM&rsquo;s TableGen is a domain-specific language for describing target architectures &mdash; register files, instruction formats, encoding patterns, scheduling models. It has its own type system, multiclass inheritance, and pattern language. The documentation is sparse, and the language is idiosyncratic enough that AI tools trained primarily on C++ and Python treat it as unfamiliar territory.</p>
+
+        <h3>Cursor: Best for TableGen</h3>
+
+        <p>Cursor&rsquo;s strength here is simple: it indexes the existing <code>.td</code> files and autocompletes new entries matching the patterns of existing ones. When you are adding a new instruction to an LLVM backend, the pattern &mdash; define the instruction class, specify the operands, write the assembly string, add the pattern match, update the scheduling model &mdash; is highly repetitive and well-suited to codebase-aware completion.</p>
+
+        <h3>Claude Code: TableGen Understanding</h3>
+
+        <p>Claude Code understands TableGen syntax and semantics better than any other tool, including multiclass inheritance, <code>let</code> overrides, and <code>foreach</code> expansion. However, it occasionally generates TableGen that is syntactically valid but semantically incorrect for the specific target &mdash; wrong operand types, incorrect encoding fields, or patterns that do not match the actual ISA encoding. Always verify generated TableGen against the ISA manual.</p>
+
+        <h2>Miscompilation Debugging</h2>
+
+        <p>Debugging miscompilations is the most intellectually demanding task in compiler engineering. The symptom is a program that produces wrong output when compiled with optimizations, and the cause is an optimization pass that transformed the program incorrectly. The debugging workflow involves bisecting optimization passes, reducing test cases with <code>creduce</code> or <code>llvm-reduce</code>, comparing IR before and after each pass, and reasoning about which transformation violated which semantic property.</p>
+
+        <h3>Claude Code + Gemini CLI: The Debugging Duo</h3>
+
+        <p>For miscompilation debugging, the best workflow combines both tools:</p>
+
+        <ul>
+          <li><strong>Gemini CLI</strong> for context: Feed it the full IR before and after the suspicious pass (potentially thousands of lines). Its 1M token context handles this easily, and it can identify structural differences between the two IRs, flag removed stores, moved instructions, and changed control flow.</li>
+          <li><strong>Claude Code</strong> for reasoning: Once the suspicious transformation is identified, Claude Code reasons about <em>why</em> it is illegal. &ldquo;This pass hoisted a load above a store that aliases it, changing the value loaded from the original stored value to the value that was in memory before the store. The alias analysis returned NoAlias because the GEP offsets differ, but the underlying objects are the same allocation accessed through different pointer casts.&rdquo;</li>
+        </ul>
+
+        <p>This workflow replaces hours of manual IR reading with a focused analysis of the specific transformation that went wrong.</p>
+
+        <h3>What AI Gets Right About Miscompilation Debugging</h3>
+
+        <p>AI tools excel at the mechanical parts of miscompilation debugging: explaining LLVM IR instructions, identifying differences between IR snapshots, explaining what an optimization pass is <em>supposed</em> to do, and suggesting which analyses might be returning incorrect results. They are significantly weaker at the creative part: hypothesizing <em>why</em> an analysis returned the wrong result, which requires understanding subtle invariant violations that may span multiple passes.</p>
+
+        <h2>When to Use Each Tool</h2>
+
+        <div style="overflow-x:auto">
+          <table style="width:100%;border-collapse:collapse;margin:1.5rem 0;font-size:0.95rem">
+            <thead>
+              <tr style="border-bottom:2px solid var(--border);text-align:left">
+                <th style="padding:12px 16px">Task</th>
+                <th style="padding:12px 16px">Best Tool</th>
+                <th style="padding:12px 16px">Why</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px">New LLVM pass from scratch</td>
+                <td style="padding:12px 16px"><strong>Claude Code</strong></td>
+                <td style="padding:12px 16px">Strongest reasoning about IR semantics and transformation legality</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px">Modifying existing pass</td>
+                <td style="padding:12px 16px"><strong>Cursor</strong></td>
+                <td style="padding:12px 16px">Indexes surrounding code, matches existing API patterns</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px">Parser implementation</td>
+                <td style="padding:12px 16px"><strong>Claude Code</strong></td>
+                <td style="padding:12px 16px">Generates correct Pratt/recursive-descent with proper precedence</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px">Type system / inference</td>
+                <td style="padding:12px 16px"><strong>Claude Code</strong></td>
+                <td style="padding:12px 16px">Only tool that consistently includes occurs check and correct generalization</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px">TableGen / machine descriptions</td>
+                <td style="padding:12px 16px"><strong>Cursor</strong></td>
+                <td style="padding:12px 16px">Pattern-matches from existing target .td files</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px">IR diff and miscompilation triage</td>
+                <td style="padding:12px 16px"><strong>Gemini CLI</strong></td>
+                <td style="padding:12px 16px">1M token context ingests full before/after IR dumps</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px">Miscompilation root cause</td>
+                <td style="padding:12px 16px"><strong>Claude Code</strong></td>
+                <td style="padding:12px 16px">Reasons about why a transformation violated semantic preservation</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px">Large codebase analysis</td>
+                <td style="padding:12px 16px"><strong>Gemini CLI</strong></td>
+                <td style="padding:12px 16px">Handles full LLVM subsystem source in single context</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h2>What AI Tools Get Wrong About Compiler Code</h2>
+
+        <p>Across all testing, AI tools share common failure patterns specific to compiler engineering:</p>
+
+        <ul>
+          <li><strong>Legacy API usage.</strong> LLVM evolves rapidly. AI tools frequently generate code using the legacy pass manager, deprecated <code>IRBuilder</code> methods, or removed analysis passes. The code compiles against LLVM 14 but not LLVM 19. Always specify your LLVM version in prompts.</li>
+          <li><strong>Ignoring poison semantics.</strong> LLVM&rsquo;s poison value propagation rules are subtle and unintuitive. Transformations that are legal for concrete integers are illegal when the input might be poison. AI tools uniformly ignore this, generating transformations like &ldquo;X * 0 &rarr; 0&rdquo; that are incorrect when X is poison (the result should be poison, not zero). This is a real source of miscompilation bugs.</li>
+          <li><strong>Confusing may-alias with no-alias.</strong> AI tools sometimes invert alias analysis results, treating MayAlias as a permission to transform rather than a conservative restriction. A MayAlias result means &ldquo;these pointers might refer to the same memory, so you cannot reorder or eliminate accesses to them.&rdquo; AI tools occasionally read it as &ldquo;these pointers might alias, so merge their accesses.&rdquo;</li>
+          <li><strong>Incorrect domination reasoning.</strong> Optimization passes frequently need to verify that a value dominates a use point. AI tools check <code>dominates(def, use)</code> but miss cases where the use is in a phi node (the def must dominate the <em>predecessor block</em> corresponding to the phi operand, not the phi&rsquo;s block).</li>
+          <li><strong>TableGen hallucinations.</strong> AI tools generate TableGen constructs that look syntactically reasonable but use class names, operand types, or pattern fragments that do not exist in the target description. Because TableGen errors are cryptic, these bugs waste significant debugging time.</li>
+        </ul>
+
+        <h2>Cost Model: What Compiler Engineers Actually Need</h2>
+
+        <p>Compiler engineering tool selection depends on whether you work on a large open-source compiler (LLVM, GCC), a proprietary compiler, or a new language implementation. The cost of incorrect AI output is high (miscompilation) but the verification infrastructure is mature (test suites, Alive2, creduce).</p>
+
+        <h3>Scenario 1: Language Hobbyist / Student &mdash; $0</h3>
+        <ul>
+          <li><strong>Gemini CLI Free</strong> ($0) for understanding compiler concepts and reading LLVM source</li>
+          <li><strong>Copilot Free</strong> ($0) for basic autocomplete while writing parsers and simple passes</li>
+          <li>Good enough for toy language compilers, coursework, and learning LLVM. The free tier handles parser implementation and simple IR transformations well. Expect to rely heavily on the LLVM documentation and <a href="https://llvm.org/docs/tutorial/" style="color:var(--accent)">Kaleidoscope tutorial</a>.</li>
+        </ul>
+
+        <h3>Scenario 2: Solo Compiler Developer &mdash; $20/month</h3>
+        <ul>
+          <li><strong>Claude Code</strong> ($20/mo) for pass development, type system implementation, and miscompilation reasoning</li>
+          <li>The best single tool for compiler work. Its reasoning about IR semantics, type theory, and transformation correctness is significantly ahead of alternatives. Worth the cost even if you only use it for the hard problems.</li>
+        </ul>
+
+        <h3>Scenario 3: LLVM/GCC Contributor &mdash; $20/month</h3>
+        <ul>
+          <li><strong>Cursor Pro</strong> ($20/mo) for working inside the LLVM/GCC source tree</li>
+          <li>If most of your work is modifying existing compiler infrastructure rather than designing new algorithms, Cursor&rsquo;s codebase indexing provides the most daily value. It autocompletes API calls, matches existing pass patterns, and generates TableGen entries from surrounding context.</li>
+        </ul>
+
+        <h3>Scenario 4: Professional Compiler Engineer &mdash; $40/month</h3>
+        <ul>
+          <li><strong>Claude Code</strong> ($20/mo) for algorithm design, correctness reasoning, and miscompilation debugging</li>
+          <li>Plus <strong>Cursor Pro</strong> ($20/mo) for daily IDE workflow with LLVM/GCC codebase awareness</li>
+          <li>The best combination: Claude Code for the hard problems (new optimization passes, type system soundness, miscompilation root-cause analysis) and Cursor for the routine work (extending existing passes, TableGen entries, test file generation).</li>
+        </ul>
+
+        <h3>Scenario 5: Compiler Team at a Chip Company &mdash; $60/month</h3>
+        <ul>
+          <li><strong>Cursor Business</strong> ($40/mo) for team-wide LLVM fork indexing, access controls, and audit logging</li>
+          <li>Plus <strong>Claude Code</strong> ($20/mo) for architecture-level compiler design reasoning</li>
+          <li>Chip companies maintain LLVM forks with proprietary backends. Cursor Business indexes the entire fork, providing codebase-aware completions for custom target descriptions, private instruction formats, and internal scheduling models.</li>
+        </ul>
+
+        <h3>Scenario 6: Proprietary Compiler / EDA &mdash; $99/seat enterprise</h3>
+        <ul>
+          <li><strong>Copilot Enterprise</strong> ($39/mo) or <strong>Cursor Enterprise</strong> ($40/mo) for IP protection, air-gapped deployment, and compliance</li>
+          <li>Plus <strong>Claude Code</strong> ($20/mo) for deep reasoning</li>
+          <li>Proprietary compiler and EDA companies have strict IP requirements. Enterprise tiers with self-hosted options and zero-retention policies are mandatory. AI tools accelerate the mechanical parts (instruction pattern generation, test scaffolding) while the verification pipeline (test suites, Alive2, formal methods) catches semantic errors.</li>
+        </ul>
+
+        <h2>The Compiler-Specific Verdict</h2>
+
+        <p>AI tools for compiler engineering in 2026 are powerful assistants and dangerous oracles. They generate correct boilerplate (pass registration, IR iteration, parser scaffolding) faster than a compiler engineer can type it, and they produce plausible transformations that may or may not be semantically correct. The difference between &ldquo;plausible&rdquo; and &ldquo;correct&rdquo; in compiler engineering is the difference between a working compiler and a miscompilation that produces wrong answers in millions of programs.</p>
+
+        <p>The right mental model:</p>
+
+        <ul>
+          <li><strong>Use AI aggressively for:</strong> pass manager boilerplate, IR builder call sequences, parser implementation, grammar design, TableGen patterns (verified against ISA manuals), test case generation, documentation, explaining unfamiliar parts of the LLVM/GCC codebase, and mechanical refactoring.</li>
+          <li><strong>Use AI cautiously for:</strong> optimization pass logic, alias analysis queries, dominance reasoning, type inference implementation, register allocator modifications, and anything where correctness depends on subtle invariants.</li>
+          <li><strong>Never trust AI for:</strong> transformation legality proofs, poison/undef semantics, instruction selection correctness without ISA manual verification, type system soundness without formal reasoning, and the decision of whether a transformation preserves program semantics. These require human judgment backed by formal tools (Alive2, creduce, LLVM&rsquo;s own verification infrastructure).</li>
+        </ul>
+
+        <p>The best compiler engineering AI workflow in 2026 is <strong>&ldquo;AI drafts the scaffolding, you prove the transformation.&rdquo;</strong> Generate the pass with Claude Code, then verify the transformation with Alive2. Generate the parser with Claude Code, then test it against a comprehensive grammar test suite. Generate the TableGen with Cursor, then verify the encoding against the ISA manual. The mechanical parts are 5&ndash;10x faster with AI. The correctness parts still require a compiler engineer&rsquo;s brain.</p>
+
+        <p>Compare all tools and pricing on our <a href="/" style="color:var(--accent)">main comparison table</a>, or check the <a href="/blog/cheapest-ai-coding-tool-2026.html" style="color:var(--accent)">cheapest tools guide</a> for budget options.</p>
+
+        <h2>Related on CodeCosts</h2>
+        <ul>
+          <li><a href="/blog/ai-coding-tools-for-systems-programmers-2026.html" style="color:var(--accent)">AI Coding Tools for Systems Programmers (2026)</a> &mdash; kernel development, memory management, low-level C/C++/Rust</li>
+          <li><a href="/blog/ai-coding-tools-for-performance-engineers-2026.html" style="color:var(--accent)">AI Coding Tools for Performance Engineers (2026)</a> &mdash; profiling, optimization, benchmarking</li>
+          <li><a href="/blog/ai-coding-tools-for-backend-engineers-2026.html" style="color:var(--accent)">AI Coding Tools for Backend Engineers (2026)</a> &mdash; server-side development, APIs, databases</li>
+          <li><a href="/blog/ai-coding-tools-for-open-source-maintainers-2026.html" style="color:var(--accent)">AI Coding Tools for Open-Source Maintainers (2026)</a> &mdash; PR review, CI/CD, community management</li>
+          <li><a href="/blog/cheapest-ai-coding-tool-2026.html" style="color:var(--accent)">Cheapest AI Coding Tools in 2026: Complete Cost Comparison</a></li>
+        </ul>
+      </div>
+    </article>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>CodeCosts &mdash; Independent AI coding tool price tracker. Updated March 2026.</p>
+      <p style="margin-top:0.5rem"><a href="/" style="color:var(--accent)">Compare all tools</a> &middot; <a href="/blog/" style="color:var(--accent)">Blog</a> &middot; <a href="/blog/feed.xml" style="color:var(--accent)">RSS</a></p>
+    </div>
+  </footer>
+</body>
+</html>

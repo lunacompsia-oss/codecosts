@@ -1,0 +1,1408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Coding Tools for Robotics Engineers 2026: ROS 2, Motion Planning, Sensor Fusion, SLAM &amp; Real-Time Control Guide</title>
+  <meta name="description" content="The robotics engineer's guide to AI coding tools in 2026. Every tool evaluated for ROS 2 development, motion planning, sensor fusion, SLAM, real-time control systems, simulation integration, and hardware drivers. Domain-first recommendations from $0 to $99/seat.">
+  <link rel="canonical" href="https://codecosts.pages.dev/blog/ai-coding-tools-for-robotics-engineers-2026.html">
+  <meta property="og:title" content="AI Coding Tools for Robotics Engineers 2026: ROS 2, Motion Planning, Sensor Fusion, SLAM &amp; Real-Time Control">
+  <meta property="og:description" content="Every AI coding tool ranked for robotics engineering. ROS 2 nodes, motion planning, sensor fusion, SLAM, real-time control, simulation, and hardware drivers. Domain-first recommendations from $0 to $99/seat.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://codecosts.pages.dev/blog/ai-coding-tools-for-robotics-engineers-2026.html">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="AI Coding Tools for Robotics Engineers 2026: ROS 2, Motion Planning, Sensor Fusion, SLAM &amp; Real-Time Control">
+  <meta name="twitter:description" content="Domain-first AI tool recommendations for robotics engineers. ROS 2, motion planning, sensor fusion, SLAM, real-time control &mdash; ranked and priced.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💰</text></svg>">
+  <link rel="stylesheet" href="../style.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "AI Coding Tools for Robotics Engineers 2026: ROS 2, Motion Planning, Sensor Fusion, SLAM & Real-Time Control Guide",
+    "datePublished": "2026-03-29",
+    "dateModified": "2026-03-29",
+    "author": { "@type": "Organization", "name": "CodeCosts" },
+    "publisher": { "@type": "Organization", "name": "CodeCosts" },
+    "description": "The robotics engineer's guide to AI coding tools in 2026. Every tool evaluated for ROS 2 development, motion planning, sensor fusion, SLAM, real-time control systems, simulation integration, and hardware drivers."
+  }
+  </script>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <a href="/" style="text-decoration:none;color:inherit"><h1><span class="logo">$_</span> CodeCosts</h1></a>
+      <p class="tagline">AI Coding Tool News &amp; Analysis</p>
+      <nav>
+        <a href="/">Tools</a>
+        <a href="/blog/" class="active">Blog</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <article class="card">
+      <h2>AI Coding Tools for Robotics Engineers 2026: ROS 2, Motion Planning, Sensor Fusion, SLAM &amp; Real-Time Control Guide</h2>
+      <div class="article-meta">
+        <span>March 29, 2026</span>
+        <span>~26 min read</span>
+      </div>
+
+      <div class="article-content">
+        <p>Robotics engineering is software development where a bug does not produce a wrong pixel or a failed API call &mdash; it produces a robotic arm that slams into a workpiece, a drone that falls out of the sky, or an autonomous vehicle that drives into oncoming traffic. You are writing code that bridges the gap between abstract algorithms and physical reality, responsible for the guarantee that a 50 kg manipulator moving at 2 m/s stops before it reaches a human, that the state estimate from a Kalman filter reflects the robot&rsquo;s actual position to within centimeters, and that the control loop executes every millisecond without exception. A motion planner that returns a trajectory violating joint torque limits burns out servos. A sensor fusion pipeline that miscalculates the covariance matrix causes the robot to believe it is three meters to the left of where it actually is. A SLAM system that accepts a false loop closure warps the entire map, sending the robot into walls. There are no cosmetic bugs in robotics &mdash; every bug is a safety bug, a hardware-destruction bug, or a mission-failure bug.</p>
+
+        <p>The precision requirements span mathematics, physics, and systems programming simultaneously. Forward kinematics computes end-effector pose from joint angles using homogeneous transformation matrices in SE(3). Inverse kinematics inverts that mapping &mdash; a nonlinear problem with potentially zero, one, or infinitely many solutions, singularities where the Jacobian loses rank, and joint limits that constrain the feasible workspace. Trajectory planning must generate smooth paths through configuration space that respect velocity, acceleration, and jerk limits while avoiding collisions in Cartesian space. Sensor fusion combines measurements from devices with fundamentally different noise characteristics (LiDAR range accuracy to centimeters, IMU drift accumulating over seconds, GPS jumps of meters) into a single coherent state estimate using Extended Kalman Filters where the Jacobian of the nonlinear state transition must be derived analytically for each sensor model. Control theory demands stability analysis (Lyapunov functions, Bode plots, Nyquist criteria) and real-time execution where missing a single deadline at 1 kHz means the controller output is stale and the robot oscillates or diverges.</p>
+
+        <p>The toolchain is a multi-language, multi-framework stack unlike almost any other domain. ROS 2 provides the middleware (DDS-based publish/subscribe, services, actions, lifecycle nodes, QoS policies), but the actual robotics code spans C++ for real-time control loops (rclcpp with zero-allocation paths), Python for planning and ML integration (rclpy, MoveIt Python bindings, PyTorch for perception), CUDA for point cloud processing and neural network inference, Eigen for linear algebra, KDL and Pinocchio for kinematics and dynamics, MoveIt 2 for motion planning, Nav2 for autonomous navigation, OpenCV for computer vision, and PCL for point cloud processing. Build systems involve CMake, colcon, and ament. A single robotic system touches every one of these, and AI tools must navigate the boundaries between them. This guide evaluates every major AI coding tool through the lens of what robotics engineers actually build: not web applications that happen to involve hardware, but the control systems, state estimators, and planners that make robots move safely in the physical world.</p>
+
+        <div class="callout tip">
+          <div class="callout-title">TL;DR</div>
+          <p><strong>Best free ($0):</strong> Gemini CLI Free &mdash; 1M context for discussing algorithms and reading papers. <strong>Best for ROS 2 development ($20/mo):</strong> Claude Code &mdash; strongest reasoning for motion planning, sensor fusion, and real-time constraints. <strong>Best for large robotics codebases ($20/mo):</strong> Cursor Pro &mdash; indexes full ROS 2 workspaces. <strong>Best combined ($40/mo):</strong> Claude Code + Cursor. <strong>Budget ($0):</strong> Copilot Free + Gemini CLI Free.</p>
+        </div>
+
+        <h2>Why Robotics Engineering Is Different</h2>
+        <ul>
+          <li><strong>Real-time constraints are safety-critical:</strong> Robot control loops run at 100 Hz to 1 kHz. Miss a deadline and the arm overshoots, the drone crashes, the autonomous vehicle hits something. Hard real-time means deterministic execution &mdash; no garbage collection pauses, no dynamic memory allocation in the control path, no unbounded loops. Linux requires PREEMPT_RT patches to provide hard real-time guarantees. The control thread runs with <code>SCHED_FIFO</code> priority, memory is locked with <code>mlockall(MCL_CURRENT | MCL_FUTURE)</code> to prevent page faults, stack pages are prefaulted, and priority inheritance mutexes prevent priority inversion (where a low-priority thread holding a lock blocks a high-priority control thread). A single missed deadline at 1 kHz means the motor receives a stale command for one millisecond &mdash; enough for a fast-moving arm to overshoot its target by centimeters, which in collaborative robotics means striking a human operator. AI tools that generate control code with <code>std::vector</code> resizing, <code>std::string</code> construction, or ROS logging in the real-time path produce code that works in simulation and fails unpredictably on real hardware under load.</li>
+          <li><strong>Sensor fusion across heterogeneous hardware:</strong> A typical mobile robot fuses LiDAR point clouds (300,000+ points per second at 10&ndash;20 Hz), IMU data (accelerometer and gyroscope at 200&ndash;1000 Hz), camera images (30&ndash;60 fps with megapixel resolution), wheel encoders (tick counts at motor driver rate), GPS (1&ndash;10 Hz with multi-meter accuracy in open sky, unavailable indoors), and force-torque sensors (for manipulation tasks, 1 kHz). Each sensor has different noise characteristics (Gaussian for IMU, multimodal for GPS with multipath), update rates (asynchronous, not synchronized), coordinate frames (each sensor has its own frame, all must be transformed through the TF2 tree), and failure modes (LiDAR returns max range in fog, GPS drops to zero satellites indoors, IMU saturates under high acceleration). Kalman filters (EKF for mildly nonlinear systems, UKF for highly nonlinear), particle filters (for non-Gaussian distributions like global localization), and factor graphs (for batch optimization in SLAM) fuse these into coherent state estimates. Wrong covariance matrices &mdash; the Q matrix for process noise, the R matrix for measurement noise &mdash; mean the filter trusts the wrong sensor: too much trust in IMU and the position drifts, too much trust in GPS and the estimate jumps on every update. Outlier rejection using Mahalanobis distance gating is essential: a GPS reading 50 meters from the current estimate is almost certainly multipath interference, not a teleportation event.</li>
+          <li><strong>Physical safety is non-negotiable:</strong> Software bugs cause physical damage to hardware, the environment, and people. A motion planner that ignores joint position limits drives servos past their mechanical stops, destroying gearboxes. A path planner that clips a collision boundary by one centimeter smashes the end-effector into an obstacle. A force controller with incorrect gains applies hundreds of newtons to a workpiece &mdash; or to a human in collaborative robotics (cobots). Safety-rated robotic code follows IEC 61508 (functional safety), ISO 13849 (safety of machinery control systems), and ISO 10218 (safety requirements for industrial robots). Every control output must be bounds-checked against joint limits, velocity limits, torque limits, and workspace boundaries before being sent to actuators. Watchdog timers must detect software failures (control loop timeout) and trigger safe stops (controlled deceleration, not power cut, unless emergency). Safety-rated monitoring functions (SLS &mdash; safely-limited speed, SLP &mdash; safely-limited position, STO &mdash; safe torque off) must be implemented independently of the main controller. AI-generated code that omits bounds checking, ignores safety limits, or lacks watchdog integration is not just buggy &mdash; it is dangerous.</li>
+          <li><strong>Simulation-to-reality gap:</strong> Gazebo, NVIDIA Isaac Sim, MuJoCo, and PyBullet provide physics simulation for testing before deploying to real hardware. But physics engines approximate &mdash; contact dynamics use simplified models (spring-damper, impulse-based, or complementarity-based), friction models (Coulomb, viscous) do not perfectly match real surfaces, sensor noise models are statistical approximations of complex physical phenomena, and actuator dynamics (motor inertia, backlash, cable stretching, thermal derating) are simplified or omitted. Code that works perfectly in simulation fails on real hardware because the simulation does not model: communication latency between the computer and motor drivers (50 microseconds to 5 milliseconds depending on bus), actuator bandwidth (a motor cannot change direction instantaneously), sensor timing jitter, mechanical vibration coupling between joints, and thermal effects on IMU bias. The test matrix for robotics code is: pure simulation, software-in-the-loop (real software, simulated hardware), hardware-in-the-loop (real software and hardware, controlled environment), and real-world deployment. Domain randomization (vary simulation parameters during training) and system identification (measure real hardware parameters and feed them into simulation) help bridge the gap, but never eliminate it.</li>
+          <li><strong>Multi-language, multi-framework stack:</strong> ROS 2 provides the communication layer (rclcpp for C++, rclpy for Python), but the robotics stack spans: C++ for real-time control and perception (MoveIt 2, Nav2, ros2_control, PCL), Python for high-level planning and machine learning integration (MoveIt Python, PyTorch, TensorFlow), CUDA/C++ for GPU-accelerated point cloud processing and neural network inference, Eigen for linear algebra (the foundation of every kinematics and dynamics computation), KDL (Kinematics and Dynamics Library) and Pinocchio for rigid-body algorithms, FCL (Flexible Collision Library) for collision checking, OMPL (Open Motion Planning Library) for sampling-based motion planning, OpenCV for computer vision, and protocol-specific libraries for hardware communication (SocketCAN, libmodbus, EtherCAT via SOEM/IgH). Build systems span CMake (the C++ standard), colcon (the ROS 2 build tool), ament (the ROS 2 build system), and Python setuptools. A single robotic system touches all of these, and refactoring code requires understanding how ROS 2 messages cross the C++/Python boundary, how Eigen matrices map to KDL frames, and how colcon build dependencies propagate across packages in a workspace.</li>
+        </ul>
+
+        <h2>Robotics Task Support Matrix</h2>
+        <div style="overflow-x:auto">
+          <table style="width:100%;border-collapse:collapse;margin:1.5rem 0">
+            <thead>
+              <tr style="border-bottom:2px solid var(--border)">
+                <th style="padding:12px 16px;text-align:left">Task</th>
+                <th style="padding:12px 16px;text-align:center">Copilot</th>
+                <th style="padding:12px 16px;text-align:center">Cursor</th>
+                <th style="padding:12px 16px;text-align:center">Windsurf</th>
+                <th style="padding:12px 16px;text-align:center">Claude Code</th>
+                <th style="padding:12px 16px;text-align:center">Amazon Q</th>
+                <th style="padding:12px 16px;text-align:center">Gemini CLI</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px"><strong>ROS 2 Node Development</strong></td>
+                <td style="padding:12px 16px;text-align:center">Good</td>
+                <td style="padding:12px 16px;text-align:center">Strong</td>
+                <td style="padding:12px 16px;text-align:center">Fair</td>
+                <td style="padding:12px 16px;text-align:center"><strong>Strong</strong></td>
+                <td style="padding:12px 16px;text-align:center">Fair</td>
+                <td style="padding:12px 16px;text-align:center">Good</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px"><strong>Motion Planning &amp; Kinematics</strong></td>
+                <td style="padding:12px 16px;text-align:center">Fair</td>
+                <td style="padding:12px 16px;text-align:center">Good</td>
+                <td style="padding:12px 16px;text-align:center">Fair</td>
+                <td style="padding:12px 16px;text-align:center"><strong>Excellent</strong></td>
+                <td style="padding:12px 16px;text-align:center">Weak</td>
+                <td style="padding:12px 16px;text-align:center">Strong</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px"><strong>Sensor Fusion &amp; State Estimation</strong></td>
+                <td style="padding:12px 16px;text-align:center">Fair</td>
+                <td style="padding:12px 16px;text-align:center">Good</td>
+                <td style="padding:12px 16px;text-align:center">Weak</td>
+                <td style="padding:12px 16px;text-align:center"><strong>Excellent</strong></td>
+                <td style="padding:12px 16px;text-align:center">Weak</td>
+                <td style="padding:12px 16px;text-align:center">Strong</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px"><strong>SLAM &amp; Localization</strong></td>
+                <td style="padding:12px 16px;text-align:center">Weak</td>
+                <td style="padding:12px 16px;text-align:center">Good</td>
+                <td style="padding:12px 16px;text-align:center">Weak</td>
+                <td style="padding:12px 16px;text-align:center"><strong>Strong</strong></td>
+                <td style="padding:12px 16px;text-align:center">Weak</td>
+                <td style="padding:12px 16px;text-align:center">Good</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px"><strong>Real-Time Control Systems</strong></td>
+                <td style="padding:12px 16px;text-align:center">Fair</td>
+                <td style="padding:12px 16px;text-align:center">Good</td>
+                <td style="padding:12px 16px;text-align:center">Weak</td>
+                <td style="padding:12px 16px;text-align:center"><strong>Strong</strong></td>
+                <td style="padding:12px 16px;text-align:center">Weak</td>
+                <td style="padding:12px 16px;text-align:center">Good</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px"><strong>Simulation Integration</strong></td>
+                <td style="padding:12px 16px;text-align:center">Good</td>
+                <td style="padding:12px 16px;text-align:center"><strong>Strong</strong></td>
+                <td style="padding:12px 16px;text-align:center">Fair</td>
+                <td style="padding:12px 16px;text-align:center">Good</td>
+                <td style="padding:12px 16px;text-align:center">Fair</td>
+                <td style="padding:12px 16px;text-align:center">Fair</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px"><strong>Hardware Drivers &amp; HAL</strong></td>
+                <td style="padding:12px 16px;text-align:center">Fair</td>
+                <td style="padding:12px 16px;text-align:center">Good</td>
+                <td style="padding:12px 16px;text-align:center">Weak</td>
+                <td style="padding:12px 16px;text-align:center"><strong>Strong</strong></td>
+                <td style="padding:12px 16px;text-align:center">Fair</td>
+                <td style="padding:12px 16px;text-align:center">Fair</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p><em>Ratings reflect each tool&rsquo;s ability to generate correct, production-quality code for the specific robotics task. &ldquo;Excellent&rdquo; = understands physical constraints, generates mathematically correct algorithms, handles real-time and safety requirements. &ldquo;Weak&rdquo; = generates code that compiles but ignores safety limits, produces incorrect math, or violates real-time constraints.</em></p>
+
+        <h2>1. ROS 2 Node Development &amp; Communication</h2>
+
+        <p>ROS 2 is the standard middleware for robotics software. It provides DDS-based publish/subscribe communication, service calls (synchronous request/response), action servers (long-running tasks with feedback), lifecycle nodes (managed state transitions: unconfigured, inactive, active, finalized), and Quality of Service (QoS) profiles that control message reliability, durability, deadline enforcement, and liveliness monitoring. Getting QoS right is critical: a sensor data topic needs <code>BEST_EFFORT</code> reliability (drop old messages rather than queue them, because stale sensor data is worse than no data), while a safety command topic needs <code>RELIABLE</code> with a strict deadline policy (if the controller does not receive a command within 10 ms, trigger a safe stop). Lifecycle nodes enforce ordered initialization: <code>configure()</code> loads parameters and allocates resources, <code>activate()</code> starts publishing and subscribing, <code>deactivate()</code> stops processing, and <code>cleanup()</code> releases resources. This prevents the common bug where a node starts publishing before its subscribers have connected, or where a sensor driver starts reading hardware before calibration parameters are loaded.</p>
+
+        <p>Executors and callback groups control threading and determinism. The <code>SingleThreadedExecutor</code> processes callbacks sequentially (deterministic but no parallelism), the <code>MultiThreadedExecutor</code> processes callbacks in parallel (higher throughput but requires thread safety), and the <code>StaticSingleThreadedExecutor</code> avoids dynamic memory allocation during spin (critical for real-time paths). Callback groups partition callbacks into mutually exclusive groups (only one callback in the group runs at a time) or reentrant groups (multiple callbacks can run concurrently). For a robot with a 1 kHz control loop and a 10 Hz perception pipeline, the control callback goes in a mutually exclusive group on a real-time thread, and the perception callback goes in a reentrant group on a normal-priority thread. Getting this wrong means the perception callback blocks the control callback, causing deadline misses.</p>
+
+        <h3>Where Claude Code excels</h3>
+        <p>Claude Code generates ROS 2 lifecycle nodes with correct QoS configuration, proper callback group assignment, and real-time-safe patterns. Ask it to implement a sensor driver as a lifecycle node, and it produces code with all the critical details:</p>
+
+<pre><code>// ROS 2 Lifecycle node for a LiDAR sensor driver
+// Proper QoS, deadline monitoring, and lifecycle transitions
+
+#include &lt;rclcpp/rclcpp.hpp&gt;
+#include &lt;rclcpp_lifecycle/lifecycle_node.hpp&gt;
+#include &lt;sensor_msgs/msg/point_cloud2.hpp&gt;
+#include &lt;diagnostic_msgs/msg/diagnostic_status.hpp&gt;
+
+class LidarDriverNode : public rclcpp_lifecycle::LifecycleNode
+{
+public:
+  explicit LidarDriverNode(const rclcpp::NodeOptions &amp; options)
+  : rclcpp_lifecycle::LifecycleNode("lidar_driver", options)
+  {
+    // Declare parameters with defaults
+    this-&gt;declare_parameter("device_ip", "192.168.1.100");
+    this-&gt;declare_parameter("scan_frequency_hz", 10.0);
+    this-&gt;declare_parameter("frame_id", "lidar_link");
+    this-&gt;declare_parameter("min_range_m", 0.1);
+    this-&gt;declare_parameter("max_range_m", 100.0);
+  }
+
+private:
+  // Lifecycle transition: configure hardware connection
+  CallbackReturn on_configure(const rclcpp_lifecycle::State &amp;) override
+  {
+    device_ip_ = this-&gt;get_parameter("device_ip").as_string();
+    scan_freq_ = this-&gt;get_parameter("scan_frequency_hz").as_double();
+    frame_id_ = this-&gt;get_parameter("frame_id").as_string();
+
+    // QoS: sensor data profile with deadline enforcement
+    // BEST_EFFORT reliability — drop stale scans, never queue
+    // VOLATILE durability — no late-joining subscriber backfill
+    // Deadline: 1.5x expected period — triggers warning if missed
+    auto qos = rclcpp::SensorDataQoS();
+    qos.deadline(rclcpp::Duration::from_seconds(1.5 / scan_freq_));
+
+    // Publisher with QoS deadline event callback
+    rclcpp::PublisherOptions pub_options;
+    pub_options.event_callbacks.deadline_callback =
+      [this](rclcpp::QOSDeadlineOfferedInfo &amp;) {
+        RCLCPP_WARN(this-&gt;get_logger(),
+          "Deadline missed — LiDAR scan not published in time");
+        missed_deadlines_++;
+      };
+
+    pointcloud_pub_ = this-&gt;create_publisher&lt;sensor_msgs::msg::PointCloud2&gt;(
+      "~/points", qos, pub_options);
+
+    // Connect to hardware (non-blocking, timeout-protected)
+    if (!lidar_hw_.connect(device_ip_, std::chrono::seconds(5))) {
+      RCLCPP_ERROR(this-&gt;get_logger(),
+        "Failed to connect to LiDAR at %s", device_ip_.c_str());
+      return CallbackReturn::FAILURE;
+    }
+
+    RCLCPP_INFO(this-&gt;get_logger(), "Configured: %s at %.1f Hz",
+      device_ip_.c_str(), scan_freq_);
+    return CallbackReturn::SUCCESS;
+  }
+
+  // Lifecycle transition: start scanning
+  CallbackReturn on_activate(const rclcpp_lifecycle::State &amp;) override
+  {
+    // Create timer in dedicated callback group for timing isolation
+    cb_group_ = this-&gt;create_callback_group(
+      rclcpp::CallbackGroupType::MutuallyExclusive);
+    scan_timer_ = this-&gt;create_wall_timer(
+      std::chrono::duration&lt;double&gt;(1.0 / scan_freq_),
+      std::bind(&amp;LidarDriverNode::scan_callback, this),
+      cb_group_);
+
+    lidar_hw_.start_scanning();
+    missed_deadlines_ = 0;
+    return CallbackReturn::SUCCESS;
+  }
+
+  // Lifecycle transition: stop scanning gracefully
+  CallbackReturn on_deactivate(const rclcpp_lifecycle::State &amp;) override
+  {
+    scan_timer_-&gt;cancel();
+    lidar_hw_.stop_scanning();
+    RCLCPP_INFO(this-&gt;get_logger(),
+      "Deactivated. Missed deadlines this session: %d", missed_deadlines_);
+    return CallbackReturn::SUCCESS;
+  }
+
+  // Lifecycle transition: release hardware resources
+  CallbackReturn on_cleanup(const rclcpp_lifecycle::State &amp;) override
+  {
+    lidar_hw_.disconnect();
+    pointcloud_pub_.reset();
+    return CallbackReturn::SUCCESS;
+  }
+
+  void scan_callback()
+  {
+    auto msg = std::make_unique&lt;sensor_msgs::msg::PointCloud2&gt;();
+    msg-&gt;header.stamp = this-&gt;now();
+    msg-&gt;header.frame_id = frame_id_;
+
+    // Read scan from hardware — bounded-time operation
+    if (!lidar_hw_.read_scan(*msg,
+          std::chrono::milliseconds(
+            static_cast&lt;int&gt;(800.0 / scan_freq_)))) {
+      RCLCPP_WARN(this-&gt;get_logger(), "Scan read timeout");
+      return;
+    }
+
+    pointcloud_pub_-&gt;publish(std::move(msg));
+  }
+
+  // Hardware abstraction (implementation depends on LiDAR model)
+  LidarHardware lidar_hw_;
+  std::string device_ip_;
+  double scan_freq_;
+  std::string frame_id_;
+  int missed_deadlines_{0};
+
+  rclcpp_lifecycle::LifecyclePublisher&lt;sensor_msgs::msg::PointCloud2&gt;::SharedPtr
+    pointcloud_pub_;
+  rclcpp::TimerBase::SharedPtr scan_timer_;
+  rclcpp::CallbackGroup::SharedPtr cb_group_;
+};</code></pre>
+
+        <p>Claude Code generates the lifecycle node with every critical detail: <code>SensorDataQoS</code> with deadline enforcement (1.5x the expected scan period &mdash; tight enough to detect stalls, loose enough to avoid false alarms), a deadline event callback that tracks missed deadlines for diagnostics, a dedicated <code>MutuallyExclusive</code> callback group for timing isolation from other callbacks, proper lifecycle transitions (configure connects to hardware, activate starts scanning, deactivate stops gracefully, cleanup releases resources), timeout-protected hardware reads in the scan callback (never block indefinitely waiting for hardware), and <code>std::move</code> for zero-copy message publishing. It understands that lifecycle nodes prevent the common initialization race where a publisher sends data before subscribers are ready.</p>
+
+        <h3>Common AI failures</h3>
+        <p><strong>Copilot</strong> generates basic ROS 2 nodes (non-lifecycle) with default QoS settings, which means <code>RELIABLE</code> reliability and <code>VOLATILE</code> durability &mdash; fine for command topics, wrong for sensor data where you want <code>BEST_EFFORT</code> to avoid message queuing when a subscriber is slow. It does not use callback groups, meaning all callbacks share the default group and can block each other. <strong>Windsurf</strong> generates ROS 1-style code (roscpp patterns) about half the time, mixing <code>ros::NodeHandle</code> with rclcpp APIs. It does not understand lifecycle nodes or QoS profiles. <strong>Amazon Q</strong> generates syntactically valid ROS 2 nodes but uses string-based topic names without namespace prefixes, ignores QoS compatibility between publishers and subscribers (a common source of &ldquo;my subscriber isn&rsquo;t receiving messages&rdquo; bugs), and does not implement lifecycle transitions. <strong>Cursor</strong> generates strong ROS 2 code when working within an existing ROS 2 workspace &mdash; its project indexing picks up message definitions, QoS patterns, and callback group conventions from the workspace. <strong>Gemini CLI</strong> generates correct ROS 2 node structures and can explain QoS policies in detail, but its code sometimes uses deprecated ROS 2 Foxy APIs rather than current Humble/Iron/Jazzy patterns.</p>
+
+        <h2>2. Motion Planning &amp; Trajectory Optimization</h2>
+
+        <p>Motion planning is the core algorithmic challenge in robotics: given a robot&rsquo;s current configuration (joint angles), a goal configuration or Cartesian pose, and a model of the environment (obstacles), find a collision-free trajectory that respects all kinematic and dynamic constraints. Forward kinematics is straightforward &mdash; multiply the chain of homogeneous transformation matrices defined by DH (Denavit-Hartenberg) parameters to compute the end-effector pose from joint angles. Inverse kinematics (IK) is the hard problem: given a desired end-effector pose in SE(3), find the joint angles that achieve it. For a 6-DOF manipulator, IK may have zero solutions (pose outside the workspace), a finite number of solutions (up to 16 for a general 6R robot), or infinitely many solutions (redundant robots with more than 6 DOF). Numerical IK methods (Newton-Raphson, Levenberg-Marquardt) iteratively minimize the pose error using the Jacobian, but they get trapped in local minima, fail at singularities (where the Jacobian rank drops and the pseudoinverse produces infinite joint velocities), and require careful joint limit handling.</p>
+
+        <p>Trajectory planning goes beyond finding a path &mdash; it parameterizes the path in time. Trapezoidal velocity profiles (accelerate, cruise, decelerate) are simple but produce discontinuous acceleration (jerk), causing mechanical vibration. Cubic splines provide continuous velocity but discontinuous acceleration. Quintic splines provide continuous acceleration (smooth jerk) but require solving larger linear systems. S-curve profiles (seven segments: increasing jerk, constant jerk, decreasing jerk, constant velocity, and the mirror for deceleration) produce the smoothest motion but are complex to compute with multiple joint synchronization. MoveIt 2 provides the planning framework (OMPL for sampling-based planners like RRT*, PRM, and BIT*), but the trajectory post-processing (time parameterization with TOTG &mdash; Time-Optimal Trajectory Generation, or iterative parabolic time parameterization) is where most performance tuning happens. Collision checking uses FCL with signed distance fields or octrees, and the computational cost of collision checking dominates planning time for complex environments.</p>
+
+        <h3>Where Claude Code excels</h3>
+        <p>Claude Code generates inverse kinematics solvers with correct Jacobian computation, singularity handling, and joint limit clamping. The mathematical depth is where it separates from other tools:</p>
+
+<pre><code>// Inverse kinematics solver using damped least squares (Levenberg-Marquardt)
+// Handles singularities, joint limits, and convergence detection
+
+#include &lt;Eigen/Dense&gt;
+
+struct IKResult {
+    Eigen::VectorXd joint_angles;  // solution (num_joints x 1)
+    bool converged;
+    int iterations;
+    double final_error;
+};
+
+// Compute 6x1 pose error between current and target
+// Uses angle-axis for orientation error (proper SO(3) error metric)
+Eigen::Matrix&lt;double, 6, 1&gt; compute_pose_error(
+    const Eigen::Isometry3d&amp; current,
+    const Eigen::Isometry3d&amp; target)
+{
+    Eigen::Matrix&lt;double, 6, 1&gt; error;
+
+    // Position error (3x1)
+    error.head&lt;3&gt;() = target.translation() - current.translation();
+
+    // Orientation error using angle-axis representation
+    // R_error = R_target * R_current^T
+    Eigen::Matrix3d R_error =
+        target.rotation() * current.rotation().transpose();
+    Eigen::AngleAxisd aa(R_error);
+    error.tail&lt;3&gt;() = aa.angle() * aa.axis();
+
+    return error;
+}
+
+IKResult solve_ik(
+    const RobotModel&amp; model,
+    const Eigen::VectorXd&amp; q_init,       // initial joint guess
+    const Eigen::Isometry3d&amp; target_pose,
+    double position_tol = 1e-4,           // 0.1 mm
+    double orientation_tol = 1e-4,        // ~0.006 degrees
+    int max_iterations = 100,
+    double damping_base = 0.01)
+{
+    const int n_joints = model.num_joints();
+    Eigen::VectorXd q = q_init;
+    IKResult result;
+
+    for (int iter = 0; iter &lt; max_iterations; iter++) {
+        // Forward kinematics for current joint angles
+        Eigen::Isometry3d current_pose = model.forward_kinematics(q);
+
+        // Compute 6x1 pose error
+        Eigen::Matrix&lt;double, 6, 1&gt; error =
+            compute_pose_error(current_pose, target_pose);
+
+        // Check convergence
+        double pos_err = error.head&lt;3&gt;().norm();
+        double ori_err = error.tail&lt;3&gt;().norm();
+        if (pos_err &lt; position_tol &amp;&amp; ori_err &lt; orientation_tol) {
+            result.joint_angles = q;
+            result.converged = true;
+            result.iterations = iter;
+            result.final_error = pos_err;
+            return result;
+        }
+
+        // Compute 6xN geometric Jacobian
+        Eigen::MatrixXd J = model.compute_jacobian(q);  // 6 x n_joints
+
+        // Damped least squares (Levenberg-Marquardt)
+        // dq = J^T * (J * J^T + lambda^2 * I)^{-1} * error
+        //
+        // Adaptive damping: increase near singularities
+        // Manipulability measure: w = sqrt(det(J * J^T))
+        double manipulability =
+            std::sqrt(std::max(0.0, (J * J.transpose()).determinant()));
+        double damping = damping_base;
+        if (manipulability &lt; 0.01) {
+            // Near singularity — increase damping to prevent
+            // joint velocity explosion
+            damping = damping_base *
+                (1.0 + (0.01 - manipulability) / 0.01 * 100.0);
+        }
+
+        Eigen::MatrixXd JJt = J * J.transpose();
+        Eigen::MatrixXd damped =
+            JJt + damping * damping *
+            Eigen::MatrixXd::Identity(6, 6);
+
+        // Solve for joint angle update
+        Eigen::VectorXd dq =
+            J.transpose() * damped.ldlt().solve(error);
+
+        // Step size limiting — prevent large jumps
+        double step_norm = dq.norm();
+        double max_step = 0.2;  // radians per iteration
+        if (step_norm &gt; max_step) {
+            dq *= max_step / step_norm;
+        }
+
+        // Apply update with joint limit clamping
+        q += dq;
+        for (int j = 0; j &lt; n_joints; j++) {
+            q(j) = std::clamp(q(j),
+                model.joint_lower_limit(j),
+                model.joint_upper_limit(j));
+        }
+    }
+
+    result.joint_angles = q;
+    result.converged = false;
+    result.iterations = max_iterations;
+    result.final_error =
+        compute_pose_error(model.forward_kinematics(q), target_pose)
+            .head&lt;3&gt;().norm();
+    return result;
+}</code></pre>
+
+        <p>Claude Code generates the IK solver with every critical detail: proper SO(3) orientation error using angle-axis representation (not Euler angles, which have gimbal lock, and not raw rotation matrix subtraction, which is not a valid error metric on the rotation manifold), adaptive damping near singularities based on the manipulability measure (the square root of the determinant of J*J^T, which approaches zero at singular configurations), step size limiting to prevent large joint jumps that could violate velocity limits, joint limit clamping after each iteration, and LDLT decomposition for numerically stable solving. It understands that standard pseudoinverse IK (<code>J^+ = J^T(JJ^T)^{-1}</code>) produces infinite joint velocities at singularities and that damped least squares trades accuracy for stability near singular configurations.</p>
+
+        <h3>Common AI failures</h3>
+        <p><strong>Copilot</strong> generates IK solvers using Euler angles for orientation error (gimbal lock at pitch = 90 degrees), standard pseudoinverse without damping (explodes at singularities), and no joint limit handling. It generates trajectory planners with cubic splines but no velocity or acceleration limit enforcement. <strong>Windsurf</strong> generates planar 2-DOF IK with the geometric (trigonometric) closed-form solution, which is correct for that specific case but does not generalize to 6-DOF manipulators. It does not generate Jacobian-based methods. <strong>Amazon Q</strong> generates forward kinematics correctly (DH parameter chain multiplication) but produces incorrect Jacobians (computing numerical differences instead of the analytical geometric Jacobian). <strong>Gemini CLI</strong> understands the mathematics deeply &mdash; it can derive the Jacobian for a specific robot configuration, explain why damped least squares is necessary near singularities, and discuss the tradeoffs between different IK formulations. Its generated code is mathematically correct but sometimes uses inefficient Eigen operations (full SVD where LDLT suffices, dynamic allocation in inner loops). <strong>Cursor</strong> generates good IK code when working within a MoveIt 2 workspace, as it can reference KDL and Pinocchio patterns already in the project.</p>
+
+        <h2>3. Sensor Fusion &amp; State Estimation</h2>
+
+        <p>State estimation is the problem of determining where the robot is, how fast it is moving, and what orientation it has, given noisy measurements from multiple sensors with different update rates and noise characteristics. The Extended Kalman Filter (EKF) is the workhorse: it maintains a state vector (typically position, velocity, orientation, and sensor biases) and a covariance matrix (encoding the uncertainty of each state variable and the correlations between them). The prediction step propagates the state forward using a process model (typically the IMU&rsquo;s accelerometer and gyroscope readings integrated over the time step) and grows the covariance by adding process noise (Q matrix). The update step incorporates a measurement (GPS position, LiDAR-based pose, visual odometry) by computing the Kalman gain, which weights the measurement against the prediction based on their relative uncertainties.</p>
+
+        <p>The critical details that determine whether a Kalman filter works or fails: the process noise matrix Q must reflect the actual noise characteristics of the IMU (accelerometer random walk, gyroscope bias instability, measured from the sensor&rsquo;s Allan variance plot or datasheet). Too small a Q and the filter trusts its prediction too much, becoming slow to respond to real motion changes. Too large a Q and the filter becomes noisy, jumping on every measurement. The measurement noise matrix R must reflect the actual measurement noise (GPS CEP, LiDAR range standard deviation, camera reprojection error). The state transition Jacobian F must be correctly derived for the nonlinear process model &mdash; errors in F cause the covariance to diverge, and the filter becomes either overconfident (dangerously underestimating uncertainty) or uselessly uncertain. Outlier rejection is non-negotiable: a GPS multipath reading that places the robot 50 meters away must be rejected, not incorporated, which requires Mahalanobis distance gating (rejecting measurements whose innovation exceeds a chi-squared threshold given the innovation covariance).</p>
+
+        <h3>Where Claude Code excels</h3>
+        <p>Claude Code generates EKF implementations with correct Jacobian derivation, proper covariance propagation, and Mahalanobis distance gating for outlier rejection:</p>
+
+<pre><code>// Extended Kalman Filter for IMU + GPS fusion
+// State: [x, y, z, vx, vy, vz, roll, pitch, yaw, bias_ax, bias_ay, bias_az]
+// 12-state EKF with proper covariance propagation and outlier rejection
+
+#include &lt;Eigen/Dense&gt;
+
+using Vec3 = Eigen::Vector3d;
+using Mat3 = Eigen::Matrix3d;
+using StateVec = Eigen::Matrix&lt;double, 12, 1&gt;;
+using StateMat = Eigen::Matrix&lt;double, 12, 12&gt;;
+
+class IMUGPSFusion
+{
+public:
+    IMUGPSFusion()
+    {
+        x_.setZero();
+        P_ = StateMat::Identity() * 1.0;
+        // Initial covariance: high uncertainty on position/velocity,
+        // moderate on orientation, low on biases
+        P_.block&lt;3, 3&gt;(0, 0) *= 10.0;   // position: 10 m^2
+        P_.block&lt;3, 3&gt;(3, 3) *= 1.0;    // velocity: 1 (m/s)^2
+        P_.block&lt;3, 3&gt;(6, 6) *= 0.1;    // orientation: 0.1 rad^2
+        P_.block&lt;3, 3&gt;(9, 9) *= 0.01;   // accel bias: 0.01 (m/s^2)^2
+
+        // Process noise (tuned from IMU Allan variance)
+        Q_ = StateMat::Zero();
+        Q_.block&lt;3, 3&gt;(0, 0) = Mat3::Identity() * 0.01;  // pos noise
+        Q_.block&lt;3, 3&gt;(3, 3) = Mat3::Identity() * 0.1;   // vel noise
+        Q_.block&lt;3, 3&gt;(6, 6) = Mat3::Identity() * 0.001; // ori noise
+        Q_.block&lt;3, 3&gt;(9, 9) = Mat3::Identity() * 1e-5;  // bias drift
+
+        // GPS measurement noise
+        R_gps_ = Mat3::Identity() * 2.5;  // 2.5 m^2 (typical GPS CEP)
+
+        // Mahalanobis distance threshold (chi-squared, 3 DOF, p=0.01)
+        mahalanobis_threshold_ = 11.345;
+    }
+
+    // Prediction step: propagate state using IMU measurements
+    void predict(const Vec3&amp; accel_meas, const Vec3&amp; gyro_meas, double dt)
+    {
+        // Extract current state
+        Vec3 pos = x_.segment&lt;3&gt;(0);
+        Vec3 vel = x_.segment&lt;3&gt;(3);
+        Vec3 euler = x_.segment&lt;3&gt;(6);    // roll, pitch, yaw
+        Vec3 accel_bias = x_.segment&lt;3&gt;(9);
+
+        // Rotation matrix from body to world frame
+        Mat3 R_bw = euler_to_rotation(euler);
+
+        // Correct accelerometer for bias and rotate to world frame
+        Vec3 accel_corrected = R_bw * (accel_meas - accel_bias);
+        // Remove gravity (assuming z-up world frame)
+        accel_corrected(2) -= 9.81;
+
+        // State prediction (kinematic model)
+        x_.segment&lt;3&gt;(0) = pos + vel * dt +
+            0.5 * accel_corrected * dt * dt;
+        x_.segment&lt;3&gt;(3) = vel + accel_corrected * dt;
+        x_.segment&lt;3&gt;(6) = euler + gyro_meas * dt;  // small angle approx
+
+        // Normalize yaw to [-pi, pi]
+        x_(8) = std::atan2(std::sin(x_(8)), std::cos(x_(8)));
+
+        // Bias model: random walk (constant + noise)
+        // x_.segment<3>(9) unchanged (bias stays constant in prediction)
+
+        // Jacobian of state transition (F = df/dx)
+        StateMat F = StateMat::Identity();
+        F.block&lt;3, 3&gt;(0, 3) = Mat3::Identity() * dt;       // d(pos)/d(vel)
+        F.block&lt;3, 3&gt;(3, 6) = -R_bw *
+            skew_symmetric(accel_meas - accel_bias) * dt;    // d(vel)/d(euler)
+        F.block&lt;3, 3&gt;(3, 9) = -R_bw * dt;                  // d(vel)/d(bias)
+
+        // Covariance propagation: P = F * P * F^T + Q * dt
+        P_ = F * P_ * F.transpose() + Q_ * dt;
+
+        // Enforce symmetry (numerical drift prevention)
+        P_ = (P_ + P_.transpose()) * 0.5;
+    }
+
+    // Update step: incorporate GPS measurement
+    bool update_gps(const Vec3&amp; gps_position)
+    {
+        // Measurement model: z = H * x + noise
+        // GPS measures position directly: H = [I_3x3, 0_3x9]
+        Eigen::Matrix&lt;double, 3, 12&gt; H;
+        H.setZero();
+        H.block&lt;3, 3&gt;(0, 0) = Mat3::Identity();
+
+        // Innovation (measurement residual)
+        Vec3 y = gps_position - H * x_;
+
+        // Innovation covariance: S = H * P * H^T + R
+        Mat3 S = H * P_ * H.transpose() + R_gps_;
+
+        // Mahalanobis distance for outlier rejection
+        // d^2 = y^T * S^{-1} * y
+        double mahal_dist = y.transpose() * S.inverse() * y;
+
+        if (mahal_dist &gt; mahalanobis_threshold_) {
+            // Reject this GPS measurement — likely multipath or jump
+            return false;
+        }
+
+        // Kalman gain: K = P * H^T * S^{-1}
+        Eigen::Matrix&lt;double, 12, 3&gt; K =
+            P_ * H.transpose() * S.inverse();
+
+        // State update
+        x_ = x_ + K * y;
+
+        // Covariance update (Joseph form for numerical stability)
+        // P = (I - KH) * P * (I - KH)^T + K * R * K^T
+        StateMat I_KH = StateMat::Identity() - K * H;
+        P_ = I_KH * P_ * I_KH.transpose() +
+             K * R_gps_ * K.transpose();
+
+        // Enforce symmetry
+        P_ = (P_ + P_.transpose()) * 0.5;
+        return true;
+    }
+
+private:
+    StateVec x_;             // state vector
+    StateMat P_;             // state covariance
+    StateMat Q_;             // process noise
+    Mat3 R_gps_;             // GPS measurement noise
+    double mahalanobis_threshold_;
+
+    Mat3 euler_to_rotation(const Vec3&amp; euler) {
+        double cr = std::cos(euler(0)), sr = std::sin(euler(0));
+        double cp = std::cos(euler(1)), sp = std::sin(euler(1));
+        double cy = std::cos(euler(2)), sy = std::sin(euler(2));
+        Mat3 R;
+        R &lt;&lt; cy*cp, cy*sp*sr - sy*cr, cy*sp*cr + sy*sr,
+              sy*cp, sy*sp*sr + cy*cr, sy*sp*cr - cy*sr,
+              -sp,    cp*sr,            cp*cr;
+        return R;
+    }
+
+    Mat3 skew_symmetric(const Vec3&amp; v) {
+        Mat3 S;
+        S &lt;&lt;  0,   -v(2),  v(1),
+              v(2),  0,    -v(0),
+             -v(1),  v(0),  0;
+        return S;
+    }
+};</code></pre>
+
+        <p>Claude Code generates the EKF with every critical detail: a 12-state vector including accelerometer biases (critical for IMU drift compensation), correct Jacobian derivation for the nonlinear state transition (the <code>d(vel)/d(euler)</code> term involves the skew-symmetric matrix of the bias-corrected acceleration, which most tools get wrong), Mahalanobis distance gating for GPS outlier rejection (the chi-squared threshold of 11.345 corresponds to 3 DOF at p=0.01), Joseph form for the covariance update (numerically stable unlike the standard <code>P = (I-KH)*P</code> which can lose symmetry), explicit symmetry enforcement after each step, and gravity compensation in the world frame. It understands that the process noise Q scales with dt (longer prediction intervals accumulate more noise) and that the accelerometer bias drifts slowly as a random walk.</p>
+
+        <h3>Common AI failures</h3>
+        <p><strong>Copilot</strong> generates Kalman filters without outlier rejection &mdash; a single GPS jump corrupts the state estimate and the filter takes many updates to recover. It often derives the Jacobian F incorrectly, particularly the cross-coupling terms between orientation and velocity (the <code>d(vel)/d(euler)</code> block). It uses the simple covariance update <code>P = (I-KH)*P</code> instead of the Joseph form, which causes numerical instability over long runs. <strong>Windsurf</strong> generates complementary filters (weighted averaging of accelerometer and gyroscope) rather than EKFs when asked for sensor fusion, which works for simple IMU-only attitude estimation but cannot fuse GPS, LiDAR, or other aperiodic measurements. <strong>Amazon Q</strong> generates the linear Kalman filter (constant F and H matrices) even when the system is nonlinear, missing the entire point of the &ldquo;Extended&rdquo; in EKF. <strong>Gemini CLI</strong> generates mathematically correct EKFs and can derive the Jacobians from first principles when given the state transition equations. Its implementation code is correct but sometimes uses dense matrix operations where sparse structure could be exploited (the Jacobian F is mostly sparse for typical robot state vectors). <strong>Cursor</strong> generates good sensor fusion code when working within a <code>robot_localization</code> or <code>robot_state_publisher</code> workspace, using the package&rsquo;s conventions for covariance specification and frame transforms.</p>
+
+        <h2>4. SLAM &amp; Localization</h2>
+
+        <p>SLAM (Simultaneous Localization and Mapping) is the chicken-and-egg problem of robotics: to build a map you need to know where the robot is, but to know where the robot is you need a map. Modern SLAM systems solve this jointly through graph optimization. The robot&rsquo;s trajectory is represented as a sequence of poses (nodes in a graph), connected by odometry constraints (edges from wheel encoders or visual odometry) and measurement constraints (edges from sensor observations of landmarks or scan matches). Loop closure detection &mdash; recognizing that the robot has returned to a previously visited location &mdash; adds constraints that connect distant poses in the graph, and graph optimization (using g2o, GTSAM, or Ceres Solver) distributes the accumulated drift error across the entire trajectory.</p>
+
+        <p>LiDAR SLAM uses scan matching to align consecutive scans and estimate the robot&rsquo;s motion. ICP (Iterative Closest Point) is the foundational algorithm: given two point clouds P and Q, find the rigid transformation (rotation R and translation t) that minimizes the sum of squared distances between corresponding points. The standard point-to-point ICP algorithm alternates between finding correspondences (nearest neighbor in Q for each point in P) and computing the optimal transformation (SVD-based closed-form solution). Point-to-plane ICP (minimizing the distance from each point in P to the tangent plane at the corresponding point in Q) converges faster for planar environments. NDT (Normal Distributions Transform) represents the reference scan as a grid of Gaussian distributions and minimizes the negative log-likelihood, providing smoother convergence than ICP. The hard problems in SLAM are not the individual algorithms but their integration: when to accept a loop closure (false positives warp the map, false negatives allow drift to accumulate), how to handle dynamic objects (people walking through the LiDAR field corrupt scan matching), and how to manage memory for long-duration mapping (a robot running for hours accumulates millions of poses and scans).</p>
+
+        <h3>Where Claude Code excels</h3>
+        <p>Claude Code generates scan matching algorithms with correct mathematical formulations. Here is a point-to-point ICP implementation with SVD-based transformation recovery:</p>
+
+<pre><code>// ICP (Iterative Closest Point) scan matching
+// SVD-based point-to-point ICP for LiDAR scan alignment
+
+#include &lt;Eigen/Dense&gt;
+#include &lt;Eigen/SVD&gt;
+#include &lt;vector&gt;
+
+struct ICPResult {
+    Eigen::Matrix3d R;      // rotation
+    Eigen::Vector3d t;      // translation
+    double mean_error;       // mean squared correspondence distance
+    bool converged;
+    int iterations;
+};
+
+// Find nearest neighbor in target for each source point
+// (In production, use a KD-tree; linear search shown for clarity)
+void find_correspondences(
+    const std::vector&lt;Eigen::Vector3d&gt;&amp; source,
+    const std::vector&lt;Eigen::Vector3d&gt;&amp; target,
+    std::vector&lt;int&gt;&amp; correspondences,
+    std::vector&lt;double&gt;&amp; distances)
+{
+    correspondences.resize(source.size());
+    distances.resize(source.size());
+
+    for (size_t i = 0; i &lt; source.size(); i++) {
+        double min_dist = std::numeric_limits&lt;double&gt;::max();
+        int min_idx = -1;
+
+        for (size_t j = 0; j &lt; target.size(); j++) {
+            double dist = (source[i] - target[j]).squaredNorm();
+            if (dist &lt; min_dist) {
+                min_dist = dist;
+                min_idx = static_cast&lt;int&gt;(j);
+            }
+        }
+
+        correspondences[i] = min_idx;
+        distances[i] = min_dist;
+    }
+}
+
+ICPResult icp_align(
+    const std::vector&lt;Eigen::Vector3d&gt;&amp; source,  // current scan
+    const std::vector&lt;Eigen::Vector3d&gt;&amp; target,  // reference scan
+    int max_iterations = 50,
+    double convergence_threshold = 1e-6,
+    double max_correspondence_dist = 2.0)  // meters — reject outliers
+{
+    ICPResult result;
+    result.R = Eigen::Matrix3d::Identity();
+    result.t = Eigen::Vector3d::Zero();
+
+    // Working copy of source (transformed incrementally)
+    std::vector&lt;Eigen::Vector3d&gt; src_transformed = source;
+
+    double prev_error = std::numeric_limits&lt;double&gt;::max();
+
+    for (int iter = 0; iter &lt; max_iterations; iter++) {
+        // Step 1: Find correspondences
+        std::vector&lt;int&gt; correspondences;
+        std::vector&lt;double&gt; distances;
+        find_correspondences(src_transformed, target,
+                             correspondences, distances);
+
+        // Step 2: Filter outlier correspondences
+        // Reject pairs with distance exceeding threshold
+        double max_dist_sq =
+            max_correspondence_dist * max_correspondence_dist;
+        std::vector&lt;Eigen::Vector3d&gt; matched_src, matched_tgt;
+        for (size_t i = 0; i &lt; src_transformed.size(); i++) {
+            if (distances[i] &lt; max_dist_sq &amp;&amp;
+                correspondences[i] &gt;= 0) {
+                matched_src.push_back(src_transformed[i]);
+                matched_tgt.push_back(target[correspondences[i]]);
+            }
+        }
+
+        if (matched_src.size() &lt; 3) {
+            result.converged = false;
+            result.iterations = iter;
+            result.mean_error = prev_error;
+            return result;  // insufficient correspondences
+        }
+
+        // Step 3: Compute centroids
+        Eigen::Vector3d centroid_src = Eigen::Vector3d::Zero();
+        Eigen::Vector3d centroid_tgt = Eigen::Vector3d::Zero();
+        for (size_t i = 0; i &lt; matched_src.size(); i++) {
+            centroid_src += matched_src[i];
+            centroid_tgt += matched_tgt[i];
+        }
+        centroid_src /= static_cast&lt;double&gt;(matched_src.size());
+        centroid_tgt /= static_cast&lt;double&gt;(matched_tgt.size());
+
+        // Step 4: Compute cross-covariance matrix H
+        // H = sum( (src_i - centroid_src) * (tgt_i - centroid_tgt)^T )
+        Eigen::Matrix3d H = Eigen::Matrix3d::Zero();
+        for (size_t i = 0; i &lt; matched_src.size(); i++) {
+            H += (matched_src[i] - centroid_src) *
+                 (matched_tgt[i] - centroid_tgt).transpose();
+        }
+
+        // Step 5: SVD to recover rotation
+        // H = U * S * V^T,  R = V * U^T
+        Eigen::JacobiSVD&lt;Eigen::Matrix3d&gt; svd(
+            H, Eigen::ComputeFullU | Eigen::ComputeFullV);
+        Eigen::Matrix3d R_step =
+            svd.matrixV() * svd.matrixU().transpose();
+
+        // Handle reflection case (det(R) = -1)
+        if (R_step.determinant() &lt; 0) {
+            Eigen::Matrix3d V = svd.matrixV();
+            V.col(2) *= -1;  // flip sign of smallest singular vector
+            R_step = V * svd.matrixU().transpose();
+        }
+
+        // Step 6: Compute translation
+        Eigen::Vector3d t_step =
+            centroid_tgt - R_step * centroid_src;
+
+        // Accumulate transformation
+        result.R = R_step * result.R;
+        result.t = R_step * result.t + t_step;
+
+        // Apply incremental transform to source points
+        for (auto&amp; p : src_transformed) {
+            p = R_step * p + t_step;
+        }
+
+        // Compute mean error for convergence check
+        double mean_error = 0.0;
+        for (size_t i = 0; i &lt; matched_src.size(); i++) {
+            mean_error += (matched_src[i] - matched_tgt[i]).squaredNorm();
+        }
+        mean_error /= static_cast&lt;double&gt;(matched_src.size());
+
+        // Check convergence
+        if (std::abs(prev_error - mean_error) &lt; convergence_threshold) {
+            result.converged = true;
+            result.iterations = iter + 1;
+            result.mean_error = mean_error;
+            return result;
+        }
+        prev_error = mean_error;
+    }
+
+    result.converged = false;
+    result.iterations = max_iterations;
+    result.mean_error = prev_error;
+    return result;
+}</code></pre>
+
+        <p>Claude Code generates ICP with the correct SVD-based closed-form solution for the rotation (not iterative optimization &mdash; the SVD solution is the global optimum for the given correspondences), including the critical reflection handling (when <code>det(R) = -1</code>, flip the sign of the column corresponding to the smallest singular value to ensure a proper rotation). It includes outlier correspondence rejection by maximum distance (essential for partial overlap between scans), minimum correspondence count checking (fewer than 3 matched points cannot determine a rigid transformation), convergence detection based on error change (not iteration count alone), and proper transformation accumulation across iterations. It correctly computes the cross-covariance matrix H around the centroids and recovers the translation from the centroid offset after rotation.</p>
+
+        <h3>Common AI failures</h3>
+        <p><strong>Copilot</strong> generates ICP without the reflection check, producing improper rotations (reflections with determinant -1) when the point cloud geometry is nearly planar. It does not reject outlier correspondences, so a single wrong nearest-neighbor match can drag the alignment off. <strong>Windsurf</strong> generates 2D ICP (rotation around z-axis only) when asked for general scan matching, which only works for planar LiDAR mounted parallel to the ground. <strong>Amazon Q</strong> generates PCL (Point Cloud Library) wrapper code that calls <code>pcl::IterativeClosestPoint</code> with default parameters, which is functional but does not demonstrate understanding of the algorithm or allow customization for specific use cases (adjusting convergence criteria, implementing point-to-plane variant, adding robust cost functions). <strong>Gemini CLI</strong> generates correct ICP and can explain the mathematical derivation of the SVD solution (the Procrustes problem). It can also discuss point-to-plane ICP, generalized ICP, and NDT matching. Its code is mathematically sound but sometimes allocates vectors inside the iteration loop rather than preallocating. <strong>Cursor</strong> is strong when working within a SLAM codebase (e.g., RTAB-Map, KISS-ICP, Cartographer) because it indexes the project and generates code consistent with the existing scan matching infrastructure.</p>
+
+        <h2>5. Real-Time Control Systems</h2>
+
+        <p>The control loop is where software meets physics. A PID controller reads the current joint position from an encoder, computes the error (desired minus actual), and outputs a motor command to drive the error to zero. The proportional term provides immediate response proportional to the error. The integral term accumulates past errors to eliminate steady-state offset (the robot settles precisely on the target, not a few encoder ticks away). The derivative term damps oscillation by opposing the rate of change of error. In theory, PID is simple. In practice, getting a PID controller to work well on a real robot requires: anti-windup (clamping or back-calculating the integral term when the actuator saturates &mdash; otherwise the integral accumulates unboundedly during saturation and causes massive overshoot when the error reverses), derivative filtering (differentiating the error signal amplifies high-frequency noise from the encoder &mdash; a first-order low-pass filter on the derivative term is essential), bumpless transfer (when switching from manual to automatic mode, or changing the setpoint, the controller output should not jump discontinuously), and output rate limiting (the motor cannot change direction instantaneously &mdash; large output jumps cause mechanical shock).</p>
+
+        <p>Beyond PID, robotics requires impedance and admittance control for force-sensitive tasks (a robot polishing a surface must maintain a constant force, not a constant position), trajectory tracking controllers (the robot follows a time-parameterized path, not just reaching a goal), and model-based control (computed torque control, which uses the robot&rsquo;s dynamics model &mdash; inertia matrix, Coriolis terms, gravity vector &mdash; to compute the feedforward torque, with PID providing error correction). The critical constraint in all control code is real-time determinism: every path through the control loop must execute in bounded time. This means no dynamic memory allocation (<code>new</code>, <code>malloc</code>, <code>std::vector::push_back</code> that triggers reallocation), no unbounded loops, no system calls that block (file I/O, network I/O, most ROS 2 logging), no locks that can cause priority inversion (use priority-inheritance mutexes or lock-free data structures), and no exceptions (unwinding the stack is not bounded-time). On Linux, the control thread runs with <code>SCHED_FIFO</code> at a high priority, memory is locked with <code>mlockall</code>, and stack pages are prefaulted to prevent page faults during execution.</p>
+
+        <h3>Where Claude Code excels</h3>
+        <p>Claude Code generates real-time PID controllers with complete anti-windup, derivative filtering, and proper real-time system setup:</p>
+
+<pre><code>// Real-time PID controller with anti-windup, derivative filtering,
+// and proper PREEMPT_RT setup for robotics control
+
+#include &lt;cmath&gt;
+#include &lt;cstring&gt;
+#include &lt;sched.h&gt;
+#include &lt;sys/mman.h&gt;
+#include &lt;time.h&gt;
+
+struct PIDConfig {
+    double kp;              // proportional gain
+    double ki;              // integral gain
+    double kd;              // derivative gain
+    double output_min;      // actuator saturation lower bound
+    double output_max;      // actuator saturation upper bound
+    double integral_max;    // anti-windup: integral term clamp
+    double deriv_filter_tau;// derivative low-pass filter time constant (s)
+    double dt;              // control period (s)
+};
+
+struct PIDState {
+    double integral;        // accumulated integral term
+    double prev_error;      // previous error for derivative
+    double prev_deriv;      // filtered derivative (for LPF)
+    double prev_output;     // previous output (for bumpless transfer)
+};
+
+// Compute PID output — must be real-time safe:
+// no allocation, no system calls, no unbounded loops
+double pid_compute(const PIDConfig&amp; cfg, PIDState&amp; state, double error)
+{
+    // Proportional term
+    double p_term = cfg.kp * error;
+
+    // Integral term with anti-windup (clamping method)
+    state.integral += error * cfg.dt;
+    // Clamp integral to prevent windup during actuator saturation
+    state.integral = std::clamp(state.integral,
+        -cfg.integral_max, cfg.integral_max);
+    double i_term = cfg.ki * state.integral;
+
+    // Derivative term with first-order low-pass filter
+    // d_raw = (error - prev_error) / dt
+    // d_filtered = alpha * d_raw + (1 - alpha) * prev_deriv
+    // where alpha = dt / (tau + dt)
+    double d_raw = (error - state.prev_error) / cfg.dt;
+    double alpha = cfg.dt / (cfg.deriv_filter_tau + cfg.dt);
+    double d_filtered = alpha * d_raw + (1.0 - alpha) * state.prev_deriv;
+    double d_term = cfg.kd * d_filtered;
+
+    state.prev_error = error;
+    state.prev_deriv = d_filtered;
+
+    // Compute total output
+    double output = p_term + i_term + d_term;
+
+    // Saturate output to actuator limits
+    output = std::clamp(output, cfg.output_min, cfg.output_max);
+
+    // Back-calculation anti-windup: if output is saturated,
+    // adjust integral to prevent further accumulation
+    if (output != p_term + i_term + d_term) {
+        // Output was clamped — reduce integral to match
+        state.integral = (output - p_term - d_term) / cfg.ki;
+    }
+
+    state.prev_output = output;
+    return output;
+}
+
+// Setup real-time thread for control loop
+bool setup_realtime(int priority)
+{
+    // Lock all current and future memory pages
+    // Prevents page faults during control execution
+    if (mlockall(MCL_CURRENT | MCL_FUTURE) != 0) {
+        return false;
+    }
+
+    // Set SCHED_FIFO real-time scheduling policy
+    struct sched_param param;
+    param.sched_priority = priority;  // typically 80-99
+    if (sched_setscheduler(0, SCHED_FIFO, &amp;param) != 0) {
+        return false;
+    }
+
+    // Prefault stack pages — touch every page so they are
+    // physically mapped before the control loop starts
+    volatile char stack_prefault[8 * 1024];  // 8 KB
+    memset((void*)stack_prefault, 0, sizeof(stack_prefault));
+
+    return true;
+}
+
+// Real-time control loop with deadline enforcement
+void control_loop(
+    const PIDConfig&amp; cfg,
+    HardwareInterface&amp; hw,
+    double setpoint)
+{
+    if (!setup_realtime(90)) {
+        // Cannot run without real-time guarantees
+        return;
+    }
+
+    PIDState state = {0.0, 0.0, 0.0, 0.0};
+
+    struct timespec next_wakeup;
+    clock_gettime(CLOCK_MONOTONIC, &amp;next_wakeup);
+
+    long period_ns = static_cast&lt;long&gt;(cfg.dt * 1e9);
+    int consecutive_overruns = 0;
+
+    while (hw.is_running()) {
+        // Read sensor (bounded-time hardware read)
+        double position = hw.read_position();
+
+        // Compute control output
+        double error = setpoint - position;
+        double command = pid_compute(cfg, state, error);
+
+        // Bounds check before sending to hardware (safety)
+        if (!std::isfinite(command)) {
+            hw.emergency_stop();
+            return;
+        }
+
+        // Write to actuator
+        hw.write_command(command);
+
+        // Compute next wakeup time
+        next_wakeup.tv_nsec += period_ns;
+        while (next_wakeup.tv_nsec &gt;= 1000000000L) {
+            next_wakeup.tv_nsec -= 1000000000L;
+            next_wakeup.tv_sec++;
+        }
+
+        // Sleep until next period (clock_nanosleep is RT-safe)
+        int ret = clock_nanosleep(CLOCK_MONOTONIC, TIMER_ABSTIME,
+                                   &amp;next_wakeup, nullptr);
+
+        // Deadline overrun detection
+        struct timespec now;
+        clock_gettime(CLOCK_MONOTONIC, &amp;now);
+        long overrun_ns = (now.tv_sec - next_wakeup.tv_sec) * 1000000000L
+                        + (now.tv_nsec - next_wakeup.tv_nsec);
+
+        if (overrun_ns &gt; period_ns / 2) {
+            consecutive_overruns++;
+            if (consecutive_overruns &gt; 10) {
+                // Persistent deadline violations — trigger safe stop
+                hw.safe_stop();
+                return;
+            }
+        } else {
+            consecutive_overruns = 0;
+        }
+    }
+}</code></pre>
+
+        <p>Claude Code generates the PID controller with both clamping anti-windup (integral term bounded by <code>integral_max</code>) and back-calculation anti-windup (when the output is saturated, the integral is adjusted to match the saturated output, preventing further accumulation). The derivative term uses a first-order low-pass filter with configurable time constant (the alpha parameter controls the cutoff frequency &mdash; smaller tau means more filtering). The real-time setup includes <code>mlockall</code> (prevents page faults), <code>SCHED_FIFO</code> (prevents preemption by normal-priority processes), and stack prefaulting (touches stack pages to ensure physical mapping). The control loop uses <code>clock_nanosleep</code> with <code>TIMER_ABSTIME</code> (prevents drift accumulation &mdash; each iteration sleeps to an absolute time, not a relative delay), checks for NaN/infinity before sending commands to hardware (a NaN from a division by zero in the derivative term could send maximum current to a motor), and detects persistent deadline overruns with a safe stop fallback.</p>
+
+        <h3>Common AI failures</h3>
+        <p><strong>Copilot</strong> generates PID controllers without anti-windup, causing massive overshoot when the actuator saturates (the integral term accumulates during saturation and then drives the output in the opposite direction when the error reverses). It uses <code>usleep()</code> or <code>std::this_thread::sleep_for()</code> instead of <code>clock_nanosleep</code> with absolute time, causing timing drift that accumulates over hours of operation. It does not include derivative filtering, so encoder noise causes the derivative term to oscillate wildly. <strong>Windsurf</strong> generates textbook PID (three terms, no anti-windup, no filtering, no saturation) suitable for a controls class homework but not for real hardware. <strong>Amazon Q</strong> generates ROS 2 timer-based control loops that allocate memory on every callback (constructing ROS messages, logging strings), violating real-time constraints. <strong>Gemini CLI</strong> generates correct PID implementations with anti-windup and can explain the theory (Ziegler-Nichols tuning, root locus, Bode plot stability margins). Its real-time setup code is correct but it sometimes uses <code>pthread_setschedparam</code> instead of <code>sched_setscheduler</code>, which is equivalent but less common in the ros2_control ecosystem. <strong>Cursor</strong> generates good control code when working within a ros2_control workspace, matching the <code>hardware_interface::SystemInterface</code> and <code>controller_interface::ControllerInterface</code> patterns from the project.</p>
+
+        <h2>6. Simulation Integration</h2>
+
+        <p>Simulation is the primary development and testing environment for robotics. Gazebo (now Gazebo Sim, formerly Ignition Gazebo) provides physics simulation with SDF (Simulation Description Format) models, sensor plugins (camera, LiDAR, IMU, contact), and ROS 2 integration through <code>ros_gz_bridge</code>. NVIDIA Isaac Sim provides photorealistic rendering (for camera-based perception testing), GPU-accelerated physics (PhysX), and domain randomization for sim-to-real transfer learning. MuJoCo (Multi-Joint dynamics with Contact) provides fast and accurate contact dynamics simulation, making it the standard for manipulation and locomotion research. The simulation integration challenge is not running the simulator &mdash; it is designing the software architecture so that the same code runs on both simulated and real hardware with minimal changes.</p>
+
+        <p>The <code>ros2_control</code> framework solves this with hardware abstraction: a <code>SystemInterface</code> defines the read/write interface to hardware (joint positions, velocities, efforts), and controllers operate on these interfaces without knowing whether the underlying hardware is a real motor driver or a Gazebo plugin. The <code>gazebo_ros2_control</code> plugin implements the <code>SystemInterface</code> in simulation, reading joint states from the physics engine and writing commands back. Switching from simulation to real hardware requires only changing the hardware interface plugin in the URDF/YAML configuration &mdash; no code changes to the controllers. The sim-to-real gap manifests in the physics: Gazebo&rsquo;s ODE or Bullet physics engines approximate contact differently from real surfaces (coefficient of friction, contact stiffness, damping), actuator dynamics are simplified (infinite bandwidth, no backlash, no thermal effects), and sensor noise models are statistical approximations that do not capture sensor-specific artifacts (LiDAR multipath reflections, IMU vibration coupling, camera rolling shutter effects).</p>
+
+        <h3>Where Cursor and Claude Code each contribute</h3>
+        <p>Claude Code generates Gazebo plugins with correct ROS 2 integration. Ask it for a custom sensor plugin, and it produces a working implementation:</p>
+
+<pre><code>// Gazebo plugin: custom proximity sensor with noise model
+// Publishes to ROS 2 topic, configurable via SDF parameters
+
+#include &lt;gz/sim/System.hh&gt;
+#include &lt;gz/sim/Model.hh&gt;
+#include &lt;gz/sim/Util.hh&gt;
+#include &lt;gz/sim/components/Pose.hh&gt;
+#include &lt;gz/transport/Node.hh&gt;
+#include &lt;rclcpp/rclcpp.hpp&gt;
+#include &lt;sensor_msgs/msg/range.hpp&gt;
+#include &lt;random&gt;
+
+class ProximitySensorPlugin
+  : public gz::sim::System,
+    public gz::sim::ISystemConfigure,
+    public gz::sim::ISystemPostUpdate
+{
+public:
+  void Configure(
+    const gz::sim::Entity&amp; entity,
+    const std::shared_ptr&lt;const sdf::Element&gt;&amp; sdf,
+    gz::sim::EntityComponentManager&amp; ecm,
+    gz::sim::EventManager&amp;) override
+  {
+    model_ = gz::sim::Model(entity);
+
+    // Read SDF parameters with defaults
+    update_rate_ = sdf-&gt;Get&lt;double&gt;("update_rate", 10.0).first;
+    max_range_ = sdf-&gt;Get&lt;double&gt;("max_range", 5.0).first;
+    min_range_ = sdf-&gt;Get&lt;double&gt;("min_range", 0.02).first;
+    noise_stddev_ = sdf-&gt;Get&lt;double&gt;("noise_stddev", 0.01).first;
+    frame_id_ = sdf-&gt;Get&lt;std::string&gt;("frame_id", "proximity_link").first;
+    topic_name_ = sdf-&gt;Get&lt;std::string&gt;("topic", "~/proximity").first;
+
+    // Initialize ROS 2 node
+    if (!rclcpp::ok()) {
+      rclcpp::init(0, nullptr);
+    }
+    ros_node_ = std::make_shared&lt;rclcpp::Node&gt;(
+      "proximity_sensor_" + std::to_string(entity));
+    range_pub_ = ros_node_-&gt;create_publisher&lt;sensor_msgs::msg::Range&gt;(
+      topic_name_, rclcpp::SensorDataQoS());
+
+    // Noise generator
+    rng_ = std::mt19937(std::random_device{}());
+    noise_dist_ = std::normal_distribution&lt;double&gt;(0.0, noise_stddev_);
+
+    update_period_ = 1.0 / update_rate_;
+  }
+
+  void PostUpdate(
+    const gz::sim::UpdateInfo&amp; info,
+    const gz::sim::EntityComponentManager&amp; ecm) override
+  {
+    if (info.paused) return;
+
+    // Rate limiting
+    double sim_time = std::chrono::duration&lt;double&gt;(
+      info.simTime).count();
+    if (sim_time - last_update_time_ &lt; update_period_) return;
+    last_update_time_ = sim_time;
+
+    // Get sensor pose in world frame
+    auto pose = ecm.Component&lt;gz::sim::components::Pose&gt;(
+      model_.Entity());
+    if (!pose) return;
+
+    // Simulate range measurement using raycasting
+    // (simplified: actual implementation would use gz::physics raycast)
+    double true_range = simulate_range_measurement(pose-&gt;Data(), ecm);
+
+    // Apply sensor noise model
+    double measured_range = true_range + noise_dist_(rng_);
+    measured_range = std::clamp(measured_range, min_range_, max_range_);
+
+    // Publish ROS 2 message
+    sensor_msgs::msg::Range msg;
+    msg.header.stamp.sec = static_cast&lt;int32_t&gt;(sim_time);
+    msg.header.stamp.nanosec = static_cast&lt;uint32_t&gt;(
+      (sim_time - msg.header.stamp.sec) * 1e9);
+    msg.header.frame_id = frame_id_;
+    msg.radiation_type = sensor_msgs::msg::Range::INFRARED;
+    msg.field_of_view = 0.1;  // radians
+    msg.min_range = min_range_;
+    msg.max_range = max_range_;
+    msg.range = measured_range;
+
+    range_pub_-&gt;publish(msg);
+    rclcpp::spin_some(ros_node_);
+  }
+
+private:
+  double simulate_range_measurement(
+    const gz::math::Pose3d&amp; sensor_pose,
+    const gz::sim::EntityComponentManager&amp; ecm)
+  {
+    // Raycast along sensor's forward axis (x-axis in sensor frame)
+    // Returns distance to nearest obstacle, or max_range_ if nothing hit
+    // Production implementation uses gz::physics::RaycastResult
+    return max_range_;  // placeholder — actual raycast here
+  }
+
+  gz::sim::Model model_;
+  std::shared_ptr&lt;rclcpp::Node&gt; ros_node_;
+  rclcpp::Publisher&lt;sensor_msgs::msg::Range&gt;::SharedPtr range_pub_;
+
+  double update_rate_;
+  double max_range_;
+  double min_range_;
+  double noise_stddev_;
+  double update_period_;
+  double last_update_time_{0.0};
+  std::string frame_id_;
+  std::string topic_name_;
+
+  std::mt19937 rng_;
+  std::normal_distribution&lt;double&gt; noise_dist_;
+};
+
+// Register the plugin with Gazebo
+GZ_ADD_PLUGIN(ProximitySensorPlugin,
+              gz::sim::System,
+              gz::sim::ISystemConfigure,
+              gz::sim::ISystemPostUpdate)</code></pre>
+
+        <p>Claude Code generates the Gazebo plugin with correct modern Gazebo Sim (Fortress/Garden/Harmonic) APIs (not the legacy Gazebo Classic APIs), proper system interfaces (<code>ISystemConfigure</code> for initialization, <code>ISystemPostUpdate</code> for read-only post-physics-step access), SDF parameter loading with defaults, rate limiting based on simulation time (not wall time &mdash; critical for simulation that runs faster or slower than real-time), Gaussian noise model for the sensor, proper ROS 2 message construction with simulation timestamps, and <code>SensorDataQoS</code> for the publisher. It uses <code>GZ_ADD_PLUGIN</code> for modern Gazebo Sim plugin registration.</p>
+
+        <h3>Common AI failures</h3>
+        <p><strong>Copilot</strong> generates legacy Gazebo Classic plugins (using <code>gazebo::ModelPlugin</code> and <code>gazebo::physics::WorldPtr</code>) that do not compile with modern Gazebo Sim. When it does generate modern Gazebo plugins, it often mixes Ignition (pre-rename) and Gazebo Sim (post-rename) namespaces. <strong>Windsurf</strong> generates SDF model files (robot descriptions) rather than plugins when asked for simulation integration. <strong>Amazon Q</strong> generates Gazebo launch files and URDF descriptions but not custom plugins. <strong>Gemini CLI</strong> generates conceptually correct plugin structures but uses APIs from various Gazebo versions inconsistently. <strong>Cursor</strong> is strong here when working within an existing simulation workspace &mdash; it picks up the correct Gazebo version, plugin patterns, and ROS bridge configurations from the project&rsquo;s CMakeLists.txt and package.xml files. For simulation integration specifically, Cursor&rsquo;s project indexing is more valuable than raw algorithmic reasoning because the challenge is API compatibility, not mathematical correctness.</p>
+
+        <h2>7. Hardware Drivers &amp; Hardware Abstraction</h2>
+
+        <p>The hardware abstraction layer (HAL) is the boundary between the robot&rsquo;s software and its physical actuators and sensors. In ROS 2, the <code>ros2_control</code> framework defines this boundary through hardware interfaces: <code>SystemInterface</code> (for multi-DOF systems like robot arms where joints are coupled), <code>ActuatorInterface</code> (for individual actuators), and <code>SensorInterface</code> (for standalone sensors). Each interface implements lifecycle methods (<code>on_init</code>, <code>on_configure</code>, <code>on_activate</code>, <code>on_deactivate</code>, <code>on_cleanup</code>) and the real-time critical <code>read</code> and <code>write</code> methods that exchange data with hardware on every control cycle.</p>
+
+        <p>The communication protocols span: serial (UART) for simple motor controllers (Dynamixel, hobby servos), CAN bus for industrial robots and automotive systems (CANopen, SAE J1939), EtherCAT for high-performance industrial automation (1 kHz+ deterministic communication, used by KUKA, Universal Robots, and most modern industrial robots via SOEM or IgH EtherCAT Master), USB for sensors (cameras via V4L2, IMUs via HID), and Ethernet/UDP for LiDAR (Velodyne, Ouster, Livox). The driver must handle: communication initialization and error recovery (a serial port that drops requires reconnection without crashing the control loop), byte ordering (most embedded devices use little-endian, CAN frames are big-endian), message framing (finding the start of a message in a byte stream, handling partial reads), timing constraints (writing a command and reading the response within a bounded time), and safety monitoring (detecting communication loss and triggering safe stops).</p>
+
+        <h3>Where Claude Code excels</h3>
+        <p>Claude Code generates <code>ros2_control</code> hardware interfaces with proper lifecycle management, real-time-safe read/write methods, and error handling:</p>
+
+<pre><code>// ros2_control hardware interface for a motor controller over serial
+// Implements SystemInterface for a multi-joint robot arm
+
+#include &lt;hardware_interface/system_interface.hpp&gt;
+#include &lt;hardware_interface/handle.hpp&gt;
+#include &lt;hardware_interface/types/hardware_interface_type_values.hpp&gt;
+#include &lt;rclcpp_lifecycle/state.hpp&gt;
+
+class SerialArmHardware : public hardware_interface::SystemInterface
+{
+public:
+  // Initialize from URDF parameters
+  CallbackReturn on_init(
+    const hardware_interface::HardwareInfo&amp; info) override
+  {
+    if (SystemInterface::on_init(info) != CallbackReturn::SUCCESS) {
+      return CallbackReturn::FAILURE;
+    }
+
+    // Extract parameters from URDF
+    serial_port_ = info_.hardware_parameters["serial_port"];
+    baud_rate_ = std::stoi(info_.hardware_parameters["baud_rate"]);
+    num_joints_ = info_.joints.size();
+
+    // Preallocate buffers (no allocation in read/write)
+    hw_positions_.resize(num_joints_, 0.0);
+    hw_velocities_.resize(num_joints_, 0.0);
+    hw_efforts_.resize(num_joints_, 0.0);
+    hw_commands_.resize(num_joints_, 0.0);
+    tx_buffer_.resize(4 + num_joints_ * 4);  // header + data
+    rx_buffer_.resize(4 + num_joints_ * 12); // header + pos/vel/eff
+
+    return CallbackReturn::SUCCESS;
+  }
+
+  // Open serial connection and verify communication
+  CallbackReturn on_configure(
+    const rclcpp_lifecycle::State&amp;) override
+  {
+    serial_fd_ = open(serial_port_.c_str(), O_RDWR | O_NOCTTY);
+    if (serial_fd_ &lt; 0) {
+      RCLCPP_ERROR(rclcpp::get_logger("SerialArmHardware"),
+        "Failed to open %s", serial_port_.c_str());
+      return CallbackReturn::FAILURE;
+    }
+
+    // Configure serial port: 8N1, no flow control
+    struct termios tty;
+    tcgetattr(serial_fd_, &amp;tty);
+    cfsetispeed(&amp;tty, baud_rate_);
+    cfsetospeed(&amp;tty, baud_rate_);
+    tty.c_cflag = (tty.c_cflag &amp; ~CSIZE) | CS8;
+    tty.c_cflag &amp;= ~(PARENB | CSTOPB | CRTSCTS);
+    tty.c_cflag |= (CLOCAL | CREAD);
+    tty.c_iflag &amp;= ~(IXON | IXOFF | IXANY);
+    tty.c_lflag &amp;= ~(ICANON | ECHO | ECHOE | ISIG);
+    tty.c_oflag &amp;= ~OPOST;
+    // Timeout: 10ms max wait for read
+    tty.c_cc[VMIN] = 0;
+    tty.c_cc[VTIME] = 1;  // 100ms timeout in deciseconds
+    tcsetattr(serial_fd_, TCSANOW, &amp;tty);
+
+    // Verify communication with ping command
+    if (!send_ping()) {
+      close(serial_fd_);
+      return CallbackReturn::FAILURE;
+    }
+
+    RCLCPP_INFO(rclcpp::get_logger("SerialArmHardware"),
+      "Connected to %s: %d joints", serial_port_.c_str(), num_joints_);
+    return CallbackReturn::SUCCESS;
+  }
+
+  // Export state interfaces (position, velocity, effort per joint)
+  std::vector&lt;hardware_interface::StateInterface&gt;
+  export_state_interfaces() override
+  {
+    std::vector&lt;hardware_interface::StateInterface&gt; interfaces;
+    for (size_t i = 0; i &lt; num_joints_; i++) {
+      interfaces.emplace_back(info_.joints[i].name,
+        hardware_interface::HW_IF_POSITION, &amp;hw_positions_[i]);
+      interfaces.emplace_back(info_.joints[i].name,
+        hardware_interface::HW_IF_VELOCITY, &amp;hw_velocities_[i]);
+      interfaces.emplace_back(info_.joints[i].name,
+        hardware_interface::HW_IF_EFFORT, &amp;hw_efforts_[i]);
+    }
+    return interfaces;
+  }
+
+  // Export command interfaces (position command per joint)
+  std::vector&lt;hardware_interface::CommandInterface&gt;
+  export_command_interfaces() override
+  {
+    std::vector&lt;hardware_interface::CommandInterface&gt; interfaces;
+    for (size_t i = 0; i &lt; num_joints_; i++) {
+      interfaces.emplace_back(info_.joints[i].name,
+        hardware_interface::HW_IF_POSITION, &amp;hw_commands_[i]);
+    }
+    return interfaces;
+  }
+
+  // Real-time read: get joint states from hardware
+  // MUST be bounded-time — called every control cycle
+  hardware_interface::return_type read(
+    const rclcpp::Time&amp;, const rclcpp::Duration&amp;) override
+  {
+    // Send read command (preallocated buffer, no allocation)
+    tx_buffer_[0] = 0xAA;  // sync byte
+    tx_buffer_[1] = 0x01;  // read command
+    tx_buffer_[2] = static_cast&lt;uint8_t&gt;(num_joints_);
+    tx_buffer_[3] = checksum(tx_buffer_.data(), 3);
+
+    ssize_t written = ::write(serial_fd_,
+      tx_buffer_.data(), 4);
+    if (written != 4) {
+      comm_errors_++;
+      return hardware_interface::return_type::ERROR;
+    }
+
+    // Read response (bounded by serial timeout)
+    size_t expected = 4 + num_joints_ * 12;  // 3 doubles per joint
+    ssize_t received = ::read(serial_fd_,
+      rx_buffer_.data(), expected);
+
+    if (received != static_cast&lt;ssize_t&gt;(expected)) {
+      comm_errors_++;
+      if (comm_errors_ &gt; 10) {
+        // Persistent communication failure
+        return hardware_interface::return_type::ERROR;
+      }
+      return hardware_interface::return_type::OK;  // use stale data
+    }
+
+    // Parse response (no allocation, fixed offsets)
+    comm_errors_ = 0;
+    for (size_t i = 0; i &lt; num_joints_; i++) {
+      size_t offset = 4 + i * 12;
+      memcpy(&amp;hw_positions_[i], &amp;rx_buffer_[offset], 4);
+      memcpy(&amp;hw_velocities_[i], &amp;rx_buffer_[offset + 4], 4);
+      memcpy(&amp;hw_efforts_[i], &amp;rx_buffer_[offset + 8], 4);
+    }
+
+    return hardware_interface::return_type::OK;
+  }
+
+  // Real-time write: send commands to hardware
+  // MUST be bounded-time — called every control cycle
+  hardware_interface::return_type write(
+    const rclcpp::Time&amp;, const rclcpp::Duration&amp;) override
+  {
+    // Build command packet (preallocated buffer)
+    tx_buffer_[0] = 0xAA;  // sync byte
+    tx_buffer_[1] = 0x02;  // write command
+    tx_buffer_[2] = static_cast&lt;uint8_t&gt;(num_joints_);
+
+    for (size_t i = 0; i &lt; num_joints_; i++) {
+      // Safety: bounds check command before sending
+      double cmd = std::clamp(hw_commands_[i],
+        std::stod(info_.joints[i].command_interfaces[0].min),
+        std::stod(info_.joints[i].command_interfaces[0].max));
+      float cmd_f = static_cast&lt;float&gt;(cmd);
+      memcpy(&amp;tx_buffer_[3 + i * 4], &amp;cmd_f, 4);
+    }
+
+    size_t pkt_len = 3 + num_joints_ * 4;
+    tx_buffer_[pkt_len] = checksum(tx_buffer_.data(), pkt_len);
+    pkt_len++;
+
+    ssize_t written = ::write(serial_fd_,
+      tx_buffer_.data(), pkt_len);
+
+    if (written != static_cast&lt;ssize_t&gt;(pkt_len)) {
+      comm_errors_++;
+      return hardware_interface::return_type::ERROR;
+    }
+
+    return hardware_interface::return_type::OK;
+  }
+
+  CallbackReturn on_deactivate(
+    const rclcpp_lifecycle::State&amp;) override
+  {
+    // Send zero commands to all joints (safe stop)
+    std::fill(hw_commands_.begin(), hw_commands_.end(), 0.0);
+    write(rclcpp::Time(), rclcpp::Duration(0, 0));
+    return CallbackReturn::SUCCESS;
+  }
+
+  CallbackReturn on_cleanup(
+    const rclcpp_lifecycle::State&amp;) override
+  {
+    if (serial_fd_ &gt;= 0) {
+      close(serial_fd_);
+      serial_fd_ = -1;
+    }
+    return CallbackReturn::SUCCESS;
+  }
+
+private:
+  uint8_t checksum(const uint8_t* data, size_t len) {
+    uint8_t sum = 0;
+    for (size_t i = 0; i &lt; len; i++) sum += data[i];
+    return ~sum;
+  }
+
+  bool send_ping() {
+    uint8_t ping[] = {0xAA, 0x00, 0x00};
+    ping[2] = checksum(ping, 2);
+    ::write(serial_fd_, ping, 3);
+    uint8_t resp;
+    return (::read(serial_fd_, &amp;resp, 1) == 1 &amp;&amp; resp == 0xAA);
+  }
+
+  std::string serial_port_;
+  int baud_rate_;
+  int serial_fd_{-1};
+  size_t num_joints_;
+  int comm_errors_{0};
+
+  // Preallocated state/command buffers (no RT allocation)
+  std::vector&lt;double&gt; hw_positions_;
+  std::vector&lt;double&gt; hw_velocities_;
+  std::vector&lt;double&gt; hw_efforts_;
+  std::vector&lt;double&gt; hw_commands_;
+  std::vector&lt;uint8_t&gt; tx_buffer_;
+  std::vector&lt;uint8_t&gt; rx_buffer_;
+};</code></pre>
+
+        <p>Claude Code generates the ros2_control hardware interface with every critical detail: preallocated buffers during <code>on_init</code> (no dynamic allocation in the real-time <code>read</code>/<code>write</code> methods), proper serial port configuration (8N1, no flow control, bounded timeout), command bounds checking before sending to hardware (preventing out-of-range commands from reaching the motors), communication error counting with graceful degradation (use stale data for transient errors, return ERROR for persistent failures), safe stop on deactivation (zero all joint commands), checksum verification for data integrity, and lifecycle management (configure opens the connection, cleanup closes it). The <code>read</code> and <code>write</code> methods are bounded-time: the serial timeout prevents indefinite blocking, and no memory allocation or logging occurs in the hot path.</p>
+
+        <h3>Common AI failures</h3>
+        <p><strong>Copilot</strong> generates ros2_control hardware interfaces that dynamically allocate <code>std::vector</code> in the <code>read</code>/<code>write</code> methods, violating real-time constraints. It often omits the serial port configuration (termios setup), producing code that cannot actually communicate with hardware. It does not bounds-check commands before writing, allowing out-of-range values to reach the motors. <strong>Windsurf</strong> generates basic serial read/write code without the ros2_control interface structure, so the driver cannot be used with the ros2_control controller manager and is not lifecycle-managed. <strong>Amazon Q</strong> generates ROS 2 publisher/subscriber nodes that read hardware (treating the hardware driver as a message producer) rather than ros2_control hardware interfaces that integrate with the controller framework. This works for sensors but not for closed-loop control where the controller needs synchronized read-compute-write within a single cycle. <strong>Gemini CLI</strong> generates conceptually correct hardware interfaces and can explain the ros2_control architecture (hardware interface, controller manager, controller, resource manager), but its implementation code sometimes uses blocking I/O calls without timeout protection. <strong>Cursor</strong> generates excellent ros2_control hardware interfaces when working within an existing ros2_control workspace (e.g., ros2_control_demos or a custom robot workspace), as it picks up the interface patterns, message formats, and naming conventions from the project.</p>
+
+        <h2>Cost Model: What Robotics Engineers Actually Pay</h2>
+
+        <h3>Scenario 1: Student / Learning &mdash; $0</h3>
+        <ul>
+          <li><strong>Copilot Free</strong> for basic ROS 2 node templates, simple kinematics homework, and simulation launch files</li>
+          <li><strong>Gemini CLI Free</strong> (1M context) for discussing robotics papers, understanding motion planning algorithms, and working through sensor fusion derivations</li>
+          <li>If you are working through a robotics course (Stanford CS 223A, MIT 6.4210, ETH Robotic Systems Lab), Gemini CLI can paste entire paper sections (Siciliano&rsquo;s Robotics textbook chapters, Thrun&rsquo;s Probabilistic Robotics) and explain the math step by step. Copilot handles the ROS 2 coding assignments and Gazebo setup. Neither produces production-quality real-time code, but that is not the goal at this stage.</li>
+        </ul>
+
+        <h3>Scenario 2: Hobby / Personal Robot &mdash; $0&ndash;$20/month</h3>
+        <ul>
+          <li><strong>Claude Code</strong> ($20/mo) for motion planning algorithms, sensor fusion math, and control system implementation &mdash; the only tool that generates correct IK solvers, EKF implementations, and real-time PID controllers with proper anti-windup and safety checks</li>
+          <li>If you are building a personal robot (ROS 2 on a Raspberry Pi, a manipulator from Dynamixel servos, a mobile platform with LiDAR), Claude Code is the clear choice. It generates working inverse kinematics, correct Kalman filter covariance propagation, and PID controllers with anti-windup. You still need to test extensively (simulation first, then real hardware), but Claude Code gets you past the hard math that blocks most hobby roboticists.</li>
+        </ul>
+
+        <h3>Scenario 3: ROS 2 Package Developer &mdash; $20/month</h3>
+        <ul>
+          <li><strong>Cursor Pro</strong> ($20/mo) for navigating large ROS 2 workspaces like Nav2, MoveIt 2, or ros2_control</li>
+          <li>Contributing to or building on top of the major ROS 2 packages means understanding codebases with hundreds of packages and thousands of files. Cursor&rsquo;s project indexing is invaluable: it indexes the entire workspace, understands cross-package references (how Nav2 plugins call into the costmap, how MoveIt planners interface with collision checking, how ros2_control controllers access hardware interfaces), and autocompletes patterns that match the project&rsquo;s style. Claude Code is better for isolated algorithm implementation, but Cursor is better for navigating the ROS 2 ecosystem forest.</li>
+        </ul>
+
+        <h3>Scenario 4: Professional Robotics Engineer &mdash; $40/month</h3>
+        <ul>
+          <li><strong>Claude Code</strong> ($20/mo) for algorithm correctness &mdash; EKF Jacobian derivations, inverse kinematics singularity handling, control theory stability analysis, and safety-critical bounds checking</li>
+          <li>Plus <strong>Cursor Pro</strong> ($20/mo) for codebase navigation, cross-package refactoring, and daily development velocity across the ROS 2 workspace</li>
+          <li>The optimal combination: Claude Code for the hard algorithmic problems (kinematics, state estimation, control, SLAM) and Cursor for the daily workflow (navigating the robot workspace, writing launch files, configuring parameters, understanding existing code across hundreds of packages). This is what engineers at robotics companies actually use.</li>
+        </ul>
+
+        <h3>Scenario 5: Full Pipeline &mdash; $40/month</h3>
+        <ul>
+          <li><strong>Claude Code</strong> ($20/mo) for algorithm design, mathematical correctness verification, and implementation</li>
+          <li>Plus <strong>Gemini CLI</strong> ($0 free tier) for paper discussions and algorithm exploration &mdash; 1M context for pasting sections from Probabilistic Robotics, robotics conference papers (ICRA, IROS, RSS), or MoveIt design docs</li>
+          <li>Robotics engineering involves reading papers and translating algorithms into code. Gemini CLI handles the former (discuss EKF derivations, compare SLAM approaches, understand motion planning algorithms), Claude Code handles the latter (implement with correct math, real-time safety, and hardware integration). This combination covers the full research-to-implementation pipeline.</li>
+        </ul>
+
+        <h3>Scenario 6: Robotics Company / Enterprise &mdash; $99/seat</h3>
+        <ul>
+          <li><strong>Copilot Enterprise</strong> ($39/mo) or <strong>Cursor Business</strong> ($40/mo) for team-wide codebase indexing, access controls, and audit logging</li>
+          <li>Plus <strong>Claude Code</strong> ($20/mo) for architecture-level robotics design &mdash; safety-critical control, novel sensor fusion approaches, and custom planning algorithms</li>
+          <li>Companies building commercial robots (Boston Dynamics, Agility Robotics, Figure, Covariant) have proprietary robot platforms with internal standards for hardware interfaces, control architectures, safety monitoring, and testing frameworks. Enterprise tiers index the full proprietary codebase, ensuring team-wide consistency on message formats, QoS policies, launch file conventions, and hardware abstraction patterns across dozens of engineers working on different subsystems of the same robot.</li>
+        </ul>
+
+        <h2>The Robotics Engineer&rsquo;s Verdict</h2>
+
+        <p>AI coding tools in 2026 are good at ROS 2 boilerplate &mdash; node structure, launch files, message definitions, configuration YAML, URDF robot descriptions &mdash; and dangerous at the math-heavy algorithmic core that determines whether a robot operates safely and correctly. They generate code that handles the happy path (move a joint to a position, read a sensor value, publish a message) and misses the edge cases that define robotic system safety: singularity handling in inverse kinematics, covariance divergence in Kalman filters, anti-windup in controllers under actuator saturation, real-time constraint violations under load, and communication failures with hardware. The gap between &ldquo;works in Gazebo simulation&rdquo; and &ldquo;runs safely on real hardware at 1 kHz without missing a deadline, hitting a joint limit, or crashing into an obstacle&rdquo; is exactly where AI tools produce their most dangerous output.</p>
+
+        <p>Claude Code is the strongest tool for the hard algorithmic problems. It generates mathematically correct inverse kinematics (with damped least squares, not naive pseudoinverse), proper EKF implementations (with correct Jacobians, Joseph-form covariance updates, and Mahalanobis gating), PID controllers with complete anti-windup, and ICP scan matching with reflection handling. No other tool consistently gets the math right. Cursor is essential for navigating large ROS 2 workspaces &mdash; its project indexing across hundreds of packages is the only way to efficiently work with Nav2, MoveIt 2, ros2_control, and the dozens of dependencies they bring. Gemini CLI is valuable for paper discussions and algorithm exploration, where its 1M context lets you paste entire chapters from robotics textbooks and get precise implementation guidance.</p>
+
+        <p>The right workflow: AI generates the scaffolding (ROS 2 node structure, lifecycle transitions, launch files, message definitions, URDF, configuration files), you implement the algorithms (inverse kinematics, Kalman filters, controllers, scan matching) with AI assistance on the math. Test in simulation first (Gazebo, Isaac Sim, MuJoCo), then hardware-in-the-loop (real software and hardware in a controlled environment), then real-world deployment. Never trust AI-generated control code without bounds checking every output against joint limits, velocity limits, torque limits, and workspace boundaries. Never deploy AI-generated sensor fusion code without verifying covariance convergence over extended runs. Never skip the real-time audit: check that the control loop path has no dynamic allocation, no unbounded loops, no blocking calls, and no priority inversion. A robot that works in simulation but has not been tested on real hardware under real-time constraints is not a robot &mdash; it is a liability.</p>
+
+        <p>Compare all tools and pricing on our <a href="/" style="color:var(--accent)">main comparison table</a>, or check the <a href="/blog/cheapest-ai-coding-tool-2026.html" style="color:var(--accent)">cheapest tools guide</a> for budget options.</p>
+
+        <h2>Related on CodeCosts</h2>
+        <ul>
+          <li><a href="/blog/ai-coding-tools-for-embedded-iot-engineers-2026.html" style="color:var(--accent)">AI Coding Tools for Embedded / IoT Engineers (2026)</a> &mdash; microcontroller development, RTOS, hardware interfaces</li>
+          <li><a href="/blog/ai-coding-tools-for-systems-programmers-2026.html" style="color:var(--accent)">AI Coding Tools for Systems Programmers (2026)</a> &mdash; real-time OS, memory management, low-level optimization</li>
+          <li><a href="/blog/ai-coding-tools-for-ml-engineers-2026.html" style="color:var(--accent)">AI Coding Tools for ML Engineers (2026)</a> &mdash; perception models, reinforcement learning, training pipelines</li>
+          <li><a href="/blog/ai-coding-tools-for-firmware-engineers-2026.html" style="color:var(--accent)">AI Coding Tools for Firmware Engineers (2026)</a> &mdash; bare-metal programming, peripheral drivers, bootloaders</li>
+        </ul>
+      </div>
+    </article>
+
+    <!-- Related Posts -->
+    <section class="card">
+      <h3>Related Posts</h3>
+      <div class="blog-list" style="margin-top:1rem">
+        <a href="/blog/ai-coding-tools-for-embedded-iot-engineers-2026.html" class="blog-post-card">
+          <h3>AI Coding Tools for Embedded / IoT Engineers 2026: RTOS, Microcontrollers &amp; Hardware Interface Guide</h3>
+          <div class="blog-meta"><span>March 28, 2026</span><span>22 min read</span></div>
+          <p class="blog-excerpt">Every AI coding tool evaluated for embedded and IoT engineering. RTOS development, microcontroller programming, hardware interfaces, and low-power optimization from $0 to enterprise.</p>
+          <span class="read-more">Read more &rarr;</span>
+        </a>
+        <a href="/blog/ai-coding-tools-for-systems-programmers-2026.html" class="blog-post-card">
+          <h3>AI Coding Tools for Systems Programmers 2026: Kernel, Memory Management &amp; Low-Level Optimization Guide</h3>
+          <div class="blog-meta"><span>March 28, 2026</span><span>24 min read</span></div>
+          <p class="blog-excerpt">Every AI coding tool evaluated for systems programming. Kernel development, memory management, low-level optimization, and performance-critical code from $0 to enterprise.</p>
+          <span class="read-more">Read more &rarr;</span>
+        </a>
+        <a href="/blog/ai-coding-tools-for-ml-engineers-2026.html" class="blog-post-card">
+          <h3>AI Coding Tools for ML Engineers 2026: Training, Fine-Tuning, MLOps &amp; Deployment Guide</h3>
+          <div class="blog-meta"><span>March 27, 2026</span><span>22 min read</span></div>
+          <p class="blog-excerpt">Every AI coding tool evaluated for machine learning engineering. Model training, fine-tuning, MLOps pipelines, and production deployment from $0 to enterprise.</p>
+          <span class="read-more">Read more &rarr;</span>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>CodeCosts &mdash; Independent AI coding tool price tracker. Updated March 2026.</p>
+      <p style="margin-top:0.5rem"><a href="/" style="color:var(--accent)">Compare all tools</a> &middot; <a href="/blog/" style="color:var(--accent)">Blog</a> &middot; <a href="/blog/feed.xml" style="color:var(--accent)">RSS</a></p>
+    </div>
+  </footer>
+</body>
+</html>

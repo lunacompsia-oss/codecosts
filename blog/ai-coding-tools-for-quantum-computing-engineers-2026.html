@@ -1,0 +1,1929 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Coding Tools for Quantum Computing Engineers 2026: Qiskit, Cirq, PennyLane, Quantum Error Correction &amp; Algorithm Development Guide</title>
+  <meta name="description" content="The quantum computing engineer's guide to AI coding tools in 2026. Every tool evaluated for quantum circuit design, error correction codes, variational algorithms (VQE/QAOA), circuit optimization, transpilation, quantum simulation, QML, and hardware integration. Domain-first recommendations from $0 to $99/seat.">
+  <link rel="canonical" href="https://codecosts.pages.dev/blog/ai-coding-tools-for-quantum-computing-engineers-2026.html">
+  <meta property="og:title" content="AI Coding Tools for Quantum Computing Engineers 2026: Qiskit, Cirq, PennyLane &amp; Error Correction">
+  <meta property="og:description" content="Every AI coding tool ranked for quantum computing engineering. Qiskit 1.0+, Cirq, PennyLane, Q#, Amazon Braket, quantum error correction, VQE/QAOA, circuit optimization, and hardware integration. Domain-first recommendations from $0 to $99/seat.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://codecosts.pages.dev/blog/ai-coding-tools-for-quantum-computing-engineers-2026.html">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="AI Coding Tools for Quantum Computing Engineers 2026: Qiskit, Cirq &amp; PennyLane Guide">
+  <meta name="twitter:description" content="Domain-first AI tool recommendations for quantum computing engineers. Circuit design, error correction, VQE/QAOA, transpilation &mdash; ranked and priced.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💰</text></svg>">
+  <link rel="stylesheet" href="../style.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "AI Coding Tools for Quantum Computing Engineers 2026: Qiskit, Cirq, PennyLane, Quantum Error Correction & Algorithm Development Guide",
+    "datePublished": "2026-03-29",
+    "dateModified": "2026-03-29",
+    "author": { "@type": "Organization", "name": "CodeCosts" },
+    "publisher": { "@type": "Organization", "name": "CodeCosts" },
+    "description": "The quantum computing engineer's guide to AI coding tools in 2026. Every tool evaluated for quantum circuit design, error correction codes, variational algorithms, circuit optimization, transpilation, quantum simulation, QML, and hardware integration."
+  }
+  </script>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <a href="/" style="text-decoration:none;color:inherit"><h1><span class="logo">$_</span> CodeCosts</h1></a>
+      <p class="tagline">AI Coding Tool News &amp; Analysis</p>
+      <nav>
+        <a href="/">Tools</a>
+        <a href="/blog/" class="active">Blog</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <article class="card">
+      <h2>AI Coding Tools for Quantum Computing Engineers 2026: Qiskit, Cirq, PennyLane, Quantum Error Correction &amp; Algorithm Development Guide</h2>
+      <div class="article-meta">
+        <span>March 29, 2026</span>
+        <span>~25 min read</span>
+      </div>
+
+      <div class="article-content">
+        <p>Quantum computing engineering is software development in a regime where the fundamental unit of computation &mdash; the qubit &mdash; obeys the laws of quantum mechanics rather than Boolean logic. A classical bit is either 0 or 1. A qubit exists in a superposition &alpha;|0&rang; + &beta;|1&rang; where &alpha; and &beta; are complex amplitudes satisfying |&alpha;|<sup>2</sup> + |&beta;|<sup>2</sup> = 1, and measurement collapses this superposition probabilistically, yielding 0 with probability |&alpha;|<sup>2</sup> and 1 with probability |&beta;|<sup>2</sup>. Two qubits can be entangled into states like the Bell state (|00&rang; + |11&rang;)/&radic;2 where measuring one qubit instantaneously determines the other&rsquo;s state, regardless of physical separation. An n-qubit system has a state vector of 2<sup>n</sup> complex amplitudes &mdash; 50 qubits require 2<sup>50</sup> &asymp; 10<sup>15</sup> complex numbers to represent classically, consuming roughly 16 petabytes of memory. This exponential state space is both the source of quantum computational advantage and the reason quantum programs are fundamentally different from classical ones: you cannot inspect intermediate quantum states without destroying them, you cannot copy an unknown quantum state (the no-cloning theorem), and every operation must be reversible (unitary). These constraints make quantum software development a discipline where the programming model bears almost no resemblance to classical computing, and AI tools trained predominantly on classical code struggle with the conceptual foundations.</p>
+
+        <p>The gap between theoretical quantum algorithms and hardware reality defines the current era of quantum computing, known as the Noisy Intermediate-Scale Quantum (NISQ) era. Theoretical algorithms like Shor&rsquo;s factoring algorithm require thousands of logical qubits with error rates below 10<sup>-15</sup> per gate; current hardware provides 50&ndash;1,000 physical qubits with error rates of 10<sup>-2</sup> to 10<sup>-4</sup> per two-qubit gate. Each logical qubit in a surface code requires roughly 1,000&ndash;10,000 physical qubits for fault-tolerant operation, meaning Shor&rsquo;s algorithm for breaking RSA-2048 needs millions of physical qubits &mdash; at least a decade away. NISQ-era engineering focuses on what can be done with noisy qubits: variational quantum eigensolvers (VQE) for molecular ground state energies, the Quantum Approximate Optimization Algorithm (QAOA) for combinatorial problems, quantum machine learning (QML) with parameterized circuits, and quantum simulation of condensed matter Hamiltonians. These hybrid quantum-classical workflows alternate between executing short-depth circuits on quantum hardware and running classical optimizers (COBYLA, SPSA, Adam) to update circuit parameters. The quantum engineer must understand gate decomposition (arbitrary unitaries decomposed into native gate sets like {&radic;X, R<sub>Z</sub>, CX} on IBM hardware or {&radic;iSWAP, Phased-XZ} on Google processors), circuit transpilation to hardware connectivity (not all qubits can interact directly &mdash; SWAP gates must be inserted to route two-qubit gates along the device&rsquo;s coupling map), and noise-aware compilation that avoids the noisiest qubits and gates based on real-time calibration data.</p>
+
+        <p>The framework landscape adds another layer of complexity. IBM&rsquo;s Qiskit (now at version 1.0+ with major breaking changes from the 0.x series) provides <code>QuantumCircuit</code> for circuit construction, <code>qiskit.transpiler</code> for hardware-aware compilation, and <code>qiskit-aer</code> for classical simulation with noise models. Google&rsquo;s Cirq models circuits as moments (layers of non-overlapping gates) on specific device topologies like the Sycamore processor&rsquo;s grid layout. Xanadu&rsquo;s PennyLane (version 0.38+) treats quantum circuits as differentiable programs, integrating with PyTorch and JAX for gradient-based optimization of variational circuits. Microsoft&rsquo;s Q# operates at a higher abstraction level with its own type system and quantum-specific control flow. Amazon Braket SDK provides a unified interface to IonQ (trapped ion), Rigetti (superconducting), and QuEra (neutral atom) hardware. Quipper, a Haskell-embedded language, targets fault-tolerant quantum computing with explicit resource estimation. Each framework has distinct abstractions, naming conventions, and API patterns &mdash; Qiskit uses <code>cx(control, target)</code> for CNOT, Cirq uses <code>cirq.CNOT(q0, q1)</code>, PennyLane uses <code>qml.CNOT(wires=[0, 1])</code>. Verification is fundamentally limited: you cannot efficiently simulate circuits beyond roughly 30&ndash;40 qubits classically, so testing relies on small-scale simulation, known analytical results for specific circuits (GHZ states, quantum Fourier transforms), and statistical tests on measurement distributions. AI tools that confuse framework APIs, generate deprecated Qiskit 0.x patterns, or produce circuits that violate hardware connectivity constraints waste hours of debugging time in a domain where debugging is already exceptionally difficult because you cannot set breakpoints on quantum states.</p>
+
+        <div class="callout tip">
+          <div class="callout-title">TL;DR</div>
+          <p><strong>Best free ($0):</strong> Gemini CLI Free &mdash; 1M context for loading entire framework docs, Qiskit migration guides, and hardware specifications. <strong>Best for algorithm development ($20/mo):</strong> Claude Code &mdash; strongest reasoning for quantum algorithms, error correction codes, variational circuit ansatz design, and Hamiltonian simulation. <strong>Best for quantum codebases ($20/mo):</strong> Cursor Pro &mdash; indexes Qiskit/Cirq/PennyLane projects, autocompletes framework-specific patterns. <strong>Best combined ($40/mo):</strong> Claude Code + Cursor. <strong>Budget ($0):</strong> Copilot Free + Gemini CLI Free.</p>
+        </div>
+
+        <h2>Why Quantum Computing Engineering Is Different</h2>
+        <ul>
+          <li><strong>Quantum state spaces grow exponentially:</strong> An n-qubit system lives in a 2<sup>n</sup>-dimensional complex Hilbert space. The state vector for 20 qubits has over one million complex amplitudes; for 50 qubits, over one quadrillion. Every quantum operation is a 2<sup>n</sup> &times; 2<sup>n</sup> unitary matrix applied to this state vector. This exponential scaling means that classical simulation of quantum circuits becomes intractable beyond 30&ndash;40 qubits (depending on circuit structure and available memory), and the entire purpose of quantum hardware is to operate natively in this exponential space. AI tools trained on classical programming have no intuitive model for this &mdash; they cannot reason about how gate operations transform exponentially large state vectors, cannot predict entanglement structures from circuit topology, and cannot estimate whether a given circuit will produce useful quantum interference or just noise. When an AI tool generates a quantum circuit, it is pattern-matching against training examples, not reasoning about the underlying Hilbert space geometry.</li>
+          <li><strong>Noise and decoherence constrain everything:</strong> Every physical qubit has a T<sub>1</sub> time (energy relaxation, typically 50&ndash;200 &mu;s for superconducting qubits) and a T<sub>2</sub> time (dephasing, typically 50&ndash;150 &mu;s) that set hard limits on circuit depth. A single-qubit gate takes roughly 20&ndash;50 ns and a two-qubit gate takes 200&ndash;800 ns on superconducting hardware. At 500 ns per CNOT, a T<sub>2</sub> of 100 &mu;s allows roughly 200 two-qubit gates before coherence is lost &mdash; and that is before accounting for gate error rates of 0.1&ndash;1% per two-qubit gate, which compound multiplicatively. A circuit with 100 CNOT gates at 0.5% error per gate has an expected fidelity of 0.995<sup>100</sup> &asymp; 0.61, meaning 39% of shots produce garbage. Noise models include depolarizing channels, amplitude damping, phase damping, and crosstalk between adjacent qubits &mdash; each requiring different mitigation strategies. AI tools that generate deep circuits without considering these constraints produce programs that return uniformly random measurement results.</li>
+          <li><strong>Circuit compilation and optimization are NP-hard:</strong> Mapping an abstract quantum circuit onto physical hardware requires solving multiple hard problems simultaneously. Qubit allocation assigns logical qubits to physical positions on the device&rsquo;s coupling graph. Gate routing inserts SWAP gates (each costing 3 CNOT gates) to bring non-adjacent qubits together for two-qubit operations. Gate synthesis decomposes arbitrary unitaries into the device&rsquo;s native gate set with minimal overhead. Finding the optimal solution to any of these subproblems is NP-hard, and real transpilers use heuristic approaches (Qiskit&rsquo;s <code>SabreLayout</code> and <code>SabreSwap</code>, Cirq&rsquo;s routing algorithms) that trade optimality for speed. A poorly transpiled circuit may have 3&times; more CNOT gates than necessary, directly reducing fidelity. AI tools have no awareness of hardware topology constraints and will generate circuits with all-to-all connectivity that require expensive routing when compiled for real hardware.</li>
+          <li><strong>Quantum-classical hybrid loops dominate the NISQ era:</strong> VQE, QAOA, and variational quantum machine learning all follow the same pattern: a parameterized quantum circuit (ansatz) is executed on quantum hardware, measurement results are processed classically to compute a cost function, and a classical optimizer updates the circuit parameters. This outer loop runs for hundreds to thousands of iterations, each requiring multiple circuit executions (shots) for statistical accuracy. The choice of ansatz (hardware-efficient, UCCSD, problem-specific), optimizer (gradient-free like COBYLA or SPSA, gradient-based using parameter-shift rules or adjoint differentiation), number of shots per iteration, and convergence criteria all critically affect whether the algorithm converges to a useful answer or gets trapped in a barren plateau where gradients vanish exponentially with circuit depth. AI tools that generate the quantum circuit without the classical optimization loop, or that choose an ansatz with known barren plateau problems for the given system size, produce incomplete or non-functional implementations.</li>
+          <li><strong>Verification requires fundamentally different approaches:</strong> You cannot step through a quantum program with a debugger and inspect the state at each gate &mdash; measurement destroys the quantum state. You cannot run the same circuit twice and expect identical results &mdash; quantum mechanics is inherently probabilistic. You cannot efficiently simulate large circuits classically to check correctness. Verification strategies include: testing on small instances where classical simulation is feasible, checking known analytical results (e.g., VQE on H<sub>2</sub> should match the Full Configuration Interaction energy to chemical accuracy of 1.6 mHa), verifying entanglement witnesses and fidelity measures, checking that measurement distributions match expected probability distributions (chi-squared tests, Kolmogorov-Smirnov tests), and using quantum state tomography on small subsystems. These techniques are specific to quantum computing and completely absent from classical software testing methodologies. AI tools never generate verification infrastructure alongside quantum circuits, leaving the engineer to manually construct the testing apparatus.</li>
+        </ul>
+
+        <h2>Quantum Computing Task Support Matrix</h2>
+        <div style="overflow-x:auto">
+          <table style="width:100%;border-collapse:collapse;margin:1.5rem 0">
+            <thead>
+              <tr style="border-bottom:2px solid var(--border)">
+                <th style="padding:12px 16px;text-align:left">Task</th>
+                <th style="padding:12px 16px;text-align:center">Copilot</th>
+                <th style="padding:12px 16px;text-align:center">Cursor</th>
+                <th style="padding:12px 16px;text-align:center">Windsurf</th>
+                <th style="padding:12px 16px;text-align:center">Claude Code</th>
+                <th style="padding:12px 16px;text-align:center">Amazon Q</th>
+                <th style="padding:12px 16px;text-align:center">Gemini CLI</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px"><strong>Quantum Circuit Design</strong></td>
+                <td style="padding:12px 16px;text-align:center">Fair</td>
+                <td style="padding:12px 16px;text-align:center">Good</td>
+                <td style="padding:12px 16px;text-align:center">Fair</td>
+                <td style="padding:12px 16px;text-align:center"><strong>Excellent</strong></td>
+                <td style="padding:12px 16px;text-align:center">Weak</td>
+                <td style="padding:12px 16px;text-align:center">Good</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px"><strong>Error Correction Implementation</strong></td>
+                <td style="padding:12px 16px;text-align:center">Weak</td>
+                <td style="padding:12px 16px;text-align:center">Fair</td>
+                <td style="padding:12px 16px;text-align:center">Weak</td>
+                <td style="padding:12px 16px;text-align:center"><strong>Strong</strong></td>
+                <td style="padding:12px 16px;text-align:center">Weak</td>
+                <td style="padding:12px 16px;text-align:center">Fair</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px"><strong>Variational Algorithm Development</strong></td>
+                <td style="padding:12px 16px;text-align:center">Fair</td>
+                <td style="padding:12px 16px;text-align:center">Good</td>
+                <td style="padding:12px 16px;text-align:center">Fair</td>
+                <td style="padding:12px 16px;text-align:center"><strong>Excellent</strong></td>
+                <td style="padding:12px 16px;text-align:center">Weak</td>
+                <td style="padding:12px 16px;text-align:center">Good</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px"><strong>Circuit Optimization &amp; Transpilation</strong></td>
+                <td style="padding:12px 16px;text-align:center">Weak</td>
+                <td style="padding:12px 16px;text-align:center"><strong>Strong</strong></td>
+                <td style="padding:12px 16px;text-align:center">Fair</td>
+                <td style="padding:12px 16px;text-align:center"><strong>Strong</strong></td>
+                <td style="padding:12px 16px;text-align:center">Fair</td>
+                <td style="padding:12px 16px;text-align:center">Good</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px"><strong>Quantum Simulation</strong></td>
+                <td style="padding:12px 16px;text-align:center">Fair</td>
+                <td style="padding:12px 16px;text-align:center">Good</td>
+                <td style="padding:12px 16px;text-align:center">Weak</td>
+                <td style="padding:12px 16px;text-align:center"><strong>Excellent</strong></td>
+                <td style="padding:12px 16px;text-align:center">Weak</td>
+                <td style="padding:12px 16px;text-align:center"><strong>Strong</strong></td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px"><strong>Quantum ML (QML)</strong></td>
+                <td style="padding:12px 16px;text-align:center">Good</td>
+                <td style="padding:12px 16px;text-align:center"><strong>Strong</strong></td>
+                <td style="padding:12px 16px;text-align:center">Fair</td>
+                <td style="padding:12px 16px;text-align:center"><strong>Excellent</strong></td>
+                <td style="padding:12px 16px;text-align:center">Fair</td>
+                <td style="padding:12px 16px;text-align:center">Good</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px"><strong>Hardware Integration &amp; Calibration</strong></td>
+                <td style="padding:12px 16px;text-align:center">Weak</td>
+                <td style="padding:12px 16px;text-align:center">Fair</td>
+                <td style="padding:12px 16px;text-align:center">Weak</td>
+                <td style="padding:12px 16px;text-align:center"><strong>Strong</strong></td>
+                <td style="padding:12px 16px;text-align:center">Good</td>
+                <td style="padding:12px 16px;text-align:center">Fair</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h2>1. Quantum Circuit Design with Qiskit</h2>
+
+        <p>Quantum circuit design is the foundational task of quantum computing engineering: translating a quantum algorithm into a sequence of gates applied to qubits. In Qiskit 1.0+, circuits are constructed through the <code>QuantumCircuit</code> class, applying gates like <code>h()</code> (Hadamard), <code>cx()</code> (CNOT), <code>rz()</code> (rotation around Z-axis), and <code>measure()</code> to qubits identified by integer indices. The design challenge lies not in the syntax but in the physics: constructing circuits that create the desired quantum state through precise sequences of unitary transformations. A GHZ (Greenberger-Horne-Zeilinger) state &mdash; the maximally entangled state (|000...0&rang; + |111...1&rang;)/&radic;2 &mdash; requires a Hadamard gate on the first qubit followed by a cascade of CNOT gates, each entangling the next qubit with the growing entangled register. Quantum teleportation, the protocol for transferring an arbitrary quantum state using entanglement and classical communication, requires Bell pair preparation, Bell-basis measurement, and classically conditioned corrections (X and Z gates applied based on measurement outcomes). These protocols seem simple in textbook descriptions but their implementations must handle measurement ordering, classical conditioning (Qiskit&rsquo;s <code>c_if()</code> in legacy API or <code>if_test()</code> in the new control flow API), and the distinction between mid-circuit measurement (supported on some hardware) and deferred measurement (where all measurements happen at the end).</p>
+
+        <p>AI tools vary dramatically in their ability to generate correct quantum circuits. Copilot and Windsurf produce syntactically valid Qiskit code for simple circuits but frequently confuse gate ordering &mdash; placing a CNOT before the Hadamard that creates the superposition, or applying measurement before the gates that create the state to be measured. Claude Code generates circuits with correct gate ordering and physical reasoning, explaining why each gate is needed and what quantum state it produces. Cursor indexes existing quantum projects and autocompletes circuit patterns consistent with the project&rsquo;s style, which is valuable for teams with established conventions. Gemini CLI&rsquo;s 1M context window allows loading the entire Qiskit 1.0 migration guide alongside your code, ensuring generated circuits use current API patterns rather than deprecated 0.x syntax.</p>
+
+        <pre><code class="language-python" style="background:var(--bg-code,#1a1a2e);color:var(--fg-code,#e0e0e0);padding:1.5rem;border-radius:8px;overflow-x:auto;font-size:0.9rem;line-height:1.5">"""
+Quantum Circuit Design: GHZ State Preparation and
+Quantum Teleportation Protocol using Qiskit 1.0+
+
+Demonstrates:
+  - GHZ state creation for n qubits
+  - Full quantum teleportation with mid-circuit measurement
+  - State verification via statevector simulation
+"""
+from qiskit import QuantumCircuit, QuantumRegister, ClassicalRegister
+from qiskit.quantum_info import Statevector, state_fidelity
+from qiskit_aer import AerSimulator
+import numpy as np
+
+
+def create_ghz_state(n_qubits: int) -&gt; QuantumCircuit:
+    """Create an n-qubit GHZ state: (|00...0> + |11...1>) / sqrt(2).
+
+    The GHZ state is maximally entangled: measuring any single qubit
+    collapses ALL other qubits to the same value. This makes it useful
+    for quantum error detection, quantum secret sharing, and as a
+    benchmark for multi-qubit entanglement fidelity on hardware.
+
+    Args:
+        n_qubits: Number of qubits (must be >= 2).
+
+    Returns:
+        QuantumCircuit preparing the GHZ state.
+    """
+    if n_qubits < 2:
+        raise ValueError("GHZ state requires at least 2 qubits")
+
+    qc = QuantumCircuit(n_qubits, name=f"GHZ-{n_qubits}")
+
+    # Hadamard on first qubit: |0> -> (|0> + |1>) / sqrt(2)
+    qc.h(0)
+
+    # Cascade of CNOTs to entangle all qubits
+    # After each CNOT, one more qubit joins the entangled state
+    for i in range(n_qubits - 1):
+        qc.cx(i, i + 1)
+
+    return qc
+
+
+def verify_ghz_state(qc: QuantumCircuit, n_qubits: int) -&gt; dict:
+    """Verify GHZ state preparation using statevector simulation.
+
+    Checks:
+      1. Only |00...0> and |11...1> have nonzero amplitude
+      2. Both amplitudes are 1/sqrt(2)
+      3. Fidelity with ideal GHZ state is 1.0
+    """
+    sv = Statevector.from_instruction(qc)
+    probs = sv.probabilities_dict()
+
+    # Expected: only "0"*n and "1"*n with probability 0.5 each
+    all_zeros = "0" * n_qubits
+    all_ones = "1" * n_qubits
+
+    results = {
+        "probabilities": probs,
+        "p_all_zeros": probs.get(all_zeros, 0.0),
+        "p_all_ones": probs.get(all_ones, 0.0),
+        "n_nonzero_states": len(probs),
+        "is_valid_ghz": (
+            len(probs) == 2
+            and abs(probs.get(all_zeros, 0) - 0.5) < 1e-10
+            and abs(probs.get(all_ones, 0) - 0.5) < 1e-10
+        ),
+    }
+
+    # Compute fidelity with ideal GHZ state
+    ideal_sv = np.zeros(2**n_qubits, dtype=complex)
+    ideal_sv[0] = 1.0 / np.sqrt(2)          # |00...0> amplitude
+    ideal_sv[2**n_qubits - 1] = 1.0 / np.sqrt(2)  # |11...1> amplitude
+    results["fidelity"] = state_fidelity(sv, Statevector(ideal_sv))
+
+    return results
+
+
+def quantum_teleportation() -&gt; QuantumCircuit:
+    """Quantum teleportation protocol.
+
+    Teleports the state of qubit 0 (|psi>) to qubit 2 using
+    a pre-shared Bell pair between qubits 1 and 2.
+
+    Protocol:
+      1. Prepare arbitrary state |psi> on qubit 0
+      2. Create Bell pair between qubits 1 and 2
+      3. Alice (qubits 0,1): Bell-basis measurement
+      4. Bob (qubit 2): Apply corrections based on measurement
+
+    After teleportation, qubit 2 holds the state |psi> and
+    qubit 0's state has been destroyed (no-cloning theorem).
+    """
+    # Three quantum registers for clarity
+    q_msg = QuantumRegister(1, "msg")      # Qubit to teleport
+    q_alice = QuantumRegister(1, "alice")  # Alice's half of Bell pair
+    q_bob = QuantumRegister(1, "bob")      # Bob's half of Bell pair
+    c_alice = ClassicalRegister(2, "c")    # Classical bits for measurement
+
+    qc = QuantumCircuit(q_msg, q_alice, q_bob, c_alice,
+                        name="Teleportation")
+
+    # Step 1: Prepare state to teleport (example: |psi> = Ry(pi/3)|0>)
+    qc.ry(np.pi / 3, q_msg[0])
+    qc.barrier(label="state prep")
+
+    # Step 2: Create Bell pair (|00> + |11>) / sqrt(2)
+    qc.h(q_alice[0])
+    qc.cx(q_alice[0], q_bob[0])
+    qc.barrier(label="Bell pair")
+
+    # Step 3: Alice's Bell-basis measurement
+    qc.cx(q_msg[0], q_alice[0])
+    qc.h(q_msg[0])
+    qc.measure(q_msg[0], c_alice[0])
+    qc.measure(q_alice[0], c_alice[1])
+    qc.barrier(label="Bell measure")
+
+    # Step 4: Bob's conditional corrections
+    # If Alice measured alice=1, apply X gate to Bob
+    with qc.if_test((c_alice[1], 1)):
+        qc.x(q_bob[0])
+    # If Alice measured msg=1, apply Z gate to Bob
+    with qc.if_test((c_alice[0], 1)):
+        qc.z(q_bob[0])
+
+    return qc
+
+
+if __name__ == "__main__":
+    # --- GHZ State Demo ---
+    for n in [3, 5, 8]:
+        ghz_circuit = create_ghz_state(n)
+        result = verify_ghz_state(ghz_circuit, n)
+        print(f"GHZ-{n}: fidelity={result['fidelity']:.6f}, "
+              f"valid={result['is_valid_ghz']}, "
+              f"P(00..0)={result['p_all_zeros']:.4f}, "
+              f"P(11..1)={result['p_all_ones']:.4f}")
+
+    # --- Teleportation Demo ---
+    teleport_qc = quantum_teleportation()
+    print(f"\nTeleportation circuit depth: {teleport_qc.depth()}")
+    print(f"Teleportation gate counts: {teleport_qc.count_ops()}")
+
+    # Simulate with AerSimulator (supports dynamic circuits)
+    sim = AerSimulator()
+    teleport_qc_meas = teleport_qc.copy()
+    teleport_qc_meas.measure_all()
+    job = sim.run(teleport_qc_meas, shots=4096)
+    counts = job.result().get_counts()
+    print(f"Teleportation measurement distribution: {counts}")</code></pre>
+
+        <h2>2. Quantum Error Correction</h2>
+
+        <p>Quantum error correction (QEC) is the engineering discipline that will eventually enable fault-tolerant quantum computing, and it is arguably the most intellectually demanding area of quantum software development. Unlike classical error correction where you can simply copy a bit and take a majority vote, the no-cloning theorem prohibits copying quantum states. QEC encodes a single logical qubit into multiple physical qubits using carefully constructed code spaces. The simplest example is the 3-qubit bit-flip code, which encodes |0&rang;<sub>L</sub> = |000&rang; and |1&rang;<sub>L</sub> = |111&rang;, detecting and correcting single bit-flip (X) errors by measuring parity checks (stabilizers) Z<sub>1</sub>Z<sub>2</sub> and Z<sub>2</sub>Z<sub>3</sub> without disturbing the encoded information. The surface code, the leading candidate for practical QEC, arranges physical qubits on a 2D lattice with X-type and Z-type stabilizer measurements performed by ancilla qubits. A distance-d surface code uses O(d<sup>2</sup>) physical qubits to encode one logical qubit, correcting up to &lfloor;(d-1)/2&rfloor; errors, with a logical error rate that decreases exponentially with d when the physical error rate is below the code&rsquo;s threshold (approximately 1% for the surface code). Implementing QEC involves syndrome extraction circuits (ancilla preparation, CNOT gates for parity measurement, ancilla measurement), syndrome decoding algorithms (minimum-weight perfect matching using libraries like PyMatching, or union-find decoders), and logical gate implementations that operate on the encoded qubits without leaving the code space (transversal gates, lattice surgery, magic state distillation).</p>
+
+        <p>AI tools struggle significantly with QEC because the subject requires simultaneous understanding of group theory (stabilizer formalism, Pauli group, Clifford group), coding theory (distance, weight, degeneracy), circuit synthesis (syndrome extraction circuits must not propagate errors from ancilla to data qubits &mdash; requiring specific CNOT ordering and flag qubits), and classical decoding algorithms (MWPM on a syndrome graph is a graph theory problem). Claude Code handles the mathematical reasoning behind stabilizer codes and can generate correct syndrome extraction circuits for small codes, though it requires guidance for larger codes like the surface code. Other tools typically produce circuits that either measure the wrong stabilizers or have CNOT orderings that propagate hook errors, compromising the code&rsquo;s fault-tolerance properties. For serious QEC work, the Stim library (by Google) provides fast Clifford circuit simulation with noise, and integrating Stim with AI-assisted development requires loading its documentation into the tool&rsquo;s context.</p>
+
+        <pre><code class="language-python" style="background:var(--bg-code,#1a1a2e);color:var(--fg-code,#e0e0e0);padding:1.5rem;border-radius:8px;overflow-x:auto;font-size:0.9rem;line-height:1.5">"""
+Quantum Error Correction: Bit-Flip Repetition Code
+with Syndrome Extraction and Decoding
+
+Demonstrates:
+  - 3-qubit bit-flip code encoding
+  - Syndrome measurement using ancilla qubits
+  - Error injection and correction
+  - Stim-based fast simulation for logical error rate estimation
+"""
+from qiskit import QuantumCircuit, QuantumRegister, ClassicalRegister
+from qiskit_aer import AerSimulator
+from qiskit_aer.noise import NoiseModel, depolarizing_error
+import numpy as np
+
+
+def bit_flip_code_circuit(
+    inject_error: bool = False,
+    error_qubit: int = 0,
+) -&gt; QuantumCircuit:
+    """3-qubit bit-flip repetition code with syndrome extraction.
+
+    Encoding: |0>_L = |000>, |1>_L = |111>
+    Stabilizers: Z0*Z1 (parity of qubits 0,1), Z1*Z2 (parity of qubits 1,2)
+
+    Syndrome table:
+      No error:     s1=0, s2=0
+      X on qubit 0: s1=1, s2=0
+      X on qubit 1: s1=1, s2=1
+      X on qubit 2: s1=0, s2=1
+
+    Args:
+        inject_error: Whether to inject a bit-flip error.
+        error_qubit: Which data qubit to apply X error to (0, 1, or 2).
+
+    Returns:
+        QuantumCircuit implementing the full QEC cycle.
+    """
+    data = QuantumRegister(3, "data")
+    ancilla = QuantumRegister(2, "anc")
+    syndrome = ClassicalRegister(2, "syn")
+    output = ClassicalRegister(3, "out")
+
+    qc = QuantumCircuit(data, ancilla, syndrome, output,
+                        name="BitFlipCode")
+
+    # --- Encoding: |psi> -> |psi>_L ---
+    # Encode logical |+> = (|0>_L + |1>_L)/sqrt(2) = (|000> + |111>)/sqrt(2)
+    qc.h(data[0])
+    qc.cx(data[0], data[1])
+    qc.cx(data[0], data[2])
+    qc.barrier(label="encoded")
+
+    # --- Error injection (optional) ---
+    if inject_error:
+        qc.x(data[error_qubit])
+        qc.barrier(label=f"X error on q{error_qubit}")
+
+    # --- Syndrome extraction ---
+    # Measure stabilizer Z0*Z1 using ancilla[0]
+    qc.cx(data[0], ancilla[0])
+    qc.cx(data[1], ancilla[0])
+
+    # Measure stabilizer Z1*Z2 using ancilla[1]
+    qc.cx(data[1], ancilla[1])
+    qc.cx(data[2], ancilla[1])
+
+    qc.measure(ancilla[0], syndrome[0])
+    qc.measure(ancilla[1], syndrome[1])
+    qc.barrier(label="syndrome")
+
+    # --- Correction based on syndrome ---
+    # syndrome = 10 (binary) -> error on qubit 0
+    with qc.if_test((syndrome[0], 1)):
+        with qc.if_test((syndrome[1], 0)):
+            qc.x(data[0])
+
+    # syndrome = 11 (binary) -> error on qubit 1
+    with qc.if_test((syndrome[0], 1)):
+        with qc.if_test((syndrome[1], 1)):
+            qc.x(data[1])
+
+    # syndrome = 01 (binary) -> error on qubit 2
+    with qc.if_test((syndrome[0], 0)):
+        with qc.if_test((syndrome[1], 1)):
+            qc.x(data[2])
+
+    qc.barrier(label="corrected")
+
+    # --- Decode and measure ---
+    qc.cx(data[0], data[2])
+    qc.cx(data[0], data[1])
+    qc.measure(data, output)
+
+    return qc
+
+
+def estimate_logical_error_rate_stim(
+    distance: int,
+    physical_error_rate: float,
+    num_rounds: int = 1,
+    num_shots: int = 100_000,
+) -&gt; float:
+    """Estimate logical error rate for a repetition code using Stim.
+
+    Stim is Google's fast stabilizer circuit simulator, capable of
+    simulating millions of QEC rounds in seconds. It works by tracking
+    Pauli frames through Clifford circuits rather than full state vectors.
+
+    Args:
+        distance: Code distance (number of data qubits).
+        physical_error_rate: Depolarizing error rate per gate.
+        num_rounds: Number of syndrome extraction rounds.
+        num_shots: Number of Monte Carlo samples.
+
+    Returns:
+        Estimated logical error rate.
+    """
+    try:
+        import stim
+        import pymatching
+    except ImportError:
+        print("Stim/PyMatching not installed. Install with:")
+        print("  pip install stim pymatching")
+        return -1.0
+
+    # Build repetition code circuit in Stim
+    circuit = stim.Circuit()
+
+    # Initialize data qubits (indices 0..distance-1)
+    # Ancilla qubits (indices distance..2*distance-2)
+    n_data = distance
+    n_ancilla = distance - 1
+
+    for rnd in range(num_rounds):
+        # Reset ancillas
+        for a in range(n_ancilla):
+            circuit.append("R", [n_data + a])
+
+        # Syndrome extraction with noisy CNOTs
+        for a in range(n_ancilla):
+            circuit.append("CNOT", [a, n_data + a])
+            circuit.append("DEPOLARIZE2", [a, n_data + a],
+                           physical_error_rate)
+            circuit.append("CNOT", [a + 1, n_data + a])
+            circuit.append("DEPOLARIZE2", [a + 1, n_data + a],
+                           physical_error_rate)
+
+        # Measure ancillas
+        for a in range(n_ancilla):
+            circuit.append("MR", [n_data + a])
+
+        # Detector declarations (compare consecutive rounds)
+        for a in range(n_ancilla):
+            if rnd == 0:
+                circuit.append("DETECTOR",
+                               [stim.target_rec(-(n_ancilla - a))])
+            else:
+                circuit.append("DETECTOR", [
+                    stim.target_rec(-(n_ancilla - a)),
+                    stim.target_rec(-(2 * n_ancilla - a)),
+                ])
+
+    # Final data measurement
+    circuit.append("M", list(range(n_data)))
+
+    # Observable: parity of all data qubits
+    circuit.append("OBSERVABLE_INCLUDE", [stim.target_rec(-1)], 0)
+
+    # Sample and decode
+    sampler = circuit.compile_detector_sampler()
+    detection_events, observable_flips = sampler.sample(
+        num_shots, separate_observables=True
+    )
+
+    # Decode using Minimum Weight Perfect Matching
+    matching = pymatching.Matching.from_stim_circuit(circuit)
+    predicted_flips = matching.decode_batch(detection_events)
+
+    # Logical error = prediction disagrees with actual observable
+    n_errors = np.sum(predicted_flips != observable_flips)
+    logical_error_rate = n_errors / num_shots
+
+    return logical_error_rate
+
+
+if __name__ == "__main__":
+    sim = AerSimulator()
+
+    # Test error correction for each possible single-qubit error
+    print("Bit-flip code correction test:")
+    print("=" * 50)
+
+    for error_q in range(3):
+        qc = bit_flip_code_circuit(inject_error=True, error_qubit=error_q)
+        job = sim.run(qc, shots=1024)
+        counts = job.result().get_counts()
+        print(f"  Error on qubit {error_q}: {counts}")
+
+    # No error case
+    qc_clean = bit_flip_code_circuit(inject_error=False)
+    job_clean = sim.run(qc_clean, shots=1024)
+    counts_clean = job_clean.result().get_counts()
+    print(f"  No error:         {counts_clean}")
+
+    # Logical error rate scaling with Stim
+    print("\nLogical error rate vs. code distance (Stim):")
+    print("=" * 50)
+    p_phys = 0.005  # 0.5% physical error rate (below threshold)
+    for d in [3, 5, 7, 9, 11]:
+        p_log = estimate_logical_error_rate_stim(
+            distance=d, physical_error_rate=p_phys,
+            num_rounds=d, num_shots=100_000,
+        )
+        if p_log >= 0:
+            print(f"  d={d:2d}: p_logical = {p_log:.6f}")
+        else:
+            print(f"  d={d:2d}: (Stim not available)")</code></pre>
+
+        <h2>3. Variational Quantum Algorithms (VQE/QAOA)</h2>
+
+        <p>Variational quantum algorithms are the workhorses of NISQ-era quantum computing. The Variational Quantum Eigensolver (VQE) finds the ground state energy of a molecular Hamiltonian by minimizing the expectation value &lang;&psi;(&theta;)|H|&psi;(&theta;)&rang; over parameterized circuit parameters &theta;. The Quantum Approximate Optimization Algorithm (QAOA) applies alternating layers of a problem Hamiltonian and a mixer Hamiltonian to find approximate solutions to combinatorial optimization problems like MaxCut, graph coloring, and portfolio optimization. Both algorithms share the same hybrid quantum-classical structure: prepare a parameterized quantum state, measure the expectation value of an observable, and update parameters using a classical optimizer. The choice of ansatz (circuit structure) is critical &mdash; hardware-efficient ansatze use layers of single-qubit rotations and entangling gates that map directly to the device&rsquo;s native operations, while chemically inspired ansatze like UCCSD (Unitary Coupled Cluster Singles and Doubles) respect the symmetries of the molecular problem but produce much deeper circuits. The optimizer choice matters equally: gradient-free methods like COBYLA and Nelder-Mead are robust to noise but converge slowly; gradient-based methods using the parameter-shift rule provide exact gradients on quantum hardware but require 2 circuit evaluations per parameter per gradient component, making them expensive for large parameter counts.</p>
+
+        <p>The barren plateau problem is the elephant in the room for variational quantum algorithms. For hardware-efficient ansatze with random initialization, the variance of the cost function gradient decreases exponentially with the number of qubits, making optimization exponentially hard. This is not a bug in the optimizer &mdash; it is a fundamental property of random parameterized quantum circuits in high-dimensional Hilbert spaces. Mitigation strategies include identity initialization (starting with parameters that produce the identity circuit), layer-wise training (optimizing one layer at a time), problem-specific ansatze that restrict the parameter space, and local cost functions that measure subsystem properties rather than global observables. PennyLane&rsquo;s automatic differentiation framework handles gradient computation elegantly, supporting parameter-shift, adjoint differentiation, and backpropagation through classical simulation, making it the preferred framework for variational algorithm research. AI tools that generate VQE implementations without considering barren plateaus, ansatz expressibility, or optimizer convergence behavior produce code that runs but fails to converge for anything beyond trivially small systems.</p>
+
+        <pre><code class="language-python" style="background:var(--bg-code,#1a1a2e);color:var(--fg-code,#e0e0e0);padding:1.5rem;border-radius:8px;overflow-x:auto;font-size:0.9rem;line-height:1.5">"""
+Variational Quantum Eigensolver (VQE) for the H2 molecule
+using PennyLane with gradient-based optimization.
+
+Demonstrates:
+  - Molecular Hamiltonian construction
+  - Hardware-efficient ansatz with identity initialization
+  - Parameter-shift gradient computation
+  - Convergence monitoring and energy landscape analysis
+"""
+import pennylane as qml
+from pennylane import numpy as pnp  # PennyLane's autograd-wrapped numpy
+import numpy as np
+
+
+def build_h2_hamiltonian(bond_length: float = 0.735) -&gt; qml.Hamiltonian:
+    """Build the qubit Hamiltonian for H2 at given bond length.
+
+    Uses the STO-3G minimal basis set and Jordan-Wigner transformation
+    to map the fermionic Hamiltonian to qubit operators.
+
+    The H2 molecule in STO-3G has 4 spin-orbitals -> 4 qubits.
+    Known exact energy at equilibrium (0.735 Angstrom): -1.1373 Ha.
+
+    Args:
+        bond_length: H-H distance in Angstroms.
+
+    Returns:
+        PennyLane Hamiltonian in the qubit representation.
+    """
+    # H2 molecular data (precomputed for common bond lengths)
+    # In production, use PySCF or Psi4 via pennylane.qchem
+    symbols = ["H", "H"]
+    coordinates = np.array([
+        [0.0, 0.0, 0.0],
+        [0.0, 0.0, bond_length],
+    ])
+
+    hamiltonian, n_qubits = qml.qchem.molecular_hamiltonian(
+        symbols,
+        coordinates,
+        charge=0,
+        mult=1,
+        basis="sto-3g",
+        mapping="jordan_wigner",
+    )
+
+    return hamiltonian, n_qubits
+
+
+def create_vqe_ansatz(n_qubits: int, n_layers: int = 2):
+    """Create a hardware-efficient ansatz with identity initialization.
+
+    Architecture:
+      - Each layer: Ry rotation on each qubit + CNOT entangling ladder
+      - Identity initialization: all parameters start at 0,
+        so initial circuit is identity (avoids barren plateaus)
+      - Linear entanglement topology (matches hardware connectivity)
+
+    Args:
+        n_qubits: Number of qubits.
+        n_layers: Number of variational layers.
+
+    Returns:
+        Function that applies the ansatz given parameters.
+    """
+    def ansatz(params):
+        # params shape: (n_layers, n_qubits, 3) for Rot gates
+        for layer in range(n_layers):
+            for qubit in range(n_qubits):
+                qml.Rot(
+                    params[layer, qubit, 0],
+                    params[layer, qubit, 1],
+                    params[layer, qubit, 2],
+                    wires=qubit,
+                )
+            # Linear entanglement
+            for qubit in range(n_qubits - 1):
+                qml.CNOT(wires=[qubit, qubit + 1])
+
+    return ansatz
+
+
+def run_vqe(
+    bond_length: float = 0.735,
+    n_layers: int = 3,
+    max_iterations: int = 200,
+    step_size: float = 0.1,
+    conv_tol: float = 1e-6,
+) -&gt; dict:
+    """Run VQE for H2 molecule with convergence monitoring.
+
+    Uses Adam optimizer with parameter-shift gradients.
+    Tracks energy convergence and gradient norms for diagnostics.
+
+    Args:
+        bond_length: H-H distance in Angstroms.
+        n_layers: Number of ansatz layers.
+        max_iterations: Maximum optimization steps.
+        step_size: Learning rate for Adam optimizer.
+        conv_tol: Convergence tolerance on energy change.
+
+    Returns:
+        Dictionary with optimization results.
+    """
+    hamiltonian, n_qubits = build_h2_hamiltonian(bond_length)
+    ansatz_fn = create_vqe_ansatz(n_qubits, n_layers)
+
+    # Quantum device (use "default.qubit" for exact statevector simulation)
+    dev = qml.device("default.qubit", wires=n_qubits)
+
+    @qml.qnode(dev, diff_method="parameter-shift")
+    def cost_fn(params):
+        # Hartree-Fock initial state: |1100> for 2 electrons in 4 orbitals
+        qml.BasisState(np.array([1, 1, 0, 0]), wires=range(n_qubits))
+        ansatz_fn(params)
+        return qml.expval(hamiltonian)
+
+    # Identity initialization (zeros -> identity circuit)
+    params = pnp.zeros((n_layers, n_qubits, 3), requires_grad=True)
+
+    # Add small perturbation to break symmetry
+    params = params + pnp.array(
+        np.random.normal(0, 0.01, params.shape), requires_grad=True
+    )
+
+    optimizer = qml.AdamOptimizer(stepsize=step_size)
+
+    # Optimization loop with convergence monitoring
+    energy_history = []
+    grad_norm_history = []
+
+    for iteration in range(max_iterations):
+        params, prev_energy = optimizer.step_and_cost(cost_fn, params)
+        energy = cost_fn(params)
+        energy_history.append(float(energy))
+
+        # Compute gradient norm for diagnostics
+        grad = qml.grad(cost_fn)(params)
+        grad_norm = float(pnp.linalg.norm(grad))
+        grad_norm_history.append(grad_norm)
+
+        if iteration % 20 == 0:
+            print(f"  Iter {iteration:4d}: E = {float(energy):.8f} Ha, "
+                  f"|grad| = {grad_norm:.2e}")
+
+        # Convergence check
+        if len(energy_history) > 1:
+            delta_e = abs(energy_history[-1] - energy_history[-2])
+            if delta_e < conv_tol and grad_norm < 1e-4:
+                print(f"  Converged at iteration {iteration}")
+                break
+
+    # Exact FCI energy for comparison (H2 STO-3G at 0.735 A)
+    exact_energy = -1.13728
+
+    return {
+        "final_energy": float(energy_history[-1]),
+        "exact_energy": exact_energy,
+        "error": abs(energy_history[-1] - exact_energy),
+        "chemical_accuracy": abs(energy_history[-1] - exact_energy) < 1.6e-3,
+        "n_iterations": len(energy_history),
+        "energy_history": energy_history,
+        "grad_norm_history": grad_norm_history,
+        "final_params": params,
+    }
+
+
+if __name__ == "__main__":
+    print("VQE for H2 Molecule")
+    print("=" * 50)
+
+    # Run VQE at equilibrium bond length
+    result = run_vqe(bond_length=0.735, n_layers=3, max_iterations=300)
+
+    print(f"\nResults:")
+    print(f"  VQE energy:   {result['final_energy']:.8f} Ha")
+    print(f"  Exact energy: {result['exact_energy']:.8f} Ha")
+    print(f"  Error:        {result['error']:.2e} Ha")
+    print(f"  Chemical accuracy (< 1.6 mHa): {result['chemical_accuracy']}")
+    print(f"  Iterations:   {result['n_iterations']}")
+
+    # Potential energy surface scan
+    print(f"\nH2 Potential Energy Surface:")
+    print("-" * 50)
+    bond_lengths = [0.5, 0.6, 0.7, 0.735, 0.8, 0.9, 1.0, 1.2, 1.5, 2.0]
+
+    for bl in bond_lengths:
+        res = run_vqe(bond_length=bl, n_layers=3,
+                      max_iterations=200, step_size=0.05)
+        marker = " *" if res["chemical_accuracy"] else ""
+        print(f"  R = {bl:.3f} A: E = {res['final_energy']:.6f} Ha "
+              f"(err = {res['error']:.2e}){marker}")</code></pre>
+
+        <h2>4. Circuit Optimization &amp; Transpilation</h2>
+
+        <p>Circuit optimization and transpilation are the bridge between abstract quantum algorithms and physical hardware execution. An algorithm designer might specify a circuit using arbitrary single-qubit rotations, Toffoli gates, and CNOT gates between any pair of qubits. The hardware supports only a specific native gate set &mdash; IBM&rsquo;s superconducting processors use {&radic;X (SX), R<sub>Z</sub>, CX (CNOT)} or the newer {&radic;X, R<sub>Z</sub>, ECR (Echoed Cross-Resonance)}, while Google&rsquo;s Sycamore uses {Phased-XZ, &radic;iSWAP, SYC}. Every non-native gate must be decomposed: a Toffoli (CCNOT) gate decomposes into 6 CNOT gates and several single-qubit rotations, a SWAP gate costs 3 CNOTs, and an arbitrary single-qubit unitary decomposes into at most 3 R<sub>Z</sub>-SX rotations via the ZXZ decomposition. Beyond gate decomposition, qubit routing is the dominant optimization challenge: if the circuit requires a CNOT between qubits 0 and 15 but they are not adjacent on the device&rsquo;s coupling map, SWAP gates must shuttle quantum information along a path connecting them, with each SWAP adding 3 CNOTs and roughly tripling the noise contribution of that interaction. The Qiskit transpiler provides optimization levels 0 through 3, where level 0 does minimal transformation and level 3 applies aggressive optimizations including gate cancellation, commutation analysis, and resynthesis of two-qubit blocks using the KAK decomposition.</p>
+
+        <p>The impact of transpilation quality on circuit fidelity cannot be overstated. A naive transpilation of a 20-qubit QAOA circuit might produce 500 CNOT gates; an optimized transpilation of the same circuit might produce 200 CNOT gates. At 0.5% error per CNOT, this is the difference between 8% expected fidelity (useless) and 37% expected fidelity (marginal but potentially useful with error mitigation). Cursor&rsquo;s project indexing is valuable here because transpilation code involves complex pass management &mdash; custom <code>TransformationPass</code> and <code>AnalysisPass</code> subclasses that plug into Qiskit&rsquo;s pass manager framework. Claude Code excels at reasoning about gate decompositions and understanding which optimizations preserve circuit semantics (commuting gates through each other, canceling adjacent inverse gates, resynthesizing linear reversible circuits). Gemini CLI&rsquo;s large context window is useful for loading the entire Qiskit transpiler API documentation, which spans dozens of pass classes with complex interdependencies.</p>
+
+        <pre><code class="language-python" style="background:var(--bg-code,#1a1a2e);color:var(--fg-code,#e0e0e0);padding:1.5rem;border-radius:8px;overflow-x:auto;font-size:0.9rem;line-height:1.5">"""
+Circuit Optimization & Transpilation with Qiskit 1.0+
+
+Demonstrates:
+  - Transpilation at different optimization levels
+  - Hardware-aware compilation for a specific backend
+  - Custom transpiler pass for gate count reduction
+  - Comparing circuit metrics before and after optimization
+"""
+from qiskit import QuantumCircuit
+from qiskit.transpiler import PassManager, CouplingMap
+from qiskit.transpiler.preset_passmanagers import generate_preset_pass_manager
+from qiskit.transpiler.passes import (
+    Optimize1qGatesDecomposition,
+    CXCancellation,
+    CommutativeCancellation,
+    UnitarySynthesis,
+)
+from qiskit.circuit.library import EfficientSU2, QFT
+from qiskit.quantum_info import Operator
+import numpy as np
+
+
+def build_example_circuit(n_qubits: int = 5) -&gt; QuantumCircuit:
+    """Build a circuit with various gates for transpilation benchmarking.
+
+    Includes:
+      - QFT sub-circuit (all-to-all connectivity, many controlled rotations)
+      - Toffoli gates (expensive to decompose)
+      - Arbitrary rotations (require native gate decomposition)
+    """
+    qc = QuantumCircuit(n_qubits, name="benchmark")
+
+    # QFT-like block (generates many controlled phase gates)
+    for i in range(n_qubits):
+        qc.h(i)
+        for j in range(i + 1, n_qubits):
+            angle = np.pi / (2 ** (j - i))
+            qc.cp(angle, i, j)
+
+    qc.barrier()
+
+    # Toffoli gates (each decomposes to ~6 CX gates)
+    for i in range(n_qubits - 2):
+        qc.ccx(i, i + 1, i + 2)
+
+    qc.barrier()
+
+    # Arbitrary single-qubit rotations
+    for i in range(n_qubits):
+        qc.u(np.pi / 7, np.pi / 5, np.pi / 3, i)
+
+    return qc
+
+
+def analyze_circuit(qc: QuantumCircuit, label: str) -&gt; dict:
+    """Extract key metrics from a quantum circuit."""
+    ops = qc.count_ops()
+    cx_count = ops.get("cx", 0) + ops.get("ecr", 0)
+    total_gates = sum(ops.values())
+
+    metrics = {
+        "label": label,
+        "depth": qc.depth(),
+        "total_gates": total_gates,
+        "cx_count": cx_count,
+        "ops": dict(ops),
+    }
+
+    print(f"\n  {label}:")
+    print(f"    Depth:          {metrics['depth']}")
+    print(f"    Total gates:    {metrics['total_gates']}")
+    print(f"    CX/ECR gates:   {metrics['cx_count']}")
+    print(f"    Gate breakdown:  {dict(ops)}")
+
+    return metrics
+
+
+def transpile_and_compare(
+    qc: QuantumCircuit,
+    coupling_map: CouplingMap,
+    basis_gates: list[str],
+) -&gt; dict:
+    """Transpile at all optimization levels and compare results.
+
+    Qiskit optimization levels:
+      0: Basic translation only (no optimization)
+      1: Light optimization (1q gate optimization, CX cancellation)
+      2: Medium optimization (adds commutation, noise-aware layout)
+      3: Heavy optimization (resynthesis of 2q blocks, all tricks)
+
+    Args:
+        qc: Input quantum circuit.
+        coupling_map: Hardware qubit connectivity.
+        basis_gates: Native gate set of the target hardware.
+
+    Returns:
+        Dictionary mapping optimization level to transpiled circuit.
+    """
+    results = {}
+
+    for opt_level in range(4):
+        pm = generate_preset_pass_manager(
+            optimization_level=opt_level,
+            coupling_map=coupling_map,
+            basis_gates=basis_gates,
+        )
+        transpiled = pm.run(qc)
+        metrics = analyze_circuit(transpiled, f"Level {opt_level}")
+
+        # Verify semantic equivalence (only for small circuits)
+        if qc.num_qubits <= 6:
+            original_unitary = Operator(qc)
+            # Note: transpiled circuit may have more qubits due to layout
+            # so we check on the logical qubit subspace
+
+        results[opt_level] = {
+            "circuit": transpiled,
+            "metrics": metrics,
+        }
+
+    return results
+
+
+def custom_optimization_pass(qc: QuantumCircuit) -&gt; QuantumCircuit:
+    """Apply a custom optimization pipeline for specific use cases.
+
+    Combines multiple optimization passes in a targeted order:
+      1. Cancel adjacent CX gates (CX * CX = I)
+      2. Commutative cancellation (move commuting gates to cancel)
+      3. Optimize single-qubit gate chains (fuse into single U gate)
+    """
+    pm = PassManager([
+        CXCancellation(),
+        CommutativeCancellation(),
+        Optimize1qGatesDecomposition(basis=["rz", "sx", "x"]),
+    ])
+    return pm.run(qc)
+
+
+if __name__ == "__main__":
+    # Build test circuit
+    n_qubits = 5
+    qc = build_example_circuit(n_qubits)
+
+    print("Circuit Optimization & Transpilation Analysis")
+    print("=" * 60)
+
+    analyze_circuit(qc, "Original (abstract)")
+
+    # Define a realistic coupling map (IBM heavy-hex like topology)
+    # Linear chain for simplicity: 0-1-2-3-4
+    coupling = CouplingMap.from_line(n_qubits)
+    basis = ["cx", "rz", "sx", "x", "id"]
+
+    print(f"\nTarget: linear coupling map, basis={basis}")
+
+    # Transpile at all optimization levels
+    results = transpile_and_compare(qc, coupling, basis)
+
+    # Compare CX counts across levels
+    print(f"\n{'Optimization Comparison':=^60}")
+    for level, data in results.items():
+        m = data["metrics"]
+        print(f"  Level {level}: depth={m['depth']:3d}, "
+              f"CX={m['cx_count']:3d}, total={m['total_gates']:4d}")
+
+    # Show reduction from level 0 to level 3
+    cx_0 = results[0]["metrics"]["cx_count"]
+    cx_3 = results[3]["metrics"]["cx_count"]
+    if cx_0 > 0:
+        reduction = (1 - cx_3 / cx_0) * 100
+        print(f"\n  CX reduction (level 0 -> 3): {reduction:.1f}%")
+        print(f"  Fidelity impact at 0.5%/CX error rate:")
+        print(f"    Level 0: {0.995**cx_0:.4f}")
+        print(f"    Level 3: {0.995**cx_3:.4f}")</code></pre>
+
+        <h2>5. Quantum Simulation</h2>
+
+        <p>Quantum simulation &mdash; using quantum computers to simulate quantum systems &mdash; is arguably the most promising near-term application of quantum computing and the original motivation proposed by Richard Feynman in 1982. Simulating the time evolution of a quantum Hamiltonian H on a classical computer requires exponentiating a 2<sup>n</sup> &times; 2<sup>n</sup> matrix, which is intractable for systems beyond about 40 spins. A quantum computer with n qubits can naturally represent an n-spin system, and the Trotter-Suzuki decomposition approximates the time evolution operator e<sup>-iHt</sup> by splitting H into a sum of local terms H = &sum;<sub>k</sub> H<sub>k</sub> and alternating their individual evolutions: e<sup>-iHt</sup> &asymp; (e<sup>-iH<sub>1</sub>&Delta;t</sup> e<sup>-iH<sub>2</sub>&Delta;t</sup> &hellip; e<sup>-iH<sub>K</sub>&Delta;t</sup>)<sup>t/&Delta;t</sup>. The first-order Trotter error scales as O(K<sup>2</sup>t<sup>2</sup>/r) where r is the number of Trotter steps, and higher-order decompositions (second-order Suzuki, fourth-order Yoshida) reduce this at the cost of deeper circuits. For condensed matter physics, the transverse-field Ising model H = -J&sum;<sub>&lang;ij&rang;</sub> Z<sub>i</sub>Z<sub>j</sub> - h&sum;<sub>i</sub> X<sub>i</sub> is the standard benchmark, exhibiting a quantum phase transition at h/J = 1 that can be studied by measuring magnetization, correlation functions, and entanglement entropy as functions of the transverse field strength.</p>
+
+        <p>Cirq is particularly well-suited for quantum simulation work because its moment-based circuit representation naturally maps to the layer structure of Trotterized Hamiltonians. Each Trotter step becomes a sequence of moments: one moment for all commuting ZZ interactions (which can be parallelized on the hardware), followed by a moment for all X rotations. Cirq&rsquo;s <code>cirq.Simulator</code> provides full statevector access for small systems, while <code>cirq.DensityMatrixSimulator</code> handles noise simulation. Claude Code excels at deriving the gate decompositions needed to implement specific Hamiltonian terms &mdash; for example, the ZZ interaction e<sup>-i&theta;Z<sub>i</sub>Z<sub>j</sub></sup> decomposes into CNOT-R<sub>Z</sub>-CNOT, while the XX+YY (hopping) interaction requires additional single-qubit rotations. Gemini CLI&rsquo;s large context is valuable for loading physics references alongside code to ensure the Hamiltonian parameters correspond to the correct physical regime.</p>
+
+        <pre><code class="language-python" style="background:var(--bg-code,#1a1a2e);color:var(--fg-code,#e0e0e0);padding:1.5rem;border-radius:8px;overflow-x:auto;font-size:0.9rem;line-height:1.5">"""
+Quantum Simulation: Transverse-Field Ising Model
+using Cirq with Trotter-Suzuki Decomposition
+
+Demonstrates:
+  - Hamiltonian construction for 1D TFIM
+  - First-order and second-order Trotterization
+  - Time evolution simulation
+  - Magnetization measurement and phase transition detection
+"""
+import cirq
+import numpy as np
+from typing import List, Tuple
+
+
+def create_ising_trotter_step(
+    qubits: List[cirq.Qid],
+    j_coupling: float,
+    h_field: float,
+    dt: float,
+    order: int = 1,
+) -&gt; cirq.Circuit:
+    """Create one Trotter step for the 1D transverse-field Ising model.
+
+    H = -J * sum_<ij> Z_i Z_j  -  h * sum_i X_i
+
+    Gate decompositions:
+      exp(-i*theta*Z_i*Z_j) = CNOT(i,j) - Rz(2*theta, j) - CNOT(i,j)
+      exp(-i*theta*X_i)     = Rx(2*theta, i)
+
+    Args:
+        qubits: List of qubits representing spin sites.
+        j_coupling: Ising coupling strength J.
+        h_field: Transverse field strength h.
+        dt: Trotter time step.
+        order: Trotter order (1 = first-order, 2 = second-order Suzuki).
+
+    Returns:
+        Cirq circuit for one Trotter step.
+    """
+    n = len(qubits)
+
+    def zz_layer(angle: float) -&gt; List[cirq.Operation]:
+        """ZZ interaction layer: exp(-i * angle * Z_i Z_{i+1})."""
+        ops = []
+        for i in range(n - 1):
+            # exp(-i*theta*ZZ) = CNOT - Rz(2*theta) - CNOT
+            ops.extend([
+                cirq.CNOT(qubits[i], qubits[i + 1]),
+                cirq.rz(2 * angle).on(qubits[i + 1]),
+                cirq.CNOT(qubits[i], qubits[i + 1]),
+            ])
+        return ops
+
+    def x_layer(angle: float) -&gt; List[cirq.Operation]:
+        """Transverse field layer: exp(-i * angle * X_i)."""
+        return [cirq.rx(2 * angle).on(q) for q in qubits]
+
+    circuit = cirq.Circuit()
+
+    if order == 1:
+        # First-order Trotter: exp(-iH*dt) ~ exp(-iH_ZZ*dt) * exp(-iH_X*dt)
+        circuit.append(zz_layer(j_coupling * dt))
+        circuit.append(x_layer(h_field * dt))
+    elif order == 2:
+        # Second-order Suzuki: exp(-iH_X*dt/2) exp(-iH_ZZ*dt) exp(-iH_X*dt/2)
+        circuit.append(x_layer(h_field * dt / 2))
+        circuit.append(zz_layer(j_coupling * dt))
+        circuit.append(x_layer(h_field * dt / 2))
+    else:
+        raise ValueError(f"Unsupported Trotter order: {order}")
+
+    return circuit
+
+
+def simulate_time_evolution(
+    n_spins: int,
+    j_coupling: float,
+    h_field: float,
+    total_time: float,
+    n_steps: int,
+    trotter_order: int = 2,
+    initial_state: str = "all_up",
+) -&gt; dict:
+    """Simulate time evolution of the transverse-field Ising model.
+
+    Args:
+        n_spins: Number of spins in the 1D chain.
+        j_coupling: Ising coupling strength.
+        h_field: Transverse field strength.
+        total_time: Total evolution time.
+        n_steps: Number of Trotter steps.
+        trotter_order: Order of Trotter decomposition.
+        initial_state: Initial state ("all_up" or "neel").
+
+    Returns:
+        Dictionary with time evolution data.
+    """
+    qubits = cirq.LineQubit.range(n_spins)
+    dt = total_time / n_steps
+
+    # Build full circuit
+    circuit = cirq.Circuit()
+
+    # Initial state preparation
+    if initial_state == "neel":
+        # Neel state: |010101...>
+        for i in range(1, n_spins, 2):
+            circuit.append(cirq.X(qubits[i]))
+    elif initial_state == "all_up":
+        pass  # |000...0> = all spin up in Z basis
+    else:
+        raise ValueError(f"Unknown initial state: {initial_state}")
+
+    # Apply Trotter steps
+    trotter_step = create_ising_trotter_step(
+        qubits, j_coupling, h_field, dt, trotter_order
+    )
+
+    for _ in range(n_steps):
+        circuit += trotter_step
+
+    # Simulate and extract observables at each time step
+    simulator = cirq.Simulator()
+
+    magnetizations_z = []  # <Z_i> at each time
+    magnetizations_x = []  # <X_i> at each time
+    entanglement = []       # Half-chain entanglement entropy
+
+    for step in range(n_steps + 1):
+        # Build circuit up to this step
+        partial_circuit = cirq.Circuit()
+
+        if initial_state == "neel":
+            for i in range(1, n_spins, 2):
+                partial_circuit.append(cirq.X(qubits[i]))
+
+        for s in range(step):
+            partial_circuit += trotter_step
+
+        # Get statevector
+        result = simulator.simulate(partial_circuit)
+        state = result.final_state_vector
+
+        # Compute <Z> magnetization (average over all sites)
+        z_mag = 0.0
+        for i in range(n_spins):
+            z_op = np.eye(2**n_spins, dtype=complex)
+            # Build Z_i operator in full Hilbert space
+            z_single = np.array([[1, 0], [0, -1]], dtype=complex)
+            z_full = np.eye(1, dtype=complex)
+            for j in range(n_spins):
+                z_full = np.kron(z_full, z_single if j == i else np.eye(2))
+            z_mag += np.real(state.conj() @ z_full @ state)
+        z_mag /= n_spins
+        magnetizations_z.append(z_mag)
+
+        # Compute half-chain entanglement entropy
+        n_half = n_spins // 2
+        state_matrix = state.reshape(2**n_half, 2**(n_spins - n_half))
+        singular_values = np.linalg.svd(state_matrix, compute_uv=False)
+        singular_values = singular_values[singular_values > 1e-12]
+        entropy = -np.sum(singular_values**2 * np.log2(singular_values**2))
+        entanglement.append(entropy)
+
+    times = [i * dt for i in range(n_steps + 1)]
+
+    return {
+        "times": times,
+        "magnetization_z": magnetizations_z,
+        "entanglement_entropy": entanglement,
+        "circuit_depth": len(circuit),
+        "n_two_qubit_gates": sum(
+            1 for op in circuit.all_operations()
+            if len(op.qubits) == 2
+        ),
+    }
+
+
+if __name__ == "__main__":
+    print("Transverse-Field Ising Model Simulation")
+    print("=" * 55)
+
+    # Simulation parameters
+    n_spins = 6
+    j_coupling = 1.0
+    total_time = 3.0
+    n_steps = 30
+
+    # Scan through the quantum phase transition
+    # Critical point at h/J = 1.0 for 1D TFIM
+    field_strengths = [0.2, 0.5, 0.8, 1.0, 1.2, 1.5, 2.0]
+
+    print(f"\nPhase transition scan (n={n_spins}, J={j_coupling}):")
+    print(f"{'h/J':>6s} | {'<Z> final':>10s} | {'S_ent final':>12s} | "
+          f"{'CX gates':>9s}")
+    print("-" * 55)
+
+    for h in field_strengths:
+        result = simulate_time_evolution(
+            n_spins=n_spins,
+            j_coupling=j_coupling,
+            h_field=h,
+            total_time=total_time,
+            n_steps=n_steps,
+            trotter_order=2,
+            initial_state="all_up",
+        )
+
+        print(f"{h/j_coupling:6.2f} | "
+              f"{result['magnetization_z'][-1]:10.6f} | "
+              f"{result['entanglement_entropy'][-1]:12.6f} | "
+              f"{result['n_two_qubit_gates']:9d}")
+
+    # Trotter error analysis
+    print(f"\nTrotter error analysis (h/J=1.0, t={total_time}):")
+    print(f"{'Steps':>6s} | {'dt':>8s} | {'Order 1 <Z>':>12s} | "
+          f"{'Order 2 <Z>':>12s}")
+    print("-" * 50)
+
+    for steps in [5, 10, 20, 40, 80]:
+        r1 = simulate_time_evolution(
+            n_spins, j_coupling, 1.0, total_time, steps, trotter_order=1
+        )
+        r2 = simulate_time_evolution(
+            n_spins, j_coupling, 1.0, total_time, steps, trotter_order=2
+        )
+        dt_val = total_time / steps
+        print(f"{steps:6d} | {dt_val:8.4f} | "
+              f"{r1['magnetization_z'][-1]:12.8f} | "
+              f"{r2['magnetization_z'][-1]:12.8f}")</code></pre>
+
+        <h2>6. Quantum Machine Learning</h2>
+
+        <p>Quantum machine learning (QML) sits at the intersection of quantum computing and classical machine learning, using parameterized quantum circuits as function approximators in place of neural networks. The core idea is encoding classical data into quantum states (data encoding or feature maps), processing it through a variational quantum circuit (the model), and measuring observables to produce predictions. Common encoding strategies include angle encoding (mapping features to rotation angles: x<sub>i</sub> &rarr; R<sub>Y</sub>(x<sub>i</sub>)), amplitude encoding (mapping a 2<sup>n</sup>-dimensional feature vector into the amplitudes of n qubits, exponentially compressing the representation), and kernel methods (computing inner products in exponentially large quantum feature spaces without explicitly constructing the feature vectors). The variational classifier uses a parameterized circuit followed by measuring the expectation value of an observable, thresholding the result for classification. Training proceeds via gradient descent using parameter-shift rules or adjoint differentiation, minimizing a cross-entropy or hinge loss over the training set. PennyLane provides the most mature framework for QML, with native integration with PyTorch, JAX, and TensorFlow for hybrid quantum-classical neural networks.</p>
+
+        <p>The field faces fundamental challenges that AI tools must be aware of. Barren plateaus in random variational circuits cause gradient magnitudes to vanish exponentially with circuit width, making training impossible for large systems. Expressibility-trainability tradeoffs mean that highly expressive circuits are harder to train. Data encoding strategies dramatically affect model performance &mdash; angle encoding of d features requires d qubits, while amplitude encoding requires only log<sub>2</sub>(d) qubits but needs exponentially deep state preparation circuits. Quantum kernel methods bypass the trainability issue by computing kernels in the quantum feature space, but face the issue of exponential concentration where all kernel values converge to the same value for large numbers of qubits, rendering the kernel useless. Claude Code handles the mathematical reasoning behind these tradeoffs and can generate implementations with appropriate awareness of these limitations. Cursor&rsquo;s indexing helps navigate PennyLane&rsquo;s extensive library of templates, embeddings, and measurement strategies. Copilot produces syntactically correct PennyLane code for simple examples but misses the deeper issues around trainability and scaling.</p>
+
+        <pre><code class="language-python" style="background:var(--bg-code,#1a1a2e);color:var(--fg-code,#e0e0e0);padding:1.5rem;border-radius:8px;overflow-x:auto;font-size:0.9rem;line-height:1.5">"""
+Quantum Machine Learning: Variational Quantum Classifier
+using PennyLane with data re-uploading encoding.
+
+Demonstrates:
+  - Data re-uploading (encoding data in every layer for expressibility)
+  - Variational classifier with trainable measurement
+  - Training loop with PennyLane + NumPy autograd
+  - Decision boundary visualization data
+"""
+import pennylane as qml
+from pennylane import numpy as pnp
+import numpy as np
+
+
+def create_quantum_classifier(
+    n_qubits: int = 2,
+    n_layers: int = 3,
+):
+    """Create a variational quantum classifier with data re-uploading.
+
+    Data re-uploading embeds classical features into the circuit at
+    every layer, not just the first. This has been shown to make
+    single-qubit circuits universal function approximators.
+
+    Architecture per layer:
+      1. Data encoding: Ry(x_i * w_enc_i + b_enc_i) on each qubit
+      2. Variational: Ry(theta_i) Rz(phi_i) on each qubit
+      3. Entangling: Ring of CNOTs
+
+    Args:
+        n_qubits: Number of qubits.
+        n_layers: Number of data re-uploading layers.
+
+    Returns:
+        Tuple of (classifier_fn, n_params).
+    """
+    dev = qml.device("default.qubit", wires=n_qubits)
+
+    @qml.qnode(dev, diff_method="backprop")
+    def circuit(weights, x):
+        """Quantum circuit with data re-uploading.
+
+        Args:
+            weights: Shape (n_layers, n_qubits, 4) -
+                     [enc_weight, enc_bias, ry_param, rz_param]
+            x: Input features, shape (n_features,)
+        """
+        n_features = len(x)
+
+        for layer in range(n_layers):
+            # Data encoding with trainable scaling
+            for qubit in range(n_qubits):
+                feature_idx = qubit % n_features
+                angle = (x[feature_idx] * weights[layer, qubit, 0]
+                         + weights[layer, qubit, 1])
+                qml.RY(angle, wires=qubit)
+
+            # Variational block
+            for qubit in range(n_qubits):
+                qml.RY(weights[layer, qubit, 2], wires=qubit)
+                qml.RZ(weights[layer, qubit, 3], wires=qubit)
+
+            # Entangling layer (ring topology)
+            for qubit in range(n_qubits):
+                qml.CNOT(wires=[qubit, (qubit + 1) % n_qubits])
+
+        # Measurement: expectation value of Z on first qubit
+        return qml.expval(qml.PauliZ(0))
+
+    n_params_per_layer = n_qubits * 4
+    total_params = n_layers * n_params_per_layer
+
+    return circuit, (n_layers, n_qubits, 4)
+
+
+def generate_moons_dataset(
+    n_samples: int = 200,
+    noise: float = 0.15,
+    seed: int = 42,
+) -&gt; tuple:
+    """Generate a 2D moons dataset for binary classification.
+
+    Returns:
+        Tuple of (X_train, y_train, X_test, y_test).
+        X values are scaled to [-pi, pi] for angle encoding.
+    """
+    rng = np.random.RandomState(seed)
+
+    n_half = n_samples // 2
+
+    # Moon 1 (label 0): upper semicircle
+    theta1 = np.linspace(0, np.pi, n_half)
+    x1 = np.column_stack([np.cos(theta1), np.sin(theta1)])
+    x1 += rng.normal(0, noise, x1.shape)
+
+    # Moon 2 (label 1): lower semicircle, shifted
+    theta2 = np.linspace(0, np.pi, n_half)
+    x2 = np.column_stack([1 - np.cos(theta2), 0.5 - np.sin(theta2)])
+    x2 += rng.normal(0, noise, x2.shape)
+
+    X = np.vstack([x1, x2])
+    y = np.array([0] * n_half + [1] * n_half)
+
+    # Scale to [-pi, pi]
+    X = (X - X.mean(axis=0)) / X.std(axis=0) * np.pi / 2
+
+    # Shuffle and split
+    indices = rng.permutation(n_samples)
+    split = int(0.8 * n_samples)
+    train_idx, test_idx = indices[:split], indices[split:]
+
+    return (
+        pnp.array(X[train_idx], requires_grad=False),
+        pnp.array(y[train_idx], requires_grad=False),
+        pnp.array(X[test_idx], requires_grad=False),
+        pnp.array(y[test_idx], requires_grad=False),
+    )
+
+
+def train_classifier(
+    n_qubits: int = 2,
+    n_layers: int = 4,
+    n_epochs: int = 50,
+    batch_size: int = 20,
+    learning_rate: float = 0.1,
+) -&gt; dict:
+    """Train the variational quantum classifier.
+
+    Uses binary cross-entropy loss with sigmoid squashing of
+    the quantum circuit output from [-1, 1] to [0, 1].
+
+    Args:
+        n_qubits: Number of qubits.
+        n_layers: Number of variational layers.
+        n_epochs: Training epochs.
+        batch_size: Mini-batch size.
+        learning_rate: Optimizer step size.
+
+    Returns:
+        Training results dictionary.
+    """
+    circuit, param_shape = create_quantum_classifier(n_qubits, n_layers)
+    X_train, y_train, X_test, y_test = generate_moons_dataset()
+
+    # Initialize weights (small random for trainability)
+    weights = pnp.array(
+        np.random.uniform(-0.1, 0.1, param_shape),
+        requires_grad=True,
+    )
+
+    optimizer = qml.AdamOptimizer(stepsize=learning_rate)
+
+    def prediction(weights, x):
+        """Map circuit output [-1, 1] to probability [0, 1]."""
+        raw = circuit(weights, x)
+        return (raw + 1) / 2  # Sigmoid-like squashing
+
+    def loss_fn(weights, X_batch, y_batch):
+        """Binary cross-entropy loss over a mini-batch."""
+        loss = 0.0
+        for x, y_true in zip(X_batch, y_batch):
+            p = prediction(weights, x)
+            # Clip for numerical stability
+            p = pnp.clip(p, 1e-7, 1 - 1e-7)
+            loss += -(y_true * pnp.log(p) + (1 - y_true) * pnp.log(1 - p))
+        return loss / len(X_batch)
+
+    def accuracy(weights, X, y):
+        """Classification accuracy."""
+        correct = 0
+        for x, y_true in zip(X, y):
+            p = prediction(weights, x)
+            y_pred = 1 if p > 0.5 else 0
+            correct += (y_pred == int(y_true))
+        return correct / len(y)
+
+    # Training loop
+    train_losses = []
+    train_accs = []
+    test_accs = []
+
+    n_train = len(X_train)
+
+    for epoch in range(n_epochs):
+        # Shuffle training data
+        perm = np.random.permutation(n_train)
+        epoch_loss = 0.0
+        n_batches = 0
+
+        for start in range(0, n_train, batch_size):
+            batch_idx = perm[start:start + batch_size]
+            X_batch = X_train[batch_idx]
+            y_batch = y_train[batch_idx]
+
+            weights, batch_loss = optimizer.step_and_cost(
+                loss_fn, weights, X_batch, y_batch
+            )
+            epoch_loss += float(batch_loss)
+            n_batches += 1
+
+        avg_loss = epoch_loss / n_batches
+        train_acc = accuracy(weights, X_train, y_train)
+        test_acc = accuracy(weights, X_test, y_test)
+
+        train_losses.append(avg_loss)
+        train_accs.append(train_acc)
+        test_accs.append(test_acc)
+
+        if epoch % 10 == 0:
+            print(f"  Epoch {epoch:3d}: loss={avg_loss:.4f}, "
+                  f"train_acc={train_acc:.3f}, test_acc={test_acc:.3f}")
+
+    return {
+        "final_train_acc": train_accs[-1],
+        "final_test_acc": test_accs[-1],
+        "train_losses": train_losses,
+        "train_accs": train_accs,
+        "test_accs": test_accs,
+        "weights": weights,
+    }
+
+
+if __name__ == "__main__":
+    print("Variational Quantum Classifier (Data Re-uploading)")
+    print("=" * 55)
+
+    result = train_classifier(
+        n_qubits=2,
+        n_layers=4,
+        n_epochs=60,
+        batch_size=20,
+        learning_rate=0.08,
+    )
+
+    print(f"\nFinal Results:")
+    print(f"  Train accuracy: {result['final_train_acc']:.3f}")
+    print(f"  Test accuracy:  {result['final_test_acc']:.3f}")
+
+    # Compare different circuit depths
+    print(f"\nLayer depth comparison:")
+    print(f"{'Layers':>7s} | {'Train Acc':>10s} | {'Test Acc':>9s}")
+    print("-" * 35)
+
+    for n_layers in [1, 2, 3, 4, 6]:
+        res = train_classifier(
+            n_qubits=2, n_layers=n_layers,
+            n_epochs=40, learning_rate=0.1,
+        )
+        print(f"{n_layers:7d} | {res['final_train_acc']:10.3f} | "
+              f"{res['final_test_acc']:9.3f}")</code></pre>
+
+        <h2>7. Hardware Integration &amp; Calibration</h2>
+
+        <p>Running quantum circuits on real hardware &mdash; rather than ideal simulators &mdash; introduces an entirely different set of engineering challenges. Every physical quantum processor has a unique noise profile: individual qubit T<sub>1</sub> and T<sub>2</sub> coherence times, single-qubit gate error rates (typically 10<sup>-4</sup> to 10<sup>-3</sup>), two-qubit gate error rates (typically 10<sup>-3</sup> to 10<sup>-2</sup>), readout assignment error rates (1&ndash;5%), and crosstalk between adjacent qubits. These properties vary across the device (edge qubits are often less noisy than central qubits due to fewer neighbors) and drift over time (recalibration happens roughly every 30 minutes to several hours). Hardware-aware programming means selecting the best qubits for your circuit based on current calibration data, routing two-qubit gates to avoid noisy couplers, scheduling circuits during periods of low error rates, and applying error mitigation techniques (zero-noise extrapolation, probabilistic error cancellation, measurement error mitigation via calibration matrices) to improve result quality without full error correction. The Qiskit Runtime primitives (<code>Estimator</code> and <code>Sampler</code>) encapsulate best practices for hardware execution, including automatic error suppression (dynamical decoupling, Pauli twirling) and result post-processing.</p>
+
+        <p>Noise modeling for classical simulation of hardware behavior uses Qiskit Aer&rsquo;s <code>NoiseModel</code> class, which composes depolarizing errors, thermal relaxation channels, and readout errors based on backend calibration data. A realistic noise model significantly changes circuit behavior &mdash; an ideal simulation of a 10-qubit GHZ state shows perfect 50/50 correlations between |0000000000&rang; and |1111111111&rang;, while a noisy simulation shows these peaks degraded to 20&ndash;30% each with a broad distribution of other bitstrings from decoherence and gate errors. Amazon Q has a genuine advantage for hardware integration on Amazon Braket, as it understands the Braket SDK&rsquo;s device selection API, task queuing, and cost estimation across IonQ, Rigetti, and QuEra backends. Claude Code is strongest for understanding noise physics, implementing custom error mitigation, and debugging hardware results that deviate from simulation. Cursor indexes hardware configuration files and calibration data processing pipelines in large quantum computing projects.</p>
+
+        <pre><code class="language-python" style="background:var(--bg-code,#1a1a2e);color:var(--fg-code,#e0e0e0);padding:1.5rem;border-radius:8px;overflow-x:auto;font-size:0.9rem;line-height:1.5">"""
+Hardware Integration: Noise-Aware Simulation and
+Error Mitigation using Qiskit Aer
+
+Demonstrates:
+  - Constructing realistic noise models from device parameters
+  - Noisy simulation of quantum circuits
+  - Measurement error mitigation via calibration matrix
+  - Zero-noise extrapolation for expectation value estimation
+  - Comparing ideal vs. noisy vs. mitigated results
+"""
+from qiskit import QuantumCircuit
+from qiskit_aer import AerSimulator
+from qiskit_aer.noise import (
+    NoiseModel,
+    depolarizing_error,
+    thermal_relaxation_error,
+    ReadoutError,
+)
+from qiskit.quantum_info import SparsePauliOp
+import numpy as np
+from typing import Optional
+
+
+def build_realistic_noise_model(
+    n_qubits: int,
+    t1_us: float = 120.0,
+    t2_us: float = 80.0,
+    single_gate_error: float = 3e-4,
+    two_gate_error: float = 8e-3,
+    readout_error: float = 0.02,
+    gate_time_1q_ns: float = 35.0,
+    gate_time_2q_ns: float = 500.0,
+) -&gt; NoiseModel:
+    """Build a realistic noise model approximating superconducting hardware.
+
+    Combines:
+      - Thermal relaxation (T1/T2 processes during gates)
+      - Depolarizing noise (gate imperfections)
+      - Readout assignment errors
+
+    Args:
+        n_qubits: Number of qubits.
+        t1_us: T1 relaxation time in microseconds.
+        t2_us: T2 dephasing time in microseconds (must be <= 2*T1).
+        single_gate_error: Depolarizing error rate for 1-qubit gates.
+        two_gate_error: Depolarizing error rate for 2-qubit gates.
+        readout_error: Probability of readout bit-flip.
+        gate_time_1q_ns: Duration of single-qubit gates in nanoseconds.
+        gate_time_2q_ns: Duration of two-qubit gates in nanoseconds.
+
+    Returns:
+        Configured NoiseModel.
+    """
+    noise_model = NoiseModel()
+
+    # Convert times to consistent units (nanoseconds)
+    t1_ns = t1_us * 1000
+    t2_ns = t2_us * 1000
+
+    # Single-qubit gate errors: thermal relaxation + depolarizing
+    error_1q = thermal_relaxation_error(
+        t1_ns, t2_ns, gate_time_1q_ns
+    ).compose(depolarizing_error(single_gate_error, 1))
+
+    noise_model.add_all_qubit_quantum_error(error_1q, ["sx", "rz", "x", "h"])
+
+    # Two-qubit gate errors: thermal relaxation on each qubit + depolarizing
+    error_2q_thermal = thermal_relaxation_error(
+        t1_ns, t2_ns, gate_time_2q_ns
+    ).expand(thermal_relaxation_error(
+        t1_ns, t2_ns, gate_time_2q_ns
+    ))
+    error_2q = error_2q_thermal.compose(depolarizing_error(two_gate_error, 2))
+
+    noise_model.add_all_qubit_quantum_error(error_2q, ["cx", "ecr"])
+
+    # Readout errors (asymmetric: P(1|0) != P(0|1) typically)
+    p0_given_1 = readout_error * 1.2  # Slightly higher for |1> -> |0>
+    p1_given_0 = readout_error * 0.8
+    readout_err = ReadoutError(
+        [[1 - p1_given_0, p1_given_0],
+         [p0_given_1, 1 - p0_given_1]]
+    )
+    noise_model.add_all_qubit_readout_error(readout_err)
+
+    return noise_model
+
+
+def measurement_error_mitigation(
+    n_qubits: int,
+    noise_model: NoiseModel,
+    shots: int = 8192,
+) -&gt; np.ndarray:
+    """Build a measurement calibration matrix.
+
+    Prepares each computational basis state and measures to
+    determine the assignment probability matrix M where
+    M[i][j] = P(measure i | prepared j).
+
+    The inverse M^{-1} applied to raw measurement probabilities
+    gives corrected probabilities.
+
+    Args:
+        n_qubits: Number of qubits (practical for <= 6 qubits).
+        noise_model: Noise model for simulation.
+        shots: Number of calibration shots per basis state.
+
+    Returns:
+        Inverse calibration matrix (2^n x 2^n).
+    """
+    n_states = 2 ** n_qubits
+    cal_matrix = np.zeros((n_states, n_states))
+
+    sim = AerSimulator(noise_model=noise_model)
+
+    for state_idx in range(n_states):
+        # Prepare basis state |state_idx>
+        qc = QuantumCircuit(n_qubits, n_qubits)
+
+        # Set bits according to state_idx
+        bitstring = format(state_idx, f"0{n_qubits}b")
+        for qubit, bit in enumerate(reversed(bitstring)):
+            if bit == "1":
+                qc.x(qubit)
+
+        qc.measure(range(n_qubits), range(n_qubits))
+
+        # Run and collect statistics
+        job = sim.run(qc, shots=shots)
+        counts = job.result().get_counts()
+
+        for measured_str, count in counts.items():
+            measured_idx = int(measured_str, 2)
+            cal_matrix[measured_idx][state_idx] = count / shots
+
+    # Invert the calibration matrix
+    try:
+        cal_matrix_inv = np.linalg.inv(cal_matrix)
+    except np.linalg.LinAlgError:
+        # Use pseudoinverse if singular
+        cal_matrix_inv = np.linalg.pinv(cal_matrix)
+
+    return cal_matrix_inv
+
+
+def zero_noise_extrapolation(
+    circuit: QuantumCircuit,
+    noise_model: NoiseModel,
+    observable: SparsePauliOp,
+    scale_factors: list[float] = [1, 2, 3],
+    shots: int = 8192,
+) -&gt; dict:
+    """Zero-noise extrapolation (ZNE) for error-mitigated expectation values.
+
+    Runs the circuit at multiple noise levels by inserting identity
+    folding (circuit -> circuit * circuit_inv * circuit) and
+    extrapolates to the zero-noise limit.
+
+    Gate folding: to amplify noise by factor c, we insert (c-1)/2
+    identity folds of the full circuit. Each fold doubles all gate errors.
+
+    Args:
+        circuit: Quantum circuit to evaluate.
+        noise_model: Base noise model.
+        observable: Observable to measure (as SparsePauliOp).
+        scale_factors: Noise amplification factors (must be odd integers).
+        shots: Shots per noise level.
+
+    Returns:
+        Dictionary with extrapolated and raw expectation values.
+    """
+    sim = AerSimulator(noise_model=noise_model)
+    expectation_values = []
+
+    for factor in scale_factors:
+        # Create noise-amplified circuit via unitary folding
+        folded = circuit.copy()
+
+        # Each fold: append inverse circuit then circuit again
+        n_folds = int((factor - 1) / 2)
+        for _ in range(n_folds):
+            folded.compose(circuit.inverse(), inplace=True)
+            folded.compose(circuit, inplace=True)
+
+        # Add measurement
+        meas_circuit = folded.copy()
+        meas_circuit.measure_all()
+
+        job = sim.run(meas_circuit, shots=shots)
+        counts = job.result().get_counts()
+
+        # Compute expectation value from counts
+        expval = compute_expectation_from_counts(
+            counts, observable, circuit.num_qubits, shots
+        )
+        expectation_values.append(expval)
+
+    # Richardson extrapolation to zero noise
+    # For linear extrapolation with 2 points: E(0) = (c2*E1 - c1*E2)/(c2-c1)
+    # For polynomial extrapolation, fit polynomial and evaluate at 0
+    coeffs = np.polyfit(scale_factors, expectation_values, len(scale_factors) - 1)
+    extrapolated = np.polyval(coeffs, 0)
+
+    return {
+        "scale_factors": scale_factors,
+        "expectation_values": expectation_values,
+        "extrapolated": float(extrapolated),
+        "raw": expectation_values[0],  # No amplification
+    }
+
+
+def compute_expectation_from_counts(
+    counts: dict,
+    observable: SparsePauliOp,
+    n_qubits: int,
+    shots: int,
+) -&gt; float:
+    """Compute expectation value of a Pauli observable from measurement counts.
+
+    For a Pauli string like 'ZZI', the eigenvalue for bitstring b is
+    (-1)^(parity of measured bits where Pauli is Z).
+    """
+    expval = 0.0
+
+    for pauli_label, coeff in zip(observable.paulis.to_labels(),
+                                   observable.coeffs):
+        pauli_expval = 0.0
+
+        for bitstring, count in counts.items():
+            # Compute eigenvalue of this Pauli for this bitstring
+            eigenvalue = 1.0
+            for qubit_idx, pauli_char in enumerate(reversed(pauli_label)):
+                if pauli_char in ("Z",):
+                    bit = int(bitstring[n_qubits - 1 - qubit_idx])
+                    eigenvalue *= (-1) ** bit
+                elif pauli_char in ("X", "Y"):
+                    # X and Y require basis rotation before measurement
+                    # For simplicity, handle only Z-basis measurements here
+                    pass
+
+            pauli_expval += eigenvalue * count / shots
+
+        expval += float(np.real(coeff)) * pauli_expval
+
+    return expval
+
+
+if __name__ == "__main__":
+    print("Hardware Integration & Error Mitigation")
+    print("=" * 55)
+
+    # Build a test circuit (4-qubit GHZ state)
+    n_qubits = 4
+    qc = QuantumCircuit(n_qubits)
+    qc.h(0)
+    for i in range(n_qubits - 1):
+        qc.cx(i, i + 1)
+
+    # Build noise model
+    noise = build_realistic_noise_model(
+        n_qubits=n_qubits,
+        t1_us=120.0,
+        t2_us=80.0,
+        single_gate_error=3e-4,
+        two_gate_error=8e-3,
+        readout_error=0.02,
+    )
+
+    # Compare ideal vs. noisy
+    ideal_sim = AerSimulator()
+    noisy_sim = AerSimulator(noise_model=noise)
+
+    qc_meas = qc.copy()
+    qc_meas.measure_all()
+
+    ideal_counts = ideal_sim.run(qc_meas, shots=10000).result().get_counts()
+    noisy_counts = noisy_sim.run(qc_meas, shots=10000).result().get_counts()
+
+    print(f"\nGHZ-{n_qubits} State Comparison:")
+    all_0 = "0" * n_qubits
+    all_1 = "1" * n_qubits
+
+    print(f"  Ideal:  P({all_0}) = {ideal_counts.get(all_0, 0)/10000:.4f}, "
+          f"P({all_1}) = {ideal_counts.get(all_1, 0)/10000:.4f}")
+    print(f"  Noisy:  P({all_0}) = {noisy_counts.get(all_0, 0)/10000:.4f}, "
+          f"P({all_1}) = {noisy_counts.get(all_1, 0)/10000:.4f}")
+
+    # Fidelity estimate: P(correct outcomes)
+    ideal_fidelity = (ideal_counts.get(all_0, 0) +
+                      ideal_counts.get(all_1, 0)) / 10000
+    noisy_fidelity = (noisy_counts.get(all_0, 0) +
+                      noisy_counts.get(all_1, 0)) / 10000
+    print(f"\n  Ideal fidelity:  {ideal_fidelity:.4f}")
+    print(f"  Noisy fidelity:  {noisy_fidelity:.4f}")
+    print(f"  Fidelity loss:   {ideal_fidelity - noisy_fidelity:.4f}")
+
+    # Measurement error mitigation
+    print(f"\nMeasurement Error Mitigation (calibration):")
+    cal_inv = measurement_error_mitigation(n_qubits, noise, shots=10000)
+
+    # Apply calibration to noisy counts
+    raw_probs = np.zeros(2**n_qubits)
+    for bitstring, count in noisy_counts.items():
+        idx = int(bitstring, 2)
+        raw_probs[idx] = count / 10000
+
+    mitigated_probs = cal_inv @ raw_probs
+    # Clip negative probabilities (artifact of matrix inversion)
+    mitigated_probs = np.maximum(mitigated_probs, 0)
+    mitigated_probs /= mitigated_probs.sum()
+
+    mitigated_fidelity = mitigated_probs[0] + mitigated_probs[2**n_qubits - 1]
+    print(f"  Mitigated fidelity: {mitigated_fidelity:.4f}")
+    print(f"  Improvement:        {mitigated_fidelity - noisy_fidelity:+.4f}")
+
+    # ZNE demonstration
+    print(f"\nZero-Noise Extrapolation:")
+    observable = SparsePauliOp.from_list([("Z" * n_qubits, 1.0)])
+    zne_result = zero_noise_extrapolation(
+        qc, noise, observable, scale_factors=[1, 3, 5], shots=10000
+    )
+    print(f"  Raw (noise x1):     {zne_result['raw']:.4f}")
+    for sf, ev in zip(zne_result['scale_factors'], zne_result['expectation_values']):
+        print(f"  Noise x{sf}:          {ev:.4f}")
+    print(f"  ZNE extrapolated:   {zne_result['extrapolated']:.4f}")
+    print(f"  Ideal value:        1.0000")</code></pre>
+
+        <h2>Quick-Reference: Best Tool by Task</h2>
+        <div style="overflow-x:auto">
+          <table style="width:100%;border-collapse:collapse;margin:1.5rem 0">
+            <thead>
+              <tr style="border-bottom:2px solid var(--border)">
+                <th style="padding:12px 16px;text-align:left">Task</th>
+                <th style="padding:12px 16px;text-align:left">Best Tool</th>
+                <th style="padding:12px 16px;text-align:left">Why</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px">Quantum algorithm derivation</td>
+                <td style="padding:12px 16px"><strong>Claude Code</strong></td>
+                <td style="padding:12px 16px">Reasons through unitary decompositions, complexity analysis, and correctness arguments for quantum algorithms</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px">VQE / QAOA implementation</td>
+                <td style="padding:12px 16px"><strong>Claude Code</strong></td>
+                <td style="padding:12px 16px">Understands ansatz design, barren plateau avoidance, optimizer selection, and Hamiltonian construction</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px">Error correction codes</td>
+                <td style="padding:12px 16px"><strong>Claude Code</strong></td>
+                <td style="padding:12px 16px">Stabilizer formalism, syndrome extraction circuits, decoder algorithms, fault-tolerance analysis</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px">Circuit transpilation</td>
+                <td style="padding:12px 16px"><strong>Cursor Pro</strong></td>
+                <td style="padding:12px 16px">Indexes Qiskit transpiler passes, autocompletes pass manager configurations, navigates complex pass dependencies</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px">PennyLane QML workflows</td>
+                <td style="padding:12px 16px"><strong>Cursor Pro</strong></td>
+                <td style="padding:12px 16px">Indexes QNode decorators, template libraries, and gradient method configurations across the project</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px">Qiskit 0.x to 1.0 migration</td>
+                <td style="padding:12px 16px"><strong>Gemini CLI</strong></td>
+                <td style="padding:12px 16px">Load the full migration guide (50+ pages) into 1M context for precise API mapping</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px">Hamiltonian simulation</td>
+                <td style="padding:12px 16px"><strong>Claude Code</strong></td>
+                <td style="padding:12px 16px">Trotter decomposition, gate synthesis for Hamiltonian terms, convergence analysis</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px">Noise model construction</td>
+                <td style="padding:12px 16px"><strong>Claude Code</strong></td>
+                <td style="padding:12px 16px">Understands decoherence channels, Kraus operators, and hardware-specific noise characteristics</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px">Amazon Braket integration</td>
+                <td style="padding:12px 16px"><strong>Amazon Q</strong></td>
+                <td style="padding:12px 16px">Native understanding of Braket SDK, device selection, task queuing, and cost estimation</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px">Large quantum codebase navigation</td>
+                <td style="padding:12px 16px"><strong>Cursor Pro</strong></td>
+                <td style="padding:12px 16px">Indexes multi-file quantum projects, cross-references circuit definitions with test suites</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px">Framework documentation lookup</td>
+                <td style="padding:12px 16px"><strong>Gemini CLI</strong></td>
+                <td style="padding:12px 16px">Paste entire Qiskit/Cirq/PennyLane API docs into 1M context for precise queries</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h2>What AI Tools Get Wrong About Quantum Computing</h2>
+        <ul>
+          <li><strong>Generating non-unitary &ldquo;quantum&rdquo; operations:</strong> AI tools frequently generate circuits that include operations violating the fundamental requirement that all quantum gates must be unitary (U&dagger;U = I). This manifests as attempting to apply classical conditional logic to quantum states without measurement, generating &ldquo;reset&rdquo; operations mid-circuit without understanding that reset is a non-unitary operation that projects the qubit to |0&rang; (destroying quantum information), or suggesting matrix operations that are not unitary as custom gates. A 2 &times; 2 matrix with singular values other than 1 is not a valid quantum gate, full stop. Any tool that generates <code>qc.unitary(M, [0])</code> without verifying that M&dagger;M = I will produce a circuit that either fails validation or, worse, produces physically meaningless results in simulation.</li>
+          <li><strong>Ignoring qubit connectivity constraints:</strong> AI tools generate circuits assuming all-to-all qubit connectivity &mdash; any qubit can interact with any other qubit via a two-qubit gate. Real hardware has sparse connectivity: IBM&rsquo;s heavy-hex topology connects each qubit to at most 3 neighbors, Google&rsquo;s Sycamore uses a grid with nearest-neighbor connections, and IonQ&rsquo;s trapped-ion systems have all-to-all connectivity but with distance-dependent fidelity. A circuit with CNOT(0, 15) on a device where qubits 0 and 15 are 7 hops apart requires 7 SWAP gates (21 additional CNOTs) to execute, potentially tripling the circuit&rsquo;s noise. AI tools that generate abstract circuits without considering hardware topology produce code that compiles into much deeper circuits than necessary.</li>
+          <li><strong>Using deprecated Qiskit 0.x APIs:</strong> Qiskit 1.0 (released in early 2024) introduced sweeping breaking changes. The <code>execute()</code> function was removed; circuits now run through <code>Sampler</code> and <code>Estimator</code> primitives. <code>qiskit.Aer</code> moved to the separate <code>qiskit-aer</code> package. <code>qiskit.opflow</code> was deleted entirely, replaced by <code>qiskit.quantum_info.SparsePauliOp</code>. The <code>QuantumInstance</code> class was removed. <code>qiskit.algorithms</code> moved to <code>qiskit-algorithms</code>. AI tools trained on pre-2024 code consistently generate <code>from qiskit import execute</code>, <code>from qiskit.opflow import PauliSumOp</code>, and <code>backend = Aer.get_backend('qasm_simulator')</code> &mdash; all of which fail with <code>ImportError</code> on Qiskit 1.0+. This is the single most common error AI tools make in quantum computing code, and it wastes significant debugging time.</li>
+          <li><strong>Treating quantum circuits like classical programs:</strong> AI tools apply classical programming intuitions that fundamentally do not work in quantum computing. They attempt to &ldquo;read&rdquo; a qubit&rsquo;s value mid-circuit without understanding that measurement collapses the superposition. They try to clone quantum states by assigning one qubit&rsquo;s value to another (violating the no-cloning theorem &mdash; only CNOT with a |0&rang; target creates a copy, and only for computational basis states, not arbitrary superpositions). They insert conditional branches based on quantum state values without measurement, which is physically impossible. They generate loops that &ldquo;iterate until the qubit is in state |1&rang;&rdquo; without understanding that each measurement gives a probabilistic result and destroys the state being tested.</li>
+          <li><strong>Wrong noise model assumptions:</strong> AI tools generate noise models that are physically unrealistic. Common errors include using the same error rate for single-qubit and two-qubit gates (two-qubit gates are typically 10&ndash;100&times; noisier), applying depolarizing noise without thermal relaxation (ignoring T<sub>1</sub>/T<sub>2</sub> processes), setting T<sub>2</sub> &gt; 2T<sub>1</sub> (which violates the physical constraint T<sub>2</sub> &le; 2T<sub>1</sub>), and omitting readout errors entirely. Incorrect noise models produce misleadingly optimistic simulation results, causing developers to believe their circuits will work on hardware when they will not. The most dangerous error is symmetric depolarizing noise when the actual noise is highly biased (e.g., dephasing-dominated), which changes the optimal error mitigation strategy entirely.</li>
+          <li><strong>Ignoring barren plateaus in variational circuits:</strong> AI tools routinely generate hardware-efficient ansatze with random parameter initialization for variational algorithms, without any awareness of the barren plateau phenomenon. For a random parameterized circuit with n qubits, the variance of the gradient of a global cost function decreases as O(2<sup>-n</sup>), meaning that for 20+ qubits, the gradient is exponentially small and optimization is effectively impossible with any finite number of measurement shots. Solutions include problem-specific ansatze (UCCSD for chemistry, Hamiltonian variational ansatz for simulation), identity initialization, layer-wise training, and local cost functions. An AI tool that generates <code>params = np.random.uniform(0, 2*np.pi, size=n_params)</code> for a 30-qubit variational circuit has produced code that will never converge.</li>
+          <li><strong>Confusing logical and physical qubits:</strong> AI tools conflate logical qubits (the abstract qubits in your algorithm) with physical qubits (the actual hardware devices). When an engineer asks &ldquo;how many qubits do I need to factor a 2048-bit number,&rdquo; AI tools often respond with the logical qubit count from Shor&rsquo;s algorithm (~4000 logical qubits) without mentioning the physical qubit overhead of error correction. With surface code at code distance 27 (needed for the required logical error rate), each logical qubit requires approximately 2d<sup>2</sup> = 1,458 physical qubits, bringing the total to roughly 6 million physical qubits. This 1,000&times; gap between logical and physical qubit counts is the central engineering challenge of quantum computing, and AI tools that ignore it create fundamentally misleading resource estimates.</li>
+          <li><strong>Generating circuits too deep for NISQ hardware:</strong> AI tools have no sense of circuit depth constraints imposed by qubit coherence times. A circuit with 1,000 CNOT gates on superconducting hardware with T<sub>2</sub> = 100 &mu;s and 500 ns per CNOT has a total execution time of 500 &mu;s &mdash; five times the coherence time, meaning the quantum information has been completely destroyed by decoherence before the circuit finishes. On current hardware, practical circuit depths are limited to roughly 100&ndash;300 two-qubit gates. AI tools that generate textbook implementations of quantum algorithms (Quantum Fourier Transform with n<sup>2</sup>/2 controlled rotations, Grover&rsquo;s algorithm with O(&radic;N) iterations) without circuit depth analysis produce code that is theoretically correct but physically unexecutable on any existing hardware.</li>
+        </ul>
+
+        <h2>Cost Model: What Quantum Computing Engineers Actually Pay</h2>
+
+        <h3>Scenario 1: Graduate Student / Self-Learner &mdash; $0/month</h3>
+        <ul>
+          <li><strong>Copilot Free</strong> (2,000 completions/mo) for basic Qiskit/Cirq circuit construction, simple PennyLane tutorials, and standard quantum computing exercises</li>
+          <li>Plus <strong>Gemini CLI Free</strong> for discussing quantum algorithms, loading Qiskit 1.0 migration guides, and understanding framework documentation</li>
+          <li>Sufficient for coursework, textbook exercises, and early research exploration. Use IBM Quantum&rsquo;s free tier (127-qubit devices with queue times) and PennyLane&rsquo;s simulator backends. Manually verify every circuit against expected measurement distributions. Do not trust AI-generated noise models or resource estimates without checking the physics.</li>
+        </ul>
+
+        <h3>Scenario 2: Quantum Algorithm Researcher &mdash; $20/month</h3>
+        <ul>
+          <li><strong>Claude Code</strong> ($20/mo) for deriving quantum algorithms, implementing variational circuits with barren plateau awareness, constructing error correction schemes, and performing Hamiltonian simulation with correct Trotter decompositions</li>
+          <li>The strongest single tool for quantum computing research. Claude Code reasons through the mathematical foundations &mdash; unitary decompositions, stabilizer groups, parameter-shift gradients, entanglement entropy calculations &mdash; that other tools treat as opaque patterns to copy. Worth the cost for anyone developing new quantum algorithms or pushing the boundaries of existing ones.</li>
+        </ul>
+
+        <h3>Scenario 3: Quantum Software Developer &mdash; $20/month</h3>
+        <ul>
+          <li><strong>Cursor Pro</strong> ($20/mo) for navigating large Qiskit/PennyLane/Cirq codebases, autocompleting framework-specific patterns, and maintaining consistency across multi-file quantum software projects</li>
+          <li>Best for developers working on quantum software infrastructure: transpiler passes, noise model libraries, circuit optimization tools, and quantum cloud service APIs. Cursor&rsquo;s project indexing understands import structures across quantum framework codebases and suggests completions consistent with existing patterns.</li>
+        </ul>
+
+        <h3>Scenario 4: Quantum-Classical Full Stack &mdash; $40/month</h3>
+        <ul>
+          <li><strong>Claude Code</strong> ($20/mo) for quantum algorithm development, error mitigation implementation, and physics-aware circuit design</li>
+          <li>Plus <strong>Cursor Pro</strong> ($20/mo) for the classical software engineering surrounding quantum circuits: REST APIs serving quantum computation results, classical optimization loops wrapping quantum circuits, data pipelines processing quantum measurement data, and web dashboards visualizing quantum experiment results</li>
+          <li>The optimal combination for engineers building production quantum computing applications. Claude Code handles the quantum physics and algorithm design; Cursor handles the software engineering infrastructure that makes quantum computations useful.</li>
+        </ul>
+
+        <h3>Scenario 5: Quantum Team Lead &mdash; $19&ndash;40/seat/month</h3>
+        <ul>
+          <li><strong>Copilot Business</strong> ($19/seat/mo) or <strong>Cursor Business</strong> ($40/seat/mo) for team-wide codebase indexing and consistent coding patterns across quantum software teams</li>
+          <li>Cursor Business indexes the team&rsquo;s shared circuit libraries, custom transpiler passes, error mitigation toolkits, and benchmarking suites. Enforces coding standards (Qiskit 1.0+ patterns, not deprecated 0.x) across developers with varying quantum computing experience. Copilot Business provides organization-level controls and audit logging.</li>
+        </ul>
+
+        <h3>Scenario 6: Enterprise / Quantum Hardware Company &mdash; $39&ndash;99/seat/month</h3>
+        <ul>
+          <li><strong>Copilot Enterprise</strong> ($39/seat/mo) or <strong>Cursor Enterprise</strong> for organization-wide codebase indexing with compliance controls</li>
+          <li>Plus <strong>Claude Code</strong> ($20/seat/mo) for specialized quantum algorithm review, error correction scheme analysis, and hardware characterization data interpretation</li>
+          <li>Quantum hardware companies (IBM Quantum, Google Quantum AI, Rigetti, IonQ, Quantinuum) have large proprietary codebases for device calibration, control systems, error characterization, and firmware. Enterprise tiers index these codebases for onboarding and cross-team knowledge sharing. <strong>Amazon Q</strong> is worth evaluating if quantum workloads run primarily on Amazon Braket across multiple hardware vendors.</li>
+        </ul>
+
+        <h2>The Quantum Computing Engineer&rsquo;s Verdict</h2>
+
+        <p>The fundamental challenge for AI tools in quantum computing is that the domain operates on mathematical principles that have no classical analogue. A classical program that compiles and produces output is almost certainly doing something related to what the developer intended. A quantum circuit that compiles and produces measurement results might be doing exactly what was intended, or it might be producing uniformly random noise because the circuit depth exceeded the coherence time, or it might be trapped in a barren plateau returning the same expectation value regardless of parameters, or it might be computing the wrong Hamiltonian because the Pauli decomposition had a sign error in one of forty terms. The gap between &ldquo;code that runs&rdquo; and &ldquo;code that produces physically meaningful results&rdquo; is wider in quantum computing than in any other software engineering domain, and AI tools currently have no ability to bridge that gap. They can generate syntactically correct quantum circuits, but they cannot evaluate whether those circuits produce quantum states that solve the intended problem.</p>
+
+        <p>That said, AI tools provide substantial value for the mechanical aspects of quantum software development. Framework API navigation is a significant time sink &mdash; Qiskit alone has hundreds of classes across <code>qiskit-terra</code>, <code>qiskit-aer</code>, <code>qiskit-algorithms</code>, <code>qiskit-dynamics</code>, and <code>qiskit-experiments</code>, with the 1.0 release reorganizing almost everything. Remembering whether the parameter-shift gradient formula uses +&pi;/2 and -&pi;/2 shifts or +&pi;/4 and -&pi;/4 shifts (it depends on the gate generator eigenvalues), looking up the correct Cirq syntax for a parameterized gate on a specific qubit type, constructing PennyLane QNodes with the right differential method for your use case, and writing Stim detector annotations for a surface code &mdash; these are all tasks where AI tools save hours of documentation browsing. The key is using AI tools as syntax assistants and code accelerators while keeping the quantum physics reasoning in human hands.</p>
+
+        <p>The tool-specific recommendations: <strong>Claude Code</strong> is the clear best single tool for quantum computing engineers. Its reasoning ability handles the multi-step mathematical logic required for quantum algorithm development &mdash; deriving gate decompositions, analyzing error correction properties, computing gradient expressions, and verifying circuit correctness against known analytical results. <strong>Cursor</strong> is essential for engineers working with large quantum software projects, providing project-wide indexing that tracks circuit definitions, test suites, and framework integration code. <strong>Gemini CLI</strong> is invaluable for framework migration (loading the entire Qiskit 0.x-to-1.0 migration guide or PennyLane changelog into context) and for querying extensive API documentation. <strong>Amazon Q</strong> deserves consideration for teams using Amazon Braket for multi-vendor hardware access. The bottom line: quantum computing is the domain where AI tool limitations are most stark, because the correctness criteria are mathematical rather than functional. Use AI tools to write the code faster, but verify the quantum physics yourself &mdash; a circuit that compiles is not a circuit that computes.</p>
+
+        <p>Compare all tools and pricing on our <a href="/" style="color:var(--accent)">main comparison table</a>, or check the <a href="/blog/cheapest-ai-coding-tool-2026.html" style="color:var(--accent)">cheapest tools guide</a> for budget options.</p>
+
+        <h2>Related on CodeCosts</h2>
+        <ul>
+          <li><a href="/blog/ai-coding-tools-for-data-scientists-2026.html" style="color:var(--accent)">AI Coding Tools for Data Scientists (2026)</a> &mdash; NumPy, SciPy, statistical analysis, ML workflows</li>
+          <li><a href="/blog/ai-coding-tools-for-systems-programmers-2026.html" style="color:var(--accent)">AI Coding Tools for Systems Programmers (2026)</a> &mdash; low-level C/C++, memory management, OS internals</li>
+          <li><a href="/blog/ai-coding-tools-for-cryptography-engineers-2026.html" style="color:var(--accent)">AI Coding Tools for Cryptography Engineers (2026)</a> &mdash; post-quantum cryptography, protocol implementation, side-channel resistance</li>
+          <li><a href="/blog/ai-coding-tools-for-ml-engineers-2026.html" style="color:var(--accent)">AI Coding Tools for ML Engineers (2026)</a> &mdash; PyTorch, TensorFlow, model training, deployment pipelines</li>
+        </ul>
+      </div>
+    </article>
+
+    <!-- Related Posts -->
+    <section class="card">
+      <h3>Related Posts</h3>
+      <div class="blog-list" style="margin-top:1rem">
+        <a href="/blog/ai-coding-tools-for-cryptography-engineers-2026.html" class="blog-post-card">
+          <h3>AI Coding Tools for Cryptography Engineers 2026: Post-Quantum, Protocol Implementation &amp; Side-Channel Resistance Guide</h3>
+          <div class="blog-meta"><span>March 29, 2026</span><span>25 min read</span></div>
+          <p class="blog-excerpt">Every AI coding tool evaluated for cryptography engineering. Post-quantum algorithms, protocol implementation, side-channel analysis, and secure coding from $0 to enterprise.</p>
+          <span class="read-more">Read more &rarr;</span>
+        </a>
+        <a href="/blog/ai-coding-tools-for-data-scientists-2026.html" class="blog-post-card">
+          <h3>AI Coding Tools for Data Scientists 2026: Python, R, Statistics &amp; Machine Learning Guide</h3>
+          <div class="blog-meta"><span>March 25, 2026</span><span>25 min read</span></div>
+          <p class="blog-excerpt">Every AI coding tool evaluated for data science. Python, R, statistical analysis, ML workflows, and notebook development from $0 to enterprise.</p>
+          <span class="read-more">Read more &rarr;</span>
+        </a>
+        <a href="/blog/ai-coding-tools-for-ml-engineers-2026.html" class="blog-post-card">
+          <h3>AI Coding Tools for ML Engineers 2026: PyTorch, TensorFlow, Training &amp; Deployment Guide</h3>
+          <div class="blog-meta"><span>March 26, 2026</span><span>25 min read</span></div>
+          <p class="blog-excerpt">Every AI coding tool evaluated for ML engineering. PyTorch, TensorFlow, model training, hyperparameter tuning, and deployment from $0 to enterprise.</p>
+          <span class="read-more">Read more &rarr;</span>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>CodeCosts &mdash; Independent AI coding tool price tracker. Updated March 2026.</p>
+      <p style="margin-top:0.5rem"><a href="/" style="color:var(--accent)">Compare all tools</a> &middot; <a href="/blog/" style="color:var(--accent)">Blog</a> &middot; <a href="/blog/feed.xml" style="color:var(--accent)">RSS</a></p>
+    </div>
+  </footer>
+</body>
+</html>

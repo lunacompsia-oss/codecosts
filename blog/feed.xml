@@ -9,6 +9,14 @@
     <atom:link href="https://codecosts.pages.dev/blog/feed.xml" rel="self" type="application/rss+xml"/>
 
     <item>
+      <title>AI Coding Tools for Quantum Computing Engineers 2026: Qiskit, Cirq, PennyLane, Quantum Error Correction &amp; Algorithm Development Guide</title>
+      <link>https://codecosts.pages.dev/blog/ai-coding-tools-for-quantum-computing-engineers-2026.html</link>
+      <description>The quantum computing engineer's guide to AI coding tools in 2026. Qiskit, Cirq, PennyLane, quantum error correction, variational algorithms, circuit optimization, quantum simulation, QML, and hardware integration.</description>
+      <pubDate>Sun, 29 Mar 2026 23:59:00 GMT</pubDate>
+      <guid>https://codecosts.pages.dev/blog/ai-coding-tools-for-quantum-computing-engineers-2026.html</guid>
+    </item>
+
+    <item>
       <title>AI Coding Tools for Simulation Engineers 2026: CFD, FEA, Discrete Event Simulation, Monte Carlo &amp; Multiphysics Guide</title>
       <link>https://codecosts.pages.dev/blog/ai-coding-tools-for-simulation-engineers-2026.html</link>
       <description>The simulation engineer's guide to AI coding tools in 2026. CFD, FEA, discrete event simulation, Monte Carlo methods, mesh generation, HPC parallelism, and post-processing.</description>

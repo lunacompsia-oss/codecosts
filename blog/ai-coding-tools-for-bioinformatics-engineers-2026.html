@@ -1,0 +1,1672 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Coding Tools for Bioinformatics Engineers 2026: Genomics, Sequence Alignment, Protein Structure, Phylogenetics &amp; Pipeline Development Guide | CodeCosts</title>
+  <meta name="description" content="The bioinformatics engineer's guide to AI coding tools in 2026. Every tool evaluated for genomics pipelines, sequence alignment, variant calling, RNA-Seq, protein structure analysis, phylogenetics, single-cell analysis, and clinical genomics. Domain-first recommendations from $0 to $99/seat.">
+  <link rel="canonical" href="https://codecosts.pages.dev/blog/ai-coding-tools-for-bioinformatics-engineers-2026.html">
+  <meta property="og:title" content="AI Coding Tools for Bioinformatics Engineers 2026: Genomics, Sequence Alignment, Protein Structure, Phylogenetics &amp; Pipeline Development">
+  <meta property="og:description" content="Every AI coding tool ranked for bioinformatics engineering. Genomics pipelines, variant calling, RNA-Seq, protein structure, phylogenetics, single-cell analysis, and clinical genomics. Domain-first recommendations from $0 to $99/seat.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://codecosts.pages.dev/blog/ai-coding-tools-for-bioinformatics-engineers-2026.html">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="AI Coding Tools for Bioinformatics Engineers 2026: Genomics, Sequence Alignment, Protein Structure, Phylogenetics &amp; Pipeline Development">
+  <meta name="twitter:description" content="Domain-first AI tool recommendations for bioinformatics engineers. Genomics, variant calling, RNA-Seq, protein structure, phylogenetics &mdash; ranked and priced.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💰</text></svg>">
+  <link rel="stylesheet" href="../style.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "AI Coding Tools for Bioinformatics Engineers 2026: Genomics, Sequence Alignment, Protein Structure, Phylogenetics & Pipeline Development Guide",
+    "datePublished": "2026-03-29",
+    "dateModified": "2026-03-29",
+    "author": { "@type": "Organization", "name": "CodeCosts" },
+    "publisher": { "@type": "Organization", "name": "CodeCosts" },
+    "description": "The bioinformatics engineer's guide to AI coding tools in 2026. Every tool evaluated for genomics pipelines, sequence alignment, variant calling, RNA-Seq, protein structure analysis, phylogenetics, single-cell analysis, and clinical genomics."
+  }
+  </script>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <a href="/" style="text-decoration:none;color:inherit"><h1><span class="logo">$_</span> CodeCosts</h1></a>
+      <p class="tagline">AI Coding Tool News &amp; Analysis</p>
+      <nav>
+        <a href="/">Tools</a>
+        <a href="/blog/" class="active">Blog</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <article class="card">
+      <h2>AI Coding Tools for Bioinformatics Engineers 2026: Genomics, Sequence Alignment, Protein Structure, Phylogenetics &amp; Pipeline Development Guide</h2>
+      <div class="article-meta">
+        <span>March 29, 2026</span>
+        <span>~26 min read</span>
+      </div>
+
+      <div class="article-content">
+        <p>Bioinformatics engineering sits at the intersection of biology, statistics, and computer science &mdash; and AI coding tools built for web developers do not understand any of it. You are not writing CRUD endpoints or React components. You are writing code that processes the human genome&rsquo;s 3.2 billion base pairs, where a typical whole-genome sequencing run at 30&ndash;60x coverage produces over 100 GB of raw FASTQ data per sample. Your alignment pipelines must handle reads that map ambiguously to repetitive regions, your variant callers must distinguish true single-nucleotide polymorphisms from sequencing artifacts with per-base quality scores, and your annotation pipelines must cross-reference millions of variants against databases like ClinVar, gnomAD, and COSMIC. A missed variant call in clinical genomics can mean a patient&rsquo;s cancer predisposition goes undetected. A false positive in a genome-wide association study wastes years of follow-up research. The tolerance for &ldquo;close enough&rdquo; is zero &mdash; bioinformatics code must be correct, reproducible, and statistically rigorous, or it produces results that are worse than useless because they are confidently wrong.</p>
+
+        <p>The multi-language, multi-framework stack in bioinformatics is unlike any other domain. Python is the glue language (Biopython for sequence manipulation, pysam for BAM/CRAM access, cyvcf2 for VCF parsing, pandas for tabular data, scanpy for single-cell analysis, scikit-learn for machine learning on genomic features). R is the statistical backbone (Bioconductor&rsquo;s 2,200+ packages, DESeq2 for differential expression, Seurat for single-cell, edgeR for count-based models, GenomicRanges for interval arithmetic, VariantAnnotation for VCF handling). C and C++ power the performance-critical tools (BWA-MEM2 for alignment, samtools/htslib for BAM manipulation, GATK&rsquo;s internal Pair-HMM for variant calling, STAR for RNA-Seq alignment). Rust is the rising alternative (rust-bio for sequence algorithms, noodles for bioinformatics file format parsing, sourmash for MinHash sketching). And on top of all this, workflow orchestration languages &mdash; Nextflow (Groovy-based DSL2) and Snakemake (Python-based) &mdash; define the DAG-based pipelines that chain these tools together, managing containerized execution, cluster submission (SLURM, PBS, LSF), cloud execution (AWS Batch, Google Life Sciences), and resource allocation (memory per process, CPU cores, GPU for deep learning variant callers like DeepVariant). An AI tool that only knows Python is useless when you need to debug a Nextflow channel operator, write a Snakemake rule with proper wildcards, or optimize a C extension in pysam.</p>
+
+        <p>The reproducibility crisis in bioinformatics makes tooling decisions even more consequential. A pipeline that ran six months ago must produce identical results today &mdash; but reference genomes change (GRCh37/hg19 vs GRCh38/hg38, with different coordinate systems, contig names, and alt contigs), annotation databases update (Ensembl releases every quarter, RefSeq revises gene models, ClinVar reclassifies variants monthly), and tool versions introduce subtle behavioral changes (GATK 4.3 changed the default PairHMM implementation, BWA-MEM2 produces slightly different alignments than BWA-MEM for supplementary alignments, samtools 1.17 fixed a sorting edge case that changed output for ~0.01% of reads). Reproducible bioinformatics requires pinning every tool version, every reference genome build, every annotation database version, containerizing every step (Docker/Singularity), and recording provenance metadata that links every output file to the exact inputs, parameters, and software versions that produced it. AI coding tools that generate pipeline code without version pinning, without container specifications, or without provenance tracking produce code that works today and is irreproducible tomorrow &mdash; which in the context of published research or clinical reporting means the results cannot be validated, and in the worst case cannot be defended in a regulatory audit.</p>
+
+        <div class="callout tip">
+          <div class="callout-title">TL;DR</div>
+          <p><strong>Best free ($0):</strong> Gemini CLI Free &mdash; 1M context for discussing algorithms, reading papers, and working through statistical derivations. <strong>Best for genomics pipelines ($20/mo):</strong> Claude Code &mdash; strongest reasoning for Nextflow DSL2, variant calling logic, and statistical models. <strong>Best for large codebases ($20/mo):</strong> Cursor Pro &mdash; indexes full bioinformatics project trees with R, Python, and Nextflow files. <strong>Best combined ($40/mo):</strong> Claude Code + Cursor. <strong>Budget ($0):</strong> Copilot Free + Gemini CLI Free.</p>
+        </div>
+
+        <h2>Why Bioinformatics Engineering Is Different</h2>
+        <ul>
+          <li><strong>Scale and memory constraints dominate everything:</strong> A single BAM file from 30x whole-genome sequencing is 50&ndash;100 GB. Variant calling across a cohort of 100,000 samples (the scale of UK Biobank or All of Us) requires joint genotyping that touches terabytes of intermediate data. Single-cell RNA-Seq datasets routinely contain 500,000+ cells with 30,000+ genes, producing count matrices that do not fit in memory without sparse representations. Long-read sequencing (Oxford Nanopore, PacBio HiFi) produces reads of 10&ndash;100 kb that require different alignment algorithms (minimap2 instead of BWA-MEM2), different variant callers (Clair3 instead of GATK HaplotypeCaller), and dramatically more memory for overlap-layout-consensus assembly. Your code must stream data rather than load it into memory, use indexed access (BAM index .bai, tabix .tbi, CRAM .crai) to query genomic regions without reading entire files, and partition work across samples, chromosomes, or genomic intervals to parallelize effectively. AI tools that generate code loading entire BAM files into memory with <code>pysam.AlignmentFile.fetch()</code> without region filtering produce code that works on toy datasets and crashes on real sequencing data.</li>
+          <li><strong>Domain-specific file formats require specialized parsers:</strong> FASTA (reference sequences with line-wrapped bases), FASTQ (sequencing reads with per-base quality scores in Phred+33 encoding), SAM/BAM/CRAM (aligned reads with CIGAR strings encoding match/mismatch/insertion/deletion/soft-clip/hard-clip/padding, mapping quality, mate pair information, and auxiliary tags like MD for mismatching positions and NM for edit distance), VCF (variant calls with genotype fields, INFO annotations, FORMAT per-sample fields, and multiallelic representation), BED (genomic intervals, 0-based half-open coordinates), GFF/GTF (gene annotations with hierarchical parent-child relationships between genes, transcripts, exons, and CDS), PDB/mmCIF (protein 3D structures with atomic coordinates, B-factors, and occupancy). Each format has its own parsing library (pysam/htslib for SAM/BAM/CRAM, cyvcf2/PyVCF for VCF, pybedtools for BED, gffutils for GFF/GTF, BioPython PDB for structures), its own coordinate system (0-based vs 1-based, half-open vs closed), and its own edge cases (multiallelic VCF records, split reads across chromosomes, unmapped mates, secondary and supplementary alignments). AI tools must know that BAM coordinates are 0-based but VCF positions are 1-based, that CIGAR string parsing requires handling all operation types, and that CRAM files require the reference genome to decompress.</li>
+          <li><strong>Statistical rigor is non-negotiable:</strong> Bioinformatics results are published, peer-reviewed, and used to make clinical decisions. Multiple testing correction is mandatory &mdash; testing 20,000 genes for differential expression requires Benjamini-Hochberg FDR correction, and a GWAS across 10 million SNPs requires a genome-wide significance threshold of 5 x 10^-8. Variant calling uses Bayesian models: GATK HaplotypeCaller computes genotype likelihoods using a pair-HMM that models sequencing error, then applies a prior based on population allele frequencies from resources like gnomAD. DESeq2 models RNA-Seq counts with a negative binomial distribution (not Poisson, because biological replicates show overdispersion), estimates per-gene dispersions using empirical Bayes shrinkage toward a fitted trend, and tests for differential expression using a Wald test or likelihood ratio test. AI tools that suggest using a t-test on TPM values, or that fail to apply shrinkage estimators, or that do not understand why you cannot use FPKM for cross-sample comparison, produce statistically invalid results that would be rejected at peer review.</li>
+          <li><strong>Reproducibility and provenance are regulatory requirements:</strong> Nextflow and Snakemake define computational pipelines as directed acyclic graphs where each step specifies its inputs, outputs, container image (Docker or Singularity), resource requirements (CPUs, memory, time), and software dependencies. Nextflow DSL2 uses channels (asynchronous data streams), processes (isolated compute units), and workflows (composable pipeline modules). Snakemake uses rules (input/output file patterns), wildcards (generalization across samples), and config files (parameter management). Both support execution on local machines, HPC clusters (SLURM, PBS, LSF, SGE), and cloud platforms (AWS Batch, Google Cloud Life Sciences, Azure Batch). Pipeline code must pin exact container versions (<code>quay.io/biocontainers/bwa:0.7.17--h5bf99c6_8</code>, not <code>:latest</code>), reference genome checksums, and annotation database versions. Clinical genomics pipelines must also maintain audit trails for CAP/CLIA compliance. AI tools that generate Nextflow processes without container directives, or Snakemake rules without conda environment specifications, produce pipelines that are not reproducible across environments.</li>
+          <li><strong>Biological domain knowledge cannot be faked:</strong> The genetic code has 64 codons mapping to 20 amino acids plus 3 stop codons, with codon degeneracy at the third (wobble) position. Reading frames shift by one nucleotide and produce completely different proteins &mdash; frameshift mutations (insertions or deletions not divisible by 3) are almost always loss-of-function. Splice sites follow the GT-AG rule (with rare exceptions: GC-AG, AT-AC for U12 introns), and alternative splicing produces multiple transcript isoforms from the same gene. Protein domains (Pfam, InterPro) define functional units. CpG islands mark promoter regions. Transposable elements (LINEs, SINEs, Alu elements) constitute ~45% of the human genome and confound alignment and variant calling in repetitive regions. CRISPR guide RNA design requires off-target analysis considering PAM sequences, mismatches, and bulges. An AI tool that does not understand these biological concepts cannot generate correct filtering criteria for variant annotation, cannot build proper gene models from exon coordinates, and cannot interpret the biological significance of the computational results it helps produce.</li>
+        </ul>
+
+        <h2>Bioinformatics Task Support Matrix</h2>
+        <div style="overflow-x:auto">
+          <table style="width:100%;border-collapse:collapse;margin:1.5rem 0">
+            <thead>
+              <tr style="border-bottom:2px solid var(--border)">
+                <th style="padding:12px 16px;text-align:left">Task</th>
+                <th style="padding:12px 16px;text-align:center">Copilot</th>
+                <th style="padding:12px 16px;text-align:center">Cursor</th>
+                <th style="padding:12px 16px;text-align:center">Windsurf</th>
+                <th style="padding:12px 16px;text-align:center">Claude Code</th>
+                <th style="padding:12px 16px;text-align:center">Gemini CLI</th>
+                <th style="padding:12px 16px;text-align:center">Amazon Q</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px"><strong>Sequence Alignment &amp; Variant Calling</strong></td>
+                <td style="padding:12px 16px;text-align:center">Moderate &mdash; generates BWA/samtools commands but misses BQSR and read group formatting</td>
+                <td style="padding:12px 16px;text-align:center">Strong &mdash; indexes project context, autocompletes GATK flags from existing pipelines</td>
+                <td style="padding:12px 16px;text-align:center">Moderate &mdash; basic alignment commands, weak on joint genotyping and VQSR</td>
+                <td style="padding:12px 16px;text-align:center"><strong>Strong</strong> &mdash; reasons through full GATK best practices, correct BQSR/HaplotypeCaller/GenotypeGVCFs chain</td>
+                <td style="padding:12px 16px;text-align:center">Strong &mdash; explains variant calling theory well, 1M context for discussing filtering strategies</td>
+                <td style="padding:12px 16px;text-align:center">Moderate &mdash; basic pipeline generation, limited GATK-specific knowledge</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px"><strong>RNA-Seq &amp; Differential Expression</strong></td>
+                <td style="padding:12px 16px;text-align:center">Moderate &mdash; generates DESeq2 boilerplate but often uses TPM incorrectly for DE</td>
+                <td style="padding:12px 16px;text-align:center">Strong &mdash; good R autocompletion, understands Bioconductor object types</td>
+                <td style="padding:12px 16px;text-align:center">Weak &mdash; shallow R support, frequently suggests t-tests on normalized counts</td>
+                <td style="padding:12px 16px;text-align:center"><strong>Strong</strong> &mdash; understands negative binomial models, shrinkage estimators, batch correction</td>
+                <td style="padding:12px 16px;text-align:center">Strong &mdash; excellent for explaining DESeq2 internals, design matrix formulation</td>
+                <td style="padding:12px 16px;text-align:center">Weak &mdash; limited Bioconductor knowledge, generic R suggestions</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px"><strong>Structural Bioinformatics &amp; Protein Analysis</strong></td>
+                <td style="padding:12px 16px;text-align:center">Moderate &mdash; basic BioPython PDB parsing, misses DSSP and superimposition APIs</td>
+                <td style="padding:12px 16px;text-align:center">Moderate &mdash; good for project-level context but limited structural biology knowledge</td>
+                <td style="padding:12px 16px;text-align:center">Weak &mdash; minimal PDB/mmCIF understanding, generic Python suggestions</td>
+                <td style="padding:12px 16px;text-align:center"><strong>Strong</strong> &mdash; generates correct RMSD calculations, Ramachandran analysis, contact maps</td>
+                <td style="padding:12px 16px;text-align:center">Strong &mdash; explains protein structure concepts well, AlphaFold2 architecture discussion</td>
+                <td style="padding:12px 16px;text-align:center">Weak &mdash; very limited structural bioinformatics support</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px"><strong>Phylogenetics &amp; Evolutionary Analysis</strong></td>
+                <td style="padding:12px 16px;text-align:center">Weak &mdash; basic tree plotting, no understanding of substitution models or clock models</td>
+                <td style="padding:12px 16px;text-align:center">Moderate &mdash; autocompletes from existing phylogenetics scripts in project</td>
+                <td style="padding:12px 16px;text-align:center">Weak &mdash; minimal phylogenetics knowledge</td>
+                <td style="padding:12px 16px;text-align:center"><strong>Strong</strong> &mdash; understands substitution models, dN/dS, molecular clocks, tree inference methods</td>
+                <td style="padding:12px 16px;text-align:center">Strong &mdash; excellent for discussing phylogenetic theory and method selection</td>
+                <td style="padding:12px 16px;text-align:center">Weak &mdash; no meaningful phylogenetics support</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px"><strong>Pipeline Development (Nextflow/Snakemake)</strong></td>
+                <td style="padding:12px 16px;text-align:center">Moderate &mdash; generates basic Nextflow processes but misses DSL2 patterns and channel operators</td>
+                <td style="padding:12px 16px;text-align:center"><strong>Strong</strong> &mdash; indexes nf-core modules, autocompletes Nextflow DSL2 from project context</td>
+                <td style="padding:12px 16px;text-align:center">Moderate &mdash; basic Snakemake rules, misses wildcard constraints and config integration</td>
+                <td style="padding:12px 16px;text-align:center"><strong>Strong</strong> &mdash; generates correct DSL2 workflows with channels, scatter-gather, and container directives</td>
+                <td style="padding:12px 16px;text-align:center">Moderate &mdash; explains pipeline concepts but Nextflow DSL2 code generation is inconsistent</td>
+                <td style="padding:12px 16px;text-align:center">Moderate &mdash; decent AWS Batch integration suggestions but weak Nextflow DSL2</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px"><strong>Single-Cell Analysis (scRNA-seq)</strong></td>
+                <td style="padding:12px 16px;text-align:center">Moderate &mdash; generates basic scanpy workflows but misses QC thresholds and normalization nuances</td>
+                <td style="padding:12px 16px;text-align:center">Strong &mdash; good Python autocompletion for scanpy/anndata, indexes existing analysis notebooks</td>
+                <td style="padding:12px 16px;text-align:center">Weak &mdash; limited scanpy/Seurat knowledge, generic suggestions</td>
+                <td style="padding:12px 16px;text-align:center"><strong>Strong</strong> &mdash; understands doublet detection, batch integration, trajectory inference</td>
+                <td style="padding:12px 16px;text-align:center">Moderate &mdash; explains concepts well but code generation for AnnData operations is unreliable</td>
+                <td style="padding:12px 16px;text-align:center">Weak &mdash; no meaningful single-cell analysis support</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px"><strong>Clinical Genomics &amp; Annotation</strong></td>
+                <td style="padding:12px 16px;text-align:center">Weak &mdash; no understanding of ACMG criteria, ClinVar classification, or pharmacogenomics</td>
+                <td style="padding:12px 16px;text-align:center">Moderate &mdash; can work from existing clinical annotation scripts in the project</td>
+                <td style="padding:12px 16px;text-align:center">Weak &mdash; minimal clinical genomics knowledge</td>
+                <td style="padding:12px 16px;text-align:center"><strong>Strong</strong> &mdash; understands ACMG/AMP guidelines, VEP/SnpEff annotation, gnomAD frequency filtering</td>
+                <td style="padding:12px 16px;text-align:center">Moderate &mdash; can discuss ACMG criteria but annotation pipeline code is incomplete</td>
+                <td style="padding:12px 16px;text-align:center">Moderate &mdash; HIPAA compliance awareness for AWS, but weak on variant classification logic</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h2>Sequence Alignment &amp; Variant Calling</h2>
+
+        <p>The GATK Best Practices pipeline is the gold standard for germline variant calling: align reads with BWA-MEM2, sort and mark duplicates with samtools or Picard, perform base quality score recalibration (BQSR) using known variant sites, call variants per sample with HaplotypeCaller in GVCF mode, consolidate GVCFs with GenomicsDBImport, joint-genotype across the cohort with GenotypeGVCFs, and filter variants with Variant Quality Score Recalibration (VQSR) or hard filters. Every step has parameters that affect sensitivity and specificity, and getting them wrong means either missing real variants or reporting false positives. Read groups must be correctly formatted (<code>@RG\tID:flowcell.lane\tSM:sample\tPL:ILLUMINA\tLB:library\tPU:flowcell.lane.barcode</code>) or GATK refuses to run. BQSR requires known sites (dbSNP, Mills and 1000G gold standard indels, 1000G phase 1 high-confidence SNPs) matched to the reference genome build. Joint genotyping across hundreds or thousands of samples requires GenomicsDBImport to create an intermediate database that handles the N+1 sample problem (adding new samples without reprocessing existing ones).</p>
+
+        <p>Here is a complete variant calling pipeline in Nextflow DSL2 that follows GATK Best Practices, showing the kind of code bioinformaticians actually write and AI tools must understand.</p>
+
+<pre><code>#!/usr/bin/env nextflow
+nextflow.enable.dsl = 2
+
+// ============================================================
+// WGS Germline Variant Calling Pipeline (GATK Best Practices)
+// ============================================================
+
+params.reads        = "${params.input}/*_{R1,R2}.fastq.gz"
+params.reference    = "${params.genomes}/GRCh38/Homo_sapiens_assembly38.fasta"
+params.known_sites  = [
+    "${params.genomes}/GRCh38/dbsnp_146.hg38.vcf.gz",
+    "${params.genomes}/GRCh38/Mills_and_1000G_gold_standard.indels.hg38.vcf.gz",
+    "${params.genomes}/GRCh38/1000G_phase1.snps.high_confidence.hg38.vcf.gz"
+]
+params.intervals    = "${params.genomes}/GRCh38/wgs_calling_regions.hg38.interval_list"
+params.outdir       = "results"
+
+// Align reads with BWA-MEM2, sort, mark duplicates
+process ALIGN_AND_MARKDUP {
+    tag "${sample_id}"
+    cpus 16
+    memory '32 GB'
+    container 'quay.io/biocontainers/mulled-v2-bwa-mem2-samtools:2.2.1--h5bf99c6_0'
+
+    input:
+    tuple val(sample_id), path(reads)
+    path reference
+    path reference_idx  // .fasta.fai, .dict, .bwt.2bit.64, etc.
+
+    output:
+    tuple val(sample_id), path("${sample_id}.markdup.bam"),
+          path("${sample_id}.markdup.bam.bai"),
+          path("${sample_id}.markdup_metrics.txt")
+
+    script:
+    def rg = "@RG\\tID:${sample_id}\\tSM:${sample_id}\\tPL:ILLUMINA\\tLB:${sample_id}_lib1\\tPU:flowcell.lane.${sample_id}"
+    """
+    bwa-mem2 mem \\
+        -t ${task.cpus} \\
+        -R '${rg}' \\
+        -K 100000000 \\
+        -Y \\
+        ${reference} \\
+        ${reads[0]} ${reads[1]} \\
+    | samtools sort \\
+        -@ 4 \\
+        -m 2G \\
+        -o ${sample_id}.sorted.bam \\
+        -
+
+    samtools markdup \\
+        -@ 4 \\
+        --write-index \\
+        -f ${sample_id}.markdup_metrics.txt \\
+        ${sample_id}.sorted.bam \\
+        ${sample_id}.markdup.bam
+
+    samtools index ${sample_id}.markdup.bam
+    rm ${sample_id}.sorted.bam
+    """
+}
+
+// Base Quality Score Recalibration
+process BQSR {
+    tag "${sample_id}"
+    cpus 4
+    memory '16 GB'
+    container 'broadinstitute/gatk:4.5.0.0'
+
+    input:
+    tuple val(sample_id), path(bam), path(bai), path(metrics)
+    path reference
+    path reference_idx
+    path known_sites
+    path known_sites_idx
+
+    output:
+    tuple val(sample_id), path("${sample_id}.recal.bam"),
+          path("${sample_id}.recal.bam.bai")
+
+    script:
+    def known_flags = known_sites.collect { "--known-sites $it" }.join(' ')
+    """
+    gatk BaseRecalibrator \\
+        -R ${reference} \\
+        -I ${bam} \\
+        ${known_flags} \\
+        -O ${sample_id}.recal_data.table
+
+    gatk ApplyBQSR \\
+        -R ${reference} \\
+        -I ${bam} \\
+        --bqsr-recal-file ${sample_id}.recal_data.table \\
+        -O ${sample_id}.recal.bam
+
+    samtools index ${sample_id}.recal.bam
+    """
+}
+
+// Per-sample variant calling in GVCF mode
+process HAPLOTYPE_CALLER {
+    tag "${sample_id}"
+    cpus 4
+    memory '16 GB'
+    container 'broadinstitute/gatk:4.5.0.0'
+
+    input:
+    tuple val(sample_id), path(bam), path(bai)
+    path reference
+    path reference_idx
+    path intervals
+
+    output:
+    tuple val(sample_id), path("${sample_id}.g.vcf.gz"),
+          path("${sample_id}.g.vcf.gz.tbi")
+
+    script:
+    """
+    gatk HaplotypeCaller \\
+        -R ${reference} \\
+        -I ${bam} \\
+        -L ${intervals} \\
+        -ERC GVCF \\
+        --native-pair-hmm-threads ${task.cpus} \\
+        -G StandardAnnotation \\
+        -G AS_StandardAnnotation \\
+        -O ${sample_id}.g.vcf.gz
+    """
+}
+
+// Joint genotyping across cohort
+process JOINT_GENOTYPE {
+    cpus 8
+    memory '64 GB'
+    container 'broadinstitute/gatk:4.5.0.0'
+
+    input:
+    path gvcfs        // all .g.vcf.gz files
+    path gvcf_indices // all .g.vcf.gz.tbi files
+    path reference
+    path reference_idx
+    path intervals
+
+    output:
+    tuple path("cohort.joint.vcf.gz"),
+          path("cohort.joint.vcf.gz.tbi")
+
+    script:
+    def gvcf_flags = gvcfs.collect { "-V $it" }.join(' ')
+    """
+    gatk GenomicsDBImport \\
+        ${gvcf_flags} \\
+        --genomicsdb-workspace-path genomicsdb \\
+        -L ${intervals} \\
+        --reader-threads ${task.cpus}
+
+    gatk GenotypeGVCFs \\
+        -R ${reference} \\
+        -V gendb://genomicsdb \\
+        -O cohort.joint.vcf.gz \\
+        -G StandardAnnotation \\
+        -G AS_StandardAnnotation
+    """
+}
+
+// Variant filtering (hard filters for small cohorts, VQSR for large)
+process VARIANT_FILTER {
+    cpus 4
+    memory '16 GB'
+    container 'broadinstitute/gatk:4.5.0.0'
+
+    input:
+    tuple path(vcf), path(idx)
+    path reference
+    path reference_idx
+
+    output:
+    tuple path("cohort.filtered.vcf.gz"),
+          path("cohort.filtered.vcf.gz.tbi")
+
+    script:
+    """
+    # Split SNPs and INDELs for separate filtering
+    gatk SelectVariants \\
+        -R ${reference} \\
+        -V ${vcf} \\
+        --select-type-to-include SNP \\
+        -O snps.vcf.gz
+
+    gatk VariantFiltration \\
+        -R ${reference} \\
+        -V snps.vcf.gz \\
+        --filter-expression "QD &lt; 2.0" --filter-name "LowQD" \\
+        --filter-expression "FS &gt; 60.0" --filter-name "HighFS" \\
+        --filter-expression "MQ &lt; 40.0" --filter-name "LowMQ" \\
+        --filter-expression "MQRankSum &lt; -12.5" --filter-name "LowMQRS" \\
+        --filter-expression "ReadPosRankSum &lt; -8.0" --filter-name "LowRPRS" \\
+        --filter-expression "SOR &gt; 3.0" --filter-name "HighSOR" \\
+        -O snps.filtered.vcf.gz
+
+    gatk SelectVariants \\
+        -R ${reference} \\
+        -V ${vcf} \\
+        --select-type-to-include INDEL \\
+        -O indels.vcf.gz
+
+    gatk VariantFiltration \\
+        -R ${reference} \\
+        -V indels.vcf.gz \\
+        --filter-expression "QD &lt; 2.0" --filter-name "LowQD" \\
+        --filter-expression "FS &gt; 200.0" --filter-name "HighFS" \\
+        --filter-expression "ReadPosRankSum &lt; -20.0" --filter-name "LowRPRS" \\
+        --filter-expression "SOR &gt; 10.0" --filter-name "HighSOR" \\
+        -O indels.filtered.vcf.gz
+
+    gatk MergeVcfs \\
+        -I snps.filtered.vcf.gz \\
+        -I indels.filtered.vcf.gz \\
+        -O cohort.filtered.vcf.gz
+    """
+}
+
+// Main workflow
+workflow {
+    Channel
+        .fromFilePairs(params.reads, checkIfExists: true)
+        .set { reads_ch }
+
+    ref_ch  = file(params.reference, checkIfExists: true)
+    ref_idx = file("${params.reference}.*").collect()
+    known   = params.known_sites.collect { file(it, checkIfExists: true) }
+    known_idx = params.known_sites.collect { file("${it}.tbi", checkIfExists: true) }
+    intervals = file(params.intervals, checkIfExists: true)
+
+    ALIGN_AND_MARKDUP(reads_ch, ref_ch, ref_idx)
+    BQSR(ALIGN_AND_MARKDUP.out, ref_ch, ref_idx, known, known_idx)
+    HAPLOTYPE_CALLER(BQSR.out, ref_ch, ref_idx, intervals)
+
+    // Collect all GVCFs for joint genotyping
+    gvcfs = HAPLOTYPE_CALLER.out
+        .map { sample_id, gvcf, tbi -> gvcf }
+        .collect()
+    gvcf_tbis = HAPLOTYPE_CALLER.out
+        .map { sample_id, gvcf, tbi -> tbi }
+        .collect()
+
+    JOINT_GENOTYPE(gvcfs, gvcf_tbis, ref_ch, ref_idx, intervals)
+    VARIANT_FILTER(JOINT_GENOTYPE.out, ref_ch, ref_idx)
+}</code></pre>
+
+        <p><strong>Claude Code</strong> generates this level of Nextflow pipeline with correct GATK Best Practices: proper read group formatting with all required fields (ID, SM, PL, LB, PU), BWA-MEM2 with <code>-K 100000000</code> for deterministic output and <code>-Y</code> for soft-clipping supplementary alignments, duplicate marking before BQSR, known sites matched to the reference genome build, GVCF mode for per-sample calling enabling N+1 scalability, GenomicsDBImport for efficient joint genotyping, and separate hard filters for SNPs and INDELs with GATK-recommended thresholds. It also understands when to use VQSR (large cohorts with 30+ samples of the same type) versus hard filters (small cohorts or non-model organisms where training resources are unavailable).</p>
+
+        <p><strong>Copilot</strong> generates the individual BWA-MEM and GATK commands but frequently omits read group formatting (producing BAMs that GATK refuses to process), skips BQSR entirely (producing unrecalibrated quality scores that inflate variant quality), and does not understand the GVCF/GenomicsDB/GenotypeGVCFs joint genotyping pattern (instead suggesting per-sample variant calling that does not handle reference confidence properly). <strong>Cursor</strong> performs well when working within an existing nf-core pipeline workspace, autocompleting Nextflow processes that match the project&rsquo;s conventions and container specifications. <strong>Windsurf</strong> generates basic shell scripts rather than proper Nextflow workflows, missing the reproducibility benefits of containerized DAG execution. <strong>Gemini CLI</strong> explains variant calling theory thoroughly &mdash; the mathematics of the pair-HMM, the Bayesian genotype likelihood model, the VQSR Gaussian mixture model &mdash; but its generated Nextflow code mixes DSL1 and DSL2 syntax and does not handle channel operators correctly. <strong>Amazon Q</strong> generates reasonable AWS Batch configurations for running GATK but the bioinformatics-specific parts (BQSR known sites, filter thresholds, GVCF mode) are often incomplete.</p>
+
+        <h2>RNA-Seq &amp; Differential Expression</h2>
+
+        <p>RNA-Seq analysis requires a fundamentally different statistical framework than DNA variant calling. The input is read counts per gene (or transcript), which follow a negative binomial distribution &mdash; not a normal distribution, not a Poisson distribution. The negative binomial captures both the technical variability (Poisson-like, from sampling) and the biological variability (overdispersion between biological replicates). DESeq2 estimates a dispersion parameter for each gene using empirical Bayes shrinkage: genes with few replicates borrow information from genes with similar mean expression, pulling extreme dispersion estimates toward a fitted trend. This shrinkage is essential &mdash; without it, genes with high variance by chance would never be called significant, and genes with low variance by chance would be called significant too often. The design formula (<code>~ batch + condition</code>) specifies the experimental model, and getting it wrong invalidates the entire analysis. Including batch effects when they exist removes technical confounders; omitting them inflates the residual variance and kills statistical power. Including batch effects when they do not exist wastes degrees of freedom.</p>
+
+        <p>Here is a complete DESeq2 analysis in R showing proper normalization, dispersion estimation, and results extraction.</p>
+
+<pre><code># ============================================================
+# RNA-Seq Differential Expression Analysis with DESeq2
+# ============================================================
+
+library(DESeq2)
+library(ggplot2)
+library(pheatmap)
+library(EnhancedVolcano)
+
+# --- Load count matrix and sample metadata ---
+# counts: genes x samples integer matrix (raw counts, NOT normalized)
+counts &lt;- read.csv("featureCounts_matrix.csv", row.names = 1)
+coldata &lt;- read.csv("sample_metadata.csv", row.names = 1)
+
+# Ensure sample order matches between counts and metadata
+stopifnot(all(colnames(counts) == rownames(coldata)))
+
+# --- Pre-filtering: remove genes with very low counts ---
+# Keep genes with at least 10 counts across all samples
+# This reduces multiple testing burden without biasing results
+keep &lt;- rowSums(counts) &gt;= 10
+counts &lt;- counts[keep, ]
+cat(sprintf("Genes before filtering: %d, after: %d\n",
+            length(keep), sum(keep)))
+
+# --- Create DESeqDataSet with proper design formula ---
+# Design: ~ batch + condition
+# batch accounts for technical confounders (sequencing run, library prep)
+# condition is the variable of interest (treatment vs control)
+# Order matters: the LAST variable is the one tested by default
+dds &lt;- DESeqDataSetFromMatrix(
+    countData = counts,
+    colData   = coldata,
+    design    = ~ batch + condition
+)
+
+# Set reference level for condition factor
+dds$condition &lt;- relevel(dds$condition, ref = "control")
+
+# --- Run DESeq2 pipeline ---
+# This performs: size factor estimation, dispersion estimation,
+# negative binomial GLM fitting, and Wald test
+dds &lt;- DESeq(dds)
+
+# --- Dispersion plot: verify shrinkage is working ---
+plotDispEsts(dds)
+# Good: gene-wise estimates (black dots) are shrunk toward the
+# fitted trend (red line). Final estimates (blue dots) between.
+# Bad: if all dots are far from the trend, the model is wrong.
+
+# --- Extract results with log2 fold change shrinkage ---
+# apeglm shrinkage produces more accurate LFC estimates,
+# especially for genes with low counts or high dispersion.
+# DO NOT use unshrunken LFC for ranking or visualization.
+res &lt;- lfcShrink(
+    dds,
+    coef    = "condition_treatment_vs_control",
+    type    = "apeglm",
+    lfcThreshold = 0  # test against LFC = 0
+)
+
+# --- Summary of results ---
+summary(res, alpha = 0.05)
+
+# --- Multiple testing: Benjamini-Hochberg FDR ---
+# padj is already BH-adjusted. NEVER use raw p-values (pvalue column)
+# for calling significance. The FDR threshold is typically 0.05 or 0.01.
+sig_genes &lt;- subset(res, padj &lt; 0.05 &amp; abs(log2FoldChange) &gt; 1)
+cat(sprintf("Significant DE genes (|LFC| &gt; 1, FDR &lt; 0.05): %d\n",
+            nrow(sig_genes)))
+
+# --- MA Plot: log2FC vs mean expression ---
+plotMA(res, ylim = c(-5, 5), alpha = 0.05)
+# Blue dots = significant genes. Should be symmetric around y=0.
+# Asymmetry suggests normalization problems or global expression shift.
+
+# --- Volcano Plot ---
+EnhancedVolcano(
+    as.data.frame(res),
+    lab         = rownames(res),
+    x           = "log2FoldChange",
+    y           = "padj",
+    pCutoff     = 0.05,
+    FCcutoff    = 1.0,
+    title       = "Treatment vs Control",
+    subtitle    = "DESeq2 with apeglm shrinkage"
+)
+
+# --- Heatmap of top DE genes ---
+# Use variance-stabilized counts for visualization, NOT raw counts
+# and NOT TPM/FPKM (which are for cross-gene comparison, not DE)
+vsd &lt;- vst(dds, blind = FALSE)
+
+top_genes &lt;- head(
+    rownames(res[order(res$padj), ]),
+    30
+)
+mat &lt;- assay(vsd)[top_genes, ]
+mat &lt;- mat - rowMeans(mat)  # center by gene mean
+
+pheatmap(
+    mat,
+    annotation_col = coldata[, c("condition", "batch")],
+    scale          = "none",  # already centered
+    clustering_distance_rows = "correlation",
+    clustering_distance_cols = "correlation",
+    show_rownames  = TRUE,
+    fontsize_row   = 8
+)
+
+# --- Batch effect assessment ---
+# PCA of variance-stabilized counts, colored by condition and batch
+plotPCA(vsd, intgroup = c("condition", "batch"))
+
+# If PC1 separates by batch instead of condition, batch correction
+# is essential. Options:
+# 1. Include batch in DESeq2 design (already done above)
+# 2. For visualization only: limma::removeBatchEffect on vsd
+# 3. For severe batch effects: ComBat-seq on raw counts BEFORE DESeq2
+
+# --- Export results ---
+res_df &lt;- as.data.frame(res)
+res_df$gene_id &lt;- rownames(res_df)
+write.csv(
+    res_df[order(res_df$padj), ],
+    "deseq2_results.csv",
+    row.names = FALSE
+)</code></pre>
+
+        <p><strong>Claude Code</strong> generates DESeq2 analyses that use the correct statistical framework: negative binomial GLM with empirical Bayes dispersion shrinkage, apeglm log2 fold change shrinkage (not the deprecated &ldquo;normal&rdquo; shrinkage), proper design formula with batch correction, and Benjamini-Hochberg adjusted p-values for significance. It understands that raw counts go into DESeq2 (not TPM, not FPKM, not RPKM), that variance-stabilized transformation (VST) or rlog is used for visualization and clustering (not for differential testing), and that the design matrix must include known confounders.</p>
+
+        <p><strong>Copilot</strong> generates syntactically correct DESeq2 code but makes statistical errors: it frequently suggests using TPM or FPKM as input to DESeq2 (which invalidates the negative binomial model because normalized values are no longer counts), omits the <code>lfcShrink</code> step (using unshrunken estimates that are noisy for low-count genes), and sometimes suggests filtering by raw p-values instead of adjusted p-values. <strong>Cursor</strong> autocompletes DESeq2 code well when working in a project that already has Bioconductor analyses, leveraging the existing code patterns and object types (DESeqDataSet, DESeqResults, SummarizedExperiment). <strong>Windsurf</strong> struggles with R in general and Bioconductor in particular &mdash; it suggests t-tests on normalized expression values, which are statistically inappropriate for count data and do not account for the mean-variance relationship. <strong>Gemini CLI</strong> excels at explaining the DESeq2 statistical model in detail (the negative binomial parameterization, the Cox-Reid adjusted profile likelihood for dispersion estimation, the Wald test statistic) and can help you choose the right design formula for complex experimental designs (nested factors, split-plot designs, interaction terms). <strong>Amazon Q</strong> generates generic R data analysis code without Bioconductor-specific knowledge.</p>
+
+        <h2>Structural Bioinformatics &amp; Protein Analysis</h2>
+
+        <p>Structural bioinformatics operates on three-dimensional atomic coordinates of macromolecules &mdash; proteins, nucleic acids, and their complexes. The Protein Data Bank (PDB) contains over 220,000 experimentally determined structures (X-ray crystallography, cryo-EM, NMR), and AlphaFold2&rsquo;s database adds 200+ million predicted structures. Analysis tasks include parsing PDB/mmCIF files to extract atomic coordinates and metadata, calculating RMSD (root mean square deviation) between structures to measure structural similarity, generating Ramachandran plots to validate backbone dihedral angles (phi/psi), computing contact maps to identify residue-residue interactions, identifying binding sites and ligand interactions, and preparing systems for molecular dynamics simulations. The coordinate systems, unit cell parameters (for crystal structures), chain identifiers, alternate conformations (altloc), occupancy, B-factors (atomic displacement parameters), and the distinction between asymmetric unit and biological assembly all require domain-specific knowledge that general-purpose coding tools lack.</p>
+
+<pre><code># ============================================================
+# Protein Structure Analysis with BioPython
+# ============================================================
+
+import numpy as np
+import matplotlib.pyplot as plt
+from Bio.PDB import PDBParser, Superimposer, DSSP, NeighborSearch
+from Bio.PDB.Polypeptide import is_aa, three_to_one
+from Bio.PDB.vectors import calc_dihedral
+import warnings
+warnings.filterwarnings('ignore', category=Bio.PDB.PDBExceptions.PDBConstructionWarning)
+
+# --- Parse PDB structure ---
+parser = PDBParser(QUIET=True)
+structure = parser.get_structure("protein", "1abc.pdb")
+model = structure[0]  # First model (NMR may have multiple)
+
+# --- Extract backbone dihedral angles (Ramachandran) ---
+def compute_ramachandran(model):
+    """Compute phi/psi angles for all residues in all chains."""
+    phi_psi = []
+    for chain in model:
+        polypeptides = []
+        residues = [r for r in chain if is_aa(r, standard=True)]
+        for i, res in enumerate(residues):
+            try:
+                # Phi: C(i-1) - N(i) - CA(i) - C(i)
+                # Psi: N(i) - CA(i) - C(i) - N(i+1)
+                n  = res['N'].get_vector()
+                ca = res['CA'].get_vector()
+                c  = res['C'].get_vector()
+
+                phi = None
+                psi = None
+
+                if i &gt; 0:
+                    prev_c = residues[i-1]['C'].get_vector()
+                    phi = calc_dihedral(prev_c, n, ca, c)
+
+                if i &lt; len(residues) - 1:
+                    next_n = residues[i+1]['N'].get_vector()
+                    psi = calc_dihedral(n, ca, c, next_n)
+
+                if phi is not None and psi is not None:
+                    phi_psi.append((
+                        np.degrees(phi),
+                        np.degrees(psi),
+                        res.get_resname(),
+                        chain.id,
+                        res.id[1]
+                    ))
+            except KeyError:
+                continue  # Missing backbone atoms
+    return phi_psi
+
+rama = compute_ramachandran(model)
+phi_vals = [r[0] for r in rama]
+psi_vals = [r[1] for r in rama]
+
+# --- Ramachandran Plot ---
+fig, ax = plt.subplots(figsize=(8, 8))
+ax.scatter(phi_vals, psi_vals, s=3, alpha=0.6, c='steelblue')
+ax.set_xlim(-180, 180)
+ax.set_ylim(-180, 180)
+ax.set_xlabel('Phi (degrees)')
+ax.set_ylabel('Psi (degrees)')
+ax.set_title('Ramachandran Plot')
+ax.axhline(y=0, color='gray', linewidth=0.5)
+ax.axvline(x=0, color='gray', linewidth=0.5)
+ax.set_aspect('equal')
+plt.tight_layout()
+plt.savefig('ramachandran.png', dpi=150)
+
+# --- RMSD between two structures (after optimal superimposition) ---
+def compute_rmsd(structure1_path, structure2_path, chain_id='A'):
+    """Compute RMSD between two structures using CA atoms."""
+    s1 = parser.get_structure("s1", structure1_path)
+    s2 = parser.get_structure("s2", structure2_path)
+
+    # Extract CA atoms from specified chain
+    atoms1 = [r['CA'] for r in s1[0][chain_id]
+              if is_aa(r, standard=True) and 'CA' in r]
+    atoms2 = [r['CA'] for r in s2[0][chain_id]
+              if is_aa(r, standard=True) and 'CA' in r]
+
+    # Structures must have same number of atoms for superimposition
+    min_len = min(len(atoms1), len(atoms2))
+    atoms1 = atoms1[:min_len]
+    atoms2 = atoms2[:min_len]
+
+    sup = Superimposer()
+    sup.set_atoms(atoms1, atoms2)
+    sup.apply(s2[0].get_atoms())
+
+    return sup.rms
+
+rmsd = compute_rmsd("structure_apo.pdb", "structure_holo.pdb")
+print(f"CA RMSD after superimposition: {rmsd:.2f} Angstroms")
+
+# --- Contact Map ---
+def compute_contact_map(model, chain_id='A', threshold=8.0):
+    """Compute residue-residue contact map using CB atoms (CA for GLY)."""
+    chain = model[chain_id]
+    residues = [r for r in chain if is_aa(r, standard=True)]
+    n = len(residues)
+    contact_map = np.zeros((n, n), dtype=float)
+
+    for i, res_i in enumerate(residues):
+        atom_i = res_i['CB'] if 'CB' in res_i else res_i['CA']
+        for j, res_j in enumerate(residues):
+            if j &lt;= i:
+                continue
+            atom_j = res_j['CB'] if 'CB' in res_j else res_j['CA']
+            dist = atom_i - atom_j  # BioPython overloads '-' for distance
+            contact_map[i][j] = dist
+            contact_map[j][i] = dist
+
+    return contact_map, residues
+
+cmap, residues = compute_contact_map(model, chain_id='A')
+
+fig, ax = plt.subplots(figsize=(10, 10))
+im = ax.imshow(cmap, cmap='viridis_r', vmin=0, vmax=20)
+ax.set_xlabel('Residue index')
+ax.set_ylabel('Residue index')
+ax.set_title('Residue Contact Map (CB-CB distance)')
+plt.colorbar(im, label='Distance (Angstroms)')
+plt.tight_layout()
+plt.savefig('contact_map.png', dpi=150)
+
+# --- Binding site identification ---
+def find_binding_residues(model, chain_id='A', ligand_chain='A',
+                          ligand_resname='ATP', distance_cutoff=4.5):
+    """Find protein residues within distance_cutoff of a ligand."""
+    chain = model[chain_id]
+
+    # Collect ligand atoms
+    ligand_atoms = []
+    for res in model[ligand_chain]:
+        if res.get_resname() == ligand_resname:
+            ligand_atoms.extend(res.get_atoms())
+
+    if not ligand_atoms:
+        raise ValueError(f"No ligand {ligand_resname} found")
+
+    # Collect protein atoms
+    protein_atoms = []
+    for res in chain:
+        if is_aa(res, standard=True):
+            protein_atoms.extend(res.get_atoms())
+
+    # NeighborSearch for efficient spatial queries
+    ns = NeighborSearch(protein_atoms)
+
+    binding_residues = set()
+    for lig_atom in ligand_atoms:
+        nearby = ns.search(lig_atom.get_vector().get_array(),
+                          distance_cutoff, level='R')
+        for res in nearby:
+            if is_aa(res, standard=True):
+                binding_residues.add((
+                    res.get_resname(),
+                    res.id[1],
+                    chain_id
+                ))
+
+    return sorted(binding_residues, key=lambda x: x[1])
+
+binding = find_binding_residues(model, ligand_resname='ATP')
+print("Binding site residues:")
+for resname, resid, chain in binding:
+    print(f"  {chain}:{three_to_one(resname)}{resid}")</code></pre>
+
+        <p><strong>Claude Code</strong> generates structurally correct BioPython PDB analysis code: proper handling of alternate conformations, the distinction between CA and CB atoms (CB for all amino acids except glycine, which uses CA), correct dihedral angle calculation using BioPython&rsquo;s <code>calc_dihedral</code>, optimal superimposition with the Superimposer class before RMSD calculation (not naive RMSD without alignment), and efficient spatial queries using NeighborSearch with KD-tree. It understands the PDB format&rsquo;s quirks: HETATM records for ligands, multiple models in NMR structures, insertion codes in residue numbering, and the difference between asymmetric unit and biological assembly.</p>
+
+        <p><strong>Copilot</strong> generates basic PDB parsing code but frequently calculates RMSD without superimposition (producing meaninglessly inflated values), uses CA atoms uniformly instead of CB (losing side-chain position information for contact maps), and does not handle missing atoms or alternate conformations. <strong>Cursor</strong> works well when the project already contains structural analysis scripts, autocompleting from existing patterns. <strong>Windsurf</strong> produces generic Python coordinate manipulation code without BioPython PDB-specific APIs. <strong>Gemini CLI</strong> explains structural biology concepts thoroughly (the Ramachandran allowed regions, why proline and glycine have distinctive phi/psi distributions, the meaning of B-factors, the resolution dependence of structural features) and can discuss AlphaFold2&rsquo;s architecture (Evoformer, structure module, recycling) in detail, making it excellent for understanding the theory behind structural analysis. <strong>Amazon Q</strong> has minimal structural bioinformatics capabilities.</p>
+
+        <h2>Phylogenetics &amp; Evolutionary Analysis</h2>
+
+        <p>Phylogenetic analysis reconstructs the evolutionary relationships between sequences (DNA, RNA, or protein) by inferring a tree that explains the observed patterns of sequence divergence. The pipeline begins with multiple sequence alignment (MSA) using tools like MAFFT (fastest for large datasets, supports progressive and iterative refinement), MUSCLE (accurate for smaller datasets), or ClustalOmega (good for protein sequences). The choice of alignment algorithm affects all downstream analysis &mdash; a misaligned region introduces false homology that distorts tree inference and dN/dS calculations. After alignment, the substitution model must be selected: for nucleotides, the GTR+G+I model (general time-reversible with gamma-distributed rate variation and invariant sites) is the most general, but simpler models (HKY, TN93, JC69) may be preferred by model selection criteria (AIC, BIC) to avoid overfitting. For proteins, empirical matrices (WAG, LG, JTT) capture the exchangeability between amino acids based on observed substitution patterns. Tree inference methods range from distance-based (neighbor-joining, fast but statistically inconsistent for complex models) through maximum likelihood (RAxML-NG, IQ-TREE &mdash; statistically consistent, computationally intensive) to Bayesian inference (MrBayes, BEAST &mdash; provides posterior probabilities but requires convergence diagnostics).</p>
+
+<pre><code># ============================================================
+# Phylogenetic Pipeline: MSA, Model Selection, Tree Inference
+# ============================================================
+
+import subprocess
+import os
+from Bio import SeqIO, AlignIO, Phylo
+from Bio.Phylo.TreeConstruction import DistanceCalculator, DistanceTreeConstructor
+from io import StringIO
+
+# --- Step 1: Multiple Sequence Alignment with MAFFT ---
+def run_mafft(input_fasta, output_aln, algorithm="auto"):
+    """
+    Run MAFFT alignment.
+    algorithm options:
+      'auto'     - MAFFT selects based on input size
+      'linsi'    - L-INS-i (accurate, slow, &lt;200 seqs)
+      'ginsi'    - G-INS-i (global, accurate)
+      'einsi'    - E-INS-i (for sequences with long gaps)
+      'fftns2'   - FFT-NS-2 (fast, &gt;2000 seqs)
+    """
+    cmd = ["mafft", "--thread", "-1"]  # auto-detect threads
+    if algorithm == "linsi":
+        cmd.extend(["--localpair", "--maxiterate", "1000"])
+    elif algorithm == "ginsi":
+        cmd.extend(["--globalpair", "--maxiterate", "1000"])
+    elif algorithm == "einsi":
+        cmd.extend(["--genafpair", "--maxiterate", "1000"])
+    elif algorithm == "fftns2":
+        cmd.extend(["--retree", "2"])
+    # else: auto
+
+    cmd.append(input_fasta)
+
+    with open(output_aln, 'w') as out_f:
+        result = subprocess.run(cmd, stdout=out_f, stderr=subprocess.PIPE,
+                                check=True, text=True)
+    return output_aln
+
+# --- Step 2: Trim alignment (remove poorly aligned regions) ---
+def run_trimal(input_aln, output_trimmed, method="automated1"):
+    """
+    Trim alignment with trimAl.
+    automated1: heuristic method for ML tree inference
+    gappyout: remove columns with too many gaps
+    """
+    cmd = ["trimal",
+           "-in", input_aln,
+           "-out", output_trimmed,
+           f"-{method}"]
+    subprocess.run(cmd, check=True, capture_output=True, text=True)
+    return output_trimmed
+
+# --- Step 3: Model selection with IQ-TREE ModelFinder ---
+def run_modelfinder(alignment, output_prefix):
+    """
+    Run IQ-TREE ModelFinder for automatic model selection.
+    Tests substitution models and selects by BIC.
+    Returns best model string.
+    """
+    cmd = ["iqtree2",
+           "-s", alignment,
+           "--prefix", output_prefix,
+           "-m", "MFP",       # ModelFinder Plus
+           "-T", "AUTO",      # auto-detect threads
+           "--safe"]           # safe numerical mode
+    result = subprocess.run(cmd, check=True, capture_output=True, text=True)
+
+    # Parse best model from .iqtree output
+    with open(f"{output_prefix}.iqtree") as f:
+        for line in f:
+            if "Best-fit model:" in line:
+                return line.split(":")[-1].strip().split()[0]
+    raise RuntimeError("Could not parse best model from IQ-TREE output")
+
+# --- Step 4: Maximum likelihood tree with IQ-TREE ---
+def run_iqtree(alignment, model, output_prefix, bootstraps=1000):
+    """
+    Run IQ-TREE with ultrafast bootstrap (UFBoot2).
+    UFBoot values &gt;= 95 are considered well-supported.
+    Standard bootstrap (&gt;= 70) uses -b instead of -B.
+    """
+    cmd = ["iqtree2",
+           "-s", alignment,
+           "--prefix", output_prefix,
+           "-m", model,
+           "-B", str(bootstraps),    # UFBoot2
+           "--alrt", "1000",         # SH-aLRT test
+           "-T", "AUTO",
+           "--safe"]
+    subprocess.run(cmd, check=True, capture_output=True, text=True)
+    return f"{output_prefix}.treefile"
+
+# --- Step 5: Parse and visualize tree ---
+def visualize_tree(treefile, output_png):
+    """Read Newick tree and create basic visualization."""
+    tree = Phylo.read(treefile, "newick")
+
+    # Midpoint rooting (if no outgroup specified)
+    tree.root_at_midpoint()
+
+    fig, ax = plt.subplots(figsize=(12, 8))
+    Phylo.draw(tree, axes=ax, do_show=False)
+    ax.set_title("Maximum Likelihood Phylogeny (IQ-TREE + UFBoot2)")
+    plt.tight_layout()
+    plt.savefig(output_png, dpi=150, bbox_inches='tight')
+
+# --- Step 6: dN/dS analysis (for coding sequences) ---
+def compute_dnds_codeml(alignment_phy, tree_nwk, output_dir):
+    """
+    Set up PAML codeml for dN/dS (omega) estimation.
+    Model 0: single omega for entire tree
+    Model 1: nearly neutral (omega: 0 and 1)
+    Model 2: positive selection (omega: 0, 1, and &gt;1)
+    Compare M1a vs M2a with likelihood ratio test for positive selection.
+    """
+    # codeml control file for Model 0 (one-ratio)
+    ctl_m0 = f"""
+      seqfile  = {alignment_phy}
+      treefile = {tree_nwk}
+      outfile  = {output_dir}/m0_results.txt
+      noisy    = 0
+      verbose  = 0
+      runmode  = 0        * 0: user tree
+      seqtype  = 1        * 1: codons
+      CodonFreq = 2       * F3x4
+      model    = 0        * one omega for all branches
+      NSsites  = 0        * one omega for all sites
+      fix_omega = 0
+      omega    = 0.4      * initial omega
+    """
+
+    ctl_path = os.path.join(output_dir, "codeml_m0.ctl")
+    with open(ctl_path, 'w') as f:
+        f.write(ctl_m0)
+
+    subprocess.run(["codeml", ctl_path], cwd=output_dir,
+                   check=True, capture_output=True)
+    return os.path.join(output_dir, "m0_results.txt")
+
+
+# --- Run full pipeline ---
+import matplotlib.pyplot as plt
+
+input_seqs = "sequences.fasta"
+
+# Align
+aln = run_mafft(input_seqs, "aligned.fasta", algorithm="linsi")
+
+# Trim
+trimmed = run_trimal(aln, "aligned.trimmed.fasta")
+
+# Model selection
+best_model = run_modelfinder(trimmed, "modelfinder")
+print(f"Best substitution model (BIC): {best_model}")
+
+# Tree inference
+treefile = run_iqtree(trimmed, best_model, "ml_tree", bootstraps=1000)
+print(f"Tree written to: {treefile}")
+
+# Visualize
+visualize_tree(treefile, "phylogeny.png")</code></pre>
+
+        <p><strong>Claude Code</strong> generates phylogenetic pipelines with correct methodology: MAFFT algorithm selection based on dataset size (L-INS-i for fewer than 200 sequences, FFT-NS-2 for thousands), alignment trimming before tree inference (untrimmed alignments with gaps introduce noise), model selection with BIC (not just using GTR+G blindly, which may overfit), ultrafast bootstrap with the correct interpretation (UFBoot2 values above 95 are well-supported, unlike standard bootstrap where 70 is the threshold), and proper rooting strategies (midpoint rooting when no outgroup is available, outgroup rooting when one is). It also understands dN/dS analysis: the distinction between site models (M0, M1a, M2a, M7, M8), branch models (free-ratio), and branch-site models (model A) in PAML, and the likelihood ratio tests used to detect positive selection.</p>
+
+        <p><strong>Copilot</strong> generates basic tree visualization code (using ete3 or Bio.Phylo) but does not understand the upstream methodology &mdash; it skips alignment trimming, does not suggest model selection, and uses default parameters for IQ-TREE without bootstrapping. <strong>Cursor</strong> works from existing phylogenetics project context. <strong>Windsurf</strong> and <strong>Amazon Q</strong> have minimal phylogenetics capabilities. <strong>Gemini CLI</strong> explains phylogenetic concepts excellently &mdash; the meaning of branch lengths (expected substitutions per site), the difference between cladograms and phylograms, the assumptions of different substitution models, and why long-branch attraction is a problem for maximum parsimony &mdash; but its code generation for PAML control files and IQ-TREE parameter selection is inconsistent.</p>
+
+        <h2>Pipeline Development (Nextflow/Snakemake)</h2>
+
+        <p>Bioinformatics pipelines are the production infrastructure of genomics labs. A single whole-genome sequencing analysis involves 10&ndash;20 distinct computational steps, each with its own software, container image, resource requirements, and failure modes. Nextflow DSL2 has become the community standard (nf-core provides 90+ peer-reviewed pipelines), but Snakemake remains widely used in academic settings. The key challenge is not writing individual tool commands &mdash; it is orchestrating them into reproducible, scalable workflows that handle failures gracefully, manage resources efficiently, and run identically on a laptop, an HPC cluster, and a cloud environment. Nextflow&rsquo;s channel operators (map, filter, collect, groupTuple, join, branch, combine) define the data flow between processes, and getting them wrong produces silent data loss (a sample dropped from a channel), incorrect sample-to-file associations (samples paired with wrong reference files), or deadlocks (a process waiting for input that never arrives because a channel was consumed by another process).</p>
+
+        <p>Here is a Snakemake pipeline for a common bioinformatics task, showing the alternative workflow language with its own patterns.</p>
+
+<pre><code># ============================================================
+# Snakemake Pipeline: RNA-Seq Quantification
+# ============================================================
+# Snakefile
+
+import pandas as pd
+
+# --- Configuration ---
+configfile: "config.yaml"
+
+# Load sample sheet
+samples = pd.read_csv(config["samples"]).set_index("sample_id")
+SAMPLES = samples.index.tolist()
+
+# --- Targets ---
+rule all:
+    input:
+        "results/multiqc/multiqc_report.html",
+        "results/counts/gene_counts_matrix.tsv",
+        expand("results/salmon/{sample}/quant.sf", sample=SAMPLES)
+
+# --- Quality Control ---
+rule fastp:
+    input:
+        r1 = lambda wc: samples.loc[wc.sample, "fastq_r1"],
+        r2 = lambda wc: samples.loc[wc.sample, "fastq_r2"]
+    output:
+        r1 = "results/trimmed/{sample}_R1.fastq.gz",
+        r2 = "results/trimmed/{sample}_R2.fastq.gz",
+        html = "results/qc/fastp/{sample}.html",
+        json = "results/qc/fastp/{sample}.json"
+    threads: 4
+    resources:
+        mem_mb = 8000
+    container:
+        "docker://quay.io/biocontainers/fastp:0.23.4--hadf994f_0"
+    log:
+        "logs/fastp/{sample}.log"
+    shell:
+        """
+        fastp \
+            --in1 {input.r1} \
+            --in2 {input.r2} \
+            --out1 {output.r1} \
+            --out2 {output.r2} \
+            --html {output.html} \
+            --json {output.json} \
+            --thread {threads} \
+            --detect_adapter_for_pe \
+            --qualified_quality_phred 20 \
+            --length_required 50 \
+            2&gt; {log}
+        """
+
+# --- STAR Alignment ---
+rule star_align:
+    input:
+        r1 = "results/trimmed/{sample}_R1.fastq.gz",
+        r2 = "results/trimmed/{sample}_R2.fastq.gz",
+        idx = config["star_index"]
+    output:
+        bam = "results/star/{sample}/Aligned.sortedByCoord.out.bam",
+        log_final = "results/star/{sample}/Log.final.out",
+        sj = "results/star/{sample}/SJ.out.tab"
+    threads: 12
+    resources:
+        mem_mb = 40000
+    container:
+        "docker://quay.io/biocontainers/star:2.7.11b--h5ca1c30_0"
+    params:
+        outdir = "results/star/{sample}/"
+    log:
+        "logs/star/{sample}.log"
+    shell:
+        """
+        STAR \
+            --runThreadN {threads} \
+            --genomeDir {input.idx} \
+            --readFilesIn {input.r1} {input.r2} \
+            --readFilesCommand zcat \
+            --outSAMtype BAM SortedByCoordinate \
+            --outFileNamePrefix {params.outdir} \
+            --outSAMattributes NH HI AS NM MD \
+            --quantMode GeneCounts \
+            --twopassMode Basic \
+            --limitBAMsortRAM {resources.mem_mb}000000 \
+            2&gt; {log}
+
+        samtools index {output.bam}
+        """
+
+# --- featureCounts ---
+rule featurecounts:
+    input:
+        bams = expand("results/star/{sample}/Aligned.sortedByCoord.out.bam",
+                       sample=SAMPLES),
+        gtf = config["gtf"]
+    output:
+        counts = "results/counts/gene_counts_matrix.tsv",
+        summary = "results/counts/gene_counts_matrix.tsv.summary"
+    threads: 8
+    resources:
+        mem_mb = 16000
+    container:
+        "docker://quay.io/biocontainers/subread:2.0.6--he4a0461_0"
+    log:
+        "logs/featurecounts.log"
+    shell:
+        """
+        featureCounts \
+            -T {threads} \
+            -p --countReadPairs \
+            -a {input.gtf} \
+            -s 2 \
+            -o {output.counts} \
+            {input.bams} \
+            2&gt; {log}
+        """
+
+# --- Salmon pseudo-alignment (alternative quantification) ---
+rule salmon_quant:
+    input:
+        r1 = "results/trimmed/{sample}_R1.fastq.gz",
+        r2 = "results/trimmed/{sample}_R2.fastq.gz",
+        idx = config["salmon_index"]
+    output:
+        "results/salmon/{sample}/quant.sf"
+    threads: 8
+    resources:
+        mem_mb = 16000
+    container:
+        "docker://quay.io/biocontainers/salmon:1.10.3--h6dccd9a_1"
+    params:
+        outdir = "results/salmon/{sample}"
+    log:
+        "logs/salmon/{sample}.log"
+    shell:
+        """
+        salmon quant \
+            -i {input.idx} \
+            -l A \
+            -1 {input.r1} \
+            -2 {input.r2} \
+            --threads {threads} \
+            --validateMappings \
+            --gcBias \
+            --seqBias \
+            -o {params.outdir} \
+            2&gt; {log}
+        """
+
+# --- MultiQC ---
+rule multiqc:
+    input:
+        expand("results/qc/fastp/{sample}.json", sample=SAMPLES),
+        expand("results/star/{sample}/Log.final.out", sample=SAMPLES),
+        "results/counts/gene_counts_matrix.tsv.summary",
+        expand("results/salmon/{sample}/quant.sf", sample=SAMPLES)
+    output:
+        "results/multiqc/multiqc_report.html"
+    container:
+        "docker://quay.io/biocontainers/multiqc:1.21--pyhdfd78af_0"
+    params:
+        outdir = "results/multiqc"
+    log:
+        "logs/multiqc.log"
+    shell:
+        """
+        multiqc \
+            results/ \
+            -o {params.outdir} \
+            --force \
+            2&gt; {log}
+        """</code></pre>
+
+        <p><strong>Claude Code</strong> generates both Nextflow DSL2 and Snakemake pipelines with correct patterns. For Snakemake, it understands: wildcard constraints, lambda functions for input lookups from sample sheets, proper expand() usage in rule all for defining targets, container directives for reproducibility, resource management (threads, mem_mb) for HPC submission, and log file capture for debugging. For Nextflow DSL2, it understands channel operators (groupTuple for sample-level aggregation, collect for cohort-level steps, join for combining channels by key, branch for conditional routing), process directives (cpus, memory, container, publishDir, errorStrategy), and workflow composition (subworkflows, module includes from nf-core). It also understands the critical difference between <code>-resume</code> behavior in Nextflow (hash-based caching of completed processes) and Snakemake&rsquo;s file-based DAG resolution (output file timestamps determine what needs rerunning).</p>
+
+        <p><strong>Cursor</strong> excels at pipeline development when working within an nf-core or Snakemake project &mdash; it indexes all the existing modules, processes, and rules, and autocompletes new steps that match the project&rsquo;s conventions. This is Cursor&rsquo;s strongest bioinformatics use case. <strong>Copilot</strong> generates individual Nextflow processes or Snakemake rules but struggles with channel operator composition (the map/groupTuple/join chains that route data between processes) and often produces DSL1 Nextflow syntax instead of the current DSL2 standard. <strong>Windsurf</strong> generates basic Snakemake rules but does not handle complex wildcard patterns, config file integration, or cluster profile configuration. <strong>Gemini CLI</strong> can explain Nextflow&rsquo;s dataflow model in detail but its generated channel operator chains frequently have type mismatches or consume channels that are needed by multiple downstream processes. <strong>Amazon Q</strong> generates reasonable AWS Batch executor configurations for Nextflow but the pipeline logic itself is weak.</p>
+
+        <h2>Single-Cell Analysis (scRNA-seq)</h2>
+
+        <p>Single-cell RNA-Seq analysis has exploded in complexity since 10x Genomics made it routine to profile hundreds of thousands of cells in a single experiment. The analysis pipeline begins with Cell Ranger output (filtered gene-barcode matrix in MEX or HDF5 format), proceeds through quality control (filtering dead cells, doublets, and low-quality libraries), normalization (library size normalization, log transformation, or scran pooling), highly variable gene selection (to reduce dimensionality), principal component analysis (PCA on HVGs), neighborhood graph construction (k-NN in PCA space), clustering (Leiden or Louvain community detection), dimensionality reduction for visualization (UMAP or t-SNE), and marker gene identification (Wilcoxon rank-sum test, logistic regression, or MAST hurdle model). Each step has parameters that dramatically affect results: the mitochondrial percentage threshold for QC (5%? 10%? 20%? &mdash; it depends on tissue type), the number of HVGs (2000? 5000?), the number of PCs (determined by elbow plot or JackStraw), the resolution parameter for Leiden clustering (higher resolution = more clusters), and the test used for marker gene detection (Wilcoxon is fast but assumes independence between genes; MAST accounts for the bimodal expression distribution in single-cell data).</p>
+
+<pre><code># ============================================================
+# scRNA-seq Analysis Pipeline with Scanpy
+# ============================================================
+
+import scanpy as sc
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+import scrublet as scr
+
+sc.settings.verbosity = 3
+sc.settings.set_figure_params(dpi=100, frameon=False)
+sc.logging.print_header()
+
+# --- Load 10x Cell Ranger output ---
+adata = sc.read_10x_h5("filtered_feature_bc_matrix.h5")
+adata.var_names_make_unique()  # Handle duplicate gene names
+print(f"Loaded: {adata.n_obs} cells x {adata.n_vars} genes")
+
+# --- Doublet Detection with Scrublet ---
+# Run BEFORE filtering to ensure accurate simulation
+scrub = scr.Scrublet(adata.X, expected_doublet_rate=0.06)
+doublet_scores, predicted_doublets = scrub.scrub_doublets(
+    min_counts=2,
+    min_cells=3,
+    min_gene_variability_pctl=85,
+    n_prin_comps=30
+)
+adata.obs['doublet_score'] = doublet_scores
+adata.obs['predicted_doublet'] = predicted_doublets
+print(f"Predicted doublets: {predicted_doublets.sum()} "
+      f"({100*predicted_doublets.mean():.1f}%)")
+
+# --- Quality Control ---
+# Calculate QC metrics
+adata.var['mt'] = adata.var_names.str.startswith('MT-')  # human
+adata.var['ribo'] = adata.var_names.str.startswith(('RPS', 'RPL'))
+sc.pp.calculate_qc_metrics(
+    adata, qc_vars=['mt', 'ribo'],
+    percent_top=None, log1p=False, inplace=True
+)
+
+# Visualize QC metrics before filtering
+fig, axes = plt.subplots(1, 4, figsize=(20, 4))
+sc.pl.violin(adata, 'n_genes_by_counts', ax=axes[0], show=False)
+sc.pl.violin(adata, 'total_counts', ax=axes[1], show=False)
+sc.pl.violin(adata, 'pct_counts_mt', ax=axes[2], show=False)
+sc.pl.violin(adata, 'doublet_score', ax=axes[3], show=False)
+plt.tight_layout()
+plt.savefig('qc_before_filter.png', dpi=150)
+
+# Apply QC filters
+# These thresholds are tissue-dependent and should be adjusted
+n_before = adata.n_obs
+adata = adata[
+    (adata.obs['n_genes_by_counts'] &gt; 200) &amp;
+    (adata.obs['n_genes_by_counts'] &lt; 6000) &amp;
+    (adata.obs['total_counts'] &gt; 500) &amp;
+    (adata.obs['pct_counts_mt'] &lt; 15) &amp;
+    (~adata.obs['predicted_doublet'])
+].copy()
+print(f"Cells after QC: {adata.n_obs} (removed {n_before - adata.n_obs})")
+
+# Filter genes expressed in very few cells
+sc.pp.filter_genes(adata, min_cells=10)
+
+# --- Normalization ---
+# Store raw counts for differential expression later
+adata.layers['counts'] = adata.X.copy()
+
+# Library size normalization + log1p
+sc.pp.normalize_total(adata, target_sum=1e4)
+sc.pp.log1p(adata)
+
+# Store normalized counts
+adata.raw = adata
+
+# --- Highly Variable Genes ---
+sc.pp.highly_variable_genes(
+    adata,
+    n_top_genes=3000,
+    flavor='seurat_v3',  # uses raw counts for HVG selection
+    layer='counts',
+    batch_key='sample'   # if multiple samples, find HVGs per batch
+)
+print(f"Highly variable genes: {adata.var['highly_variable'].sum()}")
+
+# Subset to HVGs for dimensionality reduction
+adata = adata[:, adata.var['highly_variable']].copy()
+
+# --- Regress out confounders and scale ---
+sc.pp.regress_out(adata, ['total_counts', 'pct_counts_mt'])
+sc.pp.scale(adata, max_value=10)
+
+# --- PCA ---
+sc.tl.pca(adata, n_comps=50, svd_solver='arpack')
+
+# Determine number of PCs (elbow plot)
+sc.pl.pca_variance_ratio(adata, n_pcs=50, log=True)
+plt.savefig('pca_elbow.png', dpi=150)
+# Typically use 20-30 PCs based on elbow
+
+n_pcs = 30  # adjust based on elbow plot
+
+# --- Batch Integration (if multiple samples) ---
+# Option 1: Harmony (fast, good for moderate batch effects)
+# import harmonypy
+# sc.external.pp.harmony_integrate(adata, key='sample')
+# use_rep = 'X_pca_harmony'
+
+# Option 2: scVI (deep learning, strongest for severe batch effects)
+# import scvi
+# scvi.model.SCVI.setup_anndata(adata, layer='counts', batch_key='sample')
+# model = scvi.model.SCVI(adata)
+# model.train()
+# adata.obsm['X_scVI'] = model.get_latent_representation()
+# use_rep = 'X_scVI'
+
+use_rep = 'X_pca'  # no batch correction for single sample
+
+# --- Neighborhood Graph + Clustering ---
+sc.pp.neighbors(adata, n_pcs=n_pcs, n_neighbors=15, use_rep=use_rep)
+
+# Leiden clustering at multiple resolutions
+for res in [0.3, 0.5, 0.8, 1.0, 1.5]:
+    sc.tl.leiden(adata, resolution=res, key_added=f'leiden_{res}')
+print(f"Clusters at resolution 0.8: "
+      f"{adata.obs['leiden_0.8'].nunique()}")
+
+# --- UMAP ---
+sc.tl.umap(adata, min_dist=0.3)
+
+# Visualize clusters
+fig, axes = plt.subplots(1, 3, figsize=(18, 5))
+sc.pl.umap(adata, color='leiden_0.5', ax=axes[0],
+           title='Leiden 0.5', show=False)
+sc.pl.umap(adata, color='leiden_0.8', ax=axes[1],
+           title='Leiden 0.8', show=False)
+sc.pl.umap(adata, color='leiden_1.0', ax=axes[2],
+           title='Leiden 1.0', show=False)
+plt.tight_layout()
+plt.savefig('umap_clusters.png', dpi=150)
+
+# --- Marker Gene Detection ---
+sc.tl.rank_genes_groups(
+    adata,
+    groupby='leiden_0.8',
+    method='wilcoxon',
+    pts=True,  # include percentage of cells expressing
+    key_added='markers'
+)
+
+# Visualize top markers per cluster
+sc.pl.rank_genes_groups_dotplot(
+    adata, n_genes=5, key='markers',
+    groupby='leiden_0.8'
+)
+plt.savefig('marker_dotplot.png', dpi=150, bbox_inches='tight')
+
+# --- Cell Type Annotation (manual with known markers) ---
+marker_genes = {
+    'T cells':      ['CD3D', 'CD3E', 'CD8A', 'CD4'],
+    'B cells':      ['CD19', 'MS4A1', 'CD79A'],
+    'NK cells':     ['NKG7', 'GNLY', 'KLRD1'],
+    'Monocytes':    ['CD14', 'LYZ', 'S100A8'],
+    'DC':           ['FCER1A', 'CST3', 'CLEC10A'],
+    'Platelets':    ['PPBP', 'PF4']
+}
+sc.pl.dotplot(adata, marker_genes, groupby='leiden_0.8')
+plt.savefig('celltype_markers.png', dpi=150, bbox_inches='tight')
+
+# --- Trajectory Inference (PAGA) ---
+sc.tl.paga(adata, groups='leiden_0.8')
+sc.pl.paga(adata, threshold=0.03, show=False)
+plt.savefig('paga.png', dpi=150)
+
+# Initialize UMAP with PAGA for better global topology
+sc.tl.umap(adata, init_pos='paga')
+
+# --- Save processed object ---
+adata.write('processed_adata.h5ad', compression='gzip')
+print(f"Saved: {adata.n_obs} cells, {adata.n_vars} genes, "
+      f"{adata.obs['leiden_0.8'].nunique()} clusters")</code></pre>
+
+        <p><strong>Claude Code</strong> generates complete scanpy workflows with critical details that other tools miss: running Scrublet for doublet detection before QC filtering (running it after filtering changes the expected doublet rate and reduces accuracy), using <code>flavor='seurat_v3'</code> for HVG selection on raw counts (more robust than the default flavor on normalized data), storing raw counts in <code>adata.layers['counts']</code> for later use by differential expression and batch integration methods that expect counts, Leiden clustering at multiple resolutions (not hardcoding a single resolution, because the optimal value depends on the biological question and the expected number of cell types), and PAGA for trajectory inference with PAGA-initialized UMAP for better global topology preservation. It also understands when to use different batch integration methods: Harmony for moderate batch effects with fast runtime, scVI for severe batch effects or atlas-level integration across different technologies, and bbknn as a lightweight alternative that operates on the neighborhood graph rather than the embedding.</p>
+
+        <p><strong>Copilot</strong> generates basic scanpy pipelines that follow the tutorial workflow but miss critical nuances: it uses default QC thresholds without noting they are tissue-dependent (brain tissue has higher mitochondrial content than PBMCs), omits doublet detection entirely, uses a single clustering resolution, and does not store raw counts for differential expression. <strong>Cursor</strong> excels in existing single-cell analysis projects, autocompleting from the project&rsquo;s established patterns and AnnData column names. <strong>Windsurf</strong> produces minimal scanpy code that skips most QC steps. <strong>Gemini CLI</strong> can explain the statistical foundations of single-cell analysis (why the negative binomial is appropriate for UMI counts, why UMAP preserves local but not global structure, why Leiden is preferred over Louvain for community detection) but its scanpy code generation sometimes references deprecated APIs or mishandles AnnData slicing (views vs copies). <strong>Amazon Q</strong> does not generate meaningful single-cell analysis code.</p>
+
+        <h2>Clinical Genomics &amp; Annotation</h2>
+
+        <p>Clinical genomics translates variant calls into actionable medical information. The pipeline takes a filtered VCF from variant calling, annotates each variant with functional consequences (VEP or SnpEff), population frequencies (gnomAD), clinical significance (ClinVar), and predicted pathogenicity (CADD, REVEL, AlphaMissense), then applies ACMG/AMP criteria to classify variants as Pathogenic, Likely Pathogenic, Uncertain Significance (VUS), Likely Benign, or Benign. This is not academic &mdash; these classifications go into clinical reports that inform treatment decisions. A false negative (missing a pathogenic variant in BRCA1) means a cancer predisposition goes undetected. A false positive (classifying a benign variant as pathogenic) leads to unnecessary anxiety, additional testing, or prophylactic surgery. The American College of Medical Genetics (ACMG) framework uses 28 evidence criteria (PVS1, PS1&ndash;PS4, PM1&ndash;PM6, PP1&ndash;PP5, BA1, BS1&ndash;BS4, BP1&ndash;BP7) that combine to determine the classification, and automating these criteria correctly requires deep understanding of gene-disease relationships, variant consequence types, allele frequency thresholds, and computational pathogenicity predictors.</p>
+
+<pre><code># ============================================================
+# Clinical Variant Annotation and Filtering Pipeline
+# ============================================================
+
+import cyvcf2
+import pandas as pd
+import requests
+import json
+from typing import Optional, Dict, List, Tuple
+
+class ClinicalVariantAnnotator:
+    """
+    Annotate and filter variants for clinical genomics.
+    Follows ACMG/AMP guidelines for variant classification.
+    """
+
+    # gnomAD population frequency thresholds
+    GNOMAD_BENIGN_AF = 0.05      # BA1: allele frequency &gt; 5%
+    GNOMAD_COMMON_AF = 0.01      # BS1: allele frequency &gt; 1%
+    GNOMAD_RARE_AF   = 0.0001   # PM2: absent or extremely rare
+
+    # Actionable gene lists
+    ACMG_SF_V3_GENES = [
+        'BRCA1', 'BRCA2', 'TP53', 'MLH1', 'MSH2', 'MSH6',
+        'PMS2', 'APC', 'MUTYH', 'RB1', 'MEN1', 'RET', 'VHL',
+        'SDHB', 'SDHD', 'TSC1', 'TSC2', 'WT1', 'NF2', 'PTEN',
+        'STK11', 'BMPR1A', 'SMAD4', 'KCNQ1', 'KCNH2', 'SCN5A',
+        'LMNA', 'MYBPC3', 'MYH7', 'TNNT2', 'TNNI3', 'TPM1',
+        'MYL3', 'ACTC1', 'MYL2', 'MYH11', 'ACTA2', 'TGFBR1',
+        'TGFBR2', 'SMAD3', 'FBN1', 'COL3A1', 'FLNC', 'APOB',
+        'LDLR', 'PCSK9', 'GLA', 'OTC', 'ATP7B', 'GAA',
+        'RPE65', 'CACNA1A', 'HFE', 'BTD', 'CASQ2', 'RYR2',
+        'PKP2', 'DSP', 'DSC2', 'TMEM43', 'DSG2', 'TRDN',
+        'TTN', 'PLN', 'DES', 'BAG3', 'FLNC', 'RYR1',
+        'PALB2', 'CHEK2', 'ATM'
+    ]
+
+    def __init__(self, vcf_path: str):
+        self.vcf = cyvcf2.VCF(vcf_path)
+        self.variants = []
+
+    def parse_vep_annotation(self, csq_string: str) -&gt; Dict:
+        """Parse VEP CSQ annotation field."""
+        fields = csq_string.split('|')
+        # Standard VEP CSQ field order (depends on VEP run config)
+        return {
+            'allele':       fields[0],
+            'consequence':  fields[1],
+            'impact':       fields[2],
+            'symbol':       fields[3],
+            'gene':         fields[4],
+            'feature_type': fields[5],
+            'feature':      fields[6],
+            'biotype':      fields[7],
+            'exon':         fields[8],
+            'intron':       fields[9],
+            'hgvsc':        fields[10],
+            'hgvsp':        fields[11],
+            'cdna_pos':     fields[12],
+            'cds_pos':      fields[13],
+            'protein_pos':  fields[14],
+            'amino_acids':  fields[15],
+            'codons':       fields[16],
+            'existing_var': fields[17],
+            'gnomad_af':    self._parse_float(fields[18]),
+            'cadd_phred':   self._parse_float(fields[19]),
+            'revel':        self._parse_float(fields[20]),
+            'clinvar_sig':  fields[21] if len(fields) &gt; 21 else '',
+            'clinvar_id':   fields[22] if len(fields) &gt; 22 else '',
+            'sift':         fields[23] if len(fields) &gt; 23 else '',
+            'polyphen':     fields[24] if len(fields) &gt; 24 else '',
+        }
+
+    @staticmethod
+    def _parse_float(val: str) -&gt; Optional[float]:
+        try:
+            return float(val) if val and val != '.' else None
+        except ValueError:
+            return None
+
+    def apply_frequency_filter(self, ann: Dict) -&gt; str:
+        """
+        Apply ACMG frequency-based criteria.
+        BA1: AF &gt; 5% in any population = stand-alone benign
+        BS1: AF &gt; 1% = strong benign
+        PM2: absent or &lt; 0.01% = supporting pathogenic
+        """
+        af = ann.get('gnomad_af')
+        if af is None:
+            return 'PM2_supporting'  # absent from gnomAD
+        if af &gt; self.GNOMAD_BENIGN_AF:
+            return 'BA1_benign'
+        if af &gt; self.GNOMAD_COMMON_AF:
+            return 'BS1_strong_benign'
+        if af &lt; self.GNOMAD_RARE_AF:
+            return 'PM2_supporting'
+        return 'neutral'
+
+    def assess_consequence_severity(self, ann: Dict) -&gt; List[str]:
+        """
+        Evaluate variant consequence for ACMG criteria.
+        PVS1: null variant in gene where LOF is known mechanism
+        PS1:  same amino acid change as established pathogenic
+        PM4:  protein length change (in-frame indel)
+        PM5:  novel missense at same position as pathogenic
+        PP3:  computational evidence supports deleterious
+        BP1:  missense in gene where truncating is mechanism
+        BP4:  computational evidence suggests benign
+        BP7:  silent variant with no splicing impact
+        """
+        criteria = []
+        consequence = ann.get('consequence', '')
+
+        # PVS1: Loss-of-function variants
+        lof_consequences = {
+            'frameshift_variant', 'stop_gained',
+            'splice_donor_variant', 'splice_acceptor_variant',
+            'start_lost', 'transcript_ablation'
+        }
+        if any(c in consequence for c in lof_consequences):
+            criteria.append('PVS1_very_strong')
+
+        # PP3/BP4: Computational predictions
+        cadd = ann.get('cadd_phred')
+        revel = ann.get('revel')
+        if 'missense_variant' in consequence:
+            if revel is not None:
+                if revel &gt; 0.7:
+                    criteria.append('PP3_supporting')
+                elif revel &lt; 0.15:
+                    criteria.append('BP4_supporting')
+            elif cadd is not None:
+                if cadd &gt; 25:
+                    criteria.append('PP3_supporting')
+                elif cadd &lt; 15:
+                    criteria.append('BP4_supporting')
+
+        # BP7: synonymous with no splice impact
+        if ('synonymous_variant' in consequence and
+            'splice' not in consequence):
+            criteria.append('BP7_supporting')
+
+        # PM4: in-frame insertions/deletions
+        if ('inframe_insertion' in consequence or
+            'inframe_deletion' in consequence):
+            criteria.append('PM4_moderate')
+
+        return criteria
+
+    def classify_variant(self, criteria: List[str],
+                         freq_class: str) -&gt; str:
+        """
+        Combine ACMG criteria into final classification.
+        Simplified rules (full ACMG has 28 criteria combinations).
+        """
+        if freq_class == 'BA1_benign':
+            return 'Benign'
+
+        pvs = sum(1 for c in criteria if 'PVS' in c)
+        ps  = sum(1 for c in criteria if 'PS' in c or
+                  'strong' in c.lower())
+        pm  = sum(1 for c in criteria if 'PM' in c or
+                  'moderate' in c.lower())
+        pp  = sum(1 for c in criteria if 'PP' in c or
+                  'supporting' in c.lower() and 'BP' not in c)
+        bs  = sum(1 for c in criteria if 'BS' in c)
+        bp  = sum(1 for c in criteria if 'BP' in c)
+
+        # Pathogenic rules
+        if pvs &gt;= 1 and (ps &gt;= 1 or pm &gt;= 2 or
+                          (pm &gt;= 1 and pp &gt;= 1) or pp &gt;= 2):
+            return 'Pathogenic'
+        if ps &gt;= 2:
+            return 'Pathogenic'
+
+        # Likely Pathogenic
+        if pvs &gt;= 1 and pm &gt;= 1:
+            return 'Likely Pathogenic'
+        if ps &gt;= 1 and (pm &gt;= 1 or pm &gt;= 2):
+            return 'Likely Pathogenic'
+        if ps &gt;= 1 and pp &gt;= 2:
+            return 'Likely Pathogenic'
+
+        # Benign rules
+        if freq_class == 'BS1_strong_benign' and bp &gt;= 1:
+            return 'Likely Benign'
+        if bs &gt;= 2:
+            return 'Benign'
+        if bs &gt;= 1 and bp &gt;= 1:
+            return 'Likely Benign'
+        if bp &gt;= 2:
+            return 'Likely Benign'
+
+        return 'VUS'
+
+    def annotate_and_filter(self) -&gt; pd.DataFrame:
+        """Run full annotation and classification pipeline."""
+        results = []
+
+        for variant in self.vcf:
+            # Skip non-PASS variants
+            if variant.FILTER is not None and variant.FILTER != 'PASS':
+                continue
+
+            # Parse VEP annotations (CSQ field)
+            csq = variant.INFO.get('CSQ')
+            if csq is None:
+                continue
+
+            for csq_entry in csq.split(','):
+                ann = self.parse_vep_annotation(csq_entry)
+
+                # Skip non-protein-coding transcripts
+                if ann['biotype'] != 'protein_coding':
+                    continue
+
+                # Apply frequency filter
+                freq_class = self.apply_frequency_filter(ann)
+
+                # Skip common variants (BA1)
+                if freq_class == 'BA1_benign':
+                    continue
+
+                # Assess consequence severity
+                criteria = self.assess_consequence_severity(ann)
+
+                # Add frequency criterion
+                if 'PM2' in freq_class:
+                    criteria.append(freq_class)
+
+                # Classify
+                classification = self.classify_variant(
+                    criteria, freq_class)
+
+                # Check if in ACMG secondary findings gene list
+                in_acmg_sf = ann['symbol'] in self.ACMG_SF_V3_GENES
+
+                results.append({
+                    'chrom':          variant.CHROM,
+                    'pos':            variant.POS,
+                    'ref':            variant.REF,
+                    'alt':            ','.join(variant.ALT),
+                    'gene':           ann['symbol'],
+                    'consequence':    ann['consequence'],
+                    'hgvsp':          ann['hgvsp'],
+                    'hgvsc':          ann['hgvsc'],
+                    'gnomad_af':      ann['gnomad_af'],
+                    'cadd_phred':     ann['cadd_phred'],
+                    'revel':          ann['revel'],
+                    'clinvar_sig':    ann['clinvar_sig'],
+                    'acmg_criteria':  ';'.join(criteria),
+                    'classification': classification,
+                    'acmg_sf_gene':   in_acmg_sf
+                })
+
+        df = pd.DataFrame(results)
+
+        # Sort: Pathogenic first, then Likely Pathogenic, then VUS
+        order = {'Pathogenic': 0, 'Likely Pathogenic': 1,
+                 'VUS': 2, 'Likely Benign': 3, 'Benign': 4}
+        df['sort_key'] = df['classification'].map(order)
+        df = df.sort_values('sort_key').drop('sort_key', axis=1)
+
+        return df
+
+# --- Run pipeline ---
+annotator = ClinicalVariantAnnotator("sample.vep_annotated.vcf.gz")
+results = annotator.annotate_and_filter()
+
+# Report summary
+print(f"Total annotated variants: {len(results)}")
+print(f"Pathogenic:        {(results['classification'] == 'Pathogenic').sum()}")
+print(f"Likely Pathogenic: {(results['classification'] == 'Likely Pathogenic').sum()}")
+print(f"VUS:               {(results['classification'] == 'VUS').sum()}")
+print(f"ACMG SF genes:     {results['acmg_sf_gene'].sum()}")
+
+# Export clinical report
+results.to_csv("clinical_report.csv", index=False)
+
+# Separate actionable variants
+actionable = results[
+    results['classification'].isin(['Pathogenic', 'Likely Pathogenic'])
+]
+actionable.to_csv("actionable_variants.csv", index=False)</code></pre>
+
+        <p><strong>Claude Code</strong> generates clinical variant annotation pipelines with ACMG-aware classification logic: correct allele frequency thresholds (BA1 at 5%, not an arbitrary cutoff), proper loss-of-function consequence types (frameshift, stop gained, canonical splice site, start lost &mdash; but not all missense), computational pathogenicity predictor thresholds (REVEL above 0.7 for supporting pathogenic, CADD above 25 as a secondary predictor), and the combinatorial rules that translate individual evidence criteria into final classifications (PVS1 + PM2 = Likely Pathogenic, two strong criteria = Pathogenic). It understands the ACMG secondary findings gene list (SF v3.2, currently 81 genes) and can flag variants in these genes for mandatory reporting regardless of the primary indication. It also understands the limitations of automated classification &mdash; many criteria (PS1, PS3, PM1, PP1, PP4) require clinical judgment that cannot be fully automated.</p>
+
+        <p><strong>Copilot</strong> generates VCF parsing code with cyvcf2 but has no understanding of ACMG criteria, allele frequency thresholds, or the clinical significance of variant consequences. It treats variant annotation as a string parsing exercise rather than a clinical classification problem. <strong>Cursor</strong> can work effectively within existing clinical genomics codebases that already implement ACMG criteria. <strong>Windsurf</strong> and <strong>Amazon Q</strong> have no meaningful clinical genomics capabilities, though Amazon Q does understand HIPAA-related data handling for clinical data stored in AWS. <strong>Gemini CLI</strong> can discuss the ACMG/AMP framework in detail &mdash; explaining each of the 28 criteria, their evidence levels, and how they combine &mdash; and can help with pharmacogenomics concepts (star allele calling for CYP2D6, CPIC guideline interpretation, PharmGKB evidence levels), but its code generation for clinical variant classification is incomplete and should not be used without thorough review by a clinical geneticist.</p>
+
+        <h2>Cost Model: What Bioinformatics Engineers Actually Pay</h2>
+
+        <h3>Scenario 1: Graduate Student &mdash; $0</h3>
+        <ul>
+          <li><strong>Copilot Free</strong> for basic Python/R scripting, pysam/cyvcf2 boilerplate, and Bioconductor code completion</li>
+          <li><strong>Gemini CLI Free</strong> (1M context) for discussing bioinformatics papers, understanding statistical methods, and working through analysis decisions (which normalization method, which variant caller, which multiple testing correction)</li>
+          <li>A graduate student writing their first RNA-Seq pipeline or variant calling workflow needs help understanding why DESeq2 uses a negative binomial model, what BQSR actually does to quality scores, or why you cannot use FPKM for cross-sample comparison. Gemini CLI handles these conceptual questions with its large context window &mdash; paste the Methods section of a paper and ask it to explain each step. Copilot handles the coding mechanics. Neither produces production-quality clinical code, but graduate students are learning methodology, not shipping clinical pipelines.</li>
+        </ul>
+
+        <h3>Scenario 2: Postdoc / Research Scientist &mdash; $20/month</h3>
+        <ul>
+          <li><strong>Claude Code</strong> ($20/mo) for writing correct statistical analyses (DESeq2 design formulas, scanpy QC pipelines, phylogenetic model selection), building Nextflow/Snakemake pipelines, and debugging complex bioinformatics workflows</li>
+          <li>A postdoc running an independent project needs to build pipelines that produce publishable results. The difference between Claude Code and the free tools is statistical correctness: Claude Code understands that you need apeglm shrinkage in DESeq2, that Scrublet should run before QC filtering in scanpy, that VQSR requires 30+ exomes for training, and that the GTR+G model may overfit your 50-sequence alignment. These are the mistakes that reviewers catch and that invalidate results. At $20/month, this is the highest-value investment a bioinformatics postdoc can make.</li>
+        </ul>
+
+        <h3>Scenario 3: Core Facility Bioinformatician &mdash; $20&ndash;$40/month</h3>
+        <ul>
+          <li><strong>Claude Code</strong> ($20/mo) for building and maintaining production pipelines that serve multiple research groups</li>
+          <li>Optional: <strong>Cursor Pro</strong> ($20/mo) for navigating large codebases with dozens of Nextflow modules, shared libraries, and lab-specific configurations</li>
+          <li>A core facility bioinformatician runs the same pipelines (WGS variant calling, RNA-Seq, scRNA-seq, ChIP-Seq) for dozens of labs with different organisms, library preparation protocols, and analysis requirements. The value is in maintaining reproducible pipelines that adapt to each project&rsquo;s specifics: different reference genomes, different QC thresholds for different tissue types, different statistical models for different experimental designs. Cursor&rsquo;s codebase indexing becomes valuable when the facility has a large shared codebase with reusable modules.</li>
+        </ul>
+
+        <h3>Scenario 4: Biotech Startup &mdash; $40/month</h3>
+        <ul>
+          <li><strong>Claude Code</strong> ($20/mo) for building novel analysis methods, integrating proprietary data sources, and developing custom variant interpretation logic</li>
+          <li>Plus <strong>Cursor Pro</strong> ($20/mo) for navigating the startup&rsquo;s growing codebase across Python, R, Nextflow, and infrastructure-as-code</li>
+          <li>A biotech startup building a computational biology platform needs to move fast while maintaining scientific rigor. The codebase spans pipeline orchestration (Nextflow), statistical analysis (R/Bioconductor), data engineering (Python/pandas), web services (API endpoints for internal tools), and cloud infrastructure (AWS/GCP). Claude Code handles the domain-specific biology and statistics. Cursor handles codebase-wide navigation and refactoring across languages.</li>
+        </ul>
+
+        <h3>Scenario 5: Pharmaceutical Company &mdash; $60&ndash;$80/seat</h3>
+        <ul>
+          <li><strong>Copilot Enterprise</strong> ($39/mo) or <strong>Cursor Business</strong> ($40/mo) for team-wide code indexing, consistent coding standards across the bioinformatics group, and enterprise security controls</li>
+          <li>Plus <strong>Claude Code</strong> ($20/mo) for complex analysis design &mdash; novel biomarker discovery pipelines, multi-omics integration, pharmacogenomics interpretation</li>
+          <li>A pharmaceutical company&rsquo;s bioinformatics team (10&ndash;50 people) works on drug target identification, clinical trial biomarker analysis, and companion diagnostic development. Enterprise tiers provide codebase-wide consistency (naming conventions for Nextflow modules, standardized QC metrics, shared utility libraries) and audit logging for regulatory compliance. Claude Code supplements with domain expertise for novel analyses that go beyond standard pipelines.</li>
+        </ul>
+
+        <h3>Scenario 6: Clinical Genomics Lab &mdash; $99/seat (enterprise)</h3>
+        <ul>
+          <li><strong>Copilot Enterprise</strong> ($39/mo) or <strong>Cursor Business</strong> ($40/mo) with enterprise security, data residency controls, and audit logging for CAP/CLIA compliance</li>
+          <li>Plus <strong>Claude Code</strong> ($20/mo) for ACMG variant classification logic, clinical reporting templates, and pharmacogenomics interpretation</li>
+          <li>Plus <strong>Amazon Q Developer</strong> ($19/mo or enterprise tier) if the clinical data infrastructure runs on AWS (HIPAA-eligible services, encrypted S3/RDS, CloudTrail audit logs)</li>
+          <li>Clinical genomics labs producing diagnostic reports for patients operate under CAP/CLIA accreditation, which requires validation of every computational step, audit trails for every analysis, and documentation of every software version change. Enterprise tiers with access controls and logging are not optional &mdash; they are regulatory requirements. The total per-seat cost ($60&ndash;$99) is trivial compared to the cost of a misclassified variant in a clinical report, which can result in incorrect treatment decisions, liability, and accreditation issues.</li>
+        </ul>
+
+        <h2>The Bioinformatics Engineer&rsquo;s Verdict</h2>
+
+        <p>AI coding tools in 2026 are useful for bioinformatics boilerplate &mdash; pysam iteration patterns, DESeq2 code structure, scanpy workflow scaffolding, Nextflow process templates, and VCF parsing logic &mdash; and dangerous when they produce statistically invalid analyses or biologically nonsensical results with confident-sounding code. The unique challenge of bioinformatics is that incorrect code often produces plausible-looking output: a DESeq2 analysis with raw p-values instead of adjusted p-values still produces a gene list, a variant calling pipeline without BQSR still produces a VCF, and a scanpy workflow without doublet detection still produces clusters. The errors are silent, statistical, and only detectable if you understand the domain. An AI tool that generates bioinformatics code without understanding the underlying statistics and biology is not a time-saver &mdash; it is a reproducibility risk.</p>
+
+        <p>Claude Code is the strongest tool for bioinformatics work that requires domain knowledge. It generates statistically correct DESeq2 analyses (negative binomial, shrinkage estimators, proper multiple testing correction), complete GATK Best Practices pipelines (read groups, BQSR, GVCF mode, joint genotyping), correct scanpy workflows (doublet detection before QC, tissue-appropriate thresholds, batch integration), ACMG-aware variant classification, and proper Nextflow DSL2 with container directives and resource management. No other tool consistently gets the biology and statistics right. Cursor is the best tool for navigating large bioinformatics codebases &mdash; nf-core pipelines with dozens of modules, shared institutional pipelines with hundreds of files across Python, R, and Nextflow, and Bioconductor projects with complex object hierarchies. Gemini CLI is valuable for understanding methods &mdash; paste a paper&rsquo;s Methods section and discuss the statistical approach, compare normalization methods, or work through the mathematics of a variant calling model.</p>
+
+        <p>The right workflow for bioinformatics: use AI to generate the pipeline structure and boilerplate (Nextflow process definitions, Snakemake rules, pysam iteration, DESeq2 setup), then carefully review every statistical decision (which model, which test, which correction, which threshold), every biological assumption (which transcripts, which gene models, which annotation database version), and every reproducibility detail (container versions, reference genome build, parameter documentation). Never trust AI-generated allele frequency thresholds, significance cutoffs, or variant classifications without verifying them against the current ACMG guidelines, gnomAD version, and ClinVar release. The cost of a wrong answer in bioinformatics is not a bug report &mdash; it is a retracted paper, a missed diagnosis, or a failed clinical trial.</p>
+
+        <p>Compare all tools and pricing on our <a href="/" style="color:var(--accent)">main comparison table</a>, or check the <a href="/blog/cheapest-ai-coding-tool-2026.html" style="color:var(--accent)">cheapest tools guide</a> for budget options.</p>
+
+        <h2>Related on CodeCosts</h2>
+        <ul>
+          <li><a href="/blog/ai-coding-tools-for-data-scientists-2026.html" style="color:var(--accent)">AI Coding Tools for Data Scientists (2026)</a> &mdash; Jupyter notebooks, pandas, sklearn, and ML pipeline workflows</li>
+          <li><a href="/blog/ai-coding-tools-for-ml-engineers-2026.html" style="color:var(--accent)">AI Coding Tools for ML Engineers (2026)</a> &mdash; model training, fine-tuning, MLOps, and deployment</li>
+          <li><a href="/blog/ai-coding-tools-for-academics-researchers-2026.html" style="color:var(--accent)">AI Coding Tools for Academics &amp; Researchers (2026)</a> &mdash; research computing, paper writing, reproducible analysis</li>
+          <li><a href="/blog/ai-coding-tools-for-data-engineers-2026.html" style="color:var(--accent)">AI Coding Tools for Data Engineers (2026)</a> &mdash; ETL pipelines, data warehousing, orchestration</li>
+        </ul>
+      </div>
+    </article>
+
+    <!-- Related Posts -->
+    <section class="card">
+      <h3>Related Posts</h3>
+      <div class="blog-list" style="margin-top:1rem">
+        <a href="/blog/ai-coding-tools-for-data-scientists-2026.html" class="blog-post-card">
+          <h3>AI Coding Tools for Data Scientists 2026: Jupyter, pandas &amp; ML Pipeline Guide</h3>
+          <div class="blog-meta"><span>March 28, 2026</span><span>15 min read</span></div>
+          <p class="blog-excerpt">Every AI coding tool evaluated for data science workflows. Jupyter notebook support, pandas and numpy autocompletion, ML pipeline development, and the best stacks from $0 to $40/mo.</p>
+          <span class="read-more">Read more &rarr;</span>
+        </a>
+        <a href="/blog/ai-coding-tools-for-ml-engineers-2026.html" class="blog-post-card">
+          <h3>AI Coding Tools for ML Engineers 2026: Training, Fine-Tuning, MLOps &amp; Deployment Guide</h3>
+          <div class="blog-meta"><span>March 27, 2026</span><span>22 min read</span></div>
+          <p class="blog-excerpt">Every AI coding tool evaluated for machine learning engineering. Model training, fine-tuning, MLOps pipelines, and production deployment from $0 to enterprise.</p>
+          <span class="read-more">Read more &rarr;</span>
+        </a>
+        <a href="/blog/ai-coding-tools-for-academics-researchers-2026.html" class="blog-post-card">
+          <h3>AI Coding Tools for Academics &amp; Researchers 2026: Research Computing &amp; Reproducible Analysis Guide</h3>
+          <div class="blog-meta"><span>March 28, 2026</span><span>20 min read</span></div>
+          <p class="blog-excerpt">Every AI coding tool evaluated for academic research. Reproducible analysis, statistical computing, paper writing workflows, and research computing from $0 to institutional licensing.</p>
+          <span class="read-more">Read more &rarr;</span>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>CodeCosts &mdash; Independent AI coding tool price tracker. Updated March 2026.</p>
+      <p style="margin-top:0.5rem"><a href="/" style="color:var(--accent)">Compare all tools</a> &middot; <a href="/blog/" style="color:var(--accent)">Blog</a> &middot; <a href="/blog/feed.xml" style="color:var(--accent)">RSS</a></p>
+    </div>
+  </footer>
+</body>
+</html>

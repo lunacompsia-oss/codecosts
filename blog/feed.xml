@@ -9,6 +9,14 @@
     <atom:link href="https://codecosts.pages.dev/blog/feed.xml" rel="self" type="application/rss+xml"/>
 
     <item>
+      <title>AI Coding Tools for Bioinformatics Engineers 2026: Genomics, Sequence Alignment, Protein Structure, Phylogenetics &amp; Pipeline Development Guide</title>
+      <link>https://codecosts.pages.dev/blog/ai-coding-tools-for-bioinformatics-engineers-2026.html</link>
+      <description>The bioinformatics engineer's guide to AI coding tools in 2026. Sequence alignment, variant calling, RNA-Seq, protein structure analysis, phylogenetics, Nextflow/Snakemake pipelines, single-cell analysis, and clinical genomics.</description>
+      <pubDate>Sun, 29 Mar 2026 23:59:00 GMT</pubDate>
+      <guid>https://codecosts.pages.dev/blog/ai-coding-tools-for-bioinformatics-engineers-2026.html</guid>
+    </item>
+
+    <item>
       <title>AI Coding Tools for Robotics Engineers 2026: ROS 2, Motion Planning, Sensor Fusion, SLAM &amp; Real-Time Control Guide</title>
       <link>https://codecosts.pages.dev/blog/ai-coding-tools-for-robotics-engineers-2026.html</link>
       <description>The robotics engineer's guide to AI coding tools in 2026. ROS 2 development, motion planning, inverse kinematics, sensor fusion, SLAM, real-time control, simulation integration, and hardware drivers.</description>

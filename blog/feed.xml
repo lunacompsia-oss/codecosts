@@ -9,6 +9,14 @@
     <atom:link href="https://codecosts.pages.dev/blog/feed.xml" rel="self" type="application/rss+xml"/>
 
     <item>
+      <title>AI Coding Tools for Localization &amp; i18n Engineers 2026: ICU MessageFormat, CLDR, Unicode, BiDi/RTL, Plural Rules, Translation Pipelines &amp; Internationalization Guide</title>
+      <link>https://codecosts.pages.dev/blog/ai-coding-tools-for-localization-i18n-engineers-2026.html</link>
+      <description>The localization/i18n engineer's guide to AI coding tools in 2026. ICU MessageFormat, CLDR plural rules, Unicode handling, BiDi/RTL layout, locale-aware formatting, translation pipelines, and pseudo-localization.</description>
+      <pubDate>Sun, 29 Mar 2026 23:59:00 GMT</pubDate>
+      <guid>https://codecosts.pages.dev/blog/ai-coding-tools-for-localization-i18n-engineers-2026.html</guid>
+    </item>
+
+    <item>
       <title>AI Coding Tools for ERP/SAP Engineers 2026: ABAP, Fiori/UI5, SAP BTP, RFC/BAPI Integration, Data Migration &amp; Enterprise Customization Guide</title>
       <link>https://codecosts.pages.dev/blog/ai-coding-tools-for-erp-sap-engineers-2026.html</link>
       <description>The ERP/SAP engineer's guide to AI coding tools in 2026. ABAP development, Fiori/UI5 frontends, SAP BTP/CAP, RFC/BAPI integration, S/4HANA data migration, and enterprise workflow automation.</description>

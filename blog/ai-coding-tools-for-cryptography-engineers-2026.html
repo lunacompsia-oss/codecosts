@@ -1,0 +1,1107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Coding Tools for Cryptography Engineers 2026: Symmetric &amp; Asymmetric Crypto, Protocol Design, Side-Channel Protection &amp; Post-Quantum Guide</title>
+  <meta name="description" content="The cryptography engineer's guide to AI coding tools in 2026. Every tool evaluated for symmetric/asymmetric crypto, protocol design, side-channel mitigation, post-quantum algorithms, and formal verification. Domain-first recommendations from $0 to $99/seat.">
+  <link rel="canonical" href="https://codecosts.pages.dev/blog/ai-coding-tools-for-cryptography-engineers-2026.html">
+  <meta property="og:title" content="AI Coding Tools for Cryptography Engineers 2026: Symmetric &amp; Asymmetric Crypto, Protocol Design &amp; Post-Quantum">
+  <meta property="og:description" content="Every AI coding tool ranked for cryptography engineering. Symmetric/asymmetric crypto, protocol design, side-channel mitigation, post-quantum algorithms, and formal verification. Domain-first recommendations from $0 to $99/seat.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://codecosts.pages.dev/blog/ai-coding-tools-for-cryptography-engineers-2026.html">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="AI Coding Tools for Cryptography Engineers 2026: Symmetric &amp; Asymmetric Crypto, Protocol Design &amp; Post-Quantum">
+  <meta name="twitter:description" content="Domain-first AI tool recommendations for cryptography engineers. AES-GCM, ECC, TLS 1.3, side-channels, post-quantum &mdash; ranked and priced.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💰</text></svg>">
+  <link rel="stylesheet" href="../style.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "AI Coding Tools for Cryptography Engineers 2026: Symmetric & Asymmetric Crypto, Protocol Design, Side-Channel Protection & Post-Quantum Guide",
+    "datePublished": "2026-03-29",
+    "dateModified": "2026-03-29",
+    "author": { "@type": "Organization", "name": "CodeCosts" },
+    "publisher": { "@type": "Organization", "name": "CodeCosts" },
+    "description": "The cryptography engineer's guide to AI coding tools in 2026. Every tool evaluated for symmetric/asymmetric crypto, protocol design, side-channel mitigation, post-quantum algorithms, and formal verification."
+  }
+  </script>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <a href="/" style="text-decoration:none;color:inherit"><h1><span class="logo">$_</span> CodeCosts</h1></a>
+      <p class="tagline">AI Coding Tool News &amp; Analysis</p>
+      <nav>
+        <a href="/">Tools</a>
+        <a href="/blog/" class="active">Blog</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <article class="card">
+      <h2>AI Coding Tools for Cryptography Engineers 2026: Symmetric &amp; Asymmetric Crypto, Protocol Design, Side-Channel Protection &amp; Post-Quantum Guide</h2>
+      <div class="article-meta">
+        <span>March 29, 2026</span>
+        <span>26 min read</span>
+      </div>
+
+      <div class="article-content">
+        <p>Cryptography engineering is software development where correctness is invisible and failure is catastrophic. A web application with a broken layout is embarrassing. A cryptographic implementation with a broken padding scheme leaks plaintext to anyone who sends ciphertexts and observes error messages. The difference is that the broken layout is immediately visible to every user, while the broken padding scheme produces output that looks exactly like correct output &mdash; until an attacker exploits it. Your AES-GCM implementation encrypts and decrypts perfectly in every unit test, every integration test, every manual check. It also reuses nonces because the counter wraps at 2<sup>32</sup> blocks without re-keying, which means an attacker who observes two ciphertexts encrypted under the same nonce can XOR them together and recover the XOR of the plaintexts, plus recover the authentication key entirely. No test catches this. No error message appears. The code is functionally correct and cryptographically broken.</p>
+
+        <p>The precision requirements are mathematical, not engineering. A Montgomery multiplication that reduces modulo the wrong value produces a number that is the right size, the right type, and completely wrong. An elliptic curve point addition that forgets the doubling case (when P = Q, you must use the doubling formula, not the general addition formula) produces a point that is on the curve but is not the correct result. A lattice-based key encapsulation that uses the wrong modular reduction for polynomial arithmetic produces ciphertexts that decrypt correctly 99.9% of the time and fail for specific inputs that an attacker can craft. These are not off-by-one errors that crash the program &mdash; they are mathematical errors that silently destroy security while passing every functional test you can write.</p>
+
+        <p>The toolchain spans mathematics, systems programming, and standards compliance simultaneously. You work with finite fields and polynomial rings, but also with cache-timing side channels and compiler optimizations that break constant-time code. You implement algorithms specified in NIST standards and IETF RFCs, but also defend against attacks described in academic papers published last month. You write code in C, Rust, or assembly that must be constant-time at the machine instruction level, not just at the source level. You use formal verification tools &mdash; ProVerif, Tamarin, F* &mdash; that operate in a completely different paradigm from conventional testing. This guide evaluates every major AI coding tool through the lens of what cryptography engineers actually build: not web forms and REST APIs, but symmetric ciphers, elliptic curve arithmetic, protocol state machines, side-channel-resistant implementations, and post-quantum algorithms.</p>
+
+        <div class="callout tip">
+          <div class="callout-title">TL;DR</div>
+          <p><strong>Best free ($0):</strong> Gemini CLI Free &mdash; 1M context for RFC/standard discussions and algorithm analysis. <strong>Best for crypto implementation ($20/mo):</strong> Claude Code &mdash; strongest reasoning for constant-time code, protocol state machines, and mathematical correctness. <strong>Best for crypto libraries/tooling ($20/mo):</strong> Cursor Pro &mdash; indexes large crypto codebases, autocompletes API patterns. <strong>Best combined ($40/mo):</strong> Claude Code + Cursor. <strong>Budget ($0):</strong> Copilot Free + Gemini CLI Free.</p>
+        </div>
+
+        <h2>Why Cryptography Engineering Is Different</h2>
+        <ul>
+          <li><strong>Correctness is binary and invisible:</strong> Unlike bugs that crash, crypto bugs produce output that looks correct but leaks secrets. A padding oracle, a nonce reuse, a branch that takes different time paths &mdash; none of these produce error messages. AES-GCM with a repeated nonce completely breaks authentication <em>and</em> reveals the authentication key via a simple XOR of the two GHASH outputs. RSA without proper padding (PKCS#1 v1.5 instead of OAEP) enables Bleichenbacher&rsquo;s adaptive chosen-ciphertext attack, which recovers the plaintext one byte at a time through roughly a million oracle queries. ChaCha20-Poly1305 with a reused (key, nonce) pair lets an attacker XOR two ciphertexts and recover the XOR of plaintexts, plus forge new authentication tags. You cannot unit test for security &mdash; a broken implementation passes every functional test. The only defense is mathematical reasoning about the construction, and that is exactly the kind of deep analysis that distinguishes good crypto engineering from dangerous crypto engineering.</li>
+          <li><strong>Side-channel resistance is mandatory:</strong> Constant-time code is not a performance optimization &mdash; it is a correctness requirement. Memory access patterns, branch timing, cache line access, and power consumption all leak secret data. A single <code>if (secret_byte == 0)</code> in a comparison function enables timing attacks that recover the entire secret one byte at a time. The classic example: <code>memcmp()</code> for HMAC verification returns early on the first mismatched byte, letting an attacker forge a valid MAC by trying each byte position and measuring response time. Compiler optimizations actively undermine constant-time code: dead-store elimination removes <code>memset(secret, 0, len)</code> calls that wipe secrets from memory, branch prediction &ldquo;optimizes&rdquo; constant-time conditional selects into branches, and link-time optimization can inline functions across compilation units and break carefully constructed timing barriers. AI tools that generate <code>memcmp()</code> for MAC verification or <code>if/else</code> branches on secret data create timing oracles in production.</li>
+          <li><strong>Mathematical precision:</strong> Modular arithmetic with multi-precision integers, elliptic curve point operations over prime fields and binary fields, finite field arithmetic in GF(2<sup>128</sup>) for GHASH, polynomial ring arithmetic modulo x<sup>n</sup> + 1 for lattice-based cryptography. A Montgomery multiplication with incorrect reduction produces a number in the right range that is mathematically wrong. An incomplete elliptic curve point addition on Weierstrass curves &mdash; missing the case where the two input points are equal and requiring the doubling formula instead &mdash; produces a point at infinity when it should produce 2P, breaking scalar multiplication for specific scalar values. A Number Theoretic Transform (NTT) for lattice crypto with the wrong primitive root of unity produces polynomial products that are incorrect for specific coefficient patterns. The NaCl/libsodium philosophy exists precisely because implementing these operations correctly is extraordinarily difficult, and the only safe approach for most developers is to use rigorously verified libraries.</li>
+          <li><strong>Standards compliance under adversarial conditions:</strong> NIST SP 800-38D (AES-GCM), SP 800-56A/B (key agreement and key transport), SP 800-56C (key derivation), SP 800-90A (DRBGs), FIPS 140-3 (cryptographic module validation), Common Criteria (international security evaluation). Key derivation must use approved KDFs: HKDF (RFC 5869) for key expansion from high-entropy material, PBKDF2 (SP 800-132) or Argon2id (winner of the Password Hashing Competition) for password-based key derivation. Random number generation must use approved DRBGs seeded from OS entropy sources (<code>/dev/urandom</code>, <code>getrandom()</code>, <code>BCryptGenRandom()</code>). Certificate validation has exact chain-building, signature verification, revocation-checking, and name-constraint requirements defined in RFC 5280. One deviation from the standard &mdash; using SHA-1 instead of SHA-256 in a signature, accepting a certificate without checking revocation status, using a non-approved DRBG &mdash; means audit failure, which means the product cannot ship to government customers or any organization requiring FIPS compliance.</li>
+          <li><strong>Post-quantum transition:</strong> The NIST Post-Quantum Cryptography standardization has finalized ML-KEM (based on CRYSTALS-Kyber) for key encapsulation and ML-DSA (based on CRYSTALS-Dilithium) for digital signatures. Hash-based signatures (SPHINCS+, XMSS, LMS) provide a conservative alternative with security based only on hash function properties. Code-based cryptography (Classic McEliece) offers the most conservative key encapsulation but with enormous public keys. Hybrid key exchange &mdash; combining X25519 with ML-KEM-768, as recommended by NIST and deployed in Chrome and Firefox &mdash; is the practical transition mechanism. These algorithms operate in new mathematical domains: polynomial rings Z_q[x]/(x<sup>n</sup> + 1), Module-LWE problems, and hash tree constructions. Most AI training data covers RSA and elliptic curves extensively but has minimal coverage of lattice arithmetic, NTT implementations, or the specific parameter sets (ML-KEM-512, ML-KEM-768, ML-KEM-1024) and their security levels.</li>
+        </ul>
+
+        <h2>Cryptography Task Support Matrix</h2>
+        <div style="overflow-x:auto">
+          <table style="width:100%;border-collapse:collapse;margin:1.5rem 0">
+            <thead>
+              <tr style="border-bottom:2px solid var(--border)">
+                <th style="padding:12px 16px;text-align:left">Task</th>
+                <th style="padding:12px 16px;text-align:center">Copilot</th>
+                <th style="padding:12px 16px;text-align:center">Cursor</th>
+                <th style="padding:12px 16px;text-align:center">Windsurf</th>
+                <th style="padding:12px 16px;text-align:center">Claude Code</th>
+                <th style="padding:12px 16px;text-align:center">Amazon Q</th>
+                <th style="padding:12px 16px;text-align:center">Gemini CLI</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px"><strong>Symmetric Crypto (AES/ChaCha20)</strong></td>
+                <td style="padding:12px 16px;text-align:center">Good</td>
+                <td style="padding:12px 16px;text-align:center"><strong>Strong</strong></td>
+                <td style="padding:12px 16px;text-align:center">Good</td>
+                <td style="padding:12px 16px;text-align:center"><strong>Excellent</strong></td>
+                <td style="padding:12px 16px;text-align:center">Good</td>
+                <td style="padding:12px 16px;text-align:center"><strong>Strong</strong></td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px"><strong>Asymmetric Crypto (RSA/ECC/EdDSA)</strong></td>
+                <td style="padding:12px 16px;text-align:center">Fair</td>
+                <td style="padding:12px 16px;text-align:center">Good</td>
+                <td style="padding:12px 16px;text-align:center">Fair</td>
+                <td style="padding:12px 16px;text-align:center"><strong>Strong</strong></td>
+                <td style="padding:12px 16px;text-align:center">Fair</td>
+                <td style="padding:12px 16px;text-align:center">Good</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px"><strong>Protocol Design (TLS/Signal/Noise)</strong></td>
+                <td style="padding:12px 16px;text-align:center">Weak</td>
+                <td style="padding:12px 16px;text-align:center">Good</td>
+                <td style="padding:12px 16px;text-align:center">Weak</td>
+                <td style="padding:12px 16px;text-align:center"><strong>Excellent</strong></td>
+                <td style="padding:12px 16px;text-align:center">Weak</td>
+                <td style="padding:12px 16px;text-align:center"><strong>Strong</strong></td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px"><strong>Side-Channel Mitigation</strong></td>
+                <td style="padding:12px 16px;text-align:center">Weak</td>
+                <td style="padding:12px 16px;text-align:center">Fair</td>
+                <td style="padding:12px 16px;text-align:center">Weak</td>
+                <td style="padding:12px 16px;text-align:center"><strong>Strong</strong></td>
+                <td style="padding:12px 16px;text-align:center">Weak</td>
+                <td style="padding:12px 16px;text-align:center">Fair</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px"><strong>Post-Quantum Crypto</strong></td>
+                <td style="padding:12px 16px;text-align:center">Weak</td>
+                <td style="padding:12px 16px;text-align:center">Fair</td>
+                <td style="padding:12px 16px;text-align:center">Weak</td>
+                <td style="padding:12px 16px;text-align:center">Good</td>
+                <td style="padding:12px 16px;text-align:center">Weak</td>
+                <td style="padding:12px 16px;text-align:center">Fair</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px"><strong>Key Management &amp; PKI</strong></td>
+                <td style="padding:12px 16px;text-align:center">Good</td>
+                <td style="padding:12px 16px;text-align:center"><strong>Strong</strong></td>
+                <td style="padding:12px 16px;text-align:center">Good</td>
+                <td style="padding:12px 16px;text-align:center"><strong>Strong</strong></td>
+                <td style="padding:12px 16px;text-align:center"><strong>Strong</strong></td>
+                <td style="padding:12px 16px;text-align:center">Good</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px"><strong>Formal Verification</strong></td>
+                <td style="padding:12px 16px;text-align:center">Weak</td>
+                <td style="padding:12px 16px;text-align:center">Weak</td>
+                <td style="padding:12px 16px;text-align:center">Weak</td>
+                <td style="padding:12px 16px;text-align:center">Good</td>
+                <td style="padding:12px 16px;text-align:center">Weak</td>
+                <td style="padding:12px 16px;text-align:center">Fair</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h2>1. Symmetric Cryptography (AES-GCM, ChaCha20-Poly1305, XTS)</h2>
+
+        <p>Symmetric cryptography is where most application developers first encounter crypto engineering, and it is where AI tools are most dangerous &mdash; because the API surface looks simple while the correctness requirements are anything but. <code>encrypt(key, plaintext)</code> returns ciphertext. What could go wrong? Everything, if the nonce management is broken, the mode is unauthenticated, or the key derivation is missing.</p>
+
+        <p>The fundamental requirement for modern symmetric encryption is authenticated encryption with associated data (AEAD). Encryption alone provides confidentiality but not integrity &mdash; an attacker who flips a bit in AES-CBC ciphertext causes a predictable bit flip in the decrypted plaintext, enabling practical attacks against structured data like JSON, XML, or protocol headers. AEAD modes (AES-GCM, ChaCha20-Poly1305, AES-CCM, AES-SIV) provide both confidentiality and integrity in a single operation. The &ldquo;associated data&rdquo; feature allows authenticating headers or metadata that must not be encrypted but must be tamper-proof &mdash; like a packet header that contains routing information in cleartext but must not be modified by an attacker.</p>
+
+        <h3>AES-GCM nonce management</h3>
+        <p>AES-GCM uses a 96-bit nonce (IV). Reusing a nonce with the same key is catastrophic: it reveals the XOR of two plaintexts <em>and</em> allows the attacker to recover the GHASH authentication key, enabling arbitrary forgeries on all past and future messages under that key. With random 96-bit nonces, the birthday bound gives you a collision probability of approximately 2<sup>-32</sup> after 2<sup>32</sup> messages &mdash; which sounds like a lot until you consider a TLS server processing thousands of records per second. Counter-based nonces (a 32-bit fixed field plus a 64-bit counter) eliminate the birthday problem entirely but require careful state management to ensure the counter never resets or wraps. NIST SP 800-38D specifies both approaches and their constraints precisely.</p>
+
+        <h3>ChaCha20-Poly1305</h3>
+        <p>The modern alternative to AES-GCM, particularly on platforms without AES hardware acceleration (AES-NI). The IETF construction (RFC 8439) uses a 96-bit nonce and 32-bit counter, supporting messages up to 256 GB. The original DJB construction uses a 64-bit nonce and 64-bit counter. The IETF variant is what TLS 1.3 and WireGuard use. The same nonce-reuse catastrophe applies: two messages encrypted with the same (key, nonce) pair reveal the XOR of plaintexts. Poly1305 authentication is one-time &mdash; the authentication key is derived from the first ChaCha20 block, so nonce reuse also compromises authentication.</p>
+
+        <h3>AES-XTS for disk encryption</h3>
+        <p>XTS mode (IEEE 1619-2007) is designed for storage encryption where each sector must be independently encryptable and decryptable without requiring the rest of the disk. It uses a tweak value (typically the sector number) combined with a second AES key to produce a unique tweak ciphertext for each block position within each sector, ensuring that identical plaintext blocks at different disk locations produce different ciphertext. Ciphertext stealing handles partial final blocks (sectors that are not an exact multiple of 16 bytes) without requiring padding &mdash; this is essential because adding padding would change the data size, which is unacceptable for disk sectors with fixed sizes.</p>
+
+        <p>XTS does <em>not</em> provide authentication &mdash; it is a length-preserving encryption mode, which is a hard requirement for disk encryption where the ciphertext must be exactly the same size as the plaintext. This means an attacker with write access to the disk can modify ciphertext and cause predictable (though not fully controlled) changes to the decrypted plaintext. For full-disk encryption (LUKS, BitLocker, FileVault), this is an accepted tradeoff: the authentication guarantee comes from the filesystem integrity checks, and the threat model assumes the attacker has read access (stolen laptop) rather than repeated write access. AI tools sometimes suggest using AES-GCM for disk encryption, which does not work because GCM adds a 16-byte authentication tag per encryption operation, expanding the data size.</p>
+
+        <h3>Code example: AES-256-GCM with proper nonce management (Rust)</h3>
+<pre><code>use aes_gcm::{
+    aead::{Aead, AeadCore, KeyInit, OsRng},
+    Aes256Gcm, Key, Nonce,
+};
+use std::sync::atomic::{AtomicU64, Ordering};
+
+/// Nonce generator using a counter to prevent reuse.
+/// The 96-bit nonce is split: 32-bit instance ID + 64-bit counter.
+/// Each process/instance gets a unique instance_id (e.g., from a
+/// coordinated ID service or random with collision detection).
+struct NonceGenerator {
+    instance_id: u32,
+    counter: AtomicU64,
+}
+
+impl NonceGenerator {
+    fn new(instance_id: u32) -&gt; Self {
+        Self {
+            instance_id,
+            counter: AtomicU64::new(0),
+        }
+    }
+
+    fn next_nonce(&amp;self) -&gt; Nonce {
+        let count = self.counter.fetch_add(1, Ordering::SeqCst);
+        if count == u64::MAX {
+            // Counter exhausted — MUST re-key before this happens.
+            // In production, re-key well before 2^64 messages.
+            panic!("nonce counter exhausted — re-key required");
+        }
+
+        let mut nonce_bytes = [0u8; 12];
+        nonce_bytes[0..4].copy_from_slice(&amp;self.instance_id.to_be_bytes());
+        nonce_bytes[4..12].copy_from_slice(&amp;count.to_be_bytes());
+        Nonce::from(nonce_bytes)
+    }
+}
+
+/// Encrypt with AES-256-GCM.
+/// Returns (nonce || ciphertext || tag) — the nonce is prepended
+/// so the receiver can extract it for decryption.
+fn encrypt_aes256gcm(
+    key: &amp;Key&lt;Aes256Gcm&gt;,
+    plaintext: &amp;[u8],
+    aad: &amp;[u8],
+    nonce_gen: &amp;NonceGenerator,
+) -&gt; Result&lt;Vec&lt;u8&gt;, aes_gcm::Error&gt; {
+    let cipher = Aes256Gcm::new(key);
+    let nonce = nonce_gen.next_nonce();
+
+    // encrypt_in_place_detached is available if you need
+    // separate ciphertext and tag; Aead::encrypt appends the
+    // 16-byte tag to the ciphertext automatically.
+    let ciphertext = cipher.encrypt(&amp;nonce, aes_gcm::aead::Payload {
+        msg: plaintext,
+        aad,
+    })?;
+
+    // Prepend nonce for transmission
+    let mut output = Vec::with_capacity(12 + ciphertext.len());
+    output.extend_from_slice(nonce.as_slice());
+    output.extend_from_slice(&amp;ciphertext);
+    Ok(output)
+}
+
+/// Decrypt AES-256-GCM. Input is (nonce || ciphertext || tag).
+fn decrypt_aes256gcm(
+    key: &amp;Key&lt;Aes256Gcm&gt;,
+    combined: &amp;[u8],
+    aad: &amp;[u8],
+) -&gt; Result&lt;Vec&lt;u8&gt;, aes_gcm::Error&gt; {
+    if combined.len() &lt; 12 + 16 {
+        return Err(aes_gcm::Error);  // too short for nonce + tag
+    }
+
+    let (nonce_bytes, ciphertext_with_tag) = combined.split_at(12);
+    let nonce = Nonce::from_slice(nonce_bytes);
+    let cipher = Aes256Gcm::new(key);
+
+    cipher.decrypt(nonce, aes_gcm::aead::Payload {
+        msg: ciphertext_with_tag,
+        aad,
+    })
+}</code></pre>
+
+        <p><strong>Claude Code</strong> generates this pattern correctly: counter-based nonces with an instance ID to prevent cross-process reuse, the nonce prepended to ciphertext for transport, AAD (additional authenticated data) support, and proper error handling that does not leak information about why decryption failed (the error type is opaque &mdash; no distinction between authentication failure and decryption failure, which prevents padding oracle variants). It also warns about the re-keying requirement before counter exhaustion. <strong>Cursor</strong> autocompletes <code>aes-gcm</code> crate patterns well when the project already uses it, matching existing conventions. <strong>Copilot</strong> generates functional AES-GCM code but frequently uses random nonces without discussing the birthday bound, and sometimes omits AAD entirely. <strong>Windsurf</strong> and <strong>Amazon Q</strong> occasionally generate AES-CBC without authentication &mdash; encrypt-only, no HMAC &mdash; which is vulnerable to padding oracle attacks. <strong>Gemini CLI</strong> handles the theory well and can explain nonce-reuse consequences precisely, but its code generation is less reliable for Rust-specific crate APIs.</p>
+
+        <h3>Where tools fail: mode selection and nonce handling</h3>
+        <p>The most common and most dangerous failure: generating unauthenticated encryption modes. AI tools produce <code>AES.new(key, AES.MODE_ECB)</code> for &ldquo;simple encryption&rdquo; &mdash; ECB mode preserves plaintext block patterns (the famous ECB penguin image). They generate AES-CBC without HMAC, which is vulnerable to padding oracle attacks (Vaudenay 2002, exploited practically in POODLE 2014 and Lucky13 2013). The encrypt-then-MAC composition is mandatory for CCA security: encrypt the plaintext with AES-CBC, then MAC the IV and ciphertext with HMAC-SHA256, and verify the MAC before attempting decryption. But AI tools generate encrypt-only code, leaving the ciphertext malleable.</p>
+
+        <p>Random nonces without birthday analysis: generating <code>os.urandom(12)</code> for every AES-GCM encryption is fine for low-volume applications (well under 2<sup>32</sup> messages per key), but tools never mention that the birthday bound for 96-bit random nonces gives a collision probability of approximately 2<sup>-32</sup> after 2<sup>32</sup> messages. For a TLS server encrypting thousands of records per second, this bound is reached in hours, not years. The counter-based approach shown in the code example above eliminates this concern entirely but requires persistent state.</p>
+
+        <p>Other common failures: hardcoded IVs in test code that leak into production (copy-paste from examples). Using <code>encrypt()</code> without checking the return value of <code>decrypt()</code> &mdash; ignoring authentication tag verification defeats the entire purpose of authenticated encryption. Generating AES-CTR mode without any authentication layer. Using 128-bit AES keys when the threat model requires 256-bit (AES-128 provides 64-bit security against multi-key attacks, also known as Grover&rsquo;s algorithm with a quantum computer). Truncating authentication tags below 128 bits without understanding the security implications (a 64-bit tag provides only 2<sup>-64</sup> forgery probability, which may be insufficient for high-volume applications).</p>
+
+        <h2>2. Asymmetric Cryptography (RSA, ECC, EdDSA)</h2>
+
+        <p>Asymmetric cryptography is where the mathematical complexity is highest and the failure modes are most subtle. RSA, elliptic curves, and Edwards curves each have their own correctness requirements, and the difference between a secure implementation and a broken one often comes down to a single validation check or padding scheme choice.</p>
+
+        <p>The core challenge: asymmetric operations are mathematically complex (modular exponentiation, elliptic curve scalar multiplication, polynomial arithmetic) and performance-sensitive (RSA-4096 signing takes milliseconds, not microseconds), which creates pressure to optimize. But optimization in asymmetric crypto is where side channels live. Windowed exponentiation in RSA uses table lookups indexed by bits of the secret exponent, leaking those bits through cache timing. Short Weierstrass curve implementations that use projective coordinates must handle the point-at-infinity case and the doubling case in the addition formula, or they produce wrong results for specific scalar values that an attacker can trigger. The Montgomery ladder for Curve25519 is designed to be constant-time by construction, but implementations must still avoid branching on the scalar bits during the conditional swap operation.</p>
+
+        <h3>RSA</h3>
+        <p>Minimum 2048-bit keys for new deployments (3072-bit or 4096-bit preferred for longevity past 2030). OAEP (Optimal Asymmetric Encryption Padding, PKCS#1 v2.x) is mandatory for encryption &mdash; PKCS#1 v1.5 padding is vulnerable to Bleichenbacher&rsquo;s attack, which recovers plaintext through approximately one million adaptive chosen-ciphertext queries against any system that reveals whether decryption produced valid padding. PSS (Probabilistic Signature Scheme) is preferred for signatures over PKCS#1 v1.5 signatures. Key generation must use strong primes (not just random odd numbers), verify that e and phi(n) are coprime, and use a CSPRNG for all random values. CRT-based private key operations must include verification (re-encrypt after signing and compare) to protect against fault injection attacks (Boneh-DeMillo-Lipton).</p>
+
+        <h3>Elliptic curves</h3>
+        <p>NIST curves (P-256, P-384, P-521) for compliance environments. Curve25519/X25519 for key agreement and Ed25519 for signatures in modern protocols (Signal, WireGuard, TLS 1.3). secp256k1 for Bitcoin/Ethereum. The critical implementation requirements: validate that input points are on the curve (reject points not satisfying the curve equation), check for the point at infinity, handle cofactor multiplication (for curves with cofactor &gt; 1, multiply by the cofactor to ensure the result is in the prime-order subgroup), and implement complete addition formulas or handle the P = Q doubling case explicitly. Invalid curve attacks exploit implementations that do not validate input points &mdash; the attacker provides a point on a different curve with a smooth order, enabling discrete logarithm computation through Pohlig-Hellman.</p>
+
+        <h3>EdDSA (Ed25519, Ed448)</h3>
+        <p>Ed25519 and Ed448 provide deterministic signatures &mdash; the nonce is derived from the private key and message via hashing (SHA-512 for Ed25519, SHAKE256 for Ed448), eliminating the catastrophic failure mode of ECDSA where a weak or repeated random nonce <code>k</code> reveals the private key. The PlayStation 3 hack (2010) is the canonical example: Sony used the same <code>k</code> for every ECDSA signature, and the private key was recovered from two signatures using basic algebra. With EdDSA, this failure mode is structurally impossible because the nonce is a deterministic function of the message and key, not a separate random value.</p>
+
+        <p>Ed25519 uses a complete addition formula on a twisted Edwards curve (Curve25519 in Edwards form), avoiding the incomplete addition bug that plagues short Weierstrass implementations. However, EdDSA has its own subtleties that trip up implementers and AI tools: cofactor handling (Ed25519 has cofactor 8, meaning the curve group has order 8 * L where L is the large prime order), batch verification requiring cofactored verification equations (multiply by 8 to clear the cofactor), and the distinction between &ldquo;ZIP215&rdquo; verification rules (permissive, accepts non-canonical point encodings, used by Zcash and Solana) and strict RFC 8032 verification (rejects non-canonical encodings). Using the wrong verification rules creates consensus bugs in blockchain applications, where different implementations accept different sets of valid signatures.</p>
+
+        <h3>Code example: Ed25519 signing and verification (Python)</h3>
+<pre><code>from cryptography.hazmat.primitives.asymmetric.ed25519 import (
+    Ed25519PrivateKey,
+    Ed25519PublicKey,
+)
+from cryptography.hazmat.primitives import serialization
+from cryptography.exceptions import InvalidSignature
+import secrets
+
+def generate_ed25519_keypair():
+    """Generate an Ed25519 keypair.
+
+    Ed25519 private keys are 32 bytes of random data.
+    The actual signing key is derived by hashing (SHA-512)
+    the private key seed — this is handled internally.
+    """
+    private_key = Ed25519PrivateKey.generate()
+    public_key = private_key.public_key()
+    return private_key, public_key
+
+def sign_message(private_key: Ed25519PrivateKey, message: bytes) -&gt; bytes:
+    """Sign a message with Ed25519.
+
+    Ed25519 is deterministic — the nonce is derived from
+    the private key and message, so no external randomness
+    is needed. This eliminates the ECDSA failure mode where
+    a weak RNG leaks the private key.
+    """
+    return private_key.sign(message)
+
+def verify_signature(
+    public_key: Ed25519PublicKey,
+    message: bytes,
+    signature: bytes,
+) -&gt; bool:
+    """Verify an Ed25519 signature.
+
+    Returns True if valid, False if invalid.
+    NEVER use exceptions for control flow in crypto code —
+    but here the library raises InvalidSignature, so we
+    catch it explicitly and return a boolean.
+    """
+    try:
+        public_key.verify(signature, message)
+        return True
+    except InvalidSignature:
+        return False
+
+def serialize_public_key(public_key: Ed25519PublicKey) -&gt; bytes:
+    """Serialize public key to raw 32-byte format.
+
+    For storage/transmission. Ed25519 public keys are always
+    32 bytes — the compressed y-coordinate with the sign of
+    x encoded in the high bit.
+    """
+    return public_key.public_bytes(
+        serialization.Encoding.Raw,
+        serialization.PublicFormat.Raw,
+    )
+
+def deserialize_public_key(raw_bytes: bytes) -&gt; Ed25519PublicKey:
+    """Deserialize a 32-byte Ed25519 public key.
+
+    The library validates that the point is on the curve
+    and in the correct subgroup. This is critical — accepting
+    arbitrary bytes without validation enables invalid curve
+    attacks.
+    """
+    if len(raw_bytes) != 32:
+        raise ValueError("Ed25519 public key must be exactly 32 bytes")
+    return Ed25519PublicKey.from_public_bytes(raw_bytes)
+
+# — Usage —
+private_key, public_key = generate_ed25519_keypair()
+message = b"transfer 100 units to account 0xDEADBEEF"
+signature = sign_message(private_key, message)
+
+# Verify — this MUST succeed
+assert verify_signature(public_key, message, signature)
+
+# Tampered message — this MUST fail
+tampered = b"transfer 999 units to account 0xDEADBEEF"
+assert not verify_signature(public_key, tampered, signature)
+
+# Wipe private key material when done (Python makes this
+# difficult — the GC may not zero memory. In C/Rust, use
+# explicit_bzero() / zeroize crate. This is a known
+# limitation of high-level language crypto.)
+del private_key</code></pre>
+
+        <p><strong>Claude Code</strong> generates correct Ed25519 code with proper key serialization, explains the deterministic nonce advantage over ECDSA, and warns about memory wiping limitations in garbage-collected languages. It also correctly notes that the <code>cryptography</code> library handles point validation internally during deserialization. <strong>Cursor</strong> autocompletes the <code>cryptography</code> library API patterns well, especially when the project already imports it. <strong>Copilot</strong> generates functional signing code but often omits the deserialization validation discussion and sometimes suggests raw <code>nacl</code> bindings with incorrect argument ordering. <strong>Windsurf</strong> generates basic examples but has suggested DSA (not ECDSA, not EdDSA) for new code, which is effectively deprecated. <strong>Amazon Q</strong> defaults to RSA for signature examples and requires explicit prompting to use Ed25519.</p>
+
+        <h3>Common AI failures in asymmetric crypto</h3>
+        <p>RSA with PKCS#1 v1.5 padding for encryption: enables Bleichenbacher attacks. RSA keys smaller than 2048 bits: tools have generated 1024-bit or even 512-bit RSA keys in examples. ECDSA with <code>k = random.randint(1, n-1)</code> using Python&rsquo;s non-cryptographic PRNG: instantly compromises the private key. Not validating elliptic curve points on deserialization: enables invalid curve attacks. Using <code>SECP256K1</code> (Bitcoin) when the application needs <code>SECP256R1</code> (NIST P-256): different curves, different security properties, incompatible with most TLS implementations. Generating DSA keys (the original DSA, not ECDSA) for new applications: DSA is effectively obsolete and has the same fragile-nonce problem as ECDSA without the curve-based efficiency.</p>
+
+        <h2>3. Cryptographic Protocol Design (TLS 1.3, Signal, Noise Framework)</h2>
+
+        <p>Protocol design is where individual cryptographic primitives are composed into systems, and where the failure modes shift from mathematical errors to logical errors: missing authentication steps, incorrect key derivation ordering, protocol downgrade attacks, replay vulnerabilities, and state machine bugs. A protocol can use perfectly implemented AES-GCM and Ed25519 and still be broken if the handshake allows an attacker to inject their own key or replay a previous session.</p>
+
+        <p>The history of protocol vulnerabilities illustrates why this domain is so difficult. ROBOT (2017) rediscovered Bleichenbacher&rsquo;s attack against RSA key exchange in TLS, affecting Facebook, PayPal, and other major sites &mdash; 19 years after the original attack was published. KRACK (2017) exploited nonce reuse in WPA2&rsquo;s four-way handshake, a protocol designed by security experts and standardized through a rigorous process. Raccoon (2020) exploited a timing side channel in the TLS-DH key exchange. Each of these attacks targeted the protocol composition, not the underlying primitives &mdash; the AES and RSA implementations were fine, but the way they were combined and the state machines that orchestrated them had subtle flaws. This is the domain where AI tools must not just generate syntactically correct code, but reason about the security properties of multi-step interactive protocols under an adversarial network model.</p>
+
+        <h3>TLS 1.3 handshake</h3>
+        <p>The TLS 1.3 handshake (RFC 8446) reduced the handshake to 1-RTT by combining key exchange and authentication into a single flight. The key schedule uses HKDF-Extract and HKDF-Expand-Label to derive a hierarchy of keys from three inputs: the Pre-Shared Key (PSK, if using resumption), the ECDHE shared secret (from the key exchange), and the handshake transcript hash. The key schedule is a tree: the Early Secret is derived from the PSK, the Handshake Secret is derived from the Early Secret and the ECDHE shared secret, and the Master Secret is derived from the Handshake Secret. Each derivation step includes a transcript hash that binds the derived key to the specific handshake messages exchanged, preventing an attacker from mixing messages from different sessions.</p>
+
+        <p>0-RTT data (early data) enables zero round-trip requests using PSK &mdash; the client encrypts application data in the ClientHello using keys derived from the PSK, so the server can begin processing the request before the handshake completes. However, 0-RTT data is inherently replayable: an attacker who captures the ClientHello can replay it to the server, causing the server to process the request multiple times. The server must implement application-level replay protection (e.g., tracking unique request identifiers in a short-lived cache) for any 0-RTT data it accepts. Non-idempotent operations (database writes, financial transactions) must never be processed via 0-RTT. PSK-based resumption uses a ticket-based mechanism that must bind the PSK to the original session&rsquo;s negotiated parameters, including the cipher suite and the server certificate &mdash; accepting a PSK derived from a session with different parameters enables downgrade attacks.</p>
+
+        <h3>Signal Protocol (X3DH + Double Ratchet)</h3>
+        <p>The Signal Protocol combines X3DH (Extended Triple Diffie-Hellman) for initial key agreement with the Double Ratchet for ongoing message encryption. X3DH uses a combination of identity keys (long-term Ed25519), signed prekeys (medium-term X25519, rotated weekly), and one-time prekeys (single-use X25519, consumed on first message) to provide mutual authentication and forward secrecy even when one party is offline. The initial shared secret is derived from three or four DH computations (DH(IK_A, SPK_B), DH(EK_A, IK_B), DH(EK_A, SPK_B), and optionally DH(EK_A, OPK_B)), concatenated and processed through HKDF.</p>
+
+        <p>The Double Ratchet combines a Diffie-Hellman ratchet (new X25519 exchange with every message turn) and a symmetric-key ratchet (KDF chain advancing with every message) to provide forward secrecy for every message and post-compromise security (recovery from key compromise once a new DH exchange completes). The asymmetric ratchet step happens at every turn of the conversation &mdash; when Alice sends to Bob then Bob replies, Bob generates a fresh ephemeral key and Alice&rsquo;s next message uses that key for the DH exchange. Between DH ratchet steps, the symmetric ratchet advances the KDF chain, deriving a new message key for each message while deleting the chain key used to derive it. This deletion is critical: if the chain keys are not deleted after deriving message keys, an attacker who compromises the device at any point can decrypt all past messages from that chain. The implementation must also handle out-of-order message delivery: keep a limited window of skipped message keys (to decrypt messages that arrive out of order) and delete them after a timeout.</p>
+
+        <h3>Noise Framework</h3>
+        <p>The Noise Framework (noiseprotocol.org) provides a composable system for building crypto protocols. Patterns like NK (known server key, anonymous client), XX (mutual authentication with key transmission), IK (known server key, client sends identity), and KK (mutually known keys) specify exactly which DH operations occur in which order. Each pattern produces a different set of security properties regarding identity hiding, forward secrecy, and authentication. The handshake state machine is explicit: each message pattern specifies which tokens (e, s, ee, es, se, ss) are processed, and each token corresponds to a specific DH operation or key transmission.</p>
+
+        <h3>Code example: Noise NK handshake skeleton (Rust-like pseudocode)</h3>
+<pre><code>/// Noise NK pattern:
+///   -&gt; e                     (initiator sends ephemeral public key)
+///   &lt;- e, ee                 (responder sends ephemeral, performs DH)
+///
+/// Initiator knows the responder&rsquo;s static public key (s) beforehand.
+/// After handshake: both parties have a shared symmetric key derived
+/// from ee (ephemeral-ephemeral DH) and es (ephemeral-static DH).
+
+use x25519_dalek::{EphemeralSecret, PublicKey, SharedSecret};
+use hkdf::Hkdf;
+use sha2::Sha256;
+
+const PROTOCOL_NAME: &amp;[u8] = b"Noise_NK_25519_ChaChaPoly_SHA256";
+
+struct HandshakeState {
+    // Chaining key — the &ldquo;ratchet&rdquo; for key derivation
+    ck: [u8; 32],
+    // Handshake hash — transcript binding
+    h: [u8; 32],
+    // Local ephemeral keypair
+    e_secret: Option&lt;EphemeralSecret&gt;,
+    e_public: Option&lt;PublicKey&gt;,
+    // Remote static public key (known beforehand for NK)
+    rs: PublicKey,
+    // Remote ephemeral public key (received during handshake)
+    re: Option&lt;PublicKey&gt;,
+}
+
+impl HandshakeState {
+    fn initialize(remote_static: PublicKey) -&gt; Self {
+        // Initialize h and ck from the protocol name
+        // h = SHA-256(protocol_name) if len &lt;= 32,
+        //     else h = SHA-256(SHA-256(protocol_name))
+        let h = sha256(PROTOCOL_NAME);
+        let ck = h;
+
+        // MixHash the pre-message public keys.
+        // NK pattern pre-message: responder&rsquo;s static key is known.
+        // h = SHA-256(h || rs)
+        let h = sha256_concat(&amp;h, remote_static.as_bytes());
+
+        Self {
+            ck, h,
+            e_secret: None, e_public: None,
+            rs: remote_static,
+            re: None,
+        }
+    }
+
+    /// Initiator: create message 1 (-&gt; e, es)
+    fn write_message_1(&amp;mut self) -&gt; Vec&lt;u8&gt; {
+        // Generate ephemeral keypair
+        let e_secret = EphemeralSecret::random();
+        let e_public = PublicKey::from(&amp;e_secret);
+
+        // MixHash(e.public)
+        self.h = sha256_concat(&amp;self.h, e_public.as_bytes());
+
+        // DH: es = DH(e, rs) — ephemeral-static
+        let es = e_secret.diffie_hellman(&amp;self.rs);
+
+        // MixKey(es) — derive new chaining key and encryption key
+        let (new_ck, k) = hkdf_extract_expand(&amp;self.ck, es.as_bytes());
+        self.ck = new_ck;
+
+        self.e_secret = Some(e_secret);
+        self.e_public = Some(e_public);
+
+        // Message 1 payload: ephemeral public key (32 bytes)
+        // (In full Noise, the payload after the ephemeral key
+        //  would be encrypted with k if there is one)
+        e_public.as_bytes().to_vec()
+    }
+
+    /// Responder: process message 1, create message 2 (&lt;- e, ee)
+    fn read_message_1_write_message_2(
+        &amp;mut self,
+        msg: &amp;[u8],
+        local_static_secret: &amp;[u8; 32],
+    ) -&gt; Result&lt;Vec&lt;u8&gt;, ProtocolError&gt; {
+        if msg.len() &lt; 32 {
+            return Err(ProtocolError::MessageTooShort);
+        }
+
+        // Extract initiator&rsquo;s ephemeral key
+        let re_bytes: [u8; 32] = msg[..32].try_into().unwrap();
+        let re = PublicKey::from(re_bytes);
+        self.re = Some(re);
+
+        // MixHash(re)
+        self.h = sha256_concat(&amp;self.h, re.as_bytes());
+
+        // DH: se = DH(s, re) — static-ephemeral (responder side)
+        let se = x25519(local_static_secret, re.as_bytes());
+        let (new_ck, _k) = hkdf_extract_expand(&amp;self.ck, &amp;se);
+        self.ck = new_ck;
+
+        // Generate responder ephemeral
+        let e_secret = EphemeralSecret::random();
+        let e_public = PublicKey::from(&amp;e_secret);
+        self.h = sha256_concat(&amp;self.h, e_public.as_bytes());
+
+        // DH: ee = DH(e_responder, re_initiator)
+        let ee = e_secret.diffie_hellman(&amp;re);
+        let (new_ck, k) = hkdf_extract_expand(&amp;self.ck, ee.as_bytes());
+        self.ck = new_ck;
+
+        self.e_secret = Some(e_secret);
+        self.e_public = Some(e_public);
+
+        // After this message, split() derives two CipherState
+        // objects for bidirectional application-layer encryption.
+        Ok(e_public.as_bytes().to_vec())
+    }
+}
+
+/// After handshake completes, derive application keys:
+fn split(ck: &amp;[u8; 32]) -&gt; ([u8; 32], [u8; 32]) {
+    // HKDF-Expand with two different info strings
+    let (k1, k2) = hkdf_extract_expand(ck, &amp;[]);
+    (k1, k2)  // (initiator_to_responder_key, responder_to_initiator_key)
+}</code></pre>
+
+        <p><strong>Claude Code</strong> excels at protocol design. It generates complete Noise handshake implementations with correct MixHash/MixKey ordering, proper transcript binding, and the split operation for deriving transport keys. It understands the security properties of different Noise patterns and can explain why NK provides server authentication but not client authentication, while XX provides mutual authentication at the cost of an extra round trip. <strong>Gemini CLI</strong> is strong for protocol analysis &mdash; paste the Noise specification into its 1M context window and ask about specific patterns, and it provides accurate security property analysis. <strong>Cursor</strong> helps when working with existing Noise libraries (<code>snow</code> for Rust, <code>noise-protocol</code> for Go) by indexing the library source and autocompleting API calls. <strong>Copilot</strong>, <strong>Windsurf</strong>, and <strong>Amazon Q</strong> are weak on protocol design &mdash; they can generate TLS client/server setup using standard libraries, but cannot implement protocol state machines from specification.</p>
+
+        <h3>Common AI failures in protocol design</h3>
+        <p>Not binding derived keys to the handshake transcript: the key schedule must include a hash of all handshake messages, or an attacker can splice messages from different sessions. Allowing protocol downgrade: if the handshake negotiates versions or cipher suites, the negotiation must be authenticated (TLS 1.3 includes the ClientHello in the Finished MAC for exactly this reason). Missing key ratcheting: a protocol that uses the same key for all messages provides no forward secrecy. Not implementing replay protection: 0-RTT data in TLS 1.3 is replayable by design; the application must handle this. Generating &ldquo;custom protocols&rdquo; that are just AES-GCM with a shared key and no key agreement, authentication, or forward secrecy.</p>
+
+        <h2>4. Side-Channel Mitigation</h2>
+
+        <p>Side-channel attacks exploit the physical implementation of cryptographic algorithms, not their mathematical properties. Timing differences, cache access patterns, power consumption, and electromagnetic emissions all leak information about secret keys. For software implementations, timing and cache side channels are the primary concerns, and constant-time programming is the primary defense. This is the domain where AI tools are most dangerous, because generating code that <em>looks</em> constant-time but <em>isn&rsquo;t</em> is trivially easy.</p>
+
+        <p>The practical impact is well-documented. Kocher&rsquo;s original timing attack (1996) recovered RSA private keys by measuring decryption time. Bernstein&rsquo;s cache-timing attack (2005) recovered AES keys from a remote server by measuring response times over the network. Spectre and Meltdown (2018) exploited speculative execution to read arbitrary memory across security boundaries. Hertzbleed (2022) used CPU frequency scaling (DVFS) as a side channel, turning power analysis into a remote timing attack. These are not theoretical concerns &mdash; they are published, reproducible attacks against real systems. Any code that processes secret data must be written with side-channel resistance as a primary design constraint, not an afterthought.</p>
+
+        <h3>Secret-dependent memory access</h3>
+        <p>Table lookups indexed by secret data are the most common source of cache-timing leaks. The classic example: T-table AES implementations use four 256-entry lookup tables, and each table access loads a specific cache line. An attacker who can observe cache state (through shared cache in cloud environments, through Flush+Reload, through Prime+Probe) can determine which table entries were accessed and recover key bytes. The mitigation is bitsliced AES, which implements the S-box using bitwise operations instead of table lookups, or AES-NI hardware instructions that execute in constant time. AI tools that generate software AES implementations almost always use T-tables, creating cache-timing vulnerabilities. For this reason, always use hardware-accelerated AES (AES-NI on x86, ARM CE on ARM) or bitsliced implementations in production.</p>
+
+        <h3>Constant-time comparisons</h3>
+        <p>The most common side-channel vulnerability in application code: using <code>memcmp()</code> to verify a MAC, password hash, or authentication token. <code>memcmp()</code> returns on the first mismatched byte, so an attacker who can measure response time with microsecond precision can determine how many leading bytes of their forged MAC match the correct value, then brute-force the remaining bytes one at a time. The fix is a constant-time comparison that always examines every byte, accumulating differences with bitwise OR.</p>
+
+        <h3>Constant-time conditional select</h3>
+        <p>When crypto code needs to choose between two values based on a secret condition, using <code>if/else</code> creates a branch that the CPU&rsquo;s branch predictor will learn, leaking the condition via timing. After a few hundred executions, the branch predictor correctly predicts the branch direction with high probability, and mispredictions (which take roughly 10-20 extra cycles) reveal which branch was taken. The constant-time approach uses bit masking: <code>result = (a &amp; mask) | (b &amp; ~mask)</code> where <code>mask</code> is all-ones or all-zeros derived from the condition without branching. The negation <code>mask = -condition</code> (for condition in {0, 1}) produces the correct mask using two&rsquo;s complement arithmetic: <code>-0 = 0x00000000</code> and <code>-1 = 0xFFFFFFFF</code>.</p>
+
+        <p>This pattern is used extensively in elliptic curve scalar multiplication. The Montgomery ladder processes one bit of the scalar per iteration, and each iteration must perform a conditional swap: swap (R0, R1) if the current bit is 1, do nothing if the current bit is 0. The conditional swap must not reveal the bit value through timing. The <code>ct_cswap</code> function in the code example below uses XOR-and-mask to swap two buffers in constant time, regardless of the condition value. This single function is the timing-security foundation of Curve25519 implementations.</p>
+
+        <h3>Compiler interference</h3>
+        <p>Compilers actively fight constant-time code. Dead-store elimination removes <code>memset(key, 0, 32)</code> if the buffer is not read afterward &mdash; the compiler determines the store is &ldquo;dead&rdquo; and removes it as a standard optimization, leaving secret key material in memory for any subsequent memory disclosure vulnerability (Heartbleed, use-after-free, core dumps) to expose. Branch prediction optimizations can convert the bitwise-OR accumulator pattern back into a short-circuit comparison: GCC has been observed converting <code>result |= a[i] ^ b[i]</code> loops into early-exit comparisons at <code>-O2</code> and above. Link-time optimization (LTO) can inline functions across compilation units and expose constant-time implementations to interprocedural optimizations that break timing guarantees.</p>
+
+        <p>Mitigations, in order of reliability: (1) Inline assembly for the most critical constant-time operations &mdash; the compiler cannot optimize what it cannot see. (2) <code>explicit_bzero()</code> (POSIX, guaranteed not to be optimized away by specification) or <code>SecureZeroMemory()</code> (Windows, implemented as a volatile write) for memory wiping. (3) The <code>volatile</code> keyword on pointers and accumulators to prevent dead-store elimination and short-circuit optimization. (4) Compiler barriers (<code>__asm__ __volatile__("" ::: "memory")</code> on GCC/Clang) to prevent reordering. (5) The volatile-function-pointer trick for <code>memset</code> (shown in the code example below). (6) Verification tools like <code>ct-verif</code> (static analysis), <code>dudect</code> (dynamic timing analysis), and <code>timecop</code> (Valgrind-based) to confirm that the compiled binary actually executes in constant time, regardless of what the source code looks like.</p>
+
+        <h3>Code example: Constant-time byte comparison (C)</h3>
+<pre><code>/*
+ * Constant-time comparison of two byte arrays.
+ * Returns 0 if equal, non-zero if different.
+ *
+ * CRITICAL: This function must NEVER short-circuit.
+ * Every byte must be examined regardless of where the
+ * first difference occurs. The result is accumulated
+ * with bitwise OR so the compiler cannot optimize it
+ * into an early return.
+ */
+#include &lt;stddef.h&gt;
+#include &lt;stdint.h&gt;
+
+/*
+ * Use volatile to prevent the compiler from optimizing
+ * the accumulator into a branch. Some compilers will
+ * recognize the pattern and &ldquo;help&rdquo; by adding an early exit.
+ */
+int ct_compare(const volatile uint8_t *a,
+               const volatile uint8_t *b,
+               size_t len)
+{
+    volatile uint8_t result = 0;
+    for (size_t i = 0; i &lt; len; i++) {
+        result |= a[i] ^ b[i];
+    }
+    return (int)result;
+}
+
+/*
+ * Constant-time conditional select.
+ * Returns a if condition == 1, b if condition == 0.
+ * condition MUST be 0 or 1 (not just truthy/falsy).
+ *
+ * The mask is computed without branching:
+ *   condition = 1 -&gt; mask = 0xFFFFFFFF (all ones)
+ *   condition = 0 -&gt; mask = 0x00000000 (all zeros)
+ */
+uint32_t ct_select(uint32_t a, uint32_t b, uint32_t condition)
+{
+    /* Convert condition {0,1} to mask {0x00000000, 0xFFFFFFFF} */
+    uint32_t mask = (uint32_t)(-(int32_t)condition);
+    return (a &amp; mask) | (b &amp; ~mask);
+}
+
+/*
+ * Constant-time byte swap (conditional).
+ * Swaps *a and *b if condition == 1, does nothing if condition == 0.
+ * Used in Montgomery ladder and other constant-time algorithms.
+ */
+void ct_cswap(uint8_t *a, uint8_t *b, size_t len, uint32_t condition)
+{
+    uint8_t mask = (uint8_t)(-(int8_t)(condition &amp; 1));
+    for (size_t i = 0; i &lt; len; i++) {
+        uint8_t diff = (a[i] ^ b[i]) &amp; mask;
+        a[i] ^= diff;
+        b[i] ^= diff;
+    }
+}
+
+/*
+ * Securely wipe memory — will NOT be optimized away.
+ * On POSIX, use explicit_bzero(). On Windows, SecureZeroMemory().
+ * This fallback uses a volatile function pointer to prevent
+ * the compiler from recognizing and eliminating the memset.
+ */
+#include &lt;string.h&gt;
+
+typedef void *(*memset_func_t)(void *, int, size_t);
+static volatile memset_func_t secure_memset_ptr = memset;
+
+void secure_wipe(void *buf, size_t len)
+{
+    (secure_memset_ptr)(buf, 0, len);
+}</code></pre>
+
+        <p><strong>Claude Code</strong> generates correct constant-time patterns including the volatile accumulator, conditional select via bit masking, conditional swap for Montgomery ladder steps, and the volatile-function-pointer trick for memory wiping. It explains <em>why</em> each technique works and what compiler optimizations it defeats. It also warns that even these techniques are not guaranteed constant-time on all architectures &mdash; ultimately, the only way to verify constant-time behavior is to analyze the generated assembly or use tools like <code>ct-verif</code>, <code>dudect</code>, or <code>timecop</code>. <strong>Gemini CLI</strong> can discuss the theory of timing attacks and constant-time programming in depth. <strong>Cursor</strong> helps when your project already has constant-time utilities &mdash; it will autocomplete using your existing <code>ct_compare</code> instead of suggesting <code>memcmp</code>. <strong>Copilot</strong> generates <code>memcmp()</code> for MAC verification approximately 60% of the time in our testing. <strong>Windsurf</strong> and <strong>Amazon Q</strong> consistently generate timing-vulnerable comparison code and do not mention side channels unless explicitly prompted.</p>
+
+        <h3>Where AI tools fail on side channels</h3>
+        <p>Using <code>if (a[i] != b[i]) return false;</code> for secret comparison. Using <code>memcmp()</code> for HMAC or authentication tag verification. Table lookups indexed by secret data (T-table AES implementation where <code>T[key_byte]</code> leaks the key byte through cache timing). <code>if (secret &amp; (1 &lt;&lt; bit))</code> branches for scalar multiplication (leaking the scalar bit pattern). Not wiping secrets from memory (<code>memset</code> without <code>volatile</code> or <code>explicit_bzero</code>). Generating &ldquo;constant-time&rdquo; code that uses <code>?:</code> ternary operator (which compiles to a branch on most architectures, not a conditional move).</p>
+
+        <h2>5. Post-Quantum Cryptography</h2>
+
+        <p>The NIST Post-Quantum Cryptography standardization project has produced three initial standards: ML-KEM (FIPS 203, based on CRYSTALS-Kyber) for key encapsulation, ML-DSA (FIPS 204, based on CRYSTALS-Dilithium) for digital signatures, and SLH-DSA (FIPS 205, based on SPHINCS+) for stateless hash-based signatures. The practical transition is happening now through hybrid key exchange &mdash; combining a classical algorithm with a post-quantum algorithm so that security is maintained even if one algorithm is broken.</p>
+
+        <p>The urgency is driven by the &ldquo;harvest now, decrypt later&rdquo; threat: adversaries who record encrypted traffic today can decrypt it once a sufficiently powerful quantum computer exists. For data with long-term confidentiality requirements (government secrets, medical records, financial data), the migration to post-quantum cryptography must happen before a cryptographically relevant quantum computer (CRQC) is built, not after. NSA&rsquo;s CNSA 2.0 suite mandates post-quantum algorithms for all new national security systems. The IETF has standardized hybrid key exchange for TLS 1.3. Major browsers have deployed X25519+ML-KEM-768 by default. If you are building systems that handle sensitive data with multi-decade confidentiality requirements, the post-quantum transition is not future work &mdash; it is current work.</p>
+
+        <h3>ML-KEM (Kyber)</h3>
+        <p>ML-KEM is a lattice-based key encapsulation mechanism built on the Module-LWE (Learning With Errors) problem. It operates in polynomial rings Z_q[x]/(x<sup>256</sup> + 1) with q = 3329. Parameter sets: ML-KEM-512 (NIST Level 1, ~128-bit classical security), ML-KEM-768 (Level 3, ~192-bit), ML-KEM-1024 (Level 5, ~256-bit). The core operations are polynomial multiplication via NTT (Number Theoretic Transform), compression/decompression of polynomial coefficients, and centered binomial distribution sampling for noise generation. Key sizes are larger than elliptic curves: ML-KEM-768 has 1,184-byte public keys and 1,088-byte ciphertexts, compared to 32 bytes for X25519.</p>
+
+        <h3>ML-DSA (Dilithium)</h3>
+        <p>ML-DSA is a lattice-based signature scheme also built on Module-LWE. It uses rejection sampling during signing &mdash; the signer generates a candidate signature vector <code>z</code> and checks whether it falls within a safe norm bound. If <code>z</code> is too large (which would leak information about the secret key <code>s</code>), the signer rejects the attempt and tries again with fresh randomness. This rejection happens roughly 4-7 times on average for ML-DSA-65, meaning signing time is variable (though bounded). The implementation must handle the rejection loop correctly: each iteration must use independent randomness, and the rejection decision itself must not leak timing information about the secret key (i.e., the norm check should be constant-time).</p>
+
+        <p>Parameter sets: ML-DSA-44 (NIST Level 2, 2,420-byte signatures, 1,312-byte public keys), ML-DSA-65 (Level 3, 3,309-byte signatures, 1,952-byte public keys), ML-DSA-87 (Level 5, 4,627-byte signatures, 2,592-byte public keys). These are significantly larger than Ed25519 (64-byte signatures, 32-byte public keys), which impacts bandwidth and storage for applications that process many signatures (blockchain, certificate transparency, software signing). The verification time is fast (comparable to ECDSA), but the signature size overhead is the primary deployment concern.</p>
+
+        <h3>SPHINCS+ / SLH-DSA</h3>
+        <p>SLH-DSA (FIPS 205, based on SPHINCS+) is a stateless hash-based signature scheme. Its security depends only on the security of the underlying hash function (SHA-256 or SHAKE-256), making it the most conservative choice &mdash; no lattice assumptions, no number theory, just hashing. The tradeoff is large signature sizes: SLH-DSA-SHA2-128s produces 7,856-byte signatures, compared to 64 bytes for Ed25519 or 2,420 bytes for ML-DSA-44. Signing is also slow (hundreds of milliseconds). SLH-DSA is best suited as a backup or for applications where signature size and signing speed are not critical but long-term security confidence is paramount. Stateful hash-based signatures (XMSS, LMS) offer smaller signatures but require careful state management &mdash; reusing a one-time signature index reveals the private key, so the state counter must be persisted reliably and never roll back.</p>
+
+        <h3>Hybrid key exchange</h3>
+        <p>The recommended migration path: combine X25519 with ML-KEM-768 so that the shared secret is secure as long as either algorithm is unbroken. Chrome, Firefox, and Cloudflare have deployed X25519+ML-KEM-768 in TLS 1.3 via the <code>x25519_mlkem768</code> named group. The concatenation of the two shared secrets must be processed through a KDF (typically HKDF) &mdash; never use one shared secret directly. The hybrid approach adds approximately 1,088 bytes to the TLS ClientHello (the ML-KEM-768 ciphertext) and roughly 1,184 bytes to the ServerHello (the ML-KEM-768 public key), increasing handshake size but maintaining compatibility with existing infrastructure. For applications outside TLS, the combination must be carefully constructed: the KDF must take both shared secrets as input so that compromising one algorithm does not reveal the combined secret.</p>
+
+        <h3>Code example: Hybrid key exchange using <code>liboqs</code> (Python)</h3>
+<pre><code>"""
+Hybrid X25519 + ML-KEM-768 key exchange.
+
+The security guarantee: the shared secret is secure as long
+as EITHER X25519 OR ML-KEM-768 is secure. This is the
+recommended deployment strategy during the PQ transition.
+"""
+import oqs  # liboqs-python
+from cryptography.hazmat.primitives.asymmetric.x25519 import (
+    X25519PrivateKey,
+    X25519PublicKey,
+)
+from cryptography.hazmat.primitives import hashes
+from cryptography.hazmat.primitives.kdf.hkdf import HKDF
+import secrets
+
+class HybridKeyExchange:
+    """X25519 + ML-KEM-768 hybrid key exchange."""
+
+    KEM_ALG = "ML-KEM-768"
+    SHARED_SECRET_LEN = 32  # output length after HKDF
+
+    def __init__(self):
+        # Classical: X25519
+        self.x25519_private = X25519PrivateKey.generate()
+        self.x25519_public = self.x25519_private.public_key()
+
+        # Post-quantum: ML-KEM-768
+        self.kem = oqs.KeyEncapsulation(self.KEM_ALG)
+        self.kem_public_key = self.kem.generate_keypair()
+
+    def get_public_keys(self) -&gt; dict:
+        """Return both public keys for transmission to peer."""
+        from cryptography.hazmat.primitives.serialization import (
+            Encoding, PublicFormat,
+        )
+        return {
+            "x25519": self.x25519_public.public_bytes(
+                Encoding.Raw, PublicFormat.Raw
+            ),
+            "ml_kem_768": self.kem_public_key,
+        }
+
+    def encapsulate(self, peer_public_keys: dict) -&gt; tuple:
+        """
+        Initiator side: encapsulate to peer&rsquo;s public keys.
+        Returns (combined_shared_secret, encapsulated_data).
+        """
+        # X25519 key agreement
+        peer_x25519_pub = X25519PublicKey.from_public_bytes(
+            peer_public_keys["x25519"]
+        )
+        x25519_shared = self.x25519_private.exchange(peer_x25519_pub)
+
+        # ML-KEM-768 encapsulation
+        kem = oqs.KeyEncapsulation(self.KEM_ALG)
+        ml_kem_ciphertext, ml_kem_shared = kem.encap_secret(
+            peer_public_keys["ml_kem_768"]
+        )
+
+        # Combine shared secrets via HKDF.
+        # CRITICAL: both shared secrets MUST be fed into the KDF.
+        # Never use either one directly — the hybrid property
+        # requires that compromising one algorithm does not
+        # reveal the combined secret.
+        combined = self._combine_secrets(x25519_shared, ml_kem_shared)
+
+        encapsulated = {
+            "x25519_public": self.x25519_public.public_bytes(
+                __import__("cryptography.hazmat.primitives.serialization",
+                           fromlist=["Encoding"]).Encoding.Raw,
+                __import__("cryptography.hazmat.primitives.serialization",
+                           fromlist=["PublicFormat"]).PublicFormat.Raw,
+            ),
+            "ml_kem_ciphertext": ml_kem_ciphertext,
+        }
+        return combined, encapsulated
+
+    def decapsulate(self, encapsulated: dict) -&gt; bytes:
+        """
+        Responder side: decapsulate from received data.
+        Returns combined_shared_secret.
+        """
+        # X25519 key agreement
+        peer_x25519_pub = X25519PublicKey.from_public_bytes(
+            encapsulated["x25519_public"]
+        )
+        x25519_shared = self.x25519_private.exchange(peer_x25519_pub)
+
+        # ML-KEM-768 decapsulation
+        ml_kem_shared = self.kem.decap_secret(
+            encapsulated["ml_kem_ciphertext"]
+        )
+
+        return self._combine_secrets(x25519_shared, ml_kem_shared)
+
+    @staticmethod
+    def _combine_secrets(x25519_ss: bytes, ml_kem_ss: bytes) -&gt; bytes:
+        """
+        Combine two shared secrets using HKDF.
+
+        Input key material = x25519_ss || ml_kem_ss
+        Salt = None (HKDF will use a zero-filled salt)
+        Info = context string binding to this specific protocol
+
+        The info string ensures that keys derived in different
+        contexts are cryptographically independent.
+        """
+        ikm = x25519_ss + ml_kem_ss
+        hkdf = HKDF(
+            algorithm=hashes.SHA256(),
+            length=32,
+            salt=None,
+            info=b"hybrid-x25519-mlkem768-v1",
+        )
+        return hkdf.derive(ikm)</code></pre>
+
+        <p>AI tools struggle significantly with post-quantum cryptography. <strong>Claude Code</strong> produces the best results: it understands the hybrid construction correctly, emphasizes that both shared secrets must be combined through a KDF, and generates reasonable <code>liboqs</code> API usage. However, it cannot reliably generate correct NTT implementations or lattice arithmetic from scratch &mdash; the polynomial ring operations are too specialized. <strong>Gemini CLI</strong> can discuss post-quantum algorithms at a theoretical level, explaining Module-LWE, the NTT, and rejection sampling, but its code generation for <code>liboqs</code> or <code>pqcrypto</code> crate APIs is unreliable. <strong>Cursor</strong> helps if you are already working with a PQ library by indexing the library&rsquo;s API. <strong>Copilot</strong>, <strong>Windsurf</strong>, and <strong>Amazon Q</strong> have minimal post-quantum knowledge: they may recognize the algorithm names but generate incorrect API calls or confuse parameter sets (e.g., using ML-KEM-512 when ML-KEM-768 is specified).</p>
+
+        <h3>Common AI failures in post-quantum crypto</h3>
+        <p>Not implementing hybrid mode: generating ML-KEM-only key exchange without a classical fallback, which provides no security if ML-KEM is broken by a classical attack or implementation flaw. Wrong parameter sets: confusing ML-KEM-512 (Level 1) with ML-KEM-768 (Level 3) or using Kyber parameter names (Kyber512) instead of the standardized ML-KEM names. Incorrect polynomial arithmetic: wrong modular reduction, wrong NTT parameters, or incorrect compression/decompression functions. Not understanding rejection sampling in ML-DSA: generating signing code that does not loop on rejection, producing biased signatures that leak the secret key. Using post-quantum algorithms for symmetric-key operations (post-quantum concerns apply to asymmetric crypto; AES-256 and SHA-256 are considered quantum-resistant with a security margin).</p>
+
+        <h2>6. Key Management &amp; PKI</h2>
+
+        <p>Key management is the unglamorous foundation that determines whether all your carefully implemented cryptographic algorithms actually provide security. The best AES-GCM implementation in the world is useless if the key is derived from a user&rsquo;s password without a KDF, stored in plaintext in a configuration file, and never rotated. Surveys of real-world crypto vulnerabilities consistently show that key management failures &mdash; not algorithm weaknesses &mdash; are the primary cause of crypto system compromises. Heartbleed (2014) leaked private keys from server memory. The Sony PlayStation 3 hack recovered the ECDSA signing key because Sony used a static nonce. Numerous data breaches have traced back to hardcoded API keys committed to public repositories.</p>
+
+        <p>The key lifecycle &mdash; generation, distribution, storage, rotation, and destruction &mdash; is a complete system that must be designed holistically. A key generated with a CSPRNG but stored in plaintext on disk is vulnerable to filesystem compromise. A key stored in an HSM but never rotated accumulates risk over time &mdash; the longer a key is in use, the more ciphertext is available for cryptanalysis, and the more opportunities exist for side-channel leakage. A key properly rotated but without backward compatibility for decrypting old data creates operational failures. AI tools can help with individual operations (calling KMS APIs, generating HKDF code) but rarely reason about the lifecycle as a whole.</p>
+
+        <h3>Key derivation</h3>
+        <p>HKDF (RFC 5869) for deriving multiple subkeys from high-entropy key material: extract a pseudorandom key from the input keying material and a salt, then expand to the desired number of output keys using distinct info strings. Argon2id (RFC 9106) for password-based key derivation: resistant to GPU and ASIC attacks through memory-hard computation, combining Argon2i (side-channel resistant) and Argon2d (data-dependent for GPU resistance). PBKDF2 (SP 800-132) as a legacy fallback when Argon2 is not available, with a minimum of 600,000 iterations for SHA-256 (OWASP 2023 recommendation).</p>
+
+        <h3>Key storage</h3>
+        <p>HSMs (Hardware Security Modules) for production key storage: the key never leaves the HSM, all crypto operations happen inside the module, PKCS#11 provides the standard API. Envelope encryption for cloud deployments: encrypt the data with a data encryption key (DEK), encrypt the DEK with a key encryption key (KEK) stored in the HSM/KMS, store the encrypted DEK alongside the ciphertext. Key wrapping uses AES-KWP (RFC 5649) or AES-GCM for wrapping keys that will be transported or stored outside the HSM.</p>
+
+        <h3>X.509 certificates and PKI</h3>
+        <p>Certificate chain building (leaf to intermediate to root), signature verification at each level, revocation checking via OCSP (RFC 6960) or CRL (RFC 5280), name constraint validation, certificate transparency log checking (RFC 6962). Each of these must be implemented correctly: accepting a self-signed certificate in a chain-building implementation is a critical vulnerability; failing to check revocation means accepting compromised certificates; ignoring name constraints allows a CA to issue certificates for domains outside its authorized scope.</p>
+
+        <p>The history of certificate validation bugs is extensive and instructive. NUL byte attacks (Marlinspike, 2009) exploited implementations that stopped reading the CN at a NUL byte: the certificate for <code>www.bank.com\0.attacker.com</code> would pass CN validation as <code>www.bank.com</code> in implementations using C string functions. Apple&rsquo;s &ldquo;goto fail&rdquo; bug (2014) skipped the signature verification step entirely due to a duplicated <code>goto</code> statement. GnuTLS&rsquo;s certificate chain validation was broken for years because it accepted chains of length 1 (self-signed) when it should have required a chain terminating at a trusted root. Certificate Transparency (CT) helps detect mis-issued certificates, but the implementation must verify SCTs (Signed Certificate Timestamps) to benefit from CT &mdash; merely logging certificates without checking SCTs provides no protection. AI tools that generate TLS client code often disable certificate verification entirely (<code>verify=False</code> in Python requests, <code>InsecureSkipVerify: true</code> in Go) for &ldquo;development purposes,&rdquo; and this code persists into production.</p>
+
+        <h3>Code example: HKDF key derivation for multiple subkeys (Python)</h3>
+<pre><code>"""
+Derive multiple independent subkeys from a single master secret
+using HKDF (RFC 5869).
+
+This is the standard pattern for key schedules in protocols:
+a single shared secret from DH key exchange is expanded into
+separate encryption keys, MAC keys, and IVs for each direction.
+"""
+from cryptography.hazmat.primitives.kdf.hkdf import HKDF, HKDFExpand
+from cryptography.hazmat.primitives import hashes
+import os
+
+def derive_protocol_keys(
+    shared_secret: bytes,
+    salt: bytes | None = None,
+    context: bytes = b"",
+) -&gt; dict:
+    """
+    Derive a full set of protocol keys from a shared secret.
+
+    HKDF has two stages:
+      1. Extract: PRK = HMAC-SHA256(salt, IKM)
+         Concentrates entropy from potentially non-uniform input.
+      2. Expand: OKM = HKDF-Expand(PRK, info, length)
+         Derives output keying material with domain separation.
+
+    Each subkey uses a DIFFERENT info string to ensure
+    cryptographic independence — knowing one subkey reveals
+    nothing about any other subkey.
+    """
+
+    # Step 1: Extract — produce a pseudorandom key (PRK)
+    # from the (potentially non-uniform) shared secret.
+    # Salt should be random if available; if not, HKDF uses
+    # a zero-filled salt of hash length (32 bytes for SHA-256).
+    hkdf_extract = HKDF(
+        algorithm=hashes.SHA256(),
+        length=32,
+        salt=salt,
+        info=b"",
+    )
+    # For extract-then-expand, we use HKDFExpand with the PRK.
+    # In practice, using HKDF directly with different info strings
+    # for each key achieves the same result:
+    prk = hkdf_extract.derive(shared_secret)
+
+    def expand(info: bytes, length: int = 32) -&gt; bytes:
+        """Expand PRK to a subkey with domain-separated info."""
+        hkdf_expand = HKDFExpand(
+            algorithm=hashes.SHA256(),
+            length=length,
+            info=context + info,
+        )
+        return hkdf_expand.derive(prk)
+
+    return {
+        # Client-to-server encryption key (256-bit AES key)
+        "client_write_key": expand(b"client_write_key"),
+        # Server-to-client encryption key
+        "server_write_key": expand(b"server_write_key"),
+        # Client-to-server IV/nonce base (96-bit for AES-GCM)
+        "client_write_iv": expand(b"client_write_iv", length=12),
+        # Server-to-client IV/nonce base
+        "server_write_iv": expand(b"server_write_iv", length=12),
+        # Key for MAC of additional authenticated data (if needed)
+        "auth_key": expand(b"auth_key"),
+        # Key for key-update ratchet
+        "ratchet_secret": expand(b"ratchet_secret"),
+    }
+
+def derive_password_key(
+    password: str,
+    salt: bytes | None = None,
+    key_length: int = 32,
+) -&gt; tuple:
+    """
+    Derive a key from a password using Argon2id.
+
+    Argon2id is the WINNER of the Password Hashing Competition
+    and is RECOMMENDED by OWASP over PBKDF2 and bcrypt.
+
+    Parameters chosen per OWASP 2023 recommendations:
+      - memory_cost: 47104 KiB (~46 MB) minimum
+      - time_cost: 1 iteration (with high memory)
+      - parallelism: 1
+
+    For higher security, increase memory_cost.
+    """
+    from argon2.low_level import hash_secret_raw, Type
+
+    if salt is None:
+        salt = os.urandom(16)  # 128-bit random salt
+
+    derived_key = hash_secret_raw(
+        secret=password.encode("utf-8"),
+        salt=salt,
+        time_cost=1,
+        memory_cost=47104,  # KiB
+        parallelism=1,
+        hash_len=key_length,
+        type=Type.ID,  # Argon2id — hybrid of i and d
+    )
+
+    return derived_key, salt  # store salt alongside the derived material</code></pre>
+
+        <p><strong>Claude Code</strong> generates correct HKDF usage with proper domain separation via distinct info strings, and explains why each subkey must have a unique info value. It also produces correct Argon2id configuration with OWASP-recommended parameters. <strong>Amazon Q</strong> is surprisingly strong for key management patterns in AWS: it generates correct KMS envelope encryption, Secrets Manager integration, and IAM-based key policies. <strong>Cursor</strong> helps navigate large codebases with complex key management code, autocompleting patterns consistent with the project&rsquo;s existing key derivation approach. <strong>Copilot</strong> generates HKDF and PBKDF2 code correctly most of the time, but occasionally suggests insufficient PBKDF2 iteration counts (10,000 instead of 600,000) and sometimes omits the salt parameter. <strong>Windsurf</strong> has generated code that uses a password directly as an AES key (without any KDF) in our testing.</p>
+
+        <h3>Common AI failures in key management</h3>
+        <p>Hardcoded keys in source code. Using the same HKDF info string for multiple subkeys (destroying cryptographic independence). PBKDF2 with low iteration counts (the default in many libraries is 100,000 or less; OWASP recommends 600,000 for SHA-256). Not storing the salt (regenerating a random salt on every derivation means you can never derive the same key again). Using passwords directly as encryption keys without a KDF. Generating encryption without thinking about key rotation &mdash; how do you decrypt old data after rotating to a new key? Using <code>random.random()</code> or <code>Math.random()</code> for salt generation instead of a CSPRNG.</p>
+
+        <h2>7. Formal Verification &amp; Crypto Auditing</h2>
+
+        <p>Formal verification is the gold standard for cryptographic assurance. Unlike testing (which shows the absence of tested bugs), formal verification proves mathematical properties about the implementation. In cryptography, this means proving that a protocol achieves the security properties claimed in its specification, or that an implementation is functionally equivalent to a reference specification.</p>
+
+        <p>The motivation is clear: testing cannot find crypto bugs. A test suite for AES-GCM can verify that <code>decrypt(encrypt(plaintext)) == plaintext</code> for millions of random inputs and still miss a nonce-reuse vulnerability, a timing leak, or a ciphertext forgery. The bug space in cryptographic code is not random &mdash; it is adversarial. The attacker crafts inputs that trigger specific corner cases: a point at infinity in EC arithmetic, a zero polynomial coefficient in lattice crypto, a specific padding pattern in RSA. Formal verification addresses this by proving properties hold for <em>all</em> possible inputs, not just the ones in your test suite.</p>
+
+        <p>The tools landscape splits into two categories: protocol verification tools (ProVerif, Tamarin, CryptoVerif) that analyze the protocol design for logical flaws, and implementation verification tools (F*, Coq, Lean, Dafny) that prove the code correctly implements the specification. Both are valuable; neither alone is sufficient. A formally verified protocol can still be broken by a buggy implementation, and a verified implementation can still be deployed with a flawed protocol design.</p>
+
+        <h3>ProVerif and Tamarin</h3>
+        <p>ProVerif and Tamarin are automated protocol verifiers. ProVerif models protocols in the applied pi-calculus: you specify the protocol as processes that exchange messages over channels, and ProVerif checks properties like secrecy (the attacker cannot learn the session key), authentication (if Bob completes a session with Alice, then Alice actually participated), and forward secrecy (compromising the long-term key does not reveal past session keys). Tamarin uses multiset rewriting rules and supports both trace-based and equivalence-based properties, with more fine-grained control over the proof search. TLS 1.3 was verified using both ProVerif and Tamarin before standardization, and the verification uncovered real design issues.</p>
+
+        <h3>F* and HACL*</h3>
+        <p>F* is a dependently-typed functional programming language designed for program verification. HACL* (High-Assurance Cryptographic Library) is a formally verified crypto library written in a subset of F* called Low*, which compiles to C. HACL* provides verified implementations of Curve25519, Ed25519, ChaCha20-Poly1305, AES-GCM, SHA-2, SHA-3, and other primitives, with machine-checked proofs of functional correctness, memory safety, and constant-time behavior. The generated C code is used in Firefox (NSS) and other production systems.</p>
+
+        <h3>Symbolic vs computational models</h3>
+        <p>Symbolic models (Dolev-Yao) treat cryptographic primitives as perfect black boxes: encryption is unbreakable unless you have the key, hashes are one-way, and the attacker controls the network but cannot break crypto. Computational models treat primitives as mathematical functions with concrete security bounds: AES-256 has 256-bit security against key recovery, SHA-256 has 128-bit collision resistance, ECDSA security depends on the hardness of the discrete logarithm problem on the specific curve. Symbolic verification (ProVerif, Tamarin) catches protocol logic errors &mdash; missing authentication, missing freshness guarantees, state machine flaws. Computational verification (CryptoVerif, EasyCrypt) proves security under standard cryptographic assumptions &mdash; if the DDH assumption holds, then the protocol is IND-CCA secure. Both are necessary for a complete security argument: symbolic verification alone misses attacks that exploit the specific mathematical properties of the primitives, while computational verification alone is too expensive to apply to complex protocol state machines.</p>
+
+        <h3>Crypto auditing patterns</h3>
+        <p>Even without full formal verification, structured auditing catches the most common crypto bugs. The audit checklist: (1) nonce management &mdash; are nonces unique per (key, message) pair? Are they counter-based or random? If random, is the birthday bound acceptable for the expected volume? (2) Key derivation &mdash; are keys derived from passwords using an approved KDF with sufficient parameters? Are derived subkeys domain-separated with unique info/label strings? (3) Timing leaks &mdash; are all comparisons of secret data constant-time? Are all conditional operations on secrets branch-free? (4) Memory handling &mdash; are secrets wiped after use? Are buffers for plaintext allocated in non-swappable memory (mlock) where possible? (5) Entropy sources &mdash; does all randomness come from a CSPRNG? Is the CSPRNG properly seeded from OS entropy? (6) Algorithm choices &mdash; are all algorithms on the approved list for the target compliance framework? Are key sizes appropriate for the intended security lifetime?</p>
+
+        <h3>Where AI tools help with formal verification</h3>
+        <p>AI tools can generate initial ProVerif models from protocol descriptions &mdash; translating a handshake specification into the applied pi-calculus process syntax. They can explain verification results, translating the abstract attack traces that ProVerif produces into concrete protocol execution scenarios. They can generate property specifications (secrecy queries, correspondence assertions) from informal security requirements. They can produce proof sketches for Tamarin lemmas, suggesting which helper lemmas might be needed to guide the automated prover.</p>
+
+        <h3>Where AI tools fail</h3>
+        <p>AI tools cannot run the provers &mdash; they generate models but cannot verify them. Generated ProVerif models frequently have type errors, incorrect channel bindings, or missing equational theories. Tamarin lemmas often require manual guidance (oracle/heuristic annotations) that AI tools do not generate correctly. F* code requires dependent types and refinement types that are beyond what current AI tools produce reliably. The fundamental limitation: formal verification requires mathematical precision that exceeds the capabilities of probabilistic language models. AI-generated formal models must always be checked by running the actual verification tool, and the results must be reviewed by someone who understands what the verification did and did not prove.</p>
+
+        <p><strong>Claude Code</strong> is the best tool for formal verification assistance: it generates syntactically plausible ProVerif models, explains verification output, and can help debug failed proof attempts. <strong>Gemini CLI</strong> is useful for discussing formal methods concepts and explaining verification results, leveraging its large context window to hold the full model and the verifier output simultaneously. <strong>All other tools</strong> have minimal useful capability for formal verification &mdash; this is a specialized domain that requires mathematical reasoning beyond what current autocomplete-focused tools provide.</p>
+
+        <h2>Quick-Reference: Best Tool by Task</h2>
+        <div style="overflow-x:auto">
+          <table style="width:100%;border-collapse:collapse;margin:1.5rem 0">
+            <thead>
+              <tr style="border-bottom:2px solid var(--border)">
+                <th style="padding:12px 16px;text-align:left">Task</th>
+                <th style="padding:12px 16px;text-align:left">Best Tool</th>
+                <th style="padding:12px 16px;text-align:left">Why</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px">AES-GCM / ChaCha20 implementation</td>
+                <td style="padding:12px 16px"><strong>Claude Code</strong></td>
+                <td style="padding:12px 16px">Generates correct nonce management, warns about birthday bounds and reuse</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px">RSA / ECC key operations</td>
+                <td style="padding:12px 16px"><strong>Claude Code</strong></td>
+                <td style="padding:12px 16px">Knows OAEP vs PKCS#1 v1.5, validates curve points, correct padding choices</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px">TLS / Noise protocol design</td>
+                <td style="padding:12px 16px"><strong>Claude Code</strong></td>
+                <td style="padding:12px 16px">Complete handshake state machines with transcript binding and key schedule</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px">Constant-time code review</td>
+                <td style="padding:12px 16px"><strong>Claude Code</strong></td>
+                <td style="padding:12px 16px">Identifies timing leaks, generates bitwise accumulator patterns, warns about compiler interference</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px">Post-quantum migration</td>
+                <td style="padding:12px 16px"><strong>Gemini CLI</strong></td>
+                <td style="padding:12px 16px">1M context for discussing NIST standards, algorithm comparison, hybrid design</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px">Crypto library API usage</td>
+                <td style="padding:12px 16px"><strong>Cursor Pro</strong></td>
+                <td style="padding:12px 16px">Indexes OpenSSL/BoringSSL/rustls sources, autocompletes API patterns</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px">Key management (AWS KMS)</td>
+                <td style="padding:12px 16px"><strong>Amazon Q</strong></td>
+                <td style="padding:12px 16px">Strong on AWS KMS envelope encryption, IAM policies, Secrets Manager</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px">FIPS compliance patterns</td>
+                <td style="padding:12px 16px"><strong>Claude Code</strong></td>
+                <td style="padding:12px 16px">Knows approved algorithms, approved KDFs, and DRBG requirements</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px">Formal verification models</td>
+                <td style="padding:12px 16px"><strong>Claude Code</strong></td>
+                <td style="padding:12px 16px">Generates ProVerif process syntax, explains Tamarin attack traces</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px">RFC / standard analysis</td>
+                <td style="padding:12px 16px"><strong>Gemini CLI</strong></td>
+                <td style="padding:12px 16px">Paste entire RFC sections into 1M context for precise implementation guidance</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px">Large crypto codebase navigation</td>
+                <td style="padding:12px 16px"><strong>Cursor Pro</strong></td>
+                <td style="padding:12px 16px">Indexes OpenSSL&rsquo;s 500K+ LOC, cross-references EVP API and engine backends</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h2>What AI Tools Get Wrong About Cryptography</h2>
+        <ul>
+          <li><strong>ECB mode or CBC without authentication:</strong> AI tools still generate <code>AES.new(key, AES.MODE_ECB)</code> for &ldquo;simple encryption.&rdquo; ECB preserves plaintext patterns &mdash; identical plaintext blocks produce identical ciphertext blocks. CBC without Encrypt-then-MAC is vulnerable to padding oracle attacks (Vaudenay 2002, POODLE 2014). The correct answer is always an AEAD mode: AES-GCM or ChaCha20-Poly1305. There is no legitimate modern use case for unauthenticated encryption in application code.</li>
+          <li><strong><code>memcmp()</code> for MAC verification:</strong> This creates a timing oracle. <code>memcmp</code> returns on the first differing byte, so an attacker who measures response time with microsecond precision can forge a valid MAC byte by byte. The correct function is <code>CRYPTO_memcmp()</code> (OpenSSL), <code>hmac.compare_digest()</code> (Python), <code>crypto.timingSafeEqual()</code> (Node.js), or a hand-rolled constant-time comparison using the bitwise-OR accumulator pattern.</li>
+          <li><strong>Reusing nonces/IVs:</strong> For AES-GCM, nonce reuse reveals the authentication key and the XOR of plaintexts. For ChaCha20-Poly1305, nonce reuse reveals the XOR of plaintexts and the Poly1305 key. For AES-CTR, nonce/counter reuse reveals the XOR of plaintexts. For AES-CBC, IV reuse reveals whether two messages share a common prefix. AI tools generate <code>nonce = b'\x00' * 12</code> in examples that get copy-pasted into production.</li>
+          <li><strong>Not validating elliptic curve points:</strong> When receiving a public key from an untrusted source, you must verify the point is on the curve and in the correct subgroup. Without validation, an attacker can send a point on a different curve (invalid curve attack) or a point of small order (small subgroup attack), both of which leak bits of the private key through repeated interactions. AI tools generate <code>PublicKey(x, y)</code> without calling <code>is_on_curve()</code> or using library functions that validate automatically.</li>
+          <li><strong>Using <code>rand()</code> / <code>Math.random()</code> instead of CSPRNG:</strong> Non-cryptographic PRNGs are predictable. Python&rsquo;s <code>random.random()</code> uses Mersenne Twister, which can be fully reconstructed from 624 consecutive 32-bit outputs. JavaScript&rsquo;s <code>Math.random()</code> uses xorshift128+, which is similarly predictable. The correct sources: <code>os.urandom()</code> / <code>secrets</code> module (Python), <code>crypto.getRandomValues()</code> (browser JS), <code>crypto.randomBytes()</code> (Node.js), <code>getrandom()</code> (Linux), <code>OsRng</code> (Rust).</li>
+          <li><strong>RSA keys &lt; 2048 bits or PKCS#1 v1.5 padding:</strong> AI tools have generated 1024-bit RSA keys in code examples. 1024-bit RSA was factored in academic settings over a decade ago and is considered broken. PKCS#1 v1.5 encryption padding enables Bleichenbacher attacks; OAEP is mandatory. PKCS#1 v1.5 signature padding is less dangerous but PSS is preferred for new implementations.</li>
+          <li><strong>Skipping key derivation:</strong> Using a password directly as an AES key: <code>key = password.encode('utf-8')[:32]</code>. This provides no protection against dictionary attacks and limits the effective key space to the entropy of the password (typically 20-40 bits for human-chosen passwords). A proper KDF (Argon2id, PBKDF2 with sufficient iterations, or scrypt) is mandatory when deriving keys from passwords.</li>
+          <li><strong>Not wiping secrets from memory:</strong> After a cryptographic operation completes, secret key material must be zeroed. <code>memset(key, 0, 32)</code> is insufficient because the compiler may optimize it away (dead store elimination). Use <code>explicit_bzero()</code> (POSIX), <code>SecureZeroMemory()</code> (Windows), the <code>zeroize</code> crate (Rust), or volatile barriers. In garbage-collected languages (Python, Java, Go), this is fundamentally difficult because the runtime may copy objects during garbage collection, leaving secrets in deallocated memory pages.</li>
+        </ul>
+
+        <h2>Cost Model: What Cryptography Engineers Actually Pay</h2>
+
+        <h3>Scenario 1: Student / Learning Cryptography &mdash; $0/month</h3>
+        <ul>
+          <li><strong>Copilot Free</strong> (2,000 completions/mo) for basic crypto library usage and textbook implementations</li>
+          <li>Plus <strong>Gemini CLI Free</strong> for discussing NIST standards, understanding algorithm specifications, and analyzing RFC sections</li>
+          <li>Sufficient for coursework: implementing textbook RSA, understanding AES rounds, basic TLS client setup. You will need to manually verify every cryptographic detail &mdash; AI-generated crypto code at this level frequently uses insecure defaults (ECB mode, weak random, no authentication).</li>
+        </ul>
+
+        <h3>Scenario 2: Application Developer Using Crypto Libraries &mdash; $10/month</h3>
+        <ul>
+          <li><strong>Copilot Pro</strong> ($10/mo) for unlimited completions when using <code>cryptography</code>, OpenSSL, or BoringSSL APIs</li>
+          <li>Good for application-level crypto: TLS client/server configuration, certificate management, encrypting data at rest with <code>cryptography.fernet</code>, hashing passwords with Argon2. Copilot handles the API boilerplate while you verify the security-critical parameters (key sizes, iteration counts, cipher modes). Be vigilant about default parameters in autocompleted code.</li>
+        </ul>
+
+        <h3>Scenario 3: Crypto Library Developer &mdash; $20/month</h3>
+        <ul>
+          <li><strong>Claude Code</strong> ($20/mo) for implementing cryptographic algorithms, constant-time code, and mathematical operations</li>
+          <li>The best single tool for the hard cryptography problems. Claude Code&rsquo;s reasoning handles constant-time patterns, modular arithmetic correctness, AEAD construction details, and protocol state machines. Use it as your crypto implementation reviewer: have it analyze your constant-time comparison, your nonce management scheme, your key derivation chain. It catches errors that tests miss.</li>
+        </ul>
+
+        <h3>Scenario 4: Protocol Engineer &mdash; $20/month</h3>
+        <ul>
+          <li><strong>Cursor Pro</strong> ($20/mo) for working with large protocol implementations (TLS libraries, Signal protocol stacks, Noise implementations)</li>
+          <li>Best for navigating and extending existing crypto codebases: OpenSSL (500K+ lines), rustls, libsignal. Cursor indexes the full project, autocompletes API patterns matching your conventions, and handles cross-file references across the handshake, record layer, and crypto primitive modules. Weaker than Claude Code on mathematical correctness, but stronger on daily development velocity in large codebases.</li>
+        </ul>
+
+        <h3>Scenario 5: Full Pipeline &mdash; $40/month</h3>
+        <ul>
+          <li><strong>Claude Code</strong> ($20/mo) for cryptographic correctness, protocol design, constant-time analysis, and formal verification assistance</li>
+          <li>Plus <strong>Cursor Pro</strong> ($20/mo) for codebase-indexed development, library navigation, and multi-file editing</li>
+          <li>The optimal combination: Claude Code for the security-critical reasoning (is this nonce management correct? does this key schedule bind to the transcript? is this comparison constant-time?) and Cursor for the daily workflow (navigating OpenSSL source, refactoring across modules, test harness scaffolding). This is what professional cryptography engineers working on production crypto libraries and protocol implementations use.</li>
+        </ul>
+
+        <h3>Scenario 6: Enterprise / FIPS Compliance &mdash; $99/seat</h3>
+        <ul>
+          <li><strong>Copilot Enterprise</strong> ($39/mo) or <strong>Cursor Business</strong> ($40/mo) for team-wide codebase indexing, code policy enforcement, and audit logging</li>
+          <li>Plus <strong>Claude Code</strong> ($20/mo) for architecture-level crypto design and compliance review</li>
+          <li>Organizations requiring FIPS 140-3 validation, Common Criteria certification, or PCI DSS compliance need team-wide consistency on approved algorithms, key sizes, and KDF parameters. Enterprise tiers index the full proprietary codebase, enforce coding standards (no unapproved algorithms, no hardcoded keys, mandatory constant-time comparisons), and provide audit logs for compliance evidence. <strong>Tabnine</strong> ($39/user/mo) offers self-hosted deployment for air-gapped environments where classified crypto implementations cannot leave the network.</li>
+        </ul>
+
+        <h2>The Cryptography Engineer&rsquo;s Verdict</h2>
+
+        <p>The cryptographic tooling landscape in 2026 has a clear dividing line. AI coding tools are useful for cryptographic API usage &mdash; calling OpenSSL, using the Python <code>cryptography</code> library, configuring TLS, integrating with KMS services &mdash; and dangerous for implementing cryptographic primitives. They can scaffold a TLS server with correct certificate loading and cipher suite configuration. They can generate HKDF key derivation with proper domain separation. They can produce AES-GCM encryption with reasonable nonce management. But they cannot reliably implement a constant-time elliptic curve scalar multiplication, a correct NTT for lattice crypto, or a side-channel-resistant AES implementation. The gap between &ldquo;uses the crypto library correctly&rdquo; and &ldquo;implements the crypto primitive correctly&rdquo; is exactly where AI tools produce their most dangerous output &mdash; code that compiles, passes tests, and is cryptographically broken in ways that only an expert reviewing the generated assembly would catch.</p>
+
+        <p>The right workflow: AI generates the scaffolding and API integration &mdash; TLS setup, key loading, HKDF expansion, envelope encryption &mdash; and you verify every cryptographic detail against the relevant standard. Have Claude Code review your nonce management against NIST SP 800-38D. Have it check your key derivation chain against RFC 5869. Have it analyze your comparison functions for timing leaks. But never trust AI-generated crypto code without expert review, especially for anything below the API layer: no custom block cipher modes, no hand-rolled elliptic curve arithmetic, no &ldquo;simplified&rdquo; KDF implementations. Use established, audited libraries (libsodium, HACL*, the Python <code>cryptography</code> library, Rust&rsquo;s <code>ring</code> crate) for primitives, and use AI tools to help you call those libraries correctly.</p>
+
+        <p>The tool-specific recommendations: <strong>Claude Code</strong> is the best single tool for reasoning about cryptographic correctness &mdash; it understands why nonce reuse breaks AES-GCM, why <code>memcmp</code> creates timing oracles, why PKCS#1 v1.5 enables Bleichenbacher attacks, and why the doubling case in elliptic curve addition matters. Use it as your primary crypto implementation reviewer. <strong>Cursor</strong> is the best for navigating large crypto codebases &mdash; OpenSSL (500K+ lines across <code>libcrypto</code> and <code>libssl</code>), BoringSSL, rustls, ring &mdash; where understanding the code requires indexing hundreds of source files across multiple modules and tracing function calls from the EVP high-level API down to the assembly-optimized primitives. <strong>Gemini CLI</strong> is the best for discussing standards &mdash; paste an entire RFC section or NIST SP document into its 1M context window and get precise implementation guidance, parameter recommendations, and compliance analysis.</p>
+
+        <p>But no AI tool should be trusted to implement cryptographic primitives from scratch without thorough, expert review. In cryptography, the cost of a subtle bug is not a crash or a wrong answer &mdash; it is the silent, undetectable compromise of every secret the system was built to protect. The bug will not appear in your test suite, your CI pipeline, your staging environment, or your production monitoring. It will appear in a research paper published by the group that broke your system, or in an intelligence briefing about adversaries who have been reading your encrypted communications for the past three years. This is why the crypto community&rsquo;s mantra remains: <strong>don&rsquo;t roll your own crypto.</strong> Use established, audited, ideally formally verified libraries. Use AI tools to call those libraries correctly. Verify everything against the standard.</p>
+
+        <p>Compare all tools and pricing on our <a href="/" style="color:var(--accent)">main comparison table</a>, or check the <a href="/blog/cheapest-ai-coding-tool-2026.html" style="color:var(--accent)">cheapest tools guide</a> for budget options.</p>
+
+        <h2>Related on CodeCosts</h2>
+        <ul>
+          <li><a href="/blog/ai-coding-tools-for-security-engineers-2026.html" style="color:var(--accent)">AI Coding Tools for Security Engineers (2026)</a> &mdash; AppSec, vulnerability analysis, threat modeling</li>
+          <li><a href="/blog/ai-coding-tools-for-networking-engineers-2026.html" style="color:var(--accent)">AI Coding Tools for Networking Engineers (2026)</a> &mdash; TLS, protocol implementation, packet processing</li>
+          <li><a href="/blog/ai-coding-tools-for-systems-programmers-2026.html" style="color:var(--accent)">AI Coding Tools for Systems Programmers (2026)</a> &mdash; low-level optimization, memory management</li>
+          <li><a href="/blog/ai-coding-tools-for-compliance-engineers-2026.html" style="color:var(--accent)">AI Coding Tools for Compliance Engineers (2026)</a> &mdash; regulatory requirements, audit preparation</li>
+        </ul>
+      </div>
+    </article>
+
+    <!-- Related Posts -->
+    <section class="card">
+      <h3>Related Posts</h3>
+      <div class="blog-list" style="margin-top:1rem">
+        <a href="/blog/ai-coding-tools-for-security-engineers-2026.html" class="blog-post-card">
+          <h3>AI Coding Tools for Security Engineers 2026: AppSec, Threat Modeling &amp; Vulnerability Analysis Guide</h3>
+          <div class="blog-meta"><span>March 26, 2026</span><span>22 min read</span></div>
+          <p class="blog-excerpt">Every AI coding tool evaluated for security engineering. TLS hardening, vulnerability analysis, SAST/DAST, firewall rules, and threat modeling from $0 to enterprise.</p>
+          <span class="read-more">Read more &rarr;</span>
+        </a>
+        <a href="/blog/ai-coding-tools-for-networking-engineers-2026.html" class="blog-post-card">
+          <h3>AI Coding Tools for Networking Engineers 2026: Socket Programming, Protocol Implementation &amp; eBPF Guide</h3>
+          <div class="blog-meta"><span>March 29, 2026</span><span>24 min read</span></div>
+          <p class="blog-excerpt">Every AI coding tool evaluated for networking engineering. Socket programming, protocol implementation, eBPF/XDP, TLS, and async I/O from $0 to enterprise.</p>
+          <span class="read-more">Read more &rarr;</span>
+        </a>
+        <a href="/blog/ai-coding-tools-for-systems-programmers-2026.html" class="blog-post-card">
+          <h3>AI Coding Tools for Systems Programmers 2026: Kernel, Memory Management &amp; Low-Level Optimization Guide</h3>
+          <div class="blog-meta"><span>March 28, 2026</span><span>24 min read</span></div>
+          <p class="blog-excerpt">Every AI coding tool evaluated for systems programming. Kernel development, memory management, low-level optimization, and performance-critical code from $0 to enterprise.</p>
+          <span class="read-more">Read more &rarr;</span>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>CodeCosts &mdash; Independent AI coding tool price tracker. Updated March 2026.</p>
+      <p style="margin-top:0.5rem"><a href="/" style="color:var(--accent)">Compare all tools</a> &middot; <a href="/blog/" style="color:var(--accent)">Blog</a> &middot; <a href="/blog/feed.xml" style="color:var(--accent)">RSS</a></p>
+    </div>
+  </footer>
+</body>
+</html>

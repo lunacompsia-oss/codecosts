@@ -9,6 +9,14 @@
     <atom:link href="https://codecosts.pages.dev/blog/feed.xml" rel="self" type="application/rss+xml"/>
 
     <item>
+      <title>AI Coding Tools for Cryptography Engineers 2026: Symmetric &amp; Asymmetric Crypto, Protocol Design, Side-Channel Protection &amp; Post-Quantum Guide</title>
+      <link>https://codecosts.pages.dev/blog/ai-coding-tools-for-cryptography-engineers-2026.html</link>
+      <description>The cryptography engineer's guide to AI coding tools in 2026. Symmetric/asymmetric crypto, protocol design, side-channel mitigation, post-quantum algorithms, key management, and formal verification.</description>
+      <pubDate>Sun, 29 Mar 2026 23:59:00 GMT</pubDate>
+      <guid>https://codecosts.pages.dev/blog/ai-coding-tools-for-cryptography-engineers-2026.html</guid>
+    </item>
+
+    <item>
       <title>AI Coding Tools for Bioinformatics Engineers 2026: Genomics, Sequence Alignment, Protein Structure, Phylogenetics &amp; Pipeline Development Guide</title>
       <link>https://codecosts.pages.dev/blog/ai-coding-tools-for-bioinformatics-engineers-2026.html</link>
       <description>The bioinformatics engineer's guide to AI coding tools in 2026. Sequence alignment, variant calling, RNA-Seq, protein structure analysis, phylogenetics, Nextflow/Snakemake pipelines, single-cell analysis, and clinical genomics.</description>

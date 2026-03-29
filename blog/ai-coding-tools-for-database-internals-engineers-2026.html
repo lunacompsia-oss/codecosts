@@ -1,0 +1,1003 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Coding Tools for Database Internals Engineers 2026: Storage Engines, B-Trees, WAL, MVCC &amp; Query Optimization Guide</title>
+  <meta name="description" content="The database internals engineer's guide to AI coding tools in 2026. Every tool evaluated for storage engine development, B-tree/LSM-tree implementation, write-ahead logging, MVCC, query optimization, buffer pool management, and crash recovery. Domain-first recommendations from $0 to $99/seat.">
+  <link rel="canonical" href="https://codecosts.pages.dev/blog/ai-coding-tools-for-database-internals-engineers-2026.html">
+  <meta property="og:title" content="AI Coding Tools for Database Internals Engineers 2026: Storage Engines, B-Trees, WAL &amp; MVCC">
+  <meta property="og:description" content="Every AI coding tool ranked for database internals engineering. Storage engines, B-trees, LSM-trees, WAL, MVCC, query optimization, buffer pools, and crash recovery. Domain-first recommendations from $0 to $99/seat.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://codecosts.pages.dev/blog/ai-coding-tools-for-database-internals-engineers-2026.html">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="AI Coding Tools for Database Internals Engineers 2026: Storage Engines, B-Trees, WAL &amp; MVCC">
+  <meta name="twitter:description" content="Domain-first AI tool recommendations for database internals engineers. Storage engines, B-trees, WAL, MVCC, query optimization &mdash; ranked and priced.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💰</text></svg>">
+  <link rel="stylesheet" href="../style.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "AI Coding Tools for Database Internals Engineers 2026: Storage Engines, B-Trees, WAL, MVCC & Query Optimization Guide",
+    "datePublished": "2026-03-29",
+    "dateModified": "2026-03-29",
+    "author": { "@type": "Organization", "name": "CodeCosts" },
+    "publisher": { "@type": "Organization", "name": "CodeCosts" },
+    "description": "The database internals engineer's guide to AI coding tools in 2026. Every tool evaluated for storage engine development, B-tree/LSM-tree implementation, write-ahead logging, MVCC, query optimization, buffer pool management, and crash recovery."
+  }
+  </script>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <a href="/" style="text-decoration:none;color:inherit"><h1><span class="logo">$_</span> CodeCosts</h1></a>
+      <p class="tagline">AI Coding Tool News &amp; Analysis</p>
+      <nav>
+        <a href="/">Tools</a>
+        <a href="/blog/" class="active">Blog</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <article class="card">
+      <h2>AI Coding Tools for Database Internals Engineers 2026: Storage Engines, B-Trees, WAL, MVCC &amp; Query Optimization Guide</h2>
+      <div class="article-meta">
+        <span>March 29, 2026</span>
+        <span>26 min read</span>
+      </div>
+
+      <div class="article-content">
+        <p>Database internals engineering is software development where a single bug can silently corrupt every row in a table and you will not discover it until a customer runs a query six months later. You are writing code that sits between the application and the disk, responsible for the guarantee that once a transaction commits, the data survives power loss, kernel panics, and disk failures. Every page write must be crash-safe. Every concurrent transaction must see a consistent snapshot. Every query must return the correct result, not just a plausible one. The B-tree split that leaves a dangling child pointer corrupts the index. The WAL record that omits a page checksum allows torn writes to propagate silently. The MVCC implementation that fails to garbage-collect old versions causes the database to grow without bound until it fills the disk. There are no cosmetic bugs in database internals &mdash; every bug is a data loss bug, a correctness bug, or a performance cliff.</p>
+
+        <p>The precision requirements are relentless. A B-tree node split must atomically update the parent pointer, the new sibling&rsquo;s page, and the original node&rsquo;s contents &mdash; all while holding the correct locks (or latches, since database engineers distinguish between locks for transactions and latches for in-memory data structures). An LSM-tree compaction must merge sorted runs while maintaining tombstone visibility (a delete marker must survive until all older versions in lower levels have been merged, or the deleted row reappears). Write-ahead logging must ensure that log records hit stable storage before the corresponding data pages, which means understanding <code>fsync()</code> vs <code>fdatasync()</code> vs <code>sync_file_range()</code> and the specific guarantees of each filesystem (ext4 with <code>data=ordered</code> behaves differently from XFS, and neither behaves like ZFS). Buffer pool replacement policies must handle scan-resistant eviction (a full table scan should not flush the entire working set from cache). The page format must pack rows efficiently while leaving room for updates and maintaining alignment for direct I/O.</p>
+
+        <p>The toolchain is specialized and unforgiving. You work with page-level I/O (<code>pread()</code>/<code>pwrite()</code> at exact offsets, often with <code>O_DIRECT</code> to bypass the OS page cache), memory-mapped files (with all their <code>mmap()</code> consistency pitfalls), lock-free data structures for concurrent access, custom memory allocators for buffer pools, and crash recovery logic that must replay WAL records in exact LSN order. Testing requires fault injection (kill the process at every possible point, verify recovery), property-based testing (generate random transaction sequences, verify serializability), and performance benchmarking under realistic workloads. This guide evaluates every major AI coding tool through the lens of what database internals engineers actually build: not SQL queries, but the engine underneath them.</p>
+
+        <div class="callout tip">
+          <div class="callout-title">TL;DR</div>
+          <p><strong>Best free ($0):</strong> Gemini CLI Free &mdash; 1M context for discussing papers and algorithm design. <strong>Best for storage engine work ($20/mo):</strong> Claude Code &mdash; strongest reasoning for B-tree invariants, WAL correctness, and MVCC logic. <strong>Best for large codebase navigation ($20/mo):</strong> Cursor Pro &mdash; indexes full storage engine codebases. <strong>Best combined ($40/mo):</strong> Claude Code + Cursor. <strong>Budget ($0):</strong> Copilot Free + Gemini CLI Free.</p>
+        </div>
+
+        <h2>Why Database Internals Engineering Is Different</h2>
+        <ul>
+          <li><strong>Crash safety is non-negotiable:</strong> Every write path must survive <code>kill -9</code> at any point. If the process dies between writing a data page and updating the WAL, the database must recover to a consistent state. This means write-ahead logging with proper <code>fsync()</code> ordering, checksums on every page (to detect torn writes where the OS wrote half a 16 KB page before crashing), and recovery logic that replays committed transactions and rolls back uncommitted ones. A single missing <code>fsync()</code> turns your database into a data destruction engine on power loss. AI tools that generate file I/O code without understanding durability guarantees are dangerous here.</li>
+          <li><strong>Concurrency is not just threads:</strong> Database concurrency means MVCC (Multi-Version Concurrency Control), where readers see a consistent snapshot without blocking writers, and writers detect conflicts through version chains or timestamp ordering. It means latch protocols for B-tree traversal (crabbing: hold parent latch, acquire child latch, release parent only when child is safe from splits). It means lock managers with deadlock detection, wait-for graphs, and timeout-based resolution. A race condition in a B-tree split can corrupt the index permanently. A visibility check that reads the wrong transaction status can return committed data to a transaction that should not see it.</li>
+          <li><strong>Page-level thinking:</strong> Database engineers think in pages (4 KB, 8 KB, 16 KB), not objects. A B-tree node is a page with a header (page LSN, item count, free space offset, right sibling pointer), an item array (sorted key-pointer pairs), and a free space region. Row storage formats (heap files, slotted pages) pack variable-length tuples with slot arrays for O(1) access by offset. Every data structure must be page-aligned, and operations must minimize the number of pages dirtied per transaction because each dirty page is a potential <code>fsync()</code> and WAL record.</li>
+          <li><strong>Algorithmic depth:</strong> The core data structures &mdash; B+ trees, LSM-trees, hash indexes, bloom filters, skip lists, lock-free queues &mdash; have decades of academic literature with subtle invariants. A B+ tree deletion must handle redistribution vs merge, and the merge condition depends on whether the sibling is in the same parent (can redistribute) or different parents (must merge up). LSM-tree compaction strategies (size-tiered, leveled, FIFO, universal) have different write amplification, read amplification, and space amplification tradeoffs that determine whether your database is viable for write-heavy or read-heavy workloads. Query optimizers use dynamic programming (Selinger-style), cost models based on histogram statistics, and join ordering algorithms that are NP-hard in the general case.</li>
+          <li><strong>Testing is existential:</strong> You cannot ship a storage engine without crash testing. This means: write random data, <code>kill -9</code> at random points, restart, verify all committed data is present and all uncommitted data is absent. Repeat thousands of times. Property-based tests generate random transaction schedules and verify that the results match a serial execution. Jepsen-style tests introduce network partitions and clock skew to verify distributed consistency. A database that passes unit tests but fails crash testing is not a database &mdash; it is a file corruptor.</li>
+        </ul>
+
+        <h2>Database Internals Task Support Matrix</h2>
+        <div style="overflow-x:auto">
+          <table style="width:100%;border-collapse:collapse;margin:1.5rem 0">
+            <thead>
+              <tr style="border-bottom:2px solid var(--border)">
+                <th style="padding:12px 16px;text-align:left">Task</th>
+                <th style="padding:12px 16px;text-align:center">Copilot</th>
+                <th style="padding:12px 16px;text-align:center">Cursor</th>
+                <th style="padding:12px 16px;text-align:center">Windsurf</th>
+                <th style="padding:12px 16px;text-align:center">Claude Code</th>
+                <th style="padding:12px 16px;text-align:center">Amazon Q</th>
+                <th style="padding:12px 16px;text-align:center">Gemini CLI</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px"><strong>B-Tree / LSM-Tree Implementation</strong></td>
+                <td style="padding:12px 16px;text-align:center">Fair</td>
+                <td style="padding:12px 16px;text-align:center">Good</td>
+                <td style="padding:12px 16px;text-align:center">Fair</td>
+                <td style="padding:12px 16px;text-align:center"><strong>Excellent</strong></td>
+                <td style="padding:12px 16px;text-align:center">Fair</td>
+                <td style="padding:12px 16px;text-align:center">Strong</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px"><strong>Write-Ahead Logging (WAL)</strong></td>
+                <td style="padding:12px 16px;text-align:center">Weak</td>
+                <td style="padding:12px 16px;text-align:center">Fair</td>
+                <td style="padding:12px 16px;text-align:center">Weak</td>
+                <td style="padding:12px 16px;text-align:center"><strong>Strong</strong></td>
+                <td style="padding:12px 16px;text-align:center">Weak</td>
+                <td style="padding:12px 16px;text-align:center">Good</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px"><strong>MVCC &amp; Transaction Management</strong></td>
+                <td style="padding:12px 16px;text-align:center">Fair</td>
+                <td style="padding:12px 16px;text-align:center">Good</td>
+                <td style="padding:12px 16px;text-align:center">Fair</td>
+                <td style="padding:12px 16px;text-align:center"><strong>Excellent</strong></td>
+                <td style="padding:12px 16px;text-align:center">Fair</td>
+                <td style="padding:12px 16px;text-align:center">Strong</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px"><strong>Buffer Pool &amp; Page Management</strong></td>
+                <td style="padding:12px 16px;text-align:center">Fair</td>
+                <td style="padding:12px 16px;text-align:center">Good</td>
+                <td style="padding:12px 16px;text-align:center">Fair</td>
+                <td style="padding:12px 16px;text-align:center"><strong>Strong</strong></td>
+                <td style="padding:12px 16px;text-align:center">Fair</td>
+                <td style="padding:12px 16px;text-align:center">Good</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px"><strong>Query Optimization &amp; Execution</strong></td>
+                <td style="padding:12px 16px;text-align:center">Good</td>
+                <td style="padding:12px 16px;text-align:center"><strong>Strong</strong></td>
+                <td style="padding:12px 16px;text-align:center">Good</td>
+                <td style="padding:12px 16px;text-align:center"><strong>Excellent</strong></td>
+                <td style="padding:12px 16px;text-align:center">Good</td>
+                <td style="padding:12px 16px;text-align:center">Strong</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px"><strong>Crash Recovery &amp; Durability</strong></td>
+                <td style="padding:12px 16px;text-align:center">Weak</td>
+                <td style="padding:12px 16px;text-align:center">Fair</td>
+                <td style="padding:12px 16px;text-align:center">Weak</td>
+                <td style="padding:12px 16px;text-align:center"><strong>Strong</strong></td>
+                <td style="padding:12px 16px;text-align:center">Weak</td>
+                <td style="padding:12px 16px;text-align:center">Good</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px"><strong>Lock-Free / Concurrent Data Structures</strong></td>
+                <td style="padding:12px 16px;text-align:center">Fair</td>
+                <td style="padding:12px 16px;text-align:center">Good</td>
+                <td style="padding:12px 16px;text-align:center">Weak</td>
+                <td style="padding:12px 16px;text-align:center"><strong>Strong</strong></td>
+                <td style="padding:12px 16px;text-align:center">Weak</td>
+                <td style="padding:12px 16px;text-align:center">Good</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p><em>Ratings reflect each tool&rsquo;s ability to generate correct, production-quality code for the specific database internals task. &ldquo;Excellent&rdquo; = understands invariants, handles edge cases, produces crash-safe code. &ldquo;Weak&rdquo; = generates code that compiles but misses critical safety properties, durability guarantees, or concurrency invariants.</em></p>
+
+        <h2>1. B-Tree / LSM-Tree Implementation</h2>
+
+        <p>B-trees are the backbone of nearly every relational database. A B+ tree stores all values in leaf nodes, with internal nodes containing only keys and child pointers. The invariants are strict: every node except the root has between &lceil;m/2&rceil; and m children (where m is the order), all leaves are at the same depth, keys within each node are sorted, and the tree is always balanced. A split operation must atomically create a new sibling, move half the keys, insert the separator key into the parent, and update the parent&rsquo;s child pointer &mdash; all while maintaining these invariants. A merge (triggered when a node falls below minimum occupancy after deletion) must combine two siblings, remove the separator from the parent, and potentially cascade merges upward. Get the latch ordering wrong during a concurrent split, and two threads corrupt the tree simultaneously.</p>
+
+        <h3>Where Claude Code excels</h3>
+        <p>Claude Code generates B+ tree implementations with correct split and merge logic, proper latch protocols, and page-level storage layout. Ask it to implement a disk-backed B+ tree with concurrent access, and it produces code that handles the hard cases:</p>
+
+<pre><code>// B+ tree page layout (16 KB page)
+// [PageHeader][Key1|Ptr1][Key2|Ptr2]...[KeyN|PtrN][RightPtr]
+//
+// Leaf page layout:
+// [PageHeader][Slot1][Slot2]...[SlotN] ... [Free Space] ... [Tuple3][Tuple2][Tuple1]
+// Slots grow forward, tuples grow backward (slotted page design)
+
+struct PageHeader {
+    uint32_t page_id;
+    uint32_t lsn;           // log sequence number for WAL
+    uint16_t num_items;
+    uint16_t free_space_offset;
+    uint16_t flags;         // IS_LEAF, IS_ROOT, etc.
+    uint16_t reserved;
+    uint32_t right_sibling; // for leaf nodes: next leaf in chain
+    uint32_t parent;        // for split propagation
+    uint32_t checksum;      // CRC32 for torn write detection
+};
+
+#define PAGE_SIZE       16384
+#define HEADER_SIZE     sizeof(struct PageHeader)
+#define INVALID_PAGE    UINT32_MAX
+
+// Concurrent B+ tree insert with crabbing latch protocol
+int btree_insert(BTree *tree, const Key *key, const Value *val) {
+    // Phase 1: traverse to leaf with crabbing
+    // Hold parent latch, acquire child latch, release parent
+    // only if child is "safe" (won't split)
+    Page *parent = NULL;
+    Page *current = buffer_pool_pin(tree->pool, tree->root_page);
+    page_write_latch(current);
+
+    while (!page_is_leaf(current)) {
+        int slot = binary_search_internal(current, key);
+        uint32_t child_id = get_child_ptr(current, slot);
+        Page *child = buffer_pool_pin(tree->pool, child_id);
+        page_write_latch(child);
+
+        // Safe node: won't split (has room for one more key)
+        if (page_has_space(child, key, val)) {
+            page_write_unlatch(current);
+            buffer_pool_unpin(tree->pool, current);
+        }
+        // Unsafe: keep parent latched for split propagation
+        // (we release all ancestors above the unsafe node)
+
+        current = child;
+    }
+
+    // Phase 2: insert into leaf
+    if (page_has_space(current, key, val)) {
+        leaf_insert(current, key, val);
+        page_set_dirty(current);
+        wal_log_insert(tree->wal, current->header.page_id,
+                       current->header.lsn, key, val);
+        page_write_unlatch(current);
+        buffer_pool_unpin(tree->pool, current);
+        return 0;
+    }
+
+    // Phase 3: split required
+    Page *new_leaf = buffer_pool_new_page(tree->pool);
+    page_write_latch(new_leaf);
+    page_init_leaf(new_leaf);
+
+    // Move upper half of keys to new leaf
+    Key split_key;
+    leaf_split(current, new_leaf, &amp;split_key);
+
+    // Maintain leaf chain (doubly linked for range scans)
+    new_leaf->header.right_sibling = current->header.right_sibling;
+    current->header.right_sibling = new_leaf->header.page_id;
+
+    // Insert the actual key into the correct leaf
+    if (key_compare(key, &amp;split_key) &lt; 0) {
+        leaf_insert(current, key, val);
+    } else {
+        leaf_insert(new_leaf, key, val);
+    }
+
+    page_set_dirty(current);
+    page_set_dirty(new_leaf);
+
+    // WAL: log split before modifying parent
+    wal_log_split(tree->wal, current->header.page_id,
+                  new_leaf->header.page_id, &amp;split_key);
+
+    // Phase 4: insert separator into parent (may cascade)
+    insert_into_parent(tree, current, &amp;split_key, new_leaf);
+
+    page_write_unlatch(new_leaf);
+    buffer_pool_unpin(tree->pool, new_leaf);
+    page_write_unlatch(current);
+    buffer_pool_unpin(tree->pool, current);
+    return 0;
+}</code></pre>
+
+        <p>Claude Code generates the complete page layout with slotted page design (slots grow forward, tuples grow backward &mdash; the standard approach for variable-length records), proper crabbing latch protocol (hold parent only when child might split), WAL logging before parent modification, leaf chain maintenance for range scans, and CRC32 checksums in the page header for torn write detection. It understands that the split must be logged before the parent is modified, because if the process crashes after the parent update but before the split is logged, recovery cannot reconstruct the new page.</p>
+
+        <h3>LSM-trees and compaction</h3>
+        <p>LSM-trees (Log-Structured Merge-trees) take the opposite approach to B-trees: writes go to an in-memory buffer (memtable, usually a skip list or red-black tree), which is flushed to disk as a sorted immutable file (SSTable) when full. Reads must check the memtable and all SSTables, using bloom filters to skip SSTables that definitely do not contain the key. Compaction merges overlapping SSTables to reduce read amplification and reclaim space from deleted keys.</p>
+
+        <p>The critical correctness issue in LSM-trees is tombstone handling. When a key is deleted, a tombstone marker is written. This tombstone must survive in the LSM-tree until all older versions of that key in lower levels have been compacted away. If a tombstone is dropped too early (during compaction of level L, before level L+1 has been compacted), the deleted key &ldquo;reappears&rdquo; &mdash; a resurrection bug. <strong>Claude Code</strong> and <strong>Gemini CLI</strong> both handle this correctly when asked about compaction. <strong>Copilot</strong> and <strong>Windsurf</strong> generate compaction code that drops tombstones whenever two SSTables are merged, which is only correct for the lowest level.</p>
+
+        <h3>Common AI failures</h3>
+        <p><strong>Copilot</strong> generates B-tree implementations that handle insertion but have broken deletion (redistribution logic is often wrong, and merge operations may leave the tree unbalanced). It frequently omits latch protocols entirely, producing single-threaded trees that corrupt under concurrent access. <strong>Windsurf</strong> and <strong>Amazon Q</strong> generate textbook B-tree code from data structures courses &mdash; in-memory, pointer-based, with no page layout, no durability, and no concurrency. <strong>Cursor</strong> generates good B-tree code when it can reference existing database code in the project (e.g., if you are working on an existing storage engine). <strong>Gemini CLI</strong> is strong on algorithmic discussions &mdash; it can walk through split/merge cases and explain latch coupling &mdash; but its generated code sometimes has off-by-one errors in the split point calculation.</p>
+
+        <h2>2. Write-Ahead Logging (WAL)</h2>
+
+        <p>WAL is the foundation of crash recovery. The protocol is simple in principle: before modifying any data page, write a log record describing the change to a sequential log file, and <code>fsync()</code> the log before acknowledging the transaction commit. In practice, getting WAL right requires understanding: log record format (LSN, transaction ID, page ID, before-image/after-image or logical operation), group commit (batching multiple transaction commits into a single <code>fsync()</code> for throughput), checkpoint protocol (when and how to write dirty pages to disk so the recovery window stays bounded), and the recovery algorithm itself (ARIES: analysis, redo, undo).</p>
+
+        <h3>The fsync minefield</h3>
+        <p>The most dangerous area in WAL implementation is <code>fsync()</code> semantics. On Linux with ext4, <code>fsync()</code> guarantees that data and metadata for the file are on stable storage. But: <code>fdatasync()</code> skips metadata updates (faster, safe if only file contents changed). <code>sync_file_range()</code> initiates writeback but does not wait for completion &mdash; it is not a durability guarantee, despite the name. On XFS, <code>fsync()</code> after a rename is required to guarantee directory entry persistence. <code>O_DIRECT</code> bypasses the page cache but does not imply durability &mdash; the data may be in the drive&rsquo;s write cache. The <code>write()</code> system call can return success and then lose the data on power loss if no <code>fsync()</code> follows. Filesystem journaling (ext4 with <code>data=ordered</code>) provides some ordering guarantees for metadata, but not for file data atomicity at arbitrary sizes. A 16 KB page write is not atomic on most filesystems &mdash; a crash can produce a torn write where the first 4 KB is new and the last 12 KB is old.</p>
+
+        <h3>Where Claude Code leads</h3>
+        <p>Claude Code generates WAL implementations with correct <code>fsync()</code> ordering, group commit, and torn-write protection:</p>
+
+<pre><code>struct WALRecord {
+    uint64_t lsn;           // monotonically increasing
+    uint32_t txn_id;
+    uint32_t page_id;
+    uint16_t record_type;   // INSERT, UPDATE, DELETE, COMMIT, ABORT, CHECKPOINT
+    uint16_t data_len;
+    uint32_t prev_lsn;      // previous LSN for this transaction (undo chain)
+    uint32_t checksum;      // CRC32 of entire record including data
+    // followed by: [before_image | after_image] depending on record_type
+};
+
+// Group commit: batch fsync for multiple transactions
+int wal_commit(WAL *wal, uint32_t txn_id) {
+    WALRecord rec = {
+        .lsn = atomic_fetch_add(&amp;wal->next_lsn, 1),
+        .txn_id = txn_id,
+        .record_type = WAL_COMMIT,
+        .data_len = 0,
+        .prev_lsn = txn_get_last_lsn(wal, txn_id),
+    };
+    rec.checksum = crc32(&amp;rec, sizeof(rec));
+
+    pthread_mutex_lock(&amp;wal->write_mutex);
+
+    // Append to log buffer
+    size_t offset = wal->buffer_offset;
+    memcpy(wal->buffer + offset, &amp;rec, sizeof(rec));
+    wal->buffer_offset += sizeof(rec);
+    uint64_t commit_lsn = rec.lsn;
+
+    // Group commit: if buffer is large enough or no other waiters,
+    // flush now. Otherwise, wait for the next flush.
+    if (wal->buffer_offset >= WAL_FLUSH_THRESHOLD ||
+        wal->waiting_commits == 0) {
+        // Write the buffer
+        ssize_t written = pwrite(wal->fd, wal->buffer,
+                                 wal->buffer_offset,
+                                 wal->file_offset);
+        if (written != (ssize_t)wal->buffer_offset) {
+            pthread_mutex_unlock(&amp;wal->write_mutex);
+            return -1;  // I/O error — do NOT acknowledge commit
+        }
+
+        wal->file_offset += wal->buffer_offset;
+        wal->buffer_offset = 0;
+
+        // fsync BEFORE acknowledging any commit in this batch
+        if (fdatasync(wal->fd) != 0) {
+            pthread_mutex_unlock(&amp;wal->write_mutex);
+            return -1;  // fsync failed — commit NOT durable
+        }
+
+        // Update flushed LSN — all commits up to this point are durable
+        atomic_store(&amp;wal->flushed_lsn, commit_lsn);
+
+        // Wake all waiters whose commit LSN &lt;= flushed LSN
+        pthread_cond_broadcast(&amp;wal->flush_cond);
+    } else {
+        wal->waiting_commits++;
+        while (atomic_load(&amp;wal->flushed_lsn) &lt; commit_lsn) {
+            pthread_cond_wait(&amp;wal->flush_cond, &amp;wal->write_mutex);
+        }
+        wal->waiting_commits--;
+    }
+
+    pthread_mutex_unlock(&amp;wal->write_mutex);
+    return 0;
+}
+
+// Torn write protection: double-write buffer
+// Write each dirty page to a dedicated double-write area first,
+// fsync, then write to the actual location.
+// On recovery: if the actual page has a bad checksum,
+// restore from the double-write buffer.
+int flush_page_safe(BufferPool *pool, Page *page) {
+    // Step 1: write to double-write buffer
+    off_t dw_offset = page->header.page_id * PAGE_SIZE;
+    pwrite(pool->doublewrite_fd, page->data, PAGE_SIZE, dw_offset);
+    fdatasync(pool->doublewrite_fd);
+
+    // Step 2: write to actual data file
+    off_t data_offset = page->header.page_id * PAGE_SIZE;
+    pwrite(pool->data_fd, page->data, PAGE_SIZE, data_offset);
+    fdatasync(pool->data_fd);
+
+    // If crash between step 1 and 2: double-write buffer has
+    // the correct page. Recovery checks page checksums and
+    // restores from double-write buffer if needed.
+    return 0;
+}</code></pre>
+
+        <p>Claude Code generates the WAL with every critical detail: CRC32 checksums on every record (to detect corruption during recovery), group commit with condition variable signaling (one <code>fdatasync()</code> durably commits multiple transactions), the prev_lsn chain for undo (linking all records for a transaction so rollback can walk backwards), and the double-write buffer pattern (used by MySQL/InnoDB) to protect against torn page writes. It understands that <code>fdatasync()</code> must succeed before any commit is acknowledged &mdash; an <code>fsync()</code> failure means the commit is NOT durable, and the caller must not tell the application the transaction committed.</p>
+
+        <h3>Common AI failures</h3>
+        <p><strong>Copilot</strong> generates WAL code that writes log records but omits <code>fsync()</code> entirely, or calls <code>fsync()</code> after each individual record (destroying throughput). It does not implement group commit. <strong>Windsurf</strong> generates append-only file logging with no checksums, no LSN ordering, and no recovery logic &mdash; essentially a debug log that cannot be used for crash recovery. <strong>Amazon Q</strong> produces application-level logging (structured JSON) when asked for WAL, conflating operational logging with durability mechanisms. <strong>Gemini CLI</strong> understands WAL theory well and generates correct pseudo-code for ARIES recovery, but its implementation code sometimes has incorrect <code>fsync()</code> ordering (fsyncing the data file before the log). <strong>Cursor</strong> generates acceptable WAL code when working within an existing database codebase that already has WAL infrastructure.</p>
+
+        <h2>3. MVCC &amp; Transaction Management</h2>
+
+        <p>MVCC allows readers and writers to operate concurrently without blocking each other. Every row has multiple versions, each tagged with the transaction ID that created it and (optionally) the transaction ID that deleted it. A reader sees a consistent snapshot: it reads the latest version whose creating transaction committed before the reader&rsquo;s snapshot was taken, and ignores versions created by transactions that started after the snapshot. This is the foundation of snapshot isolation, the default isolation level in PostgreSQL, Oracle, and most modern databases.</p>
+
+        <h3>The visibility check</h3>
+        <p>The core of MVCC is the visibility function: given a row version and a transaction&rsquo;s snapshot, is this version visible? The answer depends on the creating transaction&rsquo;s status (committed, aborted, or in-progress), the snapshot&rsquo;s active transaction list (which transactions were running when the snapshot was taken), and whether the version has been deleted by a committed transaction within the snapshot. This sounds simple, but the edge cases are where databases have shipped bugs for decades:</p>
+
+<pre><code>// MVCC visibility check (PostgreSQL-style)
+// A tuple version is visible to a snapshot if:
+// 1. The creating transaction committed BEFORE the snapshot
+// 2. The creating transaction is not in the snapshot's active list
+// 3. The tuple has NOT been deleted, OR the deleting transaction
+//    is not yet committed in this snapshot
+
+typedef struct {
+    uint64_t xmin;          // transaction that created this version
+    uint64_t xmax;          // transaction that deleted this version (0 = alive)
+    uint16_t flags;         // COMMITTED, ABORTED, IN_PROGRESS
+    uint16_t t_ctid_offset; // pointer to updated version (for HOT chains)
+} TupleHeader;
+
+typedef struct {
+    uint64_t xid;           // this transaction's ID
+    uint64_t snapshot_xmin; // oldest active txn at snapshot time
+    uint64_t snapshot_xmax; // first unassigned txn ID at snapshot time
+    uint64_t *active_xids;  // sorted array of in-progress txn IDs
+    int       active_count;
+} Snapshot;
+
+bool tuple_is_visible(const TupleHeader *tuple, const Snapshot *snap) {
+    // Check creating transaction
+    if (tuple->xmin == snap->xid) {
+        // We created this tuple — visible if not self-deleted
+        if (tuple->xmax == 0) return true;
+        if (tuple->xmax == snap->xid) return false; // self-deleted
+        // xmax set by another txn — check if committed
+        return !txn_is_committed(tuple->xmax);
+    }
+
+    // xmin must be committed and within our snapshot
+    if (!txn_is_committed(tuple->xmin))
+        return false;  // creator aborted or still in-progress
+
+    if (tuple->xmin >= snap->snapshot_xmax)
+        return false;  // created after our snapshot
+
+    if (xid_in_active_list(tuple->xmin, snap))
+        return false;  // creator was in-progress at snapshot time
+
+    // Tuple was created by a committed txn in our snapshot.
+    // Now check if it's been deleted.
+    if (tuple->xmax == 0)
+        return true;   // not deleted
+
+    if (tuple->xmax == snap->xid)
+        return false;  // we deleted it
+
+    if (!txn_is_committed(tuple->xmax))
+        return true;   // deleter hasn't committed — still visible
+
+    if (tuple->xmax >= snap->snapshot_xmax)
+        return true;   // deleted after our snapshot
+
+    if (xid_in_active_list(tuple->xmax, snap))
+        return true;   // deleter was in-progress at snapshot time
+
+    return false;       // deleted by committed txn in our snapshot
+}
+
+// Write-write conflict detection for snapshot isolation
+// Two concurrent transactions cannot modify the same row
+int check_write_conflict(TupleHeader *tuple, uint64_t my_xid) {
+    if (tuple->xmax == 0)
+        return 0;  // no conflict — not being modified
+
+    if (tuple->xmax == my_xid)
+        return 0;  // we already locked it
+
+    if (txn_is_committed(tuple->xmax))
+        return -1; // serialization failure — abort
+
+    if (txn_is_aborted(tuple->xmax)) {
+        tuple->xmax = 0;  // clear dead xmax
+        return 0;
+    }
+
+    // xmax is in-progress — must wait or abort
+    // (deadlock detection runs concurrently)
+    return wait_for_txn(tuple->xmax);
+}</code></pre>
+
+        <p><strong>Claude Code</strong> generates the complete visibility check with all edge cases: self-created tuples (visible unless self-deleted), active transaction list checking (a committed transaction that was still running at snapshot time is invisible), and the xmax handling ladder (uncommitted deleter means still visible, committed deleter within snapshot means invisible). It also generates write-write conflict detection with proper wait-or-abort semantics, which is essential for snapshot isolation. <strong>Gemini CLI</strong> explains MVCC theory thoroughly and generates good pseudo-code, but sometimes flattens the visibility ladder into incorrect boolean conditions.</p>
+
+        <h3>Garbage collection (vacuum)</h3>
+        <p>MVCC generates dead versions that must be cleaned up. In PostgreSQL, this is VACUUM. The garbage collector must determine which versions are no longer visible to any active transaction (check the oldest active snapshot), remove dead versions from heap pages, update the free space map, and freeze old transaction IDs (to handle transaction ID wraparound, where the 32-bit transaction counter cycles). A garbage collector that is too aggressive removes versions that an active long-running query still needs (snapshot too old). A garbage collector that is too conservative causes table bloat. <strong>Claude Code</strong> handles the transaction ID wraparound case (critical for PostgreSQL-style systems), while most other tools ignore it entirely.</p>
+
+        <h3>Where other tools fail</h3>
+        <p><strong>Copilot</strong> generates MVCC code with a simplified visibility check that misses the active transaction list &mdash; it checks only whether xmin &lt; snapshot_xid, which incorrectly makes tuples created by concurrent transactions visible. <strong>Windsurf</strong> generates timestamp-based concurrency (read timestamp, write timestamp) which is a different algorithm (Thomas Write Rule) and not MVCC at all. <strong>Amazon Q</strong> generates application-level optimistic locking (version columns checked at update time) rather than engine-level MVCC. <strong>Cursor</strong> can generate correct MVCC when referencing PostgreSQL or similar source code in the project.</p>
+
+        <h2>4. Buffer Pool &amp; Page Management</h2>
+
+        <p>The buffer pool is the database&rsquo;s own page cache, sitting between the storage engine and the operating system. Why not just use the OS page cache? Because the database knows its access patterns better than the OS: it can pin pages that must not be evicted (during a B-tree traversal), it can prefetch pages for sequential scans, it can use scan-resistant eviction policies (LRU-K, clock with second-chance), and it can control exactly when dirty pages are written back (for WAL ordering). Direct I/O (<code>O_DIRECT</code>) bypasses the OS cache entirely, giving the buffer pool full control.</p>
+
+        <h3>Eviction policy: why LRU is wrong</h3>
+        <p>Simple LRU is catastrophic for databases. A full table scan reads every page once, evicting the entire hot working set from the cache. After the scan, every subsequent query is a cache miss. The fix: LRU-K (track the K-th most recent access, evict pages with the oldest K-th access) or clock with second-chance (pages get a &ldquo;referenced&rdquo; bit, the eviction clock skips referenced pages and clears the bit, giving frequently accessed pages a second chance). PostgreSQL uses a clock-sweep algorithm. MySQL/InnoDB uses a young/old partition: new pages enter the &ldquo;old&rdquo; sublist and only promote to the &ldquo;young&rdquo; sublist if accessed again after a time threshold, preventing scan pollution.</p>
+
+<pre><code>// Clock-sweep buffer pool eviction (PostgreSQL-style)
+typedef struct BufferDesc {
+    uint32_t page_id;
+    uint32_t flags;          // VALID, DIRTY, PINNED
+    int32_t  pin_count;      // >0 = in use, cannot evict
+    uint8_t  usage_count;    // clock-sweep counter
+    uint32_t content_lock;   // read/write latch
+    char     data[PAGE_SIZE];
+} BufferDesc;
+
+typedef struct BufferPool {
+    BufferDesc *buffers;
+    int         num_buffers;
+    int         clock_hand;
+    HashTable  *page_table; // page_id -> buffer index
+    pthread_mutex_t eviction_lock;
+} BufferPool;
+
+// Find a victim buffer using clock-sweep
+int find_victim(BufferPool *pool) {
+    int max_sweeps = pool->num_buffers * 2;  // bounded scan
+
+    for (int i = 0; i &lt; max_sweeps; i++) {
+        int idx = pool->clock_hand;
+        pool->clock_hand = (pool->clock_hand + 1) % pool->num_buffers;
+
+        BufferDesc *buf = &amp;pool->buffers[idx];
+
+        // Cannot evict pinned buffers
+        if (buf->pin_count > 0)
+            continue;
+
+        // Decrement usage count — give frequently used pages
+        // more chances before eviction
+        if (buf->usage_count > 0) {
+            buf->usage_count--;
+            continue;
+        }
+
+        // Found a victim with usage_count == 0 and pin_count == 0
+        if (buf->flags &amp; BUF_DIRTY) {
+            // Must flush to disk before evicting
+            // WAL protocol: page LSN must be &lt;= flushed WAL LSN
+            if (buf_get_lsn(buf) > wal_get_flushed_lsn(pool->wal)) {
+                // WAL not flushed far enough — flush WAL first
+                wal_flush_to(pool->wal, buf_get_lsn(buf));
+            }
+            flush_page_safe(pool, buf);  // double-write + fsync
+            buf->flags &amp;= ~BUF_DIRTY;
+        }
+
+        return idx;
+    }
+
+    return -1;  // all buffers pinned — caller must wait or error
+}
+
+// Pin a page — load from disk if not in buffer pool
+Page *buffer_pool_pin(BufferPool *pool, uint32_t page_id) {
+    pthread_mutex_lock(&amp;pool->eviction_lock);
+
+    // Check if already in pool
+    int idx = hash_table_get(pool->page_table, page_id);
+    if (idx >= 0) {
+        BufferDesc *buf = &amp;pool->buffers[idx];
+        buf->pin_count++;
+        buf->usage_count = min(buf->usage_count + 1, 5); // cap at 5
+        pthread_mutex_unlock(&amp;pool->eviction_lock);
+        return (Page *)buf->data;
+    }
+
+    // Not in pool — find victim and load
+    idx = find_victim(pool);
+    if (idx &lt; 0) {
+        pthread_mutex_unlock(&amp;pool->eviction_lock);
+        return NULL;  // no buffers available
+    }
+
+    BufferDesc *buf = &amp;pool->buffers[idx];
+
+    // Remove old mapping, add new
+    if (buf->flags &amp; BUF_VALID)
+        hash_table_remove(pool->page_table, buf->page_id);
+    hash_table_put(pool->page_table, page_id, idx);
+
+    // Read page from disk
+    pread(pool->data_fd, buf->data, PAGE_SIZE,
+          (off_t)page_id * PAGE_SIZE);
+
+    // Verify checksum — detect torn writes or corruption
+    if (!page_checksum_valid((Page *)buf->data)) {
+        // Try double-write buffer recovery
+        pread(pool->doublewrite_fd, buf->data, PAGE_SIZE,
+              (off_t)page_id * PAGE_SIZE);
+        if (!page_checksum_valid((Page *)buf->data)) {
+            // Genuine corruption — cannot recover
+            pthread_mutex_unlock(&amp;pool->eviction_lock);
+            return NULL;
+        }
+    }
+
+    buf->page_id = page_id;
+    buf->flags = BUF_VALID;
+    buf->pin_count = 1;
+    buf->usage_count = 1;
+
+    pthread_mutex_unlock(&amp;pool->eviction_lock);
+    return (Page *)buf->data;
+}</code></pre>
+
+        <p><strong>Claude Code</strong> generates the buffer pool with clock-sweep eviction (usage count decrement gives hot pages multiple chances), the WAL ordering constraint (a dirty page cannot be evicted until its LSN has been flushed to the WAL &mdash; this is the &ldquo;write-ahead&rdquo; in write-ahead logging), double-write buffer integration for torn write protection, checksum validation on every page read, and proper pin counting for concurrent access. This is close to how real databases implement their buffer pools.</p>
+
+        <h3>Common AI failures</h3>
+        <p><strong>Copilot</strong> generates LRU caches (using <code>std::list</code> or linked lists) with no concept of pinning, dirty page management, or WAL ordering. It produces application-level caches, not database buffer pools. <strong>Windsurf</strong> generates <code>mmap()</code>-based file access, which delegates eviction to the OS and provides none of the database-specific guarantees (pinning, WAL ordering, scan resistance). <strong>Amazon Q</strong> generates Redis-style in-memory caches when asked for buffer pools. <strong>Gemini CLI</strong> generates conceptually correct buffer pool designs but sometimes misses the WAL ordering constraint on dirty page eviction.</p>
+
+        <h2>5. Query Optimization &amp; Execution</h2>
+
+        <p>The query optimizer transforms a declarative SQL query into a physical execution plan &mdash; an algorithm that retrieves the correct result with minimal I/O and CPU cost. This involves: parsing SQL into an abstract syntax tree, binding names to catalog objects, generating candidate plans (sequential scan vs index scan, nested loop join vs hash join vs sort-merge join), estimating costs using table statistics (row counts, column histograms, null fractions, correlation), and selecting the plan with the lowest estimated cost. The join ordering problem alone is NP-hard: for N tables, there are (2(N-1))! / (N-1)! possible join trees, and the optimizer uses dynamic programming (the Selinger algorithm) to prune the search space.</p>
+
+        <h3>Cost estimation</h3>
+        <p>The cost model estimates I/O cost (sequential page reads, random page reads) and CPU cost (tuple comparisons, hash computations) for each physical operator. The critical inputs are: table cardinality (number of rows), selectivity estimates for predicates (what fraction of rows satisfy <code>WHERE age &gt; 30</code>), and join selectivity (how many rows does a join produce). Selectivity estimation uses histograms (equi-depth or equi-width), most-common values lists, and distinct value counts. The hardest part: correlated predicates. If the query has <code>WHERE city = 'NYC' AND salary &gt; 100000</code>, the optimizer assumes independence (multiply selectivities), but in reality salary and city are correlated. This leads to cardinality estimation errors that cascade through multi-way joins, producing plans that are orders of magnitude slower than optimal.</p>
+
+<pre><code>// Selinger-style dynamic programming join optimizer
+// For N tables, find the optimal join order and access methods
+
+typedef struct PlanNode {
+    enum { SEQSCAN, INDEXSCAN, NESTEDLOOP, HASHJOIN, MERGEJOIN } type;
+    double estimated_cost;
+    double estimated_rows;
+    uint64_t table_set;     // bitmask of tables included
+    struct PlanNode *left;
+    struct PlanNode *right;
+} PlanNode;
+
+// dp[table_set] = best plan for joining this subset of tables
+PlanNode *dp[1 &lt;&lt; MAX_TABLES];
+
+PlanNode *optimize_joins(Query *query, int num_tables) {
+    // Base case: single table access
+    for (int i = 0; i &lt; num_tables; i++) {
+        uint64_t set = 1ULL &lt;&lt; i;
+        dp[set] = best_single_table_plan(query, i);
+    }
+
+    // Build up: enumerate subsets of increasing size
+    for (int size = 2; size &lt;= num_tables; size++) {
+        for (uint64_t set = 0; set &lt; (1ULL &lt;&lt; num_tables); set++) {
+            if (__builtin_popcountll(set) != size)
+                continue;
+
+            dp[set] = NULL;
+
+            // Try all ways to split 'set' into two non-empty subsets
+            for (uint64_t left = (set - 1) &amp; set; left > 0;
+                 left = (left - 1) &amp; set) {
+                uint64_t right = set ^ left;
+                if (left > right) continue;  // avoid duplicates
+
+                if (!dp[left] || !dp[right]) continue;
+
+                // Check if there's a join predicate connecting left and right
+                if (!has_join_predicate(query, left, right))
+                    continue;  // skip Cartesian products
+
+                // Try each physical join algorithm
+                PlanNode *candidates[] = {
+                    make_nested_loop(dp[left], dp[right], query),
+                    make_hash_join(dp[left], dp[right], query),
+                    make_merge_join(dp[left], dp[right], query),
+                };
+
+                for (int j = 0; j &lt; 3; j++) {
+                    if (!dp[set] ||
+                        candidates[j]->estimated_cost &lt; dp[set]->estimated_cost) {
+                        dp[set] = candidates[j];
+                    }
+                }
+            }
+        }
+    }
+
+    return dp[(1ULL &lt;&lt; num_tables) - 1];  // full join of all tables
+}</code></pre>
+
+        <p><strong>Claude Code</strong> generates the Selinger optimizer with correct subset enumeration (the Banerjee-Ghosh bit trick for iterating subsets), Cartesian product avoidance, and multiple physical join operator candidates. It also generates cost estimation functions that account for I/O patterns (sequential vs random reads), output cardinality estimates using selectivity multiplication, and interesting order propagation (a sort-merge join produces sorted output, which can eliminate a later ORDER BY). <strong>Cursor</strong> is strong here when working within an existing query engine codebase &mdash; its project indexing helps navigate the interplay between catalog, statistics, plan nodes, and execution.</p>
+
+        <h3>Volcano-style execution engine</h3>
+        <p>Most query engines use the Volcano (iterator) model: each plan node implements <code>open()</code>, <code>next()</code>, <code>close()</code>. The top node calls <code>next()</code> on its child, which calls <code>next()</code> on its child, and so on down to the leaf scan operator. This produces one tuple at a time, enabling pipeline execution without materializing intermediate results. The alternative &mdash; vectorized execution (process batches of tuples per call) &mdash; reduces function call overhead and enables SIMD. <strong>Claude Code</strong> and <strong>Gemini CLI</strong> can generate both models. <strong>Copilot</strong> generates basic iterator implementations but misses operator-specific details (hash join build/probe phases, sort-merge join merge logic with duplicate handling).</p>
+
+        <h2>6. Crash Recovery &amp; Durability</h2>
+
+        <p>ARIES (Algorithm for Recovery and Isolation Exploiting Semantics) is the standard crash recovery algorithm used by most databases. Recovery has three phases: <strong>Analysis</strong> (scan the log from the last checkpoint to determine which transactions were active and which pages were dirty at crash time), <strong>Redo</strong> (replay all logged operations from the earliest dirty page LSN to restore the database to its pre-crash state, including uncommitted transactions), and <strong>Undo</strong> (roll back all transactions that were in progress at crash time by following the prev_lsn chain backward). The key insight: redo everything first (including uncommitted work), then undo selectively. This simplifies recovery because redo is purely physical (apply the logged page image) while undo is logical (reverse the operation).</p>
+
+        <h3>The subtle bugs</h3>
+        <p>ARIES recovery has several subtleties that AI tools consistently miss. First: <strong>compensation log records (CLRs)</strong>. When undoing an operation during recovery, you must log the undo itself (as a CLR). This ensures that if the system crashes again during recovery, the undo is not repeated &mdash; CLRs are redo-only, never undone. Without CLRs, repeated crashes during recovery can apply the same undo multiple times, corrupting data. Second: <strong>redo must be idempotent</strong>. If a page&rsquo;s LSN is already &gt;= the log record&rsquo;s LSN, skip the redo (the page was already flushed before the crash). Third: <strong>checkpoint must not block transactions</strong>. A fuzzy checkpoint records the dirty page table and active transaction table, then continues normal operation. The checkpoint is complete when all dirty pages at checkpoint time have been flushed, but new dirty pages created after the checkpoint are handled normally.</p>
+
+<pre><code>// ARIES-style crash recovery
+void recover(WAL *wal, BufferPool *pool) {
+    // Phase 1: Analysis — determine dirty pages and active transactions
+    HashTable *dirty_pages = hash_table_new();   // page_id -> recovery_lsn
+    HashTable *active_txns = hash_table_new();   // txn_id -> last_lsn
+
+    // Start from last checkpoint
+    uint64_t scan_lsn = wal->last_checkpoint_lsn;
+    WALRecord rec;
+
+    while (wal_read_record(wal, scan_lsn, &amp;rec) == 0) {
+        // Validate checksum
+        if (!wal_record_checksum_valid(&amp;rec)) {
+            break;  // end of valid log
+        }
+
+        switch (rec.record_type) {
+        case WAL_INSERT:
+        case WAL_UPDATE:
+        case WAL_DELETE:
+            // Track dirty page
+            if (!hash_table_contains(dirty_pages, rec.page_id)) {
+                hash_table_put(dirty_pages, rec.page_id, rec.lsn);
+            }
+            // Track active transaction
+            hash_table_put(active_txns, rec.txn_id, rec.lsn);
+            break;
+
+        case WAL_COMMIT:
+            hash_table_remove(active_txns, rec.txn_id);
+            break;
+
+        case WAL_ABORT:
+            hash_table_remove(active_txns, rec.txn_id);
+            break;
+
+        case WAL_CLR:
+            // CLR means undo already happened — update txn's undo point
+            hash_table_put(active_txns, rec.txn_id, rec.prev_lsn);
+            break;
+        }
+
+        scan_lsn = rec.lsn + wal_record_size(&amp;rec);
+    }
+
+    // Phase 2: Redo — replay from earliest dirty page LSN
+    uint64_t redo_lsn = find_min_lsn(dirty_pages);
+    scan_lsn = redo_lsn;
+
+    while (wal_read_record(wal, scan_lsn, &amp;rec) == 0) {
+        if (!wal_record_checksum_valid(&amp;rec)) break;
+
+        if (rec.record_type == WAL_INSERT ||
+            rec.record_type == WAL_UPDATE ||
+            rec.record_type == WAL_DELETE ||
+            rec.record_type == WAL_CLR) {
+
+            // Only redo if page is dirty and page LSN &lt; record LSN
+            if (hash_table_contains(dirty_pages, rec.page_id)) {
+                Page *page = buffer_pool_pin(pool, rec.page_id);
+                if (page->header.lsn &lt; rec.lsn) {
+                    // Page is behind — apply redo
+                    wal_apply_redo(page, &amp;rec);
+                    page->header.lsn = rec.lsn;
+                    page_set_dirty(page);
+                }
+                buffer_pool_unpin(pool, page);
+            }
+        }
+
+        scan_lsn = rec.lsn + wal_record_size(&amp;rec);
+    }
+
+    // Phase 3: Undo — rollback active (uncommitted) transactions
+    // Process in reverse LSN order across all active transactions
+    while (hash_table_size(active_txns) > 0) {
+        // Find the active txn with the highest last_lsn
+        uint32_t txn_id;
+        uint64_t last_lsn;
+        find_max_lsn_txn(active_txns, &amp;txn_id, &amp;last_lsn);
+
+        WALRecord undo_rec;
+        wal_read_record(wal, last_lsn, &amp;undo_rec);
+
+        if (undo_rec.record_type == WAL_CLR) {
+            // CLR points to next record to undo
+            if (undo_rec.prev_lsn == 0) {
+                // Reached beginning of transaction — done
+                hash_table_remove(active_txns, txn_id);
+            } else {
+                hash_table_put(active_txns, txn_id, undo_rec.prev_lsn);
+            }
+            continue;
+        }
+
+        // Undo the operation
+        Page *page = buffer_pool_pin(pool, undo_rec.page_id);
+        wal_apply_undo(page, &amp;undo_rec);
+
+        // Log CLR for crash safety during recovery
+        WALRecord clr = {
+            .lsn = atomic_fetch_add(&amp;wal->next_lsn, 1),
+            .txn_id = txn_id,
+            .page_id = undo_rec.page_id,
+            .record_type = WAL_CLR,
+            .prev_lsn = undo_rec.prev_lsn,  // skip to next undo target
+        };
+        clr.checksum = crc32(&amp;clr, sizeof(clr));
+        wal_append_record(wal, &amp;clr);
+
+        page->header.lsn = clr.lsn;
+        page_set_dirty(page);
+        buffer_pool_unpin(pool, page);
+
+        if (undo_rec.prev_lsn == 0) {
+            hash_table_remove(active_txns, txn_id);
+        } else {
+            hash_table_put(active_txns, txn_id, undo_rec.prev_lsn);
+        }
+    }
+
+    // Flush all dirty pages and WAL
+    buffer_pool_flush_all(pool);
+    wal_flush(wal);
+}</code></pre>
+
+        <p><strong>Claude Code</strong> generates the full three-phase ARIES recovery with compensation log records, idempotent redo (checking page LSN against record LSN), and correct undo ordering (highest LSN first across all active transactions). This is the algorithm that PostgreSQL, MySQL/InnoDB, SQL Server, and DB2 all implement. No other tool generates recovery code at this level of correctness.</p>
+
+        <h3>Common AI failures</h3>
+        <p><strong>Copilot</strong> generates log replay without the analysis phase &mdash; it replays all records from the beginning, which is both incorrect (may redo already-flushed pages without LSN checking) and slow. It does not generate CLRs, meaning crash-during-recovery causes corruption. <strong>Windsurf</strong> generates checkpoint-restore code (serialize state to file, load on startup) which is not WAL recovery and does not handle transactions that were in progress at crash time. <strong>Amazon Q</strong> generates application-level recovery patterns (retry logic, idempotency keys) rather than storage-engine recovery. <strong>Gemini CLI</strong> explains ARIES correctly and generates good pseudo-code, but its implementation sometimes processes undo records in the wrong order (per-transaction instead of global LSN order) and does not always include CLRs.</p>
+
+        <h2>7. Lock-Free / Concurrent Data Structures</h2>
+
+        <p>High-performance databases use lock-free or wait-free data structures for hot paths: the buffer pool page table (mapping page IDs to buffer slots), the lock manager&rsquo;s hash table, MVCC&rsquo;s transaction status array, and the WAL&rsquo;s append path. Lock-free means at least one thread makes progress in a finite number of steps, even if other threads are delayed. This is critical for databases because a thread holding a mutex that gets descheduled by the OS blocks all threads waiting on that mutex, creating latency spikes proportional to the OS scheduling quantum.</p>
+
+        <h3>Where tools struggle</h3>
+        <p>Lock-free programming requires understanding memory ordering: <code>memory_order_relaxed</code>, <code>memory_order_acquire</code>, <code>memory_order_release</code>, <code>memory_order_seq_cst</code>, and when each is correct. A compare-and-swap (CAS) loop that uses <code>memory_order_relaxed</code> where <code>memory_order_acq_rel</code> is needed produces a data structure that works on x86 (which has a strong memory model) and breaks on ARM (which has a weak memory model). The ABA problem (a CAS succeeds because the value changed from A to B and back to A, but the underlying data structure has changed) requires epoch-based reclamation, hazard pointers, or tagged pointers.</p>
+
+<pre><code>// Lock-free hash table for buffer pool page table
+// Open addressing with linear probing, atomic operations
+// Supports concurrent insert, lookup, and delete
+
+#define HT_EMPTY    UINT64_MAX
+#define HT_DELETED  (UINT64_MAX - 1)
+
+typedef struct {
+    _Atomic uint64_t key;    // page_id (EMPTY = unused, DELETED = tombstone)
+    _Atomic int32_t  value;  // buffer pool index
+} HTEntry;
+
+typedef struct {
+    HTEntry  *entries;
+    uint32_t  capacity;     // must be power of 2
+    uint32_t  mask;         // capacity - 1
+} LockFreeHashTable;
+
+int32_t ht_lookup(LockFreeHashTable *ht, uint64_t key) {
+    uint32_t idx = hash64(key) &amp; ht->mask;
+
+    for (uint32_t i = 0; i &lt; ht->capacity; i++) {
+        uint32_t pos = (idx + i) &amp; ht->mask;
+        uint64_t found = atomic_load_explicit(&amp;ht->entries[pos].key,
+                                               memory_order_acquire);
+        if (found == key) {
+            return atomic_load_explicit(&amp;ht->entries[pos].value,
+                                         memory_order_acquire);
+        }
+        if (found == HT_EMPTY) {
+            return -1;  // not found
+        }
+        // HT_DELETED: continue probing
+    }
+    return -1;  // table full, not found
+}
+
+bool ht_insert(LockFreeHashTable *ht, uint64_t key, int32_t value) {
+    uint32_t idx = hash64(key) &amp; ht->mask;
+
+    for (uint32_t i = 0; i &lt; ht->capacity; i++) {
+        uint32_t pos = (idx + i) &amp; ht->mask;
+        uint64_t found = atomic_load_explicit(&amp;ht->entries[pos].key,
+                                               memory_order_acquire);
+
+        if (found == key) {
+            // Key exists — update value
+            atomic_store_explicit(&amp;ht->entries[pos].value, value,
+                                  memory_order_release);
+            return true;
+        }
+
+        if (found == HT_EMPTY || found == HT_DELETED) {
+            // Try to claim this slot
+            uint64_t expected = found;
+            if (atomic_compare_exchange_strong_explicit(
+                    &amp;ht->entries[pos].key, &amp;expected, key,
+                    memory_order_acq_rel, memory_order_acquire)) {
+                atomic_store_explicit(&amp;ht->entries[pos].value, value,
+                                      memory_order_release);
+                return true;
+            }
+            // CAS failed — another thread claimed it, retry this slot
+            i--;  // re-examine this position
+            continue;
+        }
+    }
+    return false;  // table full
+}
+
+bool ht_delete(LockFreeHashTable *ht, uint64_t key) {
+    uint32_t idx = hash64(key) &amp; ht->mask;
+
+    for (uint32_t i = 0; i &lt; ht->capacity; i++) {
+        uint32_t pos = (idx + i) &amp; ht->mask;
+        uint64_t found = atomic_load_explicit(&amp;ht->entries[pos].key,
+                                               memory_order_acquire);
+        if (found == key) {
+            // Mark as deleted (tombstone)
+            uint64_t expected = key;
+            return atomic_compare_exchange_strong_explicit(
+                &amp;ht->entries[pos].key, &amp;expected, HT_DELETED,
+                memory_order_acq_rel, memory_order_acquire);
+        }
+        if (found == HT_EMPTY) {
+            return false;  // not found
+        }
+    }
+    return false;
+}</code></pre>
+
+        <p><strong>Claude Code</strong> generates lock-free data structures with correct memory ordering: <code>memory_order_acquire</code> on loads (ensures subsequent reads see the data written before the corresponding release), <code>memory_order_release</code> on stores, and <code>memory_order_acq_rel</code> on CAS operations. It handles the tombstone pattern for open-addressing deletion and generates bounded probe sequences. <strong>Gemini CLI</strong> generates good lock-free algorithms from descriptions but sometimes defaults to <code>memory_order_seq_cst</code> everywhere (correct but slower than necessary). <strong>Copilot</strong> generates mutex-based code when asked for lock-free, or generates CAS loops with <code>memory_order_relaxed</code> that break on ARM. <strong>Cursor</strong> and <strong>Windsurf</strong> do not generate lock-free data structures &mdash; they produce mutex-protected standard containers.</p>
+
+        <h2>Cost Model: What Database Internals Engineers Actually Pay</h2>
+
+        <h3>Scenario 1: Student / Learning &mdash; $0</h3>
+        <ul>
+          <li><strong>Copilot Free</strong> for basic B-tree and data structure implementations in coursework</li>
+          <li><strong>Gemini CLI Free</strong> (1M context) for discussing database papers, algorithm design, and understanding the theory behind MVCC, WAL, and query optimization</li>
+          <li>If you are working through a course (CMU 15-445, Stanford CS 245), Gemini CLI can paste entire paper sections and explain them. Copilot handles the coding assignments. Neither produces production-quality database code, but that is not the goal at this stage.</li>
+        </ul>
+
+        <h3>Scenario 2: Hobby / Toy Database &mdash; $0&ndash;$20/month</h3>
+        <ul>
+          <li><strong>Claude Code</strong> ($20/mo) for storage engine implementation — the only tool that generates correct WAL, MVCC, and B-tree code with proper crash safety</li>
+          <li>If you are building a toy database (like chidb, bustub, or your own from-scratch project), Claude Code is the clear choice. It can generate a working B+ tree with disk-backed pages, a WAL with group commit, basic MVCC, and ARIES recovery. You still need to test exhaustively (crash testing is non-negotiable), but Claude Code gets you 80% of the way there.</li>
+        </ul>
+
+        <h3>Scenario 3: Contributing to Open-Source Database &mdash; $20/month</h3>
+        <ul>
+          <li><strong>Cursor Pro</strong> ($20/mo) for navigating large codebases like SQLite, DuckDB, PostgreSQL, or RocksDB</li>
+          <li>Contributing to an existing database project means understanding a codebase with hundreds of thousands to millions of lines. Cursor&rsquo;s project indexing is invaluable: it indexes the entire codebase, understands cross-file references (how the WAL module calls into the buffer pool, how the executor calls into the storage engine), and autocompletes patterns that match the project&rsquo;s style. Claude Code is better for understanding isolated algorithms, but Cursor is better for navigating the forest.</li>
+        </ul>
+
+        <h3>Scenario 4: Professional Database Engineer &mdash; $40/month</h3>
+        <ul>
+          <li><strong>Claude Code</strong> ($20/mo) for algorithm correctness, crash recovery logic, MVCC design, and complex concurrency</li>
+          <li>Plus <strong>Cursor Pro</strong> ($20/mo) for codebase navigation, cross-file refactoring, and daily development velocity</li>
+          <li>The optimal combination: Claude Code for the hard problems (B-tree split correctness, WAL ordering, MVCC visibility logic, lock-free data structure design) and Cursor for the daily workflow (navigating the storage engine codebase, refactoring across modules, writing test harnesses, understanding existing code). This is what engineers at database companies actually use.</li>
+        </ul>
+
+        <h3>Scenario 5: Full Pipeline &mdash; $40/month</h3>
+        <ul>
+          <li><strong>Claude Code</strong> ($20/mo) for algorithm design and correctness verification</li>
+          <li>Plus <strong>Gemini CLI</strong> ($0 free tier) for paper discussions and protocol analysis — 1M context for pasting ARIES paper sections, CMU lecture notes, or RocksDB design docs</li>
+          <li>Database internals work involves reading papers and translating them into code. Gemini CLI handles the former (discuss tradeoffs, understand algorithms, explore design space), Claude Code handles the latter (implement with correct invariants, crash safety, and concurrency).</li>
+        </ul>
+
+        <h3>Scenario 6: Database Company / Enterprise &mdash; $99/seat</h3>
+        <ul>
+          <li><strong>Copilot Enterprise</strong> ($39/mo) or <strong>Cursor Business</strong> ($40/mo) for team-wide codebase indexing, access controls, and audit logging</li>
+          <li>Plus <strong>Claude Code</strong> ($20/mo) for architecture-level storage engine design</li>
+          <li>Companies building commercial databases (CockroachDB, TiDB, SingleStore, Neon, Turso) have proprietary storage engines with internal coding standards for page layouts, latch protocols, WAL formats, and MVCC implementations. Enterprise tiers index the full proprietary codebase, ensuring team-wide consistency on B-tree node formats, buffer pool policies, and recovery logic across dozens of engineers working on different subsystems.</li>
+        </ul>
+
+        <h2>The Database Internals Engineer&rsquo;s Verdict</h2>
+
+        <p>AI coding tools in 2026 are good at the textbook data structures &mdash; basic B-trees, simple hash tables, straightforward SQL parsing &mdash; and dangerous at the systems-level details that determine whether your database actually works after a crash. They generate code that handles the happy path (insert into a non-full node, read a committed row, flush a clean page) and misses the edge cases that define database correctness: split propagation under concurrent access, WAL ordering for dirty page eviction, MVCC visibility for concurrent transactions with complex commit orderings, and compensation log records during recovery. The gap between &ldquo;works in a unit test&rdquo; and &ldquo;survives kill -9 at any point with zero data loss&rdquo; is exactly where AI tools produce their most dangerous output.</p>
+
+        <p>The right workflow: AI generates the scaffolding (page layout structures, iterator interfaces, cost model skeletons, test harness boilerplate), you implement the invariants (split/merge correctness, WAL ordering, visibility checks, recovery phases). AI scaffolds the buffer pool eviction loop, you ensure WAL ordering and torn-write protection. AI writes the query optimizer skeleton, you verify the cost model and join enumeration. AI generates the lock-free data structure, you verify memory ordering on both x86 and ARM.</p>
+
+        <p>Use Claude Code for algorithm correctness and crash safety &mdash; it is the only tool that consistently generates complete ARIES recovery, correct MVCC visibility checks, and proper WAL ordering. Use Cursor for codebase navigation &mdash; its project indexing is essential for database projects with hundreds of files spanning storage, execution, and transaction layers. Use Gemini CLI for paper discussions &mdash; its 1M token context lets you paste entire sections of the ARIES paper, the original B-tree paper, or RocksDB design docs and get precise implementation guidance. Then crash-test everything: kill -9 at random points, verify recovery, generate random transaction schedules, verify serializability, and benchmark under realistic workloads. A database that passes unit tests but has not been crash-tested is not a database &mdash; it is a liability.</p>
+
+        <p>Compare all tools and pricing on our <a href="/" style="color:var(--accent)">main comparison table</a>, or check the <a href="/blog/cheapest-ai-coding-tool-2026.html" style="color:var(--accent)">cheapest tools guide</a> for budget options.</p>
+
+        <h2>Related on CodeCosts</h2>
+        <ul>
+          <li><a href="/blog/ai-coding-tools-for-database-administrators-2026.html" style="color:var(--accent)">AI Coding Tools for Database Administrators (2026)</a> &mdash; SQL tuning, schema management, backup/restore, monitoring</li>
+          <li><a href="/blog/ai-coding-tools-for-backend-engineers-2026.html" style="color:var(--accent)">AI Coding Tools for Backend Engineers (2026)</a> &mdash; server-side development, API design, data layer integration</li>
+          <li><a href="/blog/ai-coding-tools-for-performance-engineers-2026.html" style="color:var(--accent)">AI Coding Tools for Performance Engineers (2026)</a> &mdash; profiling, benchmarking, cache optimization, latency analysis</li>
+          <li><a href="/blog/ai-coding-tools-for-systems-programmers-2026.html" style="color:var(--accent)">AI Coding Tools for Systems Programmers (2026)</a> &mdash; kernel development, memory management, low-level optimization</li>
+        </ul>
+      </div>
+    </article>
+
+    <!-- Related Posts -->
+    <section class="card">
+      <h3>Related Posts</h3>
+      <div class="blog-list" style="margin-top:1rem">
+        <a href="/blog/ai-coding-tools-for-database-administrators-2026.html" class="blog-post-card">
+          <h3>AI Coding Tools for Database Administrators 2026: SQL Tuning, Schema Management &amp; Monitoring Guide</h3>
+          <div class="blog-meta"><span>March 22, 2026</span><span>20 min read</span></div>
+          <p class="blog-excerpt">Every AI coding tool evaluated for database administration. SQL optimization, schema design, backup/restore, monitoring, and migration from $0 to enterprise.</p>
+          <span class="read-more">Read more &rarr;</span>
+        </a>
+        <a href="/blog/ai-coding-tools-for-performance-engineers-2026.html" class="blog-post-card">
+          <h3>AI Coding Tools for Performance Engineers 2026: Profiling, Benchmarking &amp; Optimization Guide</h3>
+          <div class="blog-meta"><span>March 27, 2026</span><span>22 min read</span></div>
+          <p class="blog-excerpt">Every AI coding tool evaluated for performance engineering. CPU profiling, memory analysis, cache optimization, and latency reduction from $0 to enterprise.</p>
+          <span class="read-more">Read more &rarr;</span>
+        </a>
+        <a href="/blog/ai-coding-tools-for-systems-programmers-2026.html" class="blog-post-card">
+          <h3>AI Coding Tools for Systems Programmers 2026: Kernel, Memory Management &amp; Low-Level Optimization Guide</h3>
+          <div class="blog-meta"><span>March 28, 2026</span><span>24 min read</span></div>
+          <p class="blog-excerpt">Every AI coding tool evaluated for systems programming. Kernel development, memory management, low-level optimization, and performance-critical code from $0 to enterprise.</p>
+          <span class="read-more">Read more &rarr;</span>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>CodeCosts &mdash; Independent AI coding tool price tracker. Updated March 2026.</p>
+      <p style="margin-top:0.5rem"><a href="/" style="color:var(--accent)">Compare all tools</a> &middot; <a href="/blog/" style="color:var(--accent)">Blog</a> &middot; <a href="/blog/feed.xml" style="color:var(--accent)">RSS</a></p>
+    </div>
+  </footer>
+</body>
+</html>

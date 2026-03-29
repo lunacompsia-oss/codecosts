@@ -9,6 +9,14 @@
     <atom:link href="https://codecosts.pages.dev/blog/feed.xml" rel="self" type="application/rss+xml"/>
 
     <item>
+      <title>AI Coding Tools for ERP/SAP Engineers 2026: ABAP, Fiori/UI5, SAP BTP, RFC/BAPI Integration, Data Migration &amp; Enterprise Customization Guide</title>
+      <link>https://codecosts.pages.dev/blog/ai-coding-tools-for-erp-sap-engineers-2026.html</link>
+      <description>The ERP/SAP engineer's guide to AI coding tools in 2026. ABAP development, Fiori/UI5 frontends, SAP BTP/CAP, RFC/BAPI integration, S/4HANA data migration, and enterprise workflow automation.</description>
+      <pubDate>Sun, 29 Mar 2026 23:59:00 GMT</pubDate>
+      <guid>https://codecosts.pages.dev/blog/ai-coding-tools-for-erp-sap-engineers-2026.html</guid>
+    </item>
+
+    <item>
       <title>AI Coding Tools for Quantum Computing Engineers 2026: Qiskit, Cirq, PennyLane, Quantum Error Correction &amp; Algorithm Development Guide</title>
       <link>https://codecosts.pages.dev/blog/ai-coding-tools-for-quantum-computing-engineers-2026.html</link>
       <description>The quantum computing engineer's guide to AI coding tools in 2026. Qiskit, Cirq, PennyLane, quantum error correction, variational algorithms, circuit optimization, quantum simulation, QML, and hardware integration.</description>

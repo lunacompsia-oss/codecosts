@@ -1,0 +1,1866 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Coding Tools for Simulation Engineers 2026: CFD, FEA, Discrete Event Simulation, Monte Carlo &amp; Multiphysics Guide</title>
+  <meta name="description" content="The simulation engineer's guide to AI coding tools in 2026. Every tool evaluated for CFD solver development, finite element analysis, discrete event simulation, Monte Carlo methods, mesh generation, HPC parallel computing, and multiphysics coupling. Domain-first recommendations from $0 to $99/seat.">
+  <link rel="canonical" href="https://codecosts.pages.dev/blog/ai-coding-tools-for-simulation-engineers-2026.html">
+  <meta property="og:title" content="AI Coding Tools for Simulation Engineers 2026: CFD, FEA, Discrete Event Simulation, Monte Carlo &amp; Multiphysics">
+  <meta property="og:description" content="Every AI coding tool ranked for simulation engineering. OpenFOAM, FEniCS, deal.II, ANSYS scripting, SimPy, Monte Carlo, MPI parallelism, and multiphysics coupling. Domain-first recommendations from $0 to $99/seat.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://codecosts.pages.dev/blog/ai-coding-tools-for-simulation-engineers-2026.html">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="AI Coding Tools for Simulation Engineers 2026: CFD, FEA, Discrete Event Simulation, Monte Carlo &amp; Multiphysics">
+  <meta name="twitter:description" content="Domain-first AI tool recommendations for simulation engineers. CFD, FEA, Monte Carlo, HPC, mesh generation &mdash; ranked and priced.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💰</text></svg>">
+  <link rel="stylesheet" href="../style.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "AI Coding Tools for Simulation Engineers 2026: CFD, FEA, Discrete Event Simulation, Monte Carlo & Multiphysics Guide",
+    "datePublished": "2026-03-29",
+    "dateModified": "2026-03-29",
+    "author": { "@type": "Organization", "name": "CodeCosts" },
+    "publisher": { "@type": "Organization", "name": "CodeCosts" },
+    "description": "The simulation engineer's guide to AI coding tools in 2026. Every tool evaluated for CFD solver development, finite element analysis, discrete event simulation, Monte Carlo methods, mesh generation, HPC parallel computing, and multiphysics coupling."
+  }
+  </script>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <a href="/" style="text-decoration:none;color:inherit"><h1><span class="logo">$_</span> CodeCosts</h1></a>
+      <p class="tagline">AI Coding Tool News &amp; Analysis</p>
+      <nav>
+        <a href="/">Tools</a>
+        <a href="/blog/" class="active">Blog</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <article class="card">
+      <h2>AI Coding Tools for Simulation Engineers 2026: CFD, FEA, Discrete Event Simulation, Monte Carlo &amp; Multiphysics Guide</h2>
+      <div class="article-meta">
+        <span>March 29, 2026</span>
+        <span>25 min read</span>
+      </div>
+
+      <div class="article-content">
+        <p>Simulation engineering is software development where numerical accuracy is a correctness requirement, not a nice-to-have. A web application can round a price to two decimal places and nobody notices. A computational fluid dynamics solver that introduces excessive numerical diffusion in its advection scheme will smear a shock wave across twenty cells instead of capturing it in two, producing drag coefficients that are 30% wrong and leading an aerospace engineer to sign off on a wing geometry that produces flow separation in flight conditions the simulation said were safe. The governing equations &mdash; Navier-Stokes for fluid flow, the elasticity equations for structural mechanics, Maxwell&rsquo;s equations for electromagnetics, the Boltzmann transport equation for radiation &mdash; are partial differential equations that must be discretized onto computational meshes using finite element, finite volume, or finite difference methods. Each discretization introduces truncation error whose order depends on the scheme (first-order upwind vs. second-order central vs. high-resolution TVD schemes), and the interplay between spatial discretization, temporal integration, and mesh quality determines whether your simulation converges to the physical solution or diverges into meaningless numbers. The CFL condition (Courant-Friedrichs-Lewy) constrains the time step based on mesh spacing and wave speed; violate it with an explicit scheme and your solution blows up exponentially. Von Neumann stability analysis tells you which combinations of time integration and spatial discretization are stable for linear problems, but nonlinear equations like Navier-Stokes require additional care &mdash; SIMPLE/PISO pressure-velocity coupling, under-relaxation factors, and iterative convergence monitoring that no AI tool currently understands from first principles.</p>
+
+        <p>The computational scale separates simulation from ordinary software development by orders of magnitude. A production CFD simulation of a full aircraft at cruise conditions involves meshes with 50 to 500 million cells, each storing 5 or more variables (pressure, three velocity components, temperature, plus turbulence quantities), updated over thousands of time steps or iterations. This demands HPC clusters with hundreds or thousands of cores communicating via MPI (Message Passing Interface), with domain decomposition splitting the mesh across processes and requiring halo exchange of boundary cell data at every iteration. A finite element analysis of a turbine blade under thermal-mechanical loading might have 10 million degrees of freedom with a sparse stiffness matrix containing billions of nonzero entries, solved using preconditioned Krylov methods (GMRES, conjugate gradient) that require careful tuning of preconditioners (incomplete LU, algebraic multigrid) to converge in reasonable time. Load balancing across MPI ranks, minimizing communication overhead, overlapping computation with communication, and managing parallel I/O for checkpointing and post-processing are engineering challenges that compound with scale. An AI tool that generates serial code for a problem that requires parallel execution has produced something that will take weeks instead of hours to run.</p>
+
+        <p>The toolchain breadth rivals any other engineering domain. You write OpenFOAM case files in a custom dictionary format and extend it with C++ classes that compile against OpenFOAM&rsquo;s class hierarchy. You script ANSYS Fluent through its Text User Interface (TUI) commands or Fluent UDFs written in C with ANSYS-specific macros. You write ANSYS Mechanical scripts in APDL (ANSYS Parametric Design Language), a legacy macro language with idiosyncratic syntax that predates modern programming by decades. You implement finite element methods in Python using FEniCS (now FEniCSx/DOLFINx) with its Unified Form Language (UFL) for variational formulations, or in C++ using deal.II with its template-heavy architecture. You build discrete event simulations in Python with SimPy or in Java with AnyLogic. You write Monte Carlo solvers in Fortran, C++, or Python with NumPy. You script COMSOL Multiphysics through its Java API or MATLAB LiveLink. You post-process results with ParaView&rsquo;s Python scripting interface (pvpython) or VTK&rsquo;s Python bindings. And you validate everything by comparing numerical results to analytical solutions (Blasius boundary layer, Poiseuille flow, Hertzian contact), running mesh convergence studies with Richardson extrapolation to estimate the grid-independent solution, and benchmarking against experimental data with proper uncertainty quantification. This guide evaluates every major AI coding tool through the lens of what simulation engineers actually build: solvers, pre-processors, post-processors, and the verification and validation infrastructure that makes the results trustworthy.</p>
+
+        <div class="callout tip">
+          <div class="callout-title">TL;DR</div>
+          <p><strong>Best free ($0):</strong> Gemini CLI Free &mdash; 1M context for solver documentation, OpenFOAM class hierarchies, and ANSYS command references. <strong>Best for solver development ($20/mo):</strong> Claude Code &mdash; strongest reasoning for numerical algorithms, convergence analysis, and variational formulations. <strong>Best for simulation codebases ($20/mo):</strong> Cursor Pro &mdash; indexes large solver projects, autocompletes OpenFOAM/FEniCS/deal.II patterns. <strong>Best combined ($40/mo):</strong> Claude Code + Cursor. <strong>Budget ($0):</strong> Copilot Free + Gemini CLI Free.</p>
+        </div>
+
+        <h2>Why Simulation Engineering Is Different</h2>
+        <ul>
+          <li><strong>Numerical accuracy and stability are non-negotiable:</strong> Simulation code operates in a regime where floating-point arithmetic is a first-order concern, not an afterthought. Machine epsilon (approximately 2.2 &times; 10<sup>-16</sup> for IEEE 754 double precision) determines the floor of achievable accuracy, but condition numbers amplify roundoff errors by orders of magnitude &mdash; a stiffness matrix with condition number 10<sup>12</sup> loses 12 digits of accuracy in the solution, leaving only 4 significant digits from your 16-digit double. Ill-conditioned systems arise naturally from high-aspect-ratio mesh elements, penalty methods for boundary conditions, and multi-scale problems where material properties vary by orders of magnitude. Temporal integration schemes have stability regions: forward Euler is conditionally stable (CFL &le; 1 for the standard advection equation), backward Euler is unconditionally stable but first-order accurate and heavily diffusive, Crank-Nicolson is second-order but can produce oscillations near discontinuities. Choosing the wrong scheme &mdash; or the right scheme with the wrong time step &mdash; produces solutions that either blow up spectacularly or converge to the wrong answer quietly. AI tools that generate numerical code without considering stability constraints produce simulations that fail in ways that require deep numerical analysis to diagnose.</li>
+          <li><strong>Mesh generation and quality determine solution accuracy:</strong> The computational mesh is not just a data structure &mdash; it is a discrete approximation of the continuous domain that directly controls solution accuracy and convergence rate. Element aspect ratios above 10:1 degrade finite element accuracy and cause iterative solvers to stall. Jacobian determinants must be positive everywhere; negative Jacobians mean inverted elements that produce nonsensical results. Skewness above 0.95 (on a 0-1 scale) in finite volume cells introduces discretization errors that can exceed the physical signal you are trying to resolve. Boundary layer meshes in CFD require the first cell height to satisfy y+ requirements for the chosen turbulence model: y+ &lt; 1 for resolving the viscous sublayer (k-omega SST, Spalart-Allmaras with low-Re correction), y+ between 30 and 300 for wall functions (standard k-epsilon). Getting the first cell height wrong by a factor of 10 produces wall shear stress errors of 20-50%. Adaptive mesh refinement (AMR) based on error estimators (Kelly error estimator, gradient-based, adjoint-based) requires careful implementation to avoid hanging nodes, ensure mesh conformity, and maintain solution transfer between mesh levels. No AI tool currently generates mesh specifications that account for these interrelated requirements.</li>
+          <li><strong>HPC and parallel computing are table stakes for production work:</strong> Any simulation beyond a classroom exercise requires parallel execution. MPI (Message Passing Interface) is the standard for distributed-memory parallelism: the domain is decomposed into subdomains assigned to MPI ranks, each rank solves its local portion, and boundary data is exchanged through point-to-point (MPI_Send/MPI_Recv) or collective (MPI_Allreduce) communications. Domain decomposition must minimize the surface-to-volume ratio of subdomains to reduce communication (graph partitioning via METIS or ParMETIS), balance computational load across ranks (weighted partitioning for meshes with varying element density), and handle the data structures for halo/ghost cells that store neighboring rank data. OpenMP provides shared-memory parallelism within a node for loop-level parallelism, and hybrid MPI+OpenMP is standard for modern clusters. GPU computing with CUDA or HIP accelerates matrix assembly and linear algebra through libraries like cuSPARSE and AmgX for sparse solvers, or PETSc and Trilinos for portable HPC linear algebra. Parallel I/O through HDF5 or MPI-IO is essential for writing checkpoint files from thousands of ranks without serialization bottlenecks. An AI tool that generates MPI code with deadlocks, incorrect buffer sizes, or blocking communication patterns that serialize execution has produced code that is worse than useless &mdash; it runs slower than serial code while consuming cluster resources.</li>
+          <li><strong>Multi-physics coupling introduces system-level complexity:</strong> Real engineering problems rarely involve a single set of governing equations. Fluid-structure interaction (FSI) couples the Navier-Stokes equations with structural elasticity: fluid forces deform the structure, the deformed structure changes the fluid domain, requiring either monolithic coupling (solving all equations simultaneously, robust but expensive) or partitioned coupling (alternating between fluid and structural solvers with interface data exchange, efficient but potentially unstable). Conjugate heat transfer couples fluid energy equations with solid conduction through shared temperature and heat flux boundary conditions at interfaces. Electromagnetic-thermal coupling in induction heating problems requires solving Maxwell&rsquo;s equations for eddy current heating, then the heat equation for temperature distribution, with temperature-dependent material properties creating a nonlinear feedback loop. Each coupling introduces additional convergence requirements: fixed-point iteration (Gauss-Seidel coupling) may diverge for strong coupling, requiring Aitken relaxation or quasi-Newton methods (IQN-ILS) for stable convergence. The added mass effect in FSI with incompressible fluids causes partitioned schemes to diverge without proper treatment. AI tools have no awareness of these coupling stability requirements and will generate partitioned coupling loops without relaxation, producing simulations that diverge after a few time steps.</li>
+          <li><strong>Verification and Validation (V&amp;V) is the foundation of credibility:</strong> Verification asks &ldquo;are we solving the equations correctly?&rdquo; and validation asks &ldquo;are we solving the correct equations?&rdquo; Code verification uses the Method of Manufactured Solutions (MMS): you choose an analytical solution, substitute it into the governing equations to compute a source term, solve the modified equations numerically, and verify that the error converges at the expected order of accuracy (second-order scheme should show error proportional to h<sup>2</sup> as mesh size h decreases). Solution verification uses mesh convergence studies: solve on three systematically refined meshes (refinement ratio r = 2 is standard) and apply Richardson extrapolation to estimate the grid-independent solution and the observed order of convergence. If the observed order differs significantly from the formal order of the scheme, something is wrong &mdash; boundary condition implementation errors, insufficient mesh resolution in critical regions, or iteration convergence insufficiency (inner iterations not converged before advancing in time). Code-to-code comparison against established solvers (comparing your OpenFOAM results against ANSYS Fluent for the same benchmark) provides additional confidence. Validation compares simulation results to experimental data with proper uncertainty quantification on both sides. Without V&amp;V, a simulation is just an expensive random number generator. AI tools never generate V&amp;V infrastructure alongside solver code, which means every AI-generated simulation requires manual addition of convergence monitoring, mesh studies, and benchmark comparisons before any result can be trusted.</li>
+        </ul>
+
+        <h2>Simulation Task Support Matrix</h2>
+        <div style="overflow-x:auto">
+          <table style="width:100%;border-collapse:collapse;margin:1.5rem 0">
+            <thead>
+              <tr style="border-bottom:2px solid var(--border)">
+                <th style="padding:12px 16px;text-align:left">Task</th>
+                <th style="padding:12px 16px;text-align:center">Copilot</th>
+                <th style="padding:12px 16px;text-align:center">Cursor</th>
+                <th style="padding:12px 16px;text-align:center">Windsurf</th>
+                <th style="padding:12px 16px;text-align:center">Claude Code</th>
+                <th style="padding:12px 16px;text-align:center">Amazon Q</th>
+                <th style="padding:12px 16px;text-align:center">Gemini CLI</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px"><strong>CFD (OpenFOAM, Fluent UDFs)</strong></td>
+                <td style="padding:12px 16px;text-align:center">Fair</td>
+                <td style="padding:12px 16px;text-align:center"><strong>Strong</strong></td>
+                <td style="padding:12px 16px;text-align:center">Fair</td>
+                <td style="padding:12px 16px;text-align:center"><strong>Excellent</strong></td>
+                <td style="padding:12px 16px;text-align:center">Weak</td>
+                <td style="padding:12px 16px;text-align:center">Good</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px"><strong>FEA (FEniCS, deal.II, ANSYS APDL)</strong></td>
+                <td style="padding:12px 16px;text-align:center">Fair</td>
+                <td style="padding:12px 16px;text-align:center">Good</td>
+                <td style="padding:12px 16px;text-align:center">Weak</td>
+                <td style="padding:12px 16px;text-align:center"><strong>Excellent</strong></td>
+                <td style="padding:12px 16px;text-align:center">Weak</td>
+                <td style="padding:12px 16px;text-align:center">Good</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px"><strong>Discrete Event Simulation (SimPy, AnyLogic)</strong></td>
+                <td style="padding:12px 16px;text-align:center">Good</td>
+                <td style="padding:12px 16px;text-align:center"><strong>Strong</strong></td>
+                <td style="padding:12px 16px;text-align:center">Good</td>
+                <td style="padding:12px 16px;text-align:center"><strong>Excellent</strong></td>
+                <td style="padding:12px 16px;text-align:center">Good</td>
+                <td style="padding:12px 16px;text-align:center"><strong>Strong</strong></td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px"><strong>Monte Carlo Methods</strong></td>
+                <td style="padding:12px 16px;text-align:center">Good</td>
+                <td style="padding:12px 16px;text-align:center">Good</td>
+                <td style="padding:12px 16px;text-align:center">Fair</td>
+                <td style="padding:12px 16px;text-align:center"><strong>Excellent</strong></td>
+                <td style="padding:12px 16px;text-align:center">Fair</td>
+                <td style="padding:12px 16px;text-align:center"><strong>Strong</strong></td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px"><strong>Mesh Generation &amp; Processing</strong></td>
+                <td style="padding:12px 16px;text-align:center">Weak</td>
+                <td style="padding:12px 16px;text-align:center">Good</td>
+                <td style="padding:12px 16px;text-align:center">Weak</td>
+                <td style="padding:12px 16px;text-align:center"><strong>Strong</strong></td>
+                <td style="padding:12px 16px;text-align:center">Weak</td>
+                <td style="padding:12px 16px;text-align:center">Good</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px"><strong>HPC &amp; Parallel Computing</strong></td>
+                <td style="padding:12px 16px;text-align:center">Fair</td>
+                <td style="padding:12px 16px;text-align:center">Good</td>
+                <td style="padding:12px 16px;text-align:center">Weak</td>
+                <td style="padding:12px 16px;text-align:center"><strong>Strong</strong></td>
+                <td style="padding:12px 16px;text-align:center">Good</td>
+                <td style="padding:12px 16px;text-align:center">Good</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px"><strong>Post-Processing &amp; Visualization</strong></td>
+                <td style="padding:12px 16px;text-align:center">Good</td>
+                <td style="padding:12px 16px;text-align:center"><strong>Strong</strong></td>
+                <td style="padding:12px 16px;text-align:center">Good</td>
+                <td style="padding:12px 16px;text-align:center"><strong>Strong</strong></td>
+                <td style="padding:12px 16px;text-align:center">Fair</td>
+                <td style="padding:12px 16px;text-align:center">Good</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h2>1. CFD Solver Development</h2>
+
+        <p>Computational fluid dynamics development spans a uniquely wide spectrum: from configuring OpenFOAM case directories with the correct dictionary entries for turbulence models, boundary conditions, and numerical schemes, to writing custom finite volume solvers in C++ that extend OpenFOAM&rsquo;s class hierarchy, to implementing Fluent User-Defined Functions (UDFs) in C with ANSYS-specific macros like <code>DEFINE_PROFILE</code>, <code>DEFINE_SOURCE</code>, and <code>DEFINE_ADJUST</code>. The common thread is that every choice affects numerical accuracy: a second-order upwind scheme for the convection term introduces less numerical diffusion than first-order upwind but is more susceptible to oscillations near discontinuities, requiring flux limiters (van Leer, Minmod, Superbee) that blend high-order and low-order fluxes based on local solution gradients. The SIMPLE algorithm (Semi-Implicit Method for Pressure-Linked Equations) and its variants (SIMPLEC, PISO, PIMPLE) handle the pressure-velocity coupling that arises from the incompressibility constraint, and each has different stability and convergence characteristics that depend on the time step, under-relaxation factors, and number of corrector steps.</p>
+
+        <p>AI tools face two distinct challenges in CFD. The first is the OpenFOAM dictionary format: it looks like a configuration file but is actually a domain-specific language with strict syntax rules (semicolons terminate entries, parentheses group vector values, dimensions must match using OpenFOAM&rsquo;s dimensional checking system). The second is numerical scheme selection: the tool must understand that a <code>linearUpwind</code> scheme for the divergence term requires a <code>Gauss linear</code> gradient scheme for the upwind correction, that <code>bounded Gauss linearUpwind</code> is needed for bounded scalars like turbulent kinetic energy, and that the <code>fvSolution</code> relaxation factors must be tuned in conjunction with the time step to achieve convergence. Claude Code handles both challenges better than any other tool, generating syntactically correct OpenFOAM dictionaries with physically appropriate scheme selections. Cursor indexes existing OpenFOAM case directories and autocompletes dictionary entries consistent with your project&rsquo;s conventions.</p>
+
+        <p>For Fluent UDFs, the challenge is the ANSYS-specific C macro system. <code>DEFINE_PROFILE</code> defines boundary condition profiles as functions of spatial coordinates and time; <code>DEFINE_SOURCE</code> adds volumetric source terms to transport equations; <code>DEFINE_PROPERTY</code> defines material properties as functions of temperature, pressure, or species concentration. These macros expand into function signatures that interface with Fluent&rsquo;s internal data structures through accessor macros like <code>C_T(c,t)</code> for cell temperature, <code>C_R(c,t)</code> for density, and <code>F_AREA(A,f,t)</code> for face area vectors. Getting the thread and cell indexing wrong produces segmentation faults or, worse, silently wrong source terms.</p>
+
+        <pre><code class="language-python">"""
+OpenFOAM blockMeshDict generator for a 2D channel flow with
+graded boundary layer mesh near the walls.
+
+Generates a mesh suitable for RANS simulation with y+ ~ 1
+at the first cell, given Reynolds number and desired y+.
+"""
+import math
+from pathlib import Path
+
+
+def compute_first_cell_height(
+    re_tau: float,
+    nu: float,
+    u_tau: float,
+    y_plus_target: float = 1.0,
+) -> float:
+    """Compute first cell height for target y+ value.
+
+    y+ = y * u_tau / nu  =>  y = y+ * nu / u_tau
+
+    Args:
+        re_tau: Friction Reynolds number (Re_tau = u_tau * delta / nu)
+        nu: Kinematic viscosity [m^2/s]
+        u_tau: Friction velocity [m/s]
+        y_plus_target: Target y+ at first cell center (typically 1.0)
+
+    Returns:
+        First cell height in meters (wall-normal distance to cell center)
+    """
+    # Cell center is at half the cell height
+    return 2.0 * y_plus_target * nu / u_tau
+
+
+def compute_grading_ratio(
+    first_cell: float,
+    total_height: float,
+    n_cells: int,
+) -> float:
+    """Compute geometric expansion ratio for graded mesh.
+
+    For a geometric series: total = first * (ratio^n - 1) / (ratio - 1)
+    Solved iteratively using Newton's method.
+    """
+    if n_cells <= 1:
+        return 1.0
+
+    # Initial guess
+    ratio = 1.2
+
+    for _ in range(100):
+        f = first_cell * (ratio**n_cells - 1.0) / (ratio - 1.0) - total_height
+        # Derivative with respect to ratio
+        df = first_cell * (
+            n_cells * ratio ** (n_cells - 1) * (ratio - 1.0)
+            - (ratio**n_cells - 1.0)
+        ) / (ratio - 1.0) ** 2
+
+        if abs(df) < 1e-15:
+            break
+
+        ratio_new = ratio - f / df
+
+        if abs(ratio_new - ratio) < 1e-12:
+            ratio = ratio_new
+            break
+
+        ratio = ratio_new
+
+    return ratio
+
+
+def generate_block_mesh_dict(
+    length: float = 6.283,       # Channel length (2*pi*delta)
+    half_height: float = 1.0,    # Channel half-height (delta)
+    width: float = 3.1416,       # Channel width (pi*delta)
+    re_tau: float = 395.0,       # Friction Reynolds number
+    nu: float = 1.0e-4,          # Kinematic viscosity [m^2/s]
+    y_plus_target: float = 1.0,  # Target y+ at first cell
+    nx: int = 128,               # Cells in streamwise direction
+    ny_half: int = 64,           # Cells in wall-normal (per half)
+    nz: int = 64,                # Cells in spanwise direction
+    output_dir: str = "system",
+) -> str:
+    """Generate OpenFOAM blockMeshDict for channel flow.
+
+    Creates a structured hex mesh with geometric grading
+    near both walls to resolve the viscous sublayer.
+    """
+    u_tau = re_tau * nu / half_height
+    first_cell = compute_first_cell_height(re_tau, nu, u_tau, y_plus_target)
+    grading = compute_grading_ratio(first_cell, half_height, ny_half)
+    inverse_grading = 1.0 / grading
+
+    # Verify y+ at first cell
+    y_center = first_cell / 2.0
+    y_plus_actual = y_center * u_tau / nu
+
+    print(f"Channel flow mesh parameters:")
+    print(f"  Re_tau = {re_tau}")
+    print(f"  u_tau = {u_tau:.6f} m/s")
+    print(f"  First cell height = {first_cell:.6e} m")
+    print(f"  y+ at first cell center = {y_plus_actual:.3f}")
+    print(f"  Expansion ratio = {grading:.6f}")
+    print(f"  Total cells = {nx * 2 * ny_half * nz:,}")
+
+    dict_content = f"""FoamFile
+{{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    object      blockMeshDict;
+}}
+
+convertToMeters 1;
+
+vertices
+(
+    // Bottom face (y = -{half_height})
+    (0          -{half_height}  0)          // 0
+    ({length}   -{half_height}  0)          // 1
+    ({length}   -{half_height}  {width})    // 2
+    (0          -{half_height}  {width})    // 3
+
+    // Mid-plane (y = 0)
+    (0          0               0)          // 4
+    ({length}   0               0)          // 5
+    ({length}   0               {width})    // 6
+    (0          0               {width})    // 7
+
+    // Top face (y = {half_height})
+    (0          {half_height}   0)          // 8
+    ({length}   {half_height}   0)          // 9
+    ({length}   {half_height}   {width})    // 10
+    (0          {half_height}   {width})    // 11
+);
+
+blocks
+(
+    // Bottom half: grading from wall (y = -delta) to center (y = 0)
+    hex (0 1 5 4 3 2 6 7) ({nx} {ny_half} {nz})
+    simpleGrading (1 {grading:.6f} 1)
+
+    // Top half: grading from center (y = 0) to wall (y = delta)
+    hex (4 5 9 8 7 6 10 11) ({nx} {ny_half} {nz})
+    simpleGrading (1 {inverse_grading:.6f} 1)
+);
+
+edges
+(
+);
+
+boundary
+(
+    bottomWall
+    {{
+        type wall;
+        faces
+        (
+            (0 3 2 1)
+        );
+    }}
+    topWall
+    {{
+        type wall;
+        faces
+        (
+            (8 9 10 11)
+        );
+    }}
+    inlet
+    {{
+        type cyclic;
+        neighbourPatch outlet;
+        faces
+        (
+            (0 4 7 3)
+            (4 8 11 7)
+        );
+    }}
+    outlet
+    {{
+        type cyclic;
+        neighbourPatch inlet;
+        faces
+        (
+            (1 2 6 5)
+            (5 6 10 9)
+        );
+    }}
+    frontAndBack
+    {{
+        type cyclic;
+        neighbourPatch frontAndBack_half1;
+        faces
+        (
+            (0 1 5 4)
+            (4 5 9 8)
+        );
+    }}
+    frontAndBack_half1
+    {{
+        type cyclic;
+        neighbourPatch frontAndBack;
+        faces
+        (
+            (3 7 6 2)
+            (7 11 10 6)
+        );
+    }}
+);
+
+mergePatchPairs
+(
+);"""
+
+    output_path = Path(output_dir) / "blockMeshDict"
+    output_path.parent.mkdir(parents=True, exist_ok=True)
+    output_path.write_text(dict_content)
+
+    print(f"  Written to {output_path}")
+    return dict_content
+
+
+if __name__ == "__main__":
+    generate_block_mesh_dict(
+        re_tau=395.0,
+        nu=1.0e-4,
+        y_plus_target=1.0,
+        nx=128,
+        ny_half=64,
+        nz=64,
+    )</code></pre>
+
+        <h2>2. Finite Element Analysis with FEniCS</h2>
+
+        <p>The finite element method transforms a partial differential equation into a system of algebraic equations through variational formulation: multiply the strong form by a test function, integrate over the domain, apply integration by parts to reduce the order of derivatives, and obtain the weak form whose solution exists in a Sobolev space that is easier to approximate than the space of classical solutions. FEniCSx (the successor to legacy FEniCS, built on DOLFINx, Basix, UFL, and FFCx) provides a Python interface where you express variational problems in the Unified Form Language (UFL), and the framework automatically generates optimized C code for element-level computations, assembles the global system, and solves it using PETSc. The power &mdash; and the trap for AI tools &mdash; is that UFL looks like Python but has mathematical semantics: <code>inner(grad(u), grad(v)) * dx</code> is not a NumPy operation but a symbolic expression representing the bilinear form of the Laplacian, and errors in formulating this expression produce solutions to the wrong PDE with no runtime error.</p>
+
+        <p>The critical challenge for AI tools in FEA is getting the variational formulation correct. For linear elasticity, the bilinear form involves the symmetric gradient (strain tensor), the constitutive relation (Hooke&rsquo;s law with Lam&eacute; parameters), and proper handling of the vector nature of the displacement field &mdash; not a scalar Laplacian applied component-wise. For nonlinear problems (hyperelasticity, plasticity), the weak form involves the first variation of the strain energy functional, and Newton&rsquo;s method requires the consistent tangent (the second variation) for quadratic convergence. FEniCSx can compute these derivatives automatically through UFL&rsquo;s symbolic differentiation, but the user must formulate the energy functional correctly. Claude Code demonstrates strong understanding of variational formulations and consistently generates correct UFL expressions for standard problems. Cursor helps with the boilerplate around mesh generation, function space definition, and boundary condition application by learning patterns from your existing FEniCSx code.</p>
+
+        <p>deal.II operates at a lower abstraction level than FEniCS, using C++ templates for dimension-independent programming, explicit loop-over-cells assembly, and manual management of shape function values and gradients through <code>FEValues</code> objects. The learning curve is steeper but the control is finer, particularly for adaptive mesh refinement with hanging node constraints, hp-adaptivity (varying both mesh size and polynomial order), and matrix-free operator evaluation for high-order methods. AI tools struggle with deal.II&rsquo;s template-heavy API and the specific patterns required for its cell-based assembly loops.</p>
+
+        <pre><code class="language-python">"""
+FEniCSx: Linear elasticity on an L-shaped domain with adaptive mesh refinement.
+Solves the displacement field under a traction load and refines the mesh
+near the re-entrant corner where stress singularity occurs.
+"""
+import numpy as np
+from mpi4py import MPI
+from petsc4py import PETSc
+
+import dolfinx
+from dolfinx import fem, mesh, io, default_scalar_type
+from dolfinx.fem.petsc import LinearProblem
+import ufl
+from ufl import (
+    TrialFunction, TestFunction, dx, ds, inner, grad, sym, nabla_div,
+    Identity, tr,
+)
+import basix
+
+
+def epsilon(u):
+    """Symmetric gradient (strain tensor)."""
+    return sym(grad(u))
+
+
+def sigma(u, lmbda, mu):
+    """Cauchy stress tensor (Hooke's law for isotropic linear elasticity).
+
+    sigma = lambda * tr(epsilon) * I + 2 * mu * epsilon
+    """
+    d = len(u)
+    return lmbda * nabla_div(u) * Identity(d) + 2 * mu * epsilon(u)
+
+
+def solve_linear_elasticity(
+    refinement_levels: int = 4,
+    initial_resolution: int = 8,
+    E: float = 210e9,            # Young's modulus [Pa] (steel)
+    nu_poisson: float = 0.3,     # Poisson's ratio
+    traction_mag: float = 1e6,   # Applied traction [Pa]
+) -> None:
+    """Solve linear elasticity on L-shaped domain with mesh refinement.
+
+    The L-shaped domain has a re-entrant corner that produces a stress
+    singularity. Adaptive refinement concentrates elements near the
+    singularity where the error estimator is largest.
+    """
+    comm = MPI.COMM_WORLD
+
+    # Lame parameters from engineering constants
+    lmbda = E * nu_poisson / ((1 + nu_poisson) * (1 - 2 * nu_poisson))
+    mu = E / (2 * (1 + nu_poisson))
+
+    print(f"Material: E = {E:.2e} Pa, nu = {nu_poisson}")
+    print(f"Lame parameters: lambda = {lmbda:.2e}, mu = {mu:.2e}")
+
+    # Create L-shaped domain by subtracting upper-right quadrant
+    # from a unit square: domain is [0,1]x[0,1] minus [0.5,1]x[0.5,1]
+    domain = mesh.create_rectangle(
+        comm,
+        [np.array([0.0, 0.0]), np.array([1.0, 1.0])],
+        [initial_resolution, initial_resolution],
+        cell_type=mesh.CellType.triangle,
+    )
+
+    for level in range(refinement_levels):
+        # Vector function space for displacement (2D)
+        V = fem.functionspace(domain, ("Lagrange", 1, (2,)))
+
+        u = TrialFunction(V)
+        v = TestFunction(V)
+
+        # Bilinear form: a(u,v) = integral sigma(u) : epsilon(v) dx
+        a = inner(sigma(u, lmbda, mu), epsilon(v)) * dx
+
+        # Neumann BC: traction on top boundary (y = 1, x < 0.5)
+        boundaries = mesh.locate_entities_boundary(
+            domain, domain.topology.dim - 1,
+            lambda x: np.isclose(x[1], 1.0) & (x[0] < 0.5 + 1e-10),
+        )
+        facet_tag = mesh.meshtags(
+            domain,
+            domain.topology.dim - 1,
+            boundaries,
+            np.full(len(boundaries), 1, dtype=np.int32),
+        )
+        ds_top = ufl.Measure("ds", domain=domain, subdomain_data=facet_tag)
+
+        # Traction vector: downward load
+        traction = fem.Constant(domain, np.array([0.0, -traction_mag]))
+        L = inner(traction, v) * ds_top(1)
+
+        # Dirichlet BC: fixed bottom boundary (y = 0)
+        bottom_dofs = fem.locate_dofs_geometrical(
+            V, lambda x: np.isclose(x[1], 0.0),
+        )
+        zero_disp = fem.Constant(domain, np.array([0.0, 0.0]))
+        bc = fem.dirichletbc(zero_disp, bottom_dofs, V)
+
+        # Solve
+        problem = LinearProblem(
+            a, L, bcs=[bc],
+            petsc_options={
+                "ksp_type": "cg",
+                "pc_type": "gamg",
+                "ksp_rtol": 1e-10,
+            },
+        )
+        uh = problem.solve()
+
+        # Compute von Mises stress for error estimation
+        sigma_h = sigma(uh, lmbda, mu)
+        s = sigma_h - (1.0 / 2.0) * tr(sigma_h) * Identity(2)
+        von_mises_expr = ufl.sqrt(
+            3.0 / 2.0 * inner(s, s)
+        )
+
+        # Project von Mises stress to DG0 space (cell-wise constant)
+        W = fem.functionspace(domain, ("DG", 0))
+        von_mises_projected = fem.Function(W)
+        expr = fem.Expression(
+            von_mises_expr,
+            W.element.interpolation_points(),
+        )
+        von_mises_projected.interpolate(expr)
+
+        vm_values = von_mises_projected.x.array
+        max_stress = np.max(vm_values)
+        print(
+            f"Level {level}: {domain.topology.index_map(2).size_local} cells, "
+            f"max von Mises = {max_stress:.4e} Pa"
+        )
+
+        # Write solution for this refinement level
+        with io.VTXWriter(comm, f"elasticity_level_{level}.bp", [uh]) as vtx:
+            vtx.write(0.0)
+
+        if level < refinement_levels - 1:
+            # Mark cells for refinement: refine top 30% by stress
+            threshold = np.percentile(vm_values, 70)
+            refine_cells = np.where(vm_values > threshold)[0].astype(np.int32)
+
+            # Refine mesh (plaza refinement for triangles)
+            edges = mesh.compute_incident_entities(
+                domain.topology, refine_cells, 2, 1,
+            )
+            domain = mesh.refine(domain, edges)
+
+    print("Adaptive refinement complete.")
+
+
+if __name__ == "__main__":
+    solve_linear_elasticity(
+        refinement_levels=4,
+        initial_resolution=8,
+        E=210e9,
+        nu_poisson=0.3,
+        traction_mag=1e6,
+    )</code></pre>
+
+        <h2>3. Discrete Event Simulation</h2>
+
+        <p>Discrete event simulation (DES) models systems where state changes occur at discrete points in time rather than continuously. A manufacturing line where parts arrive stochastically, wait in queues, are processed by machines with variable service times, and occasionally fail &mdash; this is a queuing network best modeled with DES rather than differential equations. SimPy is the standard Python framework: it provides a process-based simulation environment where entities (customers, packets, parts) are modeled as generator functions that <code>yield</code> simulation events (requesting resources, waiting for timeouts, waiting for other processes). The simulation kernel advances a global clock to the next scheduled event, executes it, and repeats. This is fundamentally different from time-stepping simulations: a DES with 10,000 events per second of simulated time and a time-stepping simulation with 0.001-second time steps produce different levels of fidelity for different phenomena, and choosing the wrong paradigm wastes computation or misses critical dynamics.</p>
+
+        <p>The critical modeling decisions in DES involve probability distributions for inter-arrival times and service times (exponential for memoryless processes, Weibull for failure modeling, log-normal for task durations), resource capacity and scheduling policies (FIFO, priority, shortest-job-first), and warm-up periods to reach steady state before collecting statistics. Little&rsquo;s Law (L = lambda * W, where L is average queue length, lambda is arrival rate, and W is average waiting time) provides a sanity check on simulation results &mdash; if your simulation violates Little&rsquo;s Law, the model has a bug. AI tools handle SimPy syntax well because it uses standard Python generators, but they frequently miss the statistical subtleties: insufficient warm-up periods producing biased estimates, too few replications for confidence interval construction, and using the wrong distribution for the process being modeled (exponential service times imply memoryless processing, which is unrealistic for most manufacturing operations).</p>
+
+        <pre><code class="language-python">"""
+SimPy: Manufacturing line simulation with parallel machines,
+random failures, and statistical analysis with confidence intervals.
+"""
+import simpy
+import numpy as np
+from dataclasses import dataclass, field
+from typing import Generator
+
+
+@dataclass
+class SimulationStats:
+    """Collects production line statistics."""
+    wait_times: list[float] = field(default_factory=list)
+    cycle_times: list[float] = field(default_factory=list)
+    throughput_times: list[float] = field(default_factory=list)
+    machine_busy: dict[str, float] = field(default_factory=dict)
+    parts_completed: int = 0
+    parts_scrapped: int = 0
+
+
+def machine_failure(
+    env: simpy.Environment,
+    machine: simpy.PreemptiveResource,
+    machine_name: str,
+    mttf: float,
+    mttr: float,
+) -> Generator:
+    """Process that models random machine failures.
+
+    Uses Weibull distribution for time-to-failure (models wear-out)
+    and log-normal for repair time (right-skewed, realistic for repairs).
+
+    Args:
+        mttf: Mean time to failure [minutes]
+        mttr: Mean time to repair [minutes]
+    """
+    while True:
+        # Weibull shape=2 models increasing failure rate (wear-out)
+        time_to_fail = np.random.weibull(2.0) * mttf / 0.886
+        yield env.timeout(time_to_fail)
+
+        # Failure occurs: preempt current job
+        with machine.request(priority=-1) as req:
+            yield req
+            # Log-normal repair time (always positive, right-skewed)
+            repair_time = np.random.lognormal(
+                mean=np.log(mttr) - 0.5 * 0.3**2,
+                sigma=0.3,
+            )
+            yield env.timeout(repair_time)
+
+
+def part_process(
+    env: simpy.Environment,
+    part_id: int,
+    stations: dict[str, simpy.PreemptiveResource],
+    processing_times: dict[str, tuple[float, float]],
+    stats: SimulationStats,
+) -> Generator:
+    """Process a single part through the manufacturing line.
+
+    Each station has a log-normal processing time (realistic for
+    manufacturing: always positive, slightly right-skewed).
+    """
+    arrival_time = env.now
+
+    for station_name, station in stations.items():
+        mean_time, std_time = processing_times[station_name]
+
+        queue_enter = env.now
+        with station.request(priority=0) as req:
+            yield req
+            wait_time = env.now - queue_enter
+            stats.wait_times.append(wait_time)
+
+            # Log-normal processing time
+            mu = np.log(mean_time**2 / np.sqrt(std_time**2 + mean_time**2))
+            sigma = np.sqrt(np.log(1 + std_time**2 / mean_time**2))
+            proc_time = np.random.lognormal(mu, sigma)
+
+            yield env.timeout(proc_time)
+
+    # Part completed
+    total_time = env.now - arrival_time
+    stats.throughput_times.append(total_time)
+    stats.parts_completed += 1
+
+
+def manufacturing_line(
+    env: simpy.Environment,
+    stations: dict[str, simpy.PreemptiveResource],
+    processing_times: dict[str, tuple[float, float]],
+    arrival_rate: float,
+    stats: SimulationStats,
+    warmup: float = 480.0,
+) -> Generator:
+    """Generate parts arriving at the manufacturing line.
+
+    Exponential inter-arrival times (Poisson process).
+    Statistics collected only after warm-up period.
+    """
+    part_id = 0
+    while True:
+        inter_arrival = np.random.exponential(1.0 / arrival_rate)
+        yield env.timeout(inter_arrival)
+
+        part_id += 1
+        env.process(
+            part_process(env, part_id, stations, processing_times, stats)
+        )
+
+
+def run_replication(
+    sim_duration: float = 2880.0,     # 2 shifts (minutes)
+    warmup: float = 480.0,            # 1 shift warm-up
+    arrival_rate: float = 2.0,        # parts per minute
+    seed: int = 42,
+) -> SimulationStats:
+    """Run a single simulation replication."""
+    np.random.seed(seed)
+
+    env = simpy.Environment()
+    stats = SimulationStats()
+
+    # Define stations: name -> (num_machines)
+    station_config = {
+        "cutting": 3,
+        "welding": 2,
+        "assembly": 4,
+        "inspection": 2,
+    }
+
+    # Processing times: station -> (mean_minutes, std_minutes)
+    processing_times = {
+        "cutting": (1.2, 0.3),
+        "welding": (2.5, 0.6),
+        "assembly": (1.8, 0.4),
+        "inspection": (0.8, 0.2),
+    }
+
+    # Machine failure parameters
+    failure_params = {
+        "cutting": {"mttf": 360.0, "mttr": 30.0},
+        "welding": {"mttf": 240.0, "mttr": 45.0},
+        "assembly": {"mttf": 480.0, "mttr": 20.0},
+        "inspection": {"mttf": 720.0, "mttr": 15.0},
+    }
+
+    stations = {}
+    for name, capacity in station_config.items():
+        resource = simpy.PreemptiveResource(env, capacity=capacity)
+        stations[name] = resource
+
+        # Start failure processes for each machine
+        for i in range(capacity):
+            env.process(machine_failure(
+                env, resource, f"{name}_{i}",
+                failure_params[name]["mttf"],
+                failure_params[name]["mttr"],
+            ))
+
+    # Start part generation
+    env.process(manufacturing_line(
+        env, stations, processing_times, arrival_rate, stats, warmup,
+    ))
+
+    env.run(until=sim_duration)
+    return stats
+
+
+def analyze_results(all_stats: list[SimulationStats]) -> None:
+    """Analyze results across replications with confidence intervals."""
+    n_reps = len(all_stats)
+    throughputs = [s.parts_completed for s in all_stats]
+    mean_waits = [np.mean(s.wait_times) for s in all_stats]
+    mean_cycle = [np.mean(s.throughput_times) for s in all_stats]
+
+    # 95% confidence interval using t-distribution
+    from scipy import stats as scipy_stats
+    t_crit = scipy_stats.t.ppf(0.975, df=n_reps - 1)
+
+    def ci(values):
+        mean = np.mean(values)
+        se = np.std(values, ddof=1) / np.sqrt(len(values))
+        return mean, mean - t_crit * se, mean + t_crit * se
+
+    tp_mean, tp_lo, tp_hi = ci(throughputs)
+    wt_mean, wt_lo, wt_hi = ci(mean_waits)
+    ct_mean, ct_lo, ct_hi = ci(mean_cycle)
+
+    print(f"\nResults across {n_reps} replications (95% CI):")
+    print(f"  Throughput: {tp_mean:.1f} [{tp_lo:.1f}, {tp_hi:.1f}] parts")
+    print(f"  Avg wait:   {wt_mean:.2f} [{wt_lo:.2f}, {wt_hi:.2f}] min")
+    print(f"  Avg cycle:  {ct_mean:.2f} [{ct_lo:.2f}, {ct_hi:.2f}] min")
+
+    # Verify Little's Law: L = lambda * W
+    # Average queue length should approximately equal arrival_rate * avg_wait
+    arrival_rate = 2.0
+    littles_L = arrival_rate * wt_mean
+    print(f"\n  Little's Law check: L = lambda * W = {arrival_rate} * "
+          f"{wt_mean:.2f} = {littles_L:.2f} (avg parts in queue)")
+
+
+if __name__ == "__main__":
+    n_replications = 20
+    all_stats = []
+
+    for rep in range(n_replications):
+        stats = run_replication(seed=rep * 7 + 13)
+        all_stats.append(stats)
+        print(f"  Replication {rep + 1}/{n_replications}: "
+              f"{stats.parts_completed} parts completed")
+
+    analyze_results(all_stats)</code></pre>
+
+        <h2>4. Monte Carlo Methods</h2>
+
+        <p>Monte Carlo methods use random sampling to estimate quantities that are deterministic in principle but intractable to compute analytically. In simulation engineering, this spans reliability analysis (estimating failure probability of structures under uncertain loading), uncertainty quantification (propagating input parameter distributions through a deterministic simulation to obtain output distributions), stochastic optimization (finding optimal designs when objective functions are noisy), and direct Monte Carlo simulation of physical processes (neutron transport, radiative heat transfer, rarefied gas dynamics). The fundamental challenge is variance: a naive Monte Carlo estimate of a probability p converges as O(1/sqrt(N)), meaning you need 100x more samples to get 10x more accuracy. For rare events (failure probability of 10<sup>-6</sup>), direct Monte Carlo requires on the order of 10<sup>8</sup> samples for a coefficient of variation below 10%, which is computationally prohibitive when each sample requires running a finite element simulation.</p>
+
+        <p>Variance reduction techniques are the core of practical Monte Carlo. Importance sampling shifts the sampling distribution toward the region of interest (the failure domain) and corrects with likelihood ratios, reducing the required sample count by orders of magnitude but requiring careful selection of the proposal distribution &mdash; a poor proposal can increase variance rather than decrease it. Stratified sampling divides the input space into strata and draws proportional samples from each, guaranteeing better coverage than pure random sampling. Latin Hypercube Sampling (LHS) extends stratification to multiple dimensions, ensuring each marginal distribution is sampled uniformly. Control variates use correlated auxiliary estimators with known expectations to reduce variance. Markov Chain Monte Carlo (MCMC) methods like Metropolis-Hastings and Hamiltonian Monte Carlo sample from posterior distributions in Bayesian inference, essential for model calibration where you update prior beliefs about simulation parameters given experimental observations.</p>
+
+        <p>AI tools handle basic Monte Carlo reasonably well because it involves standard NumPy operations, but they consistently miss the statistical nuances: not checking for sufficient sample sizes, omitting convergence diagnostics for MCMC (trace plots, R-hat statistics, effective sample size), using importance sampling with proposals that have thin tails relative to the target (producing infinite-variance estimators), and failing to account for correlation between sequential samples in MCMC when computing standard errors.</p>
+
+        <pre><code class="language-python">"""
+Monte Carlo reliability analysis with importance sampling for
+estimating rare failure probabilities in structural engineering.
+
+Estimates P(g(X) <= 0) where g is a limit-state function and X
+are random structural parameters (yield strength, applied load, etc.).
+"""
+import numpy as np
+from scipy import stats
+from dataclasses import dataclass
+
+
+@dataclass
+class ReliabilityResult:
+    """Results from a Monte Carlo reliability analysis."""
+    failure_probability: float
+    coefficient_of_variation: float
+    confidence_interval_95: tuple[float, float]
+    n_samples: int
+    method: str
+
+
+def limit_state_function(X: np.ndarray) -> np.ndarray:
+    """Limit-state function for a simply-supported beam.
+
+    g(X) = Z_y * S_y / 4 - P * L / 4
+
+    where:
+        X[:,0] = Z_y: plastic section modulus [m^3]
+        X[:,1] = S_y: yield strength [Pa]
+        X[:,2] = P:   concentrated mid-span load [N]
+        X[:,3] = L:   span length [m]
+
+    Failure when g <= 0 (applied moment exceeds plastic moment).
+    """
+    Z_y = X[:, 0]
+    S_y = X[:, 1]
+    P = X[:, 2]
+    L = X[:, 3]
+
+    # Plastic moment capacity minus applied moment
+    return Z_y * S_y / 4.0 - P * L / 4.0
+
+
+def crude_monte_carlo(
+    n_samples: int,
+    distributions: list[stats.rv_continuous],
+    seed: int = 42,
+) -> ReliabilityResult:
+    """Direct (crude) Monte Carlo simulation.
+
+    Simple but requires enormous sample sizes for rare events.
+    """
+    rng = np.random.default_rng(seed)
+
+    # Generate samples from input distributions
+    X = np.column_stack([
+        dist.rvs(size=n_samples, random_state=rng)
+        for dist in distributions
+    ])
+
+    g = limit_state_function(X)
+    failures = g <= 0
+
+    # Failure probability estimate
+    pf = np.mean(failures)
+
+    # Coefficient of variation
+    if pf > 0:
+        cov = np.sqrt((1 - pf) / (pf * n_samples))
+    else:
+        cov = float("inf")
+
+    # 95% confidence interval (Wilson score for proportions)
+    z = 1.96
+    n = n_samples
+    k = np.sum(failures)
+    denom = 1 + z**2 / n
+    center = (k / n + z**2 / (2 * n)) / denom
+    half_width = z * np.sqrt(k / n * (1 - k / n) / n + z**2 / (4 * n**2)) / denom
+
+    return ReliabilityResult(
+        failure_probability=pf,
+        coefficient_of_variation=cov,
+        confidence_interval_95=(max(0, center - half_width), center + half_width),
+        n_samples=n_samples,
+        method="Crude Monte Carlo",
+    )
+
+
+def importance_sampling_monte_carlo(
+    n_samples: int,
+    distributions: list[stats.rv_continuous],
+    design_point: np.ndarray,
+    seed: int = 42,
+) -> ReliabilityResult:
+    """Importance sampling Monte Carlo with shifted distributions.
+
+    Shifts the sampling distributions toward the most probable failure
+    point (design point from FORM analysis) to increase the rate of
+    sampling in the failure region.
+
+    The design point is found by FORM (First-Order Reliability Method)
+    as the point on g(X)=0 closest to the origin in standard normal space.
+    """
+    rng = np.random.default_rng(seed)
+
+    # Transform design point to standard normal space and shift
+    # For simplicity, use shifted means in the original space
+    shifted_distributions = []
+    for i, dist in enumerate(distributions):
+        # Shift mean toward design point (halfway for stability)
+        original_mean = dist.mean()
+        shifted_mean = 0.5 * (original_mean + design_point[i])
+        # Keep original std dev
+        original_std = dist.std()
+        shifted_distributions.append(
+            stats.norm(loc=shifted_mean, scale=original_std)
+        )
+
+    # Sample from shifted (proposal) distributions
+    X = np.column_stack([
+        dist.rvs(size=n_samples, random_state=rng)
+        for dist in shifted_distributions
+    ])
+
+    # Compute likelihood ratios (importance weights)
+    log_weights = np.zeros(n_samples)
+    for i in range(len(distributions)):
+        log_weights += distributions[i].logpdf(X[:, i])
+        log_weights -= shifted_distributions[i].logpdf(X[:, i])
+
+    weights = np.exp(log_weights)
+
+    # Evaluate limit-state function
+    g = limit_state_function(X)
+    failures = g <= 0
+
+    # Weighted failure probability estimate
+    pf = np.mean(failures * weights)
+
+    # Coefficient of variation of the estimator
+    if pf > 0:
+        var_estimate = np.var(failures * weights, ddof=1) / n_samples
+        cov = np.sqrt(var_estimate) / pf
+    else:
+        cov = float("inf")
+
+    # Confidence interval
+    se = np.std(failures * weights, ddof=1) / np.sqrt(n_samples)
+    ci_low = max(0, pf - 1.96 * se)
+    ci_high = pf + 1.96 * se
+
+    return ReliabilityResult(
+        failure_probability=pf,
+        coefficient_of_variation=cov,
+        confidence_interval_95=(ci_low, ci_high),
+        n_samples=n_samples,
+        method="Importance Sampling Monte Carlo",
+    )
+
+
+if __name__ == "__main__":
+    # Define input random variables
+    # Z_y: plastic section modulus ~ Normal(mean=3.0e-4 m^3, std=1.5e-5)
+    # S_y: yield strength ~ LogNormal(mean=250e6 Pa, std=25e6)
+    # P: applied load ~ Gumbel(mean=50e3 N, std=7.5e3)
+    # L: span length ~ Normal(mean=5.0 m, std=0.05)
+
+    sy_mu = 250e6
+    sy_sigma = 25e6
+    sy_zeta = np.sqrt(np.log(1 + (sy_sigma / sy_mu) ** 2))
+    sy_lambda = np.log(sy_mu) - 0.5 * sy_zeta**2
+
+    gumbel_beta = 7.5e3 * np.sqrt(6) / np.pi
+    gumbel_mu = 50e3 - 0.5772 * gumbel_beta
+
+    distributions = [
+        stats.norm(loc=3.0e-4, scale=1.5e-5),               # Z_y
+        stats.lognorm(s=sy_zeta, scale=np.exp(sy_lambda)),   # S_y
+        stats.gumbel_r(loc=gumbel_mu, scale=gumbel_beta),    # P
+        stats.norm(loc=5.0, scale=0.05),                     # L
+    ]
+
+    # Design point (from prior FORM analysis)
+    design_point = np.array([2.7e-4, 220e6, 65e3, 5.08])
+
+    print("Structural Reliability Analysis")
+    print("=" * 50)
+
+    # Crude Monte Carlo
+    result_cmc = crude_monte_carlo(
+        n_samples=1_000_000,
+        distributions=distributions,
+        seed=42,
+    )
+    print(f"\n{result_cmc.method} (N={result_cmc.n_samples:,}):")
+    print(f"  Pf = {result_cmc.failure_probability:.4e}")
+    print(f"  CoV = {result_cmc.coefficient_of_variation:.3f}")
+    print(f"  95% CI = [{result_cmc.confidence_interval_95[0]:.4e}, "
+          f"{result_cmc.confidence_interval_95[1]:.4e}]")
+
+    # Importance Sampling
+    result_is = importance_sampling_monte_carlo(
+        n_samples=50_000,
+        distributions=distributions,
+        design_point=design_point,
+        seed=42,
+    )
+    print(f"\n{result_is.method} (N={result_is.n_samples:,}):")
+    print(f"  Pf = {result_is.failure_probability:.4e}")
+    print(f"  CoV = {result_is.coefficient_of_variation:.3f}")
+    print(f"  95% CI = [{result_is.confidence_interval_95[0]:.4e}, "
+          f"{result_is.confidence_interval_95[1]:.4e}]")
+
+    # Efficiency comparison
+    if result_cmc.coefficient_of_variation > 0 and result_is.coefficient_of_variation > 0:
+        efficiency_ratio = (
+            (result_cmc.coefficient_of_variation / result_is.coefficient_of_variation) ** 2
+            * (result_is.n_samples / result_cmc.n_samples)
+        )
+        print(f"\n  IS efficiency gain: {efficiency_ratio:.1f}x fewer samples "
+              f"for same CoV")</code></pre>
+
+        <h2>5. Mesh Generation and Processing</h2>
+
+        <p>The computational mesh is the foundation upon which every numerical solution is built, and mesh quality directly determines whether a simulation produces trustworthy results or expensive garbage. Gmsh is the dominant open-source mesh generator, providing a scripting API (available in Python, C++, and Julia) that creates 1D, 2D, and 3D meshes from CAD geometry using Delaunay triangulation, advancing front methods, or structured quadrilateral/hexahedral meshing. The choice of mesh topology matters enormously: hexahedral elements are preferred for CFD boundary layer meshes because they align with the flow direction and require fewer cells for the same accuracy, while tetrahedral elements are preferred for complex geometries because they mesh arbitrary volumes without the topological constraints of hex meshing. Hybrid meshes (hex in boundary layers, tet in the interior, pyramid transition elements at the interface) combine the advantages of both.</p>
+
+        <p>Mesh quality metrics quantify how well elements approximate their ideal shapes. The Jacobian determinant measures element distortion: a perfect hexahedron has a Jacobian of 1.0 everywhere, and values below 0.0 indicate inverted elements where the solver will produce nonsensical results. Aspect ratio measures the ratio of the longest edge to the shortest; values above 10:1 degrade solver convergence and accuracy. Skewness measures deviation from the ideal element shape; values above 0.95 are considered poor quality. Orthogonality measures the angle between face normals and the vector connecting adjacent cell centers; non-orthogonality above 70 degrees causes the finite volume discretization error to become dominant. For CFD, the first cell height at walls must satisfy y+ requirements for the turbulence model, which depends on the local wall shear stress &mdash; creating a chicken-and-egg problem that requires iterative mesh refinement.</p>
+
+        <p>AI tools handle gmsh API calls reasonably well because the Python API is well-documented, but they consistently generate meshes without quality specifications. Claude Code produces mesh scripts that include element size fields, boundary layer specifications, and quality constraints. Cursor autocompletes gmsh function calls from your existing meshing scripts. Neither tool understands the relationship between mesh quality and solution accuracy deeply enough to recommend appropriate mesh parameters for a specific physics problem.</p>
+
+        <pre><code class="language-python">"""
+Gmsh: Generate a 3D mesh for a pipe junction (T-junction) with
+boundary layer refinement near walls and quality control.
+
+Suitable for CFD simulation of mixing flows.
+"""
+import gmsh
+import numpy as np
+import sys
+
+
+def create_t_junction_mesh(
+    main_diameter: float = 0.1,      # Main pipe diameter [m]
+    main_length: float = 0.5,        # Main pipe length [m]
+    branch_diameter: float = 0.05,   # Branch pipe diameter [m]
+    branch_length: float = 0.2,      # Branch pipe length [m]
+    first_layer_height: float = 5e-5,  # BL first cell [m]
+    n_bl_layers: int = 12,           # Number of boundary layer layers
+    bl_growth_rate: float = 1.2,     # BL growth ratio
+    mesh_size_bulk: float = 5e-3,    # Bulk mesh size [m]
+    mesh_size_junction: float = 2e-3,  # Junction mesh size [m]
+    output_file: str = "t_junction.msh",
+) -> dict:
+    """Generate a T-junction mesh with boundary layer refinement.
+
+    Returns mesh statistics dictionary.
+    """
+    gmsh.initialize()
+    gmsh.option.setNumber("General.Terminal", 1)
+    gmsh.model.add("t_junction")
+
+    # Create main pipe (along x-axis)
+    main_r = main_diameter / 2.0
+    branch_r = branch_diameter / 2.0
+
+    # Main pipe cylinder
+    main_pipe = gmsh.model.occ.addCylinder(
+        -main_length / 2, 0, 0,   # origin
+        main_length, 0, 0,         # direction
+        main_r,                    # radius
+    )
+
+    # Branch pipe cylinder (along y-axis, intersecting main pipe)
+    branch_pipe = gmsh.model.occ.addCylinder(
+        0, 0, 0,                   # origin at main pipe center
+        0, branch_length, 0,       # direction (upward)
+        branch_r,                  # radius
+    )
+
+    # Boolean union to create T-junction
+    result = gmsh.model.occ.fuse(
+        [(3, main_pipe)],
+        [(3, branch_pipe)],
+    )
+    gmsh.model.occ.synchronize()
+
+    # Get all surfaces for boundary condition assignment
+    surfaces = gmsh.model.getEntities(dim=2)
+    volumes = gmsh.model.getEntities(dim=3)
+
+    # Identify boundary surfaces by center of mass
+    inlet_surfaces = []
+    outlet_surfaces = []
+    branch_outlet_surfaces = []
+    wall_surfaces = []
+
+    for dim, tag in surfaces:
+        com = gmsh.model.occ.getCenterOfMass(dim, tag)
+        x, y, z = com
+
+        # Main pipe inlet (x ~ -main_length/2)
+        if abs(x - (-main_length / 2)) < 1e-4 and abs(y) < main_r:
+            inlet_surfaces.append(tag)
+        # Main pipe outlet (x ~ main_length/2)
+        elif abs(x - main_length / 2) < 1e-4 and abs(y) < main_r:
+            outlet_surfaces.append(tag)
+        # Branch outlet (y ~ branch_length)
+        elif abs(y - branch_length) < 1e-4:
+            branch_outlet_surfaces.append(tag)
+        else:
+            wall_surfaces.append(tag)
+
+    # Physical groups for boundary conditions
+    gmsh.model.addPhysicalGroup(2, inlet_surfaces, name="inlet")
+    gmsh.model.addPhysicalGroup(2, outlet_surfaces, name="outlet")
+    gmsh.model.addPhysicalGroup(2, branch_outlet_surfaces, name="branch_outlet")
+    gmsh.model.addPhysicalGroup(2, wall_surfaces, name="walls")
+    gmsh.model.addPhysicalGroup(3, [v[1] for v in volumes], name="fluid")
+
+    # Mesh size fields
+    # Field 1: fine mesh near the junction
+    gmsh.model.mesh.field.add("Ball", 1)
+    gmsh.model.mesh.field.setNumber(1, "VIn", mesh_size_junction)
+    gmsh.model.mesh.field.setNumber(1, "VOut", mesh_size_bulk)
+    gmsh.model.mesh.field.setNumber(1, "XCenter", 0.0)
+    gmsh.model.mesh.field.setNumber(1, "YCenter", 0.0)
+    gmsh.model.mesh.field.setNumber(1, "ZCenter", 0.0)
+    gmsh.model.mesh.field.setNumber(1, "Radius", main_diameter)
+    gmsh.model.mesh.field.setNumber(1, "Thickness", main_diameter)
+
+    # Field 2: background mesh size
+    gmsh.model.mesh.field.add("MathEval", 2)
+    gmsh.model.mesh.field.setString(2, "F", str(mesh_size_bulk))
+
+    # Use minimum of all fields
+    gmsh.model.mesh.field.add("Min", 3)
+    gmsh.model.mesh.field.setNumbers(3, "FieldsList", [1, 2])
+    gmsh.model.mesh.field.setAsBackgroundMesh(3)
+
+    # Boundary layer mesh on all wall surfaces
+    gmsh.model.mesh.field.add("BoundaryLayer", 4)
+    gmsh.model.mesh.field.setNumber(4, "hfar", mesh_size_bulk)
+    gmsh.model.mesh.field.setNumber(4, "hwall_n", first_layer_height)
+    gmsh.model.mesh.field.setNumber(4, "thickness",
+        first_layer_height * (bl_growth_rate**n_bl_layers - 1) / (bl_growth_rate - 1))
+    gmsh.model.mesh.field.setNumber(4, "ratio", bl_growth_rate)
+    gmsh.model.mesh.field.setNumbers(4, "FanPointsList", [])
+    gmsh.model.mesh.field.setNumbers(4, "SurfacesList", wall_surfaces)
+    gmsh.model.mesh.field.setAsBoundaryLayer(4)
+
+    # Meshing options for quality
+    gmsh.option.setNumber("Mesh.Algorithm3D", 10)        # HXT (Delaunay)
+    gmsh.option.setNumber("Mesh.OptimizeNetgen", 1)       # Netgen optimizer
+    gmsh.option.setNumber("Mesh.QualityType", 2)          # SICN quality
+    gmsh.option.setNumber("Mesh.OptimizeThreshold", 0.3)  # Optimize poor elements
+
+    # Generate 3D mesh
+    gmsh.model.mesh.generate(3)
+
+    # Optimize mesh quality
+    gmsh.model.mesh.optimize("Netgen")
+    gmsh.model.mesh.optimize("HighOrder")
+
+    # Collect mesh statistics
+    node_tags, _, _ = gmsh.model.mesh.getNodes()
+    elem_types, elem_tags, _ = gmsh.model.mesh.getElements(dim=3)
+
+    total_elements = sum(len(tags) for tags in elem_tags)
+
+    # Get quality statistics
+    qualities = gmsh.model.mesh.getElementQualities(
+        list(elem_tags[0]), "minSICN"
+    )
+    quality_arr = np.array(qualities)
+
+    mesh_stats = {
+        "nodes": len(node_tags),
+        "elements_3d": total_elements,
+        "quality_min": float(np.min(quality_arr)),
+        "quality_mean": float(np.mean(quality_arr)),
+        "quality_p05": float(np.percentile(quality_arr, 5)),
+        "bl_layers": n_bl_layers,
+        "first_layer_height": first_layer_height,
+    }
+
+    print(f"Mesh statistics:")
+    print(f"  Nodes: {mesh_stats['nodes']:,}")
+    print(f"  3D elements: {mesh_stats['elements_3d']:,}")
+    print(f"  Quality (SICN): min={mesh_stats['quality_min']:.4f}, "
+          f"mean={mesh_stats['quality_mean']:.4f}, "
+          f"P5={mesh_stats['quality_p05']:.4f}")
+
+    # Write mesh
+    gmsh.write(output_file)
+    print(f"  Written to {output_file}")
+
+    gmsh.finalize()
+    return mesh_stats
+
+
+if __name__ == "__main__":
+    stats = create_t_junction_mesh(
+        main_diameter=0.1,
+        branch_diameter=0.05,
+        first_layer_height=5e-5,
+        n_bl_layers=12,
+        bl_growth_rate=1.2,
+        mesh_size_bulk=5e-3,
+        mesh_size_junction=2e-3,
+    )</code></pre>
+
+        <h2>6. HPC and Parallel Computing</h2>
+
+        <p>High-performance computing is not optional for production simulation work &mdash; it is the baseline. A turbulent CFD simulation on a 100-million-cell mesh with the k-omega SST turbulence model requires solving 7 coupled PDEs (continuity, three momentum components, energy, turbulent kinetic energy, specific dissipation rate) at each of perhaps 10,000 time steps. On a single core, this takes weeks. On 1,000 MPI ranks with proper domain decomposition, it takes hours. The difference is the difference between a useful engineering tool and an academic curiosity. MPI (Message Passing Interface) is the standard: each rank owns a subset of the mesh (its subdomain), performs local computation on its cells, and exchanges boundary data with neighboring ranks through point-to-point messages (MPI_Send/MPI_Recv) or non-blocking variants (MPI_Isend/MPI_Irecv) that overlap communication with computation.</p>
+
+        <p>Domain decomposition determines parallel efficiency. Graph partitioning (METIS, ParMETIS, PT-Scotch) assigns mesh cells to MPI ranks while minimizing the number of inter-rank faces (communication surface) and balancing the computational load (cell count) across ranks. Weighted partitioning accounts for varying element density: a mesh with dense boundary layer regions and coarse far-field regions needs weighted load balancing, not simple cell-count balancing. Ghost/halo cells store copies of neighboring ranks&rsquo; boundary cells and must be updated after each solver iteration through halo exchange operations. The communication pattern (which ranks talk to which other ranks) is determined by the mesh decomposition and remains fixed for the simulation duration, allowing optimized communication schedules.</p>
+
+        <p>AI tools generally know MPI function signatures but struggle with the patterns required for scientific computing: non-blocking communication overlapped with computation, custom MPI datatypes for structured grid halos, collective operations for global residual norms and convergence checking, and parallel I/O for checkpoint/restart. Claude Code generates correct MPI patterns for common simulation tasks and understands the relationship between domain decomposition quality and parallel efficiency. Cursor is useful for navigating large HPC codebases that mix C++, Fortran, and Python.</p>
+
+        <pre><code class="language-python">"""
+MPI-parallel 2D heat equation solver using domain decomposition.
+Demonstrates halo exchange, convergence checking with global
+reduction, and parallel I/O with HDF5.
+
+Solves: du/dt = alpha * (d2u/dx2 + d2u/dy2) + source
+using explicit finite differences with periodic boundary conditions.
+"""
+from mpi4py import MPI
+import numpy as np
+import h5py
+
+
+def decompose_domain(
+    nx_global: int,
+    ny_global: int,
+    comm: MPI.Comm,
+) -> tuple[int, int, int, int, list[int]]:
+    """Decompose 2D domain into a process grid.
+
+    Uses a 1D decomposition along y for simplicity.
+    Returns local grid dimensions and neighbor ranks.
+    """
+    rank = comm.Get_rank()
+    size = comm.Get_size()
+
+    # 1D decomposition along y
+    ny_local = ny_global // size
+    remainder = ny_global % size
+
+    # Distribute remainder cells to first ranks
+    if rank < remainder:
+        ny_local += 1
+        j_start = rank * ny_local
+    else:
+        j_start = remainder * (ny_local + 1) + (rank - remainder) * ny_local
+
+    j_end = j_start + ny_local
+
+    # Neighbor ranks (periodic)
+    rank_south = (rank - 1) % size
+    rank_north = (rank + 1) % size
+
+    neighbors = [rank_south, rank_north]
+
+    return nx_global, ny_local, j_start, j_end, neighbors
+
+
+def initialize_field(
+    nx: int,
+    ny_local: int,
+    j_start: int,
+    dx: float,
+    dy: float,
+) -> np.ndarray:
+    """Initialize temperature field with Gaussian hot spot.
+
+    Array includes 1-cell halo on north and south boundaries.
+    Shape: (nx, ny_local + 2) where index 0 and ny_local+1 are halos.
+    """
+    u = np.zeros((nx, ny_local + 2), dtype=np.float64)
+
+    # Gaussian initial condition
+    x_center, y_center = 0.5, 0.5
+    sigma = 0.1
+
+    for i in range(nx):
+        for j in range(1, ny_local + 1):
+            x = (i + 0.5) * dx
+            y = (j_start + j - 1 + 0.5) * dy
+            r2 = (x - x_center)**2 + (y - y_center)**2
+            u[i, j] = np.exp(-r2 / (2 * sigma**2))
+
+    return u
+
+
+def halo_exchange(
+    u: np.ndarray,
+    neighbors: list[int],
+    comm: MPI.Comm,
+) -> None:
+    """Exchange halo (ghost) cells with neighboring ranks.
+
+    Uses non-blocking sends and receives to overlap communication.
+    South neighbor gets our first interior row; we get their last.
+    North neighbor gets our last interior row; we get their first.
+    """
+    rank_south, rank_north = neighbors
+    ny_local_plus_halo = u.shape[1]
+    ny_local = ny_local_plus_halo - 2
+
+    # Send buffers (contiguous copies for MPI)
+    send_south = np.ascontiguousarray(u[:, 1])           # First interior row
+    send_north = np.ascontiguousarray(u[:, ny_local])    # Last interior row
+
+    # Receive buffers
+    recv_south = np.empty_like(send_south)
+    recv_north = np.empty_like(send_north)
+
+    # Non-blocking communication (overlap send/recv)
+    reqs = []
+    reqs.append(comm.Isend(send_south, dest=rank_south, tag=0))
+    reqs.append(comm.Isend(send_north, dest=rank_north, tag=1))
+    reqs.append(comm.Irecv(recv_south, source=rank_south, tag=1))
+    reqs.append(comm.Irecv(recv_north, source=rank_north, tag=0))
+
+    # Wait for all communication to complete
+    MPI.Request.Waitall(reqs)
+
+    # Copy received data into halo cells
+    u[:, 0] = recv_south              # South halo
+    u[:, ny_local + 1] = recv_north   # North halo
+
+
+def solve_heat_equation(
+    nx_global: int = 256,
+    ny_global: int = 256,
+    alpha: float = 0.01,         # Thermal diffusivity [m^2/s]
+    domain_length: float = 1.0,  # Physical domain size [m]
+    dt: float = None,            # Time step (auto-computed if None)
+    t_final: float = 0.5,        # Simulation end time [s]
+    output_interval: int = 100,  # Steps between output
+    output_file: str = "heat_solution.h5",
+) -> None:
+    """Solve 2D heat equation with MPI parallelism."""
+    comm = MPI.COMM_WORLD
+    rank = comm.Get_rank()
+    size = comm.Get_size()
+
+    # Grid spacing
+    dx = domain_length / nx_global
+    dy = domain_length / ny_global
+
+    # CFL-limited time step for explicit scheme
+    # Stability: dt <= dx^2 / (4 * alpha) for 2D
+    dt_max = min(dx, dy)**2 / (4.0 * alpha)
+    if dt is None:
+        dt = 0.9 * dt_max  # 90% of stability limit
+    elif dt > dt_max:
+        if rank == 0:
+            print(f"WARNING: dt={dt:.2e} exceeds CFL limit {dt_max:.2e}")
+            print(f"  Reducing to 90% of CFL limit")
+        dt = 0.9 * dt_max
+
+    n_steps = int(t_final / dt)
+
+    # Domain decomposition
+    nx, ny_local, j_start, j_end, neighbors = decompose_domain(
+        nx_global, ny_global, comm,
+    )
+
+    if rank == 0:
+        print(f"Heat equation solver: {nx_global}x{ny_global} grid, "
+              f"{size} MPI ranks")
+        print(f"  dx={dx:.4e}, dy={dy:.4e}, dt={dt:.4e}")
+        print(f"  CFL number: {alpha * dt / min(dx, dy)**2:.4f} (max 0.25)")
+        print(f"  Time steps: {n_steps}")
+
+    # Initialize field with halo
+    u = initialize_field(nx, ny_local, j_start, dx, dy)
+    u_new = np.empty_like(u)
+
+    # Precompute coefficients
+    rx = alpha * dt / dx**2
+    ry = alpha * dt / dy**2
+
+    # Time integration loop
+    for step in range(n_steps):
+        # Exchange halos before computing stencil
+        halo_exchange(u, neighbors, comm)
+
+        # Apply finite difference stencil (interior only)
+        # Periodic BC in x handled by modular indexing
+        for i in range(nx):
+            ip = (i + 1) % nx
+            im = (i - 1) % nx
+            for j in range(1, ny_local + 1):
+                u_new[i, j] = u[i, j] + (
+                    rx * (u[ip, j] - 2 * u[i, j] + u[im, j])
+                    + ry * (u[i, j + 1] - 2 * u[i, j] + u[i, j - 1])
+                )
+
+        # Swap arrays
+        u, u_new = u_new, u
+
+        # Global convergence check (max change across all ranks)
+        local_max_change = np.max(np.abs(u_new[:, 1:-1] - u[:, 1:-1]))
+        global_max_change = comm.allreduce(local_max_change, op=MPI.MAX)
+
+        # Periodic output
+        if (step + 1) % output_interval == 0 and rank == 0:
+            # Compute global statistics
+            local_sum = np.sum(u[:, 1:ny_local + 1])
+            global_sum = comm.reduce(local_sum, op=MPI.SUM, root=0)
+            print(f"  Step {step + 1}/{n_steps}: "
+                  f"max_change={global_max_change:.4e}, "
+                  f"total_energy={global_sum * dx * dy:.6f}")
+
+    # Parallel output with HDF5
+    write_parallel_hdf5(
+        u[:, 1:ny_local + 1],
+        nx_global, ny_global, ny_local, j_start,
+        comm, output_file, t_final,
+    )
+
+
+def write_parallel_hdf5(
+    u_local: np.ndarray,
+    nx_global: int,
+    ny_global: int,
+    ny_local: int,
+    j_start: int,
+    comm: MPI.Comm,
+    filename: str,
+    time: float,
+) -> None:
+    """Write solution using parallel HDF5 (each rank writes its portion)."""
+    rank = comm.Get_rank()
+
+    with h5py.File(filename, "w", driver="mpio", comm=comm) as f:
+        dset = f.create_dataset(
+            "temperature",
+            shape=(nx_global, ny_global),
+            dtype=np.float64,
+        )
+        # Each rank writes its local portion
+        dset[:, j_start:j_start + ny_local] = u_local
+
+        if rank == 0:
+            f.attrs["time"] = time
+            f.attrs["nx"] = nx_global
+            f.attrs["ny"] = ny_global
+            print(f"  Solution written to {filename}")
+
+
+if __name__ == "__main__":
+    solve_heat_equation(
+        nx_global=512,
+        ny_global=512,
+        alpha=0.01,
+        t_final=0.5,
+        output_interval=100,
+    )</code></pre>
+
+        <h2>7. Post-Processing and Visualization</h2>
+
+        <p>Post-processing transforms raw simulation output &mdash; arrays of pressure, velocity, temperature, and stress at millions of mesh points &mdash; into engineering insights. ParaView is the standard visualization tool for simulation data, built on VTK (Visualization Toolkit) and scriptable through its Python interface (pvpython). The scripting capability is essential for batch processing: extracting line plots along rake positions, computing derived quantities (vorticity from velocity gradients, von Mises stress from the stress tensor), generating animations of transient simulations, and producing publication-quality figures with consistent formatting across parametric studies. VTK provides the underlying data structures (vtkUnstructuredGrid, vtkStructuredGrid, vtkPolyData) and algorithms (contouring, streamlines, cutting planes, glyphs, volume rendering) that ParaView exposes through its GUI and Python API.</p>
+
+        <p>The critical post-processing task for verification is convergence analysis: plotting solution error versus mesh size on a log-log scale to verify that the observed convergence rate matches the formal order of the numerical scheme. A second-order scheme should produce a slope of approximately -2 on this plot; deviation indicates implementation errors, insufficient mesh resolution, or singularities degrading the convergence rate. Richardson extrapolation uses solutions on three systematically refined meshes (refinement ratio r) to estimate the grid-independent solution and the observed convergence order. The Grid Convergence Index (GCI) provides uncertainty bars on the extrapolated solution. AI tools can generate matplotlib code for convergence plots but rarely generate the Richardson extrapolation analysis that makes those plots meaningful.</p>
+
+        <p>Claude Code generates correct VTK pipeline code and understands the relationship between data arrays, cell types, and visualization algorithms. It produces ParaView Python scripts that handle the common pitfalls: applying <code>CellDatatoPointData</code> before contouring cell-centered data, using the correct representation (surface vs. wireframe vs. volume) for different data types, and setting appropriate color maps (diverging for signed quantities like pressure coefficient, sequential for magnitudes like velocity). Cursor autocompletes ParaView and VTK API calls from your existing post-processing scripts.</p>
+
+        <pre><code class="language-python">"""
+Mesh convergence study with Richardson extrapolation and
+Grid Convergence Index (GCI) for verification of numerical solutions.
+
+Computes observed order of convergence, extrapolated grid-independent
+solution, and uncertainty bounds on the finest-grid solution.
+"""
+import numpy as np
+import matplotlib.pyplot as plt
+from dataclasses import dataclass
+
+
+@dataclass
+class ConvergenceResult:
+    """Results from Richardson extrapolation analysis."""
+    observed_order: float
+    extrapolated_value: float
+    gci_fine: float                # GCI on finest grid (%)
+    gci_medium: float              # GCI on medium grid (%)
+    asymptotic_ratio: float        # Should be ~1.0 for asymptotic range
+    grid_sizes: list[float]
+    solutions: list[float]
+    errors_vs_extrapolated: list[float]
+
+
+def richardson_extrapolation(
+    h: list[float],
+    f: list[float],
+    r: float = None,
+    formal_order: float = 2.0,
+    safety_factor: float = 1.25,
+) -> ConvergenceResult:
+    """Perform Richardson extrapolation on three grid levels.
+
+    Based on Roache's Grid Convergence Index methodology
+    (Roache, 1998; ASME V&V 20-2009 standard).
+
+    Args:
+        h: Grid spacings [coarse, medium, fine] (must be decreasing)
+        f: Solution values on each grid
+        r: Refinement ratio (computed from h if None)
+        formal_order: Expected order of the numerical scheme
+        safety_factor: GCI safety factor (1.25 for 3+ grids, 3.0 for 2 grids)
+
+    Returns:
+        ConvergenceResult with extrapolated solution and error estimates.
+    """
+    if len(h) != 3 or len(f) != 3:
+        raise ValueError("Richardson extrapolation requires exactly 3 grid levels")
+
+    h1, h2, h3 = h[2], h[1], h[0]  # Fine, medium, coarse
+    f1, f2, f3 = f[2], f[1], f[0]
+
+    if r is None:
+        r21 = h2 / h1  # Medium-to-fine ratio
+        r32 = h3 / h2  # Coarse-to-medium ratio
+    else:
+        r21 = r
+        r32 = r
+
+    # Solution changes
+    epsilon_32 = f3 - f2  # Coarse - medium
+    epsilon_21 = f2 - f1  # Medium - fine
+
+    # Check for oscillatory convergence
+    s = np.sign(epsilon_32 / epsilon_21)
+    if s < 0:
+        print("  WARNING: Oscillatory convergence detected. "
+              "Results may be unreliable.")
+
+    # Observed order of convergence (iterative solution)
+    # p = ln(epsilon_32 / epsilon_21) / ln(r)  [for constant r]
+    if abs(epsilon_21) < 1e-15:
+        print("  WARNING: Fine and medium solutions are identical. "
+              "Cannot compute convergence order.")
+        p = formal_order
+    else:
+        # For non-constant refinement ratios, iterative procedure
+        p = formal_order  # initial guess
+        for _ in range(50):
+            p_new = (
+                np.log(abs(epsilon_32 / epsilon_21))
+                + np.log((r21**p - s) / (r32**p - s))
+            ) / np.log(r21)
+            if abs(p_new - p) < 1e-6:
+                p = p_new
+                break
+            p = p_new
+
+    # Richardson extrapolated value (estimate of h->0 solution)
+    f_exact = f1 + (f1 - f2) / (r21**p - 1.0)
+
+    # Relative errors
+    e_fine = abs((f1 - f_exact) / f_exact) if abs(f_exact) > 1e-15 else 0.0
+    e_medium = abs((f2 - f_exact) / f_exact) if abs(f_exact) > 1e-15 else 0.0
+    e_coarse = abs((f3 - f_exact) / f_exact) if abs(f_exact) > 1e-15 else 0.0
+
+    # Grid Convergence Index
+    gci_fine = safety_factor * abs((f1 - f2) / f1) / (r21**p - 1.0) * 100
+    gci_medium = safety_factor * abs((f2 - f3) / f2) / (r32**p - 1.0) * 100
+
+    # Asymptotic ratio (should be ~1.0 if in asymptotic range)
+    if gci_fine > 0:
+        asymptotic_ratio = gci_medium / (r21**p * gci_fine)
+    else:
+        asymptotic_ratio = float("nan")
+
+    return ConvergenceResult(
+        observed_order=p,
+        extrapolated_value=f_exact,
+        gci_fine=gci_fine,
+        gci_medium=gci_medium,
+        asymptotic_ratio=asymptotic_ratio,
+        grid_sizes=h,
+        solutions=f,
+        errors_vs_extrapolated=[e_coarse, e_medium, e_fine],
+    )
+
+
+def plot_convergence(
+    result: ConvergenceResult,
+    quantity_name: str = "Drag Coefficient",
+    output_file: str = "convergence.png",
+) -> None:
+    """Create publication-quality convergence plot."""
+    fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(12, 5))
+
+    h = np.array(result.grid_sizes)
+    f = np.array(result.solutions)
+    errors = np.array(result.errors_vs_extrapolated)
+
+    # Left: Solution vs grid spacing
+    ax1.plot(h, f, "ko-", markersize=8, linewidth=1.5, label="Computed")
+    ax1.axhline(
+        y=result.extrapolated_value,
+        color="r", linestyle="--", linewidth=1,
+        label=f"Richardson extrapolation: {result.extrapolated_value:.6f}",
+    )
+
+    # GCI error bars on finest grid
+    gci_abs = result.gci_fine / 100.0 * abs(f[-1])
+    ax1.errorbar(
+        h[-1], f[-1], yerr=gci_abs,
+        fmt="none", ecolor="blue", capsize=5, linewidth=2,
+        label=f"GCI = {result.gci_fine:.2f}%",
+    )
+
+    ax1.set_xlabel("Grid spacing h [m]", fontsize=12)
+    ax1.set_ylabel(quantity_name, fontsize=12)
+    ax1.set_title("Grid Convergence Study", fontsize=14)
+    ax1.legend(fontsize=10)
+    ax1.grid(True, alpha=0.3)
+
+    # Right: Error vs grid spacing (log-log)
+    valid = errors > 0
+    ax2.loglog(
+        h[valid], errors[valid], "ko-",
+        markersize=8, linewidth=1.5, label="Observed error",
+    )
+
+    # Reference slope for observed order
+    h_ref = np.array([h[valid].min(), h[valid].max()])
+    error_ref = errors[valid][-1] * (h_ref / h[valid][-1]) ** result.observed_order
+    ax2.loglog(
+        h_ref, error_ref, "r--", linewidth=1,
+        label=f"Slope = {result.observed_order:.2f} (observed)",
+    )
+
+    ax2.set_xlabel("Grid spacing h [m]", fontsize=12)
+    ax2.set_ylabel("Relative error vs. extrapolated", fontsize=12)
+    ax2.set_title("Convergence Rate", fontsize=14)
+    ax2.legend(fontsize=10)
+    ax2.grid(True, alpha=0.3, which="both")
+
+    plt.tight_layout()
+    plt.savefig(output_file, dpi=150, bbox_inches="tight")
+    print(f"  Convergence plot saved to {output_file}")
+    plt.close()
+
+
+if __name__ == "__main__":
+    # Example: drag coefficient from CFD on three meshes
+    # Refinement ratio r = 2 (each mesh has 2x resolution)
+    grid_spacings = [0.04, 0.02, 0.01]   # Coarse, medium, fine [m]
+    drag_coefficients = [0.3312, 0.3287, 0.3279]  # Cd on each mesh
+
+    print("Mesh Convergence Analysis")
+    print("=" * 50)
+
+    result = richardson_extrapolation(
+        h=grid_spacings,
+        f=drag_coefficients,
+        formal_order=2.0,
+        safety_factor=1.25,
+    )
+
+    print(f"\n  Observed order of convergence: {result.observed_order:.3f}")
+    print(f"  Formal order of scheme: 2.0")
+    print(f"  Extrapolated (h->0) value: {result.extrapolated_value:.6f}")
+    print(f"  GCI on fine grid: {result.gci_fine:.2f}%")
+    print(f"  GCI on medium grid: {result.gci_medium:.2f}%")
+    print(f"  Asymptotic ratio: {result.asymptotic_ratio:.4f} "
+          f"(should be ~1.0)")
+
+    if abs(result.asymptotic_ratio - 1.0) > 0.1:
+        print("\n  WARNING: Asymptotic ratio deviates from 1.0.")
+        print("  Solutions may not be in the asymptotic convergence range.")
+        print("  Consider finer meshes or higher refinement ratio.")
+
+    for i, (h, f, e) in enumerate(
+        zip(result.grid_sizes, result.solutions, result.errors_vs_extrapolated)
+    ):
+        label = ["Coarse", "Medium", "Fine"][i]
+        print(f"\n  {label} (h={h}): f={f:.6f}, "
+              f"error={e:.2e} ({e*100:.3f}%)")
+
+    plot_convergence(
+        result,
+        quantity_name="Drag Coefficient $C_d$",
+        output_file="convergence_study.png",
+    )</code></pre>
+
+        <h2>Quick-Reference: Best Tool by Task</h2>
+        <div style="overflow-x:auto">
+          <table style="width:100%;border-collapse:collapse;margin:1.5rem 0">
+            <thead>
+              <tr style="border-bottom:2px solid var(--border)">
+                <th style="padding:12px 16px;text-align:left">Task</th>
+                <th style="padding:12px 16px;text-align:left">Best Tool</th>
+                <th style="padding:12px 16px;text-align:left">Why</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px">Variational formulations (FEniCS UFL)</td>
+                <td style="padding:12px 16px"><strong>Claude Code</strong></td>
+                <td style="padding:12px 16px">Understands weak forms, bilinear/linear forms, Sobolev spaces, and correct UFL expressions</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px">OpenFOAM case setup</td>
+                <td style="padding:12px 16px"><strong>Claude Code</strong></td>
+                <td style="padding:12px 16px">Generates correct dictionary syntax, scheme selection, turbulence model configuration</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px">ANSYS APDL scripting</td>
+                <td style="padding:12px 16px"><strong>Gemini CLI</strong></td>
+                <td style="padding:12px 16px">1M context for APDL command reference, element type documentation, and macro syntax</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px">Monte Carlo &amp; UQ methods</td>
+                <td style="padding:12px 16px"><strong>Claude Code</strong></td>
+                <td style="padding:12px 16px">Correct variance reduction techniques, convergence diagnostics, statistical analysis</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px">Mesh generation (gmsh scripting)</td>
+                <td style="padding:12px 16px"><strong>Claude Code</strong></td>
+                <td style="padding:12px 16px">Quality constraints, boundary layer specification, size field configuration</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px">MPI parallel code</td>
+                <td style="padding:12px 16px"><strong>Claude Code</strong></td>
+                <td style="padding:12px 16px">Non-blocking communication patterns, domain decomposition, deadlock avoidance</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px">ParaView / VTK scripting</td>
+                <td style="padding:12px 16px"><strong>Cursor Pro</strong></td>
+                <td style="padding:12px 16px">Indexes existing post-processing scripts, autocompletes VTK pipeline stages</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px">Discrete event simulation (SimPy)</td>
+                <td style="padding:12px 16px"><strong>Claude Code</strong></td>
+                <td style="padding:12px 16px">Correct process modeling, resource management, statistical analysis of outputs</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px">Large solver codebase navigation</td>
+                <td style="padding:12px 16px"><strong>Cursor Pro</strong></td>
+                <td style="padding:12px 16px">Indexes C++/Fortran solver code, OpenFOAM class hierarchies, deal.II template structures</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px">Solver documentation lookup</td>
+                <td style="padding:12px 16px"><strong>Gemini CLI</strong></td>
+                <td style="padding:12px 16px">Paste entire OpenFOAM/ANSYS docs into 1M context for precise API and keyword queries</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:12px 16px">AWS HPC infrastructure</td>
+                <td style="padding:12px 16px"><strong>Amazon Q</strong></td>
+                <td style="padding:12px 16px">ParallelCluster config, FSx for Lustre, Batch job definitions, S3 for simulation data</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h2>What AI Tools Get Wrong About Simulation</h2>
+        <ul>
+          <li><strong>Ignoring numerical stability:</strong> AI tools routinely generate explicit time-stepping schemes without CFL condition checks. A forward Euler discretization of the heat equation with dt = 0.1 and dx = 0.01 has a diffusion number of alpha * dt / dx<sup>2</sup> = 100 * alpha, which is unstable for any physically meaningful thermal diffusivity. The solution will oscillate with exponentially growing amplitude and the tool will not warn you. Implicit schemes (backward Euler, Crank-Nicolson) are unconditionally stable but require solving a linear system at each time step &mdash; AI tools that generate explicit schemes are choosing the simpler implementation at the cost of correctness.</li>
+          <li><strong>Wrong boundary condition types:</strong> Confusing Dirichlet (prescribed value), Neumann (prescribed gradient/flux), and Robin (mixed) boundary conditions changes the physics of the problem entirely. A Neumann condition of zero on a heat equation boundary means adiabatic (insulated) wall; a Dirichlet condition of zero means isothermal wall at reference temperature. In CFD, a no-slip wall requires zero velocity (Dirichlet on all velocity components) but typically a zero-gradient condition on pressure (Neumann). AI tools frequently apply the wrong type, producing solutions to a different physical problem than intended, with no error message to indicate the mistake.</li>
+          <li><strong>Naive mesh generation:</strong> Generating uniform meshes where physics demands refinement. Boundary layers in CFD require exponentially graded mesh spacing near walls (first cell at y+ less than 1, expansion ratio of 1.1-1.3). Stress concentrations at notches and crack tips require mesh refinement proportional to 1/sqrt(r) from the singularity. AI tools generate uniform grids because they are simpler to specify, producing solutions where the boundary layer is resolved by 2 cells instead of 20, and the resulting wall shear stress is wrong by a factor of 5.</li>
+          <li><strong>Incorrect parallel decomposition:</strong> Generating MPI code that decomposes the domain without considering communication topology, load balance, or the ratio of computation to communication. A 1D slab decomposition of a 3D mesh across 1,000 ranks creates slabs that are one cell thick in the decomposition direction, meaning every cell is a boundary cell requiring halo exchange. The communication cost exceeds the computation cost, and the simulation runs slower on 1,000 cores than on 100. Proper decomposition uses graph partitioning (METIS) to minimize the cut surface while balancing cell counts.</li>
+          <li><strong>Missing convergence checks:</strong> Generating solver loops without residual monitoring, without checking that iterative solvers have converged at each time step, and without mesh independence studies. A SIMPLE-based CFD solver that advances to the next time step when the pressure equation has not converged produces a velocity field that does not satisfy the continuity equation, accumulating mass conservation errors that corrupt the entire solution over time. AI tools generate the time-stepping loop but not the convergence checking infrastructure that makes the results meaningful.</li>
+          <li><strong>Confusing steady-state and transient solvers:</strong> Applying a transient solver to a steady-state problem (wasteful &mdash; converging in pseudo-time when a Newton iteration would converge in 5 iterations) or applying a steady-state solver to an inherently transient problem (vortex shedding behind a cylinder has no steady-state solution above Re approximately 47). AI tools do not evaluate whether the physics is steady or unsteady; they generate whichever solver type they have seen more often in training data.</li>
+          <li><strong>Wrong units or non-dimensionalization:</strong> Mixing SI and CGS units in the same simulation, or failing to non-dimensionalize when the problem involves quantities spanning many orders of magnitude. A structural FEA with Young&rsquo;s modulus in Pa (10<sup>11</sup>) and lengths in mm produces a stiffness matrix with entries spanning 17 orders of magnitude, causing the linear solver to fail or produce inaccurate results due to floating-point roundoff. Non-dimensionalizing or using consistent unit systems (N-mm-MPa) avoids this. AI tools copy material property values from documentation without checking unit consistency with the mesh coordinate system.</li>
+          <li><strong>Hallucinating solver parameters:</strong> Inventing OpenFOAM dictionary keywords that do not exist (<code>turbulenceModel kOmegaSST2;</code> instead of the correct <code>RAS { model kOmegaSST; }</code> structure), generating ANSYS APDL commands with wrong argument counts or types, and fabricating FEniCS function names from older API versions that do not exist in FEniCSx. OpenFOAM&rsquo;s dictionary parser will sometimes silently ignore unknown keywords, meaning the simulation runs with default values instead of the intended settings &mdash; a silent error that produces wrong results with no diagnostic message.</li>
+        </ul>
+
+        <h2>Cost Model: What Simulation Engineers Actually Pay</h2>
+
+        <h3>Scenario 1: Graduate Student &mdash; $0/month</h3>
+        <ul>
+          <li><strong>Copilot Free</strong> (2,000 completions/mo) for basic FEniCS scripts, SimPy models, NumPy-based Monte Carlo, and matplotlib post-processing</li>
+          <li>Plus <strong>Gemini CLI Free</strong> for discussing numerical methods, understanding OpenFOAM documentation, and learning variational formulations</li>
+          <li>Combined with open-source solvers (OpenFOAM, FEniCS, deal.II, gmsh, ParaView), this covers coursework and early research. Manually verify every numerical scheme choice, boundary condition type, and convergence behavior. Do not trust AI-generated CFL estimates or stability analysis without checking the math yourself.</li>
+        </ul>
+
+        <h3>Scenario 2: Research Scientist &mdash; $20/month</h3>
+        <ul>
+          <li><strong>Claude Code</strong> ($20/mo) for implementing numerical methods, debugging convergence issues, formulating weak forms for nonstandard PDEs, and writing verification test suites (Method of Manufactured Solutions)</li>
+          <li>The strongest single tool for simulation work. Claude Code reasons through variational formulations, identifies stability constraints, generates correct MPI communication patterns, and produces Richardson extrapolation convergence analyses. Worth the cost for anyone whose primary work is developing or extending simulation codes.</li>
+        </ul>
+
+        <h3>Scenario 3: Simulation Consultant &mdash; $40/month</h3>
+        <ul>
+          <li><strong>Claude Code</strong> ($20/mo) for numerical algorithm development, solver debugging, V&amp;V methodology, and custom solver implementation</li>
+          <li>Plus <strong>Cursor Pro</strong> ($20/mo) for navigating client codebases, working with legacy Fortran/C++ solver code, and batch post-processing script development</li>
+          <li>The optimal combination: Claude Code for the physics and numerics, Cursor for the software engineering. Consultants work across multiple solver frameworks and client codebases; Cursor&rsquo;s project indexing handles the context switching while Claude Code handles the domain expertise.</li>
+        </ul>
+
+        <h3>Scenario 4: Aerospace / Automotive Engineer &mdash; $20&ndash;40/month</h3>
+        <ul>
+          <li><strong>Claude Code</strong> ($20/mo) if primarily writing custom UDFs, APDL macros, and post-processing scripts for commercial solvers (ANSYS, STAR-CCM+, Abaqus)</li>
+          <li>Plus <strong>Cursor Pro</strong> ($20/mo) if working with large in-house solver codebases or extensive automation frameworks</li>
+          <li>Aerospace and automotive simulation engineers spend significant time scripting commercial tools rather than writing solvers from scratch. Claude Code handles UDF/APDL syntax and physics-aware scripting. For engineers at companies with large proprietary solver codebases, add Cursor for codebase navigation.</li>
+        </ul>
+
+        <h3>Scenario 5: Simulation Team Lead &mdash; $19&ndash;40/seat/month</h3>
+        <ul>
+          <li><strong>Copilot Business</strong> ($19/seat/mo) or <strong>Cursor Business</strong> ($40/seat/mo) for team-wide codebase indexing and consistent coding patterns across the simulation group</li>
+          <li>Cursor Business indexes the team&rsquo;s shared solver code, mesh generation scripts, post-processing pipelines, and V&amp;V test suites, ensuring consistent patterns across developers with varying experience levels. Copilot Business provides organization-level controls and audit logging for regulated industries.</li>
+        </ul>
+
+        <h3>Scenario 6: Enterprise / National Lab &mdash; $39&ndash;99/seat/month</h3>
+        <ul>
+          <li><strong>Copilot Enterprise</strong> ($39/seat/mo) or <strong>Cursor Enterprise</strong> for organization-wide solver codebase indexing with compliance controls</li>
+          <li>Plus <strong>Claude Code</strong> ($20/seat/mo) for specialized numerical analysis, algorithm review, and V&amp;V methodology consulting</li>
+          <li>National laboratories and defense contractors have multi-million-line solver codebases in C++/Fortran with decades of development history. Enterprise tiers index this entire codebase, enforce coding standards, and provide audit trails required for nuclear/aerospace certification. <strong>Tabnine</strong> ($39/user/mo) offers self-hosted deployment for air-gapped environments handling export-controlled simulation codes (ITAR/EAR).</li>
+        </ul>
+
+        <h2>The Simulation Engineer&rsquo;s Verdict</h2>
+
+        <p>The fundamental challenge for AI tools in simulation engineering is that correctness is defined by physics, not by whether the code compiles and runs. A CFD solver that produces a symmetric flow field behind a cylinder at Reynolds number 200 has a bug &mdash; the physical solution is asymmetric with periodic vortex shedding &mdash; but the code ran without errors, the residuals converged, and the pretty contour plots look plausible to anyone who does not know the expected physics. An FEA stress analysis that reports a maximum von Mises stress of 50 MPa at a sharp re-entrant corner is wrong regardless of mesh refinement because the analytical stress at that singularity is infinite &mdash; the reported value is mesh-dependent and decreases without bound as the mesh is refined, which means the FEA is correctly solving the mathematical problem but the mathematical model does not match the physical reality (real materials yield, crack, or redistribute stress before reaching infinite values). AI tools cannot evaluate whether a simulation result is physically meaningful; they can only help you write the code that produces it.</p>
+
+        <p>That said, AI tools provide genuine value for the enormous amount of boilerplate and API navigation that simulation engineering requires. Remembering OpenFOAM&rsquo;s dictionary syntax for the 47th time, looking up the correct APDL command for defining a contact pair, writing the gmsh API calls for boundary layer mesh specification, constructing the MPI communication pattern for a 3D domain decomposition, formatting VTK data for ParaView visualization, and implementing the statistics for Richardson extrapolation &mdash; these are all tasks where AI tools save hours of documentation reading and syntax debugging. The key is using them as productivity tools for the mechanical aspects of simulation work while keeping the numerical and physical judgment firmly in human hands. Every AI-generated scheme choice, boundary condition, convergence criterion, and mesh specification must be verified against first principles before the simulation results can be trusted.</p>
+
+        <p>The tool-specific recommendations: <strong>Claude Code</strong> is the best single tool for simulation engineers. It understands variational formulations, generates correct OpenFOAM dictionaries, handles MPI communication patterns, and produces statistically sound Monte Carlo analyses. Its reasoning capability handles the multi-step logic required to go from governing equations to discretized systems to convergent numerical solutions. <strong>Cursor</strong> is essential for engineers working with large solver codebases &mdash; navigating OpenFOAM&rsquo;s C++ class hierarchy, understanding legacy Fortran solvers, and maintaining consistency across multi-file simulation frameworks. <strong>Gemini CLI</strong> is valuable for documentation lookup &mdash; paste the entire OpenFOAM programmer&rsquo;s guide or ANSYS APDL command reference into its 1M context window for precise API queries. <strong>Amazon Q</strong> is worth considering if your HPC infrastructure is AWS-based (ParallelCluster, Batch, FSx for Lustre). The bottom line: use AI tools to write the code faster, but verify the numerics yourself. In simulation, a beautiful visualization of wrong results is worse than no results at all.</p>
+
+        <p>Compare all tools and pricing on our <a href="/" style="color:var(--accent)">main comparison table</a>, or check the <a href="/blog/cheapest-ai-coding-tool-2026.html" style="color:var(--accent)">cheapest tools guide</a> for budget options.</p>
+
+        <h2>Related on CodeCosts</h2>
+        <ul>
+          <li><a href="/blog/ai-coding-tools-for-systems-programmers-2026.html" style="color:var(--accent)">AI Coding Tools for Systems Programmers (2026)</a> &mdash; low-level C/C++, memory management, OS internals</li>
+          <li><a href="/blog/ai-coding-tools-for-performance-engineers-2026.html" style="color:var(--accent)">AI Coding Tools for Performance Engineers (2026)</a> &mdash; profiling, optimization, latency reduction</li>
+          <li><a href="/blog/ai-coding-tools-for-data-scientists-2026.html" style="color:var(--accent)">AI Coding Tools for Data Scientists (2026)</a> &mdash; NumPy, SciPy, statistical analysis, ML workflows</li>
+          <li><a href="/blog/ai-coding-tools-for-graphics-gpu-programmers-2026.html" style="color:var(--accent)">AI Coding Tools for Graphics &amp; GPU Programmers (2026)</a> &mdash; CUDA, shaders, rendering pipelines, GPU computing</li>
+        </ul>
+      </div>
+    </article>
+
+    <!-- Related Posts -->
+    <section class="card">
+      <h3>Related Posts</h3>
+      <div class="blog-list" style="margin-top:1rem">
+        <a href="/blog/ai-coding-tools-for-systems-programmers-2026.html" class="blog-post-card">
+          <h3>AI Coding Tools for Systems Programmers 2026: C, C++, Rust, OS Internals &amp; Low-Level Development Guide</h3>
+          <div class="blog-meta"><span>March 27, 2026</span><span>25 min read</span></div>
+          <p class="blog-excerpt">Every AI coding tool evaluated for systems programming. C, C++, Rust, memory management, OS internals, and low-level development from $0 to enterprise.</p>
+          <span class="read-more">Read more &rarr;</span>
+        </a>
+        <a href="/blog/ai-coding-tools-for-performance-engineers-2026.html" class="blog-post-card">
+          <h3>AI Coding Tools for Performance Engineers 2026: Profiling, Optimization &amp; Latency Reduction Guide</h3>
+          <div class="blog-meta"><span>March 28, 2026</span><span>25 min read</span></div>
+          <p class="blog-excerpt">Every AI coding tool evaluated for performance engineering. Profiling, optimization, latency analysis, and throughput tuning from $0 to enterprise.</p>
+          <span class="read-more">Read more &rarr;</span>
+        </a>
+        <a href="/blog/ai-coding-tools-for-graphics-gpu-programmers-2026.html" class="blog-post-card">
+          <h3>AI Coding Tools for Graphics &amp; GPU Programmers 2026: CUDA, Shaders, Rendering &amp; Compute Guide</h3>
+          <div class="blog-meta"><span>March 28, 2026</span><span>25 min read</span></div>
+          <p class="blog-excerpt">Every AI coding tool evaluated for graphics and GPU programming. CUDA, shaders, rendering pipelines, and GPU compute from $0 to enterprise.</p>
+          <span class="read-more">Read more &rarr;</span>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>CodeCosts &mdash; Independent AI coding tool price tracker. Updated March 2026.</p>
+      <p style="margin-top:0.5rem"><a href="/" style="color:var(--accent)">Compare all tools</a> &middot; <a href="/blog/" style="color:var(--accent)">Blog</a> &middot; <a href="/blog/feed.xml" style="color:var(--accent)">RSS</a></p>
+    </div>
+  </footer>
+</body>
+</html>
